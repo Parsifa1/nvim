@@ -2,10 +2,15 @@
 require('keymap')
 require('plugins')
 require('option')
+
 vim.g.mapleader = ' '
+
+
+-- 全局插件
 require('leap').add_default_mappings()
 
 if vim.g.vscode then
+    --仅用于vscode的插件
     vim.opt.timeoutlen = 1000
 else
     -- 仅用于neovim的插件
@@ -40,4 +45,3 @@ else
         }
     })
 end
--- require('config.nvim-cmp')
