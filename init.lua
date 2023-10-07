@@ -1,7 +1,6 @@
 --包导入
 require('keymap')
 require('plugins')
-require('option')
 
 vim.g.mapleader = ' '
 
@@ -14,6 +13,7 @@ if vim.g.vscode then
     vim.opt.timeoutlen = 1000
 else
     -- 仅用于neovim的插件
+    require('option')
     require('lsp')
     require('lualine').setup()
     require('colorscheme')
@@ -44,4 +44,5 @@ else
             }
         }
     })
+
 end
