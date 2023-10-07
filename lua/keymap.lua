@@ -8,7 +8,6 @@ vim.g.mapleader = " "
 -- Normal mode --
 -----------------
 
-vim.keymap.set('i', 'jj', '<ESC><CR>')
 
 -- Resize with arrows
 -- delta: 2 lines
