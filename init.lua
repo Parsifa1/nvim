@@ -32,16 +32,16 @@ else
                 additional_vim_regex_highlighting = false,
             },
         },
-        require("toggleterm").setup {
+        require('toggleterm').setup {
             size = 10,
             open_mapping = [[<A-q>]],
             direction = 'float',
-            cmd = "powershell -NoLogo",
+            cmd = 'powershell -NoLogo',
             start_in_insert = true,
-            shell = "pwsh.exe",
+            shell = 'pwsh.exe',
             float_opts = {
                 autochdir = true,
-                border = "curved",
+                border = 'curved',
                 width = math.ceil(vim.o.columns * 0.8),
                 height = math.ceil(vim.o.columns * 0.2)
             }
