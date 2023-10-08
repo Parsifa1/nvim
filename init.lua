@@ -12,7 +12,7 @@ require('leap').add_default_mappings()
 
 if vim.g.vscode then
     --仅用于vscode的插件
-    vim.opt.timeoutlen = 1000
+    vim.opt.timeoutlen = 500
     vim.opt.clipboard = 'unnamedplus' -- use system clipboar
 else
     -- 仅用于neovim的插件

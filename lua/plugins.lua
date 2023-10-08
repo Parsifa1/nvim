@@ -35,9 +35,23 @@ return require('packer').startup(function(use)
     ---------------------------------------
     -- NOTE: PUT YOUR THIRD PLUGIN HERE --
     ---------------------------------------
+    use 'wellle/targets.vim'
     use 'tpope/vim-surround'
-    use "max397574/better-escape.nvim"
+    use 'tpope/vim-repeat'
+    use 'max397574/better-escape.nvim'
     use 'ggandor/leap.nvim'
+    use 'tanvirtin/monokai.nvim'
+    use 'wbthomason/packer.nvim'
+    use { 'williamboman/mason.nvim' }
+    use { 'williamboman/mason-lspconfig.nvim' }
+    use { 'neovim/nvim-lspconfig' }
+    use { 'hrsh7th/nvim-cmp', config = [[require('config.nvim-cmp')]] }
+    use { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' }
+    use { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' }  -- buffer auto-completion
+    use { 'hrsh7th/cmp-path', after = 'nvim-cmp' }    -- path auto-completion
+    use { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' } -- cmdline auto-completion
+    use 'L3MON4D3/LuaSnip'
+    use 'saadparwaiz1/cmp_luasnip'
     use { "akinsho/toggleterm.nvim", tag = '*', config = function()
         require("toggleterm").setup()
     end }
@@ -58,21 +72,6 @@ return require('packer').startup(function(use)
             'nvim-tree/nvim-web-devicons', -- optional
         },
     }
-    use 'tanvirtin/monokai.nvim'
-    use 'wbthomason/packer.nvim'
-    use { 'williamboman/mason.nvim' }
-    use { 'williamboman/mason-lspconfig.nvim' }
-    use { 'neovim/nvim-lspconfig' }
-    use { 'hrsh7th/nvim-cmp', config = [[require('config.nvim-cmp')]] }
-    use { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' }
-    use { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' }  -- buffer auto-completion
-    use { 'hrsh7th/cmp-path', after = 'nvim-cmp' }    -- path auto-completion
-    use { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' } -- cmdline auto-completion
-    use 'L3MON4D3/LuaSnip'
-    use 'saadparwaiz1/cmp_luasnip'
-
-
-
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if packer_bootstrap then
