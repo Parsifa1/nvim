@@ -147,7 +147,7 @@ _G.packer_plugins = {
     url = "https://github.com/tanvirtin/monokai.nvim"
   },
   ["nvim-cmp"] = {
-    after = { "cmp-buffer", "cmp-cmdline", "cmp-nvim-lsp", "cmp-path" },
+    after = { "cmp-path", "cmp-cmdline", "cmp-nvim-lsp", "cmp-buffer" },
     config = { "require('config.nvim-cmp')" },
     loaded = true,
     only_config = true,
@@ -191,6 +191,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\Parsifal\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\toggleterm.nvim",
     url = "https://github.com/akinsho/toggleterm.nvim"
   },
+  ["vim-expand-region"] = {
+    loaded = true,
+    path = "C:\\Users\\Parsifal\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-expand-region",
+    url = "https://github.com/terryma/vim-expand-region"
+  },
   ["vim-repeat"] = {
     loaded = true,
     path = "C:\\Users\\Parsifal\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-repeat",
@@ -214,10 +219,10 @@ require('config.nvim-cmp')
 time([[Config for nvim-cmp]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
-vim.cmd [[ packadd cmp-cmdline ]]
-vim.cmd [[ packadd cmp-nvim-lsp ]]
 vim.cmd [[ packadd cmp-path ]]
 vim.cmd [[ packadd cmp-buffer ]]
+vim.cmd [[ packadd cmp-cmdline ]]
+vim.cmd [[ packadd cmp-nvim-lsp ]]
 time([[Sequenced loading]], false)
 
 _G._packer.inside_compile = false
