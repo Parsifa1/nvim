@@ -34,15 +34,8 @@ return require('packer').startup(function(use)
     -- Packer can manage itself
     ---------------------------------------
     -- NOTE: PUT YOUR THIRD PLUGIN HERE --
-    use({
-        "kylechui/nvim-surround",
-        tag = "*", -- Use for stability; omit to use `main` branch for the latest features
-        config = function()
-            require("nvim-surround").setup({
-                -- Configuration here, or leave empty to use defaults
-            })
-        end
-    }) ---------------------------------------
+    ---------------------------------------
+    use 'tpope/vim-surround'
     use "max397574/better-escape.nvim"
     use 'ggandor/leap.nvim'
     use { "akinsho/toggleterm.nvim", tag = '*', config = function()

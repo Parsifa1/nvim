@@ -8,7 +8,7 @@ vim.g.mapleader = ' '
 
 -- 全局插件
 require('leap').add_default_mappings()
-require("nvim-surround").setup()
+-- require('surround').setup()
 
 if vim.g.vscode then
     --仅用于vscode的插件
