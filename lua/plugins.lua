@@ -38,6 +38,8 @@ return require('packer').startup(function(use)
     use 'wellle/targets.vim'
     use 'tpope/vim-surround'
     use 'tpope/vim-repeat'
+    use 'abecodes/tabout.nvim'
+    use 'windwp/nvim-autopairs'
     use 'terryma/vim-expand-region'
     use 'max397574/better-escape.nvim'
     use 'ggandor/leap.nvim'
