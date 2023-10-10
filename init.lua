@@ -3,8 +3,6 @@ require('keymap')
 require('plugins')
 require('option')
 
--- 全局设置
-
 
 -- 全局插件
 require('leap').add_default_mappings()

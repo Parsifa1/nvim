@@ -12,7 +12,8 @@ vim.keymap.set('v', '=', 'gq', opts)
 
 
 if vim.g.vscode then
-
+    vim.keymap.set('n', '==', 'gqq', opts)
+    vim.keymap.set('v', '=', 'gq', opts)
 else
     -- Resize with arrows
     -- delta: 2 lines
