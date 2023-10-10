@@ -52,10 +52,12 @@ end
 lspconfig.pylsp.setup({
     on_attach = on_attach,
 })
+lspconfig.lua_ls.setup({
+    on_attach = on_attach,
+})
 
 lspconfig.clangd.setup({
     on_attach = on_attach,
-    filetypes = {"cpp"},
-    cmd = {"C:/Program Files/mingw64/bin/clangd.exe"},
+    filetypes = { "cpp" },
+    cmd = { "C:/Program Files/mingw64/bin/clangd.exe" },
 })
-

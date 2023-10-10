@@ -152,7 +152,7 @@ _G.packer_plugins = {
     url = "https://github.com/windwp/nvim-autopairs"
   },
   ["nvim-cmp"] = {
-    after = { "cmp-buffer", "cmp-cmdline", "cmp-nvim-lsp", "cmp-path" },
+    after = { "cmp-path", "cmp-buffer", "cmp-nvim-lsp", "cmp-cmdline" },
     config = { "require('config.nvim-cmp')" },
     loaded = true,
     only_config = true,
@@ -229,10 +229,10 @@ try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K
 time([[Config for toggleterm.nvim]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
-vim.cmd [[ packadd cmp-cmdline ]]
 vim.cmd [[ packadd cmp-nvim-lsp ]]
-vim.cmd [[ packadd cmp-path ]]
 vim.cmd [[ packadd cmp-buffer ]]
+vim.cmd [[ packadd cmp-path ]]
+vim.cmd [[ packadd cmp-cmdline ]]
 time([[Sequenced loading]], false)
 
 _G._packer.inside_compile = false
