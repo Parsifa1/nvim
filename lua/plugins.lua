@@ -37,6 +37,7 @@ return require('packer').startup(function(use)
     ---------------------------------------
     use 'wellle/targets.vim'
     use 'tpope/vim-surround'
+    use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
     use 'tpope/vim-repeat'
     use 'abecodes/tabout.nvim'
     use 'windwp/nvim-autopairs'
@@ -44,10 +45,11 @@ return require('packer').startup(function(use)
     use 'max397574/better-escape.nvim'
     use 'ggandor/leap.nvim'
     use 'tanvirtin/monokai.nvim'
+    use 'navarasu/onedark.nvim'
     use 'wbthomason/packer.nvim'
-    use { 'williamboman/mason.nvim' }
-    use { 'williamboman/mason-lspconfig.nvim' }
-    use { 'neovim/nvim-lspconfig' }
+    use 'williamboman/mason.nvim'
+    use 'williamboman/mason-lspconfig.nvim'
+    use 'neovim/nvim-lspconfig'
     use { 'hrsh7th/nvim-cmp', config = [[require('config.nvim-cmp')]] }
     use { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' }
     use { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' }  -- buffer auto-completion
@@ -55,9 +57,7 @@ return require('packer').startup(function(use)
     use { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' } -- cmdline auto-completion
     use 'L3MON4D3/LuaSnip'
     use 'saadparwaiz1/cmp_luasnip'
-    use { "akinsho/toggleterm.nvim", tag = '*', config = function()
-        require("toggleterm").setup()
-    end }
+    use 'akinsho/toggleterm.nvim'
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'nvim-tree/nvim-web-devicons', opt = true },
