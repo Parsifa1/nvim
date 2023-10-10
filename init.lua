@@ -4,10 +4,8 @@ require('keymap')
 require('plugins')
 require('option')
 
-
 -- 全局插件
 require('leap').add_default_mappings()
--- require('surround').setup()
 
 if vim.g.vscode then
     --仅用于vscode的插件
