@@ -157,7 +157,7 @@ _G.packer_plugins = {
     url = "https://github.com/windwp/nvim-autopairs"
   },
   ["nvim-cmp"] = {
-    after = { "cmp-cmdline", "cmp-path", "cmp-nvim-lsp", "cmp-buffer" },
+    after = { "cmp-buffer", "cmp-cmdline", "cmp-nvim-lsp", "cmp-path" },
     config = { "require('config.nvim-cmp')" },
     loaded = true,
     only_config = true,
@@ -182,7 +182,7 @@ _G.packer_plugins = {
   ["nvim-web-devicons"] = {
     loaded = true,
     path = "C:\\Users\\Parsifal\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-web-devicons",
-    url = "https://github.com/kyazdani42/nvim-web-devicons"
+    url = "https://github.com/nvim-tree/nvim-web-devicons"
   },
   ["onedark.nvim"] = {
     loaded = true,
@@ -213,6 +213,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\Parsifal\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-expand-region",
     url = "https://github.com/terryma/vim-expand-region"
+  },
+  ["vim-floaterm"] = {
+    loaded = true,
+    path = "C:\\Users\\Parsifal\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-floaterm",
+    url = "https://github.com/voldikss/vim-floaterm"
   },
   ["vim-repeat"] = {
     loaded = true,

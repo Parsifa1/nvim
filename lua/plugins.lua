@@ -36,8 +36,8 @@ return require('packer').startup(function(use)
     -- NOTE: PUT YOUR THIRD PLUGIN HERE --
     ---------------------------------------
     use 'wellle/targets.vim'
+    use 'voldikss/vim-floaterm'
     use 'tpope/vim-surround'
-    use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
     use 'tpope/vim-repeat'
     use 'abecodes/tabout.nvim'
     use 'windwp/nvim-autopairs'
@@ -50,6 +50,7 @@ return require('packer').startup(function(use)
     use 'williamboman/mason.nvim'
     use 'williamboman/mason-lspconfig.nvim'
     use 'neovim/nvim-lspconfig'
+    use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
     use { 'hrsh7th/nvim-cmp', config = [[require('config.nvim-cmp')]] }
     use { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' }
     use { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' }  -- buffer auto-completion
@@ -58,6 +59,8 @@ return require('packer').startup(function(use)
     use 'L3MON4D3/LuaSnip'
     use 'saadparwaiz1/cmp_luasnip'
     use 'akinsho/toggleterm.nvim'
+    use 'voldikss/vim-floaterm'
+    use 'nvim-tree/nvim-web-devicons'
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'nvim-tree/nvim-web-devicons', opt = true },
