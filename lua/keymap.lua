@@ -41,5 +41,5 @@ else
 
     set('t', '<Esc>', '<C-\\><C-n>:q<CR>', opts)
     set('n', '<F5>', ':FloatermNew! g++ % -o bin/cp.exe && .\\bin\\cp<CR>', opts)
-    set('i', '<F5>', ':FloatermNew! g++ % -o bin/cp.exe && .\\bin\\cp<CR>', opts)
+    set('i', '<F5>', '<Esc>:FloatermNew! g++ % -o bin/cp.exe && .\\bin\\cp<CR>', opts)
 end
