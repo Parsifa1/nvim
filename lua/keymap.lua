@@ -40,6 +40,10 @@ else
     set('n', '<A-q>', ':q<CR>', opts)
 
     set('t', '<Esc>', '<C-\\><C-n>:q<CR>', opts)
-    set('n', '<F5>', ':FloatermNew! g++ % -o bin/cp.exe && .\\bin\\cp<CR>', opts)
-    set('i', '<F5>', '<Esc>:FloatermNew! g++ % -o bin/cp.exe && .\\bin\\cp<CR>', opts)
+    set('n', '<F5>', ':FloatermNew! cd %:h; g++ %:t -std=c++20 -o bin\\cp.exe; .\\bin\\cp<CR>', opts)
+    set('i', '<F5>', '<Esc>:FloatermNew! cd %:h && g++ %:t -std=c++20 -o bin\\cp.exe && .\\bin\\cp<CR><CR>', opts)
+    --CP相关
+    set('n', '<F1>', ':CompetiTest add_testcase<CR>', opts)
+    set('i', '<F1>', '<Esc>:CompetiTest add_testcase<CR>', opts)
+    set('n', '<F4>', '<Esc>:CompetiTest run<CR>', opts)
 end

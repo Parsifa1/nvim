@@ -126,6 +126,12 @@ _G.packer_plugins = {
     path = "C:\\Users\\Parsifal\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  ["competitest.nvim"] = {
+    config = { "\27LJ\2\n9\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\16competitest\frequire\0" },
+    loaded = true,
+    path = "C:\\Users\\Parsifal\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\competitest.nvim",
+    url = "https://github.com/xeluxee/competitest.nvim"
+  },
   ["leap.nvim"] = {
     loaded = true,
     path = "C:\\Users\\Parsifal\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\leap.nvim",
@@ -151,13 +157,18 @@ _G.packer_plugins = {
     path = "C:\\Users\\Parsifal\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\monokai.nvim",
     url = "https://github.com/tanvirtin/monokai.nvim"
   },
+  ["nui.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\Parsifal\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nui.nvim",
+    url = "https://github.com/MunifTanjim/nui.nvim"
+  },
   ["nvim-autopairs"] = {
     loaded = true,
     path = "C:\\Users\\Parsifal\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-autopairs",
     url = "https://github.com/windwp/nvim-autopairs"
   },
   ["nvim-cmp"] = {
-    after = { "cmp-buffer", "cmp-cmdline", "cmp-nvim-lsp", "cmp-path" },
+    after = { "cmp-cmdline", "cmp-path", "cmp-nvim-lsp", "cmp-buffer" },
     config = { "require('config.nvim-cmp')" },
     loaded = true,
     only_config = true,
@@ -194,6 +205,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\Parsifal\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
   },
+  ["plenary.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\Parsifal\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\plenary.nvim",
+    url = "https://github.com/nvim-lua/plenary.nvim"
+  },
   ["tabout.nvim"] = {
     loaded = true,
     path = "C:\\Users\\Parsifal\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\tabout.nvim",
@@ -203,6 +219,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\Parsifal\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\targets.vim",
     url = "https://github.com/wellle/targets.vim"
+  },
+  ["telescope.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\Parsifal\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\telescope.nvim",
+    url = "https://github.com/nvim-telescope/telescope.nvim"
   },
   ["toggleterm.nvim"] = {
     loaded = true,
@@ -236,12 +257,16 @@ time([[Defining packer_plugins]], false)
 time([[Config for nvim-cmp]], true)
 require('config.nvim-cmp')
 time([[Config for nvim-cmp]], false)
+-- Config for: competitest.nvim
+time([[Config for competitest.nvim]], true)
+try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\16competitest\frequire\0", "config", "competitest.nvim")
+time([[Config for competitest.nvim]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
+vim.cmd [[ packadd cmp-path ]]
+vim.cmd [[ packadd cmp-nvim-lsp ]]
 vim.cmd [[ packadd cmp-buffer ]]
 vim.cmd [[ packadd cmp-cmdline ]]
-vim.cmd [[ packadd cmp-nvim-lsp ]]
-vim.cmd [[ packadd cmp-path ]]
 time([[Sequenced loading]], false)
 
 _G._packer.inside_compile = false

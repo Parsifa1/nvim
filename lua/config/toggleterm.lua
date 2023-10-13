@@ -1,6 +1,6 @@
 require('toggleterm').setup {
     size = 10,
-    open_mapping = [[`]],
+    --open_mapping = [[`]],
     direction = 'float',
     cmd = 'powershell -NoLogo',
     start_in_insert = true,

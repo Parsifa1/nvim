@@ -47,37 +47,33 @@ return require('packer').startup(function(use)
     use 'tanvirtin/monokai.nvim'
     use 'navarasu/onedark.nvim'
     use 'wbthomason/packer.nvim'
-    use 'williamboman/mason.nvim'
+    use {'nvim-telescope/telescope.nvim', tag = '0.1.4', requires = { { 'nvim-lua/plenary.nvim' } }}
+    use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
+    --LSP
+    use {"williamboman/mason.nvim"}
     use 'williamboman/mason-lspconfig.nvim'
     use 'neovim/nvim-lspconfig'
-    use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
     use { 'hrsh7th/nvim-cmp', config = [[require('config.nvim-cmp')]] }
     use { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' }
     use { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' }  -- buffer auto-completion
     use { 'hrsh7th/cmp-path', after = 'nvim-cmp' }    -- path auto-completion
     use { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' } -- cmdline auto-completion
-    use 'L3MON4D3/LuaSnip'
-    use 'saadparwaiz1/cmp_luasnip'
-    use 'akinsho/toggleterm.nvim'
-    use 'voldikss/vim-floaterm'
-    use 'nvim-tree/nvim-web-devicons'
+    --
     use {
-        'nvim-lualine/lualine.nvim',
-        requires = { 'nvim-tree/nvim-web-devicons', opt = true },
+        'xeluxee/competitest.nvim',
+        requires = 'MunifTanjim/nui.nvim',
+        config = function() require('competitest').setup() end
     }
     use {
         'nvim-treesitter/nvim-treesitter',
-        run = function()
-            local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
-            ts_update()
-        end,
+        --run = ':TSUpdate'
     }
-    use {
-        'nvim-tree/nvim-tree.lua',
-        requires = {
-            'nvim-tree/nvim-web-devicons', -- optional
-        },
-    }
+    use 'L3MON4D3/LuaSnip'
+    use 'saadparwaiz1/cmp_luasnip'
+    use 'akinsho/toggleterm.nvim'
+    use 'nvim-tree/nvim-web-devicons'
+    use 'nvim-lualine/lualine.nvim'
+    use 'nvim-tree/nvim-tree.lua'
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if packer_bootstrap then
