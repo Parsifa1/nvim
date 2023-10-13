@@ -15,20 +15,8 @@ vim.opt.rtp:prepend(lazypath)
 local lualine = {
 }
 require("lazy").setup({
-    spec = { import = "config" },
+    spec = { import = "plugins" },
     ui = {
         border = "rounded"
     },
-
-    -- 'wellle/targets.vim',
-    -- 'tpope/vim-surround',
-    -- 'tpope/vim-repeat',
-    -- 'windwp/nvim-autopairs',
-    -- 'terryma/vim-expand-region',
-    -- 'max397574/better-escape.nvim',
-    -- 'ggandor/leap.nvim',
-    -- -- --LSP 
-    -- 'nvim-lualine/lualine.nvim',
-    -- 'nvim-tree/nvim-tree.lua',
-
 })
