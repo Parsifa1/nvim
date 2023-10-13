@@ -1,4 +1,4 @@
 return {
     'hrsh7th/cmp-cmdline',
-    dependencies = 'nvim-cmp',
+    dependencies = 'hrsh7th/nvim-cmp',
 }

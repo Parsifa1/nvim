@@ -1,6 +1,6 @@
 return {
     'akinsho/bufferline.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    dependencies = 'nvim-tree/nvim-web-devicons',
     opts = {
         options = {
             -- 使用 nvim 内置lsp

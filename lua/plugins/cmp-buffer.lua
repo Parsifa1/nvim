@@ -1,4 +1,4 @@
 return {
     'hrsh7th/cmp-buffer',
-    dependencies = 'nvim-cmp',
+    dependencies = 'hrsh7th/nvim-cmp',
 }
