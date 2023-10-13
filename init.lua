@@ -1,10 +1,10 @@
 --全局设定
 require('keymap')
-require('plugins')
+require('plugin')
 require('option')
 
 -- 全局插件
-require('leap').add_default_mappings()
+-- require('leap').add_default_mappings()
 
 if vim.g.vscode then
     --仅用于vscode的设置
@@ -14,16 +14,16 @@ else
     -- 仅用于neovim的设置
     vim.o.shortmess = vim.o.shortmess .. "A"
 
+    -- require('colorscheme')
+    -- require('lsp')
+    -- require('nvim-autopairs').setup()
+    -- require('lualine').setup()
 
-    require('nvim-autopairs').setup()
-    require('lualine').setup()
-    require('lsp')
-    require('colorscheme')
-    require('config.tabout')
-    require('config.tree')
-    require('config.treesitter')
-    require('config.toggleterm')
-    require('config.bufferline')
-    require('config.compatitest')
-    require('config.floaterm')
+    -- require('config.tabout')
+    -- require('config.tree')
+    -- require('config.treesitter')
+    -- require('config.toggleterm')
+    -- require('config.bufferline')
+    -- require('config.compatitest')
+    -- require('config.floaterm')
 end

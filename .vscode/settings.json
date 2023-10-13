@@ -3,6 +3,7 @@
         "undefined-global",
         "param-type-mismatch",
         "deprecated",
-        "need-check-nil"
+        "need-check-nil",
+        "lowercase-global"
     ]
 }
