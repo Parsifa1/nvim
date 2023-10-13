@@ -1,29 +1,27 @@
 --全局设定
 require('keymap')
-require('plugin')
 require('option')
 
--- 全局插件
--- require('leap').add_default_mappings()
-
-if vim.g.vscode then
-    --仅用于vscode的设置
-elseif vim.g.neovide then
-    vim.g.neovide_remember_window_size = true
-else
-    -- 仅用于neovim的设置
-    vim.o.shortmess = vim.o.shortmess .. "A"
-
-    -- require('colorscheme')
-    -- require('lsp')
-    -- require('nvim-autopairs').setup()
-    -- require('lualine').setup()
-
-    -- require('config.tabout')
-    -- require('config.tree')
-    -- require('config.treesitter')
-    -- require('config.toggleterm')
-    -- require('config.bufferline')
-    -- require('config.compatitest')
-    -- require('config.floaterm')
+--Lazy.nvim配置
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+    })
 end
+vim.opt.rtp:prepend(lazypath)
+
+require("lazy").setup({
+    spec = { import = "plugins" },
+    ui = {
+        border = "rounded"
+    },
+})
+
+
+
