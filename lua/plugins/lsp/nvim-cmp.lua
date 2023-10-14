@@ -9,6 +9,9 @@ return {
 
         local luasnip = require("luasnip")
         local cmp = require("cmp")
+        vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+            border = "single",
+        })
 
         cmp.setup({
             snippet = {
