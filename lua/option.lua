@@ -4,11 +4,14 @@ if vim.g.vscode then
 elseif vim.g.neovide then
     vim.g.neovide_remember_window_size = true
 else
+    vim.loader.enable()
+    --vim.cmd.colorscheme "catppuccin"
     vim.o.shortmess = vim.o.shortmess .. "A"
     -- Hint: use `:h <option>` to figure out the meaning if needed
     vim.opt.clipboard = 'unnamedplus' -- use system clipboard
     vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
     vim.opt.mouse = 'a'               -- allow the mouse to be used in Nvim
+    vim.opt.foldlevel = 99            -- 默认不折叠
 
     -- Tab
     vim.opt.tabstop = 4      -- number of visual spaces per TAB
@@ -33,5 +36,5 @@ else
 
     -- Indentation
     -- vim.opt.
-    vim.opt.timeoutlen = 1000 -- time to wait for a mapped sequence to complete (in milliseconds)
+    vim.opt.timeoutlen = 500 -- time to wait for a mapped sequence to complete (in milliseconds)
 end

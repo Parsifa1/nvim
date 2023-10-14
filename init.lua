@@ -2,7 +2,7 @@
 require('keymap')
 require('option')
 
---Lazy.nvim配置
+--Lazy.nvim配置--start
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
@@ -18,12 +18,14 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     spec = {
-        { import = "plugins.lsp" },
+        { import = "plugins.core" },
         { import = "plugins.function" },
         { import = "plugins.interface" },
+        { import = 'plugins.others' },
         {}
     },
     ui = {
         border = "rounded"
     },
 })
+--end

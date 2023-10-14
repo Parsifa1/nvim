@@ -1,12 +1,10 @@
-vim.g.mapleader = '<Space>'
+vim.g.mapleader = ' '
 -- define common options
 local set = vim.keymap.set
 local opts = {
     noremap = true, -- non-recursive
     silent = true,  -- do not show message
 }
-
--- vim.g.mapleader = "<Space>"
 
 
 set('v', '=', 'gq', opts)
@@ -27,8 +25,8 @@ else
     set('n', 'zc', '<C-w>c', opts)
     set('n', 'zo', '<C-w>o', opts) -- close others
     -- bufferline 左右Tab切换
-    set('n', '<C-h>', ':BufferLineCyclePrev<CR>', opts)
-    set('n', '<C-l>', ':BufferLineCycleNext<CR>', opts)
+    set('n', '<C-h>', ':bp<CR>', opts)
+    set('n', '<C-l>', ':bp<CR>', opts)
     -- Resize with arrows
     -- delta: 5 lines
     set('n', '<C-Up>', ':resize 1<CR>', opts)
@@ -36,7 +34,7 @@ else
     set('n', '<C-Left>', ':vertical resize 1<CR>', opts)
     set('n', '<C-Right>', ':vertical resize +5<CR>', opts)
     set('n', '<C-B>', ':NvimTreeToggle<CR>', opts)
-     --CP相关
+    --CP相关
     set('n', '<F1>', ':CompetiTest add_testcase<CR>', opts)
     set('i', '<F1>', '<Esc>:CompetiTest add_testcase<CR>', opts)
     set('n', '<F4>', ':CompetiTest run<CR>', opts)
@@ -49,6 +47,13 @@ else
 
     set('n', '<F12>', ':Lazy<CR>', opts)
     set('n', '<C-w>', ':bdelete!<CR>', opts)
-    set('n','<C-s>', ':w<CR>', opts)
-    set('n', '<C-a>','ggvG', opts)
+    set('n', '<C-s>', ':w<CR>', opts)
+    set('n', '<C-a>', 'ggvG', opts)
+    set('v', '<C-c>', 'y', opts)
+
+
+    --telescope
+    set('n', '<leader>f', ':Telescope find_files<CR>', opts)
+    set('n', '<leader>w', ':Telescope live_grep<CR>', opts)
+    set('n', '<leader>s', ':Telescope oldfiles<CR>', opts)
 end

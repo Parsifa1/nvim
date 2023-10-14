@@ -10,9 +10,12 @@ return {
         local luasnip = require("luasnip")
         local cmp = require("cmp")
         vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-            border = "single",
+            border = "rounded",
         })
 
+        --vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+            --border = "single",
+        --})
         cmp.setup({
             snippet = {
                 -- REQUIRED - you must specify a snippet engine
