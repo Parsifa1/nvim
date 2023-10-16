@@ -7,13 +7,12 @@ local opts = {
 }
 
 
-set('v', '=', 'gq', opts)
 if vim.g.vscode then
     set('n', 'zv', "<Cmd>call VSCodeNotify('workbench.action.splitEditor')<CR>", opts)
     set('n', 'zh', "<Cmd>call VSCodeNotify('workbench.action.splitEditorDown')<CR>", opts)
-else
     set('n', '==', 'gqq', opts)
     set('v', '=', 'gq', opts)
+else
     --窗口跳转
     set('n', '<A-h>', '<C-w>h', opts)
     set('n', '<A-j>', '<C-w>j', opts)
@@ -33,7 +32,8 @@ else
     set('n', '<C-Down>', ':resize +5<CR>', opts)
     set('n', '<C-Left>', ':vertical resize 1<CR>', opts)
     set('n', '<C-Right>', ':vertical resize +5<CR>', opts)
-    set('n', '<C-B>', ':NvimTreeToggle<CR>', opts)
+    -- set('n', '<leader>w', ':NvimTreeToggle<CR>', opts)
+    -- set('n', '<leader>e', ':NvimTreeToggle<CR>', opts)
     --CP相关
     set('n', '<F1>', ':CompetiTest add_testcase<CR>', opts)
     set('i', '<F1>', '<Esc>:CompetiTest add_testcase<CR>', opts)
@@ -54,6 +54,6 @@ else
 
     --telescope
     set('n', '<leader>f', ':Telescope find_files<CR>', opts)
-    set('n', '<leader>w', ':Telescope live_grep<CR>', opts)
+    set('n', '<leader>d', ':Telescope live_grep<CR>', opts)
     set('n', '<leader>s', ':Telescope oldfiles<CR>', opts)
 end

@@ -6,17 +6,42 @@ return {
             local line, col = unpack(vim.api.nvim_win_get_cursor(0))
             return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
         end
-
         local luasnip = require("luasnip")
         local cmp = require("cmp")
-        vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+
+        vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {    --圆角提示框
             border = "rounded",
         })
+        local kind_icons = {
+            Text = "",
+            Method = "󰆧",
+            Function = "󰊕",
+            Constructor = "",
+            Field = "󰇽",
+            Variable = "󰂡",
+            Class = "󰠱",
+            Interface = "",
+            Module = "",
+            Property = "󰜢",
+            Unit = "",
+            Value = "󰎠",
+            Enum = "",
+            Keyword = "󰌋",
+            Snippet = "",
+            Color = "󰏘",
+            File = "󰈙",
+            Reference = "",
+            Folder = "󰉋",
+            EnumMember = "",
+            Constant = "󰏿",
+            Struct = "",
+            Event = "",
+            Operator = "󰆕",
+            TypeParameter = "󰅲",
+        }
 
-        --vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-            --border = "single",
-        --})
         cmp.setup({
+            inlay_hints = { enabled = true },
             snippet = {
                 -- REQUIRED - you must specify a snippet engine
                 expand = function(args)
@@ -64,10 +89,12 @@ return {
                 -- kind: single letter indicating the type of completion
                 -- abbr: abbreviation of "word"; when not empty it is used in the menu instead of "word"
                 -- menu: extra text for the popup menu, displayed after "word" or "abbr"
-                fields = { 'abbr', 'menu' },
+                fields = {'kind', 'abbr', 'menu' },
 
                 -- customize the appearance of the completion menu
                 format = function(entry, vim_item)
+                    vim_item.kind = string.format('%s', kind_icons[vim_item.kind])
+                    -- This concatonates the icons with the name of the item kind
                     vim_item.menu = ({
                         nvim_lsp = '[Lsp]',
                         luasnip = '[Luasnip]',
@@ -77,7 +104,6 @@ return {
                     return vim_item
                 end,
             },
-
             -- Set source precedence
             sources = cmp.config.sources({
                 { name = 'nvim_lsp' }, -- For nvim-lsp

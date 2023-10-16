@@ -1,6 +1,10 @@
 --全局设定
+    vim.g.loaded_netrw = 1
+    vim.g.loaded_netrwPlugin = 1
+
 require('keymap')
 require('option')
+-- require('alpha-config')
 
 --Lazy.nvim配置--start
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
