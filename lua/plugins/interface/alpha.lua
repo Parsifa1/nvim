@@ -32,16 +32,17 @@ return {
         }
 
         dashboard.section.buttons.val = {
-            dashboard.button("f", "  Find file", ":Telescope find_files <CR>"),
+            dashboard.button("f", "  Find file", ":Telescope find_files <CR>"),
             dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
-            dashboard.button("r", "  Recently used files", ":Telescope oldfiles <CR>"),
-            dashboard.button("w", "  Find text", ":Telescope live_grep <CR>"),
-            dashboard.button("c", "  Configuration", ":e C:\\Users\\Parsifal\\AppData\\Local\\nvim\\init.lua<CR>"),
-            dashboard.button("q", "  Quit Neovim", ":qa<CR>"),
+            dashboard.button("r", "  Recently used files", ":Telescope oldfiles <CR>"),
+            dashboard.button("w", "  Find text", ":Telescope live_grep <CR>"),
+            -- dashboard.button("c", "  Configuration", ":e C:\\Users\\Parsifal\\AppData\\Local\\nvim\\init.lua<CR>"),
+            dashboard.button("p", "󰂖  Plugins", ":Lazy<CR>"),
+            dashboard.button("q", "󰅚  Quit Neovim", ":qa<CR>"),
         }
 
         local function footer()
-            return "Don't Stop Until You are Proud..."
+            return "Hinc itur ad astra"
         end
 
         dashboard.section.footer.val = footer()
@@ -52,7 +53,6 @@ return {
 
         dashboard.opts.opts.noautocmd = true
         require("alpha").setup(dashboard.config)
-        -- require'alpha'.setup(require'alpha.themes.dashboard'.config)
 
     end
 }
