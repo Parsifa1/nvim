@@ -1,9 +1,9 @@
 if vim.g.vscode then
     vim.opt.timeoutlen = 500
     vim.opt.clipboard = 'unnamedplus' -- use system clipboar
-elseif vim.g.neovide then
-    vim.g.neovide_remember_window_size = true
 else
+    vim.o.guifont = "JetBrainsMono Nerd Font Mono, 苹方-简:h12"
+    vim.g.neovide_remember_window_size = true
     vim.loader.enable()
     --vim.cmd.colorscheme "catppuccin"
     vim.o.shortmess = vim.o.shortmess .. "A"

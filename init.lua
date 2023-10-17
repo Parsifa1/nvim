@@ -1,6 +1,6 @@
 --全局设定
-    vim.g.loaded_netrw = 1
-    vim.g.loaded_netrwPlugin = 1
+    -- vim.g.loaded_netrw = 1
+    -- vim.g.loaded_netrwPlugin = 1
 
 require('keymap')
 require('option')
@@ -26,6 +26,7 @@ require("lazy").setup({
         { import = "plugins.function" },
         { import = "plugins.interface" },
         { import = 'plugins.others' },
+        { import = 'plugins.git' },
         {}
     },
     ui = {

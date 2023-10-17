@@ -1,5 +1,9 @@
 return {
     'hrsh7th/nvim-cmp',
+    event = {
+        "InsertEnter",
+        "CmdlineEnter",
+    },
     config = function()
         local has_words_before = function()
             unpack = unpack or table.unpack
