@@ -35,32 +35,37 @@ else
     set('n', '<C-h>', ':bp<CR>', opts)
     set('n', '<C-l>', ':bp<CR>', opts)
     -- Resize with arrows
-    -- delta: 5 lines
     set('n', '<C-Up>', ':resize 1<CR>', opts)
     set('n', '<C-Down>', ':resize +5<CR>', opts)
     set('n', '<C-Left>', ':vertical resize 1<CR>', opts)
     set('n', '<C-Right>', ':vertical resize +5<CR>', opts)
+
     set('n', '<C-/>', 'gcc', opts)
-    set('n', '<A-S>', 'ggvGgcc', opts)
-    --CP相关
-    --
-    set('n', '<F1>', ':CompetiTest add_testcase<CR>', opts)
-    set('i', '<F1>', '<Esc>:CompetiTest add_testcase<CR>', opts)
-    set('n', '<F4>', ':CompetiTest run<CR>', opts)
-    set('i', '<F4>', '<Esc>:CompetiTest run<CR>', opts)
-    set('n', '<A-q>', ':q<CR>', opts)
-
-    set('t', '<Esc>', '<C-\\><C-n>:q<CR>', opts)
-    set('t', '<A-q>', '<C-\\><C-n>:q<CR>', opts)
-    set('n', '<F5>', ':FloatermNew! cd %:h; g++ %:t -std=c++20 -o bin\\cp.exe; .\\bin\\cp<CR>', opts)
-    set('i', '<F5>', '<Esc>:FloatermNew! cd %:h && g++ %:t -std=c++20 -o bin\\cp.exe && .\\bin\\cp<CR><CR>', opts)
-
-    set('n', '<F12>', ':Lazy<CR>', opts)
     set('n', '<C-w>', ':bdelete!<CR>', opts)
     set('n', '<C-s>', ':w<CR>', opts)
+    set('i', '<C-s>', '<Esc>:w<CR>', opts)
     set('n', '<C-a>', 'ggvG', opts)
+    set('i', '<C-a>', '<Esc>ggvGa', opts)
     set('v', '<C-c>', 'y', opts)
+    --CP相关
+    set('n', '<F1>', ':CompetiTest add_testcase<CR>', opts)
+    set('i', '<F1>', '<Esc>:CompetiTest add_testcase<CR>', opts)
+    set('n', '<F2>', ':CompetiTest edit_testcase<CR>', opts)
+    set('i', '<F2>', '<Esc>:CompetiTest edit_testcase<CR>', opts)
+    set('n', '<F4>', ':CompetiTest run<CR>', opts)
+    set('i', '<F4>', '<Esc>:CompetiTest run<CR>', opts)
+    set('n', '<F5>', ':FloatermNew! cd %:h; g++ %:t -std=c++20 -o bin\\cp.exe; .\\bin\\cp<CR>', opts)
+    set('i', '<F5>', '<Esc>:FloatermNew! cd %:h && g++ %:t -std=c++20 -o bin\\cp.exe && .\\bin\\cp<CR><CR>', opts)
     --
+    set('n', '<F12>', ':Lazy<CR>', opts)
+
+    set('n', '<A-q>', ':q<CR>', opts)
+    set('n', '<A-q>', ':q<CR>', opts)
+    set('i', '<A-q>', ':q<CR>', opts)
+    set('n', '<A-S>', 'ggvGgcc', opts)
+    set('t', '<A-q>', '<C-\\><C-n>:q<CR>', opts)
+
+    set('t', '<Esc>', '<C-\\><C-n>:q<CR>', opts)
 
     --telescope
     set('n', '<leader>f', ':Telescope find_files<CR>', desc('find files'))
