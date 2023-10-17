@@ -4,11 +4,14 @@ return {
         'williamboman/mason.nvim',
         'williamboman/mason-lspconfig.nvim'
     },
-    event = {
-        "InsertEnter",
-        "CmdlineEnter",
-    },
+    -- event = {
+    --     "InsertEnter",
+    --     "CmdlineEnter",
+    -- },
     config = function()
+        local function desc(index)
+            return { noremap = true, silent = true, desc = index }
+        end
         -- Set different settings for different languages' LSP
         -- LSP list: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
         -- How to use setup({}): https://github.com/neovim/nvim-lspconfig/wiki/Understanding-setup-%7B%7D
@@ -19,9 +22,9 @@ return {
         -- See `:help vim.diagnostic.*` for documentation on any of the below functions
         local opts = { noremap = true, silent = true }
         -- vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, opts)
-        vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-        vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-        vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, opts)
+        vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, desc('goto prev'))
+        vim.keymap.set('n', ']d', vim.diagnostic.goto_next, desc('goto next'))
+        vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, desc('setloclist'))
 
         -- Use an on_attach function to only map the following keys
         -- after the language server attaches to the current buffer
@@ -30,12 +33,7 @@ return {
             vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
             -- See `:help vim.lsp.*` for documentation on any of the below functions
             local function bufopts_desc(index)
-                return {
-                    noremap = true,
-                    silent = true,
-                    buffer = bufnr,
-                    desc = index
-                }
+                return { noremap = true, silent = true, buffer = bufnr, desc = index }
             end
             vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts_desc('declaration'))
             vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts_desc('definition'))
