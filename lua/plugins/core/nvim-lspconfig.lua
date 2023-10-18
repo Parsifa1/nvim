@@ -75,7 +75,7 @@ return {
         lspconfig.clangd.setup({
             on_attach = on_attach,
             filetypes = { "cpp" },
-            cmd = { "C:/Program Files/mingw64/bin/clangd.exe" },
+            cmd = { "clangd" },
         })
     end
 }

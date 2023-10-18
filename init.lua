@@ -5,6 +5,7 @@
 require('keymap')
 require('option')
 -- require('alpha-config')
+-- require('alpha-config')
 
 --Lazy.nvim配置--start
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
