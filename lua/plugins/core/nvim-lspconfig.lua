@@ -75,7 +75,10 @@ return {
         lspconfig.clangd.setup({
             on_attach = on_attach,
             filetypes = { "cpp" },
-            cmd = { "clangd" },
+            cmd = {
+                "clangd",
+                "--offset-encoding=utf-16",
+            },
         })
     end
 }

@@ -54,8 +54,8 @@ else
     set('i', '<F2>', '<Esc>:CompetiTest edit_testcase<CR>', opts)
     set('n', '<F4>', ':CompetiTest run<CR>', opts)
     set('i', '<F4>', '<Esc>:CompetiTest run<CR>', opts)
-    set('n', '<F5>', ':FloatermNew! cd %:h; g++ %:t -std=c++20 -o bin\\cp.exe; .\\bin\\cp<CR>', opts)
-    set('i', '<F5>', '<Esc>:FloatermNew! cd %:h && g++ %:t -std=c++20 -o bin\\cp.exe && .\\bin\\cp<CR><CR>', opts)
+    set('n', '<F5>', ':FloatermNew! cd %:h; g++ %:t -std=c++20 -o bin/acm; ./bin/acm<CR>', opts)
+    set('i', '<F5>', '<Esc>:FloatermNew! cd %:h && g++ %:t -std=c++20 -o bin/acm && ./bin/acm<CR><CR>', opts)
     --
     set('n', '<F12>', ':Lazy<CR>', opts)
 
@@ -67,8 +67,9 @@ else
 
     set('t', '<Esc>', '<C-\\><C-n>:q<CR>', opts)
 
-    --telescope
+    --leader
     set('n', '<leader>f', ':Telescope find_files<CR>', desc('find files'))
     set('n', '<leader>w', ':Telescope live_grep<CR>', desc('find words'))
     set('n', '<leader>r', ':Telescope oldfiles<CR>', desc('recent files'))
+    set('n', '<leader>t', ':FloatermToggle<CR>', desc('Terminal'))
 end
