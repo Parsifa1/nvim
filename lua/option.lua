@@ -6,7 +6,7 @@ else
     vim.g.neovide_remember_window_size = true
     vim.loader.enable()
     --vim.cmd.colorscheme "catppuccin"
-    vim.o.shortmess = vim.o.shortmess .. "A"
+    -- vim.o.shortmess = vim.o.shortmess .. "A"
     -- Hint: use `:h <option>` to figure out the meaning if needed
     vim.opt.clipboard = 'unnamedplus' -- use system clipboard
     vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }

@@ -5,6 +5,7 @@
 require('keymap')
 require('option')
 -- require('alpha-config')
+-- require('alpha-config')
 
 --Lazy.nvim配置--start
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -27,7 +28,6 @@ require("lazy").setup({
         { import = "plugins.interface" },
         { import = 'plugins.others' },
         { import = 'plugins.git' },
-        {}
     },
     ui = {
         border = "rounded"

@@ -1,6 +1,6 @@
 return {
     "nathom/filetype.nvim",
-    lazy = true,
+    -- lazy = true,
     event = "User FileOpened",
     config = function()
         require("filetype").setup({
