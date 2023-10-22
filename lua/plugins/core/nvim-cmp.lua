@@ -1,9 +1,5 @@
 return {
     'hrsh7th/nvim-cmp',
-    -- event = {
-    --     "InsertEnter",
-    --     "CmdlineEnter",
-    -- },
     config = function()
         local has_words_before = function()
             unpack = unpack or table.unpack
@@ -65,7 +61,7 @@ return {
 
                 -- -- A super tab
                 -- -- sourc: https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#luasnip
-                ["<A-j>"] = cmp.mapping(function(fallback)
+                ["<Tab>"] = cmp.mapping(function(fallback)
                     -- Hint: if the completion menu is visible select next one
                     if cmp.visible() then
                         cmp.select_next_item()
@@ -75,7 +71,7 @@ return {
                         fallback()
                     end
                 end, { "i", "s" }), -- i - insert mode; s - select mode
-                ["<A-k>"] = cmp.mapping(function(fallback)
+                ["<S-Tab>"] = cmp.mapping(function(fallback)
                     if cmp.visible() then
                         cmp.select_prev_item()
                     elseif luasnip.jumpable(-1) then
@@ -89,10 +85,6 @@ return {
             -- Let's configure the item's appearance
             -- source: https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance
             formatting = {
-                -- Set order from left to right
-                -- kind: single letter indicating the type of completion
-                -- abbr: abbreviation of "word"; when not empty it is used in the menu instead of "word"
-                -- menu: extra text for the popup menu, displayed after "word" or "abbr"
                 fields = {'kind', 'abbr', 'menu' },
 
                 -- customize the appearance of the completion menu

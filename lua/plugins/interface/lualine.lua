@@ -64,27 +64,24 @@ local opts = {
         },
     },
     tabline = {  -- If you want tabline to shift too
-        lualine_a = { "buffers" }
+        lualine_a = { "buffers" },
+        lualine_z = {'tabs'}
     },
     options = {
         icons_enabled = true,
         theme = "auto",
         disabled_filetypes = {
-            statusline = {
-                "alpha",
-            },
+            'alpha',
         },
         always_divide_middle = true,
         globalstatus = false,
-        section_separators = { left = "", right = "" },
-        component_separators = { left = "", right = "" },
+        component_separators = { left = '', right = '' },
+        section_separators = { left = '', right = '' },
     },
     extensions = {
         "man",
         "quickfix",
-        "nvim-tree",
         "neo-tree",
-        "toggleterm",
         "symbols-outline",
         "aerial",
         "fugitive",
@@ -99,13 +96,10 @@ return {
     init = function()
         vim.o.laststatus = 0
     end,
-    event = "VeryLazy",
+    -- event = "VeryLazy",
     dependencies = {
         { "nvim-tree/nvim-web-devicons" },
         { "ofseed/lualine-copilot" },
     },
     opts = opts
-    -- tabline = {  -- If you want tabline to shift too
-    --     lualine_a = { "buffers" }
-    -- }
 }

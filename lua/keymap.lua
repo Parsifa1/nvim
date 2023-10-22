@@ -35,17 +35,17 @@ else
     set('n', '<C-h>', ':bp<CR>', opts)
     set('n', '<C-l>', ':bp<CR>', opts)
     -- Resize with arrows
-    set('n', '<C-Up>', ':resize 1<CR>', opts)
-    set('n', '<C-Down>', ':resize +5<CR>', opts)
-    set('n', '<C-Left>', ':vertical resize 1<CR>', opts)
-    set('n', '<C-Right>', ':vertical resize +5<CR>', opts)
+    set('n', '<C-Up>', ':resize +5<CR>', opts)
+    set('n', '<C-Down>', ':resize 1<CR>', opts)
+    set('n', '<C-Left>', ':vertical resize +5<CR>', opts)
+    set('n', '<C-Right>', ':vertical resize 1<CR>', opts)
 
     set('n', '<C-/>', 'gcc', opts)
     set('n', '<C-w>', ':bdelete!<CR>', opts)
     set('n', '<C-s>', ':w<CR>', opts)
     set('i', '<C-s>', '<Esc>:w<CR>', opts)
-    set('n', '<C-a>', 'ggvG', opts)
-    set('i', '<C-a>', '<Esc>ggvGa', opts)
+    set('n', '<C-a>', 'gg0vG$', opts)
+    set('i', '<C-a>', '<Esc>gg0vG$a', opts)
     set('v', '<C-c>', 'y', opts)
     --CP相关
     set('n', '<F1>', ':CompetiTest add_testcase<CR>', opts)
@@ -54,7 +54,7 @@ else
     set('i', '<F2>', '<Esc>:CompetiTest edit_testcase<CR>', opts)
     set('n', '<F4>', ':CompetiTest run<CR>', opts)
     set('i', '<F4>', '<Esc>:CompetiTest run<CR>', opts)
-    set('n', '<F5>', ':FloatermNew! cd %:h; g++ %:t -std=c++20 -o bin/acm; ./bin/acm<CR>', opts)
+    set('n', '<F5>', ':FloatermNew! cd %:h; g++ %:t -std=c++20 -o bin/%:t:r; ./bin/%:t:r<CR>', opts)
     set('i', '<F5>', '<Esc>:FloatermNew! cd %:h && g++ %:t -std=c++20 -o bin/acm && ./bin/acm<CR><CR>', opts)
     --
     set('n', '<F12>', ':Lazy<CR>', opts)
@@ -72,4 +72,5 @@ else
     set('n', '<leader>w', ':Telescope live_grep<CR>', desc('find words'))
     set('n', '<leader>r', ':Telescope oldfiles<CR>', desc('recent files'))
     set('n', '<leader>t', ':FloatermToggle<CR>', desc('Terminal'))
+    set('n', '<leader>e', ':Neotree toggle<CR>', desc('File Explorer'))
 end

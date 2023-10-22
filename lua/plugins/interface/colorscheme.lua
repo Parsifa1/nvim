@@ -1,11 +1,11 @@
 return {
     --'navarasu/onedark.nvim',
-    -- 'sainnhe/everforest',
-    "neanias/everforest-nvim",
--- name = "catppuccin",
+    "catppuccin/nvim",
+    -- "neanias/everforest-nvim",
+    name = "catppuccin",
     priority = 1000,
     config = function()
-        local colorscheme = 'everforest'
+        local colorscheme = 'catppuccin'
         local is_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
         if not is_ok then
             vim.notify('colorscheme ' .. colorscheme .. ' not found!')

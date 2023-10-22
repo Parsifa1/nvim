@@ -94,6 +94,15 @@ local opts = {
     },
 }
 
+local function desc(index)
+    return {
+        noremap = true,
+        silent = true,
+        desc = index
+    }
+end
+
+
 return {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "main",
@@ -104,8 +113,8 @@ return {
         "s1n7ax/nvim-window-picker",
     },
     opts = opts,
-    keys = {
-        { "<leader>e", ":Neotree toggle<cr>", desc = "File Explorer" },
-    },
+    -- keys = {
+    --     { "<leader>e", ":Neotree toggle<cr>", desc("File Explorer") },
+    -- },
 
 }
