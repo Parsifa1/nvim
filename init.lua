@@ -1,13 +1,9 @@
 --全局设定
-    -- vim.g.loaded_netrw = 1
-    -- vim.g.loaded_netrwPlugin = 1
-
 require('keymap')
 require('option')
--- require('alpha-config')
--- require('alpha-config')
---
---Lazy.nvim配置--start
+
+--Lazy.nvim配置
+--START
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
@@ -33,4 +29,4 @@ require("lazy").setup({
         border = "rounded"
     },
 })
---end
+--END

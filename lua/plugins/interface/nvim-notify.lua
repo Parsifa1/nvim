@@ -19,7 +19,6 @@ return {
             -- ERROR > WARN > INFO > DEBUG > TRACE
             level = "TRACE",
         })
-
         vim.notify = notify
     end,
 }
