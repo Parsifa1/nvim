@@ -14,7 +14,6 @@ local function desc(index)
     }
 end
 
-
 if vim.g.vscode then
     set('n', 'zv', "<Cmd>call VSCodeNotify('workbench.action.splitEditor')<CR>", opts)
     set('n', 'zh', "<Cmd>call VSCodeNotify('workbench.action.splitEditorDown')<CR>", opts)
@@ -56,6 +55,7 @@ else
     set('n', '<C-a>', 'gg0vG$', opts)
     set('i', '<C-a>', '<Esc>gg0vG$a', opts)
     set('v', '<C-c>', 'y', opts)
+
     --CP相关
     set('n', '<F1>', ':CompetiTest add_testcase<CR>', opts)
     set('i', '<F1>', '<Esc>:CompetiTest add_testcase<CR>', opts)
@@ -63,11 +63,26 @@ else
     set('i', '<F2>', '<Esc>:CompetiTest edit_testcase<CR>', opts)
     set('n', '<F4>', ':CompetiTest run<CR>', opts)
     set('i', '<F4>', '<Esc>:CompetiTest run<CR>', opts)
-    set('n', '<F5>', ':FloatermNew --autoclose=0 cd %:h; g++ %:t -std=c++20 -o bin/%:t:r; time ./bin/%:t:r<CR>', opts)
-    set('i', '<F5>', '<Esc>:FloatermNew --autoclose=0 cd %:h; g++ %:t -std=c++20 -o bin/%:t:r; time ./bin/%:t:r<CR>', opts)
     set('n', '<F12>', ':Lazy<CR>', opts)
-
     set('t', '<Esc>', '<C-\\><C-n>:q<CR>', opts)
+
+    --分语言执行运行指令
+    --cpp
+    vim.api.nvim_create_autocmd('filetype', {
+        pattern = "cpp",
+        callback = function ()
+            vim.keymap.set('n', '<F5>', ':FloatermNew --autoclose=0 cd %:h; g++ %:t -std=c++20 -o bin/%:t:r; time ./bin/%:t:r<CR>', opts)
+            vim.keymap.set('i', '<F5>', '<Esc>:FloatermNew --autoclose=0 cd %:h; g++ %:t -std=c++20 -o bin/%:t:r; time ./bin/%:t:r<CR>', opts)
+        end
+    })
+    --python
+    vim.api.nvim_create_autocmd('filetype', {
+        pattern = "python",
+        callback = function ()
+            vim.keymap.set('n', '<F5>', ':FloatermNew --autoclose=0 cd %:h; python %<CR>', opts)
+            vim.keymap.set('i', '<F5>', '<Esc>:FloatermNew --autoclose=0 cd %:h; python %<CR>', opts)
+        end
+    })
 
     --leader
     set('n', '<leader>f', ':Telescope find_files<CR>', desc('find files'))
