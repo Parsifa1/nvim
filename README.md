@@ -2,9 +2,7 @@
 
 我的个人Noevim配置，使用Lazy.nvim作为包管理器，力求高度可定制。
 
-
-
-
+全lua配置，尽量清晰易懂，使用最新的neovim-nightly构建。
 
 # Data Structure
 
