@@ -4,8 +4,23 @@ if vim.g.vscode then
 else
     vim.o.guifont = "JetBrainsMono Nerd Font Mono, 苹方-简:h12"
     vim.g.neovide_remember_window_size = true
+    vim.g.copilot_assume_mapped = true
     vim.loader.enable()
-    --vim.cmd.colorscheme "catppuccin"
+    local function ip()
+        local handle = io.open("/etc/resolv.conf", "r")
+        if handle then
+            for line in handle:lines() do
+                local Ip = string.match(line, "^%s*nameserver%s+([%d%.]+)")
+                if Ip then
+                    handle:close()
+                    return Ip .. ":7891"
+                end
+            end
+            handle:close()
+        end
+    return "IP not found"
+    end
+    vim.g.copilot_proxy = ip()
     vim.o.shortmess = vim.o.shortmess .. "A"
     -- Hint: use `:h <option>` to figure out the meaning if needed
     vim.opt.clipboard = 'unnamedplus' -- use system clipboard
@@ -35,6 +50,5 @@ else
     vim.opt.smartcase = true  -- but make it case sensitive if an uppercase is entered
 
     -- Indentation
-    -- vim.opt.
     vim.opt.timeoutlen = 500 -- time to wait for a mapped sequence to complete (in milliseconds)
 end

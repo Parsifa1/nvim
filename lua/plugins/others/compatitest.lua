@@ -1,6 +1,7 @@
 return {
     'xeluxee/competitest.nvim',
     dependencies = 'MunifTanjim/nui.nvim',
+    lazy = true,
     opts = {
         testcases_use_single_file = true,
         testcases_directory = "/bin",

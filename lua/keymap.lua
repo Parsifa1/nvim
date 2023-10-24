@@ -26,27 +26,37 @@ else
     set('n', '<A-j>', '<C-w>j', opts)
     set('n', '<A-k>', '<C-w>k', opts)
     set('n', '<A-l>', '<C-w>l', opts)
+    
+    set('n', '<A-q>', ':q<CR>', opts)
+    set('i', '<A-q>', '<Esc>:q<CR>', opts)
+    set('n', '<A-S>', 'ggvGgcc', opts)
+    set('t', '<A-q>', '<C-\\><C-n>:q<CR>', opts)
+
+
+
     --分屏
     set('n', 'zv', ':vsp<CR>', desc('vsplit'))
     set('n', 'zh', ':sp<CR>', desc('split'))
     set('n', 'zc', '<C-w>c', desc('close current'))
     set('n', 'zo', '<C-w>o', desc('close others')) -- close others
+
+
     -- bufferline 左右Tab切换
     set('n', '<C-h>', ':bp<CR>', opts)
-    set('n', '<C-l>', ':bp<CR>', opts)
+    set('n', '<C-l>', ':bn<CR>', opts)
     -- Resize with arrows
-    set('n', '<C-Up>', ':resize +5<CR>', opts)
-    set('n', '<C-Down>', ':resize 1<CR>', opts)
-    set('n', '<C-Left>', ':vertical resize +5<CR>', opts)
-    set('n', '<C-Right>', ':vertical resize 1<CR>', opts)
-
+    set('n', '<C-Up>', ':resize +6<CR>', opts)
+    set('n', '<C-Down>', ':resize 2<CR>', opts)
+    set('n', '<C-Left>', ':vertical resize +6<CR>', opts)
+    set('n', '<C-Right>', ':vertical resize 2<CR>', opts)
     set('n', '<C-/>', 'gcc', opts)
     set('n', '<C-w>', ':bdelete!<CR>', opts)
     set('n', '<C-s>', ':w<CR>', opts)
     set('i', '<C-s>', '<Esc>:w<CR>', opts)
-    set('n', '<C-a>', 'gg0vG$', opts)
-    set('i', '<C-a>', '<Esc>gg0vG$a', opts)
+    set('n', '<C-a>', 'gg1vG$', opts)
+    set('i', '<C-a>', '<Esc>gg1vG$a', opts)
     set('v', '<C-c>', 'y', opts)
+    vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
     --CP相关
     set('n', '<F1>', ':CompetiTest add_testcase<CR>', opts)
     set('i', '<F1>', '<Esc>:CompetiTest add_testcase<CR>', opts)
@@ -56,14 +66,7 @@ else
     set('i', '<F4>', '<Esc>:CompetiTest run<CR>', opts)
     set('n', '<F5>', ':FloatermNew! cd %:h; g++ %:t -std=c++20 -o bin/%:t:r; ./bin/%:t:r<CR>', opts)
     set('i', '<F5>', '<Esc>:FloatermNew! cd %:h && g++ %:t -std=c++20 -o bin/acm && ./bin/acm<CR><CR>', opts)
-    --
     set('n', '<F12>', ':Lazy<CR>', opts)
-
-    set('n', '<A-q>', ':q<CR>', opts)
-    set('n', '<A-q>', ':q<CR>', opts)
-    set('i', '<A-q>', ':q<CR>', opts)
-    set('n', '<A-S>', 'ggvGgcc', opts)
-    set('t', '<A-q>', '<C-\\><C-n>:q<CR>', opts)
 
     set('t', '<Esc>', '<C-\\><C-n>:q<CR>', opts)
 
