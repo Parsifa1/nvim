@@ -71,16 +71,19 @@ else
     vim.api.nvim_create_autocmd('filetype', {
         pattern = "cpp",
         callback = function ()
-            vim.keymap.set('n', '<F5>', ':FloatermNew --autoclose=0 cd %:h; g++ %:t -std=c++20 -o bin/%:t:r; time ./bin/%:t:r<CR>', opts)
-            vim.keymap.set('i', '<F5>', '<Esc>:FloatermNew --autoclose=0 cd %:h; g++ %:t -std=c++20 -o bin/%:t:r; time ./bin/%:t:r<CR>', opts)
+            local opt = { noremap = true, silent = true,  buffer = true }
+            -- local file = vim.fn.expand("<afile>");
+            vim.keymap.set('n', '<F5>', ':FloatermNew --autoclose=0 cd %:h; g++ %:t -std=c++20 -o bin/%:t:r; time ./bin/%:t:r<CR>', opt)
+            vim.keymap.set('i', '<F5>', '<Esc>:FloatermNew --autoclose=0 cd %:h; g++ %:t -std=c++20 -o bin/%:t:r; time ./bin/%:t:r<CR>', opt)
         end
     })
-    --python
+    -- --python
     vim.api.nvim_create_autocmd('filetype', {
         pattern = "python",
         callback = function ()
-            vim.keymap.set('n', '<F5>', ':FloatermNew --autoclose=0 cd %:h; python %<CR>', opts)
-            vim.keymap.set('i', '<F5>', '<Esc>:FloatermNew --autoclose=0 cd %:h; python %<CR>', opts)
+            local opt = { noremap = true, silent = true,  buffer = true }
+            vim.keymap.set('n', '<F5>', ':FloatermNew --autoclose=0 time python % <CR>', opt)
+            vim.keymap.set('i', '<F5>', '<Esc>:FloatermNew --autoclose=0 time python % <CR>', opt)
         end
     })
 
