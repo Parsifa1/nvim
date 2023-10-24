@@ -1,5 +1,5 @@
 vim.g.mapleader = ' '
--- define common options
+-- define common option         
 local set = vim.keymap.set
 local opts = {
     noremap = true, -- non-recursive
@@ -26,12 +26,12 @@ else
     set('n', '<A-j>', '<C-w>j', opts)
     set('n', '<A-k>', '<C-w>k', opts)
     set('n', '<A-l>', '<C-w>l', opts)
-    
+
     set('n', '<A-q>', ':q<CR>', opts)
     set('i', '<A-q>', '<Esc>:q<CR>', opts)
     set('n', '<A-S>', 'ggvGgcc', opts)
     set('t', '<A-q>', '<C-\\><C-n>:q<CR>', opts)
-
+    vim.api.nvim_set_keymap("i", "<A-j>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
 
 
     --分屏
@@ -53,10 +53,9 @@ else
     set('n', '<C-w>', ':bdelete!<CR>', opts)
     set('n', '<C-s>', ':w<CR>', opts)
     set('i', '<C-s>', '<Esc>:w<CR>', opts)
-    set('n', '<C-a>', 'gg1vG$', opts)
-    set('i', '<C-a>', '<Esc>gg1vG$a', opts)
+    set('n', '<C-a>', 'gg0vG$', opts)
+    set('i', '<C-a>', '<Esc>gg0vG$a', opts)
     set('v', '<C-c>', 'y', opts)
-    vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
     --CP相关
     set('n', '<F1>', ':CompetiTest add_testcase<CR>', opts)
     set('i', '<F1>', '<Esc>:CompetiTest add_testcase<CR>', opts)
@@ -64,8 +63,8 @@ else
     set('i', '<F2>', '<Esc>:CompetiTest edit_testcase<CR>', opts)
     set('n', '<F4>', ':CompetiTest run<CR>', opts)
     set('i', '<F4>', '<Esc>:CompetiTest run<CR>', opts)
-    set('n', '<F5>', ':FloatermNew! cd %:h; g++ %:t -std=c++20 -o bin/%:t:r; ./bin/%:t:r<CR>', opts)
-    set('i', '<F5>', '<Esc>:FloatermNew! cd %:h && g++ %:t -std=c++20 -o bin/acm && ./bin/acm<CR><CR>', opts)
+    set('n', '<F5>', ':FloatermNew --autoclose=0 cd %:h; g++ %:t -std=c++20 -o bin/%:t:r; time ./bin/%:t:r<CR>', opts)
+    set('i', '<F5>', '<Esc>:FloatermNew --autoclose=0 cd %:h; g++ %:t -std=c++20 -o bin/%:t:r; time ./bin/%:t:r<CR>', opts)
     set('n', '<F12>', ':Lazy<CR>', opts)
 
     set('t', '<Esc>', '<C-\\><C-n>:q<CR>', opts)

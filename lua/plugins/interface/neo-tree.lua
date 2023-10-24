@@ -5,7 +5,14 @@ local kinds = vim.iter(custom.icons.kind):fold({}, function(t, k, v)
 end)
 
 local opts = {
-
+    event_handlers = {
+        {
+            event = "file_opened",
+            handler = function(file_path)
+                require("neo-tree.command").execute({ action = "close" })
+            end
+        },
+    },
     default_source = "last",
     popup_border_style = custom.border,
     default_component_configs = {
@@ -94,27 +101,14 @@ local opts = {
     },
 }
 
-local function desc(index)
-    return {
-        noremap = true,
-        silent = true,
-        desc = index
-    }
-end
-
-
 return {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "main",
     dependencies = {
         "nvim-lua/plenary.nvim",
-        "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+        "nvim-tree/nvim-web-devicons",
         "MunifTanjim/nui.nvim",
         "s1n7ax/nvim-window-picker",
     },
     opts = opts,
-    -- keys = {
-    --     { "<leader>e", ":Neotree toggle<cr>", desc("File Explorer") },
-    -- },
-
 }
