@@ -22,8 +22,8 @@ require("lazy").setup({
         { import = "plugins.core" },
         { import = "plugins.function" },
         { import = "plugins.interface" },
-        { import = 'plugins.others' },
         { import = 'plugins.git' },
+        { import = 'plugins.others' },
     },
     ui = {
         border = "rounded"

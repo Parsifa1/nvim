@@ -1,5 +1,9 @@
 return {
     "williamboman/mason.nvim",
+    event = {
+        "InsertEnter",
+        "CmdlineEnter",
+    },
     config = function()
         require("mason").setup({
             ui = {
