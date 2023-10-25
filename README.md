@@ -4,6 +4,8 @@
 
 全lua配置，尽量清晰易懂，使用最新的neovim-nightly构建。
 
+![example](https://raw.githubusercontent.com/Parsifa1/graph/master/2023-10-25%20035407.png)
+
 # Data Structure
 
 ```
