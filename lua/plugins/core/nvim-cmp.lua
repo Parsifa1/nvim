@@ -1,13 +1,12 @@
+---@diagnostic disable missing-fields
 return {
     'hrsh7th/nvim-cmp',
-    event = {
-        "InsertEnter",
-        "CmdlineEnter",
-    },
+    -- lazy = true,
     dependencies = {
         {'saadparwaiz1/cmp_luasnip'},
         {'onsails/lspkind.nvim'}
     },
+    event = 'InsertEnter',
     config = function()
         local has_words_before = function()
             unpack = unpack or table.unpack
@@ -21,10 +20,8 @@ return {
         vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {    --圆角提示框
             border = "rounded",
         })
-
         cmp.setup({
             inlay_hints = { enabled = true },
-
             window = {
                 completion = {
                     border = custom.border,
@@ -74,7 +71,6 @@ return {
                 end, { "i", "s" }),
             }),
 
-            -- Let's configure the item's appearance
             -- source: https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance
             formatting = {
                 fields = {'kind', 'abbr', 'menu' },
@@ -92,14 +88,18 @@ return {
                         -- latex_symbols = "[TEX]",
                         -- orgmode = "[ORG]",
                     },
-                },            },
-                -- Set source precedence
-                sources = cmp.config.sources({
-                    { name = 'nvim_lsp' }, -- For nvim-lsp
-                    { name = 'luasnip' },  -- For luasnip user
-                    { name = 'buffer' },   -- For buffer word completion
-                    { name = 'path' },     -- For path completion
-                })
-            })
-        end
-    }
+                },
+            },
+            -- Set source precedence
+            sources = cmp.config.sources({
+                { name = 'nvim_lsp' }, -- For nvim-lsp
+                { name = 'luasnip' },  -- For luasnip user
+                { name = 'buffer',
+                option = { keyword_length = 5, }
+            },   -- For buffer word completion
+            { name = 'path' },
+
+        })
+    })
+end
+}

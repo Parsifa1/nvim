@@ -54,6 +54,12 @@ return {
                 end
             end
         })
+        require("neodev").setup({
+            override = function(root_dir, library)
+                library.enabled = true
+                library.plugins = true
+            end,
+        })
         lspconfig.pylsp.setup({
             on_attach = on_attach,
         })
@@ -66,7 +72,9 @@ return {
                         arrIndex = 'Enable',
                         setType = true,
                     },
-                    diagnostics = { globals = { "vim" } }
+                    diagnostics = {
+                        globals = { "vim" } },
+                    disable = { "missing-fields", "incomplete-signature-doc" },
                 },
             }
         })

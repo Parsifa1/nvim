@@ -1,5 +1,5 @@
 vim.g.mapleader = ' '
--- define common option         
+-- define common option
 local set = vim.keymap.set
 local opts = {
     noremap = true, -- non-recursive
@@ -14,6 +14,18 @@ local function desc(index)
     }
 end
 
+vim.api.nvim_create_user_command("Format", function(args)
+    local range = nil
+    if args.count ~= -1 then
+        local end_line = vim.api.nvim_buf_get_lines(0, args.line2 - 1, args.line2, true)[1]
+        range = {
+            start = { args.line1, 0 },
+            ["end"] = { args.line2, end_line:len() },
+        }
+    end
+    require("conform").format({ async = true, lsp_fallback = true, range = range })
+end, { range = true })
+
 if vim.g.vscode then
     set('n', 'zv', "<Cmd>call VSCodeNotify('workbench.action.splitEditor')<CR>", opts)
     set('n', 'zh', "<Cmd>call VSCodeNotify('workbench.action.splitEditorDown')<CR>", opts)
@@ -25,13 +37,15 @@ else
     set('n', '<A-j>', '<C-w>j', opts)
     set('n', '<A-k>', '<C-w>k', opts)
     set('n', '<A-l>', '<C-w>l', opts)
+    set('n', '==', 'gqq', opts)
+    set('v', '=', ':Format<CR>', opts)
 
     set('n', '<A-q>', ':q<CR>', opts)
     set('i', '<A-q>', '<Esc>:q<CR>', opts)
     set('n', '<A-S>', 'ggvGgcc', opts)
     set('t', '<A-q>', '<C-\\><C-n>:q<CR>', opts)
-    vim.api.nvim_set_keymap("i", "<A-j>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
 
+    vim.api.nvim_set_keymap("i", "<A-j>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
 
     --分屏
     set('n', 'zv', ':vsp<CR>', desc('vsplit'))
@@ -70,18 +84,20 @@ else
     --cpp
     vim.api.nvim_create_autocmd('filetype', {
         pattern = "cpp",
-        callback = function ()
-            local opt = { noremap = true, silent = true,  buffer = true }
+        callback = function()
+            local opt = { noremap = true, silent = true, buffer = true }
             -- local file = vim.fn.expand("<afile>");
-            vim.keymap.set('n', '<F5>', ':FloatermNew --autoclose=0 cd %:h; g++ %:t -std=c++20 -o bin/%:t:r; time ./bin/%:t:r<CR>', opt)
-            vim.keymap.set('i', '<F5>', '<Esc>:FloatermNew --autoclose=0 cd %:h; g++ %:t -std=c++20 -o bin/%:t:r; time ./bin/%:t:r<CR>', opt)
+            vim.keymap.set('n', '<F5>',
+                ':FloatermNew --autoclose=0 cd %:h; g++ %:t -std=c++20 -o bin/%:t:r; time ./bin/%:t:r<CR>', opt)
+            vim.keymap.set('i', '<F5>',
+                '<Esc>:FloatermNew --autoclose=0 cd %:h; g++ %:t -std=c++20 -o bin/%:t:r; time ./bin/%:t:r<CR>', opt)
         end
     })
     -- --python
     vim.api.nvim_create_autocmd('filetype', {
         pattern = "python",
-        callback = function ()
-            local opt = { noremap = true, silent = true,  buffer = true }
+        callback = function()
+            local opt = { noremap = true, silent = true, buffer = true }
             vim.keymap.set('n', '<F5>', ':FloatermNew --autoclose=0 time python % <CR>', opt)
             vim.keymap.set('i', '<F5>', '<Esc>:FloatermNew --autoclose=0 time python % <CR>', opt)
         end

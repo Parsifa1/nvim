@@ -42,7 +42,7 @@ return {
         }
 
         local function footer()
-            return "Hinc itur ad astra"
+            return "\n\n\n\n\nHinc itur ad astra"
         end
 
         dashboard.section.footer.val = footer()
