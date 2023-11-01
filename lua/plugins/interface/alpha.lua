@@ -8,7 +8,6 @@ return {
 
         local dashboard = require("alpha.themes.dashboard")
         dashboard.section.header.val = {
-
             [[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⢤⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀]],
             [[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⣴⣶⣾⣿⣿⣿⣿⣷⣿⣚⡵⣄⣴⣾⣿⣦⡀⠀⠀⠀⠀⠀⠀]],
             [[⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⣾⣻⣿⣿⣿⣿⡀⠀⠀⠀⠀⠀]],
@@ -27,8 +26,6 @@ return {
             [[⠀⠀⠀⡰⣷⣷⡀⠀⠀⠀⢀⠀⠀⠂⠃⠰⢀⡯⡕⠚⡆⠹⡁⣮⣄⡀⣸⣿⣿⣿⣆⠀⠀⠀⠀⠠]],
             [[⠀⢀⣜⣶⣿⣿⣮⣀⠀⠐⣽⠊⠀⠀⢀⠀⠃⣥⠷⠀⠹⠐⢚⡁⢞⣻⣿⣿⣿⣿⣿⣶⡀⠀⢀⡀]],
             [[⢀⣾⡿⣽⣾⣿⣿⣿⣷⣦⣹⠄⠀⠀⡄⠀⠀⣯⠻⡆⠘⢃⣞⣇⢈⣿⣿⣿⢿⣿⣻⠟⠀⠀⡐⠀]],
-
-
         }
 
         dashboard.section.buttons.val = {
@@ -36,18 +33,19 @@ return {
             dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
             dashboard.button("r", "  Recently used files", ":Telescope oldfiles <CR>"),
             dashboard.button("w", "  Find text", ":Telescope live_grep <CR>"),
-            -- dashboard.button("c", "  Configuration", ":e C:\\Users\\Parsifal\\AppData\\Local\\nvim\\init.lua<CR>"),
+            dashboard.button("c", "  Configuration", ":e ~/.config/nvim/init.lua<CR>"),
             dashboard.button("p", "󰂖  Plugins", ":Lazy<CR>"),
             dashboard.button("q", "󰅚  Quit Neovim", ":qa<CR>"),
         }
 
         local function footer()
-            return "\n\n\n\n\nHinc itur ad astra"
+            return "Hinc itur ad astra"
         end
 
         dashboard.section.footer.val = footer()
 
         dashboard.section.footer.opts.hl = "Type"
+        dashboard.section.footer.opts.position = "center"
         dashboard.section.header.opts.hl = "Include"
         dashboard.section.buttons.opts.hl = "Keyword"
 
