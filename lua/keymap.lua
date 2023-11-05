@@ -88,7 +88,7 @@ else
         callback = function()
             local opt = { noremap = true, silent = true, buffer = true }
             vim.keymap.set('n', '<f5>', ':FloatermNew --autoclose=0 time python % <cr>', opt)
-            vim.keymap.set('i', '<f5>', '<esc>:FloatermNew --autoclose=0 time python % <cr>', opt)
+            vim.keymap.set('i', '<f>', '<esc>:FloatermNew --autoclose=0 time python % <cr>', opt)
         end
     })
     --rust
@@ -96,8 +96,8 @@ else
         pattern = "rust",
         callback = function()
             local opt = { noremap = true, silent = true, buffer = true }
-            vim.keymap.set('n', '<f9>', ':FloatermNew --autoclose=0 cd %:h; time cargo run<CR>', opt)
-            vim.keymap.set('i', '<f9>', '<esc>:FloatermNew --autoclose=0 cd %:h; time cargo run<CR>', opt)
+            vim.keymap.set('n', '<f5>', ':FloatermNew --autoclose=0 cd %:h; time cargo run<CR>', opt)
+            vim.keymap.set('i', '<f5>', '<esc>:FloatermNew --autoclose=0 cd %:h; time cargo run<CR>', opt)
         end
     })
 
