@@ -27,6 +27,7 @@ else
     set('n', '<A-l>', '<C-w>l', opts)
     set('n', '==', 'gqq', opts)
     set('v', '=', 'gq', opts)
+    set('o', '=', 'gq', opts)
 
     set('n', '<A-q>', ':q<CR>', opts)
     set('i', '<A-q>', '<Esc>:q<CR>', opts)
@@ -46,26 +47,26 @@ else
     set('n', '<C-h>', ':bp<CR>', opts)
     set('n', '<C-l>', ':bn<CR>', opts)
     -- Resize with arrows
-    set('n', '<C-Up>', ':resize +6<CR>', opts)
-    set('n', '<C-Down>', ':resize 2<CR>', opts)
-    set('n', '<C-Left>', ':vertical resize +6<CR>', opts)
-    set('n', '<C-Right>', ':vertical resize 2<CR>', opts)
+    -- set('n', '<C-Up>', ':resize +10<CR>', opts)
+    -- set('n', '<C-Down>', ':resize 6<CR>', opts)
+    -- set('n', '<C-Left>', ':vertical resize +10<CR>', opts)
+    -- set('n', '<C-Right>', ':vertical resize 6<CR>', opts)
     set('n', '<C-/>', 'gcc', opts)
     set('n', '<C-w>', ':bdelete!<CR>', opts)
     set('n', '<C-s>', ':w<CR>', opts)
     set('i', '<C-s>', '<Esc>:w<CR>', opts)
-    set('n', '<C-a>', 'gg0vG$', opts)
-    set('i', '<C-a>', '<Esc>gg0vG$a', opts)
+    set('n', '<C-a>', 'gg4vG$', opts)
+    set('i', '<C-a>', '<Esc>gg4vG$a', opts)
     set('v', '<C-c>', 'y', opts)
 
     --CP相关
-    set('n', '<F1>', ':CompetiTest add_testcase<CR>', opts)
-    set('i', '<F1>', '<Esc>:CompetiTest add_testcase<CR>', opts)
-    set('n', '<F2>', ':CompetiTest edit_testcase<CR>', opts)
-    set('i', '<F2>', '<Esc>:CompetiTest edit_testcase<CR>', opts)
-    set('n', '<F4>', ':CompetiTest run<CR>', opts)
-    set('i', '<F4>', '<Esc>:CompetiTest run<CR>', opts)
-    set('n', '<F12>', ':Lazy<CR>', opts)
+    set('n', '<F5>', ':CompetiTest add_testcase<CR>', opts)
+    set('i', '<F5>', '<Esc>:CompetiTest add_testcase<CR>', opts)
+    set('n', '<F6>', ':CompetiTest edit_testcase<CR>', opts)
+    set('i', '<F6>', '<Esc>:CompetiTest edit_testcase<CR>', opts)
+    set('n', '<F8>', ':CompetiTest run<CR>', opts)
+    set('i', '<F8>', '<Esc>:CompetiTest run<CR>', opts)
+    set('n', '<F16>', ':Lazy<CR>', opts)
     set('t', '<Esc>', '<C-\\><C-n>:q<CR>', opts)
 
     --分语言执行运行指令
@@ -75,10 +76,10 @@ else
         callback = function()
             local opt = { noremap = true, silent = true, buffer = true }
             -- local file = vim.fn.expand("<afile>");
-            vim.keymap.set('n', '<F5>',
-                ':FloatermNew --autoclose=0 cd %:h; g++ %:t -std=c++20 -o bin/%:t:r; time ./bin/%:t:r<CR>', opt)
-            vim.keymap.set('i', '<F5>',
-                '<Esc>:FloatermNew --autoclose=0 cd %:h; g++ %:t -std=c++20 -o bin/%:t:r; time ./bin/%:t:r<CR>', opt)
+            vim.keymap.set('n', '<F9>',
+                ':FloatermNew --autoclose=4 cd %:h; g++ %:t -std=c++20 -o bin/%:t:r; time ./bin/%:t:r<CR>', opt)
+            vim.keymap.set('i', '<F9>',
+                '<Esc>:FloatermNew --autoclose=4 cd %:h; g++ %:t -std=c++20 -o bin/%:t:r; time ./bin/%:t:r<CR>', opt)
         end
     })
     --python
@@ -86,8 +87,8 @@ else
         pattern = "python",
         callback = function()
             local opt = { noremap = true, silent = true, buffer = true }
-            vim.keymap.set('n', '<f5>', ':FloatermNew --autoclose=0 time python % <cr>', opt)
-            vim.keymap.set('i', '<f5>', '<esc>:FloatermNew --autoclose=0 time python % <cr>', opt)
+            vim.keymap.set('n', '<f9>', ':FloatermNew --autoclose=0 time python % <cr>', opt)
+            vim.keymap.set('i', '<f9>', '<esc>:FloatermNew --autoclose=0 time python % <cr>', opt)
         end
     })
     --rust
@@ -95,8 +96,8 @@ else
         pattern = "rust",
         callback = function()
             local opt = { noremap = true, silent = true, buffer = true }
-            vim.keymap.set('n', '<f5>', ':FloatermNew --autoclose=0 cd %:h; time cargo run<CR>', opt)
-            vim.keymap.set('i', '<f5>', '<esc>:FloatermNew --autoclose=0 cd %:h; time cargo run<CR>', opt)
+            vim.keymap.set('n', '<f9>', ':FloatermNew --autoclose=0 cd %:h; time cargo run<CR>', opt)
+            vim.keymap.set('i', '<f9>', '<esc>:FloatermNew --autoclose=0 cd %:h; time cargo run<CR>', opt)
         end
     })
 
