@@ -4,7 +4,7 @@
 
 全lua配置，尽量清晰易懂，使用最新的neovim-nightly构建。
 
-![example](https://raw.githubusercontent.com/Parsifa1/graph/master/2023-10-25%20035407.png)
+![example](https://raw.githubusercontent.com/Parsifa1/graph/master/image.png)
 
 # Data Structure
 
@@ -22,19 +22,18 @@
 │   │   │   ├── cmp-cmdline.lua
 │   │   │   ├── cmp-nvim-lsp.lua
 │   │   │   ├── cmp-path.lua
+│   │   │   ├── conform.lua
+│   │   │   ├── lsp-notify.lua
 │   │   │   ├── lsp_signature.lua
 │   │   │   ├── luasnip.lua
+│   │   │   ├── mason-installer.lua
 │   │   │   ├── Mason.lua
 │   │   │   ├── neodev.lua
 │   │   │   ├── nvim-cmp.lua
 │   │   │   └── nvim-lspconfig.lua
 │   │   ├── function
-│   │   │   ├── aerial.lua
-│   │   │   ├── blankline.lua
 │   │   │   ├── comment.lua
 │   │   │   ├── flash.lua
-│   │   │   ├── nvim-autopairs.lua
-│   │   │   ├── telescope.lua
 │   │   │   ├── vim-repeat.lua
 │   │   │   ├── vim-surround.lua
 │   │   │   ├── vim-targets.lua
@@ -47,7 +46,9 @@
 │   │   │   ├── gitlinker.lua
 │   │   │   └── neogit.lua
 │   │   ├── interface
+│   │   │   ├── aerial.lua
 │   │   │   ├── alpha.lua
+│   │   │   ├── blankline.lua
 │   │   │   ├── colorscheme.lua
 │   │   │   ├── dropbar.lua
 │   │   │   ├── floaterm.lua
@@ -59,10 +60,18 @@
 │   │       ├── compatitest.lua
 │   │       ├── copilot.lua
 │   │       ├── filetype.lua
-│   │       └── fzf-native.lua
+│   │       ├── fzf-native.lua
+│   │       ├── markdown-preview.lua
+│   │       ├── node_modules
+│   │       ├── nvim-autopairs.lua
+│   │       ├── telescope.lua
+│   │       ├── tmux-navigator.lua
+│   │       └── yarn.lock
 │   └── snippets
 │       └── cpp.lua
 └── README.md
+
+10 directories, 51 files
 
 9 directories, 45 files
 ```

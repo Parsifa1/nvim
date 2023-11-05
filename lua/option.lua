@@ -6,21 +6,7 @@ else
     vim.g.neovide_remember_window_size = true
     vim.g.copilot_assume_mapped = true
     vim.loader.enable()
-    local function ip()
-        local handle = io.open("/etc/resolv.conf", "r")
-        if handle then
-            for line in handle:lines() do
-                local Ip = string.match(line, "^%s*nameserver%s+([%d%.]+)")
-                if Ip then
-                    handle:close()
-                    return Ip .. ":7891"
-                end
-            end
-            handle:close()
-        end
-    return "IP not found"
-    end
-    vim.g.copilot_proxy = ip()
+    vim.g.copilot_proxy = 'http://127.0.0.1:7891'
     vim.o.shortmess = vim.o.shortmess .. "A"
     -- Hint: use `:h <option>` to figure out the meaning if needed
     vim.opt.clipboard = 'unnamedplus' -- use system clipboard
