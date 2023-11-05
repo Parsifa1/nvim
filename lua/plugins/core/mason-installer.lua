@@ -6,7 +6,8 @@ return {
             'clangd',
             'rust-analyzer',
             'python-lsp-server',
-            'clang-format'
+            'clang-format',
+            'autopep8'
         }
     },
     auto_update = true,

@@ -12,17 +12,17 @@ local function lsp()
     local clients = vim.lsp.get_clients()
     local buf = vim.api.nvim_get_current_buf()
     clients = vim
-    .iter(clients)
-    :filter(function(client)
-        return client.attached_buffers[buf]
-    end)
-    :filter(function(client)
-        return client.name ~= "copilot"
-    end)
-    :map(function(client)
-        return client.name
-    end)
-    :totable()
+        .iter(clients)
+        :filter(function(client)
+            return client.attached_buffers[buf]
+        end)
+        :filter(function(client)
+            return client.name ~= "copilot"
+        end)
+        :map(function(client)
+            return client.name
+        end)
+        :totable()
     local info = table.concat(clients, ", ")
     if info == "" then
         return "No attached LSP server"
@@ -47,8 +47,8 @@ end
 local opts = {
     sections = {
         lualine_a = {
-      { 'mode', separator = { left = '' }, right_padding = 2 },
-    },
+            { 'mode', separator = { left = '' }, right_padding = 2 },
+        },
         lualine_c = {
             lsp,
         },
@@ -66,12 +66,18 @@ local opts = {
             "fileformat",
         },
         lualine_z = {
-      { 'location', separator = { right = '' }, left_padding = 2 },
+            { 'location', separator = { right = '' }, left_padding = 2 },
+        },
     },
-    },
-    tabline = {  -- If you want tabline to shift too
-        lualine_a = { "buffers" },
-        lualine_z = {'tabs'}
+    tabline = { -- If you want tabline to shift too
+        lualine_a = {
+            {
+                "buffers",
+                separator = { right = '' },
+                section_separators = { left = '', right = '' },
+            },
+        },
+        lualine_z = { 'tabs' }
     },
     options = {
         icons_enabled = true,
@@ -95,14 +101,14 @@ local opts = {
         "mundo",
         "lazy",
     },
-     inactive_sections = {
-    lualine_a = { 'filename' },
-    lualine_b = {},
-    lualine_c = {},
-    lualine_x = {},
-    lualine_y = {},
-    lualine_z = { 'location' },
-  },
+    inactive_sections = {
+        lualine_a = { 'filename' },
+        lualine_b = {},
+        lualine_c = {},
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = { 'location' },
+    },
 }
 
 return {
