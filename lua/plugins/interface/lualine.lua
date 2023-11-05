@@ -73,8 +73,8 @@ local opts = {
         lualine_a = {
             {
                 "buffers",
-                separator = { right = '' },
-                section_separators = { left = '', right = '' },
+                -- separator = { right = '' },
+                -- section_separators = { left = '', right = '' },
             },
         },
         lualine_z = { 'tabs' }
