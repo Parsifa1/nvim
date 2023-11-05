@@ -1,3 +1,4 @@
+---@diagnostic disable missing-fields
 vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DiagnosticError" })
 vim.fn.sign_define("DapLogPoint", { text = "", texthl = "DiagnosticInfo" })
 vim.fn.sign_define("DapStopped", { text = "", texthl = "Constant" })
@@ -19,11 +20,18 @@ return {
                 type = "cppdbg",
                 request = "launch",
                 program = function()
-                    return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+                    vim.cmd 'cd %:h'
+                    vim.cmd 'silent w !g++ %:t -g -std=c++20 -o bin/%:t:r'
+                    local file_name = vim.fn.bufname(vim.api.nvim_get_current_buf())
+                    local file_name_without_path = vim.fn.fnamemodify(file_name, ':t')
+                    local file_directory = vim.fn.expand('%:p:h')
+                    if file_name_without_path ~= 0 then
+                        return file_directory .. '/bin/' .. file_name_without_path:gsub("%.cpp$", "")
+                    end
                 end,
 
                 cwd = "${fileDirname}",
-                stopAtEntry = false,
+                -- stopAtEntry = false,
                 miDebuggerPath = '/usr/bin/gdb',
                 setupCommands = {
                     {
@@ -34,6 +42,21 @@ return {
                 },
             },
         }
+        local dapui = require("dapui")
+        dapui.setup({})
+
+        dap.listeners.after.event_initialized["dapui_config"] = function()
+            dapui.open({})
+        end
+
+        dap.listeners.before.event_terminated["dapui_config"] = function()
+            dapui.close({})
+        end
+
+
+        dap.listeners.before.event_exited["dapui_config"] = function()
+            dapui.close({})
+        end
     end,
     keys = {
         {
