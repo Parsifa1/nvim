@@ -46,6 +46,9 @@ end
 
 local opts = {
     sections = {
+        lualine_a = {
+      { 'mode', separator = { left = '' }, right_padding = 2 },
+    },
         lualine_c = {
             lsp,
         },
@@ -62,6 +65,9 @@ local opts = {
             "encoding",
             "fileformat",
         },
+        lualine_z = {
+      { 'location', separator = { right = '' }, left_padding = 2 },
+    },
     },
     tabline = {  -- If you want tabline to shift too
         lualine_a = { "buffers" },
@@ -76,7 +82,7 @@ local opts = {
         always_divide_middle = true,
         globalstatus = false,
         component_separators = { left = '', right = '' },
-        section_separators = { left = '', right = '' },
+        section_separators = { left = '', right = '' },
     },
     extensions = {
         "man",
@@ -89,6 +95,14 @@ local opts = {
         "mundo",
         "lazy",
     },
+     inactive_sections = {
+    lualine_a = { 'filename' },
+    lualine_b = {},
+    lualine_c = {},
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = { 'location' },
+  },
 }
 
 return {
