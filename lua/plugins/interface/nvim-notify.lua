@@ -1,15 +1,15 @@
 ---@diagnostic disable missing-fields
 return {
     'rcarriga/nvim-notify',
-    -- enabled = false,
     lazy = true,
     event = "VeryLazy",
     config = function()
         local notify = require("notify")
         notify.setup({
             stages = "fade_in_slide_out",
-            render = "default",
+            render = "wrapped-compact",
             background_colour = "Normal",
+            top_down = false,
         })
     end,
 }
