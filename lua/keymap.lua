@@ -60,13 +60,13 @@ else
     set('v', '<C-c>', 'y', opts)
 
     --CP相关
-    set('n', '<F5>', ':CompetiTest add_testcase<CR>', opts)
-    set('i', '<F5>', '<Esc>:CompetiTest add_testcase<CR>', opts)
-    set('n', '<F6>', ':CompetiTest edit_testcase<CR>', opts)
-    set('i', '<F6>', '<Esc>:CompetiTest edit_testcase<CR>', opts)
-    set('n', '<F8>', ':CompetiTest run<CR>', opts)
-    set('i', '<F8>', '<Esc>:CompetiTest run<CR>', opts)
-    set('n', '<F16>', ':Lazy<CR>', opts)
+    set('n', '<F1>', ':CompetiTest add_testcase<CR>', opts)
+    set('i', '<F1>', '<Esc>:CompetiTest add_testcase<CR>', opts)
+    set('n', '<F2>', ':CompetiTest edit_testcase<CR>', opts)
+    set('i', '<F2>', '<Esc>:CompetiTest edit_testcase<CR>', opts)
+    set('n', '<F4>', ':CompetiTest run<CR>', opts)
+    set('i', '<F4>', '<Esc>:CompetiTest run<CR>', opts)
+    set('n', '<F12>', ':Lazy<CR>', opts)
     set('t', '<Esc>', '<C-\\><C-n>:q<CR>', opts)
 
     --分语言执行运行指令
@@ -76,9 +76,9 @@ else
         callback = function()
             local opt = { noremap = true, silent = true, buffer = true }
             -- local file = vim.fn.expand("<afile>");
-            vim.keymap.set('n', '<F9>',
+            vim.keymap.set('n', '<F5>',
                 ':FloatermNew --autoclose=4 cd %:h; g++ %:t -std=c++20 -o bin/%:t:r; time ./bin/%:t:r<CR>', opt)
-            vim.keymap.set('i', '<F9>',
+            vim.keymap.set('i', '<F5>',
                 '<Esc>:FloatermNew --autoclose=4 cd %:h; g++ %:t -std=c++20 -o bin/%:t:r; time ./bin/%:t:r<CR>', opt)
         end
     })
@@ -87,8 +87,8 @@ else
         pattern = "python",
         callback = function()
             local opt = { noremap = true, silent = true, buffer = true }
-            vim.keymap.set('n', '<f9>', ':FloatermNew --autoclose=0 time python % <cr>', opt)
-            vim.keymap.set('i', '<f9>', '<esc>:FloatermNew --autoclose=0 time python % <cr>', opt)
+            vim.keymap.set('n', '<f5>', ':FloatermNew --autoclose=0 time python % <cr>', opt)
+            vim.keymap.set('i', '<f5>', '<esc>:FloatermNew --autoclose=0 time python % <cr>', opt)
         end
     })
     --rust
