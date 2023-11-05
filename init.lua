@@ -31,6 +31,7 @@ else
             { import = "plugins.interface" },
             { import = 'plugins.git' },
             { import = 'plugins.others' },
+            {import = 'plugins.dap'}
         },
         ui = {
             border = "rounded"

@@ -4,6 +4,7 @@ return {
         ensure_installed = {
             'lua-language-server',
             'clangd',
+            'cpptools',
             'rust-analyzer',
             'python-lsp-server',
             'clang-format',
