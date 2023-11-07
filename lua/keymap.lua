@@ -41,39 +41,34 @@ else
     set('n', 'zc', '<C-w>c', desc('close current'))
     set('n', 'zo', '<C-w>o', desc('close others')) -- close others
 
-
-    -- bufferline 左右Tab切换
-    -- Resize with arrows
-    -- set('n', '<C-Up>', ':resize +10<CR>', opts)
-    -- set('n', '<C-Down>', ':resize 6<CR>', opts)
-    -- set('n', '<C-Left>', ':vertical resize +10<CR>', opts)
-    -- set('n', '<C-Right>', ':vertical resize 6<CR>', opts)
     set('n', '<C-h>', ':bp<CR>', opts)
     set('n', '<C-l>', ':bn<CR>', opts)
     set('n', '<C-/>', 'gcc', { remap = true, desc = 'comment' })
     set('n', '<C-w>', ':bdelete!<CR>', opts)
     set('n', '<C-s>', ':w<CR>', opts)
     set('i', '<C-s>', '<Esc>:w<CR>', opts)
-    set('n', '<C-a>', 'gg4vG$', opts)
+    set('n', '<C-a>', 'gg0vG$', opts)
+    set('v', '<C-a>', 'vgg0vG$', opts)
     set('i', '<C-a>', '<Esc>gg4vG$a', opts)
     set('v', '<C-c>', 'y', opts)
 
     --CP相关
-    set('n', '<F1>', ':CompetiTest add_testcase<CR>', opts)
-    set('i', '<F1>', '<Esc>:CompetiTest add_testcase<CR>', opts)
-    set('n', '<F2>', ':CompetiTest edit_testcase<CR>', opts)
-    set('i', '<F2>', '<Esc>:CompetiTest edit_testcase<CR>', opts)
-    set('n', '<F4>', ':CompetiTest run<CR>', opts)
-    set('i', '<F4>', '<Esc>:CompetiTest run<CR>', opts)
+    set('n', '<F1>', ':CompetiTest run<CR>', opts)
+    set('i', '<F1>', '<Esc>:CompetiTest run<CR>', opts)
+    set('n', '<F2>', ':CompetiTest add_testcase<CR>', opts)
+    set('i', '<F2>', '<Esc>:CompetiTest add_testcase<CR>', opts)
+    set('n', '<F3>', ':CompetiTest edit_testcase<CR>', opts)
+    set('i', '<F3>', '<Esc>:CompetiTest edit_testcase<CR>', opts)
     set('n', '<F12>', ':Lazy<CR>', opts)
     set('t', '<Esc>', '<C-\\><C-n>:q<CR>', opts)
 
-        --leader
+    --leader
     set('n', '<leader>f', ':Telescope find_files<CR>', desc('find files'))
     set('n', '<leader>w', ':Telescope live_grep<CR>', desc('find words'))
     set('n', '<leader>r', ':Telescope oldfiles<CR>', desc('recent files'))
     set('n', '<leader>t', ':FloatermToggle<CR>', desc('Terminal'))
     set('n', '<leader>e', ':Neotree toggle<CR>', desc('File Explorer'))
+    set('n', '<leader>p', ':Lazy<CR>', desc('lazy'))
 
     --分语言执行运行指令
     --cpp
@@ -83,9 +78,11 @@ else
             local opt = { noremap = true, silent = true, buffer = true }
             -- local file = vim.fn.expand("<afile>");
             vim.keymap.set('n', '<F5>',
-                ':FloatermNew --autoclose=4 cd %:h; g++ %:t -g -std=c++20 -o bin/%:t:r; time ./bin/%:t:r<CR>', opt)
+                ':FloatermNew --autoclose=4 cd %:h; g++ %:t -g -std=c++20 -o bin/%:t:r; time ./bin/%:t:r<CR>',
+                desc('Run code'))
             vim.keymap.set('i', '<F5>',
-                '<Esc>:FloatermNew --autoclose=4 cd %:h; g++ %:t -g -std=c++20 -o bin/%:t:r; time ./bin/%:t:r<CR>', opt)
+                '<Esc>:FloatermNew --autoclose=4 cd %:h; g++ %:t -g -std=c++20 -o bin/%:t:r; time ./bin/%:t:r<CR>',
+                desc('Run code'))
         end
     })
     --python
@@ -93,8 +90,8 @@ else
         pattern = "python",
         callback = function()
             local opt = { noremap = true, silent = true, buffer = true }
-            vim.keymap.set('n', '<f5>', ':FloatermNew --autoclose=0 time python % <cr>', opt)
-            vim.keymap.set('i', '<f5>', '<esc>:FloatermNew --autoclose=0 time python % <cr>', opt)
+            vim.keymap.set('n', '<f5>', ':FloatermNew --autoclose=0 time python % <cr>', desc('Run code'))
+            vim.keymap.set('i', '<f5>', '<esc>:FloatermNew --autoclose=0 time python % <cr>', desc('Run code'))
         end
     })
     --rust
@@ -102,9 +99,9 @@ else
         pattern = "rust",
         callback = function()
             local opt = { noremap = true, silent = true, buffer = true }
-            vim.keymap.set('n', '<f5>', ':FloatermNew --autoclose=0 cd %:h; time cargo run<CR>', opt)
-            vim.keymap.set('i', '<f5>', '<esc>:FloatermNew --autoclose=0 cd %:h; time cargo run<CR>', opt)
+            vim.keymap.set('n', '<f5>', ':FloatermNew --autoclose=0 cd %:h; time cargo run<CR>', desc('Run code'))
+            vim.keymap.set('i', '<f5>', '<esc>:FloatermNew --autoclose=0 cd %:h; time cargo run<CR>', desc('Run code'))
         end
     })
-
 end
+

@@ -58,39 +58,39 @@ return {
     end,
     keys = {
         {
-            "<F6>",
+            "<F8>",
+            function()
+                require("dap").toggle_breakpoint()
+            end,
+            desc = "Debug: Toggle breakpoint",
+        },
+        {
+            "<F9>",
             function()
                 require("dap").continue()
             end,
             desc = "Debug: Continue",
         },
         {
-            "<F7>",
-            function()
-                require("dap").step_over()
-            end,
-            desc = "Debug: Step over",
-        },
-        {
-            "<F8>",
+            "<F10>",
             function()
                 require("dap").step_into()
             end,
             desc = "Debug: Step into",
         },
         {
-            "<F9>",
+            "<F11>",
+            function()
+                require("dap").step_over()
+            end,
+            desc = "Debug: Step over",
+        },
+        {
+            "<F12>",
             function()
                 require("dap").step_out()
             end,
             desc = "Debug: Step out",
-        },
-        {
-            "<F10>",
-            function()
-                require("dap").toggle_breakpoint()
-            end,
-            desc = "Debug: Toggle breakpoint",
         },
 
         {
