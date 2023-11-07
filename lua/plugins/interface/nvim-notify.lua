@@ -6,9 +6,10 @@ return {
         local notify = require("notify")
         notify.setup({
             stages = "fade_in_slide_out",
-            render = "wrapped-compact",
+            render = "minimal",
             background_colour = "Normal",
             top_down = false,
         })
     end,
 }
+
