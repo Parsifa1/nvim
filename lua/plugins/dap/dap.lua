@@ -1,4 +1,3 @@
----@diagnostic disable missing-fields
 vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DiagnosticError" })
 vim.fn.sign_define("DapLogPoint", { text = "", texthl = "DiagnosticInfo" })
 vim.fn.sign_define("DapStopped", { text = "", texthl = "Constant" })
@@ -29,7 +28,6 @@ return {
                         return file_directory .. '/bin/' .. file_name_without_path:gsub("%.cpp$", "")
                     end
                 end,
-
                 cwd = "${fileDirname}",
                 -- stopAtEntry = false,
                 miDebuggerPath = '/usr/bin/gdb',

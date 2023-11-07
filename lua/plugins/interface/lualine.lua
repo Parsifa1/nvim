@@ -73,11 +73,18 @@ local opts = {
         lualine_a = {
             {
                 "buffers",
-                -- separator = { right = '' },
-                -- section_separators = { left = '', right = '' },
+                mode = 2,
+                section_separators = { left = '', right = '' },
+                use_mode_colors = true,
             },
         },
-        lualine_z = { 'tabs' }
+        lualine_z = {
+            {
+                'tabs',
+                section_separators = { left = '', right = '' },
+                use_mode_colors = true,
+            }
+        }
     },
     options = {
         icons_enabled = true,
@@ -117,10 +124,11 @@ return {
         vim.o.laststatus = 0
     end,
     enable = false,
-    -- event = "VeryLazy",
+    event = "VeryLazy",
     dependencies = {
         { "nvim-tree/nvim-web-devicons" },
         { "ofseed/lualine-copilot" },
     },
     opts = opts
 }
+

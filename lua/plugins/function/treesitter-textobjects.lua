@@ -1,7 +1,7 @@
----@diagnostic disable missing-fields
 return {
     "nvim-treesitter/nvim-treesitter-textobjects",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
+    event = "VeryLazy",
     config = function()
         require 'nvim-treesitter.configs'.setup({
             textobjects = {
@@ -9,13 +9,18 @@ return {
                     enable = true,
                     lookahead = true,
                     keymaps = {
+                        ["aa"] = { query = "@parameter.outer", desc = "a argument" },
+                        ["ia"] = { query = "@parameter.inner", desc = "inner part of a argument" },
                         ["af"] = "@function.outer",
                         ["if"] = "@function.inner",
                         ["ac"] = "@class.outer",
                         ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
-                        ["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
                         ["id"] = "@conditional.inner",
                         ["ad"] = "@conditional.outer",
+                        ["ar"] = { query = "@return.outer", desc = "a return" },
+                        ["ir"] = { query = "@return.outer", desc = "inner return" },
+                        ["al"] = { query = "@loop.outer", desc = "a loop" },
+                        ["il"] = { query = "@loop.inner", desc = "inner part of a loop" },
                     },
                     selection_modes = {
                         ["@parameter.outer"] = "v", -- charwise

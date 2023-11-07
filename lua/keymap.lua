@@ -5,7 +5,6 @@ local opts = {
     noremap = true, -- non-recursive
     silent = true,  -- do not show message
 }
-
 local function desc(index)
     return {
         noremap = true,
@@ -20,15 +19,15 @@ if vim.g.vscode then
     set('n', '==', 'gqq', opts)
     set('v', '=', 'gq', opts)
 else
+    set('n', '==', 'gqq', opts)
+    set('v', '=', 'gq', opts)
+    set('n', '=', 'gq', opts)
+
     --窗口跳转
     set('n', '<A-h>', '<C-w>h', opts)
     set('n', '<A-j>', '<C-w>j', opts)
     set('n', '<A-k>', '<C-w>k', opts)
     set('n', '<A-l>', '<C-w>l', opts)
-    set('n', '==', 'gqq', opts)
-    set('v', '=', 'gq', opts)
-    set('o', '=', 'gq', opts)
-
     set('n', '<A-q>', ':q<CR>', opts)
     set('i', '<A-q>', '<Esc>:q<CR>', opts)
     set('n', '<A-S>', 'ggvGgcc', opts)
@@ -44,14 +43,14 @@ else
 
 
     -- bufferline 左右Tab切换
-    set('n', '<C-h>', ':bp<CR>', opts)
-    set('n', '<C-l>', ':bn<CR>', opts)
     -- Resize with arrows
     -- set('n', '<C-Up>', ':resize +10<CR>', opts)
     -- set('n', '<C-Down>', ':resize 6<CR>', opts)
     -- set('n', '<C-Left>', ':vertical resize +10<CR>', opts)
     -- set('n', '<C-Right>', ':vertical resize 6<CR>', opts)
-    set('n', '<C-/>', 'gcc', opts)
+    set('n', '<C-h>', ':bp<CR>', opts)
+    set('n', '<C-l>', ':bn<CR>', opts)
+    set('n', '<C-/>', 'gcc', { remap = true, desc = 'comment' })
     set('n', '<C-w>', ':bdelete!<CR>', opts)
     set('n', '<C-s>', ':w<CR>', opts)
     set('i', '<C-s>', '<Esc>:w<CR>', opts)
@@ -68,6 +67,13 @@ else
     set('i', '<F4>', '<Esc>:CompetiTest run<CR>', opts)
     set('n', '<F12>', ':Lazy<CR>', opts)
     set('t', '<Esc>', '<C-\\><C-n>:q<CR>', opts)
+
+        --leader
+    set('n', '<leader>f', ':Telescope find_files<CR>', desc('find files'))
+    set('n', '<leader>w', ':Telescope live_grep<CR>', desc('find words'))
+    set('n', '<leader>r', ':Telescope oldfiles<CR>', desc('recent files'))
+    set('n', '<leader>t', ':FloatermToggle<CR>', desc('Terminal'))
+    set('n', '<leader>e', ':Neotree toggle<CR>', desc('File Explorer'))
 
     --分语言执行运行指令
     --cpp
@@ -101,10 +107,4 @@ else
         end
     })
 
-    --leader
-    set('n', '<leader>f', ':Telescope find_files<CR>', desc('find files'))
-    set('n', '<leader>w', ':Telescope live_grep<CR>', desc('find words'))
-    set('n', '<leader>r', ':Telescope oldfiles<CR>', desc('recent files'))
-    set('n', '<leader>t', ':FloatermToggle<CR>', desc('Terminal'))
-    set('n', '<leader>e', ':Neotree toggle<CR>', desc('File Explorer'))
 end

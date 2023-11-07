@@ -18,7 +18,7 @@ return {
 
         -- Use an on_attach function to only map the following keys
         local on_attach = function(client, bufnr)
-            vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+            -- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
             local function bufopts_desc(index)
                 return { noremap = true, silent = true, buffer = bufnr, desc = index }
             end
@@ -73,14 +73,15 @@ return {
                         setType = true,
                     },
                     diagnostics = {
-                        globals = { "vim" } },
-                    disable = { "missing-fields", "incomplete-signature-doc" },
+                        disable = { "missing-fields", "incomplete-signature-doc" },
+                        globals = { "vim" }
+                    },
                 },
             }
         })
         lspconfig.clangd.setup({
             on_attach = on_attach,
-            filetypes = { "cpp" },
+            filetypes = { "cpp", "c" },
             cmd = {
                 "clangd",
                 "--offset-encoding=utf-16",
