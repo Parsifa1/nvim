@@ -69,6 +69,8 @@ else
 	set("n", "<leader>t", ":FloatermToggle<CR>", desc("Terminal"))
 	set("n", "<leader>e", ":Neotree toggle<CR>", desc("File Explorer"))
 	set("n", "<leader>p", ":Lazy<CR>", desc("lazy"))
+	set("n", "<leader>cc", ":Telescope commands<CR>", desc("commands"))
+	set("n", "<leader>ck", ":Telescope keymaps<CR>", desc("keymaps"))
 
 	--分语言执行运行指令
 	--cpp
