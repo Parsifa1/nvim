@@ -23,7 +23,6 @@
 │   │   │   ├── cmp-nvim-lsp.lua
 │   │   │   ├── cmp-path.lua
 │   │   │   ├── conform.lua
-│   │   │   ├── lsp-notify.lua
 │   │   │   ├── lsp_signature.lua
 │   │   │   ├── luasnip.lua
 │   │   │   ├── mason-installer.lua
@@ -31,9 +30,15 @@
 │   │   │   ├── neodev.lua
 │   │   │   ├── nvim-cmp.lua
 │   │   │   └── nvim-lspconfig.lua
+│   │   ├── dap
+│   │   │   ├── dap.lua
+│   │   │   ├── dap-ui.lua
+│   │   │   ├── dap-virtual-text.lua
+│   │   │   └── mason-dap.lua
 │   │   ├── function
 │   │   │   ├── comment.lua
 │   │   │   ├── flash.lua
+│   │   │   ├── treesitter-textobjects.lua
 │   │   │   ├── vim-repeat.lua
 │   │   │   ├── vim-surround.lua
 │   │   │   ├── vim-targets.lua
@@ -54,8 +59,10 @@
 │   │   │   ├── floaterm.lua
 │   │   │   ├── lualine.lua
 │   │   │   ├── neo-tree.lua
+│   │   │   ├── noice.lua
 │   │   │   ├── nvim-notify.lua
-│   │   │   └── treesitter.lua
+│   │   │   ├── treesitter.lua
+│   │   │   └── trouble.lua
 │   │   └── others
 │   │       ├── compatitest.lua
 │   │       ├── copilot.lua
@@ -65,13 +72,10 @@
 │   │       ├── node_modules
 │   │       ├── nvim-autopairs.lua
 │   │       ├── telescope.lua
-│   │       ├── tmux-navigator.lua
 │   │       └── yarn.lock
 │   └── snippets
 │       └── cpp.lua
 └── README.md
 
-10 directories, 51 files
-
-9 directories, 45 files
+11 directories, 56 files
 ```
