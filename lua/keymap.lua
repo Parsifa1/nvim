@@ -51,6 +51,8 @@ else
 	set("v", "<C-a>", "vgg0vG$", opts)
 	set("i", "<C-a>", "<Esc>gg4vG$a", opts)
 	set("v", "<C-c>", "y", opts)
+	set("i", "<C-v>", "<Esc>pa", opts)
+	set("n", "<C-v>", "p", opts)
 
 	--CP相关
 	set("n", "<F1>", ":CompetiTest run<CR>", opts)
@@ -65,7 +67,7 @@ else
 	--leader
 	set("n", "<leader>f", ":Telescope find_files<CR>", desc("find files"))
 	set("n", "<leader>w", ":Telescope live_grep<CR>", desc("find words"))
-	set("n", "<leader>r", ":Telescope oldfiles<CR>", desc("recent files"))
+	set("n", "<leader>r", ":Telescope oldfiles<CR><Esc>", desc("recent files"))
 	set("n", "<leader>t", ":FloatermToggle<CR>", desc("Terminal"))
 	set("n", "<leader>e", ":Neotree toggle<CR>", desc("File Explorer"))
 	set("n", "<leader>p", ":Lazy<CR>", desc("lazy"))
