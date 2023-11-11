@@ -27,7 +27,11 @@ else
 	vim.opt.splitbelow = true -- open new vertical split bottom
 	vim.opt.splitright = true -- open new horizontal splits right
 	vim.opt.termguicolors = true -- enabl 24-bit RGB color in the TUI
-	-- vim.opt.showmode = false -- we are experienced, wo don't need the "-- INSERT --" mode hint
+	vim.opt.list = true
+	vim.opt.listchars = {
+		tab = "  ",
+		eol = "⤶",
+	}
 
 	-- Searching
 	vim.opt.incsearch = true -- search as characters are entered
