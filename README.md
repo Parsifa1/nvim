@@ -12,6 +12,7 @@
 .
 ├── init.lua
 ├── lazy-lock.json
+├── LICENSE
 ├── lua
 │   ├── custom.lua
 │   ├── keymap.lua
@@ -35,14 +36,13 @@
 │   │   │   ├── dap-ui.lua
 │   │   │   ├── dap-virtual-text.lua
 │   │   │   └── mason-dap.lua
-│   │   ├── function
+│   │   ├── edit
 │   │   │   ├── comment.lua
 │   │   │   ├── flash.lua
 │   │   │   ├── treesitter-textobjects.lua
 │   │   │   ├── vim-repeat.lua
 │   │   │   ├── vim-surround.lua
-│   │   │   ├── vim-targets.lua
-│   │   │   └── which-key.lua
+│   │   │   └── vim-targets.lua
 │   │   ├── git
 │   │   │   ├── flog.lua
 │   │   │   ├── fugitive.lua
@@ -50,32 +50,36 @@
 │   │   │   ├── git-conflict.lua
 │   │   │   ├── gitlinker.lua
 │   │   │   └── neogit.lua
-│   │   ├── interface
+│   │   ├── others
+│   │   │   ├── filetype.lua
+│   │   │   ├── fzf-native.lua
+│   │   │   ├── markdown-preview.lua
+│   │   │   ├── node_modules
+│   │   │   └── yarn.lock
+│   │   ├── tools
 │   │   │   ├── aerial.lua
-│   │   │   ├── alpha.lua
-│   │   │   ├── blankline.lua
-│   │   │   ├── colorscheme.lua
-│   │   │   ├── dropbar.lua
-│   │   │   ├── floaterm.lua
-│   │   │   ├── lualine.lua
+│   │   │   ├── compatitest.lua
+│   │   │   ├── copilot.lua
 │   │   │   ├── neo-tree.lua
-│   │   │   ├── noice.lua
-│   │   │   ├── nvim-notify.lua
+│   │   │   ├── nvim-autopairs.lua
+│   │   │   ├── suda.lua
+│   │   │   ├── telescope.lua
 │   │   │   ├── treesitter.lua
-│   │   │   └── trouble.lua
-│   │   └── others
-│   │       ├── compatitest.lua
-│   │       ├── copilot.lua
-│   │       ├── filetype.lua
-│   │       ├── fzf-native.lua
-│   │       ├── markdown-preview.lua
-│   │       ├── node_modules
-│   │       ├── nvim-autopairs.lua
-│   │       ├── telescope.lua
-│   │       └── yarn.lock
+│   │   │   ├── trouble.lua
+│   │   │   └── which-key.lua
+│   │   └── ui
+│   │       ├── alpha.lua
+│   │       ├── blankline.lua
+│   │       ├── colorscheme.lua
+│   │       ├── dropbar.lua
+│   │       ├── floaterm.lua
+│   │       ├── lualine.lua
+│   │       ├── noice.lua
+│   │       └── nvim-notify.lua
 │   └── snippets
 │       └── cpp.lua
+├── pacman.conf
 └── README.md
 
-11 directories, 56 files
+12 directories, 59 files
 ```
