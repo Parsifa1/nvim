@@ -46,7 +46,7 @@ else
 	set("n", "<C-/>", "gcc", { remap = true, desc = "comment" })
 	set("n", "<C-w>", ":bdelete!<CR>", opts)
 	set("n", "<C-s>", ":write<CR>", opts)
-	-- set('i', '<C-s>', '<Esc>:w<CR>', opts)
+	set("i", "<C-s>", "<Esc>:w<CR>", opts)
 	set("n", "<C-a>", "gg0vG$", opts)
 	set("v", "<C-a>", "vgg0vG$", opts)
 	set("i", "<C-a>", "<Esc>gg4vG$a", opts)
