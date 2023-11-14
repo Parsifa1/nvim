@@ -27,11 +27,12 @@ else
 	require("lazy").setup({
 		spec = {
 			{ import = "plugins.core" },
-			{ import = "plugins.function" },
-			{ import = "plugins.interface" },
+			{ import = "plugins.dap" },
+			{ import = "plugins.edit" },
 			{ import = "plugins.git" },
 			{ import = "plugins.others" },
-			{ import = "plugins.dap" },
+			{ import = "plugins.tools" },
+			{ import = "plugins.ui" },
 		},
 		ui = {
 			border = "rounded",
