@@ -86,6 +86,9 @@ local opts = {
 				"code.code-workspace",
 				"compile_flags.txt",
 			},
+			always_show = {
+				".config",
+			},
 		},
 		group_empty_dirs = true,
 		follow_current_file = {
