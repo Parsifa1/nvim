@@ -3,6 +3,7 @@ if vim.g.vscode then
 	vim.opt.clipboard = "unnamedplus" -- use system clipboar
 else
 	-- vim.o.guifont = "JetBrainsMono Nerd Font Mono, 苹方-简:h12"
+	vim.g.loaded_python3_provider = 0
 	vim.g.neovide_remember_window_size = true
 	vim.g.copilot_assume_mapped = true
 	vim.loader.enable()

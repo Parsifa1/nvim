@@ -37,10 +37,10 @@ local opts = {
 				source = "git_status",
 				display_name = "  Git ",
 			},
-			{
-				source = "document_symbols",
-				display_name = "  Symbols",
-			},
+			-- {
+			-- 	source = "document_symbols",
+			-- 	display_name = "  Symbols",
+			-- },
 		},
 	},
 	window = {

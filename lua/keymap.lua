@@ -67,7 +67,7 @@ else
 	--leader
 	set("n", "<leader>f", ":Telescope find_files<CR>", desc("find files"))
 	set("n", "<leader>w", ":Telescope live_grep<CR>", desc("find words"))
-	set("n", "<leader>r", ":Telescope oldfiles<CR><Esc>", desc("recent files"))
+	set("n", "<leader>r", ":Telescope oldfiles<CR>", desc("recent files"))
 	set("n", "<leader>t", ":FloatermToggle<CR>", desc("Terminal"))
 	set("n", "<leader>e", ":Neotree toggle<CR>", desc("File Explorer"))
 	set("n", "<leader>p", ":Lazy<CR>", desc("lazy"))
@@ -84,13 +84,13 @@ else
 			vim.keymap.set(
 				"n",
 				"<F5>",
-				":FloatermNew --autoclose=4 cd %:h; g++ %:t -g -std=c++20 -o bin/%:t:r; time ./bin/%:t:r<CR>",
+				":FloatermNew --autoclose=4 cd %:h && g++ %:t -g -std=c++20 -o bin/%:t:r && time ./bin/%:t:r<CR>",
 				desc("Run code")
 			)
 			vim.keymap.set(
 				"i",
 				"<F5>",
-				"<Esc>:FloatermNew --autoclose=4 cd %:h; g++ %:t -g -std=c++20 -o bin/%:t:r; time ./bin/%:t:r<CR>",
+				"<Esc>:FloatermNew --autoclose=4 cd %:h && g++ %:t -g -std=c++20 -o bin/%:t:r && time ./bin/%:t:r<CR>",
 				desc("Run code")
 			)
 		end,
@@ -109,8 +109,13 @@ else
 		pattern = "rust",
 		callback = function()
 			local opt = { noremap = true, silent = true, buffer = true }
-			vim.keymap.set("n", "<f5>", ":FloatermNew --autoclose=0 cd %:h; time cargo run<CR>", desc("Run code"))
-			vim.keymap.set("i", "<f5>", "<esc>:FloatermNew --autoclose=0 cd %:h; time cargo run<CR>", desc("Run code"))
+			vim.keymap.set("n", "<f5>", ":FloatermNew --autoclose=0 cd %:h && time cargo run<CR>", desc("Run code"))
+			vim.keymap.set(
+				"i",
+				"<f5>",
+				"<esc>:FloatermNew --autoclose=0 cd %:h && time cargo run<CR>",
+				desc("Run code")
+			)
 		end,
 	})
 end
