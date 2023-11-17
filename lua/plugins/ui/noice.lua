@@ -20,8 +20,8 @@ return {
                 opts = { skip = true },
             },
             {
+                filter = { min_height = 10 },
                 view = "split",
-                filter = { event = "msg_show", min_height = 20 },
             },
             {
                 filter = { event = "msg_show", find = "attempt to index local 'tree'" },
@@ -30,8 +30,7 @@ return {
             {
                 filter = { event = "msg_show", find = "Invalid 'window': Expected Lua number" },
                 opts = { skip = true },
-            }
-
+            },
         },
     },
 }

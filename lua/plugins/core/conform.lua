@@ -22,6 +22,7 @@ return {
 	},
 	init = function()
 		-- If you want the formatexpr, here is the place to set it
+        vim.o.formatprg = "v:lua.require'conform'.formatprg()"
 		vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 	end,
 }

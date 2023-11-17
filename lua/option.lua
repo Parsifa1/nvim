@@ -42,4 +42,9 @@ else
 
 	-- Indentation
 	vim.opt.timeoutlen = 500 -- time to wait for a mapped sequence to complete (in milliseconds)
+
+    -- Asyncrun setting
+    vim.g.asyncrun_open = 6
+
+
 end
