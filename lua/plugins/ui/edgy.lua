@@ -24,6 +24,7 @@ return {
 				ft = "aerial",
 				title = "aerial",
 				open = "AerialOpen",
+				pinned = "ture",
 			},
 		},
 		-- left = {
