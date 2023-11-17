@@ -1,9 +1,7 @@
---全局设定
 require("keymap")
 require("option")
 
 --Lazy.nvim配置
---START
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
@@ -39,4 +37,5 @@ else
 		},
 	})
 end
---END
+
+
