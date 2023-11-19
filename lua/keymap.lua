@@ -61,6 +61,10 @@ else
     set("i", "<F2>", "<Esc>:CompetiTest add_testcase<CR>", opts)
     set("n", "<F3>", ":CompetiTest edit_testcase<CR>", opts)
     set("i", "<F3>", "<Esc>:CompetiTest edit_testcase<CR>", opts)
+    --task指令
+    set({ "n", "i" }, "<F5>", ":AsyncTask file-run<CR>", desc("run task"))
+    set({ "n", "i" }, "<F6>", ":AsyncTask file-build<CR>", desc("build task"))
+
     set("n", "<F12>", ":Lazy<CR>", opts)
     set("t", "<Esc>", "<C-\\><C-n>:q<CR>", opts)
 
@@ -73,7 +77,4 @@ else
     set("n", "<leader>p", ":Lazy<CR>", desc("lazy"))
     set("n", "<leader>cc", ":Telescope commands<CR>", desc("commands"))
     set("n", "<leader>ck", ":Telescope keymaps<CR>", desc("keymaps"))
-
-    --task指令
-    set({ "n", "i" }, "<F5>", ":AsyncTask run<CR>", desc("run task"))
 end
