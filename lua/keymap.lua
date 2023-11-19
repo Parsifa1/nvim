@@ -1,5 +1,4 @@
 vim.g.mapleader = " "
--- define common option
 local set = vim.keymap.set
 local opts = {
     noremap = true, -- non-recursive
@@ -16,12 +15,14 @@ end
 if vim.g.vscode then
     set("n", "zv", "<Cmd>call VSCodeNotify('workbench.action.splitEditor')<CR>", opts)
     set("n", "zh", "<Cmd>call VSCodeNotify('workbench.action.splitEditorDown')<CR>", opts)
-    set("n", "==", "gqq", opts)
     set("v", "=", "gq", opts)
+    set("o", "=", "q", opts)
 else
-    set("n", "==", "gqq", opts)
+    vim.api.nvim_set_keymap("i", "<A-j>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+
     set("v", "=", "gq", opts)
     set("n", "=", "gq", opts)
+    set("o", "=", "q", opts)
 
     set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)", desc("Put yanked after cursor"))
     set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)", desc("Put yanked before cursor"))
@@ -36,11 +37,9 @@ else
     set("n", "<A-k>", "<C-w>k", opts)
     set("n", "<A-l>", "<C-w>l", opts)
     set("n", "<A-q>", ":q<CR>", opts)
-    set("i", "<A-q>", "<Esc>:q<CR>", opts)
-    set("n", "<A-S>", "ggvGgcc", opts)
     set("t", "<A-q>", "<C-\\><C-n>:q<CR>", opts)
-
-    vim.api.nvim_set_keymap("i", "<A-j>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+    set("i", "<A-q>", "<Esc>:q<CR>", opts)
+    set("n", "<A-w>", ":ToggleTerm | startinsert<CR>", desc("Terminal"))
 
     --分屏
     set("n", "zv", ":vsp<CR>", desc("vsplit"))
@@ -70,15 +69,12 @@ else
     --task指令
     set({ "n", "i" }, "<F5>", ":AsyncTask file-run<CR>", desc("run task"))
     set({ "n", "i" }, "<F6>", ":AsyncTask file-build<CR>", desc("build task"))
-
     set("n", "<F12>", ":Lazy<CR>", opts)
-    set("t", "<Esc>", "<C-\\><C-n>:q<CR>", opts)
 
     --leader
     set("n", "<leader>f", ":Telescope find_files<CR>", desc("find files"))
     set("n", "<leader>w", ":Telescope live_grep<CR>", desc("find words"))
     set("n", "<leader>r", ":Telescope oldfiles<CR>", desc("recent files"))
-    set("n", "<leader>t", ":ToggleTerm<CR>", desc("Terminal"))
     set("n", "<leader>e", ":Neotree toggle<CR>", desc("File Explorer"))
     set("n", "<leader>p", ":Lazy<CR>", desc("lazy"))
     set("n", "<leader>cc", ":Telescope commands<CR>", desc("commands"))
