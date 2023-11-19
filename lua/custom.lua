@@ -3,6 +3,8 @@ local M = {}
 -- Border style of floating windows
 M.border = "rounded"
 
+M.theme = "catppuccin"
+
 -- Width of side windows
 M.width = function()
 	local columns = vim.go.columns

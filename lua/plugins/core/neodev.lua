@@ -1,5 +1,5 @@
 return {
     "folke/neodev.nvim",
-    -- lazy = true,
+    event = "VeryLazy",
     opts = {}
 }

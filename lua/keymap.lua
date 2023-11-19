@@ -23,6 +23,13 @@ else
     set("v", "=", "gq", opts)
     set("n", "=", "gq", opts)
 
+    set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)", desc("Put yanked after cursor"))
+    set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)", desc("Put yanked before cursor"))
+    set({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)", desc("Put yanked after selection"))
+    set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)", desc("(Put yanked before selection"))
+    set("n", "[y", "<Plug>(YankyCycleForward)", desc("Yanky Cycle Backward"))
+    set("n", "]y", "<Plug>(YankyCycleBackward)", desc("Yanky Cycle Forward"))
+
     --窗口跳转
     set("n", "<A-h>", "<C-w>h", opts)
     set("n", "<A-j>", "<C-w>j", opts)
@@ -53,7 +60,6 @@ else
     set("i", "<C-v>", "<Esc>pa", opts)
     set("n", "<C-v>", "p", opts)
     set("n", "<C-t>", ":ToggleTerm<CR>", desc("Terminal"))
-
     --CP相关
     set("n", "<F1>", ":CompetiTest run<CR>", opts)
     set("i", "<F1>", "<Esc>:CompetiTest run<CR>", opts)

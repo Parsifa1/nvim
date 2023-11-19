@@ -46,5 +46,4 @@ else
     -- Asyncrun setting
     vim.g.asyncrun_open = 6
 
-
 end

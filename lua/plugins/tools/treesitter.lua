@@ -1,5 +1,6 @@
 return {
     'nvim-treesitter/nvim-treesitter',
+    event = "VeryLazy",
     config = function()
         require 'nvim-treesitter.configs'.setup {
             ensure_installed = { "cpp", "lua", "rust", "python", "markdown", "vim", "regex", "bash", "markdown_inline" },

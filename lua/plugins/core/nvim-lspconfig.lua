@@ -5,6 +5,7 @@ return {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
     },
+    event = "VeryLazy",
     config = function()
         local function desc(index)
             return { noremap = true, silent = true, desc = index }
@@ -19,7 +20,7 @@ return {
         -- Use an on_attach function to only map the following keys
         local on_attach = function(client, bufnr)
             --format when save
-            require("lsp-format").on_attach(client, bufnr)
+            -- require("lsp-format").on_attach(client, bufnr)
             local function bufopts_desc(index)
                 return { noremap = true, silent = true, buffer = bufnr, desc = index }
             end
