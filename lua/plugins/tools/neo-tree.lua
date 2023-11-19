@@ -85,6 +85,8 @@ local opts = {
 			hide_by_name = {
 				"code.code-workspace",
 				"compile_flags.txt",
+                "LICENSE",
+                "lazy-lock.json"
 			},
 			always_show = {
 				".config",
