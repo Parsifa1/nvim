@@ -17,6 +17,7 @@
 │   ├── custom.lua
 │   ├── keymap.lua
 │   ├── option.lua
+│   ├── plugin.lua
 │   ├── plugins
 │   │   ├── core
 │   │   │   ├── cmp-buffer.lua
@@ -24,6 +25,7 @@
 │   │   │   ├── cmp-nvim-lsp.lua
 │   │   │   ├── cmp-path.lua
 │   │   │   ├── conform.lua
+│   │   │   ├── lsp-format.lua
 │   │   │   ├── lsp_signature.lua
 │   │   │   ├── luasnip.lua
 │   │   │   ├── mason-installer.lua
@@ -55,9 +57,15 @@
 │   │   │   ├── fzf-native.lua
 │   │   │   ├── markdown-preview.lua
 │   │   │   ├── node_modules
+│   │   │   ├── yanky.lua
 │   │   │   └── yarn.lock
+│   │   ├── theme
+│   │   │   ├── catppuccin.lua
+│   │   │   ├── everforest.lua
+│   │   │   └── onedark.lua
 │   │   ├── tools
 │   │   │   ├── aerial.lua
+│   │   │   ├── asynctasks.lua
 │   │   │   ├── compatitest.lua
 │   │   │   ├── copilot.lua
 │   │   │   ├── neo-tree.lua
@@ -72,14 +80,15 @@
 │   │       ├── blankline.lua
 │   │       ├── colorscheme.lua
 │   │       ├── dropbar.lua
-│   │       ├── floaterm.lua
+│   │       ├── edgy.lua
 │   │       ├── lualine.lua
 │   │       ├── noice.lua
-│   │       └── nvim-notify.lua
+│   │       ├── nvim-notify.lua
+│   │       └── toggleterm.lua
 │   └── snippets
 │       └── cpp.lua
-├── pacman.conf
-└── README.md
+├── README.md
+└── tasks.ini
 
-12 directories, 59 files
+13 directories, 67 files
 ```
