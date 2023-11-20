@@ -24,7 +24,7 @@ local function lsp()
 		:totable()
 	local info = table.concat(clients, ", ")
 	if info == "" then
-		return "No attached LSP server"
+		return "void"
 	else
 		return info
 	end
