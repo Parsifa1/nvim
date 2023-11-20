@@ -3,7 +3,7 @@ local custom = require("custom")
 return {
 	"akinsho/nvim-toggleterm.lua",
 	enabled = true,
-    event = "BufWinEnter",
+    event = "VeryLazy",
 	opts = {
 		size = function(term)
 			if term.direction == "horizontal" then
@@ -18,7 +18,9 @@ return {
 		float_opts = {
 			border = custom.border,
 		},
+        persist_mode = false,
 		start_in_insert = true,
+        autochdir = false,
 	},
 	keys = {
 		{ "<C-\\>" },

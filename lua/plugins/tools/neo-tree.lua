@@ -113,7 +113,7 @@ local opts = {
 return {
 	"nvim-neo-tree/neo-tree.nvim",
 	branch = "main",
-    event = "BufWinEnter",
+    event = "VeryLazy",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-tree/nvim-web-devicons",

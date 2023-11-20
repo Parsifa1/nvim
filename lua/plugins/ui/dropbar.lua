@@ -2,6 +2,7 @@ local custom = require "custom"
 
 return {
     "Bekaboo/dropbar.nvim",
+    dependencies = { 'nvim-telescope/telescope-fzf-native.nvim' },
     event = "BufWinEnter",
     opts = {
         general = {
@@ -12,11 +13,6 @@ return {
                     and not vim.wo[win].diff
                     and vim.bo[buf].filetype ~= "toggleterm"
             end,
-        },
-        icons = {
-            kinds = {
-                symbols = custom.icons.kind_with_space,
-            },
         },
     },
 }
