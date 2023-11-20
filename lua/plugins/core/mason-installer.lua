@@ -11,6 +11,7 @@ return {
             "pyright",
             "clang-format",
             "autopep8",
+            "marksman"
             -- "stylua",
         },
         -- auto_update = true,

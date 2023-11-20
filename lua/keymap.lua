@@ -46,6 +46,7 @@ else
     set("n", "zh", ":sp<CR>", desc("split"))
     set("n", "zc", "<C-w>c", desc("close current"))
     set("n", "zo", "<C-w>o", desc("close others")) -- close others
+    set("n", "zd", "zd", desc("delete fold")) -- close others
 
     set("n", "<C-h>", ":bp<CR>", opts)
     set("n", "<C-l>", ":bn<CR>", opts)
@@ -58,7 +59,6 @@ else
     set("v", "<C-c>", "y", opts)
     set("i", "<C-v>", "<Esc>pa", opts)
     set("n", "<C-v>", "p", opts)
-    set("n", "<C-t>", ":ToggleTerm<CR>", desc("Terminal"))
     --CP相关
     set("n", "<F1>", ":CompetiTest run<CR>", opts)
     set("i", "<F1>", "<Esc>:CompetiTest run<CR>", opts)

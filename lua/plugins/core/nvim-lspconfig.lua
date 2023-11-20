@@ -5,7 +5,7 @@ return {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
     },
-    event = "VeryLazy",
+    event = "User FileOpened",
     config = function()
         local function desc(index)
             return { noremap = true, silent = true, desc = index }
@@ -92,5 +92,6 @@ return {
         lspconfig.rust_analyzer.setup({
             on_attach = on_attach,
         })
+        lspconfig.marksman.setup({})
     end,
 }

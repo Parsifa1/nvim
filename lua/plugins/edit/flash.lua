@@ -8,6 +8,7 @@ end
 return {
 	"folke/flash.nvim",
 	event = "VeryLazy",
+    -- enabled = 
 	opts = {
 		remote = {
 			remote_op = { restore = true, motion = true },

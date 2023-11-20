@@ -14,7 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 if vim.g.vscode then
 	require("lazy").setup({
 		spec = {
-			{ import = "plugins.function" },
+			{ import = "plugins.edit" },
 		},
 	})
 else
@@ -33,5 +33,7 @@ else
 			border = "rounded",
 		},
 	})
+    local theme = require("custom").theme
+    vim.cmd.colorscheme(theme)
 end
 

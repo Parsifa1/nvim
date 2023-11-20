@@ -3,7 +3,7 @@ local custom = require("custom")
 return {
 	"akinsho/nvim-toggleterm.lua",
 	enabled = true,
-	lazy = false,
+    event = "BufWinEnter",
 	opts = {
 		size = function(term)
 			if term.direction == "horizontal" then

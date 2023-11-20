@@ -1,7 +1,7 @@
 return {
     'xeluxee/competitest.nvim',
     dependencies = 'MunifTanjim/nui.nvim',
-    -- lazy = true,
+    event = "BufWinEnter",
     opts = {
         testcases_use_single_file = true,
         testcases_directory = "/bin",
@@ -28,3 +28,4 @@ return {
     }
 
 }
+
