@@ -11,11 +11,11 @@ return {
         disable_commit_confirmation = true,
         disable_builtin_notifications = true,
         kind = custom.prefer_tabpage and "tab" or "split",
-        commit_editor = {
-            kind = "tab",
-        },
         integrations = {
             diffview = true,
+        },
+        commit_editor = {
+            kind = "split",
         },
         sections = {
             stashes = {

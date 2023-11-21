@@ -5,6 +5,8 @@ M.border = "rounded"
 
 M.theme = "catppuccin"
 
+M.prefer_tabpage = false
+
 -- Width of side windows
 M.width = function()
 	local columns = vim.go.columns
