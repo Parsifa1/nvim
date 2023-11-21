@@ -74,4 +74,5 @@ else
     set("n", "<leader>p", ":Lazy<CR>", desc("lazy"))
     set("n", "<leader>cc", ":Telescope commands<CR>", desc("commands"))
     set("n", "<leader>ck", ":Telescope keymaps<CR>", desc("keymaps"))
+    set("n", "<leader>gg", "<Cmd>Neogit<CR>", desc("Open Neogit"))
 end
