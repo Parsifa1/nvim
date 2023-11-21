@@ -78,7 +78,7 @@ local opts = {
                 filetype_names = {
                     TelescopePrompt = 'Telescope',
                     alpha = 'Alpha',
-                    minifiles = 'MiniFiles',
+                    minifiles = 'Mini.Files',
                 },
             },
         },

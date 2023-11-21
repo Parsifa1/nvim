@@ -1,8 +1,9 @@
 return {
     "echasnovski/mini.files",
+    event = "VeryLazy",
     opts = {
-        mapping = {
-            go_in = '<leader>',
+        mappings = {
+            go_in_plus = '<Space>',
         }
     },
 }
