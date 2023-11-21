@@ -47,8 +47,9 @@
   "nvim-dap-virtual-text": { "branch": "master", "commit": "57f1dbd0458dd84a286b27768c142e1567f3ce3b" },
   "nvim-lspconfig": { "branch": "master", "commit": "7fedba8b1f8d0080c775851c429b88fd2ed4c6f5" },
   "nvim-notify": { "branch": "master", "commit": "e4a2022f4fec2d5ebc79afa612f96d8b11c627b3" },
+  "nvim-surround": { "branch": "main", "commit": "0855a89e00a5822c3a482a82e5223fcf2e9ede13" },
   "nvim-toggleterm.lua": { "branch": "main", "commit": "c80844fd52ba76f48fabf83e2b9f9b93273f418d" },
-  "nvim-treesitter": { "branch": "master", "commit": "1610b1aafb9b7b3a7b54c853ed45c6cb1a3d0df2" },
+  "nvim-treesitter": { "branch": "master", "commit": "7da3cb6323d1e1fbfc4d7dc05cac74946458b8a0" },
   "nvim-treesitter-textobjects": { "branch": "master", "commit": "dbcd9388e3b119a87c785e10a00d62876077d23d" },
   "nvim-web-devicons": { "branch": "master", "commit": "cdbcca210cf3655aa9b31ebf2422763ecd85ee5c" },
   "nvim-window-picker": { "branch": "main", "commit": "e7b6699fbd007bbe61dc444734b9bade445b2984" },
@@ -67,6 +68,5 @@
   "vim-flog": { "branch": "master", "commit": "b6aa1cadbad4ac88f740d1d435aeec754ab3a9c7" },
   "vim-fugitive": { "branch": "master", "commit": "46eaf8918b347906789df296143117774e827616" },
   "vim-repeat": { "branch": "master", "commit": "24afe922e6a05891756ecf331f39a1f6743d3d5a" },
-  "vim-surround": { "branch": "master", "commit": "3d188ed2113431cf8dac77be61b842acb64433d9" },
   "which-key.nvim": { "branch": "main", "commit": "4433e5ec9a507e5097571ed55c02ea9658fb268a" }
 }

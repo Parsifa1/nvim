@@ -3,7 +3,10 @@ local custom = require "custom"
 local opts = {
     -- Priority list of preferred backends for aerial.
     -- This can be a filetype map (see :help aerial-filetype-map)
-    backends = { "lsp", "treesitter", "markdown" },
+    backends = {
+        ['_']    = { "lsp", "treesitter" },
+        markdown = { "markdown" },
+    },
 
     layout = {
         -- These control the width of the aerial window.

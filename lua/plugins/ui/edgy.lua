@@ -20,12 +20,12 @@ return {
 			{ ft = "spectre_panel", size = { height = 0.4 } },
 		},
 		right = {
-			{
-				ft = "aerial",
-				title = "aerial",
-				open = "AerialOpen",
-				pinned = "ture",
-			},
+			-- {
+			-- 	ft = "aerial",
+			-- 	title = "aerial",
+			-- 	open = "AerialOpen",
+			-- 	pinned = "ture",
+
 		},
 		-- left = {
 		-- 	-- Neo-tree filesystem always takes half the screen height

@@ -1,4 +1,5 @@
 vim.g.mapleader = " "
+
 local set = vim.keymap.set
 local opts = {
     noremap = true, -- non-recursive
@@ -23,13 +24,6 @@ else
     set("v", "=", "gq", opts)
     set("n", "=", "gq", opts)
     set("o", "=", "q", opts)
-
-    -- set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)", desc("Put yanked after cursor"))
-    -- set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)", desc("Put yanked before cursor"))
-    -- set({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)", desc("Put yanked after selection"))
-    -- set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)", desc("(Put yanked before selection"))
-    -- set("n", "[y", "<Plug>(YankyCycleForward)", desc("Yanky Cycle Backward"))
-    -- set("n", "]y", "<Plug>(YankyCycleBackward)", desc("Yanky Cycle Forward"))
 
     --窗口跳转
     set("n", "<A-h>", "<C-w>h", opts)
