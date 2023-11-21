@@ -8,5 +8,5 @@ return {
             signs = true,          -- show icons in the signs column
         })
     end
---BUG do not have SIGNS
+--BUG: do not have SIGNS
 }

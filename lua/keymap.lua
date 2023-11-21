@@ -67,7 +67,8 @@ else
 
     --leader
     set("n", "<leader>a", "<Cmd>AerialToggle<CR>", desc("Outline"))
-    set("n", "<leader>e", ":Neotree toggle<CR>", desc("File Explorer"))
+    -- set("n", "<leader>e", ":Neotree toggle<CR>", desc("File Explorer"))
+    set("n", "<leader>e", ":lua MiniFiles.open()<Esc>", desc("File Explorer"))
     set("n", "<leader>i", ":Telescope projects<CR><Esc>", desc("find words"))
     set("n", "<leader>f", ":Telescope find_files<CR>", desc("find files"))
     set("n", "<leader>w", ":Telescope live_grep<CR>", desc("find words"))
