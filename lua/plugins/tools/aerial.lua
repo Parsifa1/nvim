@@ -1,8 +1,6 @@
 local custom = require "custom"
 
 local opts = {
-    -- Priority list of preferred backends for aerial.
-    -- This can be a filetype map (see :help aerial-filetype-map)
     backends = {
         ['_']    = { "lsp", "treesitter" },
         markdown = { "markdown" },
@@ -235,8 +233,6 @@ local opts = {
 
 return {
     "stevearc/aerial.nvim",
+    evnet = "VeryLazy",
     opts = opts,
-    keys = {
-        { "<leader>a", "<Cmd>AerialToggle<CR>", desc = "Outline" },
-    },
 }

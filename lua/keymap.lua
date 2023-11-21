@@ -66,11 +66,12 @@ else
     set("n", "<F12>", ":Lazy<CR>", opts)
 
     --leader
+    set("n", "<leader>a", "<Cmd>AerialToggle<CR>", desc("Outline"))
+    set("n", "<leader>e", ":Neotree toggle<CR>", desc("File Explorer"))
+    set("n", "<leader>i", ":Telescope projects<CR><Esc>", desc("find words"))
     set("n", "<leader>f", ":Telescope find_files<CR>", desc("find files"))
     set("n", "<leader>w", ":Telescope live_grep<CR>", desc("find words"))
-    set("n", "<leader>i", ":Telescope projects<CR><Esc>", desc("find words"))
     set("n", "<leader>r", ":Telescope oldfiles<CR>", desc("recent files"))
-    set("n", "<leader>e", ":Neotree toggle<CR>", desc("File Explorer"))
     set("n", "<leader>p", ":Lazy<CR>", desc("lazy"))
     set("n", "<leader>cc", ":Telescope commands<CR>", desc("commands"))
     set("n", "<leader>ck", ":Telescope keymaps<CR>", desc("keymaps"))
