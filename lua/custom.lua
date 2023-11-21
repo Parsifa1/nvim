@@ -58,11 +58,12 @@ local kind_icons = {
 	Variable = "",
 }
 
+
 M.icons = {
 	-- LSP diagnostic
 	diagnostic = {
-		error = "󰅚 ",
-		warn = "󰀪 ",
+		error = " ",
+		warn = " ",
 		hint = "󰌶 ",
 		info = "󰋽 ",
 	},

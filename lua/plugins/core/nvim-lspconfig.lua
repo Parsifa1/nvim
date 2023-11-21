@@ -1,26 +1,36 @@
+local function desc(index)
+    return { noremap = true, silent = true, desc = index }
+end
+
+local function firstToUpper(str)
+    return (str:gsub("^%l", string.upper))
+end
+
 return {
     "neovim/nvim-lspconfig",
-
     dependencies = {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
     },
     event = "User FileOpened",
     config = function()
-        local function desc(index)
-            return { noremap = true, silent = true, desc = index }
-        end
         local lspconfig = require("lspconfig")
+
+        -- Set diagnostic icons
+        vim.iter(require("custom").icons.diagnostic):each(function(type, icon)
+            local hl = "DiagnosticSign" .. firstToUpper(type)
+            vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+        end)
+        --
         -- Customized on_attach function
-        -- vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, opts)
+        vim.keymap.set('n', '<leader>dd', vim.diagnostic.open_float, desc("open float"))
         vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, desc("goto prev"))
         vim.keymap.set("n", "]d", vim.diagnostic.goto_next, desc("goto next"))
         vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, desc("quickfix list"))
 
         -- Use an on_attach function to only map the following keys
-        local on_attach = function(client, bufnr)
-            --format when save
-            -- require("lsp-format").on_attach(client, bufnr)
+        local on_attach = function(ev)
+            local bufnr = ev.bufnr
             local function bufopts_desc(index)
                 return { noremap = true, silent = true, buffer = bufnr, desc = index }
             end
@@ -36,16 +46,18 @@ return {
             vim.diagnostic.config({
                 virtual_text = {
                     spacing = 4,
-                    severity = vim.diagnostic.severity.ERROR,
+                    severity = { min = vim.diagnostic.severity.WARN }
                 },
                 float = {
                     severity_sort = true,
                     source = "if_many",
                 },
-                signs = false,
+                signs = true,
                 severity_sort = true,
             })
         end
+
+        -- for inlay hints
         vim.api.nvim_create_autocmd("LspAttach", {
             desc = "General LSP Attach",
             callback = function(args)
@@ -56,15 +68,21 @@ return {
                 end
             end,
         })
+
+        -- for neodev
         require("neodev").setup({
             override = function(root_dir, library)
                 library.enabled = true
                 library.plugins = true
             end,
         })
+
+        -- for python
         lspconfig.pylsp.setup({
             on_attach = on_attach,
         })
+
+        -- for lua
         lspconfig.lua_ls.setup({
             on_attach = on_attach,
             settings = {
@@ -81,6 +99,8 @@ return {
                 },
             },
         })
+
+        -- for c/c++
         lspconfig.clangd.setup({
             on_attach = on_attach,
             filetypes = { "cpp", "c" },
@@ -89,9 +109,14 @@ return {
                 "--offset-encoding=utf-16",
             },
         })
+
+        -- for rust
         lspconfig.rust_analyzer.setup({
             on_attach = on_attach,
         })
+
+        -- for markdown
         lspconfig.marksman.setup({})
     end,
 }
+

@@ -4,6 +4,7 @@ local opts = {
     backends = {
         ['_']    = { "lsp", "treesitter" },
         markdown = { "markdown" },
+        lua = { "treesitter" },
     },
 
     layout = {
@@ -14,17 +15,7 @@ local opts = {
         max_width = nil,
         width = nil,
         min_width = { 25, 0.2 },
-
-        -- Determines the default direction to open the aerial window. The 'prefer'
-        -- options will open the window in the other direction *if* there is a
-        -- different buffer in the way of the preferred direction
-        -- Enum: prefer_right, prefer_left, right, left, float
         default_direction = "prefer_right",
-
-        -- Determines where the aerial window will be opened
-        --   edge   - open aerial at the far right/left of the editor
-        --   group  - open aerial to the right/left of the group of windows containing the current buffer
-        --   window - open aerial to the right/left of the current window
         placement = "window",
     },
 
@@ -233,6 +224,6 @@ local opts = {
 
 return {
     "stevearc/aerial.nvim",
-    evnet = "VeryLazy",
+    event = "VeryLazy",
     opts = opts,
 }

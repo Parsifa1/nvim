@@ -56,7 +56,8 @@ return {
 
 	"nvim-telescope/telescope.nvim",
 	tag = "0.1.4",
-    event = "VeryLazy",
+    -- event = "VeryLazy",
+    cmd = "Telescope",
 	dependencies = {
 		{ "nvim-lua/popup.nvim" },
 		{ "nvim-lua/plenary.nvim" },
