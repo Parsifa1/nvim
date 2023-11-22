@@ -67,13 +67,13 @@ else
 
     --leader
     set("n", "<leader>a", "<Cmd>AerialToggle<CR>", desc("Outline"))
-    -- set("n", "<leader>e", ":Neotree toggle<CR>", desc("File Explorer"))
-    set("n", "<leader>e", ":lua MiniFiles.open()<Esc>", desc("File Explorer"))
+    -- set("n", "<leader>e", ":lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<CR>", desc("File Explorer"))
+    set("n", "<leader>e", ":lua MiniFiles.open()<CR>", desc("File Explorer"))
     set("n", "<leader>i", ":Telescope projects<CR><Esc>", desc("find words"))
     set("n", "<leader>f", ":Telescope find_files<CR>", desc("find files"))
     set("n", "<leader>w", ":Telescope live_grep<CR>", desc("find words"))
-    set("n", "<leader>r", ":Telescope oldfiles<CR>", desc("recent files"))
     set("n", "<leader>p", ":Lazy<CR>", desc("lazy"))
+    set("n", "<leader>r", ":Telescope oldfiles<CR>", desc("recent files"))
     set("n", "<leader>cc", ":Telescope commands<CR>", desc("commands"))
     set("n", "<leader>ck", ":Telescope keymaps<CR>", desc("keymaps"))
     set("n", "<leader>gg", "<Cmd>Neogit<CR>", desc("Open Neogit"))

@@ -1,9 +1,9 @@
-local custom = require "custom"
+-- local custom = require "custom"
 
 return {
     "Bekaboo/dropbar.nvim",
     dependencies = { 'nvim-telescope/telescope-fzf-native.nvim' },
-    event = "BufWinEnter",
+    event = "VeryLazy",
     opts = {
         general = {
             enable = function(buf, win)

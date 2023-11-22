@@ -2,14 +2,12 @@ if vim.g.vscode then
 	vim.opt.timeoutlen = 500
 	vim.opt.clipboard = "unnamedplus" -- use system clipboar
 else
-	-- vim.o.guifont = "JetBrainsMono Nerd Font Mono, 苹方-简:h12"
 	vim.g.loaded_python3_provider = 0
 	vim.g.neovide_remember_window_size = true
 	vim.g.copilot_assume_mapped = true
 	vim.loader.enable()
 	vim.g.copilot_proxy = "http://127.0.0.1:7891"
 	vim.o.shortmess = vim.o.shortmess .. "A"
-	-- Hint: use `:h <option>` to figure out the meaning if needed
 	vim.opt.clipboard = "unnamedplus" -- use system clipboard
 	vim.opt.completeopt = { "menu", "menuone", "noselect" }
 	vim.opt.mouse = "a" -- allow the mouse to be used in Nvim
@@ -29,6 +27,7 @@ else
 	vim.opt.splitright = true -- open new horizontal splits right
 	vim.opt.termguicolors = true -- enabl 24-bit RGB color in the TUI
 	vim.opt.list = false
+    vim.opt.signcolumn = "number"
 	vim.opt.listchars = {
 		tab = "  ",
 		eol = "⤶",
@@ -46,5 +45,4 @@ else
     -- Asyncrun setting
     vim.g.asyncrun_open = 6
 
-    vim.opt.signcolumn = "number"
 end
