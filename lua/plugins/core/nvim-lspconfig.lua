@@ -116,7 +116,13 @@ return {
         })
 
         -- for markdown
-        lspconfig.marksman.setup({})
+        lspconfig.marksman.setup({
+            on_attach = on_attach,
+        })
+        -- for yaml
+        lspconfig.yamlls.setup({
+            on_attach = on_attach,
+        })
     end,
 }
 

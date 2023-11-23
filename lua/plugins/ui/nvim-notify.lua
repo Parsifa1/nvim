@@ -5,7 +5,7 @@ return {
     config = function()
         local notify = require("notify")
         notify.setup({
-            stages = "fade_in_slide_out",
+            stages = "static",
             render = "minimal",
             background_colour = "Normal",
             top_down = false,
