@@ -29,6 +29,8 @@ else
         tab = "  ",
         eol = "⤶",
     }
+    -- set highlight
+    vim.api.nvim_set_hl(0, "visual", { reverse = true })
     -- searching
     vim.opt.incsearch = true  -- search as characters are entered
     vim.opt.hlsearch = false  -- do not highlight matches
@@ -40,7 +42,5 @@ else
     vim.opt.timeoutlen = 500 -- time to wait for a mapped sequence to complete (in milliseconds)
     -- asyncrun setting
     vim.g.asyncrun_open = 6
-    -- set highlight
-    vim.api.nvim_set_hl(0, "visual", { reverse = true })
 end
 
