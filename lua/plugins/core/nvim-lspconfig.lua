@@ -14,10 +14,10 @@ return {
     },
     event = "User FileOpened",
     config = function()
-        require('mason-lspconfig').setup({
-            -- A list of servers to automatically install if they're not already installed
-            ensure_installed = { 'pylsp', 'clangd', 'lua_ls', 'rust_analyzer', 'marksman', 'yamlls', },
-        })
+        -- require('mason-lspconfig').setup({
+        --     -- A list of servers to automatically install if they're not already installed
+        --     ensure_installed = { 'pylsp', 'clangd', 'lua_ls', 'rust_analyzer', 'marksman', 'yamlls', },
+        -- })
 
         local lspconfig = require("lspconfig")
         -- Set diagnostic icons
