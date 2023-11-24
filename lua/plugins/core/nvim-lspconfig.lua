@@ -14,8 +14,12 @@ return {
     },
     event = "User FileOpened",
     config = function()
-        local lspconfig = require("lspconfig")
+        require('mason-lspconfig').setup({
+            -- A list of servers to automatically install if they're not already installed
+            ensure_installed = { 'pylsp', 'clangd', 'lua_ls', 'rust_analyzer', 'marksman', 'yamlls', },
+        })
 
+        local lspconfig = require("lspconfig")
         -- Set diagnostic icons
         vim.iter(require("custom").icons.diagnostic):each(function(type, icon)
             local hl = "DiagnosticSign" .. firstToUpper(type)
@@ -71,7 +75,8 @@ return {
 
         -- for neodev
         require("neodev").setup({
-            override = function(root_dir, library)
+            override = function(root_and_library)
+                local library = root_and_library.roo_dir
                 library.enabled = true
                 library.plugins = true
             end,

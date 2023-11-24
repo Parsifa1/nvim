@@ -17,6 +17,7 @@ return {
             },
         }
 
+        --test
         local function set_hl()
             vim.api.nvim_set_hl(0, "GitSignsChangeLn", { link = "DiffText" })
             vim.api.nvim_set_hl(0, "GitSignsDeleteLn", { link = "DiffDelete" })

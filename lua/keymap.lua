@@ -1,5 +1,3 @@
-vim.g.mapleader = " "
-
 local set = vim.keymap.set
 local opts = {
     noremap = true, -- non-recursive

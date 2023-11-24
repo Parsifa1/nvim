@@ -1,6 +1,7 @@
 return {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     event = "VeryLazy",
+    enabled = false,
     opts = {
         ensure_installed = {
             "lua-language-server",
