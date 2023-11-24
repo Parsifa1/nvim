@@ -25,10 +25,8 @@ else
     vim.opt.termguicolors = true   -- enabl 24-bit rgb color in the tui
     vim.opt.list = false
     vim.opt.signcolumn = "number"
-    vim.opt.listchars = {
-        tab = "  ",
-        eol = "⤶",
-    }
+    -- set onwrap in line
+    vim.wo.wrap = false
     -- set highlight
     vim.api.nvim_set_hl(0, "visual", { reverse = true })
 
