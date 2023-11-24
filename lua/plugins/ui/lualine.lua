@@ -60,7 +60,6 @@ local opts = {
             },
             "overseer",
             "copilot",
-            indent,
             "encoding",
             "fileformat",
         },

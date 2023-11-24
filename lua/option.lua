@@ -31,13 +31,12 @@ else
     }
     -- set highlight
     vim.api.nvim_set_hl(0, "visual", { reverse = true })
+
     -- searching
     vim.opt.incsearch = true  -- search as characters are entered
     vim.opt.hlsearch = false  -- do not highlight matches
     vim.opt.ignorecase = true -- ignore case in searches by default
     vim.opt.smartcase = true  -- but make it case sensitive if an uppercase is entered
-    -- highlight
-    vim.api.nvim_set_hl(0, "visual", { reverse = true })
     -- indentation
     vim.opt.timeoutlen = 500 -- time to wait for a mapped sequence to complete (in milliseconds)
     -- asyncrun setting

@@ -1,3 +1,3 @@
-require("keymap")
 require("plugin")
-require("options")
+require("keymap")
+require("option")

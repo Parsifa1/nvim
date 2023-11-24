@@ -16,7 +16,7 @@ return {
         },
         routes = {
             {
-                filter = { event = "msg_show", find = "written" },
+                filter = { event = "msg_show", find = "[w]" },
                 opts = { skip = true },
             },
             {
