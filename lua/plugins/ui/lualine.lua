@@ -52,6 +52,19 @@ local opts = {
                 cond = lazy_status.has_updates,
                 color = { fg = "#ff9e64" },
             },
+            {
+                function()
+                    local function Cwd()
+                        local cwd = vim.fn.getcwd()
+                        if cwd == nil then
+                            return "VOID"
+                        else
+                            return cwd:gsub("/home/parsifa1", "~")
+                        end
+                    end
+                    return custom.icons.ui.FolderOpen .." "..Cwd()
+                end,
+            }
             -- "copilot",
         },
         lualine_y = {
@@ -67,7 +80,7 @@ local opts = {
                 padding = 0,
             },
             {
-                function ()
+                function()
                     local cursorcol = vim.fn.virtcol(".")
                     if cursorcol >= 10 then
                         return " · "
@@ -78,7 +91,8 @@ local opts = {
                 padding = 0,
             },
             {
-                "progress", separator = { right = "" },
+                "progress",
+                separator = { right = "" },
                 icon = { "󰇽", align = "left" },
                 padding = { left = 0, right = 1 },
             },

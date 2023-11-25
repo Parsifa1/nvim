@@ -237,6 +237,7 @@ M.icons = {
 	},
 	-- LSP kinds
 	kind = backup.kind,
+    ui = backup.ui,
 	kind_with_space = append_space(backup.kind),
 }
 
