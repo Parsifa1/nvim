@@ -1,70 +1,74 @@
 local lazy_status = require("lazy.status")
+local custom = require"custom"
 
-local function indent()
-    if vim.o.expandtab then
-        return "SW:" .. vim.o.shiftwidth
-    else
-        return "TS:" .. vim.o.tabstop
-    end
+local function readonly()
+      if vim.bo.readonly then
+        return ' '
+      else
+        return ''
+      end
 end
-
-local function lsp()
-    local clients = vim.lsp.get_clients()
-    local buf = vim.api.nvim_get_current_buf()
-    clients = vim.iter(clients)
-        :filter(function(client)
-            return client.attached_buffers[buf]
-        end)
-        :filter(function(client)
-            return client.name ~= "copilot"
-        end)
-        :map(function(client)
-            return client.name
-        end)
-        :totable()
-    local info = table.concat(clients, ", ")
-    if info == "" then
-        return "void"
-    else
-        return info
-    end
-end
-
-local function recording()
-    local reg = vim.fn.reg_recording()
-    if reg ~= "" then
-        return "recording @" .. reg
-    end
-    reg = vim.fn.reg_recorded()
-    if reg ~= "" then
-        return "recorded @" .. reg
-    end
-
-    return ""
-end
-
 local opts = {
     sections = {
         lualine_a = {
             { "mode", separator = { left = "" }, right_padding = 2 },
         },
+        lualine_b = {
+        {
+            'branch',
+            icon = '',
+        },
+        },
         lualine_c = {
-            lsp,
+            {
+                "filetype",
+                colored = true,
+                icon_only = false,
+                icon = { align = "left" },
+            },
+            {
+                "diagnostics",
+                symbols = {
+                    error = custom.icons.diagnostic.error,
+                    warn = custom.icons.diagnostic.warn,
+                    info = custom.icons.diagnostic.info,
+                    hint = custom.icons.diagnostic.hint,
+                },
+            }
+            -- lsp,
         },
         lualine_x = {
-            recording,
+            readonly,
+            {
+                "diff",
+                symbols = {
+                    added = ' ',
+                    modified = '󰝤 ',
+                    removed = ' ',
+                },
+            },
             {
                 lazy_status.updates,
                 cond = lazy_status.has_updates,
                 color = { fg = "#ff9e64" },
             },
-            "overseer",
-            "copilot",
-            "encoding",
-            "fileformat",
+            {
+                "encoding",
+                right_padding = 2,
+            },
+            -- "copilot",
+        },
+        lualine_y = {
+            {
+                'location',
+            },
         },
         lualine_z = {
-            { "location", separator = { right = "" }, left_padding = 2 },
+            {
+                "progress", separator = { right = "" },
+                icon = { "󰇽", align = "left" },
+
+            },
         },
     },
     tabline = { -- If you want tabline to shift too
@@ -94,7 +98,6 @@ local opts = {
         theme = "auto",
         disabled_filetypes = {
             " Alpha",
-            "[No Name]"
         },
         ignore_focus = {
             "Alpha",
@@ -115,14 +118,6 @@ local opts = {
         "mundo",
         "lazy",
     },
-    inactive_sections = {
-        lualine_a = { "filename" },
-        lualine_b = {},
-        lualine_c = {},
-        lualine_x = {},
-        lualine_y = {},
-        lualine_z = { "location" },
-    },
 }
 
 return {
@@ -138,4 +133,3 @@ return {
     },
     opts = opts,
 }
-
