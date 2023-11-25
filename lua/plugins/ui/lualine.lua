@@ -1,23 +1,24 @@
-local lazy_status = require("lazy.status")
-local custom = require"custom"
+local lazy_status = require "lazy.status"
+local custom = require "custom"
 
 local function readonly()
-      if vim.bo.readonly then
+    if vim.bo.readonly then
         return ' '
-      else
+    else
         return ''
-      end
+    end
 end
+
 local opts = {
     sections = {
         lualine_a = {
             { "mode", separator = { left = "" }, right_padding = 2 },
         },
         lualine_b = {
-        {
-            'branch',
-            icon = '',
-        },
+            {
+                'branch',
+                icon = '',
+            },
         },
         lualine_c = {
             {
@@ -34,11 +35,10 @@ local opts = {
                     info = custom.icons.diagnostic.info,
                     hint = custom.icons.diagnostic.hint,
                 },
-            }
-            -- lsp,
+            },
+            readonly,
         },
         lualine_x = {
-            readonly,
             {
                 "diff",
                 symbols = {
@@ -52,22 +52,35 @@ local opts = {
                 cond = lazy_status.has_updates,
                 color = { fg = "#ff9e64" },
             },
-            {
-                "encoding",
-                right_padding = 2,
-            },
             -- "copilot",
         },
         lualine_y = {
             {
-                'location',
+                "encoding",
+                right_padding = 2,
             },
+
         },
         lualine_z = {
             {
+                'location',
+                padding = 0,
+            },
+            {
+                function ()
+                    local cursorcol = vim.fn.virtcol(".")
+                    if cursorcol >= 10 then
+                        return " · "
+                    else
+                        return "· "
+                    end
+                end,
+                padding = 0,
+            },
+            {
                 "progress", separator = { right = "" },
                 icon = { "󰇽", align = "left" },
-
+                padding = { left = 0, right = 1 },
             },
         },
     },
@@ -133,3 +146,4 @@ return {
     },
     opts = opts,
 }
+
