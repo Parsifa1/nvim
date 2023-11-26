@@ -91,7 +91,6 @@ local opts = {
                     return custom.icons.ui.Folder .. " " .. Cwd()
                 end,
             },
-            -- "copilot",
             {
                 "copilot",
                 show_running = true,
@@ -134,7 +133,7 @@ local opts = {
             },
         },
     },
-    tabline = { -- If you want tabline to shift too
+    tabline = {
         lualine_a = {
             {
                 "buffers",
@@ -145,6 +144,8 @@ local opts = {
                     TelescopePrompt = 'Telescope',
                     alpha = 'Alpha',
                     minifiles = 'Mini.Files',
+                    toggleterm = 'ToggleTerm',
+                    
                 },
             },
         },
