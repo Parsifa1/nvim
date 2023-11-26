@@ -9,6 +9,30 @@ local function readonly()
     end
 end
 
+local lsp = function()
+        local clients = vim.lsp.get_clients()
+        local buf = vim.api.nvim_get_current_buf()
+        clients = vim
+            .iter(clients)
+            :filter(function(client)
+                return client.attached_buffers[buf]
+            end)
+            :filter(function(client)
+                return client.name ~= "copilot"
+            end)
+            :map(function(client)
+                return client.name
+            end)
+            :totable()
+        local info = table.concat(clients, ", ")
+        if info == "" then
+            return ""
+        else
+            return info
+        end
+    end
+
+
 local opts = {
     sections = {
         lualine_a = {
@@ -24,9 +48,11 @@ local opts = {
             {
                 "filetype",
                 colored = true,
-                icon_only = false,
+                icon_only = true,
                 icon = { align = "left" },
+                padding = { left = 1, right = 0 },
             },
+            lsp,
             {
                 "diagnostics",
                 symbols = {
@@ -62,10 +88,20 @@ local opts = {
                             return cwd:gsub("/home/parsifa1", "~")
                         end
                     end
-                    return custom.icons.ui.FolderOpen .." "..Cwd()
+                    return custom.icons.ui.Folder .. " " .. Cwd()
                 end,
-            }
+            },
             -- "copilot",
+            {
+                "copilot",
+                show_running = true,
+                symbols = {
+                    status = {
+                        enabled = " ",
+                        disabled = " ",
+                    }
+                },
+            },
         },
         lualine_y = {
             {

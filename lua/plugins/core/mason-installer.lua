@@ -13,6 +13,7 @@ return {
             "autopep8",
             "marksman",
             "yaml-language-server",
+            "haskell-language-server",
             -- "stylua",
         },
         -- auto_update = true,

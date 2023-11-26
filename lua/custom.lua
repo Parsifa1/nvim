@@ -232,7 +232,7 @@ M.icons = {
 	diagnostic = {
 		error = " ",
 		warn = " ",
-		hint = "󰌶 ",
+		hint = "󰌵 ",
 		info = " ",
 	},
 	-- LSP kinds

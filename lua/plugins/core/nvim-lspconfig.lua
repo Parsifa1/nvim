@@ -124,6 +124,10 @@ return {
         lspconfig.yamlls.setup({
             on_attach = on_attach,
         })
+        -- for haskell
+        lspconfig.hls.setup({
+            on_attach = on_attach,
+        })
     end,
 }
 
