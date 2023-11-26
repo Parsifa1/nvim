@@ -67,7 +67,7 @@ else
     set("n", "<leader>a", "<Cmd>AerialToggle<CR>", desc("Outline"))
     -- set("n", "<leader>e", ":lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<CR>", desc("File Explorer"))
     set("n", "<leader>e", ":lua MiniFiles.open()<CR>", desc("File Explorer"))
-    set("n", "<leader>i", ":Telescope projects<CR><Esc>", desc("find words"))
+    set("n", "<leader>i", ":Telescope projects<CR><Esc>", desc("projects folder"))
     set("n", "<leader>f", ":Telescope find_files<CR>", desc("find files"))
     set("n", "<leader>w", ":Telescope live_grep<CR>", desc("find words"))
     set("n", "<leader>p", ":Lazy<CR>", desc("lazy"))
