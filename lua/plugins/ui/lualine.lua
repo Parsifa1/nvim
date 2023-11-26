@@ -36,7 +36,7 @@ local lsp = function()
 local opts = {
     sections = {
         lualine_a = {
-            { "mode", separator = { left = "" }, right_padding = 2 },
+            { "mode", separator = { left = "", right = "" }, right_padding = 2 },
         },
         lualine_b = {
             {
