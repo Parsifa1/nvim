@@ -145,7 +145,6 @@ local opts = {
                     alpha = 'Alpha',
                     minifiles = 'Mini.Files',
                     toggleterm = 'ToggleTerm',
-                    
                 },
             },
         },
