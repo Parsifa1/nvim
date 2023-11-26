@@ -183,7 +183,6 @@ local opts = {
         "lazy",
     },
 }
---git test for no name
 --TEST: test for no-name
 return {
     "nvim-lualine/lualine.nvim",
