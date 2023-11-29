@@ -19,10 +19,13 @@ end
 local opts = {
 	defaults = {
 		mappings = {
-			n = { s = flash },
+			n = {
+                s = flash,
+                ["q"] = 'close',
+            },
 			i = { ["<c-s>"] = flash },
 		},
-		prompt_prefix = " ",
+		prompt_prefix = "  ",
 		selection_caret = " ",
 	},
 	pickers = {
@@ -49,6 +52,14 @@ local opts = {
 			override_file_sorter = true, -- override the file sorter
 			case_mode = "smart_case", -- or "ignore_case" or "respect_case"
 		},
+        project = {
+            project = { display_type = 'full' },
+            order_by = 'recent',
+            on_project_selected = function(prompt_bufnr)
+                -- Do anything you want in here. For example:
+                require("telescope._extensions.project.actions").change_working_directory(prompt_bufnr, false)
+      end
+        }
 	},
 }
 

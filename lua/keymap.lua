@@ -19,9 +19,16 @@ if vim.g.vscode then
 else
     vim.api.nvim_set_keymap("i", "<A-j>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
 
+    --格式化设置
     set("v", "=", "gq", opts)
     set("n", "=", "gq", opts)
     set("o", "=", "q", opts)
+    --窗口操作
+    set("n", "<up>", ":res +5<CR>", opts)
+    set("n", "<down>", ":res -5<CR>", opts)
+    set("n", "<left>", ":vertical resize-5<CR>", opts)
+    set("n", "<right>", ":vertical resize+5<CR>", opts)
+
 
     --窗口跳转
     set("n", "<A-h>", "<C-w>h", opts)
@@ -31,7 +38,7 @@ else
     set("n", "<A-q>", ":q<CR>", opts)
     set("t", "<A-q>", "<C-\\><C-n>:q<CR>", opts)
     set("i", "<A-q>", "<Esc>:q<CR>", opts)
-    set("n", "<A-w>", ":ToggleTerm | startinsert<CR>", desc("Terminal"))
+    set("n", "<A-e>", ":ToggleTerm<CR>", desc("Terminal"))
 
     --分屏
     set("n", "zv", ":vsp<CR>", desc("vsplit"))
@@ -67,7 +74,7 @@ else
     set("n", "<leader>a", "<Cmd>AerialToggle<CR>", desc("Outline"))
     -- set("n", "<leader>e", ":lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<CR>", desc("File Explorer"))
     set("n", "<leader>e", ":lua MiniFiles.open()<CR>", desc("File Explorer"))
-    set("n", "<leader>i", ":Telescope projects<CR><Esc>", desc("projects folder"))
+    set("n", "<leader>i", ":Telescope project<CR><Esc>", desc("projects folder"))
     set("n", "<leader>f", ":Telescope find_files<CR>", desc("find files"))
     set("n", "<leader>w", ":Telescope live_grep<CR>", desc("find words"))
     set("n", "<leader>p", ":Lazy<CR>", desc("lazy"))

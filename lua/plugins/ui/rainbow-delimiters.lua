@@ -5,7 +5,7 @@ return {
         -- This module contains a number of default definitions
         local rainbow_delimiters = require 'rainbow-delimiters'
 
-        ---@type rainbow_delimiters.config
+        ---rainbow_delimiters.config
         vim.g.rainbow_delimiters = {
             strategy = {
                 [''] = rainbow_delimiters.strategy['global'],

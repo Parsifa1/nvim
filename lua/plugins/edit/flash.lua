@@ -10,6 +10,7 @@ return {
 	event = "VeryLazy",
     -- enabled = 
 	opts = {
+        labels = "asdfghjklqwertyuiopzxcvbnm",
 		remote = {
 			remote_op = { restore = true, motion = true },
 		},

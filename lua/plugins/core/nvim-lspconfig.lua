@@ -38,7 +38,7 @@ return {
             vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts_desc("definition"))
             vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts_desc("hover"))
             vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts_desc("implementation"))
-            vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts_desc("signature help"))
+            -- vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts_desc("signature help"))
             vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, bufopts_desc("type definition"))
             vim.keymap.set("n", "<leader>cn", vim.lsp.buf.rename, bufopts_desc("rename"))
             vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts_desc("code action"))

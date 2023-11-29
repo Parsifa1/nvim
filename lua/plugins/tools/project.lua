@@ -1,19 +1,11 @@
 return {
-    "ahmedkhalf/project.nvim",
+    "nvim-telescope/telescope-project.nvim",
     event = "VeryLazy",
-    init = function()
-        function _ADD_CURR_DIR_TO_PROJECTS()
-            local historyfile = require("project_nvim.utils.path").historyfile
-            local curr_directory = vim.fn.expand("%:p:h")
-            vim.cmd("!echo " .. curr_directory .. " >> " .. historyfile)
-        end
-        vim.cmd("command! ProjectAdd lua _ADD_CURR_DIR_TO_PROJECTS()")
-    end,
+    dependencies = {
+        "nvim-telescope/telescope-file-browser.nvim"
+    },
     config = function()
-        require("project_nvim").setup {
-            manual_mode = true,
-            -- telescope_default_action= "cd",
-            require('telescope').load_extension('projects')
-        }
+        -- require 'telescope'.extensions.project.project {}
+        require'telescope'.load_extension('project')
     end
 }

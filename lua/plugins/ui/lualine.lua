@@ -10,27 +10,27 @@ local function readonly()
 end
 
 local lsp = function()
-        local clients = vim.lsp.get_clients()
-        local buf = vim.api.nvim_get_current_buf()
-        clients = vim
-            .iter(clients)
-            :filter(function(client)
-                return client.attached_buffers[buf]
-            end)
-            :filter(function(client)
-                return client.name ~= "copilot"
-            end)
-            :map(function(client)
-                return client.name
-            end)
-            :totable()
-        local info = table.concat(clients, ", ")
-        if info == "" then
-            return ""
-        else
-            return info
-        end
-    end
+    local clients = vim.lsp.get_clients()
+    local buf = vim.api.nvim_get_current_buf()
+    clients = vim
+        .iter(clients)
+        :filter(function(client)
+            return client.attached_buffers[buf]
+        end)
+        :filter(function(client)
+            return client.name ~= "copilot"
+        end)
+        :map(function(client)
+            return client.name
+        end)
+        :totable()
+    local info = table.concat(clients, ", ")
+    -- if info == "" then
+    --     return ""
+    -- else
+        return info
+    -- end
+end
 
 
 local opts = {
@@ -69,7 +69,7 @@ local opts = {
                 "diff",
                 symbols = {
                     added = ' ',
-                    modified = '󰝤 ',
+                    modified = ' ',
                     removed = ' ',
                 },
             },
@@ -146,6 +146,7 @@ local opts = {
                     minifiles = 'Mini.Files',
                     toggleterm = 'ToggleTerm',
                     checkhealth = 'Checkhelth',
+                    oil = 'Oil',
                 },
             },
         },
