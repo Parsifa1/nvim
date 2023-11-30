@@ -11,6 +11,8 @@ return {
     dependencies = {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
+        "ylyukas-reineke/lsp-format.nvim",
+        "ray-x/lsp_signature.nvim",
     },
     event = "User FileOpened",
     config = function()
@@ -56,6 +58,14 @@ return {
                 severity_sort = true,
             })
         end
+
+	--for lsp signature
+	require("lsp_signature").setup({
+		hint_prefix = "🧐 ", --  NOTE: for the terminal not support emoji, might crash
+		handler_opts = {
+			border = require("custom").border,
+		},
+	})
 
         -- for inlay hints
         vim.api.nvim_create_autocmd("LspAttach", {
