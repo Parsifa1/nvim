@@ -31,6 +31,13 @@ return {
                 },
                 opts = { skip = true },
             },
+            {
+                filter = {
+                    event = 'msg_show',
+                    find = 'E21',
+                },
+                opts = { skip = true },
+            },
         },
     },
 }

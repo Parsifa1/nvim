@@ -22,6 +22,8 @@ local opts = {
             n = {
                 s = flash,
                 ["q"] = 'close',
+                ["zh"] = 'select_horizontal',
+                ["zv"] = 'select_vertical',
             },
             i = {
                 ["<A-q>"] = 'close',
@@ -59,7 +61,7 @@ local opts = {
 
 return {
     "nvim-telescope/telescope.nvim",
-    -- tag = "0.1.4",
+    branch = "0.1.x",
     -- event = "VeryLazy",
     cmd = "Telescope",
     dependencies = {
@@ -70,4 +72,3 @@ return {
     },
     opts = opts,
 }
-

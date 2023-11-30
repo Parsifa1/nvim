@@ -10,7 +10,6 @@ else
     vim.opt.completeopt = { "menu", "menuone", "noselect" }
     vim.opt.mouse = "a"               -- allow the mouse to be used in nvim
     vim.opt.foldlevel = 99            -- 默认不折叠
-    -- vim.g.loaded_python3_provider = 0
     -- tab
     vim.opt.tabstop = 4      -- number of visual spaces per tab
     -- vim.opt.sofbstop = 4 -- number of spacesin tab when editing
