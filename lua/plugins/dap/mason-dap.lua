@@ -1,12 +1,9 @@
 return {
-  "jay-babu/mason-nvim-dap.nvim",
-  enabled = false,
-  event = "VeryLazy",
-  dependencies = {
-    "mason.nvim",
-    "mfussenegger/nvim-dap",
-  },
-  opts = {
-
-  },
+    "jay-babu/mason-nvim-dap.nvim",
+    -- Only load when nvim-dap loads
+    lazy = true,
+    dependencies = {
+        "mason.nvim",
+    },
+    opts = {}
 }

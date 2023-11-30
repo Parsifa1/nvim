@@ -5,7 +5,8 @@ return {
         ensure_installed = {
             "lua-language-server",
             "clangd",
-            "cpptools",
+            "codelldb",
+            -- "cpptools",
             "rust-analyzer",
             "python-lsp-server",
             "pyright",
@@ -14,7 +15,7 @@ return {
             "marksman",
             "yaml-language-server",
             "haskell-language-server",
-            -- "stylua",
+            "stylua",
         },
         -- auto_update = true,
         -- run_on_start = true,

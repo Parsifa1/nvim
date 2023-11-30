@@ -8,15 +8,18 @@ return {
     event = "VeryLazy",
     config = function()
         local dap = require "dap"
-        dap.adapters.cppdbg = {
-            id = "cppdbg",
-            type = 'executable',
-            command = "/home/parsifa1/.local/share/nvim/mason/bin/OpenDebugAD7",
+        dap.adapters.codelldb = {
+            type = 'server',
+            port = "${port}",
+            executable = {
+                command = 'codelldb',
+                args = { "--port", "${port}" },
+            }
         }
         dap.configurations.cpp = {
             {
                 name = "Launch file",
-                type = "cppdbg",
+                type = "codelldb",
                 request = "launch",
                 program = function()
                     vim.cmd 'cd %:h'
@@ -29,15 +32,15 @@ return {
                     end
                 end,
                 cwd = "${fileDirname}",
-                -- stopAtEntry = false,
-                miDebuggerPath = '/usr/bin/gdb',
-                setupCommands = {
-                    {
-                        text = '-enable-pretty-printing',
-                        description = 'enable pretty printing',
-                        ignoreFailures = false
-                    },
-                },
+                stopAtEntry = true,
+                -- miDebuggerPath = '/usr/bin/gdb',
+                -- setupCommands = {
+                --     {
+                --         text = '-enable-pretty-printing',
+                --         description = 'enable pretty printing',
+                --         ignoreFailures = false
+                --     },
+                -- },
             },
         }
         local dapui = require("dapui")
