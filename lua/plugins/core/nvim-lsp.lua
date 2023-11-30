@@ -11,7 +11,7 @@ return {
     dependencies = {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
-        "ylyukas-reineke/lsp-format.nvim",
+        "lukas-reineke/lsp-format.nvim",
         "ray-x/lsp_signature.nvim",
     },
     event = "User FileOpened",
