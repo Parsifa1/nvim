@@ -54,13 +54,6 @@ local opts = {
             override_generic_sorter = false,
             override_file_sorter = true,
         },
-        project = {
-            order_by = 'recent',
-            theme = "dropdown",
-            on_project_selected = function(prompt_bufnr)
-                require("telescope._extensions.project.actions").change_working_directory(prompt_bufnr, false)
-            end
-        },
     },
 }
 
@@ -70,7 +63,6 @@ return {
     -- event = "VeryLazy",
     cmd = "Telescope",
     dependencies = {
-        { "nvim-telescope/telescope-project.nvim" },
         { "nvim-lua/popup.nvim" },
         { "nvim-lua/plenary.nvim" },
         { "nvim-telescope/telescope-fzy-native.nvim" },

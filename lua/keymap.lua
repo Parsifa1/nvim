@@ -73,12 +73,12 @@ else
     --leader
     set("n", "<leader>a", "<Cmd>AerialToggle<CR>", desc("Outline"))
     set("n", "<leader>e", ":lua MiniFiles.open()<CR>", desc("File Explorer"))
-    set("n", "<leader>f", ":Telescope find_files<CR>", desc("find files"))
-    set("n", "<leader>w", ":Telescope live_grep<CR>", desc("find words"))
-    set("n", "<leader>p", ":Lazy<CR>", desc("lazy"))
-    set("n", "<leader>r", ":Telescope oldfiles<CR>", desc("recent files"))
+    set("n", "<leader>ff", ":Telescope find_files<CR>", desc("find files"))
+    set("n", "<leader>fw", ":Telescope live_grep<CR>", desc("find words"))
+    set("n", "<leader>fr", ":Telescope oldfiles<CR>", desc("recent files"))
+    set("n", "<leader>l", ":Lazy<CR>", desc("lazy"))
     set("n", "<leader>cc", ":Telescope commands<CR>", desc("commands"))
     set("n", "<leader>ck", ":Telescope keymaps<CR>", desc("keymaps"))
     set("n", "<leader>gg", "<Cmd>Neogit<CR>", desc("Open Neogit"))
-    set("n", "<leader>i", ":lua require'telescope'.extensions.project.project{ display_type ='full'}<CR><Esc>", desc("projects folder"))
+    set("n", "<leader>p", ":Telescope neovim-project discover theme=dropdown<CR><Esc>", desc("projects folder"))
 end

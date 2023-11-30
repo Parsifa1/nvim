@@ -60,6 +60,7 @@ local init = function()
         local cur_directory = vim.fs.dirname(cur_entry_path)
         vim.fn.chdir(cur_directory)
         MiniFiles.open()
+        MiniFiles.reset()
     end
     vim.api.nvim_create_autocmd('User', {
         pattern = 'MiniFilesBufferCreate',
