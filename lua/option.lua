@@ -3,13 +3,13 @@ if vim.g.vscode then
     vim.opt.clipboard = "unnamedplus" -- use system clipboar
 else
     vim.loader.enable()
+    vim.opt.foldlevel = 99            -- 默认不折叠
     vim.g.copilot_assume_mapped = true
     vim.g.copilot_proxy = "http://127.0.0.1:7891"
     vim.o.shortmess = vim.o.shortmess .. "a"
     vim.opt.clipboard = "unnamedplus" -- use system clipboard
     vim.opt.completeopt = { "menu", "menuone", "noselect" }
     vim.opt.mouse = "a"               -- allow the mouse to be used in nvim
-    vim.opt.foldlevel = 99            -- 默认不折叠
     -- tab
     vim.opt.tabstop = 4      -- number of visual spaces per tab
     -- vim.opt.sofbstop = 4 -- number of spacesin tab when editing
@@ -28,7 +28,6 @@ else
     vim.wo.wrap = false
     -- set highlight
     vim.api.nvim_set_hl(0, "visual", { reverse = true })
-
     -- searching
     vim.opt.incsearch = true  -- search as characters are entered
     vim.opt.hlsearch = false  -- do not highlight matches

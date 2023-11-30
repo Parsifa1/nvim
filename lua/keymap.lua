@@ -40,6 +40,10 @@ else
     set("i", "<A-q>", "<Esc>:q<CR>", opts)
     set("n", "<A-e>", ":ToggleTerm<CR>", desc("Terminal"))
 
+    -- 使用循环创建 Alt+1 到 Alt+9 的映射
+    for i = 1, 9 do
+    end
+
     --分屏
     set("n", "zv", ":vsp<CR>", desc("vsplit"))
     set("n", "zh", ":sp<CR>", desc("split"))

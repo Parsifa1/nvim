@@ -22,6 +22,7 @@ local opts = {
             n = {
                 s = flash,
                 ["q"] = 'close',
+                ["<A-q>"] = 'close',
                 ["zh"] = 'select_horizontal',
                 ["zv"] = 'select_vertical',
             },
