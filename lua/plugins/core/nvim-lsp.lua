@@ -16,14 +16,13 @@ return {
     },
     event = "User FileOpened",
     config = function()
-
         local lspconfig = require("lspconfig")
         -- Set diagnostic icons
         vim.iter(require("custom").icons.diagnostic):each(function(type, icon)
             local hl = "DiagnosticSign" .. firstToUpper(type)
             vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
         end)
-        --
+
         -- Customized on_attach function
         vim.keymap.set('n', '<leader>dd', vim.diagnostic.open_float, desc("open float"))
         vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, desc("goto prev"))
@@ -59,13 +58,13 @@ return {
             })
         end
 
-	--for lsp signature
-	require("lsp_signature").setup({
-		hint_prefix = "🧐 ", --  NOTE: for the terminal not support emoji, might crash
-		handler_opts = {
-			border = require("custom").border,
-		},
-	})
+        --for lsp signature
+        require("lsp_signature").setup({
+            hint_prefix = "🧐 ", --  NOTE: for the terminal not support emoji, might crash
+            handler_opts = {
+                border = require("custom").border,
+            },
+        })
 
         -- for inlay hints
         vim.api.nvim_create_autocmd("LspAttach", {
@@ -79,65 +78,42 @@ return {
             end,
         })
 
-        -- for neodev
-        require("neodev").setup({
-            override = function(root_and_library)
-                local library = root_and_library.roo_dir
-                library.enabled = true
-                library.plugins = true
+        -- for lsp config in mason
+        require("mason-lspconfig").setup_handlers {
+            function(server_name) -- default handler (optional)
+                require("lspconfig")[server_name].setup {
+                    on_attach = on_attach,
+                }
             end,
-        })
-
-        -- for python
-        lspconfig.pylsp.setup({
-            on_attach = on_attach,
-        })
-
-        -- for lua
-        lspconfig.lua_ls.setup({
-            on_attach = on_attach,
-            settings = {
-                Lua = {
-                    hint = {
-                        enable = true,
-                        arrIndex = "Enable",
-                        setType = true,
+            ["clangd"] = function()
+                lspconfig.clangd.setup({
+                    on_attach = on_attach,
+                    filetypes = { "cpp", "c" },
+                    cmd = {
+                        "clangd",
+                        "--offset-encoding=utf-16",
                     },
-                    diagnostics = {
-                        disable = { "missing-fields", "incomplete-signature-doc" },
-                        globals = { "vim" },
+                })
+            end,
+            ["lua_ls"] = function()
+                lspconfig.lua_ls.setup({
+                    on_attach = on_attach,
+                    settings = {
+                        Lua = {
+                            hint = {
+                                enable = true,
+                                arrIndex = "Enable",
+                                setType = true,
+                            },
+                            diagnostics = {
+                                disable = { "missing-fields", "incomplete-signature-doc" },
+                                globals = { "vim" },
+                            },
+                        },
                     },
-                },
-            },
-        })
-
-        -- for c/c++
-        lspconfig.clangd.setup({
-            on_attach = on_attach,
-            filetypes = { "cpp", "c" },
-            cmd = {
-                "clangd",
-                "--offset-encoding=utf-16",
-            },
-        })
-
-        -- for rust
-        lspconfig.rust_analyzer.setup({
-            on_attach = on_attach,
-        })
-
-        -- for markdown
-        lspconfig.marksman.setup({
-            on_attach = on_attach,
-        })
-        -- for yaml
-        lspconfig.yamlls.setup({
-            on_attach = on_attach,
-        })
-        -- for haskell
-        lspconfig.hls.setup({
-            on_attach = on_attach,
-        })
+                })
+            end
+        }
     end,
 }
 
