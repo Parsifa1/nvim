@@ -1,5 +1,7 @@
 return {
     "coffebar/neovim-project",
+    -- cmd = "Telescope",
+    event = "VeryLazy",
     opts = {
         last_session_on_startup = false,
         projects = { -- define project roots
@@ -21,6 +23,6 @@ return {
         { "nvim-telescope/telescope.nvim" },
         { "Shatur/neovim-session-manager" },
     },
-    event = "VeryLazy",
+    
 
 }

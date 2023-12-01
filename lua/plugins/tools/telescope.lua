@@ -18,6 +18,19 @@ local function flash(prompt_bufnr)
 end
 local opts = {
     defaults = {
+        layout_config = {
+            vertical = {
+                width_padding = 0.05,
+                height_padding = 1,
+                preview_height = 0.5,
+            },
+            horizontal = {
+                width_padding = 0.1,
+                height_padding = 0.1,
+                preview_height = 0.5,
+                preview_width = 0.5,
+            }
+        },
         mappings = {
             n = {
                 s = flash,
@@ -49,7 +62,18 @@ local opts = {
             theme = "ivy",
         },
         live_grep = {
-            theme = "ivy",
+            vimgrep_arguments = {
+                'rg',
+                '--no-heading',
+                -- '--with-filename',
+                '--line-number',
+                '--column',
+                '--smart-case',
+                '--hidden',
+                '--glob', -- this flag allows you to hide exclude these files and folders from your search 👇
+                '!{**/.git/*,**/node_modules/*,**/package-lock.json,**/yarn.lock,.vscode-server,.virtualenvs}',
+            },
+            layout_strategy = "vertical",
         },
     },
     extensions = {
@@ -62,7 +86,7 @@ local opts = {
 
 return {
     "nvim-telescope/telescope.nvim",
-    branch = "0.1.x",
+    -- branch = "0.1.x",
     -- event = "VeryLazy",
     cmd = "Telescope",
     dependencies = {

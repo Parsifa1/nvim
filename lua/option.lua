@@ -3,7 +3,6 @@ if vim.g.vscode then
     vim.opt.clipboard = "unnamedplus" -- use system clipboar
 else
     vim.loader.enable()
-    vim.opt.foldlevel = 99            -- 默认不折叠
     vim.g.copilot_assume_mapped = true
     vim.g.copilot_proxy = "http://127.0.0.1:7891"
     vim.o.shortmess = vim.o.shortmess .. "a"
@@ -37,5 +36,7 @@ else
     vim.opt.timeoutlen = 500 -- time to wait for a mapped sequence to complete (in milliseconds)
     -- asyncrun setting
     vim.g.asyncrun_open = 6
+    -- no fold
+    vim.opt.foldlevel = 99
 end
 
