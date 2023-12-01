@@ -147,6 +147,7 @@ local opts = {
                     toggleterm = 'ToggleTerm',
                     checkhealth = '󰄳 Checkhelth',
                     oil = ' Oil',
+                    aerial = '󰇽 Aerial'
                 },
             },
         },
