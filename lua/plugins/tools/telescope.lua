@@ -86,7 +86,7 @@ local opts = {
 
 return {
     "nvim-telescope/telescope.nvim",
-    -- branch = "0.1.x",
+    branch = "0.1.x",
     -- event = "VeryLazy",
     cmd = "Telescope",
     dependencies = {
