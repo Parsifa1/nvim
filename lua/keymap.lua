@@ -29,6 +29,8 @@ else
     set("n", "<left>", ":vertical resize-5<CR>", opts)
     set("n", "<right>", ":vertical resize+5<CR>", opts)
 
+    -- 展开终端
+    set("n", "<A-e>", ":ToggleTerm<CR>", desc("Terminal"))
 
     --窗口跳转
     set("n", "<A-h>", "<C-w>h", opts)
@@ -38,7 +40,6 @@ else
     set("n", "<A-q>", ":q<CR>", opts)
     set("t", "<A-q>", "<C-\\><C-n>:q<CR>", opts)
     set("i", "<A-q>", "<Esc>:q<CR>", opts)
-    set("n", "<A-e>", ":ToggleTerm<CR>", desc("Terminal"))
 
     -- 使用循环创建 Alt+1 到 Alt+9 的映射
     for i = 1, 9 do
