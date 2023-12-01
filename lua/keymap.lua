@@ -29,8 +29,9 @@ else
     set("n", "<left>", ":vertical resize-5<CR>", opts)
     set("n", "<right>", ":vertical resize+5<CR>", opts)
 
-    -- 展开终端
+    -- 展开/关闭终端
     set("n", "`", ":ToggleTerm<CR>", desc("Terminal"))
+    set("t", "`", "<C-\\><C-n>:ToggleTerm<CR>", desc("Terminal"))
 
     --窗口跳转
     set("n", "<A-h>", "<C-w>h", opts)
