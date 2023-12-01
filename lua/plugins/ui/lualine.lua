@@ -144,7 +144,7 @@ local opts = {
                     TelescopePrompt = ' Telescope',
                     alpha = '󰏘 Alpha',
                     minifiles = ' Mini.Files',
-                    toggleterm = '󰍨 ToggleTerm',
+                    toggleterm = 'ToggleTerm',
                     checkhealth = '󰄳 Checkhelth',
                     oil = ' Oil',
                 },
