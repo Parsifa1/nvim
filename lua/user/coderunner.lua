@@ -1,13 +1,13 @@
 local win = require("user.floatwin")
 local function split()
-  win:Create({
-    width = 0.36,
-    height = 0.87,
-    title = ' Code Running '
-  }, {
-    buflisted = true,
-    pos = 'tr',
-  })
+    win:Create({
+        width = 0.36,
+        height = 0.87,
+        title = ' Code Running '
+    }, {
+        buflisted = true,
+        pos = 'tr',
+    })
 end
 
 local function run(cmd)
@@ -18,7 +18,7 @@ end
 
 vim.api.nvim_set_var("Coderunner", run)
 
-vim.cmd[[
+vim.cmd [[
 function! s:coderunner(opts)
     autocmd TermOpen * startinsert
     let l:Run_function = luaeval("vim.api.nvim_get_var('Coderunner')")
