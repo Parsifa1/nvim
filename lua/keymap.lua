@@ -51,25 +51,25 @@ else
     set("n", "<F3>", ":CompetiTest edit_testcase<CR>")
     set("i", "<F3>", "<Esc>:CompetiTest edit_testcase<CR>")
     --task指令
-    set({ "n", "i" }, "<F5>", ":AsyncTask file-run<CR>", "run task")
-    set({ "n", "i" }, "<F6>", ":AsyncTask file-build<CR>", "build task")
-    set("n", "<F12>", ":Lazy<CR>")
+    set("n", "<F4>", ":AsyncTask acm<CR>", "run acm")
+    set("n", "<F5>", ":AsyncTask file-run<CR>", "run task")
+    set("n", "<F6>", ":AsyncTask file-build<CR>", "build task")
 
     --leader
-    set("n", "<leader>a", "<Cmd>AerialToggle<CR>", "Outline")
-    set("n", "<leader>e", ":lua MiniFiles.open()<CR>", "File Explorer")
     set("n", "<leader>h", "<C-w>h", "goto left window")
     set("n", "<leader>j", "<C-w>j", "goto down window")
     set("n", "<leader>k", "<C-w>k", "goto up window")
     set("n", "<leader>l", "<C-w>l", "goto right window")
+    set("n", "<leader>a", ":AerialToggle<CR>", "Outline")
+    set("n", "<leader>e", ":lua MiniFiles.open()<CR>", "File Explorer")
     set("n", "<leader>p", ":Lazy<CR>", "lazy")
+    set("n", "<leader>v", ":lua vim.fn.chdir(vim.fn.fnamemodify(vim.fn.expand('%:p'), ':h'))<CR>", "cd current file")
     set("n", "<leader>i", ":Telescope neovim-project history theme=dropdown<CR><Esc>", "projects folder")
     set("n", "<leader>f", ":Telescope find_files<CR>", "find files")
     set("n", "<leader>w", ":Telescope live_grep<CR>", "find words")
     set("n", "<leader>r", ":Telescope oldfiles<CR>", "recent files")
     set("n", "<leader>cc", ":Telescope commands<CR>", "commands")
     set("n", "<leader>ck", ":Telescope keymaps<CR>", "keymaps")
-    set("n", "<leader>gg", "<Cmd>Neogit<CR>", "Open Neogit")
-    set("n", "<leader>v", ":lua vim.fn.chdir(vim.fn.fnamemodify(vim.fn.expand('%:p'), ':h'))<CR>", "cd current file")
+    set("n", "<leader>gg", ":Neogit<CR>", "Open Neogit")
 end
 

@@ -18,7 +18,7 @@ return {
 			uppercase = false,
 		},
 		modes = {
-			char = { enabled = false },
+			-- char = { enabled = false },
 			treesitter = {
 				highlight = { backdrop = true },
 			},
@@ -26,8 +26,8 @@ return {
 	},
 
 	keys = {
-		{ "f", mode = { "n", "x", "o" }, flash_set("jump"), desc = "Flash" },
-		{ "s", mode = { "n", "x", "o" }, flash_set("treesitter"), desc = "Flash Treesitter" },
+		{ "s", mode = { "n", "x", "o" }, flash_set("jump"), desc = "Flash" },
+		{ "zs", mode = { "n", "x", "o" }, flash_set("treesitter"), desc = "Flash Treesitter" },
 		{ "r", mode = "o", flash_set("remote"), desc = "Remote Flash" },
 		{ "R", mode = { "o", "x" }, flash_set("treesitter_search"), desc = "Treesitter Search" },
 	},

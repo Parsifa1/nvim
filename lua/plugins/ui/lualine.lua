@@ -163,7 +163,11 @@ local opts = {
                     oil = ' Oil',
                     aerial = '󰇽 Aerial',
                     lazy = '󰜢 Lazy',
+                    g = " g++"
                 },
+                disabled_buftypes = {
+                    'terminal'
+                }
             },
         },
         lualine_z = {
@@ -200,7 +204,6 @@ local opts = {
         "lazy",
     },
 }
---TEST: test for no-name
 return {
     "nvim-lualine/lualine.nvim",
     init = function()
