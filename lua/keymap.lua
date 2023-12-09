@@ -1,91 +1,77 @@
-local set = vim.keymap.set
-local opts = {
-    noremap = true, -- non-recursive
-    silent = true,  -- do not show message
-}
-local function desc(index)
-    return {
-        noremap = true,
-        silent = true,
-        desc = index,
-    }
-end
+local set = require("custom").set
 
 if vim.g.vscode then
-    set("n", "zv", "<Cmd>call VSCodeNotify('workbench.action.splitEditor')<CR>", opts)
-    set("n", "zh", "<Cmd>call VSCodeNotify('workbench.action.splitEditorDown')<CR>", opts)
-    set("v", "=", "gq", opts)
-    set("o", "=", "q", opts)
+    set("n", "zv", "<Cmd>call VSCodeNotify('workbench.action.splitEditor')<CR>")
+    set("n", "zh", "<Cmd>call VSCodeNotify('workbench.action.splitEditorDown')<CR>")
+    set("v", "=", "gq")
+    set("o", "=", "q")
 else
-    vim.api.nvim_set_keymap("i", "<A-j>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
-
+    vim.api.nvim_set_keymap("i", "J", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+    
     --格式化设置
-    set("v", "=", "gq", opts)
-    set("n", "=", "gq", opts)
-    set("o", "=", "q", opts)
+    set("v", "=", "gq")
+    set("n", "=", "gq")
+    set("o", "=", "q")
     --窗口操作
-    set("n", "<up>", ":res +5<CR>", opts)
-    set("n", "<down>", ":res -5<CR>", opts)
-    set("n", "<left>", ":vertical resize-5<CR>", opts)
-    set("n", "<right>", ":vertical resize+5<CR>", opts)
+    set("n", "<up>", ":res +5<CR>")
+    set("n", "<down>", ":res -5<CR>")
+    set("n", "<left>", ":vertical resize-5<CR>")
+    set("n", "<right>", ":vertical resize+5<CR>")
 
     -- 展开/关闭终端
-    set("n", "`", ":ToggleTerm<CR>", desc("Terminal"))
-    set("t", "`", "<C-\\><C-n>:ToggleTerm<CR>", desc("Terminal"))
+    set("n", "`", ":ToggleTerm<CR>", "Terminal")
+    set("t", "`", "<C-\\><C-n>:ToggleTerm<CR>", "Terminal")
 
     --窗口跳转
-    set("n", "<A-h>", "<C-w>h", opts)
-    set("n", "<A-j>", "<C-w>j", opts)
-    set("n", "<A-k>", "<C-w>k", opts)
-    set("n", "<A-l>", "<C-w>l", opts)
-    set("n", "<A-q>", ":q<CR>", opts)
-    set("t", "<A-q>", "<C-\\><C-n>:q<CR>", opts)
-    set("i", "<A-q>", "<Esc>:q<CR>", opts)
-
-    -- 使用循环创建 Alt+1 到 Alt+9 的映射
-    for i = 1, 9 do
-    end
+    set("n", "<A-q>", ":q<CR>")
+    set("t", "<A-q>", "<C-\\><C-n>:q<CR>")
+    set("i", "<A-q>", "<Esc>:q<CR>")
 
     --分屏
-    set("n", "zv", ":vsp<CR>", desc("vsplit"))
-    set("n", "zh", ":sp<CR>", desc("split"))
-    set("n", "zc", "<C-w>c", desc("close current"))
-    set("n", "zo", "<C-w>o", desc("close others")) -- close others
-    set("n", "zd", "zd", desc("delete fold"))      -- close others
+    set("n", "zv", ":vsp<CR>", "vsplit")
+    set("n", "zh", ":sp<CR>", "split")
+    set("n", "zc", "<C-w>c", "close current")
+    set("n", "zo", "<C-w>o", "close others") -- close others
+    set("n", "zd", "zd", "delete fold")      -- close others
 
-    set("n", "<C-h>", ":bp<CR>", opts)
-    set("n", "<C-l>", ":bn<CR>", opts)
-    set("n", "<C-w>", ":bdelete!<CR>", opts)
-    set("n", "<C-s>", ":write<CR>", opts)
-    set("i", "<C-s>", "<Esc>:w<CR>", opts)
-    set("n", "<C-a>", "gg0vG$", opts)
-    set("v", "<C-a>", "vgg0vG$", opts)
-    set("i", "<C-a>", "<Esc>gg4vG$a", opts)
-    set("v", "<C-c>", "y", opts)
-    set("i", "<C-v>", "<Esc>pa", opts)
-    set("n", "<C-v>", "p", opts)
+    set("n", "<C-h>", ":bp<CR>")
+    set("n", "<C-l>", ":bn<CR>")
+    set("n", "<C-w>", ":bdelete!<CR>")
+    set("n", "<C-s>", ":write<CR>")
+    set("i", "<C-s>", "<Esc>:w<CR>")
+    set("n", "<C-a>", "gg0vG$")
+    set("v", "<C-a>", "vgg0vG$")
+    set("i", "<C-a>", "<Esc>gg4vG$a")
+    set("v", "<C-c>", "y")
+    set("i", "<C-v>", "<Esc>pa")
+    set("n", "<C-v>", "p")
     --CP相关
-    set("n", "<F1>", ":CompetiTest run<CR>", opts)
-    set("i", "<F1>", "<Esc>:CompetiTest run<CR>", opts)
-    set("n", "<F2>", ":CompetiTest add_testcase<CR>", opts)
-    set("i", "<F2>", "<Esc>:CompetiTest add_testcase<CR>", opts)
-    set("n", "<F3>", ":CompetiTest edit_testcase<CR>", opts)
-    set("i", "<F3>", "<Esc>:CompetiTest edit_testcase<CR>", opts)
+    set("n", "<F1>", ":CompetiTest run<CR>")
+    set("i", "<F1>", "<Esc>:CompetiTest run<CR>")
+    set("n", "<F2>", ":CompetiTest add_testcase<CR>")
+    set("i", "<F2>", "<Esc>:CompetiTest add_testcase<CR>")
+    set("n", "<F3>", ":CompetiTest edit_testcase<CR>")
+    set("i", "<F3>", "<Esc>:CompetiTest edit_testcase<CR>")
     --task指令
-    set({ "n", "i" }, "<F5>", ":AsyncTask file-run<CR>", desc("run task"))
-    set({ "n", "i" }, "<F6>", ":AsyncTask file-build<CR>", desc("build task"))
-    set("n", "<F12>", ":Lazy<CR>", opts)
+    set({ "n", "i" }, "<F5>", ":AsyncTask file-run<CR>", "run task")
+    set({ "n", "i" }, "<F6>", ":AsyncTask file-build<CR>", "build task")
+    set("n", "<F12>", ":Lazy<CR>")
 
     --leader
-    set("n", "<leader>a", "<Cmd>AerialToggle<CR>", desc("Outline"))
-    set("n", "<leader>e", ":lua MiniFiles.open()<CR>", desc("File Explorer"))
-    set("n", "<leader>p", ":Lazy<CR>", desc("lazy"))
-    set("n", "<leader>i", ":Telescope neovim-project history theme=dropdown<CR><Esc>", desc("projects folder"))
-    set("n", "<leader>f", ":Telescope find_files<CR>", desc("find files"))
-    set("n", "<leader>w", ":Telescope live_grep<CR>", desc("find words"))
-    set("n", "<leader>r", ":Telescope oldfiles<CR>", desc("recent files"))
-    set("n", "<leader>cc", ":Telescope commands<CR>", desc("commands"))
-    set("n", "<leader>ck", ":Telescope keymaps<CR>", desc("keymaps"))
-    set("n", "<leader>gg", "<Cmd>Neogit<CR>", desc("Open Neogit"))
+    set("n", "<leader>a", "<Cmd>AerialToggle<CR>", "Outline")
+    set("n", "<leader>e", ":lua MiniFiles.open()<CR>", "File Explorer")
+    set("n", "<leader>h", "<C-w>h", "goto left window")
+    set("n", "<leader>j", "<C-w>j", "goto down window")
+    set("n", "<leader>k", "<C-w>k", "goto up window")
+    set("n", "<leader>l", "<C-w>l", "goto right window")
+    set("n", "<leader>p", ":Lazy<CR>", "lazy")
+    set("n", "<leader>i", ":Telescope neovim-project history theme=dropdown<CR><Esc>", "projects folder")
+    set("n", "<leader>f", ":Telescope find_files<CR>", "find files")
+    set("n", "<leader>w", ":Telescope live_grep<CR>", "find words")
+    set("n", "<leader>r", ":Telescope oldfiles<CR>", "recent files")
+    set("n", "<leader>cc", ":Telescope commands<CR>", "commands")
+    set("n", "<leader>ck", ":Telescope keymaps<CR>", "keymaps")
+    set("n", "<leader>gg", "<Cmd>Neogit<CR>", "Open Neogit")
+    set("n", "<leader>v", ":lua vim.fn.chdir(vim.fn.fnamemodify(vim.fn.expand('%:p'), ':h'))<CR>", "cd current file")
 end
 

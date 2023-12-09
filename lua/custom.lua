@@ -21,6 +21,17 @@ local append_space = function(icons)
 	return result
 end
 
+M.set = function(mode, keys, func, ...)
+    local options = { noremap = true, silent = true }
+    local arg = {...}
+    
+    if #arg > 0 then
+        local desc = arg[1]
+        options.desc = desc
+    end
+
+    vim.keymap.set(mode, keys, func, options)
+end
 
 local backup = {
 	kind = {

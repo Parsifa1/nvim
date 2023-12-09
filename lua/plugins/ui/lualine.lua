@@ -9,6 +9,19 @@ local function readonly()
     end
 end
 
+local function recording()
+  local reg = vim.fn.reg_recording()
+  if reg ~= "" then
+    return "recording @" .. reg
+  end
+  reg = vim.fn.reg_recorded()
+  if reg ~= "" then
+    return "recorded @" .. reg
+  end
+
+  return ""
+end
+
 local lsp = function()
     local clients = vim.lsp.get_clients()
     local buf = vim.api.nvim_get_current_buf()
@@ -78,9 +91,10 @@ local opts = {
                 cond = lazy_status.has_updates,
                 color = { fg = "#ff9e64" },
             },
+            recording,
             {
                 function()
-                    local function Cwd()
+                    local function cwd()
                         local cwd = vim.fn.getcwd()
                         if cwd == nil then
                             return "VOID"
@@ -88,7 +102,7 @@ local opts = {
                             return cwd:gsub("/home/parsifa1", "~")
                         end
                     end
-                    return custom.icons.ui.Folder .. " " .. Cwd()
+                    return custom.icons.ui.Folder .. " " .. cwd()
                 end,
             },
             {
@@ -147,7 +161,8 @@ local opts = {
                     toggleterm = 'ToggleTerm',
                     checkhealth = '󰄳 Checkhelth',
                     oil = ' Oil',
-                    aerial = '󰇽 Aerial'
+                    aerial = '󰇽 Aerial',
+                    lazy = '󰜢 Lazy',
                 },
             },
         },

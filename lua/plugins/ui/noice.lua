@@ -38,6 +38,14 @@ return {
                 },
                 opts = { skip = true },
             },
+            {
+                filter = {
+                    event = 'msg_show',
+                    find = 'Invalid buffer id:',
+                },
+                opts = { skip = true },
+            },
+
         },
     },
 }

@@ -24,7 +24,10 @@ else
     vim.opt.list = false
     vim.opt.signcolumn = "number"
     -- set onwrap in line
-    vim.wo.wrap = false
+    -- if vim.bo.filetype == "typst" then
+    --     vim.wo.wrap = true
+    -- else
+        vim.wo.wrap = true
     -- set highlight
     vim.api.nvim_set_hl(0, "visual", { reverse = true })
     -- searching

@@ -1,7 +1,7 @@
--- local custom = require "custom"
-
 return {
-    "Parsifa1/dropbar.nvim",
+    "Bekaboo/dropbar.nvim",
+    -- "Parsifa1/dropbar.nvim",
+    -- enabled = false,
     dependencies = { 'nvim-telescope/telescope-fzf-native.nvim' },
     event = "VeryLazy",
     opts = {
