@@ -6,8 +6,6 @@ if vim.g.vscode then
     set("v", "=", "gq")
     set("o", "=", "q")
 else
-    vim.api.nvim_set_keymap("i", "J", 'copilot#Accept("<CR>")', { silent = true, expr = true })
-    
     --格式化设置
     set("v", "=", "gq")
     set("n", "=", "gq")
