@@ -24,7 +24,6 @@ end
 M.set = function(mode, keys, func, ...)
     local options = { noremap = true, silent = true }
     local arg = {...}
-    
     if #arg > 0 then
         local desc = arg[1]
         options.desc = desc

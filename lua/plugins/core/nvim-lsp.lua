@@ -77,7 +77,10 @@ local config = function()
     -- for lspsaga
     require('lspsaga').setup({
         ui = {
-            kind = custom.kind
+            code_action = '󰌵 '
+        },
+        beacon = {
+            enable = false,
         },
         outline = {
             layout = "float",
