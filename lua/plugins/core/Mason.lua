@@ -30,6 +30,7 @@ return {
 				"marksman",
 				"yaml-language-server",
 				"haskell-language-server",
+                "typst-lsp"
 				-- "cpptools",
 				-- "stylua",
 			},
