@@ -95,6 +95,7 @@ local opts = {
             {
                 function()
                     local function cwd()
+                        ---@diagnostic disable-next-line: redefined-local
                         local cwd = vim.fn.getcwd()
                         if cwd == nil then
                             return "VOID"
@@ -163,7 +164,6 @@ local opts = {
                     oil = ' Oil',
                     aerial = '󰇽 Aerial',
                     lazy = '󰜢 Lazy',
-                    g = " g++"
                 },
                 disabled_buftypes = {
                     'terminal'

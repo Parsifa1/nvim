@@ -1,7 +1,3 @@
-local function desc(index)
-    return { noremap = true, silent = true, desc = index }
-end
-
 local function firstToUpper(str)
     return (str:gsub("^%l", string.upper))
 end
@@ -63,7 +59,9 @@ local config = function()
             })
         end,
     })
-
+    function test()
+        -- code
+    end
     -- for neodev
     require("neodev").setup({
         override = function(root_and_library)
@@ -76,7 +74,7 @@ local config = function()
     -- for lspsaga
     require('lspsaga').setup({
         ui = {
-            code_action = '󰌵 '
+            code_action = ''
         },
         beacon = {
             enable = false,
