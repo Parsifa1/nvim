@@ -15,6 +15,8 @@ return {
                 changedelete = { text = '~' },
                 untracked    = { text = '' },
             },
+            signcolumn = true,
+
         }
 
         --test

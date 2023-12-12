@@ -16,18 +16,15 @@ else
     vim.opt.expandtab = true -- tabs are spaces, mainly because of python
     -- ui config
     vim.opt.number = true          -- add numbers to each line on the left side
-    vim.opt.relativenumber = false --show relative number
+    vim.opt.relativenumber = true --show relative number
     vim.opt.cursorline = true      -- highlight cursor line underneath the cursor horizontally
     vim.opt.splitbelow = true      -- open new vertical split bottom
     vim.opt.splitright = true      -- open new horizontal splits right
     vim.opt.termguicolors = true   -- enabl 24-bit rgb color in the tui
     vim.opt.list = false
-    vim.opt.signcolumn = "number"
-    -- set onwrap in line
-    -- if vim.bo.filetype == "typst" then
-    --     vim.wo.wrap = true
-    -- else
-        vim.wo.wrap = true
+    vim.opt.signcolumn = "yes"
+    -- vim.opt.signcolumn = "number"
+    vim.wo.wrap = true
     -- set highlight
     vim.api.nvim_set_hl(0, "visual", { reverse = true })
     -- searching

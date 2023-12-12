@@ -39,19 +39,17 @@ else
     set("n", "zh", ":sp<CR>", "split")
     set("n", "zc", "<C-w>c", "close current")
     set("n", "zo", "<C-w>o", "close others") -- close others
-    set("n", "zd", "zd", "delete fold")      -- close others
+    set("n", "zd", "zd", "delete fold")
 
+    -- 其他
     set("n", "<C-h>", ":bp<CR>")
     set("n", "<C-l>", ":bn<CR>")
-    set("n", "<C-w>", ":bdelete!<CR>")
-    set("n", "<C-s>", ":write<CR>")
-    set("i", "<C-s>", "<Esc>:w<CR>")
+    -- set("n", "<C-s>", ":w<CR>")
+    -- set("i", "<C-s>", "<Esc>:w<CR>")
     set("n", "<C-a>", "gg0vG$")
     set("v", "<C-a>", "vgg0vG$")
     set("i", "<C-a>", "<Esc>gg4vG$a")
     set("v", "<C-c>", "y")
-    set("i", "<C-v>", "<Esc>pa")
-    set("n", "<C-v>", "p")
     set("n", "<C-d>", "<C-d>zz")
     set("n", "<C-u>", "<C-u>zz")
 
@@ -68,23 +66,25 @@ else
     set("n", "<F5>", ":AsyncTask file-run<CR>", "run task")
     set("n", "<F6>", ":AsyncTask file-build<CR>", "build task")
 
-    --leader
-    set("n", "<leader>h", "<C-w>h", "goto left window")
-    set("n", "<leader>j", "<C-w>j", "goto down window")
-    set("n", "<leader>k", "<C-w>k", "goto up window")
-    set("n", "<leader>l", "<C-w>l", "goto right window")
+    --leader键
     set("n", "<leader>a", ":AerialToggle<CR>", "Outline")
-    set("n", "<leader>e", ":lua MiniFiles.open()<CR>", "File Explorer")
-    set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<left><left><left>")
-    set("n", "<leader>p", ":Lazy<CR>", "lazy")
-    set("n", "<leader>v", ":lua vim.fn.chdir(vim.fn.fnamemodify(vim.fn.expand('%:p'), ':h'))<CR>", "cd current file")
-    set("n", "<leader>i", ":Telescope neovim-project history theme=dropdown<CR><Esc>", "projects folder")
-    set("n", "<leader>f", ":Telescope find_files<CR>", "find files")
-    set("n", "<leader>w", ":Telescope live_grep<CR>", "find words")
-    set("n", "<leader>r", ":Telescope oldfiles<CR>", "recent files")
     set("n", "<leader>cc", ":Telescope commands<CR>", "commands")
     set("n", "<leader>ck", ":Telescope keymaps<CR>", "keymaps")
+    set("n", "<leader>e", ":lua MiniFiles.open()<CR>", "File Explorer")
+    set("n", "<leader>f", ":Telescope find_files<CR>", "find files")
     set("n", "<leader>gg", ":Neogit<CR>", "Open Neogit")
+    -- set("n", "<leader>h", "<C-w>h", "goto left window")
+    set("n", "<leader>i", ":Telescope neovim-project history theme=dropdown<CR><Esc>", "projects folder")
+    -- set("n", "<leader>j", "<C-w>j", "goto down window")
+    -- set("n", "<leader>k", "<C-w>k", "goto up window")
+    -- set("n", "<leader>l", "<C-w>l", "goto right window")
+    set("n", "<leader>p", ":Lazy<CR>", "lazy")
+    set("n", "<leader>ss", ":%s/\\<<c-r><c-w>\\>/<c-r><c-w>/gi<left><left><left>")
     set("n", "<leader>sw", ":set wrap!<CR>", "toggle warp")
+    set("n", "<leader>r", ":Telescope oldfiles<CR>", "recent files")
+    set("n", "<leader>v", ":lua vim.fn.chdir(vim.fn.fnamemodify(vim.fn.expand('%:p'), ':h'))<CR>", "cd current file")
+    set("n", "<leader>w", ":Telescope live_grep<CR>", "find words")
+    set("n", "<leader><CR>", ":noh<CR>", "clear highlight")
+
 end
 

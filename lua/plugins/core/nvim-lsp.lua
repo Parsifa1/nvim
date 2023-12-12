@@ -59,9 +59,6 @@ local config = function()
             })
         end,
     })
-    function test()
-        -- code
-    end
     -- for neodev
     require("neodev").setup({
         override = function(root_and_library)
@@ -98,7 +95,7 @@ local config = function()
 
     --for lsp signature
     require("lsp_signature").setup({
-        hint_prefix = "🧐 ", --  NOTE: for the terminal not support emoji, might crash
+        hint_prefix = "🧐 ",
         handler_opts = {
             border = require("custom").border,
         },
