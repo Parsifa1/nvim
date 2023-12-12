@@ -35,15 +35,18 @@ else
     set("i", "<A-q>", "<Esc>:q<CR>")
 
     --分屏
-    set("n", "zv", ":vsp<CR>", "vsplit")
-    set("n", "zh", ":sp<CR>", "split")
-    set("n", "zc", "<C-w>c", "close current")
-    set("n", "zo", "<C-w>o", "close others") -- close others
-    set("n", "zd", "zd", "delete fold")
+    set("n", "z", "<C-w>")
+    set("n", "zp", ":sp<CR>", "split")
+    -- set("n", "zv", ":vsp<CR>", "vsplit")
+    -- set("n", "zh", ":sp<CR>", "split")
+    -- set("n", "zc", "<C-w>c", "close current")
+    -- set("n", "zo", "<C-w>o", "close others") -- close others
+    -- set("n", "zd", "zd", "delete fold")
 
     -- 其他
     set("n", "<C-h>", ":bp<CR>")
     set("n", "<C-l>", ":bn<CR>")
+    -- set("n", "<C-s>", ":w<CR>")
     -- set("n", "<C-s>", ":w<CR>")
     -- set("i", "<C-s>", "<Esc>:w<CR>")
     set("n", "<C-a>", "gg0vG$")
