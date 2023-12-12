@@ -202,6 +202,8 @@ local opts = {
         "nvim-dap-ui",
         "mundo",
         "lazy",
+        "trouble",
+        "toggleterm",
     },
 }
 return {

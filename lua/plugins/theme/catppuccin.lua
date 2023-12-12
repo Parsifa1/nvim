@@ -6,7 +6,6 @@ return {
         flavour = "mocha",
         transparent_background = true,
         term_colors = true,
-        show_end_of_buffer = true,
         custom_highlights = function(color)
             return {
                 TabLine = { bg = color.surface0, fg = color.subtext0 },

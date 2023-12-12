@@ -85,6 +85,7 @@ else
     set("n", "<leader>ss", ":%s/\\<<c-r><c-w>\\>/<c-r><c-w>/gi<left><left><left>")
     set("n", "<leader>sw", ":set wrap!<CR>", "toggle warp")
     set("n", "<leader>r", ":Telescope oldfiles<CR>", "recent files")
+    set("n", "<leader>u", ":MundoToggle<CR>", "Undo Tree")
     set("n", "<leader>v", ":lua vim.fn.chdir(vim.fn.fnamemodify(vim.fn.expand('%:p'), ':h'))<CR>", "cd current file")
     set("n", "<leader>w", ":Telescope live_grep<CR>", "find words")
     set("n", "<leader><CR>", ":noh<CR>", "clear highlight")
