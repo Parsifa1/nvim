@@ -37,11 +37,6 @@ else
     --分屏
     set("n", "z", "<C-w>")
     set("n", "zp", ":sp<CR>", "split")
-    -- set("n", "zv", ":vsp<CR>", "vsplit")
-    -- set("n", "zh", ":sp<CR>", "split")
-    -- set("n", "zc", "<C-w>c", "close current")
-    -- set("n", "zo", "<C-w>o", "close others") -- close others
-    -- set("n", "zd", "zd", "delete fold")
 
     -- 其他
     set("n", "<C-h>", ":bp<CR>")
@@ -82,7 +77,7 @@ else
     -- set("n", "<leader>k", "<C-w>k", "goto up window")
     -- set("n", "<leader>l", "<C-w>l", "goto right window")
     set("n", "<leader>p", ":Lazy<CR>", "lazy")
-    set("n", "<leader>ss", ":%s/\\<<c-r><c-w>\\>/<c-r><c-w>/gi<left><left><left>")
+    set("n", "<leader>ss", ":%s/\\<<c-r><c-w>\\>/<c-r><c-w>/gi<left><left><left>", "Global replacement")
     set("n", "<leader>sw", ":set wrap!<CR>", "toggle warp")
     set("n", "<leader>r", ":Telescope oldfiles<CR>", "recent files")
     set("n", "<leader>u", ":MundoToggle<CR>", "Undo Tree")

@@ -24,7 +24,7 @@ else
     vim.opt.list = false
     vim.opt.signcolumn = "yes"
     -- vim.opt.signcolumn = "number"
-    vim.wo.wrap = true
+    vim.wo.wrap = false
     -- set highlight
     vim.api.nvim_set_hl(0, "visual", { reverse = true })
     -- searching
