@@ -66,7 +66,7 @@ else
         vim.keymap.set('n', '<C-v>', 'P')       -- Paste normal mode
         vim.keymap.set('v', '<C-v>', 'P')       -- Paste visual mode
         vim.keymap.set('c', '<C-v>', '<C-R>+')   -- Paste command mode
-        vim.keymap.set('i', '<C-v>', '<ESC>lpli') -- Paste insert mode
+        vim.keymap.set('i', '<C-v>', '<ESC>pa') -- Paste insert mode
     end
 end
 
