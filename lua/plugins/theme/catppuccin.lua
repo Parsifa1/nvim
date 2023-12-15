@@ -1,10 +1,18 @@
+local function neov()
+    if vim.g.neovide then
+        return false
+    else
+        return true
+    end
+end
 return {
     "catppuccin/nvim",
     name = "catppuccin",
     lazy = true,
     opts = {
         flavour = "mocha",
-        transparent_background = true,
+
+        transparent_background = neov(),
         term_colors = true,
         custom_highlights = function(color)
             return {
