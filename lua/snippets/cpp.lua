@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-global
 --@
 local iter = s(
 	{
@@ -48,8 +49,9 @@ for (6iter_type9 6iter9 = 6container9.begin(); 6copy_iter9 != 6copy_container9.e
 		}
 	)
 )
-
+local endl = s("endd", { t("\'\\n\';") })
 return {}, {
-	iter,
-	itit,
+	-- iter,
+	-- itit,
+    endl,
 }

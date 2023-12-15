@@ -39,8 +39,8 @@ else
     set("n", "zp", ":sp<CR>", "split")
 
     -- 其他
-    set("n", "<C-h>", ":bp<CR>")
-    set("n", "<C-l>", ":bn<CR>")
+    set("n", "H", ":bp<CR>")
+    set("n", "L", ":bn<CR>")
     -- set("n", "<C-s>", ":w<CR>")
     -- set("n", "<C-s>", ":w<CR>")
     -- set("i", "<C-s>", "<Esc>:w<CR>")

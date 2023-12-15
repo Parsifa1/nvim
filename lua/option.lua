@@ -40,17 +40,21 @@ else
     vim.opt.foldlevel = 99
     -- for neovide 
     if vim.g.neovide then
+        -- vim.o.guifont = "JetBrains_Mono,JetBrainsMono_Nerd_Font,Source_Han_Serif_SC_VF:h12"
         vim.o.guifont = "JetBrains_Mono,JetBrainsMono_Nerd_Font,LXGW_WenKai:h12"
-        vim.g.neovide_theme = 'auto'
         vim.g.neovide_remember_window_size = true
+        vim.g.neovide_theme = 'auto'
         vim.g.neovide_padding_left = 10
+        vim.g.neovide_scroll_animation_length = 0.3
+        vim.g.neovide_hide_mouse_when_typing = true
+        vim.g.neovide_underline_stroke_scale = 0.9
         vim.g.neovide_padding_top = 10
         vim.g.neovide_padding_bottom = 5
         vim.g.neovide_padding_right = 10
-        vim.keymap.set('v', '<C-c>', '"+y') -- Copy
-        vim.keymap.set('n', '<C-v>', '"+P') -- Paste normal mode
-        vim.keymap.set('v', '<C-v>', '"+P') -- Paste visual mode
-        vim.keymap.set('c', '<C-v>', '<C-R>+')     -- Paste command mode
-        vim.keymap.set('i', '<C-v>', '<ESC>l"+Pli') -- Paste insert mode
+        vim.keymap.set('v', '<C-c>', 'y') -- Copy
+        vim.keymap.set('n', '<C-v>', 'P') -- Paste normal mode
+        vim.keymap.set('v', '<C-v>', 'P') -- Paste visual mode
+        vim.keymap.set('c', '<C-v>', '<C-R>')     -- Paste command mode
+        vim.keymap.set('i', '<C-v>', '<ESC>pi') -- Paste insert mode
     end
 end

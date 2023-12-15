@@ -6,16 +6,18 @@ return {
         "InsertEnter",
         "CmdlineEnter",
     },
-    config = function ()
+    config = function()
         local snip = require "luasnip"
-        -- local i = snip.insert_node
-        -- local sn = snip.snippet_node
-        -- require("luasnip").config.setup({
-        --     enable_autosnippets = true
-        -- })
-        -- require("luasnip.loaders.from_lua").lazy_load {
-        --     paths = vim.fn.stdpath "config" .. "/lua/snippets",
-        -- }
+        local i = snip.insert_node
+        local sn = snip.snippet_node
+        require("luasnip").config.setup({
+            enable_autosnippets = true
+        })
+        require("luasnip.loaders.from_lua").lazy_load {
+            ---@diagnostic disable-next-line: assign-type-mismatch
+            paths = vim.fn.stdpath "config" .. "/lua/snippets",
+        }
         require("luasnip.loaders.from_vscode").lazy_load()
     end
 }
+
