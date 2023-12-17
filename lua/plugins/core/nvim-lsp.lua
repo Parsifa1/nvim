@@ -11,7 +11,7 @@ local config = function()
         local hl = "DiagnosticSign" .. firstToUpper(type)
         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
     end
-    
+
     -- Customized on_attach function
     custom.set('n', '<leader>dd', vim.diagnostic.open_float, "open float")
     custom.set("n", "[d", vim.diagnostic.goto_prev, "goto prev")
