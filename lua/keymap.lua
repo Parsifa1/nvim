@@ -41,8 +41,10 @@ else
     -- 其他
     set("n", "L", ":bn<CR>")
     set("n", "H", ":bp<CR>")
-    set("n", "<C-l>", ":bn<CR>")
-    set("n", "<C-h>", ":bp<CR>")
+    set("n", "<C-l>", "<C-w>l")
+    set("n", "<C-h>", "<C-w>h")
+    set("n", "<C-j>", "<C-w>j")
+    set("n", "<C-k>", "<C-w>k")
     -- set("n", "<C-s>", ":w<CR>")
     -- set("n", "<C-s>", ":w<CR>")
     -- set("i", "<C-s>", "<Esc>:w<CR>")
