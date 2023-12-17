@@ -92,20 +92,20 @@ local opts = {
                 color = { fg = "#ff9e64" },
             },
             recording,
-            {
-                function()
-                    local function cwd()
-                        ---@diagnostic disable-next-line: redefined-local
-                        local cwd = vim.fn.getcwd()
-                        if cwd == nil then
-                            return "VOID"
-                        else
-                            return cwd:gsub("/home/parsifa1", "~")
-                        end
-                    end
-                    return custom.icons.ui.Folder .. " " .. cwd()
-                end,
-            },
+            -- {
+            --     function()
+            --         local function cwd()
+            --             ---@diagnostic disable-next-line: redefined-local
+            --             local cwd = vim.fn.getcwd()
+            --             if cwd == nil then
+            --                 return "VOID"
+            --             else
+            --                 return cwd:gsub("/home/parsifa1", "~")
+            --             end
+            --         end
+            --         return custom.icons.ui.Folder .. " " .. cwd()
+            --     end,
+            -- },
             {
                 "copilot",
                 show_running = true,
@@ -211,7 +211,7 @@ return {
     init = function()
         vim.o.laststatus = 0
     end,
-    event = "VeryLazy",
+    -- event = "VeryLazy",
     enabled = true,
     dependencies = {
         { "nvim-tree/nvim-web-devicons" },
