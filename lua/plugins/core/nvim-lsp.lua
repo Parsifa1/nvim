@@ -5,11 +5,13 @@ end
 local config = function()
     local lspconfig = require("lspconfig")
     local custom = require("custom")
-    -- Set diagnostic icons
+
+        -- Set diagnostic icons(backup)
     for type, icon in pairs(custom.icons.diagnostic) do
         local hl = "DiagnosticSign" .. firstToUpper(type)
         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
     end
+    
     -- Customized on_attach function
     custom.set('n', '<leader>dd', vim.diagnostic.open_float, "open float")
     custom.set("n", "[d", vim.diagnostic.goto_prev, "goto prev")
@@ -31,19 +33,19 @@ local config = function()
                 vim.lsp.inlay_hint.enable(bufnr, true)
             end
             --lsp-builtin
-            set( "gD", vim.lsp.buf.declaration, "declaration")
-            set( "gd", vim.lsp.buf.definition, "definition")
-            set( "K", vim.lsp.buf.hover, "hover")
-            set( "gi", vim.lsp.buf.implementation, "implementation")
-            set( "<leader>D", vim.lsp.buf.type_definition, "type definition")
-            set( "<leader>cn", vim.lsp.buf.rename, "rename")
-            set( "<leader>ca", vim.lsp.buf.code_action, "code action")
-            set( "gr", vim.lsp.buf.references, "references")
+            set("gD", vim.lsp.buf.declaration, "declaration")
+            set("gd", vim.lsp.buf.definition, "definition")
+            set("K", vim.lsp.buf.hover, "hover")
+            set("gi", vim.lsp.buf.implementation, "implementation")
+            set("<leader>D", vim.lsp.buf.type_definition, "type definition")
+            set("<leader>cn", vim.lsp.buf.rename, "rename")
+            set("<leader>ca", vim.lsp.buf.code_action, "code action")
+            set("gr", vim.lsp.buf.references, "references")
             --lspsaga
-            set( "<leader>ld", ":Lspsaga peek_definition<CR>", "[L]sp [D]efinition")
-            set( "<leader>lr", require("telescope.builtin").lsp_references, "[P]eek [R]eferences")
-            set( "F", ":Lspsaga finder def+ref<CR>", "[F]inder")
-            set( "<leader>ll", ":Lspsaga outline<CR>", " Out[L]ine")
+            set("<leader>ld", ":Lspsaga peek_definition<CR>", "[L]sp [D]efinition")
+            set("<leader>lr", require("telescope.builtin").lsp_references, "[P]eek [R]eferences")
+            set("F", ":Lspsaga finder def+ref<CR>", "[F]inder")
+            set("<leader>ll", ":Lspsaga outline<CR>", " Out[L]ine")
             set("<leader>ca", "<cmd>Lspsaga code_action<CR>", "[C]ode [A]ction")
             vim.diagnostic.config({
                 virtual_text = {
@@ -54,8 +56,17 @@ local config = function()
                     severity_sort = true,
                     source = "if_many",
                 },
-                signs = true,
                 severity_sort = true,
+                -- Set diagnostic icons
+                signs = {
+                    text = {
+                        ["ERROR"] = custom.icons.diagnostic.error,
+                        ["WARN"] = custom.icons.diagnostic.warn,
+                        ["HINT"] = custom.icons.diagnostic.hint,
+                        ["INFO"] = custom.icons.diagnostic.info
+                    },
+                },
+
             })
         end,
     })
