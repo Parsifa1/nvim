@@ -5,7 +5,6 @@
 全lua配置，尽量清晰易懂，使用最新的neovim-nightly构建。
 
 ![example](https://raw.githubusercontent.com/Parsifa1/graph/master/image.png)
-
 # Data Structure
 
 ```
@@ -26,6 +25,7 @@
 │   │   │   ├── neodev.lua
 │   │   │   ├── nvim-cmp.lua
 │   │   │   ├── nvim-lsp.lua
+│   │   │   ├── treesitter-content.lua
 │   │   │   └── treesitter.lua
 │   │   ├── dap
 │   │   │   ├── dap.lua
@@ -60,6 +60,7 @@
 │   │   ├── theme
 │   │   │   ├── catppuccin.lua
 │   │   │   ├── everforest.lua
+│   │   │   ├── nightfox.lua
 │   │   │   └── onedark.lua
 │   │   ├── tools
 │   │   │   ├── aerial.lua
@@ -67,6 +68,7 @@
 │   │   │   ├── compatitest.lua
 │   │   │   ├── copilot.lua
 │   │   │   ├── karen-yank.lua
+│   │   │   ├── mundo.lua
 │   │   │   ├── neo-tree.lua
 │   │   │   ├── oil.lua
 │   │   │   ├── orgmode.lua
@@ -96,5 +98,5 @@
 ├── README.md
 └── tasks.ini
 
-15 directories, 71 files
+15 directories, 74 files
 ```
