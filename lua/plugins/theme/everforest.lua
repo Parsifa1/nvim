@@ -4,7 +4,6 @@ return {
     config = function ()
 	require("everforest").setup({
         italics = true,
-        transparent_background_level = 1,
 	})
     end
 }
