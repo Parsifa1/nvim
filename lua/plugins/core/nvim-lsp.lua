@@ -42,11 +42,11 @@ local config = function()
             set("<leader>ca", vim.lsp.buf.code_action, "code action")
             set("gr", vim.lsp.buf.references, "references")
             --lspsaga
-            set("<leader>ld", ":Lspsaga peek_definition<CR>", "[L]sp [D]efinition")
-            set("<leader>lr", require("telescope.builtin").lsp_references, "[P]eek [R]eferences")
-            set("F", ":Lspsaga finder def+ref<CR>", "[F]inder")
-            set("<leader>ll", ":Lspsaga outline<CR>", " Out[L]ine")
-            set("<leader>ca", "<cmd>Lspsaga code_action<CR>", "[C]ode [A]ction")
+            set("<leader>ld", ":Lspsaga peek_definition<CR>", "Lsp Definition")
+            set("<leader>lr", require("telescope.builtin").lsp_references, "Peek References")
+            set("F", ":Lspsaga finder def+ref<CR>", "Finder")
+            set("<leader>ll", ":Lspsaga outline<CR>", " OutLine")
+            set("<leader>ca", "<cmd>Lspsaga code_action<CR>", "Code Action")
             vim.diagnostic.config({
                 virtual_text = {
                     spacing = 4,

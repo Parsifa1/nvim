@@ -72,6 +72,7 @@ else
     set("n", "<leader>a", ":AerialToggle<CR>", "Outline")
     set("n", "<leader>cc", ":Telescope commands<CR>", "commands")
     set("n", "<leader>ck", ":Telescope keymaps<CR>", "keymaps")
+    set("n", "<leader>dw", ":lua require('dropbar.api').pick()<CR>", "DropBar select")
     set("n", "<leader>e", ":lua MiniFiles.open()<CR>", "File Explorer")
     set("n", "<leader>f", ":Telescope find_files<CR>", "find files")
     set("n", "<leader>gg", ":Neogit<CR>", "Open Neogit")
