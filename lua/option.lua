@@ -40,7 +40,6 @@ else
     vim.opt.foldlevel = 99
     -- for neovide
     if vim.g.neovide then
-        vim.opt.clipboard = ""
         vim.o.guifont = "JetBrains_Mono,JetBrainsMono_Nerd_Font,LXGW_WenKai:h12"
         vim.g.clipboard = {
             name = 'win32yank-wsl',

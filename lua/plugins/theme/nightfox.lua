@@ -3,7 +3,7 @@ return {
     config = function()
         require("nightfox").setup({
             options = {
-                transparent = true,
+                transparent = not vim.g.neovide,
             },
             groups = {
                 all = {
