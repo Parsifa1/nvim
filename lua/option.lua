@@ -38,6 +38,8 @@ else
     vim.g.asyncrun_open = 6
     -- no fold
     vim.opt.foldlevel = 99
+    -- colorscheme
+    vim.cmd("colorscheme " .. require("custom").theme)
     -- for neovide
     if vim.g.neovide then
         vim.o.guifont = "JetBrains_Mono,JetBrainsMono_Nerd_Font,LXGW_WenKai:h12"

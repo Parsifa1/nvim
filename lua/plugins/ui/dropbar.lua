@@ -1,6 +1,5 @@
 return {
     "Bekaboo/dropbar.nvim",
-    -- "Parsifa1/dropbar.nvim",
     -- enabled = false,
     dependencies = { 'nvim-telescope/telescope-fzf-native.nvim' },
     event = "VeryLazy",

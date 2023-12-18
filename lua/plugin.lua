@@ -35,6 +35,4 @@ else
             border = "rounded",
         },
     })
-    local theme = require("custom").theme
-    vim.cmd.colorscheme(theme)
 end
