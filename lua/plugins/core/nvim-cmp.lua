@@ -10,15 +10,19 @@ local opts = function()
 
     cmp.setup({
         inlay_hints = { enabled = true },
-
+        preselect = cmp.PreselectMode.None,
         window = {
-            completion = {
-                border = custom.border,
-                col_offset = -3,
-            },
-            documentation = {
-                border = custom.border,
-            },
+            completion = cmp.config.window.bordered(),
+            documentation = cmp.config.window.bordered(),
+
+            -- TEST:old type
+            -- completion = {
+            --     border = custom.border,
+            --     col_offset = -3,
+            -- },
+            -- documentation = {
+            --     border = custom.border,
+            -- },
         },
 
         view = {

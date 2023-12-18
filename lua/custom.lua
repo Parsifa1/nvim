@@ -3,7 +3,7 @@ local M = {}
 -- Border style of floating windows
 M.border = "rounded"
 
-M.theme = "catppuccin"
+M.theme = "nordfox"
 
 M.prefer_tabpage = false
 

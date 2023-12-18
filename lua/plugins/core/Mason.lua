@@ -17,6 +17,9 @@ return {
 				},
 			},
 		})
+        require("mason-lspconfig").setup({
+            -- ensure_installed = { "hls@2.4.0.0", "clangd" },
+        })
 		require("mason-tool-installer").setup({
 			ensure_installed = {
 				"lua-language-server",
@@ -24,14 +27,15 @@ return {
 				"codelldb",
 				"rust-analyzer",
 				"python-lsp-server",
-				"pyright",
 				"clang-format",
 				"autopep8",
 				"marksman",
 				"yaml-language-server",
 				"haskell-language-server",
-                "typst-lsp"
-				-- "cpptools",
+                "typst-lsp",
+                "prettier",
+                "html-lsp",
+                "typescript-language-server",
 				-- "stylua",
 			},
 			-- auto_update = true,

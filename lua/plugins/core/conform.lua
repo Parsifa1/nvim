@@ -6,8 +6,9 @@ return {
         formatters_by_ft = {
             cpp = { "clang-format" },
             python = { "autopep8" },
-            lua = { "stylua" },
+            -- lua = { "stylua" },
             rust = { "rustfmt" },
+            html = {"prettier"},
         },
         formatters = {
             clang_format = {

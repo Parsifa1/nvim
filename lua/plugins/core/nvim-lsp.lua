@@ -6,7 +6,7 @@ local config = function()
     local lspconfig = require("lspconfig")
     local custom = require("custom")
 
-        -- Set diagnostic icons(backup)
+    -- Set diagnostic icons(backup)
     for type, icon in pairs(custom.icons.diagnostic) do
         local hl = "DiagnosticSign" .. firstToUpper(type)
         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
