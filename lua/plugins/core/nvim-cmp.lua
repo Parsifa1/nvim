@@ -2,7 +2,7 @@ local opts = function()
     local luasnip = require("luasnip")
     local cmp = require("cmp")
     local lspkind = require("lspkind")
-    local custom = require("custom")
+    -- local custom = require("custom")
 
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {         --圆角提示框
         border = "rounded",
