@@ -50,8 +50,10 @@ for (6iter_type9 6iter9 = 6container9.begin(); 6copy_iter9 != 6copy_container9.e
 	)
 )
 local endl = s("endd", { t("\'\\n\';") })
+local cout = s("cout", { t("std::cout") })
 return {}, {
 	-- iter,
 	-- itit,
     endl,
+    cout,
 }

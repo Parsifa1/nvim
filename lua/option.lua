@@ -25,8 +25,6 @@ else
     vim.opt.signcolumn = "yes"
     -- vim.opt.signcolumn = "number"
     vim.wo.wrap = false
-    -- set highlight
-    vim.api.nvim_set_hl(0, "visual", { reverse = true })
     -- searching
     vim.opt.incsearch = true  -- search as characters are entered
     vim.opt.hlsearch = false  -- do not highlight matches
@@ -40,6 +38,8 @@ else
     vim.opt.foldlevel = 99
     -- colorscheme
     vim.cmd("colorscheme " .. require("custom").theme)
+    -- set highlight
+    vim.api.nvim_set_hl(0, "visual", { reverse = true })
     -- for neovide
     if vim.g.neovide then
         vim.o.guifont = "JetBrains_Mono,JetBrainsMono_Nerd_Font,LXGW_WenKai:h12"

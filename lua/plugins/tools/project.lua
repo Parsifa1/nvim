@@ -12,6 +12,8 @@ return {
             "~/.config/nvim",
             "/mnt/c/Users/Parsifal/AppData/Roaming/Rime",
             "/mnt/c/Users/Parsifal/",
+            "/mnt/e/Aldric/Desktop/",
+            "~/Desktop/Blog/"
         },
     },
     init = function()

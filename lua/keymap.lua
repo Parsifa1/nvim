@@ -29,7 +29,7 @@ else
     set("n", "`", ":ToggleTerm<CR>", "Terminal")
     set("t", "`", "<C-\\><C-n>:ToggleTerm<CR>", "Terminal")
 
-    --窗口跳转
+    --窗口关闭
     set("n", "<A-q>", ":q<CR>")
     set("t", "<A-q>", "<C-\\><C-n>:q<CR>")
     set("i", "<A-q>", "<Esc>:q<CR>")
@@ -39,10 +39,10 @@ else
     set("n", "zp", ":sp<CR>", "split")
 
     -- 其他
-    set("n", "L", ":bn<CR>")
-    set("n", "H", ":bp<CR>")
-    set("n", "<C-l>", "<C-w>l")
-    set("n", "<C-h>", "<C-w>h")
+    set("n", "H", "^")
+    set("n", "L", "$")
+    set("n", "<C-h>", ":bp<CR>")
+    set("n", "<C-l>", ":bn<CR>")
     set("n", "<C-j>", "<C-w>j")
     set("n", "<C-k>", "<C-w>k")
     -- set("n", "<C-s>", ":w<CR>")
@@ -53,6 +53,7 @@ else
     set("i", "<C-a>", "<Esc>gg4vG$a")
     set("v", "<C-c>", "y")
     set("n", "<C-d>", "<C-d>zz")
+    set("n", "<C-f>", ':lua require("conform").format()<CR>', "Format files")
     set("n", "<C-u>", "<C-u>zz")
 
     --CP相关
@@ -75,6 +76,7 @@ else
     set("n", "<leader>dw", ":lua require('dropbar.api').pick()<CR>", "DropBar select")
     set("n", "<leader>e", ":lua MiniFiles.open()<CR>", "File Explorer")
     set("n", "<leader>f", ":Telescope find_files<CR>", "find files")
+    set("n", "<leader>F", ':lua require("conform").format()<CR>', "Format files")
     set("n", "<leader>gg", ":Neogit<CR>", "Open Neogit")
     set("n", "<leader>i", ":Telescope neovim-project history theme=dropdown<CR><Esc>", "projects folder")
     -- set("n", "<leader>h", "<C-w>h", "goto left window")
@@ -89,6 +91,4 @@ else
     set("n", "<leader>v", ":lua vim.fn.chdir(vim.fn.fnamemodify(vim.fn.expand('%:p'), ':h'))<CR>", "cd current file")
     set("n", "<leader>w", ":Telescope live_grep<CR>", "find words")
     set("n", "<leader><CR>", ":noh<CR>", "clear highlight")
-
 end
-

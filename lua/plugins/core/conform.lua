@@ -2,28 +2,42 @@ return {
     "stevearc/conform.nvim",
     event = "BufWritePre",
     cmd = "ConformInfo",
-    opts = {
-        formatters_by_ft = {
-            cpp = { "clang-format" },
-            python = { "autopep8" },
-            -- lua = { "stylua" },
-            rust = { "rustfmt" },
-            html = {"prettier"},
-        },
-        formatters = {
-            clang_format = {
-                pretend_args = {
-                    "-style=file:/home/parsifa1/.clang-format",
+    config = function()
+        require("conform").setup {
+            formatters_by_ft = {
+                cpp = { "clangformat" },
+                python = { "autopep8" },
+                lua = { "stylua" },
+                rust = { "rustfmt" },
+                html = { "prettier" },
+                astro = { "prettier" },
+                javascript = { "prettier" },
+                typescript = { "prettier" },
+            },
+            formatters = {
+                clangformat = {
+                    command = "/home/parsifa1/.local/share/nvim/mason/bin/clang-format",
+                    pretend_args = {
+                        "-style=file:/home/parsifa1/.clang-format",
+                    },
+                },
+                prettier = {
+                    pretend_args = {
+                        "--tab-width 2",
+                    },
+                },
+                prettier_astro = {
+                    command = "prettier",
+                    pretend_args = {
+                        "--plugin=prettier-plugin-astro",
+                    },
                 },
             },
             rustfmt = {
                 command = "rustfmt",
             },
-        },
-    },
-    init = function()
-        -- If you want the formatexpr, here is the place to set it
-        vim.o.formatprg = "v:lua.require'conform'.formatprg()"
+        }
         vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+        vim.o.formatprg = "v:lua.require'conform'.formatprg()"
     end,
 }

@@ -36,6 +36,7 @@ return {
                 "prettier",
                 "html-lsp",
                 "typescript-language-server",
+                "astro-language-server",
 				-- "stylua",
 			},
 			-- auto_update = true,
