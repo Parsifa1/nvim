@@ -12,7 +12,7 @@ return {
 		plugins = {
 			presets = {
 				windows = false,
-				z = false,
+				-- z = true,
 				g = false,
 			},
 		},

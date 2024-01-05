@@ -26,15 +26,6 @@ return {
                         "--tab-width 2",
                     },
                 },
-                prettier_astro = {
-                    command = "prettier",
-                    pretend_args = {
-                        "--plugin=prettier-plugin-astro",
-                    },
-                },
-            },
-            rustfmt = {
-                command = "rustfmt",
             },
         }
         vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"

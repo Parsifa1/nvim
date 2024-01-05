@@ -6,18 +6,18 @@ if vim.g.vscode then
     set("v", "=", "gq")
     set("o", "=", "q")
 else
-    --格式化设置
+    -- 格式化设置
     set("v", "=", "gq")
     set("n", "=", "gq")
     set("o", "=", "q")
 
-    --窗口操作
+    -- 窗口操作
     set("n", "<up>", ":res +5<CR>")
     set("n", "<down>", ":res -5<CR>")
     set("n", "<left>", ":vertical resize-5<CR>")
     set("n", "<right>", ":vertical resize+5<CR>")
 
-    --搜索保持光标
+    -- 搜索保持光标
     set("n", "n", "nzzzv")
     set("n", "N", "Nzzzv")
 
@@ -29,12 +29,16 @@ else
     set("n", "`", ":ToggleTerm<CR>", "Terminal")
     set("t", "`", "<C-\\><C-n>:ToggleTerm<CR>", "Terminal")
 
-    --窗口关闭
+    -- 窗口关闭
     set("n", "<A-q>", ":q<CR>")
     set("t", "<A-q>", "<C-\\><C-n>:q<CR>")
     set("i", "<A-q>", "<Esc>:q<CR>")
 
-    --分屏
+    -- insert模式下的方向键
+    set("i", "<A-l>", "<Right>")
+    set("i", "<A-h>", "<Left>")
+
+    -- 分屏
     set("n", "z", "<C-w>")
     set("n", "zp", ":sp<CR>", "split")
 
@@ -56,7 +60,7 @@ else
     set("n", "<C-f>", ':lua require("conform").format()<CR>', "Format files")
     set("n", "<C-u>", "<C-u>zz")
 
-    --CP相关
+    -- CP相关
     set("n", "<F1>", ":CompetiTest run<CR>")
     set("i", "<F1>", "<Esc>:CompetiTest run<CR>")
     set("n", "<F2>", ":CompetiTest add_testcase<CR>")
@@ -64,7 +68,7 @@ else
     set("n", "<F3>", ":CompetiTest edit_testcase<CR>")
     set("i", "<F3>", "<Esc>:CompetiTest edit_testcase<CR>")
 
-    --task指令
+    -- task指令
     set("n", "<F4>", ":AsyncTask acm<CR>", "run acm")
     set("n", "<F5>", ":AsyncTask file-run<CR>", "run task")
     set("n", "<F6>", ":AsyncTask file-build<CR>", "build task")
