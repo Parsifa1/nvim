@@ -1,14 +1,17 @@
 local custom = require "custom"
 return {
-    'stevearc/oil.nvim',
+    "stevearc/oil.nvim",
     event = "VeryLazy",
+    -- enabled = false,
     -- Optional dependencies
     dependencies = { "nvim-tree/nvim-web-devicons" },
     keys = {
         {
             "-",
             function()
-                require("oil").open()
+                if vim.bo.filetype ~= "minifiles" then
+                    require("oil").open()
+                end
             end,
             desc = "Open parent directory",
         },

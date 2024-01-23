@@ -3,8 +3,8 @@ local function firstToUpper(str)
 end
 
 local config = function()
-    local lspconfig = require("lspconfig")
-    local custom = require("custom")
+    local lspconfig = require "lspconfig"
+    local custom = require "custom"
 
     -- Set diagnostic icons(backup)
     for type, icon in pairs(custom.icons.diagnostic) do
@@ -13,7 +13,7 @@ local config = function()
     end
 
     -- Customized on_attach function
-    custom.set('n', '<leader>dd', vim.diagnostic.open_float, "open float")
+    custom.set("n", "<leader>dd", vim.diagnostic.open_float, "open float")
     custom.set("n", "[d", vim.diagnostic.goto_prev, "goto prev")
     custom.set("n", "]d", vim.diagnostic.goto_next, "goto next")
     custom.set("n", "<leader>q", vim.diagnostic.setloclist, "quickfix list")
@@ -47,10 +47,10 @@ local config = function()
             set("F", ":Lspsaga finder def+ref<CR>", "Finder")
             set("<leader>ll", ":Lspsaga outline<CR>", " OutLine")
             set("<leader>ca", "<cmd>Lspsaga code_action<CR>", "Code Action")
-            vim.diagnostic.config({
+            vim.diagnostic.config {
                 virtual_text = {
                     spacing = 4,
-                    severity = { min = vim.diagnostic.severity.WARN }
+                    -- severity = { min = vim.diagnostic.severity.WARN },
                 },
                 float = {
                     severity_sort = true,
@@ -63,26 +63,25 @@ local config = function()
                         ["ERROR"] = custom.icons.diagnostic.error,
                         ["WARN"] = custom.icons.diagnostic.warn,
                         ["HINT"] = custom.icons.diagnostic.hint,
-                        ["INFO"] = custom.icons.diagnostic.info
+                        ["INFO"] = custom.icons.diagnostic.info,
                     },
                 },
-
-            })
+            }
         end,
     })
     -- for neodev
-    require("neodev").setup({
+    require("neodev").setup {
         override = function(root_and_library)
             local library = root_and_library.roo_dir
             library.enabled = true
             library.plugins = true
         end,
-    })
+    }
 
     -- for lspsaga
-    require('lspsaga').setup({
+    require("lspsaga").setup {
         ui = {
-            code_action = ''
+            code_action = "",
         },
         beacon = {
             enable = false,
@@ -91,26 +90,26 @@ local config = function()
             layout = "float",
             keys = {
                 toggle_or_jump = "<cr>",
-            }
+            },
         },
         finder = {
             keys = {
-                shuttle = 'J',
-                toggle_or_open = '<cr>',
+                shuttle = "J",
+                toggle_or_open = "<cr>",
             },
         },
         symbol_in_winbar = {
             enable = false,
-        }
-    })
+        },
+    }
 
     --for lsp signature
-    require("lsp_signature").setup({
+    require("lsp_signature").setup {
         hint_prefix = "🧐 ",
         handler_opts = {
             border = require("custom").border,
         },
-    })
+    }
 
     -- for lsp config in mason
     require("mason-lspconfig").setup_handlers {
@@ -118,16 +117,16 @@ local config = function()
             require("lspconfig")[server_name].setup {}
         end,
         ["clangd"] = function()
-            lspconfig.clangd.setup({
+            lspconfig.clangd.setup {
                 filetypes = { "cpp", "c" },
                 cmd = {
                     "clangd",
                     "--offset-encoding=utf-16",
                 },
-            })
+            }
         end,
         ["lua_ls"] = function()
-            lspconfig.lua_ls.setup({
+            lspconfig.lua_ls.setup {
                 settings = {
                     Lua = {
                         hint = {
@@ -141,17 +140,19 @@ local config = function()
                         },
                     },
                 },
-            })
+            }
         end,
         ["typst_lsp"] = function()
             lspconfig.typst_lsp.setup {
-                root_dir = function() return vim.fn.getcwd() end,
+                root_dir = function()
+                    return vim.fn.getcwd()
+                end,
                 settings = {
-                    exportPdf = "onType" -- Choose onType, onSave or never.
+                    exportPdf = "onType", -- Choose onType, onSave or never.
                     -- serverPath = "" -- Normally, there is no need to uncomment it.
-                }
+                },
             }
-        end
+        end,
     }
 end
 
@@ -163,9 +164,8 @@ return {
         "lukas-reineke/lsp-format.nvim",
         "ray-x/lsp_signature.nvim",
         "folke/neodev.nvim",
-        'nvimdev/lspsaga.nvim'
+        "nvimdev/lspsaga.nvim",
     },
     event = "LspAttach",
-    config = config
+    config = config,
 }
-

@@ -7,8 +7,7 @@ if vim.g.vscode then
     set("o", "=", "q")
 else
     -- 格式化设置
-    set("v", "=", "gq")
-    set("n", "=", "gq")
+    set({ "v", "n" }, "=", "gq")
     set("o", "=", "q")
 
     -- 窗口操作
@@ -42,9 +41,12 @@ else
     set("n", "z", "<C-w>")
     set("n", "zp", ":sp<CR>", "split")
 
+    -- 折叠
+    set("n", "za", "za")
+
     -- 其他
-    set("n", "H", "^")
-    set("n", "L", "$")
+    set({ "n", "v" }, "H", "^")
+    set({ "n", "v" }, "L", "$")
     set("n", "<C-h>", ":bp<CR>")
     set("n", "<C-l>", ":bn<CR>")
     set("n", "<C-j>", "<C-w>j")

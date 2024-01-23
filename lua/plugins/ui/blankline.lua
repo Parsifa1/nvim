@@ -1,7 +1,11 @@
 return {
-    "lukas-reineke/indent-blankline.nvim", main = "ibl",
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
     event = "VeryLazy",
     opts = {
+        indent = {
+            char = "│",
+        },
         scope = {
             -- Rely on treesitter, bad performance
             enabled = false,
