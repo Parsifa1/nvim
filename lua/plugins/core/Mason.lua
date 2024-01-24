@@ -26,7 +26,6 @@ return {
 				"clangd",
 				"codelldb",
 				"rust-analyzer",
-				"python-lsp-server",
 				"clang-format",
 				"autopep8",
 				"marksman",

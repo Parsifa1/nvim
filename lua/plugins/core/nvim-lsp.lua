@@ -36,6 +36,7 @@ local config = function()
             set("gD", vim.lsp.buf.declaration, "declaration")
             set("gd", vim.lsp.buf.definition, "definition")
             set("K", vim.lsp.buf.hover, "hover")
+            set("<C-k>", vim.lsp.buf.signature_help, "LSP: Signature help")
             set("gi", vim.lsp.buf.implementation, "implementation")
             set("<leader>D", vim.lsp.buf.type_definition, "type definition")
             set("<leader>cn", vim.lsp.buf.rename, "rename")
@@ -123,6 +124,11 @@ local config = function()
                     "clangd",
                     "--offset-encoding=utf-16",
                 },
+            }
+        end,
+        ["pyright"] = function()
+            lspconfig.pyright.setup {
+                cmd = { "delance-langserver", "--stdio" },
             }
         end,
         ["lua_ls"] = function()
