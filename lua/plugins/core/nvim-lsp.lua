@@ -129,6 +129,18 @@ local config = function()
         ["pyright"] = function()
             lspconfig.pyright.setup {
                 cmd = { "delance-langserver", "--stdio" },
+                settings = {
+                    python = {
+                        analysis = {
+                            inlayHints = {
+                                functionReturnTypes = true,
+                                pytestParameters = true,
+                                variableTypes = true,
+                                callArgumentNames = "partial",
+                            },
+                        },
+                    },
+                },
             }
         end,
         ["lua_ls"] = function()

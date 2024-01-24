@@ -25,7 +25,6 @@ else
             { import = "plugins.dap" },
             { import = "plugins.edit" },
             { import = "plugins.git" },
-            { import = "plugins.mini" },
             { import = "plugins.others" },
             { import = "plugins.theme" },
             { import = "plugins.tools" },
