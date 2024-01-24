@@ -76,7 +76,7 @@ else
     set("n", "<F6>", ":AsyncTask file-build<CR>", "build task")
 
     --leader键
-    set("n", "<leader>a", ":AerialToggle<CR>", "Outline")
+    set("n", "<leader>a", ":Outline<CR>", "Outline")
     set("n", "<leader>cc", ":Telescope commands<CR>", "commands")
     set("n", "<leader>ck", ":Telescope keymaps<CR>", "keymaps")
     set("n", "<leader>dw", ":lua require('dropbar.api').pick()<CR>", "DropBar select")

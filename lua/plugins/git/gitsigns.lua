@@ -7,6 +7,9 @@ return {
         -- local custom = require "custom"
 
         gitsigns.setup {
+            signs = {
+                untracked = { text = "▏" },
+            },
             signcolumn = true,
         }
 

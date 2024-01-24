@@ -3,30 +3,29 @@ local custom = require "custom"
 
 local function readonly()
     if vim.bo.readonly then
-        return ' '
+        return " "
     else
-        return ''
+        return ""
     end
 end
 
 local function recording()
-  local reg = vim.fn.reg_recording()
-  if reg ~= "" then
-    return "recording @" .. reg
-  end
-  reg = vim.fn.reg_recorded()
-  if reg ~= "" then
-    return "recorded @" .. reg
-  end
+    local reg = vim.fn.reg_recording()
+    if reg ~= "" then
+        return "recording @" .. reg
+    end
+    reg = vim.fn.reg_recorded()
+    if reg ~= "" then
+        return "recorded @" .. reg
+    end
 
-  return ""
+    return ""
 end
 
 local lsp = function()
     local clients = vim.lsp.get_clients()
     local buf = vim.api.nvim_get_current_buf()
-    clients = vim
-        .iter(clients)
+    clients = vim.iter(clients)
         :filter(function(client)
             return client.attached_buffers[buf]
         end)
@@ -41,10 +40,9 @@ local lsp = function()
     -- if info == "" then
     --     return ""
     -- else
-        return info
+    return info
     -- end
 end
-
 
 local opts = {
     sections = {
@@ -53,8 +51,8 @@ local opts = {
         },
         lualine_b = {
             {
-                'branch',
-                icon = '',
+                "branch",
+                icon = "",
             },
         },
         lualine_c = {
@@ -81,9 +79,9 @@ local opts = {
             {
                 "diff",
                 symbols = {
-                    added = ' ',
-                    modified = ' ',
-                    removed = ' ',
+                    added = " ",
+                    modified = " ",
+                    removed = " ",
                 },
             },
             {
@@ -113,7 +111,7 @@ local opts = {
                     status = {
                         enabled = " ",
                         disabled = " ",
-                    }
+                    },
                 },
             },
         },
@@ -122,16 +120,15 @@ local opts = {
                 "encoding",
                 right_padding = 2,
             },
-
         },
         lualine_z = {
             {
-                'location',
+                "location",
                 padding = 0,
             },
             {
                 function()
-                    local cursorcol = vim.fn.virtcol(".")
+                    local cursorcol = vim.fn.virtcol "."
                     if cursorcol >= 10 then
                         return " · "
                     else
@@ -156,18 +153,18 @@ local opts = {
                 section_separators = { left = "", right = "" },
                 use_mode_colors = true,
                 filetype_names = {
-                    TelescopePrompt = ' Telescope',
-                    alpha = '󰏘 Alpha',
-                    minifiles = ' Mini.Files',
-                    toggleterm = 'ToggleTerm',
-                    checkhealth = '󰄳 Checkhelth',
-                    oil = ' Oil',
-                    aerial = '󰇽 Aerial',
-                    lazy = '󰜢 Lazy',
+                    TelescopePrompt = " Telescope",
+                    alpha = "󰏘 Alpha",
+                    minifiles = " Mini.Files",
+                    toggleterm = "ToggleTerm",
+                    checkhealth = "󰄳 Checkhelth",
+                    oil = " Oil",
+                    Outline = "󰇽 Outline",
+                    lazy = "󰜢 Lazy",
                 },
                 disabled_buftypes = {
-                    'terminal'
-                }
+                    "terminal",
+                },
             },
         },
         lualine_z = {
@@ -219,4 +216,3 @@ return {
     },
     opts = opts,
 }
-
