@@ -129,14 +129,27 @@ local config = function()
         ["pyright"] = function()
             lspconfig.pyright.setup {
                 cmd = { "delance-langserver", "--stdio" },
+                -- settings = {
+                --     python = {
+                --         typeCheckingMode = "off",
+                --         analysis = {
+                --             inlayHints = {
+                --                 functionReturnTypes = true,
+                --                 pytestParameters = true,
+                --                 variableTypes = true,
+                --                 callArgumentNames = "partial",
+                --             },
+                --         },
+                --     },
+                -- },
                 settings = {
                     python = {
                         analysis = {
                             inlayHints = {
+                                callArgumentNames = "partial",
                                 functionReturnTypes = true,
                                 pytestParameters = true,
                                 variableTypes = true,
-                                callArgumentNames = "partial",
                             },
                         },
                     },

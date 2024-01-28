@@ -4,7 +4,7 @@ return {
     lazy = true,
     opts = {
         flavour = "mocha",
-        -- transparent_background = not vim.g.neovide,
+        transparent_background = not vim.g.neovide,
         term_colors = true,
         custom_highlights = function(color)
             return {

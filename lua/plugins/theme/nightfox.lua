@@ -1,5 +1,5 @@
 return {
-    "parsifa1/nightfox.nvim",
+    "EdenEast/nightfox.nvim",
     config = function()
         require("nightfox").setup({
             options = {
