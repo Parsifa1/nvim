@@ -24,10 +24,6 @@ else
     set("v", "J", ":m '>+1<CR>gv=gv")
     set("v", "K", ":m '<-2<CR>gv=gv")
 
-    -- 展开/关闭终端
-    set("n", "`", ":ToggleTerm<CR>", "Terminal")
-    set("t", "`", "<C-\\><C-n>:ToggleTerm<CR>", "Terminal")
-
     -- 窗口关闭
     set("n", "<A-q>", ":q<CR>")
     set("t", "<A-q>", "<C-\\><C-n>:q<CR>")

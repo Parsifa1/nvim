@@ -1,10 +1,7 @@
 local custom = require "custom"
-local float_opts = {
-    border = custom.border,
-}
+
 return {
-    "akinsho/nvim-toggleterm.lua",
-    enabled = true,
+    "akinsho/toggleterm.nvim",
     event = "VeryLazy",
     opts = {
         size = function(term)
@@ -14,47 +11,65 @@ return {
                 return vim.o.columns * 0.4
             end
         end,
-        direction = "horizontal",
         open_mapping = [[<c-\>]],
         on_create = function(t)
             local bufnr = t.bufnr
             vim.keymap.set("t", "<Esc>", "<C-\\><C-N>", { buffer = bufnr })
         end,
-        shell = vim.uv.os_uname().sysname == "bash" or "fish",
-        float_opts = float_opts,
-        start_in_insert = true,
-        autochdir = false,
+        shell = vim.uv.os_uname().sysname == "Windows_NT" and "pwsh" or "fish",
+        float_opts = {
+            border = custom.border,
+        },
     },
-    keys = {
 
-        { "<C-\\>" },
-        {
-            "<leader>gl",
-            function()
-                require("toggleterm.terminal").Terminal
-                    :new({
-                        cmd = "lazygit",
-                        hidden = true,
-                        float_opts = float_opts,
-                        direction = "float",
-                    })
-                    :toggle()
-            end,
-            desc = "LazyGit",
-        },
-        {
-            "<leader>gf",
-            function()
-                require("toggleterm.terminal").Terminal
-                    :new({
-                        cmd = "joshuto",
-                        hidden = true,
-                        float_opts = float_opts,
-                        direction = "float",
-                    })
-                    :toggle()
-            end,
-            desc = "Joshuto",
-        },
-    },
+    keys = function()
+        local float_opts = {
+            border = custom.border,
+        }
+
+        local lazygit = require("toggleterm.terminal").Terminal:new {
+            cmd = "lazygit",
+            hidden = true,
+            direction = "float",
+            float_opts = float_opts,
+        }
+        local jo = require("toggleterm.terminal").Terminal:new {
+            cmd = "joshuto",
+            hidden = true,
+            direction = "float",
+            float_opts = float_opts,
+        }
+
+        return {
+            { "<C-\\>" },
+            { "`", ":ToggleTerm<CR>", mode = { "n", "t" }, desc = "Terminal" },
+            {
+                "`",
+                function()
+                    vim.cmd "ToggleTerm"
+                    if vim.fn.mode() == "n" then
+                        vim.cmd "startinsert"
+                    end
+                end,
+                mode = "t",
+                desc = "Terminal",
+            },
+
+            -- External programs
+            {
+                "<leader>gl",
+                function()
+                    lazygit:toggle()
+                end,
+                desc = "LazyGit",
+            },
+            {
+                "<leader>gf",
+                function()
+                    jo:toggle()
+                end,
+                desc = "File Navigator",
+            },
+        }
+    end,
 }
