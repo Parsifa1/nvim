@@ -206,7 +206,7 @@ local opts = {
 return {
     "nvim-lualine/lualine.nvim",
     init = function()
-        vim.o.laststatus = 0
+        vim.o.laststatus = 3
     end,
     -- event = "VeryLazy",
     enabled = true,

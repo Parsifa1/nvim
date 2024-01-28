@@ -1,6 +1,7 @@
 return {
     "coffebar/neovim-project",
-    cmd = "Telescope neovim-project",
+    -- cmd = "Telescope neovim-project",
+    event = "VeryLazy",
     opts = {
         last_session_on_startup = false,
         projects = { -- define project roots

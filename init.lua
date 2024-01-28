@@ -1,4 +1,5 @@
-require("plugin")
-require("keymap")
-require("option")
-require("user")
+require "plugin"
+require "keymap"
+require "option"
+require "user"
+

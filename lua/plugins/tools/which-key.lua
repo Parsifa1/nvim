@@ -12,8 +12,8 @@ return {
 		plugins = {
 			presets = {
 				windows = false,
-				-- z = true,
-				g = false,
+				z = true,
+				g = true,
 			},
 		},
 		popup_mappings = {
