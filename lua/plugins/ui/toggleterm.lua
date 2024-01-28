@@ -25,7 +25,7 @@ return {
     keys = {
 
         { "<C-\\>" },
-        { "<Esc>", "<C-\\><C-N>", mode = "t" },
+        -- { "<Esc>", "<C-\\><C-N>", mode = "t" },
         {
             "<leader>gl",
             function()
