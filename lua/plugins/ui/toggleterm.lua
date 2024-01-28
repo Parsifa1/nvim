@@ -1,3 +1,7 @@
+local custom = require "custom"
+local float_opts = {
+    border = custom.border,
+}
 return {
     "akinsho/nvim-toggleterm.lua",
     enabled = true,
@@ -13,14 +17,13 @@ return {
         direction = "horizontal",
         open_mapping = [[<c-\>]],
         shell = vim.uv.os_uname().sysname == "bash" or "fish",
-        float_opts = {
-            border = "double",
-        },
+        float_opts = float_opts,
         persist_mode = false,
         start_in_insert = true,
         autochdir = false,
     },
     keys = {
+
         { "<C-\\>" },
         { "<Esc>", "<C-\\><C-N>", mode = "t" },
         {
@@ -30,11 +33,26 @@ return {
                     :new({
                         cmd = "lazygit",
                         hidden = true,
+                        float_opts = float_opts,
                         direction = "float",
                     })
                     :toggle()
             end,
             desc = "LazyGit",
+        },
+        {
+            "<leader>gf",
+            function()
+                require("toggleterm.terminal").Terminal
+                    :new({
+                        cmd = "joshuto",
+                        hidden = true,
+                        float_opts = float_opts,
+                        direction = "float",
+                    })
+                    :toggle()
+            end,
+            desc = "Joshuto",
         },
     },
 }
