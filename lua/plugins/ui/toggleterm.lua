@@ -33,8 +33,8 @@ return {
             direction = "float",
             float_opts = float_opts,
         }
-        local jo = require("toggleterm.terminal").Terminal:new {
-            cmd = "joshuto",
+        local yazi = require("toggleterm.terminal").Terminal:new {
+            cmd = "yazi",
             hidden = true,
             direction = "float",
             float_opts = float_opts,
@@ -66,9 +66,9 @@ return {
             {
                 "<leader>gf",
                 function()
-                    jo:toggle()
+                    yazi:toggle()
                 end,
-                desc = "File Navigator",
+                desc = "Yazi",
             },
         }
     end,

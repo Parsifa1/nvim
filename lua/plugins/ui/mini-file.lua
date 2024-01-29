@@ -1,4 +1,4 @@
----@diagnostic disable: missing-parameter, unused-local
+---@diagnostic disable: missing-parameter, unused-local, undefined-global
 local filter_hide = function(fs_entry)
     return not vim.startswith(fs_entry.name, '.')
 end
@@ -51,7 +51,7 @@ local init = function()
                 MiniFiles.refresh({ content = { filter = new_filter } })
             end
             local buf_id = args.data.buf_id
-            vim.keymap.set('n', '<Tab>', toggle_dotfiles, { desc = "show dotfiles", buffer = buf_id })
+            vim.keymap.set('n', '.', toggle_dotfiles, { desc = "show dotfiles", buffer = buf_id })
         end,
     })
 
