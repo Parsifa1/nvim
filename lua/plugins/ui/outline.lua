@@ -8,7 +8,13 @@ return {
             live = true,
         },
         symbols = {
-            icon_source = "lspkind",
+            icon_fetcher = function(icon)
+                if icon == "String" then
+                    return ""
+                end
+                return false
+            end,
+            icon_source = custom.icons.vsckind,
         },
     },
 }
