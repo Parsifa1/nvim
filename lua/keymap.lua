@@ -55,7 +55,6 @@ else
     set("i", "<C-a>", "<Esc>gg4vG$a")
     set("v", "<C-c>", "y")
     set("n", "<C-d>", "<C-d>zz")
-    set("n", "<C-f>", ':lua require("conform").format()<CR>', "Format files")
     set("n", "<C-u>", "<C-u>zz")
 
     -- CP相关

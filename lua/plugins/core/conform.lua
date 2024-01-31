@@ -13,6 +13,7 @@ return {
                 astro = { "prettier" },
                 javascript = { "prettier" },
                 typescript = { "prettier" },
+                markdown = { "prettier" },
             },
             formatters = {
                 clangformat = {

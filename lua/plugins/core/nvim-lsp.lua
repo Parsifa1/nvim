@@ -61,10 +61,10 @@ local config = function()
                 -- Set diagnostic icons
                 signs = {
                     text = {
-                        ["ERROR"] = custom.icons.diagnostic.error,
-                        ["WARN"] = custom.icons.diagnostic.warn,
-                        ["HINT"] = custom.icons.diagnostic.hint,
-                        ["INFO"] = custom.icons.diagnostic.info,
+                        ["ERROR"] = custom.icons.diagnostic.Error,
+                        ["WARN"] = custom.icons.diagnostic.Warn,
+                        ["HINT"] = custom.icons.diagnostic.Hint,
+                        ["INFO"] = custom.icons.diagnostic.Info,
                     },
                 },
             }

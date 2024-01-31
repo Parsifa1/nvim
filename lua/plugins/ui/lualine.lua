@@ -67,10 +67,10 @@ local opts = {
             {
                 "diagnostics",
                 symbols = {
-                    error = custom.icons.diagnostic.error,
-                    warn = custom.icons.diagnostic.warn,
-                    info = custom.icons.diagnostic.info,
-                    hint = custom.icons.diagnostic.hint,
+                    error = custom.icons.diagnostic.Error,
+                    warn = custom.icons.diagnostic.Warning,
+                    info = custom.icons.diagnostic.Information,
+                    hint = custom.icons.diagnostic.Hint,
                 },
             },
             readonly,

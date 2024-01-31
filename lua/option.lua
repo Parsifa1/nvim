@@ -27,7 +27,7 @@ else
     vim.opt.laststatus = 3 -- always show status line
     vim.opt.signcolumn = "yes"
     -- vim.opt.signcolumn = "number"
-    vim.wo.wrap = false
+    vim.wo.wrap = true
     -- searching
     vim.opt.incsearch = true -- search as characters are entered
     vim.opt.hlsearch = false -- do not highlight matches
