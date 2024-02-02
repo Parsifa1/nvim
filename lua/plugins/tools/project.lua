@@ -13,17 +13,15 @@ return {
             "/mnt/c/Users/Parsifal/AppData/Roaming/Rime",
             "/mnt/c/Users/Parsifal/",
             "/mnt/e/Aldric/Desktop/",
-            "~/Desktop/Blog/"
+            "~/Desktop/Blog/",
         },
     },
     init = function()
-        vim.opt.sessionoptions:append("globals") -- save global variables that start with an uppercase letter and contain at least one lowercase letter.
+        vim.opt.sessionoptions:append "globals"
     end,
     dependencies = {
         { "nvim-lua/plenary.nvim" },
         { "nvim-telescope/telescope.nvim" },
         { "Shatur/neovim-session-manager" },
     },
-
-
 }

@@ -1,3 +1,4 @@
+---@diagnostic disable: param-type-mismatch
 return {
     "karb94/neoscroll.nvim",
     event = "VeryLazy",

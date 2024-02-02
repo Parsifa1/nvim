@@ -16,7 +16,7 @@ local config = function()
     custom.set("n", "<leader>dd", vim.diagnostic.open_float, "open float")
     custom.set("n", "[d", vim.diagnostic.goto_prev, "goto prev")
     custom.set("n", "]d", vim.diagnostic.goto_next, "goto next")
-    custom.set("n", "<leader>q", vim.diagnostic.setloclist, "quickfix list")
+    custom.set("n", "<leader>q", ":TroubleToggle<CR>", "quickfix list")
 
     -- use autocmd to automatically sign up lsp
     vim.api.nvim_create_autocmd("LspAttach", {

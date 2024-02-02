@@ -54,8 +54,8 @@ else
     set("v", "<C-a>", "vgg0vG$")
     set("i", "<C-a>", "<Esc>gg4vG$a")
     set("v", "<C-c>", "y")
-    set("n", "<C-d>", "<C-d>zz")
-    set("n", "<C-u>", "<C-u>zz")
+    -- set("n", "<C-d>", "<C-d>zz")
+    -- set("n", "<C-u>", "<C-u>zz")
 
     -- CP相关
     set("n", "<F1>", ":CompetiTest run<CR>")
