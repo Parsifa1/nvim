@@ -8,6 +8,7 @@ return {
 
         return {
             bt_ignore = { "nofile", "terminal" },
+            ft_ignore = { "leetcode.nvim" },
             segments = {
                 { -- TODO:调整colwidth
                     sign = {

@@ -32,22 +32,47 @@ return {
         vim.o.foldenable = true
     end,
     config = function()
-        require("ufo").setup {
-            close_fold_kinds = { "imports" },
-        }
-
-        vim.api.nvim_create_autocmd("LspAttach", {
-            desc = "Setup Ufo `K` with LSP hover",
-            callback = function(args)
-                local bufnr = args.buf
-
-                vim.keymap.set("n", "K", function()
-                    local winid = require("ufo").peekFoldedLinesUnderCursor()
-                    if not winid then
-                        vim.lsp.buf.hover()
+        -- 虚拟图标
+        local handler = function(virtText, lnum, endLnum, width, truncate)
+            local newVirtText = {}
+            local suffix = (" 󰁂 %d "):format(endLnum - lnum)
+            local sufWidth = vim.fn.strdisplaywidth(suffix)
+            local targetWidth = width - sufWidth
+            local curWidth = 0
+            for _, chunk in ipairs(virtText) do
+                local chunkText = chunk[1]
+                local chunkWidth = vim.fn.strdisplaywidth(chunkText)
+                if targetWidth > curWidth + chunkWidth then
+                    table.insert(newVirtText, chunk)
+                else
+                    chunkText = truncate(chunkText, targetWidth - curWidth)
+                    local hlGroup = chunk[2]
+                    table.insert(newVirtText, { chunkText, hlGroup })
+                    chunkWidth = vim.fn.strdisplaywidth(chunkText)
+                    -- str width returned from truncate() may less than 2nd argument, need padding
+                    if curWidth + chunkWidth < targetWidth then
+                        suffix = suffix .. (" "):rep(targetWidth - curWidth - chunkWidth)
                     end
-                end, { buffer = bufnr, desc = "LSP: Signature help" })
+                    break
+                end
+                curWidth = curWidth + chunkWidth
+            end
+            table.insert(newVirtText, { suffix, "MoreMsg" })
+            return newVirtText
+        end
+
+        -- 忽略特定文件类型
+        vim.api.nvim_create_autocmd("FileType", {
+            pattern = { "leetcode.nvim" },
+            callback = function()
+                require("ufo").detach()
+                vim.opt_local.foldenable = false
             end,
         })
+
+        require("ufo").setup {
+            close_fold_kinds = { "imports" },
+            fold_virt_text_handler = handler,
+        }
     end,
 }
