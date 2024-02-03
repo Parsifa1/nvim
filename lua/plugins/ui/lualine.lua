@@ -90,20 +90,6 @@ local opts = {
                 color = { fg = "#ff9e64" },
             },
             recording,
-            -- {
-            --     function()
-            --         local function cwd()
-            --             ---@diagnostic disable-next-line: redefined-local
-            --             local cwd = vim.fn.getcwd()
-            --             if cwd == nil then
-            --                 return "VOID"
-            --             else
-            --                 return cwd:gsub("/home/parsifa1", "~")
-            --             end
-            --         end
-            --         return custom.icons.ui.Folder .. " " .. cwd()
-            --     end,
-            -- },
             {
                 "copilot",
                 show_running = true,
@@ -161,6 +147,8 @@ local opts = {
                     oil = " Oil",
                     Outline = "󰇽 Outline",
                     lazy = "󰜢 Lazy",
+                    Mundo = " Mundo",
+                    MundoDiff = " MundoDiff",
                 },
                 disabled_buftypes = {
                     "terminal",
