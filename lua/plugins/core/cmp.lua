@@ -1,28 +1,18 @@
 local opts = function()
-    local luasnip = require("luasnip")
-    local cmp = require("cmp")
-    local lspkind = require("lspkind")
-    -- local custom = require("custom")
+    local luasnip = require "luasnip"
+    local cmp = require "cmp"
+    local lspkind = require "lspkind"
 
-    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {         --圆角提示框
+    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { --圆角提示框
         border = "rounded",
     })
 
-    cmp.setup({
+    cmp.setup {
         inlay_hints = { enabled = true },
         preselect = cmp.PreselectMode.None,
         window = {
             completion = cmp.config.window.bordered(),
             documentation = cmp.config.window.bordered(),
-
-            -- TEST:old type
-            -- completion = {
-            --     border = custom.border,
-            --     col_offset = -3,
-            -- },
-            -- documentation = {
-            --     border = custom.border,
-            -- },
         },
 
         view = {
@@ -35,18 +25,18 @@ local opts = function()
             end,
         },
 
-        mapping = cmp.mapping.preset.insert({
+        mapping = cmp.mapping.preset.insert {
             ["<C-p>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
             ["<C-n>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
             ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
             ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
             ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-            ["<C-e>"] = cmp.mapping({
+            ["<C-e>"] = cmp.mapping {
                 i = cmp.mapping.close(),
                 c = cmp.mapping.close(),
-            }),
+            },
             -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-            ["<CR>"] = cmp.mapping.confirm({ select = true }),
+            ["<CR>"] = cmp.mapping.confirm { select = true },
 
             ["<Tab>"] = cmp.mapping(function(fallback)
                 if cmp.visible() then
@@ -69,12 +59,12 @@ local opts = function()
                     fallback()
                 end
             end, { "i", "s", "c" }),
-        }),
+        },
 
         -- Set source precedence
-        sources = cmp.config.sources({
+        sources = cmp.config.sources {
             { name = "nvim_lsp" }, -- For nvim-lsp
-            { name = "luasnip" },  -- For luasnip user
+            { name = "luasnip" }, -- For luasnip user
             {
                 name = "buffer",
                 option = {
@@ -90,12 +80,12 @@ local opts = function()
             { name = "path" },
             { name = "calc" },
             { name = "orgmode" },
-        }),
+        },
         --lspkind
         formatting = {
             fields = { "kind", "abbr", "menu" },
 
-            format = lspkind.cmp_format({
+            format = lspkind.cmp_format {
                 mode = "symbol",
                 maxwidth = 50,
                 menu = {
@@ -106,7 +96,7 @@ local opts = function()
                     path = "[PTH]",
                     calc = "[CLC]",
                 },
-            }),
+            },
         },
 
         sorting = {
@@ -121,7 +111,7 @@ local opts = function()
                 cmp.config.compare.order,
             },
         },
-    })
+    }
 
     -- for cmp-smdline
     cmp.setup.cmdline(":", {
@@ -144,11 +134,11 @@ local opts = function()
         desc = "Setup cmp buffer crates source",
         pattern = "Cargo.toml",
         callback = function()
-            cmp.setup.buffer({
+            cmp.setup.buffer {
                 sources = {
                     { name = "crates" },
                 },
-            })
+            }
         end,
     })
 end
@@ -172,4 +162,3 @@ return {
     },
     config = opts,
 }
-

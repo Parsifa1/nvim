@@ -1,16 +1,6 @@
-local function firstToUpper(str)
-    return (str:gsub("^%l", string.upper))
-end
-
 local config = function()
     local lspconfig = require "lspconfig"
     local custom = require "custom"
-
-    -- Set diagnostic icons(backup)
-    for type, icon in pairs(custom.icons.diagnostic) do
-        local hl = "DiagnosticSign" .. firstToUpper(type)
-        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-    end
 
     -- Customized on_attach function
     custom.set("n", "<leader>dd", vim.diagnostic.open_float, "open float")
@@ -129,19 +119,6 @@ local config = function()
         ["pyright"] = function()
             lspconfig.pyright.setup {
                 cmd = { "delance-langserver", "--stdio" },
-                -- settings = {
-                --     python = {
-                --         typeCheckingMode = "off",
-                --         analysis = {
-                --             inlayHints = {
-                --                 functionReturnTypes = true,
-                --                 pytestParameters = true,
-                --                 variableTypes = true,
-                --                 callArgumentNames = "partial",
-                --             },
-                --         },
-                --     },
-                -- },
                 settings = {
                     python = {
                         analysis = {
