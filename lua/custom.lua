@@ -203,11 +203,11 @@ local backup = {
         Telescope = "",
     },
     diagnostics = {
-        Error = "",
-        Warning = "",
-        Information = "",
-        Question = "",
-        Hint = "󰌵",
+        Error = " ",
+        Warning = " ",
+        Information = " ",
+        Question = " ",
+        Hint = "󰌵 ",
         -- Holo version
         Error_alt = "󰅚",
         Warning_alt = "󰀪",

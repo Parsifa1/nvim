@@ -33,7 +33,7 @@ local config = function()
             set("<leader>ca", vim.lsp.buf.code_action, "code action")
             set("gr", vim.lsp.buf.references, "references")
             --lspsaga
-            set("<leader>ld", ":Lspsaga peek_definition<CR>", "Lsp Definition")
+            set("<leader>gd", ":Lspsaga peek_definition<CR>", "Lsp Definition")
             set("<leader>lr", require("telescope.builtin").lsp_references, "Peek References")
             set("F", ":Lspsaga finder def+ref<CR>", "Finder")
             set("<leader>ll", ":Lspsaga outline<CR>", " OutLine")
@@ -52,9 +52,9 @@ local config = function()
                 signs = {
                     text = {
                         ["ERROR"] = custom.icons.diagnostic.Error,
-                        ["WARN"] = custom.icons.diagnostic.Warn,
+                        ["WARN"] = custom.icons.diagnostic.Warning,
                         ["HINT"] = custom.icons.diagnostic.Hint,
-                        ["INFO"] = custom.icons.diagnostic.Info,
+                        ["INFO"] = custom.icons.diagnostic.Information,
                     },
                 },
             }
