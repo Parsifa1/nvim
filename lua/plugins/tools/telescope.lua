@@ -1,5 +1,5 @@
 local function flash(prompt_bufnr)
-    require("flash").jump({
+    require("flash").jump {
         pattern = "^",
         label = { after = { 0, 0 } },
         search = {
@@ -14,7 +14,7 @@ local function flash(prompt_bufnr)
             local picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
             picker:set_selection(match.pos[1] - 1)
         end,
-    })
+    }
 end
 local opts = {
     defaults = {
@@ -29,19 +29,19 @@ local opts = {
                 height_padding = 0.1,
                 preview_height = 0.5,
                 preview_width = 0.5,
-            }
+            },
         },
         mappings = {
             n = {
                 s = flash,
-                ["q"] = 'close',
-                ["<A-q>"] = 'close',
-                ["zh"] = 'select_horizontal',
-                ["zv"] = 'select_vertical',
+                ["q"] = "close",
+                ["<A-q>"] = "close",
+                ["zh"] = "select_horizontal",
+                ["zv"] = "select_vertical",
             },
             i = {
-                ["<A-q>"] = 'close',
-                ["<c-s>"] = flash
+                ["<A-q>"] = "close",
+                ["<c-s>"] = flash,
             },
         },
         prompt_prefix = "  ",
@@ -63,15 +63,15 @@ local opts = {
         },
         live_grep = {
             vimgrep_arguments = {
-                'rg',
-                '--no-heading',
+                "rg",
+                "--no-heading",
                 -- '--with-filename',
-                '--line-number',
-                '--column',
-                '--smart-case',
-                '--hidden',
-                '--glob', -- this flag allows you to hide exclude these files and folders from your search 👇
-                '!{**/.git/*,**/node_modules/*,**/package-lock.json,**/yarn.lock,.vscode-server,.virtualenvs}',
+                "--line-number",
+                "--column",
+                "--smart-case",
+                "--hidden",
+                "--glob", -- this flag allows you to hide exclude these files and folders from your search 👇
+                "!{**/.git/*,**/node_modules/*,**/package-lock.json,**/yarn.lock,.vscode-server,.virtualenvs}",
             },
             layout_strategy = "vertical",
         },

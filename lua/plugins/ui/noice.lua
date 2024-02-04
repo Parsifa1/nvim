@@ -20,32 +20,31 @@ return {
             },
             {
                 filter = {
-                    event = 'msg_show',
+                    event = "msg_show",
                     any = {
-                        { find = '%d+L, %d+B' },
-                        { find = '; after #%d+' },
-                        { find = '; before #%d+' },
-                        { find = '%d fewer lines' },
-                        { find = '%d more lines' },
+                        { find = "%d+L, %d+B" },
+                        { find = "; after #%d+" },
+                        { find = "; before #%d+" },
+                        { find = "%d fewer lines" },
+                        { find = "%d more lines" },
                     },
                 },
                 opts = { skip = true },
             },
             {
                 filter = {
-                    event = 'msg_show',
-                    find = 'E21',
+                    event = "msg_show",
+                    find = "E21",
                 },
                 opts = { skip = true },
             },
-            -- {
-            --     filter = {
-            --         event = 'msg_show',
-            --         find = 'Invalid buffer id:',
-            --     },
-            --     opts = { skip = true },
-            -- },
-
+        },
+        views = {
+            mini = {
+                win_options = {
+                    winblend = 0,
+                },
+            },
         },
     },
 }

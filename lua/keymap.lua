@@ -74,7 +74,7 @@ else
     set("n", "<leader>f", ":Telescope find_files<CR>", "find files")
     set("n", "<leader>F", ':lua require("conform").format()<CR>', "Format files")
     set("n", "<leader>gg", ":Neogit<CR>", "Open Neogit")
-    set("n", "<leader>i", ":Telescope neovim-project history theme=dropdown<CR><Esc>", "projects folder")
+    set("n", "<leader>i", ":Telescope workspaces theme=dropdown<CR><Esc>", "projects folder")
     set("n", "<leader>p", ":Lazy<CR>", "lazy")
     set("n", "<leader>ss", ":%s/\\<<c-r><c-w>\\>/<c-r><c-w>/gi<left><left><left>", "Global replacement")
     set("n", "<leader>sw", ":set wrap!<CR>", "toggle warp")

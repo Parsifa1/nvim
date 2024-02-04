@@ -8,7 +8,7 @@ return {
             groups = {
                 all = {
                     NormalFloat = { fg = "fg1", bg = "NONE", },
-                    WinSeparator = { fg = "#afafaf", bg = "NONE", },
+                    WinSeparator = { fg = "#7c7c7c", bg = "NONE", },
                 },
             },
         })
