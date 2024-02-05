@@ -1,6 +1,5 @@
 local M = {}
 
--- Border style of floating windows
 M.border = "rounded"
 
 M.theme = "nordfox"

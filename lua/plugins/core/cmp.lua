@@ -1,8 +1,6 @@
 local opts = function()
     local luasnip = require "luasnip"
     local cmp = require "cmp"
-    local lspkind = require "lspkind"
-
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { --圆角提示框
         border = "rounded",
     })
@@ -79,26 +77,29 @@ local opts = function()
             },
             { name = "path" },
             { name = "calc" },
-            { name = "orgmode" },
         },
+
         --lspkind
         formatting = {
             fields = { "kind", "abbr", "menu" },
-
-            format = lspkind.cmp_format {
-                mode = "symbol",
-                maxwidth = 50,
-                menu = {
+            format = function(entry, vim_item)
+                local kind = require("lspkind").cmp_format { mode = "symbol", maxwidth = 50 }(entry, vim_item)
+                local strings = vim.split(kind.kind, "%s", { trimempty = true })
+                local menu = {
                     luasnip = "[SNP]",
                     nvim_lsp = "[LSP]",
                     nvim_lua = "[VIM]",
                     buffer = "[BUF]",
                     path = "[PTH]",
                     calc = "[CLC]",
-                },
-            },
+                    latex_symbols = "[TEX]",
+                    orgmode = "[ORG]",
+                }
+                kind.kind = (strings[1] or "")
+                kind.menu = menu[entry.source.name]
+                return kind
+            end,
         },
-
         sorting = {
             comparators = {
                 cmp.config.compare.offset,
@@ -142,13 +143,13 @@ local opts = function()
         end,
     })
 end
+
 return {
     "hrsh7th/nvim-cmp",
     dependencies = {
         { "hrsh7th/cmp-buffer" },
         { "hrsh7th/cmp-nvim-lsp" },
         { "hrsh7th/cmp-nvim-lsp-signature-help" },
-        { "hrsh7th/cmp-buffer" },
         { "hrsh7th/cmp-path" },
         { "hrsh7th/cmp-cmdline" },
         { "hrsh7th/cmp-calc" },

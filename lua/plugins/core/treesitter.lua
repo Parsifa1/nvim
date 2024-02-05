@@ -1,7 +1,6 @@
 return {
     "nvim-treesitter/nvim-treesitter",
     event = "VeryLazy",
-    dependencies = { "nvim-treesitter/nvim-treesitter-context" },
     build = ":TSUpdate",
     config = function()
         require("nvim-treesitter.configs").setup {
@@ -29,9 +28,6 @@ return {
                 enable = true,
                 additional_vim_regex_highlighting = false,
             },
-        }
-        require("treesitter-context").setup {
-            mode = "cursor", -- Line used to calculate context. Choices: 'cursor', 'topline'
         }
     end,
 }

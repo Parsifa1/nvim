@@ -5,11 +5,12 @@ return {
     config = function()
         require("telescope").load_extension "workspaces"
         require("sessions").setup {
-            events = { "WinEnter" },
+            events = { "WinEnter", "User", "VimLeavePre" },
             absolute = true,
             session_filepath = vim.fn.stdpath "data" .. "/sessions",
         }
         require("workspaces").setup {
+            auto_open = true,
             sort = true,
             mru_sort = true,
             progress_ttl = 30,
@@ -23,7 +24,6 @@ return {
                 },
                 open = function()
                     require("sessions").load(nil, { silent = true })
-                    -- MiniFiles.open()
                 end,
             },
         }

@@ -91,6 +91,7 @@ local config = function()
         },
         symbol_in_winbar = {
             enable = false,
+            separator = '  ',
         },
     }
 
