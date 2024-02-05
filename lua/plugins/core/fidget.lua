@@ -3,6 +3,9 @@ return {
     event = "LspAttach",
     opts = {
         progress = {
+            display = {
+                progress_ttl = 15,
+            },
             lsp = {
                 progress_ringbuf_size = 512,
             },

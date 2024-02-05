@@ -1,30 +1,16 @@
 return {
     "natecraddock/workspaces.nvim",
-    dependencies = { "natecraddock/sessions.nvim" },
-    event = "VeryLazy",
+    dependencies = { "Shatur/neovim-session-manager" },
     config = function()
         require("telescope").load_extension "workspaces"
-        require("sessions").setup {
-            events = { "WinEnter", "User", "VimLeavePre" },
-            absolute = true,
-            session_filepath = vim.fn.stdpath "data" .. "/sessions",
-        }
+        require("session_manager").setup { autoload_mode = "Disabled" }
         require("workspaces").setup {
             auto_open = true,
             sort = true,
             mru_sort = true,
-            progress_ttl = 30,
             hooks = {
-                add = {
-                    "SessionsSave",
-                },
-                open_pre = {
-                    "SessionsStop",
-                    "silent %bdelete!",
-                },
-                open = function()
-                    require("sessions").load(nil, { silent = true })
-                end,
+                add = { "SessionManager save_current_session" },
+                open = { "SessionManager load_current_dir_session" },
             },
         }
     end,
