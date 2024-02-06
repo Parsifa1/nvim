@@ -196,7 +196,7 @@ return {
     init = function()
         vim.o.laststatus = 3
     end,
-    -- event = "VeryLazy",
+    event = "VeryLazy",
     enabled = true,
     dependencies = {
         { "nvim-tree/nvim-web-devicons" },
