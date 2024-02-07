@@ -33,12 +33,18 @@ else
     set("i", "<A-l>", "<Right>")
     set("i", "<A-h>", "<Left>")
 
+    -- tab操作
+    set("n", "<Tab><Tab>", ":tabnew<CR>")
+    set("n", "[[", ":tabp<CR>", "previous tab")
+    set("n", "]]", ":tabn<CR>", "next tab")
+
     -- 分屏
     set("n", "z", "<C-w>")
-    set("n", "zp", ":sp<CR>", "split")
 
     -- 折叠
-    set("n", "za", "za")
+    set("n", "zz", "za") -- 折叠/展开当前位置
+    set("n", "zr", "zR") -- 全部展开
+    set("n", "zm", "zM") -- 全部折叠
 
     -- 其他
     set({ "n", "v" }, "H", "^")
@@ -67,9 +73,6 @@ else
 
     --leader键
     set("n", "<leader>a", ":Outline<CR>", "Outline")
-    set("n", "<leader>cc", ":Telescope commands<CR>", "commands")
-    set("n", "<leader>ck", ":Telescope keymaps<CR>", "keymaps")
-    -- set("n", "<leader>dw", ":lua require('dropbar.api').pick()<CR>", "DropBar select")
     set("n", "<leader>e", ":lua MiniFiles.open()<CR>", "File Explorer")
     set("n", "<leader>f", ":Telescope find_files<CR>", "find files")
     set("n", "<leader>F", ':lua require("conform").format()<CR>', "Format files")
@@ -79,6 +82,9 @@ else
     set("n", "<leader>ss", ":%s/\\<<c-r><c-w>\\>/<c-r><c-w>/gi<left><left><left>", "Global replacement")
     set("n", "<leader>sw", ":set wrap!<CR>", "toggle warp")
     set("n", "<leader>r", ":Telescope oldfiles<CR>", "recent files")
+    set("n", "<leader>tc", ":Telescope commands<CR>", "Telescope commands")
+    set("n", "<leader>tk", ":Telescope keymaps<CR>", "Telescope keymaps")
+    set("n", "<leader>tb", ":Telescope buffers theme=dropdown<CR><Esc>", "Telescope buffers")
     set("n", "<leader>u", ":MundoToggle<CR>", "Undo Tree")
     set("n", "<leader>v", ":lua vim.fn.chdir(vim.fn.fnamemodify(vim.fn.expand('%:p'), ':h'))<CR>", "cd current file")
     set("n", "<leader>w", ":Telescope live_grep<CR>", "find words")

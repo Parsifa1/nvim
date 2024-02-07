@@ -4,6 +4,11 @@ if vim.g.vscode then
 else
     -- colorscheme
     vim.cmd("colorscheme " .. require("custom").theme)
+
+    -- set highlight
+    vim.api.nvim_set_hl(0, "visual", { reverse = true })
+
+    -- normal setting
     vim.loader.enable()
     vim.g.copilot_assume_mapped = true
     vim.g.copilot_proxy = "http://127.0.0.1:7891"
@@ -11,11 +16,13 @@ else
     vim.opt.clipboard = "unnamedplus" -- use system clipboard
     vim.opt.completeopt = { "menu", "menuone", "noselect" }
     vim.opt.mouse = "a" -- allow the mouse to be used in nvim
+
     -- tab
     vim.opt.tabstop = 4 -- number of visual spaces per tab
     -- vim.opt.sofbstop = 4 -- number of spacesin tab when editing
     vim.opt.shiftwidth = 4 -- insert 4 spaces on a tab
     vim.opt.expandtab = true -- tabs are spaces, mainly because of python
+
     -- ui config
     vim.opt.number = true -- add numbers to each line on the left side
     vim.opt.relativenumber = true --show relative number
@@ -24,23 +31,30 @@ else
     vim.opt.splitright = true -- open new horizontal splits right
     vim.opt.termguicolors = true -- enabl 24-bit rgb color in the tui
     vim.opt.list = false
-    vim.opt.laststatus = 3 -- always show status line
     vim.opt.signcolumn = "yes"
-    -- vim.opt.signcolumn = "number"
     vim.wo.wrap = true
+    vim.opt.fillchars = { -- close eob fillchars
+        eob = " ",
+    }
+    
     -- searching
     vim.opt.incsearch = true -- search as characters are entered
     vim.opt.hlsearch = false -- do not highlight matches
     vim.opt.ignorecase = true -- ignore case in searches by default
     vim.opt.smartcase = true -- but make it case sensitive if an uppercase is entered
+
     -- indentation
     vim.opt.timeoutlen = 500 -- time to wait for a mapped sequence to complete (in milliseconds)
+
     -- asyncrun setting
     vim.g.asyncrun_open = 6
+
     -- no fold
     vim.opt.foldlevel = 99
+
     -- set highlight
     vim.api.nvim_set_hl(0, "visual", { reverse = true })
+
     -- for neovide
     if vim.g.neovide then
         vim.o.guifont = "JetBrains_Mono,JetBrainsMono_Nerd_Font,LXGW_WenKai:h12"

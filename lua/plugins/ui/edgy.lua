@@ -17,8 +17,6 @@ return {
                     return vim.bo[buf].buftype == "help"
                 end,
             },
-            { ft = "NeogitStatus", size = { height = 15 } },
-            { ft = "spectre_panel", size = { height = 15 } },
         },
         right = {
             {
@@ -28,5 +26,6 @@ return {
                 size = { width = 35 },
             },
         },
+        exit_when_last = true,
     },
 }

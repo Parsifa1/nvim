@@ -11,6 +11,7 @@ return {
             hooks = {
                 add = { "SessionManager save_current_session" },
                 open = { "SessionManager load_current_dir_session" },
+                remove = { "SessionManager delete_current_dir_session"}
             },
         }
     end,

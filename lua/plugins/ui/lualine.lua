@@ -173,7 +173,7 @@ local opts = {
             "Alpha",
         },
         always_divide_middle = true,
-        globalstatus = false,
+        globalstatus = true,
         component_separators = { left = "", right = "" },
         section_separators = { left = "", right = "" },
     },
@@ -193,11 +193,8 @@ local opts = {
 }
 return {
     "nvim-lualine/lualine.nvim",
-    init = function()
-        vim.o.laststatus = 3
-    end,
     event = "VeryLazy",
-    enabled = true,
+    -- enabled = false,
     dependencies = {
         { "nvim-tree/nvim-web-devicons" },
         { "ofseed/lualine-copilot" },

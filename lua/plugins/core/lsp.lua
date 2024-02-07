@@ -3,7 +3,6 @@ local config = function()
     local custom = require "custom"
 
     -- Customized on_attach function
-    custom.set("n", "<leader>dd", vim.diagnostic.open_float, "open float")
     custom.set("n", "[d", vim.diagnostic.goto_prev, "goto prev")
     custom.set("n", "]d", vim.diagnostic.goto_next, "goto next")
     custom.set("n", "<leader>q", ":TroubleToggle<CR>", "quickfix list")
@@ -28,15 +27,14 @@ local config = function()
             set("K", vim.lsp.buf.hover, "hover")
             set("<C-k>", vim.lsp.buf.signature_help, "LSP: Signature help")
             set("gi", vim.lsp.buf.implementation, "implementation")
-            set("<leader>D", vim.lsp.buf.type_definition, "type definition")
+            set("<leader>cd", vim.lsp.buf.type_definition, "type definition")
             set("<leader>cn", vim.lsp.buf.rename, "rename")
-            set("<leader>ca", vim.lsp.buf.code_action, "code action")
             set("gr", vim.lsp.buf.references, "references")
             --lspsaga
             set("<leader>gd", ":Lspsaga peek_definition<CR>", "Lsp Definition")
-            set("<leader>lr", require("telescope.builtin").lsp_references, "Peek References")
+            set("<leader>cr", require("telescope.builtin").lsp_references, "Peek References")
             set("F", ":Lspsaga finder def+ref<CR>", "Finder")
-            set("<leader>ll", ":Lspsaga outline<CR>", " OutLine")
+            set("<leader>cl", ":Lspsaga outline<CR>", " OutLine")
             set("<leader>ca", "<cmd>Lspsaga code_action<CR>", "Code Action")
             vim.diagnostic.config {
                 virtual_text = {
@@ -91,7 +89,7 @@ local config = function()
         },
         symbol_in_winbar = {
             enable = false,
-            separator = '  ',
+            separator = "  ",
         },
     }
 
@@ -112,7 +110,9 @@ local config = function()
             lspconfig.clangd.setup {
                 filetypes = { "cpp", "c" },
                 cmd = {
-                    "clangd",
+                    -- "clangd",
+                    -- TODO:测试版clangd
+                    "/home/parsifa1/Public/test/build/bin/clangd",
                     "--offset-encoding=utf-16",
                 },
             }
@@ -175,6 +175,6 @@ return {
         "folke/neodev.nvim",
         "nvimdev/lspsaga.nvim",
     },
-    event = "LspAttach",
+    event = "BufReadPre",
     config = config,
 }
