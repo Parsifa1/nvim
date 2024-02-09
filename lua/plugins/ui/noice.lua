@@ -41,6 +41,13 @@ return {
             {
                 filter = {
                     event = "msg_show",
+                    find = "clipboard",
+                },
+                opts = { skip = true },
+            },
+            {
+                filter = {
+                    event = "msg_show",
                     find = "W10",
                 },
                 opts = { skip = true },
