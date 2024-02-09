@@ -1,18 +1,18 @@
-local win = require("user.floatwin")
+local win = require "user.floaterm"
 local function split()
     win:Create({
         width = 0.36,
         height = 0.87,
-        title = ' Code Running '
+        title = " Code Running ",
     }, {
         buflisted = true,
-        pos = 'tr',
+        pos = "tr",
     })
 end
 
 local function run(cmd)
     split()
-    cmd = 'term ' .. cmd
+    cmd = "term " .. cmd
     vim.cmd(cmd)
 end
 

@@ -29,6 +29,9 @@ else
     set("t", "<A-q>", "<C-\\><C-n>:q<CR>")
     set("i", "<A-q>", "<Esc>:q<CR>")
 
+    -- buffer关闭
+    set("n", "zd", ":bd<CR>")
+
     -- insert模式下的方向键
     set("i", "<A-l>", "<Right>")
     set("i", "<A-h>", "<Left>")
@@ -47,14 +50,16 @@ else
     set("n", "zm", "zM") -- 全部折叠
 
     -- 其他
-    set({ "n", "v" }, "H", "^")
-    set({ "n", "v" }, "L", "$")
-    -- set("n", "<C-h>", ":bp<CR>")
-    -- set("n", "<C-l>", ":bn<CR>")
+    set({ "n", "v", "o" }, "H", "^")
+    set({ "n", "v", "o" }, "L", "$")
     set("n", "[b", ":bp<CR>")
     set("n", "]b", ":bn<CR>")
+    -- set("n", "<C-h>", ":bp<CR>")
+    -- set("n", "<C-l>", ":bn<CR>")
     set("n", "<C-j>", "<C-w>j")
     set("n", "<C-k>", "<C-w>k")
+    set("n", "<C-s>", ":w<CR>")
+    set("i", "<C-s>", "<Esc>:w<CR>a")
     set("n", "<C-a>", "gg0vG$")
     set("v", "<C-a>", "vgg0vG$")
     set("i", "<C-a>", "<Esc>gg4vG$a")
