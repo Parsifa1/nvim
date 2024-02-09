@@ -20,6 +20,7 @@ return {
         float_opts = {
             border = custom.border,
         },
+        autochdir = true,
     },
 
     keys = function()

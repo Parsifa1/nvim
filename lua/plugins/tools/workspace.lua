@@ -1,6 +1,6 @@
 return {
     "natecraddock/workspaces.nvim",
-    dependencies = { "Shatur/neovim-session-manager" },
+    dependencies = { "parsifa1/neovim-session-manager" },
     config = function()
         require("telescope").load_extension "workspaces"
         require("session_manager").setup {
@@ -16,8 +16,5 @@ return {
                 remove = { "SessionManager delete_current_dir_session" },
             },
         }
-        vim.api.nvim_create_autocmd({ "DirChangedPre" }, {
-            callback = require("session_manager").autosave_session,
-        })
     end,
 }

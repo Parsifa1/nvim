@@ -49,8 +49,10 @@ else
     -- 其他
     set({ "n", "v" }, "H", "^")
     set({ "n", "v" }, "L", "$")
-    set("n", "<C-h>", ":bp<CR>")
-    set("n", "<C-l>", ":bn<CR>")
+    -- set("n", "<C-h>", ":bp<CR>")
+    -- set("n", "<C-l>", ":bn<CR>")
+    set("n", "[b", ":bp<CR>")
+    set("n", "]b", ":bn<CR>")
     set("n", "<C-j>", "<C-w>j")
     set("n", "<C-k>", "<C-w>k")
     set("n", "<C-a>", "gg0vG$")
