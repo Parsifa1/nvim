@@ -38,6 +38,13 @@ return {
                 },
                 opts = { skip = true },
             },
+            {
+                filter = {
+                    event = "msg_show",
+                    find = "W10",
+                },
+                opts = { skip = true },
+            },
         },
         views = {
             mini = {
