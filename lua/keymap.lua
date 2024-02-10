@@ -29,8 +29,16 @@ else
     set("t", "<A-q>", "<C-\\><C-n>:q<CR>")
     set("i", "<A-q>", "<Esc>:q<CR>")
 
+    -- 分屏
+    set("n", "z", "<C-w>")
+
     -- buffer关闭
-    set("n", "zd", ":bd<CR>")
+    set("n", "zx", ":bd<CR>")
+
+    -- 折叠
+    set("n", "zz", "za") -- 折叠/展开当前位置
+    set("n", "zr", "zR") -- 全部展开
+    set("n", "zm", "zM") -- 全部折叠
 
     -- insert模式下的方向键
     set("i", "<A-l>", "<Right>")
@@ -41,23 +49,15 @@ else
     set("n", "[[", ":tabp<CR>", "previous tab")
     set("n", "]]", ":tabn<CR>", "next tab")
 
-    -- 分屏
-    set("n", "z", "<C-w>")
-
-    -- 折叠
-    set("n", "zz", "za") -- 折叠/展开当前位置
-    set("n", "zr", "zR") -- 全部展开
-    set("n", "zm", "zM") -- 全部折叠
-
     -- 其他
     set({ "n", "v", "o" }, "H", "^")
     set({ "n", "v", "o" }, "L", "$")
     set("n", "[b", ":bp<CR>")
     set("n", "]b", ":bn<CR>")
-    -- set("n", "<C-h>", ":bp<CR>")
-    -- set("n", "<C-l>", ":bn<CR>")
     set("n", "<C-j>", "<C-w>j")
     set("n", "<C-k>", "<C-w>k")
+    set("n", "<C-h>", ":bp<CR>")
+    set("n", "<C-l>", ":bn<CR>")
     set("n", "<C-s>", ":w<CR>")
     set("i", "<C-s>", "<Esc>:w<CR>a")
     set("n", "<C-a>", "gg0vG$")
@@ -75,8 +75,8 @@ else
 
     -- task指令
     set("n", "<F4>", ":AsyncTask acm<CR>", "run acm")
-    set("n", "<F5>", ":AsyncTask file-run<CR>", "run task")
-    set("n", "<F6>", ":AsyncTask file-build<CR>", "build task")
+    set("n", "<F5>", ":AsyncTask run<CR>", "run task")
+    set("n", "<F6>", ":AsyncTask build<CR>", "build task")
 
     --leader键
     set("n", "<leader>a", ":Outline<CR>", "Outline")
@@ -96,4 +96,8 @@ else
     set("n", "<leader>v", ":lua vim.fn.chdir(vim.fn.fnamemodify(vim.fn.expand('%:p'), ':h'))<CR>", "cd current file")
     set("n", "<leader>w", ":Telescope live_grep<CR>", "find words")
     set("n", "<leader><CR>", ":noh<CR>", "clear highlight")
+    vim.keymap.set("n", "<leader>ss", ":%s/\\<<c-r><c-w>\\>/<c-r><c-w>/gi<left><left><left>", {
+        noremap = true,
+        desc = "Global replacement",
+    })
 end
