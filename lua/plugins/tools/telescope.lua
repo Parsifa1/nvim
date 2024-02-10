@@ -75,11 +75,17 @@ local opts = {
             },
             layout_strategy = "vertical",
         },
+        buffers = {
+            theme = "dropdown",
+        },
     },
     extensions = {
         fzy_native = {
             override_generic_sorter = false,
             override_file_sorter = true,
+        },
+        workspaces = {
+            theme = "dropdown",
         },
     },
 }
