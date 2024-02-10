@@ -33,7 +33,7 @@ else
     set("n", "z", "<C-w>")
 
     -- buffer关闭
-    set("n", "zx", ":bd<CR>")
+    set("n", "<C-x>", ":bd<CR>")
 
     -- 折叠
     set("n", "zz", "za") -- 折叠/展开当前位置

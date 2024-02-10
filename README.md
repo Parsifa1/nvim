@@ -9,28 +9,28 @@
 
 ```
 .
+├── LICENSE
+├── README.md
 ├── init.lua
 ├── lazy-lock.json
-├── LICENSE
 ├── lua
 │   ├── custom.lua
+│   ├── faul.lua
 │   ├── keymap.lua
 │   ├── option.lua
-│   ├── plugin.lua
 │   ├── plugins
 │   │   ├── core
-│   │   │   ├── conform.lua
-│   │   │   ├── luasnip.lua
 │   │   │   ├── Mason.lua
+│   │   │   ├── cmp.lua
+│   │   │   ├── conform.lua
+│   │   │   ├── lsp.lua
+│   │   │   ├── luasnip.lua
 │   │   │   ├── neodev.lua
-│   │   │   ├── nvim-cmp.lua
-│   │   │   ├── nvim-lsp.lua
-│   │   │   ├── treesitter-content.lua
 │   │   │   └── treesitter.lua
 │   │   ├── dap
-│   │   │   ├── dap.lua
 │   │   │   ├── dap-ui.lua
 │   │   │   ├── dap-virtual-text.lua
+│   │   │   ├── dap.lua
 │   │   │   └── mason-dap.lua
 │   │   ├── edit
 │   │   │   ├── comment.lua
@@ -46,16 +46,16 @@
 │   │   │   ├── gitlinker.lua
 │   │   │   ├── gitsigns.lua
 │   │   │   └── neogit.lua
-│   │   ├── mini
-│   │   │   └── file.lua
 │   │   ├── others
+│   │   │   ├── cellular-automaton.lua
 │   │   │   ├── filetype.lua
 │   │   │   ├── friendly-snippets.lua
-│   │   │   ├── fzf-native.lua
 │   │   │   ├── markdown-preview.lua
+│   │   │   ├── markdown-typmath.lua
 │   │   │   ├── node_modules
-│   │   │   ├── typst.lua
 │   │   │   ├── typst-preview.lua
+│   │   │   ├── typst.lua
+│   │   │   ├── vim-astro.lua
 │   │   │   └── yarn.lock
 │   │   ├── theme
 │   │   │   ├── catppuccin.lua
@@ -63,40 +63,51 @@
 │   │   │   ├── nightfox.lua
 │   │   │   └── onedark.lua
 │   │   ├── tools
-│   │   │   ├── aerial.lua
 │   │   │   ├── asynctasks.lua
 │   │   │   ├── compatitest.lua
 │   │   │   ├── copilot.lua
-│   │   │   ├── karen-yank.lua
+│   │   │   ├── flatten.lua
+│   │   │   ├── gp.lua
+│   │   │   ├── hbac.lua
+│   │   │   ├── leetcode.lua
 │   │   │   ├── mundo.lua
-│   │   │   ├── neo-tree.lua
+│   │   │   ├── neovim-autopair.lua
 │   │   │   ├── oil.lua
-│   │   │   ├── orgmode.lua
-│   │   │   ├── project.lua
+│   │   │   ├── sleuth.lua
 │   │   │   ├── suda.lua
 │   │   │   ├── telescope.lua
 │   │   │   ├── todo-comments.lua
 │   │   │   ├── trouble.lua
-│   │   │   ├── ultimate-autopair.lua
-│   │   │   └── which-key.lua
+│   │   │   ├── which-key.lua
+│   │   │   └── workspace.lua
 │   │   └── ui
 │   │       ├── alpha.lua
 │   │       ├── blankline.lua
 │   │       ├── dropbar.lua
 │   │       ├── edgy.lua
+│   │       ├── fidget.lua
 │   │       ├── lualine.lua
+│   │       ├── mini-file.lua
 │   │       ├── noice.lua
+│   │       ├── nvim-colorizer.lua
 │   │       ├── nvim-notify.lua
+│   │       ├── nvim-ufo.lua
+│   │       ├── outline.lua
 │   │       ├── rainbow-delimiters.lua
+│   │       ├── statuscol.lua
+│   │       ├── tint.lua
 │   │       └── toggleterm.lua
 │   ├── snippets
-│   │   └── cpp.lua
+│   │   ├── cpp.lua
+│   │   └── rust.lua
 │   └── user
+│       ├── autosave.lua
 │       ├── coderunner.lua
-│       ├── floatwin.lua
-│       └── init.lua
-├── README.md
+│       ├── floaterm.lua
+│       ├── init.lua
+│       └── readonly.lua
+├── stylua.toml
 └── tasks.ini
 
-15 directories, 74 files
+14 directories, 86 files
 ```
