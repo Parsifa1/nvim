@@ -21,6 +21,7 @@ return {
                 "html",
                 "javascript",
                 "typescript",
+                "latex",
             },
             sync_install = true,
             auto_install = true,

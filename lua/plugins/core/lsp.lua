@@ -175,6 +175,6 @@ return {
         "folke/neodev.nvim",
         "nvimdev/lspsaga.nvim",
     },
-    event = "BufReadPre",
+    -- event = "BufReadPre",
     config = config,
 }

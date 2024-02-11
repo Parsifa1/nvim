@@ -153,6 +153,11 @@ local opts = {
                 disabled_buftypes = {
                     "terminal",
                 },
+                symbols = {
+                    modified = " ●",
+                    alternate_file = "",
+                    directory = "󰉋",
+                },
             },
         },
         lualine_z = {
