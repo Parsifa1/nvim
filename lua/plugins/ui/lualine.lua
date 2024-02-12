@@ -197,9 +197,8 @@ local opts = {
     },
 }
 return {
-    "nvim-lualine/lualine.nvim",
+    "parsifa1/lualine.nvim",
     event = "VeryLazy",
-    -- enabled = false,
     dependencies = {
         { "nvim-tree/nvim-web-devicons" },
         { "ofseed/lualine-copilot" },
