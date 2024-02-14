@@ -20,8 +20,8 @@ local keymap = {
     -- buffer关闭
     { mode = mode_n,      from = "<c-x>",        to = "<cmd>bd<CR>" },
     { mode = mode_n,      from = "zz",           to = "za" }, -- 折叠/展开当前位置
-    { mode = mode_n,      from = "zr",           to = "zr" }, -- 全部展开
-    { mode = mode_n,      from = "zm",           to = "zm" }, -- 全部折叠
+    { mode = mode_n,      from = "zr",           to = "zR" }, -- 全部展开
+    { mode = mode_n,      from = "zm",           to = "zM" }, -- 全部折叠
     -- insert模式下的方向键
     { mode = mode_i,      from = "<a-l>",        to = "<Right>" },
     { mode = mode_i,      from = "<a-h>",        to = "<Left>" },
@@ -65,6 +65,7 @@ local keymap = {
     { mode = mode_n,      from = "<leader>tk",   to = "<cmd>Telescope keymaps<cr>",                        desc = "telescope keymaps" },
     { mode = mode_n,      from = "<leader><cr>", to = "<cmd>noh<cr>",                                      desc = "clear highlight" },
     { mode = mode_n,      from = "<leader>i",    to = "<cmd>Telescope workspaces theme=dropdown<cr><esc>", desc = "projects folder",},
+    -- stylua: ignore end
     {
         mode = mode_n,
         from = "<leader>ss",
@@ -73,7 +74,6 @@ local keymap = {
         no_silent = true,
     },
 }
--- stylua: ignore end
 for _, mapping in ipairs(keymap) do
     if mapping.no_silent then
         vim.keymap.set(mapping.mode, mapping.from, mapping.to, { noremap = true })

@@ -14,6 +14,7 @@ return {
                 javascript = { "prettier" },
                 typescript = { "prettier" },
                 markdown = { "prettier" },
+                javascriptreact = { "prettier" },
             },
             formatters = {
                 clangformat = {
