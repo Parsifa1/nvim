@@ -2,7 +2,6 @@ local custom = require "custom"
 return {
     "folke/which-key.nvim",
     event = "BufReadPre",
-    cond = vim.bo.filetype ~= "alpha",
     init = function()
         vim.o.timeout = true
         vim.o.timeoutlen = 500

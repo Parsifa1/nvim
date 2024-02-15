@@ -2,7 +2,6 @@ return {
     "nvim-treesitter/nvim-treesitter-textobjects",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     event = "BufReadPre",
-    cond = vim.bo.filetype ~= "alpha",
     config = function()
         require("nvim-treesitter.configs").setup {
             textobjects = {

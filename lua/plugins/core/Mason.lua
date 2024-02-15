@@ -7,7 +7,6 @@ return {
         "BufReadPre",
         "CmdlineEnter",
     },
-    cond = vim.bo.filetype ~= "alpha",
 
     config = function()
         require("mason").setup {

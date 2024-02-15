@@ -10,7 +10,6 @@ return {
         "BufReadPre",
         "CmdlineEnter",
     },
-    cond = vim.bo.filetype ~= "alpha",
     config = function()
         require("luasnip").config.setup {
             enable_autosnippets = true,

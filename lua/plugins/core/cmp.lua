@@ -167,7 +167,6 @@ return {
         "BufReadPre",
         "CmdlineEnter",
     },
-    cond = vim.bo.filetype ~= "alpha",
 
     config = opts,
 }
