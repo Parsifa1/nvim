@@ -2,10 +2,6 @@ local opts = function()
     local luasnip = require "luasnip"
     local cmp = require "cmp"
 
-    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { --圆角提示框
-        border = "rounded",
-    })
-
     cmp.setup {
         inlay_hints = { enabled = true },
         preselect = cmp.PreselectMode.None,

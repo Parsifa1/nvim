@@ -163,6 +163,7 @@ local opts = {
                     lazy = "󰜢 Lazy",
                     Mundo = " Mundo",
                     MundoDiff = " MundoDiff",
+                    CompetiTest = " CompetiTest",
                 },
                 symbols = {
                     modified = " ●",

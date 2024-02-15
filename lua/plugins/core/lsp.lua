@@ -10,13 +10,16 @@ local config = function()
             local set = function(keys, func, indesc)
                 vim.keymap.set("n", keys, func, { buffer = bufnr, desc = indesc })
             end
+            -- for hover
+            vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = custom.border })
 
-            -- for inlay hints
+            -- inlay hints
             local client = vim.lsp.get_client_by_id(args.data.client_id)
             if client and client.server_capabilities.inlayHintProvider then
                 vim.lsp.inlay_hint.enable(bufnr, true)
             end
-            --lsp-builtin
+
+            -- lsp-builtin
             set("gD", vim.lsp.buf.declaration, "declaration")
             set("gd", vim.lsp.buf.definition, "definition")
             set("K", vim.lsp.buf.hover, "hover")
@@ -31,6 +34,7 @@ local config = function()
             set("<leader>cr", require("telescope.builtin").lsp_references, "Peek References")
             set("<leader>ca", require("actions-preview").code_actions, "Code Action")
 
+            -- diagnostic
             vim.diagnostic.config {
                 virtual_text = { spacing = 4 },
                 float = {
@@ -56,9 +60,9 @@ local config = function()
         library = { types = false, plugins = false },
     }
 
-    -- for lsp config in mason
+    -- lsp config in mason
     require("mason-lspconfig").setup_handlers {
-        function(server_name) -- default handler (optional)
+        function(server_name) -- default handler
             require("lspconfig")[server_name].setup {}
         end,
         ["clangd"] = function()
@@ -100,7 +104,6 @@ local config = function()
                         },
                         diagnostics = {
                             disable = { "missing-fields", "incomplete-signature-doc" },
-                            globals = { "vim" },
                         },
                     },
                 },
