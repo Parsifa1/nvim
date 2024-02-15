@@ -199,7 +199,8 @@ local opts = {
 }
 return {
     "parsifa1/lualine.nvim",
-    event = "CursorMoved",
+    event = "BufReadPre",
+    cond = vim.bo.filetype ~= "alpha",
     dependencies = {
         { "nvim-tree/nvim-web-devicons" },
         { "ofseed/lualine-copilot" },

@@ -1,6 +1,7 @@
 return {
     "numToStr/Comment.nvim",
-    event = "VeryLazy",
+    event = "BufReadPre",
+    cond = vim.bo.filetype ~= "alpha",
     dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
     config = function()
         require("Comment").setup {

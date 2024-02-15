@@ -4,9 +4,11 @@ return {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
     },
     event = {
-        "InsertEnter",
+        "BufReadPre",
         "CmdlineEnter",
     },
+    cond = vim.bo.filetype ~= "alpha",
+
     config = function()
         require("mason").setup {
             ui = {
@@ -17,7 +19,6 @@ return {
                 },
             },
         }
-        require("mason-lspconfig").setup {}
         require("mason-tool-installer").setup {
             ensure_installed = {
                 "lua-language-server",

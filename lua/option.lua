@@ -60,6 +60,8 @@ else
         pattern = "*",
         command = "set formatoptions-=ro",
     })
+    -- no statusline at first
+    vim.opt.laststatus = 0
 
     -- for neovide
     if vim.g.neovide then

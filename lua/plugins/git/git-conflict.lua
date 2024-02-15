@@ -11,5 +11,5 @@ return {
     "akinsho/git-conflict.nvim",
     version = "*",
     opts = opts,
-    event = "VeryLazy",
+    event = "Lspattach",
 }

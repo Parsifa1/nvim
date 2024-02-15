@@ -1,9 +1,10 @@
 return {
     "nvim-treesitter/nvim-treesitter-textobjects",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
-    event = "VeryLazy",
+    event = "BufReadPre",
+    cond = vim.bo.filetype ~= "alpha",
     config = function()
-        require 'nvim-treesitter.configs'.setup({
+        require("nvim-treesitter.configs").setup {
             textobjects = {
                 select = {
                     enable = true,
@@ -24,12 +25,12 @@ return {
                     },
                     selection_modes = {
                         ["@parameter.outer"] = "v", -- charwise
-                        ["@function.outer"] = "V",  -- linewise
+                        ["@function.outer"] = "V", -- linewise
                         ["@class.outer"] = "<c-v>", -- blockwise
                     },
                     include_surrounding_whitespace = false,
                 },
-            }
-        })
-    end
+            },
+        }
+    end,
 }

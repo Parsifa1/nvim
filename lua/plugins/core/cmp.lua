@@ -164,8 +164,10 @@ return {
         { "onsails/lspkind.nvim" },
     },
     event = {
-        "InsertEnter",
+        "BufReadPre",
         "CmdlineEnter",
     },
+    cond = vim.bo.filetype ~= "alpha",
+
     config = opts,
 }

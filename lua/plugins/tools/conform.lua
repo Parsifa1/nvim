@@ -1,7 +1,7 @@
 return {
     "stevearc/conform.nvim",
-    event = "BufWritePre",
-    cmd = "ConformInfo",
+    event = "BufReadPre",
+    cond = vim.bo.filetype ~= "alpha",
     config = function()
         require("conform").setup {
             formatters_by_ft = {

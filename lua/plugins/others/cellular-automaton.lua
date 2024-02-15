@@ -1,4 +1,5 @@
 return {
     "Eandrju/cellular-automaton.nvim",
-    event = "VeryLazy",
+    event = "BufReadPre",
+    cond = vim.bo.filetype ~= "alpha",
 }

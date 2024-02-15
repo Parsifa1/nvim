@@ -131,6 +131,7 @@ return {
             "folke/neodev.nvim",
         },
         event = "BufReadPre",
+        cond = vim.bo.filetype ~= "alpha",
         config = config,
     },
     {
