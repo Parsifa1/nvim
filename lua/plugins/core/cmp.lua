@@ -1,6 +1,7 @@
 local opts = function()
     local luasnip = require "luasnip"
     local cmp = require "cmp"
+
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { --圆角提示框
         border = "rounded",
     })
@@ -33,6 +34,7 @@ local opts = function()
                 i = cmp.mapping.close(),
                 c = cmp.mapping.close(),
             },
+
             -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
             ["<CR>"] = cmp.mapping.confirm { select = true },
 
@@ -41,8 +43,6 @@ local opts = function()
                     cmp.select_next_item()
                 elseif luasnip.expand_or_jumpable() then
                     luasnip.expand_or_jump()
-                    -- elseif has_words_before() then
-                    -- 	cmp.complete()
                 else
                     fallback()
                 end
@@ -60,7 +60,7 @@ local opts = function()
         },
 
         -- Set source precedence
-        sources = cmp.config.sources {
+        sources = {
             { name = "nvim_lsp" }, -- For nvim-lsp
             { name = "luasnip" }, -- For luasnip user
             {
@@ -120,14 +120,22 @@ local opts = function()
             { name = "path" },
         }, {
             { name = "cmdline" },
+        }, {
+            { name = "cmdline_history" },
         }),
     })
 
-    --for cmp-search
-    cmp.setup.cmdline("/", {
+    -- for cmp-search
+    cmp.setup.cmdline({ "/", "?" }, {
         sources = {
             { name = "buffer" },
+            { name = "cmdline_history" },
         },
+    })
+    cmp.setup.filetype("NeogitCommitMessage", {
+        sources = cmp.config.sources({
+            { name = "conventionalcommits" },
+        }, { { name = "buffer" } }),
     })
 
     -- for cargo specially
@@ -152,9 +160,11 @@ return {
         { "hrsh7th/cmp-nvim-lsp-signature-help" },
         { "hrsh7th/cmp-path" },
         { "hrsh7th/cmp-cmdline" },
+        { "dmitmel/cmp-cmdline-history" },
         { "hrsh7th/cmp-calc" },
         { "saadparwaiz1/cmp_luasnip" },
         { "lukas-reineke/cmp-under-comparator" },
+        { "davidsierradz/cmp-conventionalcommits" },
         { "onsails/lspkind.nvim" },
     },
     event = {

@@ -6,9 +6,7 @@ return {
         require("session_manager").setup {
             autoload_mode = "Disabled",
         }
-        vim.api.nvim_create_autocmd({ "DirChangedPre" }, {
-            callback = require("session_manager").autosave_session,
-        })
+
         require("workspaces").setup {
             auto_open = true,
             sort = true,
@@ -19,5 +17,9 @@ return {
                 remove = { "SessionManager delete_current_dir_session" },
             },
         }
+
+        vim.api.nvim_create_autocmd({ "DirChangedPre" }, {
+            callback = require("session_manager").autosave_session,
+        })
     end,
 }

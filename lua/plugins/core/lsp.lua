@@ -2,20 +2,15 @@ local config = function()
     local lspconfig = require "lspconfig"
     local custom = require "custom"
 
-    -- Customized on_attach function
-    custom.set("n", "[d", vim.diagnostic.goto_prev, "goto prev")
-    custom.set("n", "]d", vim.diagnostic.goto_next, "goto next")
-    custom.set("n", "<leader>q", ":TroubleToggle<CR>", "quickfix list")
-
-    -- use autocmd to automatically sign up lsp
+    -- automatically sign up lsp
     vim.api.nvim_create_autocmd("LspAttach", {
-
         desc = "General LSP Attach",
         callback = function(args)
             local bufnr = args.bufnr
             local set = function(keys, func, indesc)
                 vim.keymap.set("n", keys, func, { buffer = bufnr, desc = indesc })
             end
+
             -- for inlay hints
             local client = vim.lsp.get_client_by_id(args.data.client_id)
             if client and client.server_capabilities.inlayHintProvider then
@@ -30,17 +25,14 @@ local config = function()
             set("<leader>cd", vim.lsp.buf.type_definition, "type definition")
             set("<leader>cn", vim.lsp.buf.rename, "rename")
             set("gr", vim.lsp.buf.references, "references")
-            --lspsaga
-            set("<leader>gd", ":Lspsaga peek_definition<CR>", "Lsp Definition")
+            set("[d", vim.diagnostic.goto_prev, "goto prev")
+            set("]d", vim.diagnostic.goto_next, "goto next")
+            set("<leader>q", "<cmd>TroubleToggle<CR>", "quickfix list")
             set("<leader>cr", require("telescope.builtin").lsp_references, "Peek References")
-            set("F", ":Lspsaga finder def+ref<CR>", "Finder")
-            set("<leader>cl", ":Lspsaga outline<CR>", " OutLine")
-            set("<leader>ca", "<cmd>Lspsaga code_action<CR>", "Code Action")
+            set("<leader>ca", require("actions-preview").code_actions, "Code Action")
+
             vim.diagnostic.config {
-                virtual_text = {
-                    spacing = 4,
-                    -- severity = { min = vim.diagnostic.severity.WARN },
-                },
+                virtual_text = { spacing = 4 },
                 float = {
                     severity_sort = true,
                     source = "if_many",
@@ -58,47 +50,10 @@ local config = function()
             }
         end,
     })
+
     -- for neodev
     require("neodev").setup {
-        override = function(root_and_library)
-            local library = root_and_library.roo_dir
-            library.enabled = true
-            library.plugins = true
-        end,
-    }
-
-    -- for lspsaga
-    require("lspsaga").setup {
-        ui = {
-            code_action = "",
-        },
-        beacon = {
-            enable = false,
-        },
-        outline = {
-            layout = "float",
-            keys = {
-                toggle_or_jump = "<cr>",
-            },
-        },
-        finder = {
-            keys = {
-                shuttle = "J",
-                toggle_or_open = "<cr>",
-            },
-        },
-        symbol_in_winbar = {
-            enable = false,
-            separator = "  ",
-        },
-    }
-
-    --for lsp signature
-    require("lsp_signature").setup {
-        hint_prefix = "🧐 ",
-        handler_opts = {
-            border = require("custom").border,
-        },
+        library = { types = false, plugins = false },
     }
 
     -- for lsp config in mason
@@ -165,15 +120,51 @@ local config = function()
 end
 
 return {
-    "neovim/nvim-lspconfig",
-    dependencies = {
-        "williamboman/mason.nvim",
-        "williamboman/mason-lspconfig.nvim",
-        "lukas-reineke/lsp-format.nvim",
-        "ray-x/lsp_signature.nvim",
-        "folke/neodev.nvim",
-        "nvimdev/lspsaga.nvim",
+    {
+        "neovim/nvim-lspconfig",
+        dependencies = {
+            "williamboman/mason.nvim",
+            "williamboman/mason-lspconfig.nvim",
+            "folke/neodev.nvim",
+        },
+        event = "BufReadPre",
+        config = config,
     },
-    event = "BufReadPre",
-    config = config,
+    {
+        "ray-x/lsp_signature.nvim",
+        event = "LspAttach",
+        config = function()
+            require("lsp_signature").setup {
+                hint_prefix = "🧐 ",
+                handler_opts = {
+                    border = require("custom").border,
+                },
+            }
+        end,
+    },
+    {
+        "aznhe21/actions-preview.nvim",
+        event = "LspAttach",
+        config = function()
+            require("actions-preview").setup {
+                diff = {
+                    algorithm = "patience",
+                    ignore_whitespace = true,
+                },
+                telescope = {
+                    sorting_strategy = "ascending",
+                    layout_strategy = "vertical",
+                    layout_config = {
+                        width = 0.8,
+                        height = 0.9,
+                        prompt_position = "top",
+                        preview_cutoff = 20,
+                        preview_height = function(_, _, max_lines)
+                            return max_lines - 15
+                        end,
+                    },
+                },
+            }
+        end,
+    },
 }

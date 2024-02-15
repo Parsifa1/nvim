@@ -45,6 +45,17 @@ local lsp = function()
 end
 
 local opts = {
+    options = {
+        icons_enabled = true,
+        theme = "auto",
+        disabled_filetypes = {
+            "alpha",
+        },
+        always_divide_middle = true,
+        globalstatus = true,
+        component_separators = { left = "", right = "" },
+        section_separators = { left = "", right = "" },
+    },
     sections = {
         lualine_a = {
             { "mode", separator = { left = "", right = "" }, right_padding = 2 },
@@ -135,6 +146,9 @@ local opts = {
         lualine_a = {
             {
                 "buffers",
+                cond = function()
+                    return vim.bo.filetype ~= "alpha"
+                end,
                 mode = 2,
                 section_separators = { left = "", right = "" },
                 use_mode_colors = true,
@@ -150,9 +164,6 @@ local opts = {
                     Mundo = " Mundo",
                     MundoDiff = " MundoDiff",
                 },
-                disabled_buftypes = {
-                    "terminal",
-                },
                 symbols = {
                     modified = " ●",
                     alternate_file = "",
@@ -163,24 +174,13 @@ local opts = {
         lualine_z = {
             {
                 "tabs",
+                cond = function()
+                    return vim.bo.filetype ~= "alpha"
+                end,
                 section_separators = { left = "", right = "" },
                 use_mode_colors = true,
             },
         },
-    },
-    options = {
-        icons_enabled = true,
-        theme = "auto",
-        disabled_filetypes = {
-            " Alpha",
-        },
-        ignore_focus = {
-            "Alpha",
-        },
-        always_divide_middle = true,
-        globalstatus = true,
-        component_separators = { left = "", right = "" },
-        section_separators = { left = "", right = "" },
     },
     extensions = {
         "man",
@@ -198,7 +198,7 @@ local opts = {
 }
 return {
     "parsifa1/lualine.nvim",
-    event = "VeryLazy",
+    event = "CursorMoved",
     dependencies = {
         { "nvim-tree/nvim-web-devicons" },
         { "ofseed/lualine-copilot" },
