@@ -55,6 +55,12 @@ else
     -- set highlight
     vim.api.nvim_set_hl(0, "visual", { reverse = true })
 
+    -- set no comment in next line
+    vim.api.nvim_create_autocmd("FileType", {
+        pattern = "*",
+        command = "set formatoptions-=ro",
+    })
+
     -- for neovide
     if vim.g.neovide then
         vim.o.guifont = "JetBrains_Mono,JetBrainsMono_Nerd_Font,LXGW_WenKai:h12"

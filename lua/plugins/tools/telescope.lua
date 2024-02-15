@@ -89,11 +89,9 @@ local opts = {
         },
     },
 }
-
 return {
     "nvim-telescope/telescope.nvim",
     branch = "0.1.x",
-    -- event = "VeryLazy",
     cmd = "Telescope",
     dependencies = {
         { "nvim-lua/popup.nvim" },
@@ -102,4 +100,8 @@ return {
         { "benfowler/telescope-luasnip.nvim" },
     },
     opts = opts,
+    config = function()
+        require("telescope").setup(opts)
+        require("telescope").load_extension "workspaces"
+    end,
 }

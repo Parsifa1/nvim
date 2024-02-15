@@ -7,7 +7,6 @@ return {
             char = "│",
         },
         scope = {
-            -- Rely on treesitter, bad performance
             enabled = false,
         },
     },

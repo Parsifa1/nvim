@@ -3,8 +3,6 @@ return {
         "natecraddock/workspaces.nvim",
         dependencies = { "Shatur/neovim-session-manager" },
         config = function()
-            require("telescope").load_extension "workspaces"
-
             require("workspaces").setup {
                 auto_open = true,
                 sort = true,
