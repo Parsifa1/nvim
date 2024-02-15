@@ -6,7 +6,7 @@ return {
         "nvim-lua/plenary.nvim",
         "sindrets/diffview.nvim",
     },
-    -- event = "VeryLazy",
+    branch = "nightly",
     cmd = "Neogit",
     opts = {
         disable_insert_on_commit = false,
