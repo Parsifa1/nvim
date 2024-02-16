@@ -23,7 +23,7 @@ local config = function()
             set("gD", vim.lsp.buf.declaration, "declaration")
             set("gd", vim.lsp.buf.definition, "definition")
             set("K", vim.lsp.buf.hover, "hover")
-            set("<C-k>", vim.lsp.buf.signature_help, "LSP: Signature help")
+            set("<C-k>", vim.lsp.buf.signature_help, "LSP Signature help")
             set("gi", vim.lsp.buf.implementation, "implementation")
             set("<leader>cd", vim.lsp.buf.type_definition, "type definition")
             set("<leader>cn", vim.lsp.buf.rename, "rename")
@@ -70,7 +70,7 @@ local config = function()
                 filetypes = { "cpp", "c" },
                 cmd = {
                     -- "clangd",
-                    -- TODO:测试版clangd
+                    -- TODO测试版clangd
                     "/home/parsifa1/Public/test/build/bin/clangd",
                     "--offset-encoding=utf-16",
                 },
@@ -116,6 +116,18 @@ local config = function()
                 end,
                 settings = {
                     exportPdf = "onType",
+                },
+            }
+        end,
+        ["tailwindcss"] = function()
+            lspconfig.tailwindcss.setup {
+                filetypes = {
+                    "html",
+                    "css",
+                    "javascript",
+                    "javascriptreact",
+                    "typescript",
+                    "typescriptreact",
                 },
             }
         end,
