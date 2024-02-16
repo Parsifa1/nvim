@@ -36,23 +36,19 @@ local keymap = {
     { mode = mode_ni,     from = "<c-h>",        to = "<cmd>bp<CR>" },
     { mode = mode_ni,     from = "<c-l>",        to = "<cmd>bn<CR>" },
     { mode = mode_i,      from = "<c-f>",        to = function() require("luasnip").expand() end },
-    -- cp相关
     { mode = mode_ni,     from = "<f1>",         to = "<cmd>CompetiTest run<CR>"},
     { mode = mode_ni,     from = "<f2>",         to = "<cmd>CompetiTest add_testcase<CR>" },
     { mode = mode_ni,     from = "<f3>",         to = "<cmd>CompetiTest edit_testcase<CR>" },
-    -- task指令
     { mode = mode_n,      from = "<f4>",         to = "<cmd>AsyncTask acm<cr>",                            desc = "run acm" },
     { mode = mode_n,      from = "<f5>",         to = "<cmd>AsyncTask run<cr>",                            desc = "run task" },
     { mode = mode_n,      from = "<f6>",         to = "<cmd>AsyncTask build<cr>",                          desc = "build task" },
-    -- tab操作
     { mode = mode_n,      from = "<tab><tab>",   to = "<cmd>tabnew<cr>",                                   desc = "new tab" },
     { mode = mode_n,      from = "[[",           to = "<cmd>tabp<cr>",                                     desc = "previous tab" },
     { mode = mode_n,      from = "]]",           to = "<cmd>tabn<cr>",                                     desc = "next tab" },
-    --leader键
     { mode = mode_n,      from = "<leader>a",    to = "<cmd>Outline<cr>",                                  desc = "outline" },
     { mode = mode_n,      from = "<leader>e",    to = "<cmd>lua MiniFiles.open()<cr>",                     desc = "file explorer" },
     { mode = mode_n,      from = "<leader>f",    to = "<cmd>Telescope find_files<cr>",                     desc = "find files" },
-    { mode = mode_n,      from = "<leader>F",    to = "<cmd>lua require('conform').format()<CR>",           desc = "format files" },
+    { mode = mode_n,      from = "<leader>F",    to = "<cmd>lua require('conform').format()<CR>",          desc = "format files" },
     { mode = mode_n,      from = "<leader>p",    to = "<cmd>Lazy<cr>",                                     desc = "lazy" },
     { mode = mode_n,      from = "<leader>r",    to = "<cmd>Telescope oldfiles<cr>",                       desc = "recent files" },
     { mode = mode_n,      from = "<leader>v",    to = "<cmd>cd %:p:h<cr>",                                 desc = "cd current file" },
@@ -64,20 +60,11 @@ local keymap = {
     { mode = mode_n,      from = "<leader>tc",   to = "<cmd>Telescope commands<cr>",                       desc = "telescope commands" },
     { mode = mode_n,      from = "<leader>tk",   to = "<cmd>Telescope keymaps<cr>",                        desc = "telescope keymaps" },
     { mode = mode_n,      from = "<leader><cr>", to = "<cmd>noh<cr>",                                      desc = "clear highlight" },
-    { mode = mode_n,      from = "<leader>i",    to = "<cmd>Telescope workspaces theme=dropdown<cr><esc>", desc = "projects folder",},
+    { mode = mode_n,      from = "<leader>i",    to = "<cmd>Telescope workspaces theme=dropdown<cr><esc>", desc = "projects folder" },
+    { mode = mode_n,      from = "<leader>ss",   to = ":%s/\\<<C-r><C-w>\\>//g<left><left>",               desc = "global replacement" },
     -- stylua: ignore end
-    {
-        mode = mode_n,
-        from = "<leader>ss",
-        to = "<cmd>%s/\\<<c-r><c-w>\\>/<c-r><c-w>/gi<left><left><left>",
-        desc = "global replacement",
-        no_silent = true,
-    },
 }
 for _, mapping in ipairs(keymap) do
-    if mapping.no_silent then
-        vim.keymap.set(mapping.mode, mapping.from, mapping.to, { noremap = true })
-    end
     if mapping.desc then
         vim.keymap.set(mapping.mode, mapping.from, mapping.to, { noremap = true, silent = true, desc = mapping.desc })
     else

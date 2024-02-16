@@ -9,7 +9,6 @@ else
     vim.api.nvim_set_hl(0, "visual", { reverse = true })
 
     -- normal setting
-    vim.loader.enable()
     vim.g.copilot_assume_mapped = true
     vim.g.copilot_proxy = "http://127.0.0.1:7891"
     vim.o.shortmess = vim.o.shortmess .. "a"
@@ -32,10 +31,8 @@ else
     vim.opt.termguicolors = true -- enabl 24-bit rgb color in the tui
     vim.opt.list = false
     vim.opt.signcolumn = "yes"
-    vim.wo.wrap = true
-    vim.opt.fillchars = { -- close eob fillchars
-        eob = " ",
-    }
+    -- vim.wo.wrap = true
+    vim.opt.fillchars = { eob = " " } -- close eob fillchars
 
     -- searching
     vim.opt.incsearch = true -- search as characters are entered
@@ -55,11 +52,6 @@ else
     -- set highlight
     vim.api.nvim_set_hl(0, "visual", { reverse = true })
 
-    -- set no comment in next line
-    vim.api.nvim_create_autocmd("FileType", {
-        pattern = "*",
-        command = "set formatoptions-=ro",
-    })
     -- no statusline at first
     vim.opt.laststatus = 0
 
