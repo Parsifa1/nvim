@@ -6,7 +6,6 @@ return {
         "nvim-lua/plenary.nvim",
         "sindrets/diffview.nvim",
     },
-    branch = "nightly",
     cmd = "Neogit",
     opts = {
         disable_insert_on_commit = false,
@@ -30,3 +29,4 @@ return {
     },
 }
 
+-- TEST:测试neogit中文
