@@ -1,16 +1,17 @@
 return {
-    'xeluxee/competitest.nvim',
-    dependencies = 'MunifTanjim/nui.nvim',
-    event = "VeryLazy",
+    "xeluxee/competitest.nvim",
+    dependencies = "MunifTanjim/nui.nvim",
+    ft = { "cpp", "c", "rust", "python" },
+    -- event = "VeryLazy",
     opts = {
         testcases_use_single_file = true,
         testcases_directory = "/bin",
         save_current_file = true,
         compile_command = {
-            cpp = { exec = "g++", args = { '$(FNAME)', '-std=c++23', '-o', 'bin/$(FNOEXT)' } },
+            cpp = { exec = "g++", args = { "$(FNAME)", "-std=c++23", "-o", "bin/$(FNOEXT)" } },
         },
         run_command = {
-            cpp = { exec = './bin/$(FNOEXT)' },
+            cpp = { exec = "./bin/$(FNOEXT)" },
         },
         editor_ui = {
             normal_mode_mappings = {
@@ -24,8 +25,6 @@ return {
         },
         runner_ui = {
             close = { "q", "Q", "<esc>" },
-        }
-    }
-
+        },
+    },
 }
-

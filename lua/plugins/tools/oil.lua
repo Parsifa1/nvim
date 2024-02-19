@@ -1,10 +1,7 @@
 local custom = require "custom"
 return {
     "stevearc/oil.nvim",
-    event = "VeryLazy",
     -- enabled = false,
-    -- Optional dependencies
-    dependencies = { "nvim-tree/nvim-web-devicons" },
     keys = {
         {
             "-",

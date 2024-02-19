@@ -1,4 +1,4 @@
 return {
-  "tpope/vim-fugitive",
-  event = "VeryLazy",
+    "tpope/vim-fugitive",
+    cmd = { "G", "Git" },
 }

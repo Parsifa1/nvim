@@ -7,7 +7,7 @@ return {
         "nvim-treesitter/nvim-treesitter",
     },
     event = {
-        "BufReadPre",
+        "BufReadPost",
         "CmdlineEnter",
     },
     config = function()

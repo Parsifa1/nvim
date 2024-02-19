@@ -5,7 +5,7 @@ return {
         require("conform").setup {
             formatters_by_ft = {
                 cpp = { "clangformat" },
-                python = { "autopep8" },
+                python = { "ruff_fix", "ruff_format" },
                 lua = { "stylua" },
                 rust = { "rustfmt" },
                 html = { "prettier" },

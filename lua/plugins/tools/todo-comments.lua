@@ -1,12 +1,11 @@
 return {
     "folke/todo-comments.nvim",
     version = "*",
-    -- dependencies = { "nvim-lua/plenary.nvim" },
-    event = "VeryLazy",
+    event = "TextChangedI",
     config = function()
-        require("todo-comments").setup({
-            signs = true,          -- show icons in the signs column
-        })
-    end
---BUG: do not have SIGNS
+        require("todo-comments").setup {
+            signs = true,
+        }
+    end,
+    --BUG: do not have SIGNS
 }

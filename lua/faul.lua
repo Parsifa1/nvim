@@ -21,19 +21,29 @@ if vim.g.vscode then
         },
     }
 else
-    require("lazy").setup {
-        spec = {
-            { import = "plugins.core" },
-            -- { import = "plugins.dap" },
-            { import = "plugins.edit" },
-            { import = "plugins.git" },
-            { import = "plugins.others" },
-            { import = "plugins.theme" },
-            { import = "plugins.tools" },
-            { import = "plugins.ui" },
-        },
+    require("lazy").setup("plugins", {
         ui = {
             border = "rounded",
         },
-    }
+        install = {
+            colorscheme = { "default" },
+        },
+        diff = {
+            cmd = "diffview.nvim",
+        },
+        performance = {
+            rtp = {
+                disabled_plugins = {
+                    "gzip",
+                    -- "matchit",
+                    "matchparen",
+                    "netrwPlugin",
+                    "tarPlugin",
+                    "tohtml",
+                    "tutor",
+                    "zipPlugin",
+                },
+            },
+        },
+    })
 end

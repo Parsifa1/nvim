@@ -1,4 +1,4 @@
 return {
-	"lambdalisue/suda.vim",
-	event = "VeryLazy",
+    "lambdalisue/suda.vim",
+    cmd = { "SudaRead", "SudaWrite" },
 }

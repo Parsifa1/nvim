@@ -1,6 +1,14 @@
 return {
     "NvChad/nvim-colorizer.lua",
-    event = "VeryLazy",
+    ft = {
+        "html",
+        "css",
+        "javascript",
+        "typescript",
+        "javascriptreact",
+        "typescriptreact",
+        "lua",
+    },
     config = function()
         require("colorizer").setup {}
     end,

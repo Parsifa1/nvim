@@ -1,5 +1,6 @@
 return {
     "kevinhwang91/nvim-ufo",
+    -- WARN: 无法使用BufReadPre
     event = "VeryLazy",
     dependencies = "kevinhwang91/promise-async",
     init = function()

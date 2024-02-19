@@ -78,12 +78,13 @@ local config = function()
         end,
         ["pyright"] = function()
             lspconfig.pyright.setup {
-                inlay_hints = { enabled = true },
                 cmd = { "delance-langserver", "--stdio" },
                 settings = {
                     python = {
+                        disableOrganizeImports = true,
                         pythonPath = "/usr/bin/python3",
                         analysis = {
+                            ignore = { "*" },
                             inlayHints = {
                                 callArgumentNames = "partial",
                                 functionReturnTypes = true,
@@ -144,7 +145,7 @@ return {
             "williamboman/mason-lspconfig.nvim",
             "folke/neodev.nvim",
         },
-        event = "FileType",
+        event = "BufReadPre",
         config = config,
     },
     {
