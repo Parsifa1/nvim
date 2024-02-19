@@ -1,8 +1,4 @@
--- vim.api.nvim_create_autocmd("BufEnter", {
---     pattern = "*",
---     command = "set noro"
--- })
-
+-- autosave
 -- vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost" }, {
 --     callback = function()
 --         if vim.bo.modified and not vim.bo.readonly and vim.fn.expand "%" ~= "" and vim.bo.buftype == "" then
@@ -29,5 +25,19 @@ vim.api.nvim_create_autocmd("BufEnter", {
             end
             vim.wo.wrap = false
         end
+    end,
+})
+
+-- auto load fold
+vim.api.nvim_create_autocmd("BufWinLeave", {
+    pattern = { "*.lua", "*.rs", "*.py", "*.cpp", "*.jsx" },
+    callback = function()
+        vim.cmd "mkview"
+    end,
+})
+vim.api.nvim_create_autocmd("BufWinEnter", {
+    pattern = { "*.lua", "*.rs", "*.py", "*.cpp", "*.jsx" },
+    callback = function()
+        vim.cmd "silent! loadview"
     end,
 })
