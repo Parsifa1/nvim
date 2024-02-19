@@ -129,9 +129,10 @@ local opts = function()
         },
     })
     cmp.setup.filetype("NeogitCommitMessage", {
-        sources = cmp.config.sources({
+        sources = {
             { name = "conventionalcommits" },
-        }, { { name = "buffer" } }),
+            { name = "buffer" },
+        },
     })
 
     -- for cargo specially
