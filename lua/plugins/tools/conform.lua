@@ -1,6 +1,16 @@
 return {
     "stevearc/conform.nvim",
-    event = "BufReadPre",
+    cmd = "ConformInfo",
+    keys = {
+        {
+            "<leader>F",
+            function()
+                require("conform").format { lsp_fallback = true }
+            end,
+            desc = "Format Document",
+            mode = { "n", "v" },
+        },
+    },
     config = function()
         require("conform").setup {
             formatters_by_ft = {
@@ -16,6 +26,9 @@ return {
                 javascriptreact = { "prettier" },
             },
             formatters = {
+                rustfmt = {
+                    prepend_args = { "--edition=2021" },
+                },
                 clangformat = {
                     command = "/home/parsifa1/.local/share/nvim/mason/bin/clang-format",
                     pretend_args = {

@@ -65,6 +65,19 @@ local config = function()
         function(server_name) -- default handler
             require("lspconfig")[server_name].setup {}
         end,
+        ["rust_analyzer"] = function()
+            lspconfig.rust_analyzer.setup {
+                settings = {
+                    ["rust-analyzer"] = {
+                        diagnostics = {
+                            disabled = {
+                                "needless_return",
+                            },
+                        },
+                    },
+                },
+            }
+        end,
         ["clangd"] = function()
             lspconfig.clangd.setup {
                 filetypes = { "cpp", "c" },

@@ -2,7 +2,6 @@ return {
     "xeluxee/competitest.nvim",
     dependencies = "MunifTanjim/nui.nvim",
     ft = { "cpp", "c", "rust", "python" },
-    -- event = "VeryLazy",
     opts = {
         testcases_use_single_file = true,
         testcases_directory = "/bin",
@@ -15,7 +14,7 @@ return {
         },
         editor_ui = {
             normal_mode_mappings = {
-                switch_window = { "<A-h>", "<A-l>", "<C-i>" },
+                switch_window = { "<C-h>", "<C-l>", "<C-i>" },
                 cancel = { "q", "Q", "<esc>", "<F1>" },
             },
             insert_mode_mappings = {

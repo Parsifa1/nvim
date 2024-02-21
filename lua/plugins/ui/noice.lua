@@ -1,7 +1,6 @@
 return {
     "folke/noice.nvim",
-    event = "VeryLazy",
-    -- enabled = false,
+    event = { "VeryLazy", "CmdlineEnter" },
     dependencies = {
         "MunifTanjim/nui.nvim",
         "rcarriga/nvim-notify",
@@ -52,12 +51,22 @@ return {
                 },
                 opts = { skip = true },
             },
+            {
+                filter = {
+                    event = "notify",
+                    find = "Delete existing terminal",
+                },
+                opts = { skip = true },
+            },
         },
         views = {
+            cmdline_popup = {
+                style = "rounded",
+                position = { row = "38.2%", col = "50%" },
+                size = { min_width = 72 },
+            },
             mini = {
-                win_options = {
-                    winblend = 0,
-                },
+                win_options = { winblend = 0 },
             },
         },
     },

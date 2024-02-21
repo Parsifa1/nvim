@@ -1,7 +1,7 @@
 local win = require "user.floaterm"
 local function split()
     win:Create({
-        width = 0.36,
+        width = 0.40,
         height = 0.87,
         title = " Code Running ",
     }, {

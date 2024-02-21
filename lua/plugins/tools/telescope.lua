@@ -96,7 +96,6 @@ return {
     dependencies = {
         { "nvim-lua/popup.nvim" },
         { "nvim-lua/plenary.nvim" },
-        -- { "nvim-telescope/telescope-fzy-native.nvim" },
         { "benfowler/telescope-luasnip.nvim" },
     },
     opts = opts,

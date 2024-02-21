@@ -1,5 +1,14 @@
-local mode_n, mode_v, mode_i, mode_o, mode_nv, mode_ni, mode_niv, mode_nit =
-    { "n" }, { "v" }, { "i" }, { "o" }, { "n", "v" }, { "n", "i" }, { "n", "i", "v" }, { "n", "i", "t" }
+local mode_n, mode_v, mode_i, mode_o, mode_nv, mode_ni, mode_niv, mode_nit, mode_nvo =
+    { "n" },
+    { "v" },
+    { "i" },
+    { "o" },
+    { "n", "v" },
+    { "n", "i" },
+    { "n", "i", "v" },
+    { "n", "i", "t" },
+    { "n", "v", "o" }
+
 local keymap = {
     -- stylua: ignore start
     { mode = mode_n,      from = "<up>",         to = "<cmd>res +5<CR>" }, -- 窗口操作
@@ -20,8 +29,8 @@ local keymap = {
     { mode = mode_i,      from = "<a-h>",        to = "<Left>" },
 
     -- 其他
-    { mode = mode_nv,     from = "H",            to = "^" },
-    { mode = mode_nv,     from = "L",            to = "$" },
+    { mode = mode_nvo,     from = "H",            to = "^" },
+    { mode = mode_nvo,     from = "L",            to = "$" },
     { mode = mode_nv,     from = "=",            to = "gq" },
     { mode = mode_o,      from = "=",            to = "q" },
     { mode = mode_v,      from = "<c-c>",        to = "y" },
