@@ -70,7 +70,6 @@ else
             },
             cache_enabled = 0,
         }
-        vim.g.neovide_remember_window_size = false
         vim.g.neovide_theme = "auto"
         vim.g.neovide_padding_left = 10
         vim.g.neovide_scroll_animation_length = 0.3
@@ -79,6 +78,7 @@ else
         vim.g.neovide_padding_top = 10
         vim.g.neovide_padding_bottom = 5
         vim.g.neovide_padding_right = 10
+        vim.g.neovide_remember_window_size = true
         vim.g.neovide_no_custom_clipboard = true
         vim.keymap.set("v", "<C-c>", "y") -- Copy
         vim.keymap.set("n", "<C-v>", "P") -- Paste normal mode

@@ -2,7 +2,6 @@ local custom = require "custom"
 
 return {
     "akinsho/toggleterm.nvim",
-    event = "VeryLazy",
     opts = {
         size = function(term)
             if term.direction == "horizontal" then
@@ -16,6 +15,7 @@ return {
             local bufnr = t.bufnr
             vim.keymap.set("t", "<Esc>", "<C-\\><C-N>", { buffer = bufnr })
         end,
+        ---@diagnostic disable-next-line: undefined-field
         shell = vim.uv.os_uname().sysname == "Windows_NT" and "pwsh" or "fish",
         float_opts = {
             border = custom.border,
