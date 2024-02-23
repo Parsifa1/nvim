@@ -8,6 +8,7 @@ return {
         "javascriptreact",
         "typescriptreact",
         "lua",
+        "fish",
     },
     config = function()
         require("colorizer").setup {}
