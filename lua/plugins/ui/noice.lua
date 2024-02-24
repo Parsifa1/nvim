@@ -1,6 +1,7 @@
 return {
     "folke/noice.nvim",
-    event = { "VeryLazy", "CmdlineEnter" },
+    event = "VeryLazy",
+    cmd = "Noice",
     dependencies = {
         "MunifTanjim/nui.nvim",
         "rcarriga/nvim-notify",

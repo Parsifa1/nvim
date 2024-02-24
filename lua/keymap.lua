@@ -27,6 +27,7 @@ local keymap = {
     { mode = mode_n,      from = "zm",           to = "zM" }, -- 全部折叠
     { mode = mode_i,      from = "<a-l>",        to = "<Right>" }, -- insert模式下的方向键
     { mode = mode_i,      from = "<a-h>",        to = "<Left>" },
+    { mode = mode_n,      from = "<CR>",         to = ":", noise = true },
 
     -- 其他
     { mode = mode_nvo,     from = "H",            to = "^" },
@@ -61,7 +62,7 @@ local keymap = {
     { mode = mode_n,      from = "<leader>tk",   to = "<cmd>Telescope keymaps<CR>",                        desc = "telescope keymaps" },
     { mode = mode_n,      from = "<leader><cr>", to = "<cmd>noh<CR>",                                      desc = "clear highlight" },
     { mode = mode_n,      from = "<leader>i",    to = "<cmd>Telescope workspaces theme=dropdown<CR><esc>", desc = "projects folder" },
-    { mode = mode_n,      from = "<leader>ss",   to = ":%s/\\<<C-r><C-w>\\>//g<left><left>",               desc = "global replacement" },
+    { mode = mode_n,      from = "<leader>ss",   to = ":%s/\\<<C-r><C-w>\\>//g<left><left>",               desc = "global replacement", noise = true },
     -- stylua: ignore end
 }
 for _, mapping in ipairs(keymap) do
@@ -69,5 +70,8 @@ for _, mapping in ipairs(keymap) do
         vim.keymap.set(mapping.mode, mapping.from, mapping.to, { noremap = true, silent = true, desc = mapping.desc })
     else
         vim.keymap.set(mapping.mode, mapping.from, mapping.to, { noremap = true, silent = true })
+    end
+    if mapping.noise == true then
+        vim.keymap.set(mapping.mode, mapping.from, mapping.to, { noremap = true })
     end
 end

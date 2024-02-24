@@ -7,9 +7,6 @@ local config = function()
         desc = "General LSP Attach",
         callback = function(args)
             local bufnr = args.bufnr
-            local set = function(keys, func, indesc)
-                vim.keymap.set("n", keys, func, { buffer = bufnr, desc = indesc })
-            end
             -- for hover
             vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = custom.border })
 
@@ -20,6 +17,9 @@ local config = function()
             end
 
             -- lsp-builtin
+            local set = function(keys, func, indesc)
+                vim.keymap.set("n", keys, func, { buffer = bufnr, desc = indesc })
+            end
             set("gD", vim.lsp.buf.declaration, "declaration")
             set("gd", vim.lsp.buf.definition, "definition")
             set("K", vim.lsp.buf.hover, "hover")
@@ -159,6 +159,7 @@ return {
             "folke/neodev.nvim",
         },
         event = "BufReadPre",
+        cmd = "LspInfo",
         config = config,
     },
     {

@@ -1,4 +1,3 @@
---@author: Parsifa1
 local function flash_set(need)
     return function()
         require("flash")[need]()
@@ -8,20 +7,15 @@ end
 return {
     "folke/flash.nvim",
     event = "BufReadPre",
-    -- enabled =
     opts = {
         labels = "asdfghjklqwertyuiopzxcvbnm",
         remote = {
             remote_op = { restore = true, motion = true },
         },
-        label = {
-            uppercase = false,
-        },
+        label = { uppercase = false },
         modes = {
-            -- char = { enabled = false },
-            treesitter = {
-                highlight = { backdrop = true },
-            },
+            char = { enabled = false },
+            treesitter = { highlight = { backdrop = true } },
         },
     },
 
