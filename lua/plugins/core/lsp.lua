@@ -1,12 +1,34 @@
 local config = function()
     local lspconfig = require "lspconfig"
     local custom = require "custom"
+    local lsp_keymap = function(bufnr)
+        -- lsp-builtin
+        local set = function(keys, func, indesc)
+            vim.keymap.set("n", keys, func, { buffer = bufnr, desc = indesc })
+        end
+        set("gD", vim.lsp.buf.declaration, "declaration")
+        set("gd", vim.lsp.buf.definition, "definition")
+        set("K", vim.lsp.buf.hover, "hover")
+        set("<C-k>", vim.lsp.buf.signature_help, "LSP Signature help")
+        set("gi", vim.lsp.buf.implementation, "implementation")
+        set("<leader>cd", vim.lsp.buf.type_definition, "type definition")
+        set("<leader>cn", vim.lsp.buf.rename, "rename")
+        set("gr", vim.lsp.buf.references, "references")
+        set("[d", vim.diagnostic.goto_prev, "goto prev")
+        set("]d", vim.diagnostic.goto_next, "goto next")
+        set("<leader>q", "<cmd>TroubleToggle<CR>", "quickfix list")
+        set("<leader>cr", require("telescope.builtin").lsp_references, "Peek References")
+        set("<leader>ca", require("actions-preview").code_actions, "Code Action")
+    end
 
     -- automatically sign up lsp
     vim.api.nvim_create_autocmd("LspAttach", {
         desc = "General LSP Attach",
         callback = function(args)
             local bufnr = args.bufnr
+            -- buf keymap
+            lsp_keymap(bufnr)
+
             -- for hover
             vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = custom.border })
 
@@ -16,24 +38,6 @@ local config = function()
                 vim.lsp.inlay_hint.enable(bufnr, true)
             end
 
-            -- lsp-builtin
-            local set = function(keys, func, indesc)
-                vim.keymap.set("n", keys, func, { buffer = bufnr, desc = indesc })
-            end
-            set("gD", vim.lsp.buf.declaration, "declaration")
-            set("gd", vim.lsp.buf.definition, "definition")
-            set("K", vim.lsp.buf.hover, "hover")
-            set("<C-k>", vim.lsp.buf.signature_help, "LSP Signature help")
-            set("gi", vim.lsp.buf.implementation, "implementation")
-            set("<leader>cd", vim.lsp.buf.type_definition, "type definition")
-            set("<leader>cn", vim.lsp.buf.rename, "rename")
-            set("gr", vim.lsp.buf.references, "references")
-            set("[d", vim.diagnostic.goto_prev, "goto prev")
-            set("]d", vim.diagnostic.goto_next, "goto next")
-            set("<leader>q", "<cmd>TroubleToggle<CR>", "quickfix list")
-            set("<leader>cr", require("telescope.builtin").lsp_references, "Peek References")
-            set("<leader>ca", require("actions-preview").code_actions, "Code Action")
-
             -- diagnostic
             vim.diagnostic.config {
                 virtual_text = { spacing = 4 },
@@ -42,7 +46,6 @@ local config = function()
                     source = "if_many",
                 },
                 severity_sort = true,
-                -- Set diagnostic icons
                 signs = {
                     text = {
                         ["ERROR"] = custom.icons.diagnostic.Error,
