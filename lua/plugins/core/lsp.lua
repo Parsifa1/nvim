@@ -21,43 +21,6 @@ local config = function()
         set("<leader>ca", require("actions-preview").code_actions, "Code Action")
     end
 
-    -- automatically sign up lsp
-    vim.api.nvim_create_autocmd("LspAttach", {
-        desc = "General LSP Attach",
-        callback = function(args)
-            local bufnr = args.bufnr
-            -- buf keymap
-            lsp_keymap(bufnr)
-
-            -- for hover
-            vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = custom.border })
-
-            -- inlay hints
-            local client = vim.lsp.get_client_by_id(args.data.client_id)
-            if client and client.server_capabilities.inlayHintProvider then
-                vim.lsp.inlay_hint.enable(bufnr, true)
-            end
-
-            -- diagnostic
-            vim.diagnostic.config {
-                virtual_text = { spacing = 4 },
-                float = {
-                    severity_sort = true,
-                    source = "if_many",
-                },
-                severity_sort = true,
-                signs = {
-                    text = {
-                        ["ERROR"] = custom.icons.diagnostic.Error,
-                        ["WARN"] = custom.icons.diagnostic.Warning,
-                        ["HINT"] = custom.icons.diagnostic.Hint,
-                        ["INFO"] = custom.icons.diagnostic.Information,
-                    },
-                },
-            }
-        end,
-    })
-
     -- for neodev
     require("neodev").setup {
         library = { types = false, plugins = false },
@@ -151,6 +114,44 @@ local config = function()
             }
         end,
     }
+
+    -- automatically sign up lsp
+    vim.api.nvim_create_autocmd("LspAttach", {
+        desc = "General LSP Attach",
+        callback = function(args)
+            local bufnr = args.bufnr
+            -- buf keymap
+            lsp_keymap(bufnr)
+
+            -- for hover
+            vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = custom.border })
+
+            -- inlay hints
+            local client = vim.lsp.get_client_by_id(args.data.client_id)
+            if client and client.server_capabilities.inlayHintProvider then
+                vim.lsp.inlay_hint.enable(bufnr, true)
+            end
+
+            -- diagnostic
+            vim.diagnostic.config {
+                virtual_text = { spacing = 4 },
+                float = {
+                    severity_sort = true,
+                    source = "if_many",
+                },
+                severity_sort = true,
+                signs = {
+                    text = {
+                        ["ERROR"] = custom.icons.diagnostic.Error,
+                        ["WARN"] = custom.icons.diagnostic.Warning,
+                        ["HINT"] = custom.icons.diagnostic.Hint,
+                        ["INFO"] = custom.icons.diagnostic.Information,
+                    },
+                },
+            }
+        end,
+    })
+
 end
 
 return {
