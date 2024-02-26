@@ -8,6 +8,7 @@ return {
         "javascriptreact",
         "typescriptreact",
         "lua",
+        "yaml",
         "fish",
     },
     config = function()

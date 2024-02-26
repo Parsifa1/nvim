@@ -70,7 +70,6 @@ return {
                 vim.opt_local.foldenable = false
             end,
         })
-
         require("ufo").setup {
             close_fold_kinds = { "imports" },
             fold_virt_text_handler = handler,

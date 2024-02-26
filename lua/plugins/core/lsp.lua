@@ -21,6 +21,12 @@ local config = function()
         set("<leader>ca", require("actions-preview").code_actions, "Code Action")
     end
 
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities.textDocument.foldingRange = {
+        dynamicRegistration = false,
+        lineFoldingOnly = true,
+    }
+
     -- for neodev
     require("neodev").setup {
         library = { types = false, plugins = false },
@@ -29,10 +35,13 @@ local config = function()
     -- lsp config in mason
     require("mason-lspconfig").setup_handlers {
         function(server_name) -- default handler
-            require("lspconfig")[server_name].setup {}
+            require("lspconfig")[server_name].setup {
+                capabilities = capabilities,
+            }
         end,
         ["rust_analyzer"] = function()
             lspconfig.rust_analyzer.setup {
+                capabilities = capabilities,
                 settings = {
                     ["rust-analyzer"] = {
                         diagnostics = {
@@ -46,6 +55,7 @@ local config = function()
         end,
         ["clangd"] = function()
             lspconfig.clangd.setup {
+                capabilities = capabilities,
                 filetypes = { "cpp", "c" },
                 cmd = {
                     -- "clangd",
@@ -77,6 +87,7 @@ local config = function()
         end,
         ["lua_ls"] = function()
             lspconfig.lua_ls.setup {
+                capabilities = capabilities,
                 settings = {
                     Lua = {
                         hint = {
@@ -93,6 +104,7 @@ local config = function()
         end,
         ["typst_lsp"] = function()
             lspconfig.typst_lsp.setup {
+                capabilities = capabilities,
                 root_dir = function()
                     return vim.fn.getcwd()
                 end,
@@ -103,6 +115,7 @@ local config = function()
         end,
         ["tailwindcss"] = function()
             lspconfig.tailwindcss.setup {
+                capabilities = capabilities,
                 filetypes = {
                     "html",
                     "css",
@@ -151,7 +164,6 @@ local config = function()
             }
         end,
     })
-
 end
 
 return {

@@ -24,6 +24,7 @@ return {
                 typescript = { "prettier" },
                 markdown = { "prettier" },
                 javascriptreact = { "prettier" },
+                yaml = { "prettier" },
             },
             formatters = {
                 rustfmt = {
