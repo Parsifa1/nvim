@@ -27,7 +27,6 @@ local keymap = {
     { mode = mode_n,      from = "zm",           to = "zM" }, -- 全部折叠
     { mode = mode_i,      from = "<a-l>",        to = "<Right>" }, -- insert模式下的方向键
     { mode = mode_i,      from = "<a-h>",        to = "<Left>" },
-    { mode = mode_n,      from = "<CR>",         to = ":", noise = true },
 
     -- 其他
     { mode = mode_nvo,     from = "H",            to = "^" },

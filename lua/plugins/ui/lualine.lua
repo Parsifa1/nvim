@@ -44,6 +44,48 @@ local lsp = function()
     -- end
 end
 
+local bufline = {
+    lualine_a = {
+        {
+            "buffers",
+            cond = function()
+                return vim.bo.filetype ~= "alpha"
+            end,
+            mode = 2,
+            section_separators = { left = "", right = "" },
+            use_mode_colors = true,
+            filetype_names = {
+                TelescopePrompt = " Telescope",
+                alpha = "󰏘 Alpha",
+                minifiles = " Mini.Files",
+                toggleterm = "ToggleTerm",
+                checkhealth = "󰄳 Checkhelth",
+                oil = " Oil",
+                Outline = "󰇽 Outline",
+                lazy = "󰜢 Lazy",
+                Mundo = " Mundo",
+                MundoDiff = " MundoDiff",
+                CompetiTest = " CompetiTest",
+            },
+            symbols = {
+                modified = " ●",
+                alternate_file = "",
+                directory = "󰉋",
+            },
+        },
+    },
+    lualine_z = {
+        {
+            "tabs",
+            cond = function()
+                return vim.bo.filetype ~= "alpha"
+            end,
+            section_separators = { left = "", right = "" },
+            use_mode_colors = true,
+        },
+    },
+}
+
 local opts = {
     options = {
         icons_enabled = true,
@@ -142,47 +184,7 @@ local opts = {
             },
         },
     },
-    tabline = {
-        lualine_a = {
-            {
-                "buffers",
-                cond = function()
-                    return vim.bo.filetype ~= "alpha"
-                end,
-                mode = 2,
-                section_separators = { left = "", right = "" },
-                use_mode_colors = true,
-                filetype_names = {
-                    TelescopePrompt = " Telescope",
-                    alpha = "󰏘 Alpha",
-                    minifiles = " Mini.Files",
-                    toggleterm = "ToggleTerm",
-                    checkhealth = "󰄳 Checkhelth",
-                    oil = " Oil",
-                    Outline = "󰇽 Outline",
-                    lazy = "󰜢 Lazy",
-                    Mundo = " Mundo",
-                    MundoDiff = " MundoDiff",
-                    CompetiTest = " CompetiTest",
-                },
-                symbols = {
-                    modified = " ●",
-                    alternate_file = "",
-                    directory = "󰉋",
-                },
-            },
-        },
-        lualine_z = {
-            {
-                "tabs",
-                cond = function()
-                    return vim.bo.filetype ~= "alpha"
-                end,
-                section_separators = { left = "", right = "" },
-                use_mode_colors = true,
-            },
-        },
-    },
+    tabline = bufline,
     extensions = {
         "man",
         "quickfix",

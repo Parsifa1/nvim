@@ -26,7 +26,7 @@ else
             border = "rounded",
         },
         install = {
-            colorscheme = { "default" },
+            colorscheme = { "nordfox" },
         },
         diff = {
             cmd = "diffview.nvim",

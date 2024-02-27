@@ -1,6 +1,7 @@
 return {
     {
         "natecraddock/workspaces.nvim",
+        -- keys = { "n", "<leader>i", "<cmd>Telescope workspaces theme=dropdown<CR><esc>", desc = "Open workspace" },
         dependencies = { "Shatur/neovim-session-manager" },
         config = function()
             require("workspaces").setup {

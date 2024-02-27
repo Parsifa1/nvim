@@ -5,15 +5,7 @@ end
 
 local init = function()
     local go_in_plus = function()
-        for _ = 1, vim.v.count1 - 1 do
-            MiniFiles.go_in()
-        end
-        local fs_entry = MiniFiles.get_fs_entry()
-        local is_at_file = fs_entry ~= nil and fs_entry.fs_type == "file"
-        MiniFiles.go_in()
-        if is_at_file then
-            MiniFiles.close()
-        end
+        MiniFiles.go_in { close_on_file = true }
     end
 
     vim.api.nvim_create_autocmd("User", {
@@ -34,7 +26,8 @@ local init = function()
 
             -- Add extra mappings from *MiniFiles-examples*
             map_buf("L", go_in_plus)
-            map_buf("<CR>", go_in_plus)
+            -- map_buf("<CR>", go_in_plus)
+            map_buf("<Space>", go_in_plus)
             map_buf("<2-LeftMouse>", go_in_plus)
             map_buf("<Right>", go_in_plus)
 
@@ -89,7 +82,7 @@ return {
             filter = filter_hide,
         },
         mappings = {
-            go_in_plus = "<Space>",
+            go_in_plus = "<CR>",
             reveal_cwd = "",
         },
         windows = {

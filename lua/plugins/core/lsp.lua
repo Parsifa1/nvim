@@ -123,6 +123,7 @@ local config = function()
                     "javascriptreact",
                     "typescript",
                     "typescriptreact",
+                    "astro",
                 },
             }
         end,
