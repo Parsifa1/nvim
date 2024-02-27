@@ -9,7 +9,9 @@ return {
                 mru_sort = true,
                 hooks = {
                     add = { "SessionManager save_current_session" },
-                    open_pre = { "SessionManager save_current_session" },
+                    open_pre = function()
+                        require("session_manager").autosave_session()
+                    end,
                     open = { "SessionManager load_current_dir_session" },
                     remove = { "SessionManager delete_current_dir_session" },
                 },
