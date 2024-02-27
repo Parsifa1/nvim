@@ -7,8 +7,8 @@ return {
             builtin = {
                 min_width = 62,
                 mappings = {
-                    ["<Esc>"] = "Close",
                     ["q"] = "Close",
+                    ["<Esc>"] = "Close",
                     ["<CR>"] = "Confirm",
                 },
             },

@@ -9,6 +9,7 @@ return {
                 mru_sort = true,
                 hooks = {
                     add = { "SessionManager save_current_session" },
+                    open_pre = { "SessionManager save_current_session" },
                     open = { "SessionManager load_current_dir_session" },
                     remove = { "SessionManager delete_current_dir_session" },
                 },
@@ -31,9 +32,6 @@ return {
                     "terminal",
                 },
             }
-            vim.api.nvim_create_autocmd({ "DirChangedPre" }, {
-                callback = require("session_manager").autosave_session,
-            })
         end,
     },
 }
