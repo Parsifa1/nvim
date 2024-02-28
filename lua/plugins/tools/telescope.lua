@@ -77,6 +77,12 @@ local opts = {
         },
         buffers = {
             theme = "dropdown",
+            previewer = false,
+            mappings = {
+                n = {
+                    ["dd"] = "delete_buffer",
+                },
+            },
         },
     },
     extensions = {

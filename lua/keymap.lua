@@ -56,7 +56,7 @@ local keymap = {
     { mode = mode_n,      from = "<leader>w",    to = "<cmd>Telescope live_grep<CR>",                      desc = "find words" },
     { mode = mode_n,      from = "<leader>sw",   to = "<cmd>set wrap!<CR>",                                desc = "toggle warp" },
     { mode = mode_n,      from = "<leader>gg",   to = "<cmd>Neogit<CR>",                                   desc = "open neogit" },
-    { mode = mode_n,      from = "<leader>tb",   to = "<cmd>Telescope buffers <CR><esc>",                  desc = "telescope buffers" },
+    { mode = mode_n,      from = "<leader>b",    to = "<cmd>Telescope buffers <CR><esc>",                  desc = "telescope buffers" },
     { mode = mode_n,      from = "<leader>tc",   to = "<cmd>Telescope commands<CR>",                       desc = "telescope commands" },
     { mode = mode_n,      from = "<leader>tk",   to = "<cmd>Telescope keymaps<CR>",                        desc = "telescope keymaps" },
     { mode = mode_n,      from = "<leader><cr>", to = "<cmd>noh<CR>",                                      desc = "clear highlight" },
