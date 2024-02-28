@@ -1,6 +1,14 @@
 local lazy_status = require "lazy.status"
 local custom = require "custom"
 
+local function modified()
+    if vim.bo.modified then
+        return " "
+    else
+        return "󰄳 "
+    end
+end
+
 local function readonly()
     if vim.bo.readonly then
         return " "
@@ -107,6 +115,10 @@ local opts = {
                 "branch",
                 icon = "",
             },
+            {
+                modified,
+                padding = { left = 0, right = 0 },
+            },
         },
         lualine_c = {
             {
@@ -184,7 +196,7 @@ local opts = {
             },
         },
     },
-    tabline = bufline,
+    -- tabline = bufline,
     extensions = {
         "man",
         "quickfix",
