@@ -1,6 +1,6 @@
 return {
     "Bekaboo/dropbar.nvim",
-    -- enabled = false,
+    enabled = false,
     event = "BufReadPre",
     opts = {},
 }
