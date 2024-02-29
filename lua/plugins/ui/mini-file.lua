@@ -3,6 +3,41 @@ local filter_hide = function(fs_entry)
     return not vim.startswith(fs_entry.name, ".")
 end
 
+local custom_sort = function(fs_entries)
+    local res = vim.tbl_map(function(x)
+        local ext = x.name:match ".+%.(%w+)$" or ""
+        return {
+            fs_type = x.fs_type,
+            name = x.name,
+            path = x.path,
+            lower_name = x.name:lower(),
+            is_dir = x.fs_type == "directory",
+            lower_ext = ext:lower(),
+        }
+    end, fs_entries)
+
+    local function compare_custom(a, b)
+        if a.is_dir and not b.is_dir then
+            return true
+        elseif not a.is_dir and b.is_dir then
+            return false
+        elseif a.is_dir and b.is_dir then
+            return a.lower_name < b.lower_name
+        else
+            if a.lower_ext == b.lower_ext then
+                return a.lower_name < b.lower_name
+            else
+                return a.lower_ext < b.lower_ext
+            end
+        end
+    end
+
+    table.sort(res, compare_custom)
+    return vim.tbl_map(function(x)
+        return { name = x.name, fs_type = x.fs_type, path = x.path }
+    end, res)
+end
+
 local init = function()
     local go_in_plus = function()
         MiniFiles.go_in { close_on_file = true }
@@ -36,7 +71,7 @@ local init = function()
         end,
     })
 
-    --show/unsow dotfile
+    --show/unsow dotfile and set save keymap
     vim.api.nvim_create_autocmd("User", {
         pattern = "MiniFilesBufferCreate",
         callback = function(args)
@@ -51,6 +86,7 @@ local init = function()
             end
             local buf_id = args.data.buf_id
             vim.keymap.set("n", ".", toggle_dotfiles, { desc = "show dotfiles", buffer = buf_id })
+            vim.keymap.set({ "n", "i" }, "<C-s>", MiniFiles.synchronize, { buffer = args.data.buf_id })
         end,
     })
 
@@ -80,6 +116,7 @@ return {
     opts = {
         content = {
             filter = filter_hide,
+            sort = custom_sort,
         },
         mappings = {
             go_in_plus = "<CR>",
