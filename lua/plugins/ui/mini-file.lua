@@ -61,7 +61,7 @@ local init = function()
 
             -- Add extra mappings from *MiniFiles-examples*
             map_buf("L", go_in_plus)
-            -- map_buf("<CR>", go_in_plus)
+            map_buf("<CR>", go_in_plus)
             map_buf("<Space>", go_in_plus)
             map_buf("<2-LeftMouse>", go_in_plus)
             map_buf("<Right>", go_in_plus)
@@ -119,7 +119,7 @@ return {
             sort = custom_sort,
         },
         mappings = {
-            go_in_plus = "<CR>",
+            go_in_plus = "<L>",
             reveal_cwd = "",
         },
         windows = {

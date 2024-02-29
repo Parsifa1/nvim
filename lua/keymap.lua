@@ -21,7 +21,7 @@ local keymap = {
     { mode = mode_v,      from = "J",            to = ":m '>+1<cr>gv=gv" },
     { mode = mode_nit,    from = "<a-q>",        to = "<cmd>q<CR>" }, -- 窗口关闭
     { mode = mode_n,      from = "z",            to = "<c-w>" }, -- 分屏
-    { mode = mode_n,      from = "<c-x>",        to = "<cmd>bd<CR>" }, -- buffer关闭
+    { mode = mode_n,      from = "<C-x>",        to = "<cmd>bd<CR>" }, -- buffer关闭
     { mode = mode_n,      from = "zz",           to = "za" }, -- 折叠/展开当前位置
     { mode = mode_n,      from = "zr",           to = "zR" }, -- 全部展开
     { mode = mode_n,      from = "zm",           to = "zM" }, -- 全部折叠
@@ -31,15 +31,17 @@ local keymap = {
     { mode = mode_nvo,     from = "L",            to = "$" },
     { mode = mode_nv,     from = "=",            to = "gq" },
     { mode = mode_o,      from = "=",            to = "q" },
-    { mode = mode_v,      from = "<c-c>",        to = "y" },
+    { mode = mode_v,      from = "<C-c>",        to = "y" },
+    { mode = mode_ni,     from = "<C-h>",        to = "<C-w>h" },
+    { mode = mode_ni,     from = "<C-j>",        to = "<C-w>j" },
+    { mode = mode_ni,     from = "<C-k>",        to = "<C-w>k" },
+    { mode = mode_ni,     from = "<C-l>",        to = "<C-w>l" },
     { mode = mode_ni,     from = "<C-s>",        to = "<cmd>write<CR>" },
-    { mode = mode_niv,    from = "<c-a>",        to = "<cmd>normal gg0vG$<CR>" },
+    { mode = mode_niv,    from = "<C-a>",        to = "<cmd>normal gg0vG$<CR>" },
     { mode = mode_ni,     from = "<f1>",         to = "<cmd>CompetiTest run<CR>"},
     { mode = mode_ni,     from = "<f2>",         to = "<cmd>CompetiTest add_testcase<CR>" },
     { mode = mode_ni,     from = "<f3>",         to = "<cmd>CompetiTest edit_testcase<CR>" },
-    { mode = mode_i,      from = "<c-f>",        to = function() require("luasnip").expand() end },
-    -- { mode = mode_ni,     from = "<c-h>",        to = "<cmd>bp<CR>" },
-    -- { mode = mode_ni,     from = "<c-l>",        to = "<cmd>bn<CR>" },
+    { mode = mode_i,      from = "<C-f>",        to = function() require("luasnip").expand() end },
 
     -- 其他
     -- 有desc的快捷键
