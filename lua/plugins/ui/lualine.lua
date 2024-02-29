@@ -3,7 +3,7 @@ local custom = require "custom"
 
 local function modified()
     if vim.bo.modified then
-        return " "
+        return " "
     else
         return "󰄳 "
     end
@@ -30,7 +30,7 @@ local function recording()
     return ""
 end
 
-local lsp = function()
+local function lsp()
     local clients = vim.lsp.get_clients()
     local buf = vim.api.nvim_get_current_buf()
     clients = vim.iter(clients)
@@ -108,16 +108,21 @@ local opts = {
     },
     sections = {
         lualine_a = {
-            { "mode", separator = { left = "", right = "" }, right_padding = 2 },
+            {
+                modified,
+                separator = { left = "", right = "" },
+                padding = { left = 0, right = 0 },
+            },
+            {
+                "mode",
+                separator = { left = "", right = "" },
+                padding = { left = 0, right = 0 },
+            },
         },
         lualine_b = {
             {
                 "branch",
                 icon = "",
-            },
-            {
-                modified,
-                padding = { left = 0, right = 0 },
             },
         },
         lualine_c = {
@@ -196,7 +201,7 @@ local opts = {
             },
         },
     },
-    -- tabline = bufline,
+    tabline = bufline,
     extensions = {
         "man",
         "quickfix",
