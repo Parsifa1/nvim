@@ -61,6 +61,9 @@ local opts = {
         oldfiles = {
             theme = "ivy",
         },
+        git_files = {
+            theme = "ivy",
+        },
         live_grep = {
             vimgrep_arguments = {
                 "rg",
@@ -77,6 +80,7 @@ local opts = {
         },
         buffers = {
             theme = "dropdown",
+            ignore_current_buffer = true,
             previewer = false,
             mappings = {
                 n = {
