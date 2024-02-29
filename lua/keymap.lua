@@ -49,7 +49,7 @@ local keymap = {
     { mode = mode_n,      from = "<f6>",         to = "<cmd>AsyncTask build<cr>",                           desc = "build task" },
     { mode = mode_n,      from = "[[",           to = "<cmd>tabp<cr>",                                      desc = "previous tab" },
     { mode = mode_n,      from = "]]",           to = "<cmd>tabn<cr>",                                      desc = "next tab" },
-    { mode = mode_n,      from = "<leader>f",    to = "<cmd>lua require('user.tele').project_files()<CR>",  desc = "find files" },
+    { mode = mode_n,      from = "<leader>f",    to = "<cmd>lua require('user.telescope').project_files()<CR>",  desc = "find files" },
     { mode = mode_n,      from = "<leader>F",    to = "<cmd>lua require('conform').format()<CR>",           desc = "format files" },
     { mode = mode_n,      from = "<leader>p",    to = "<cmd>Lazy<CR>",                                      desc = "lazy" },
     { mode = mode_n,      from = "<leader>r",    to = "<cmd>Telescope oldfiles<CR>",                        desc = "recent files" },
