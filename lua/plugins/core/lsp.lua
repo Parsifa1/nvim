@@ -196,6 +196,7 @@ return {
         event = "LspAttach",
         config = function()
             require("actions-preview").setup {
+                backend = { "nui" },
                 diff = {
                     algorithm = "patience",
                     ignore_whitespace = true,
@@ -211,6 +212,22 @@ return {
                         preview_height = function(_, _, max_lines)
                             return max_lines - 15
                         end,
+                    },
+                },
+                nui = {
+                    dir = "col",
+                    keymap = {
+                        close = { "q", "<Esc>" },
+                    },
+                    layout = {
+                        position = "50%",
+                        size = {
+                            width = "60%",
+                            height = "50%",
+                        },
+                        min_width = 50,
+                        min_height = 40,
+                        relative = "win",
                     },
                 },
             }

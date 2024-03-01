@@ -7,6 +7,9 @@ return {
         "sindrets/diffview.nvim",
     },
     cmd = "Neogit",
+    keys = {
+        { "<leader>gg", "<cmd>Neogit<CR>", desc = "open neogit" },
+    },
     opts = {
         disable_insert_on_commit = false,
         disable_commit_confirmation = true,

@@ -1,4 +1,4 @@
----@diagnostic disable: missing-parameter, unused-local, undefined-global
+---@diagnostic disable: undefined-global, unused-local
 local filter_hide = function(fs_entry)
     return not vim.startswith(fs_entry.name, ".")
 end

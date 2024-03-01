@@ -104,9 +104,18 @@ return {
     branch = "0.1.x",
     cmd = "Telescope",
     dependencies = {
-        { "nvim-lua/popup.nvim" },
-        { "nvim-lua/plenary.nvim" },
-        { "benfowler/telescope-luasnip.nvim" },
+        "nvim-lua/popup.nvim",
+        "benfowler/telescope-luasnip.nvim",
+    },
+    keys = {
+        { "<leader>f", "<cmd>lua require('user.telescope').project_files()<CR>", desc = "find files" },
+        { "<leader>r", "<cmd>Telescope oldfiles<CR>", desc = "recent files" },
+        { "<leader>w", "<cmd>Telescope live_grep<CR>", desc = "find words" },
+        { "<leader>b", "<cmd>Telescope buffers <CR><esc>", desc = "telescope buffers" },
+        { "<leader>tc", "<cmd>Telescope commands<CR>", desc = "telescope commands" },
+        { "<leader>tk", "<cmd>Telescope keymaps<CR>", desc = "telescope keymaps" },
+        { "<Tab><Tab>", "<cmd>Telescope buffers <CR><esc>", desc = "buffers" },
+        { "<leader><Tab>", "<cmd>Telescope workspaces theme=dropdown<CR><esc>", desc = "projects folder" },
     },
     opts = opts,
     config = function()

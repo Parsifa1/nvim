@@ -3,9 +3,9 @@ return {
     event = "VeryLazy",
     opts = {
         select = {
-            backend = { "builtin", "nui" },
+            backend = { "builtin", "nui", "telescope" },
             builtin = {
-                min_width = 62,
+                min_width = 70,
                 mappings = {
                     ["q"] = "Close",
                     ["<Esc>"] = "Close",
