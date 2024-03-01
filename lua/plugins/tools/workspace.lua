@@ -9,22 +9,18 @@ return {
                 mru_sort = true,
                 hooks = {
                     add = { "SessionManager save_current_session" },
-                    open_pre = function()
-                        require("session_manager").autosave_session()
-                    end,
+                    open_pre = { "SessionManager autosave_session" },
                     open = { "SessionManager load_current_dir_session" },
-                    remove = { "SessionManager delete_current_dir_session" },
                 },
             }
         end,
     },
     {
         "Shatur/neovim-session-manager",
-        lazy = true,
+        -- lazy = true,
         config = function()
             require("session_manager").setup {
                 autoload_mode = "Disabled",
-                autosave_only_in_session = true,
                 autosave_ignore_filetypes = {
                     "gitcommit",
                     "gitrebase",
@@ -37,3 +33,12 @@ return {
         end,
     },
 }
+-- local function load_workspace(path)
+--     require("session_manager").autosave_session()
+--     local target = require("session_manager.config").dir_to_session_filename(path)
+--     -- if target:exists() then
+--     local filename = string.gsub(target.filename, "__$", "", 1)
+--     require("session_manager").autosave_session()
+--     require("session_manager.utils").load_session(filename, false)
+--     -- end
+-- end

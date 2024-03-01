@@ -35,7 +35,7 @@ return {
     },
     {
         "nvim-treesitter/nvim-treesitter-context",
-        -- enabled = false,
+        enabled = false,
         event = "BufReadPre",
         config = function()
             require("treesitter-context").setup {

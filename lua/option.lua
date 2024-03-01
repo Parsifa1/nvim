@@ -55,6 +55,9 @@ else
     -- no statusline at first
     vim.opt.laststatus = 0
 
+    -- noautochdir
+    vim.opt.autochdir = false
+
     -- for neovide
     if vim.g.neovide then
         vim.o.guifont = "JetBrains_Mono,JetBrainsMono_Nerd_Font,LXGW_WenKai:h12"
