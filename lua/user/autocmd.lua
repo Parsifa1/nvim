@@ -35,6 +35,7 @@ vim.api.nvim_create_autocmd("BufWinLeave", {
         vim.cmd "mkview"
     end,
 })
+
 vim.api.nvim_create_autocmd("BufWinEnter", {
     pattern = { "*.lua", "*.rs", "*.py", "*.cpp", "*.jsx" },
     callback = function()
