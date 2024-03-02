@@ -116,6 +116,7 @@ return {
         { "<leader>tk", "<cmd>Telescope keymaps<CR>", desc = "telescope keymaps" },
         { "<Tab><Tab>", "<cmd>Telescope buffers <CR><esc>", desc = "buffers" },
         { "<leader><Tab>", "<cmd>Telescope workspaces theme=dropdown<CR><esc>", desc = "projects folder" },
+        { "<leader>i", "<cmd>Telescope workspaces theme=dropdown<CR><esc>", desc = "projects folder" },
     },
     opts = opts,
     config = function()
