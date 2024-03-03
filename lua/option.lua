@@ -55,8 +55,8 @@ else
     -- no statusline at first
     vim.opt.laststatus = 0
 
-    -- noautochdir
-    vim.opt.autochdir = false
+    -- close curdir
+    vim.opt.viewoptions = "cursor,folds"
 
     -- for neovide
     if vim.g.neovide then

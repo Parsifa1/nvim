@@ -17,7 +17,7 @@ return {
     },
     {
         "Shatur/neovim-session-manager",
-        -- lazy = true,
+        lazy = true,
         config = function()
             require("session_manager").setup {
                 autoload_mode = "Disabled",

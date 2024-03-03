@@ -29,16 +29,16 @@ vim.api.nvim_create_autocmd("BufEnter", {
 })
 
 -- auto load fold
-vim.api.nvim_create_autocmd("BufWinLeave", {
-    pattern = { "*.lua", "*.rs", "*.py", "*.cpp", "*.jsx" },
-    callback = function()
-        vim.cmd "mkview"
-    end,
-})
-
-vim.api.nvim_create_autocmd("BufWinEnter", {
-    pattern = { "*.lua", "*.rs", "*.py", "*.cpp", "*.jsx" },
-    callback = function()
-        vim.cmd "silent! loadview"
-    end,
-})
+-- vim.api.nvim_create_autocmd("FileType", {
+--     pattern = { "lua", "py", "cpp", "rust" },
+--     callback = function()
+--         vim.cmd "mkview"
+--     end,
+-- })
+--
+-- vim.api.nvim_create_autocmd("FileType", {
+--     pattern = { "lua", "python", "cpp", "rust" },
+--     callback = function()
+--         vim.cmd "silent! loadview"
+--     end,
+-- })

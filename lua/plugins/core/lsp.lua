@@ -227,7 +227,7 @@ return {
                         },
                         min_width = 50,
                         min_height = 40,
-                        relative = "win",
+                        relative = "editor",
                     },
                 },
             }
