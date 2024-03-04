@@ -1,7 +1,7 @@
 return {
     "folke/todo-comments.nvim",
     version = "*",
-    event = "BufReadPost",
+    event = { "BufNewFile", "BufReadPost" },
     config = function()
         require("todo-comments").setup {
             signs = true,

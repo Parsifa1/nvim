@@ -6,7 +6,7 @@ return {
         "TwIStOy/luasnip-snippets",
         "nvim-treesitter/nvim-treesitter",
     },
-    event = "BufReadPost",
+    event = { "BufNewFile", "BufReadPost" },
     config = function()
         require("luasnip").config.setup {
             enable_autosnippets = true,

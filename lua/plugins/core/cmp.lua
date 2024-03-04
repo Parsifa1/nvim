@@ -164,6 +164,6 @@ return {
         "davidsierradz/cmp-conventionalcommits",
         "onsails/lspkind.nvim",
     },
-    event = "BufReadPost",
+    event = { "BufNewFile", "BufReadPost" },
     config = opts,
 }

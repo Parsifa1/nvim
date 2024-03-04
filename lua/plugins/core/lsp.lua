@@ -60,7 +60,7 @@ local config = function()
                 cmd = {
                     -- "clangd",
                     -- TODO测试版clangd
-                    "/home/parsifa1/Public/test/build/bin/clangd",
+                    "/home/parsifa1/Public/llvm-project/bin/clangd",
                     "--offset-encoding=utf-16",
                 },
             }
@@ -175,7 +175,7 @@ return {
             "williamboman/mason-lspconfig.nvim",
             "folke/neodev.nvim",
         },
-        event = "BufReadPre",
+        event = { "BufReadPost", "BufNewFile", "BufEnter" },
         cmd = "LspInfo",
         config = config,
     },

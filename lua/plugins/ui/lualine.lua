@@ -218,7 +218,7 @@ local opts = {
 }
 return {
     "parsifa1/lualine.nvim",
-    event = "BufReadPre",
+    event = { "BufNewFile", "BufReadPre" },
     dependencies = {
         { "nvim-tree/nvim-web-devicons" },
         { "ofseed/lualine-copilot" },

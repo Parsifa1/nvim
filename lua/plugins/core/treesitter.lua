@@ -1,7 +1,7 @@
 return {
     {
         "nvim-treesitter/nvim-treesitter",
-        event = "BufReadPre",
+        event = { "BufNewFile", "BufReadPre" },
         build = ":TSUpdate",
         config = function()
             require("nvim-treesitter.configs").setup {
@@ -36,7 +36,7 @@ return {
     {
         "nvim-treesitter/nvim-treesitter-context",
         enabled = false,
-        event = "BufReadPre",
+        event = { "BufNewFile", "BufReadPre" },
         config = function()
             require("treesitter-context").setup {
                 mode = "topline", -- Line used to calculate context. Choices: 'cursor', 'topline'

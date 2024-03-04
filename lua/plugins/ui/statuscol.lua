@@ -1,7 +1,7 @@
 return {
     "luukvbaal/statuscol.nvim",
     branch = "0.10",
-    event = "BufReadPre",
+    event = { "BufNewFile", "BufReadPre" },
     opts = function()
         local builtin = require "statuscol.builtin"
 

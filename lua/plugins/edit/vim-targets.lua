@@ -1,4 +1,4 @@
 return {
-    'wellle/targets.vim',
-    event = "BufReadPost",
+    "wellle/targets.vim",
+    event = { "BufNewFile", "BufReadPost" },
 }

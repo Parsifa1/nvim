@@ -1,6 +1,6 @@
 return {
     "numToStr/Comment.nvim",
-    event = "BufReadPre",
+    event = { "BufNewFile", "BufReadPre" },
     dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
     config = function()
         require("Comment").setup {

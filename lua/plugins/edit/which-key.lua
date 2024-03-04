@@ -1,7 +1,7 @@
 local custom = require "custom"
 return {
     "folke/which-key.nvim",
-    event = "BufReadPre",
+    event = { "BufNewFile", "BufReadPre" },
     init = function()
         vim.o.timeout = true
         vim.o.timeoutlen = 500

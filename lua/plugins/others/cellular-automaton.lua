@@ -1,4 +1,4 @@
 return {
     "Eandrju/cellular-automaton.nvim",
-    event = "BufReadPre",
+    event = { "BufNewFile", "BufReadPre" },
 }

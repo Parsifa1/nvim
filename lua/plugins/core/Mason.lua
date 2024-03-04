@@ -8,7 +8,7 @@ return {
             "MasonUninstallAll",
             "MasonUpdate",
         },
-        event = "BufReadPre",
+        event = { "BufNewFile", "BufReadPre" },
         config = function()
             require("mason").setup {
                 ui = {
@@ -59,6 +59,6 @@ return {
                 -- auto_update = true,
                 run_on_start = true,
             }
-        end
+        end,
     },
 }

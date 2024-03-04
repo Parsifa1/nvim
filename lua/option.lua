@@ -12,7 +12,7 @@ else
     vim.g.copilot_assume_mapped = true
     vim.g.copilot_proxy = "http://127.0.0.1:7891"
     vim.o.shortmess = vim.o.shortmess .. "a"
-    vim.o.clipboard = "unnamedplus" -- use system clipboard
+    vim.opt.clipboard = "unnamedplus" -- use system clipboar
     vim.opt.completeopt = { "menu", "menuone", "noselect" }
     vim.opt.mouse = "a" -- allow the mouse to be used in nvim
 
