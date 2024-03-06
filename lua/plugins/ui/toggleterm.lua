@@ -42,7 +42,7 @@ return {
 
         return {
             { "<C-\\>" },
-            { "`", ":ToggleTerm<CR>", mode = { "n", "t" }, desc = "Terminal" },
+            { "`", "<cmd>ToggleTerm<CR>", mode = { "n", "t" }, desc = "Terminal" },
             {
                 "`",
                 function()
