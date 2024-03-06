@@ -1,12 +1,3 @@
--- autosave
--- vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost" }, {
---     callback = function()
---         if vim.bo.modified and not vim.bo.readonly and vim.fn.expand "%" ~= "" and vim.bo.buftype == "" then
---             vim.api.nvim_command "silent update"
---         end
---     end,
--- })
-
 -- set no comment in next line
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "*",
@@ -28,6 +19,15 @@ vim.api.nvim_create_autocmd("BufEnter", {
     end,
 })
 
+-- highlight yank
+vim.api.nvim_create_autocmd("TextYankPost", {
+    desc = "Highlight when yanking (copying) text",
+    group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
+    callback = function()
+        vim.highlight.on_yank()
+    end,
+})
+
 -- auto load fold
 -- vim.api.nvim_create_autocmd("FileType", {
 --     pattern = { "lua", "py", "cpp", "rust" },
@@ -42,3 +42,4 @@ vim.api.nvim_create_autocmd("BufEnter", {
 --         vim.cmd "silent! loadview"
 --     end,
 -- })
+
