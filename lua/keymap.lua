@@ -5,7 +5,7 @@ local keymap = {
     -- stylua: ignore start
     { mode = mode_i,      from = "<a-l>",            to = "<Right>" }, -- insert模式下的方向键
     { mode = mode_i,      from = "<a-h>",            to = "<Left>" },
-    { mode = mode_i,      from = "<C-f>",            to = "<cmd>lua require('luasnip').expand()<CR>"  },
+    { mode = mode_i,      from = "<C-f>",            to = "<cmd>lua require('luasnip').expand()<CR>"  }, -- luasnip触发键
     { mode = mode_n,      from = "n",                to = "nzzzv" }, -- 搜索保持光标
     { mode = mode_n,      from = "n",                to = "nzzzv" },
     { mode = mode_n,      from = "z",                to = "<c-w>" }, -- 分屏
@@ -38,11 +38,11 @@ local keymap = {
     { mode = mode_nvo,    from = "H",                to = "^" },
     { mode = mode_nvo,    from = "L",                to = "$" },
     -- desc快捷键
-    { mode = mode_n,      from = "<leader>p",        to = "<cmd>Lazy<CR>",                                           desc = "lazy" },
-    { mode = mode_n,      from = "<leader>v",        to = "<cmd>cd %:p:h<CR>",                                       desc = "cd current file" },
-    { mode = mode_n,      from = "<leader>sw",       to = "<cmd>set wrap!<CR>",                                      desc = "toggle warp" },
-    { mode = mode_n,      from = "<leader><leader>", to = "<cmd>noh<CR>",                                            desc = "clear highlight" },
-    { mode = mode_n,      from = "<leader>ss",       to = ":%s/\\<<C-r><C-w>\\>//g<left><left>",                     desc = "global replacement", noise = true },
+    { mode = mode_n,      from = "<leader>p",        to = "<cmd>Lazy<CR>",                         desc = "lazy" },
+    { mode = mode_n,      from = "<leader>v",        to = "<cmd>cd %:p:h<CR>",                     desc = "cd current file" },
+    { mode = mode_n,      from = "<leader>sw",       to = "<cmd>set wrap!<CR>",                    desc = "toggle warp" },
+    { mode = mode_n,      from = "<leader><leader>", to = "<cmd>noh<CR>",                          desc = "clear highlight" },
+    { mode = mode_n,      from = "<leader>ss",       to = ":%s/\\<<C-r><C-w>\\>//g<left><left>",   desc = "global replacement", noise = true },
     -- stylua: ignore end
 }
 for _, mapping in ipairs(keymap) do

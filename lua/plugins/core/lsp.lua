@@ -175,7 +175,7 @@ return {
             "williamboman/mason-lspconfig.nvim",
             "folke/neodev.nvim",
         },
-        event = { "BufReadPost", "BufNewFile", "BufEnter" },
+        event = { "BufReadPost", "BufNewFile" },
         cmd = "LspInfo",
         config = config,
     },

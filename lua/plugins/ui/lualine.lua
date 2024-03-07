@@ -100,6 +100,7 @@ local opts = {
         theme = "auto",
         disabled_filetypes = {
             "alpha",
+            "TelescopePrompt",
         },
         always_divide_middle = true,
         globalstatus = true,
@@ -203,6 +204,7 @@ local opts = {
     },
     tabline = bufline,
     extensions = {
+        "oil",
         "man",
         "quickfix",
         "neo-tree",
@@ -210,6 +212,7 @@ local opts = {
         "aerial",
         "fugitive",
         "nvim-dap-ui",
+        "mason",
         "mundo",
         "lazy",
         "trouble",
@@ -218,6 +221,7 @@ local opts = {
 }
 return {
     "parsifa1/lualine.nvim",
+    -- event = "VeryLazy",
     event = { "BufNewFile", "BufReadPre" },
     dependencies = {
         { "nvim-tree/nvim-web-devicons" },
