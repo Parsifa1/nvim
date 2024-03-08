@@ -11,14 +11,14 @@ local config = function()
         set("K", vim.lsp.buf.hover, "hover")
         -- set("<C-k>", vim.lsp.buf.signature_help, "LSP Signature help")
         set("gi", vim.lsp.buf.implementation, "implementation")
-        set("<leader>cd", vim.lsp.buf.type_definition, "type definition")
-        set("<leader>cn", vim.lsp.buf.rename, "rename")
         set("gr", vim.lsp.buf.references, "references")
         set("[d", vim.diagnostic.goto_prev, "goto prev")
         set("]d", vim.diagnostic.goto_next, "goto next")
         set("<leader>q", "<cmd>TroubleToggle<CR>", "quickfix list")
-        set("<leader>cr", require("telescope.builtin").lsp_references, "Peek References")
-        set("<leader>ca", require("actions-preview").code_actions, "Code Action")
+        set("<leader>ca", require("actions-preview").code_actions, "[C]ode [A]ction")
+        set("<leader>cn", vim.lsp.buf.rename, "[C]ode Item Re[N]ame")
+        set("<leader>cr", require("telescope.builtin").lsp_references, "[C]ode Lsp [R]eferences")
+        set("<leader>ct", vim.lsp.buf.type_definition, "[C]ode [T]ype definition")
     end
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -196,39 +196,26 @@ return {
         event = "LspAttach",
         config = function()
             require("actions-preview").setup {
-                backend = { "nui" },
+                backend = { "telescope" },
                 diff = {
                     algorithm = "patience",
                     ignore_whitespace = true,
+                    ignore_cr_at_eol = true,
+                    ignore_whitespace_change_at_eol = true,
                 },
                 telescope = {
                     sorting_strategy = "ascending",
                     layout_strategy = "vertical",
                     layout_config = {
-                        width = 0.8,
-                        height = 0.9,
+                        width = 0.6,
+                        height = 0.65,
                         prompt_position = "top",
                         preview_cutoff = 20,
                         preview_height = function(_, _, max_lines)
                             return max_lines - 15
                         end,
                     },
-                },
-                nui = {
-                    dir = "col",
-                    keymap = {
-                        close = { "q", "<Esc>" },
-                    },
-                    layout = {
-                        position = "50%",
-                        size = {
-                            width = "60%",
-                            height = "50%",
-                        },
-                        min_width = 50,
-                        min_height = 40,
-                        relative = "editor",
-                    },
+                    initial_mode = "normal",
                 },
             }
         end,

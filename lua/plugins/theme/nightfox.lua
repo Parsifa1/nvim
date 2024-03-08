@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-global
 return {
     "EdenEast/nightfox.nvim",
     priority = 100,
@@ -8,6 +9,11 @@ return {
             options = {
                 transparent = not vim.g.neovide,
                 modules = { cmp = { enable = true } },
+                styles = {
+                    comments = "italic",
+                    keywords = "bold",
+                    types = "italic,bold",
+                },
             },
             groups = {
                 all = {

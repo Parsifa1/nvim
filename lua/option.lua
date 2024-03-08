@@ -52,9 +52,6 @@ else
     -- set highlight
     vim.api.nvim_set_hl(0, "visual", { reverse = true })
 
-    -- no statusline at first
-    vim.opt.laststatus = 0
-
     -- close curdir
     vim.opt.viewoptions = "cursor,folds"
 

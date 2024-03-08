@@ -19,8 +19,8 @@ return {
                         ["ad"] = "@conditional.outer",
                         ["ar"] = { query = "@return.outer", desc = "a return" },
                         ["ir"] = { query = "@return.outer", desc = "inner return" },
-                        ["al"] = { query = "@loop.outer", desc = "a loop" },
-                        ["il"] = { query = "@loop.inner", desc = "inner part of a loop" },
+                        -- ["al"] = { query = "@loop.outer", desc = "a loop" },
+                        -- ["il"] = { query = "@loop.inner", desc = "inner part of a loop" },
                     },
                     selection_modes = {
                         ["@parameter.outer"] = "v", -- charwise
