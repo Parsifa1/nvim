@@ -105,12 +105,11 @@ local config = function()
         ["typst_lsp"] = function()
             lspconfig.typst_lsp.setup {
                 capabilities = capabilities,
+                cmd = { "/home/parsifa1/Desktop/Test/tinymist" },
                 root_dir = function()
                     return vim.fn.getcwd()
                 end,
-                settings = {
-                    exportPdf = "onType",
-                },
+                settings = {},
             }
         end,
         ["tailwindcss"] = function()
