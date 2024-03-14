@@ -42,10 +42,13 @@ local opts = {
             i = {
                 ["<A-q>"] = "close",
                 ["<c-s>"] = flash,
+                ["<C-j>"] = "move_selection_next",
+                ["<C-k>"] = "move_selection_previous",
             },
         },
         prompt_prefix = "  ",
-        selection_caret = " ",
+        selection_caret = "  ",
+        color_devicons = true,
     },
     pickers = {
         find_files = {
@@ -53,7 +56,7 @@ local opts = {
                 "fd",
                 "-H",
                 "-I",
-                "--exclude={.git,.idea,.vscode,.sass-cache,node_modules,build,.vscode-server,.virtualenvs}",
+                "--exclude={.git,.idea,.vscode,.sass-cache,node_modules,build,.vscode-server,.virtualenvs,.cache,.ghcup,.conda,.rustup,.cargo,.local}",
                 "--strip-cwd-prefix",
             },
             theme = "ivy",
@@ -102,27 +105,35 @@ local opts = {
     },
 }
 return {
-    "nvim-telescope/telescope.nvim",
-    branch = "0.1.x",
-    cmd = "Telescope",
-    dependencies = {
-        "nvim-lua/popup.nvim",
-        "benfowler/telescope-luasnip.nvim",
+    {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        lazy = true,
+        build = "make",
     },
-    keys = {
-        { "<leader>f", "<cmd>lua require('user.telescope').project_files()<CR>", desc = "find files" },
-        { "<leader>r", "<cmd>Telescope oldfiles<CR>", desc = "recent files" },
-        { "<leader>w", "<cmd>Telescope live_grep<CR>", desc = "find words" },
-        { "<leader>tc", "<cmd>Telescope commands<CR>", desc = "telescope commands" },
-        { "<leader>tk", "<cmd>Telescope keymaps<CR>", desc = "telescope keymaps" },
-        { "<leader>b", "<cmd>Telescope buffers <CR>", desc = "telescope buffers" },
-        { "<Tab><Tab>", "<cmd>Telescope buffers <CR>", desc = "buffers" },
-        { "<leader><Tab>", "<cmd>Telescope workspaces theme=dropdown<CR><esc>", desc = "projects folder" },
-        { "<leader>i", "<cmd>Telescope workspaces theme=dropdown<CR><esc>", desc = "projects folder" },
+    {
+        "nvim-telescope/telescope.nvim",
+        branch = "0.1.x",
+        cmd = "Telescope",
+        dependencies = {
+            "nvim-lua/popup.nvim",
+            "benfowler/telescope-luasnip.nvim",
+        },
+        keys = {
+            { "<leader>f", "<cmd>lua require('user.telescope').project_files()<CR>", desc = "find files" },
+            { "<leader>r", "<cmd>Telescope oldfiles<CR>", desc = "recent files" },
+            { "<leader>w", "<cmd>Telescope live_grep<CR>", desc = "find words" },
+            { "<leader>tc", "<cmd>Telescope commands<CR>", desc = "telescope commands" },
+            { "<leader>tk", "<cmd>Telescope keymaps<CR>", desc = "telescope keymaps" },
+            { "<leader>b", "<cmd>Telescope buffers <CR>", desc = "telescope buffers" },
+            { "<Tab><Tab>", "<cmd>Telescope buffers <CR>", desc = "buffers" },
+            { "<leader><Tab>", "<cmd>Telescope workspaces theme=dropdown<CR><esc>", desc = "projects folder" },
+            { "<leader>i", "<cmd>Telescope workspaces theme=dropdown<CR><esc>", desc = "projects folder" },
+        },
+        opts = opts,
+        config = function()
+            require("telescope").setup(opts)
+            require("telescope").load_extension "workspaces"
+            require("telescope").load_extension "fzf"
+        end,
     },
-    opts = opts,
-    config = function()
-        require("telescope").setup(opts)
-        require("telescope").load_extension "workspaces"
-    end,
 }

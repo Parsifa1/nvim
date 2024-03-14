@@ -21,6 +21,7 @@ return {
         config = function()
             require("session_manager").setup {
                 autoload_mode = "Disabled",
+                autosave_only_in_session = true,
                 autosave_ignore_filetypes = {
                     "gitcommit",
                     "gitrebase",

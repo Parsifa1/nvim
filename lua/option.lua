@@ -55,6 +55,13 @@ else
     -- close curdir
     vim.opt.viewoptions = "cursor,folds"
 
+    vim.opt.sessionoptions = "blank,buffers,curdir,help,tabpages,winsize,terminal"
+
+    vim.g["loaded_node_provider"] = 0
+    vim.g["loaded_python3_provider"] = 0
+    vim.g["loaded_perl_provider"] = 0
+    vim.g["loaded_ruby_provider"] = 0
+
     -- for neovide
     if vim.g.neovide then
         vim.o.guifont = "JetBrains_Mono,JetBrainsMono_Nerd_Font,LXGW_WenKai:h12"

@@ -8,16 +8,12 @@ local keymap = {
     { mode = mode_i,      from = "<C-f>",            to = "<cmd>lua require('luasnip').expand()<CR>"  }, -- luasnip触发键
     { mode = mode_n,      from = "n",                to = "nzzzv" }, -- 搜索保持光标
     { mode = mode_n,      from = "n",                to = "nzzzv" },
-    { mode = mode_n,      from = "z",                to = "<c-w>" }, -- 分屏
     { mode = mode_n,      from = "<C-x>",            to = "<cmd>bd<CR>" }, -- buffer关闭
-    { mode = mode_n,      from = "zz",               to = "za" }, -- 折叠/展开当前位置
-    { mode = mode_n,      from = "zn",               to = "zR" }, -- 全部展开
-    { mode = mode_n,      from = "zm",               to = "zM" }, -- 全部折叠
     { mode = mode_n,      from = "<Up>",             to = "<cmd>res +5<CR>" }, -- 窗口操作
     { mode = mode_n,      from = "<Down>",           to = "<cmd>res -5<CR>" },
     { mode = mode_n,      from = "<Left>",           to = "<cmd>vertical resize-5<CR>" },
     { mode = mode_n,      from = "<Right>",          to = "<cmd>vertical resize+5<CR>" },
-    { mode = mode_n,     from = "<C-i>",            to = "<C-i>" },
+    { mode = mode_n,      from = "<C-i>",            to = "<C-i>" },
     { mode = mode_v,      from = "K",                to = ":m '<-2<cr>gv=gv" }, -- 行移动
     { mode = mode_v,      from = "J",                to = ":m '>+1<cr>gv=gv" },
     { mode = mode_v,      from = "<C-c>",            to = "y" },
@@ -39,8 +35,15 @@ local keymap = {
     { mode = mode_nvo,    from = "H",                to = "^" },
     { mode = mode_nvo,    from = "L",                to = "$" },
     -- desc快捷键
+    { mode = mode_n,      from = "zz",               to = "za",                                    desc = "toggle current fold" }, -- 折叠/展开当前位置
+    { mode = mode_n,      from = "zn",               to = "zR",                                    desc = "open all fold" }, -- 全部打开
+    { mode = mode_n,      from = "zm",               to = "zM",                                    desc = "close all fold" }, -- 全部折叠
+    { mode = mode_n,      from = "zc",               to = "<C-w>c",                                desc = "close current window" },
+    { mode = mode_n,      from = "zs",               to = "<C-w>s",                                desc = "split current window" },
+    { mode = mode_n,      from = "zv",               to = "<C-w>v",                                desc = "vsplit current window" },
+    { mode = mode_n,      from = "zo",               to = "<C-w>o" ,                               desc = "only current window" },
     { mode = mode_n,      from = "<leader>p",        to = "<cmd>Lazy<CR>",                         desc = "lazy" },
-    { mode = mode_n,      from = "<leader>cd",        to = "<cmd>cd %:p:h<CR>",                     desc = "[C][D] current file" },
+    { mode = mode_n,      from = "<leader>cd",       to = "<cmd>cd %:p:h<CR>",                     desc = "[C][D] current file" },
     { mode = mode_n,      from = "<leader>sw",       to = "<cmd>set wrap!<CR>",                    desc = "toggle warp" },
     { mode = mode_n,      from = "<leader><leader>", to = "<cmd>noh<CR>",                          desc = "clear highlight" },
     { mode = mode_n,      from = "<leader>ss",       to = ":%s/\\<<C-r><C-w>\\>//g<left><left>",   desc = "global replacement", noise = true },

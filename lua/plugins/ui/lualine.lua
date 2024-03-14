@@ -74,6 +74,7 @@ local bufline = {
                 Mundo = " Mundo",
                 MundoDiff = " MundoDiff",
                 CompetiTest = " CompetiTest",
+                lspinfo = " LspInfo"
             },
             symbols = {
                 modified = " ●",

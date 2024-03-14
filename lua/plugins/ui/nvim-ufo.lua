@@ -1,7 +1,6 @@
 return {
     "kevinhwang91/nvim-ufo",
-    -- WARN: 无法使用BufReadPre
-    event = "VeryLazy",
+    event = "BufReadPost",
     dependencies = "kevinhwang91/promise-async",
     init = function()
         local set_foldcolumn_for_file = vim.api.nvim_create_augroup("set_foldcolumn_for_file", {
@@ -71,7 +70,11 @@ return {
             end,
         })
         require("ufo").setup {
-            close_fold_kinds = { "imports" },
+            close_fold_kinds_for_ft = {
+                default = { "imports", "comment" },
+                json = { "array" },
+                c = { "comment", "region" },
+            },
             fold_virt_text_handler = handler,
         }
     end,
