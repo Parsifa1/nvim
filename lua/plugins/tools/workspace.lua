@@ -34,12 +34,3 @@ return {
         end,
     },
 }
--- local function load_workspace(path)
---     require("session_manager").autosave_session()
---     local target = require("session_manager.config").dir_to_session_filename(path)
---     -- if target:exists() then
---     local filename = string.gsub(target.filename, "__$", "", 1)
---     require("session_manager").autosave_session()
---     require("session_manager.utils").load_session(filename, false)
---     -- end
--- end

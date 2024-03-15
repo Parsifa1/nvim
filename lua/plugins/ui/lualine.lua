@@ -228,7 +228,7 @@ return {
         vim.opt.laststatus = 0
     end,
     dependencies = {
-        { "nvim-tree/nvim-web-devicons" },
+        { "parsifa1/nvim-web-devicons" },
         { "ofseed/lualine-copilot" },
     },
     opts = opts,
