@@ -71,8 +71,7 @@ local opts = function()
                     end,
                 },
             },
-            { name = "path" },
-            { name = "calc" },
+            { name = "async_path" },
         },
 
         --lspkind
@@ -86,7 +85,7 @@ local opts = function()
                     nvim_lsp = "[LSP]",
                     nvim_lua = "[VIM]",
                     buffer = "[BUF]",
-                    path = "[PTH]",
+                    async_path = "[PTH]",
                     calc = "[CLC]",
                     latex_symbols = "[TEX]",
                     orgmode = "[ORG]",
@@ -113,7 +112,7 @@ local opts = function()
     -- for cmp-smdline
     cmp.setup.cmdline(":", {
         sources = cmp.config.sources({
-            { name = "path" },
+            { name = "async_path" },
         }, {
             { name = "cmdline" },
         }, {
@@ -126,12 +125,6 @@ local opts = function()
         sources = {
             { name = "buffer" },
             { name = "cmdline_history" },
-        },
-    })
-    cmp.setup.filetype("NeogitCommitMessage", {
-        sources = {
-            { name = "conventionalcommits" },
-            { name = "buffer" },
         },
     })
 
@@ -155,13 +148,11 @@ return {
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-nvim-lsp-signature-help",
-        "hrsh7th/cmp-path",
+        "FelipeLema/cmp-async-path",
         "hrsh7th/cmp-cmdline",
         "dmitmel/cmp-cmdline-history",
-        "hrsh7th/cmp-calc",
         "saadparwaiz1/cmp_luasnip",
         "lukas-reineke/cmp-under-comparator",
-        "davidsierradz/cmp-conventionalcommits",
         "onsails/lspkind.nvim",
     },
     event = { "BufNewFile", "BufReadPost" },

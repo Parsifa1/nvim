@@ -74,7 +74,7 @@ local bufline = {
                 Mundo = " Mundo",
                 MundoDiff = " MundoDiff",
                 CompetiTest = " CompetiTest",
-                lspinfo = " LspInfo"
+                lspinfo = " LspInfo",
             },
             symbols = {
                 modified = " ●",
@@ -102,6 +102,7 @@ local opts = {
         disabled_filetypes = {
             "alpha",
             "TelescopePrompt",
+            "mason",
         },
         always_divide_middle = true,
         globalstatus = true,
@@ -221,7 +222,7 @@ local opts = {
     },
 }
 return {
-    "parsifa1/lualine.nvim",
+    "nvim-lualine/lualine.nvim",
     event = { "BufNewFile", "BufReadPre" },
     init = function()
         -- no statusline at first
