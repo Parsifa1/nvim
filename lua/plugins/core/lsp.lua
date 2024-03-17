@@ -58,9 +58,9 @@ local config = function()
                 capabilities = capabilities,
                 filetypes = { "cpp", "c" },
                 cmd = {
-                    -- "clangd",
+                    "clangd",
                     -- TODO测试版clangd
-                    "/home/parsifa1/Public/llvm-project/bin/clangd",
+                    -- "/home/parsifa1/Public/llvm-project/bin/clangd",
                     "--offset-encoding=utf-16",
                 },
             }

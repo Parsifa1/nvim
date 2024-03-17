@@ -11,6 +11,8 @@ return {
         event = { "BufNewFile", "BufReadPre" },
         config = function()
             require("mason").setup {
+                -- NOTE:为了兼容NIXOS
+                PATH = "append",
                 ui = {
                     border = "rounded",
                     icons = {
@@ -43,7 +45,7 @@ return {
                     "autopep8",
                     "marksman",
                     "yaml-language-server",
-                    "haskell-language-server",
+                    -- "haskell-language-server",
                     "typst-lsp",
                     "prettier",
                     "html-lsp",

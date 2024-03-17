@@ -26,8 +26,12 @@ return {
                 javascriptreact = { "prettier" },
                 yaml = { "prettier" },
                 typst = { "typstfmt" },
+                nix = { "nixfmt" },
             },
             formatters = {
+                nixfmt = {
+                    command = "nixfmt",
+                },
                 rustfmt = {
                     prepend_args = { "--edition=2021" },
                 },
