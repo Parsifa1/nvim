@@ -223,9 +223,8 @@ local opts = {
 }
 return {
     "nvim-lualine/lualine.nvim",
-    event = { "BufNewFile", "BufReadPre" },
+    event = { "BufNewFile", "BufReadPost", "BufEnter" },
     init = function()
-        -- no statusline at first
         vim.opt.laststatus = 0
     end,
     dependencies = {

@@ -102,6 +102,22 @@ local opts = {
             theme = "dropdown",
             initial_mode = "normal",
         },
+        undo = {
+            initial_mode = "normal",
+            mappings = {
+                n = {
+                    ["y"] = function(b)
+                        return require("telescope-undo.actions").yank_additions(b)
+                    end,
+                    ["Y"] = function(b)
+                        return require("telescope-undo.actions").yank_deletions(b)
+                    end,
+                    ["<CR>"] = function(b)
+                        return require("telescope-undo.actions").restore(b)
+                    end,
+                },
+            },
+        },
     },
 }
 return {
@@ -117,6 +133,7 @@ return {
         dependencies = {
             "nvim-lua/popup.nvim",
             "benfowler/telescope-luasnip.nvim",
+            "debugloop/telescope-undo.nvim",
         },
         keys = {
             { "<leader>f", "<cmd>lua require('user.telescope').project_files()<CR>", desc = "find files" },
@@ -126,6 +143,7 @@ return {
             { "<Tab><Tab>", "<cmd>Telescope buffers <CR>", desc = "buffers" },
             { "<leader><Tab>", "<cmd>Telescope workspaces theme=dropdown<CR><esc>", desc = "projects folder" },
             { "<leader>i", "<cmd>Telescope workspaces theme=dropdown<CR><esc>", desc = "projects folder" },
+            { "<leader>u", "<cmd>Telescope undo<CR>", desc = "undo tree" },
             { "<leader>tc", "<cmd>Telescope commands<CR>", desc = "telescope commands" },
             { "<leader>tk", "<cmd>Telescope keymaps<CR>", desc = "telescope keymaps" },
         },
@@ -134,6 +152,7 @@ return {
             require("telescope").setup(opts)
             require("telescope").load_extension "workspaces"
             require("telescope").load_extension "fzf"
+            require("telescope").load_extension "undo"
         end,
     },
 }

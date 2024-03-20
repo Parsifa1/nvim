@@ -28,18 +28,15 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     end,
 })
 
--- auto load fold
--- vim.api.nvim_create_autocmd("FileType", {
---     pattern = { "lua", "py", "cpp", "rust" },
---     callback = function()
---         vim.cmd "mkview"
---     end,
--- })
---
--- vim.api.nvim_create_autocmd("FileType", {
---     pattern = { "lua", "python", "cpp", "rust" },
---     callback = function()
---         vim.cmd "silent! loadview"
---     end,
--- })
+-- dynamic show lualine
+vim.api.nvim_create_autocmd("UIEnter", {
+    callback = function()
+        require("lualine").hide { place = { "tabline" }, unhide = false }
+    end,
+})
 
+vim.api.nvim_create_autocmd("BufReadPost", {
+    callback = function()
+        require("lualine").hide { place = { "tabline" }, unhide = true }
+    end,
+})
