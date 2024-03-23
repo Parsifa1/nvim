@@ -59,6 +59,13 @@ return {
                 },
                 opts = { skip = true },
             },
+            {
+                filter = {
+                    event = "notify",
+                    find = "telescope.builtin.buffers",
+                },
+                opts = { skip = true },
+            },
         },
         views = {
             cmdline_popup = {

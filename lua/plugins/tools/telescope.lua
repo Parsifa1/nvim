@@ -16,6 +16,25 @@ local function flash(prompt_bufnr)
         end,
     }
 end
+
+local project_files = function()
+    local is_inside_work_tree = {}
+    local builtin = require "telescope.builtin"
+    local option = {} -- define here if you want to define something
+
+    local cwd = vim.fn.getcwd()
+    if is_inside_work_tree[cwd] == nil then
+        vim.fn.system "git rev-parse --is-inside-work-tree"
+        is_inside_work_tree[cwd] = vim.v.shell_error == 0
+    end
+
+    if is_inside_work_tree[cwd] then
+        builtin.git_files(option)
+    else
+        builtin.find_files(option)
+    end
+end
+
 local opts = {
     defaults = {
         layout_config = {
@@ -136,7 +155,7 @@ return {
             "debugloop/telescope-undo.nvim",
         },
         keys = {
-            { "<leader>f", "<cmd>lua require('user.telescope').project_files()<CR>", desc = "find files" },
+            { "<leader>f", project_files, desc = "find files" },
             { "<leader>r", "<cmd>Telescope oldfiles<CR>", desc = "recent files" },
             { "<leader>w", "<cmd>Telescope live_grep<CR>", desc = "find words" },
             { "<leader>b", "<cmd>Telescope buffers <CR>", desc = "telescope buffers" },

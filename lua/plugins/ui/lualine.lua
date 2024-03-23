@@ -45,11 +45,7 @@ local function lsp()
         end)
         :totable()
     local info = table.concat(clients, ", ")
-    -- if info == "" then
-    --     return ""
-    -- else
     return info
-    -- end
 end
 
 local bufline = {
@@ -83,16 +79,7 @@ local bufline = {
             },
         },
     },
-    lualine_z = {
-        {
-            "tabs",
-            cond = function()
-                return vim.bo.filetype ~= "alpha"
-            end,
-            section_separators = { left = "", right = "" },
-            use_mode_colors = true,
-        },
-    },
+    lualine_z = {},
 }
 
 local opts = {
@@ -224,6 +211,17 @@ local opts = {
 return {
     "nvim-lualine/lualine.nvim",
     event = { "BufNewFile", "BufReadPost", "BufEnter" },
+    keys = {
+        { "<leader>1", "<Cmd>LualineBuffersJump! 1<CR>", desc = "Go to Buffer No.1" },
+        { "<leader>2", "<Cmd>LualineBuffersJump! 2<CR>", desc = "Go to Buffer No.2" },
+        { "<leader>3", "<Cmd>LualineBuffersJump! 3<CR>", desc = "Go to Buffer No.3" },
+        { "<leader>4", "<Cmd>LualineBuffersJump! 4<CR>", desc = "Go to Buffer No.4" },
+        { "<leader>5", "<Cmd>LualineBuffersJump! 5<CR>", desc = "Go to Buffer No.5" },
+        { "<leader>6", "<Cmd>LualineBuffersJump! 6<CR>", desc = "Go to Buffer No.6" },
+        { "<leader>7", "<Cmd>LualineBuffersJump! 7<CR>", desc = "Go to Buffer No.7" },
+        { "<leader>8", "<Cmd>LualineBuffersJump! 8<CR>", desc = "Go to Buffer No.8" },
+        { "<leader>9", "<Cmd>LualineBuffersJump! 9<CR>", desc = "Go to Buffer No.9" },
+    },
     init = function()
         vim.opt.laststatus = 0
     end,

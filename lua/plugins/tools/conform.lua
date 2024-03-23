@@ -25,10 +25,11 @@ return {
                 markdown = { "prettier" },
                 javascriptreact = { "prettier" },
                 yaml = { "prettier" },
-                typst = { "typstfmt" },
+                typst = { "typstyle" },
                 nix = { "alejandra" },
             },
             formatters = {
+                typstyle = { command = "typstyle" },
                 rustfmt = {
                     prepend_args = { "--edition=2021" },
                 },

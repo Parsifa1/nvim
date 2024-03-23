@@ -103,9 +103,9 @@ local config = function()
             }
         end,
         ["typst_lsp"] = function()
-            lspconfig.typst_lsp.setup {
+            lspconfig.tinymist.setup {
                 capabilities = capabilities,
-                cmd = { "/home/parsifa1/Desktop/Test/tinymist" },
+                cmd = { "tinymist", "--mirror", vim.env.HOME .. "/tinymist-input-mirror.json" },
                 root_dir = function()
                     return vim.fn.getcwd()
                 end,
@@ -173,6 +173,7 @@ return {
             "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
             "folke/neodev.nvim",
+            "ray-x/lsp_signature.nvim",
         },
         event = { "BufReadPost", "BufNewFile" },
         cmd = "LspInfo",
