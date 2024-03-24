@@ -12,7 +12,7 @@ return {
         config = function()
             require("mason").setup {
                 -- NOTE:为了兼容NIXOS
-                PATH = "skip",
+                PATH = "append",
                 ui = {
                     border = "rounded",
                     icons = {
