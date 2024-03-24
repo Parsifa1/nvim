@@ -37,28 +37,28 @@ return {
         config = function()
             require("mason-tool-installer").setup {
                 ensure_installed = {
+                    -- lsp
                     "lua-language-server",
                     "clangd",
-                    "codelldb",
                     "rust-analyzer",
-                    "clang-format",
-                    "autopep8",
                     "marksman",
                     "yaml-language-server",
-                    -- "haskell-language-server",
                     "typst-lsp",
-                    "prettier",
                     "html-lsp",
+                    "json-lsp",
                     "typescript-language-server",
                     "astro-language-server",
-                    "stylua",
                     "taplo",
                     "pyright",
-                    "ruff",
                     "ruff_lsp",
                     "tailwindcss-language-server",
+                    -- formater
+                    "clang-format",
+                    "autopep8",
+                    "prettier",
+                    "stylua",
+                    "ruff",
                 },
-                -- run_on_start = true,
             }
         end,
     },
