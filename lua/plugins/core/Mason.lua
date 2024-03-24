@@ -12,7 +12,7 @@ return {
         config = function()
             require("mason").setup {
                 -- NOTE:为了兼容NIXOS
-                PATH = "append",
+                PATH = "skip",
                 ui = {
                     border = "rounded",
                     icons = {
@@ -58,8 +58,7 @@ return {
                     "ruff_lsp",
                     "tailwindcss-language-server",
                 },
-                -- auto_update = true,
-                run_on_start = true,
+                -- run_on_start = true,
             }
         end,
     },
