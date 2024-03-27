@@ -24,6 +24,7 @@ else
     require("lazy").setup("plugins", {
         ui = {
             border = "rounded",
+            backdrop = 100,
         },
         install = {
             colorscheme = { "nordfox" },

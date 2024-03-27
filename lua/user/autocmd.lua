@@ -28,17 +28,3 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     end,
 })
 
--- dynamic show lualine
-vim.api.nvim_create_autocmd("VimEnter", {
-    callback = function()
-        if vim.bo.filetype == "alpha" then
-            require("lualine").hide { place = { "tabline" }, unhide = false }
-        end
-    end,
-})
-
-vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
-    callback = function()
-        require("lualine").hide { place = { "tabline" }, unhide = true }
-    end,
-})

@@ -1,6 +1,7 @@
 local config = function()
     local lspconfig = require "lspconfig"
     local custom = require "custom"
+    local server = require("server").server
     local lsp_keymap = function(bufnr)
         -- lsp-builtin
         local set = function(keys, func, indesc)
@@ -21,112 +22,10 @@ local config = function()
         set("<leader>ct", vim.lsp.buf.type_definition, "[C]ode [T]ype definition")
     end
 
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities.textDocument.foldingRange = {
-        dynamicRegistration = false,
-        lineFoldingOnly = true,
-    }
-
-    -- for neodev
-    require("neodev").setup {
-        library = { types = false, plugins = false },
-    }
-
-    -- lsp config in mason
-    require("mason-lspconfig").setup_handlers {
-        function(server_name) -- default handler
-            require("lspconfig")[server_name].setup {
-                capabilities = capabilities,
-            }
-        end,
-        ["rust_analyzer"] = function()
-            lspconfig.rust_analyzer.setup {
-                capabilities = capabilities,
-                settings = {
-                    ["rust-analyzer"] = {
-                        diagnostics = {
-                            disabled = {
-                                "needless_return",
-                            },
-                        },
-                    },
-                },
-            }
-        end,
-        ["clangd"] = function()
-            lspconfig.clangd.setup {
-                capabilities = capabilities,
-                filetypes = { "cpp", "c" },
-                cmd = {
-                    "clangd",
-                    -- TODO测试版clangd
-                    -- "/home/parsifa1/Public/llvm-project/bin/clangd",
-                    "--offset-encoding=utf-16",
-                },
-            }
-        end,
-        ["pyright"] = function()
-            lspconfig.pyright.setup {
-                cmd = { "delance-langserver", "--stdio" },
-                settings = {
-                    python = {
-                        disableOrganizeImports = true,
-                        pythonPath = "/usr/bin/python3",
-                        analysis = {
-                            ignore = { "*" },
-                            inlayHints = {
-                                callArgumentNames = "partial",
-                                functionReturnTypes = true,
-                                pytestParameters = true,
-                                variableTypes = true,
-                            },
-                        },
-                    },
-                },
-            }
-        end,
-        ["lua_ls"] = function()
-            lspconfig.lua_ls.setup {
-                capabilities = capabilities,
-                settings = {
-                    Lua = {
-                        hint = {
-                            enable = true,
-                            arrIndex = "Enable",
-                            setType = true,
-                        },
-                        diagnostics = {
-                            disable = { "missing-fields", "incomplete-signature-doc" },
-                        },
-                    },
-                },
-            }
-        end,
-        ["typst_lsp"] = function()
-            lspconfig.tinymist.setup {
-                capabilities = capabilities,
-                cmd = { "tinymist", "--mirror", vim.env.HOME .. "/tinymist-input-mirror.json" },
-                root_dir = function()
-                    return vim.fn.getcwd()
-                end,
-                settings = {},
-            }
-        end,
-        ["tailwindcss"] = function()
-            lspconfig.tailwindcss.setup {
-                capabilities = capabilities,
-                filetypes = {
-                    "html",
-                    "css",
-                    "javascript",
-                    "javascriptreact",
-                    "typescript",
-                    "typescriptreact",
-                    "astro",
-                },
-            }
-        end,
-    }
+    -- lspconfig
+    for _, lsp in ipairs(vim.tbl_keys(server)) do
+        lspconfig[lsp].setup { server[lsp] }
+    end
 
     -- automatically sign up lsp
     vim.api.nvim_create_autocmd("LspAttach", {
@@ -171,7 +70,6 @@ return {
         "neovim/nvim-lspconfig",
         dependencies = {
             "williamboman/mason.nvim",
-            "williamboman/mason-lspconfig.nvim",
             "folke/neodev.nvim",
             "ray-x/lsp_signature.nvim",
         },
@@ -190,6 +88,13 @@ return {
                 },
             }
         end,
+    },
+    {
+        "folke/neodev.nvim",
+        event = "LspAttach",
+        opts = {
+            library = { types = false, plugins = false },
+        },
     },
     {
         "aznhe21/actions-preview.nvim",

@@ -210,7 +210,7 @@ local opts = {
 }
 return {
     "nvim-lualine/lualine.nvim",
-    event = { "BufNewFile", "BufReadPost", "BufEnter" },
+    event = "BufEnter",
     keys = {
         { "<leader>1", "<Cmd>LualineBuffersJump! 1<CR>", desc = "Go to Buffer No.1" },
         { "<leader>2", "<Cmd>LualineBuffersJump! 2<CR>", desc = "Go to Buffer No.2" },
@@ -229,5 +229,20 @@ return {
         { "parsifa1/nvim-web-devicons" },
         { "ofseed/lualine-copilot" },
     },
-    opts = opts,
+    config = function()
+        require("lualine").setup(opts)
+        -- dynamic show lualine
+        vim.api.nvim_create_autocmd("VimEnter", {
+            callback = function()
+                if vim.bo.filetype == "alpha" then
+                    require("lualine").hide { place = { "tabline" }, unhide = false }
+                end
+            end,
+        })
+        vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
+            callback = function()
+                require("lualine").hide { place = { "tabline" }, unhide = true }
+            end,
+        })
+    end,
 }
