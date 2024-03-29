@@ -22,6 +22,7 @@ if vim.g.vscode then
     }
 else
     require("lazy").setup("plugins", {
+        -- concurrency = 30,
         ui = {
             border = "rounded",
             backdrop = 100,

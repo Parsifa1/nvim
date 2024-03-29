@@ -1,8 +1,4 @@
-M = {}
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.foldingRange = { dynamicRegistration = false, lineFoldingOnly = true }
-
-M.server = {}
+M = { server = {} }
 
 local lsp = {
     "tsserver",
@@ -23,77 +19,85 @@ local lsp = {
     "tailwindcss",
 }
 
-for _, s in ipairs(lsp) do
-    M.server[s] = {}
-end
-
-M.server["rust_analyzer"] = {
-    settings = {
-        ["rust-analyzer"] = { diagnostics = { disabled = { "needless_return" } } },
+local config = {
+    rust_analyzer = {
+        settings = {
+            ["rust-analyzer"] = { diagnostics = { disabled = { "needless_return" } } },
+        },
     },
-}
-M.server["clangd"] = {
-    filetypes = { "cpp", "c" },
-    cmd = {
-        "clangd",
-        -- TODO测试版clangd
-        -- "/home/parsifa1/Public/llvm-project/bin/clangd",
-        "--offset-encoding=utf-16",
+    clangd = {
+        filetypes = { "cpp", "c" },
+        cmd = {
+            "clangd",
+            -- TODO测试版clangd
+            -- "/home/parsifa1/Public/llvm-project/bin/clangd",
+            "--offset-encoding=utf-16",
+        },
     },
-}
-M.server["pyright"] = {
-    cmd = { "delance-langserver", "--stdio" },
-    settings = {
-        python = {
-            disableOrganizeImports = true,
-            pythonPath = "/usr/bin/python3",
-            analysis = {
-                ignore = { "*" },
-                inlayHints = {
-                    callArgumentNames = "partial",
-                    functionReturnTypes = true,
-                    pytestParameters = true,
-                    variableTypes = true,
+    pyright = {
+        cmd = { "delance-langserver", "--stdio" },
+        settings = {
+            python = {
+                disableOrganizeImports = true,
+                pythonPath = "/usr/bin/python3",
+                analysis = {
+                    ignore = { "*" },
+                    inlayHints = {
+                        callArgumentNames = "partial",
+                        functionReturnTypes = true,
+                        pytestParameters = true,
+                        variableTypes = true,
+                    },
                 },
             },
         },
     },
-}
-M.server["lua_ls"] = {
-    settings = {
-        Lua = {
-            hint = {
-                enable = true,
-                arrIndex = "Enable",
-                setType = true,
+    lua_ls = {
+        settings = {
+            Lua = {
+                hint = {
+                    enable = true,
+                    arrIndex = "Enable",
+                    setType = true,
+                },
+                diagnostics = {
+                    disable = { "missing-fields", "incomplete-signature-doc" },
+                },
             },
-            diagnostics = {
-                disable = { "missing-fields", "incomplete-signature-doc" },
+        },
+    },
+    tinymist = {
+        cmd = { "tinymist", "--mirror", vim.env.HOME .. "/tinymist-input-mirror.json" },
+        root_dir = function()
+            return vim.fn.getcwd()
+        end,
+        settings = {},
+    },
+    tailwindcss = {
+        filetypes = {
+            "html",
+            "css",
+            "javascript",
+            "javascriptreact",
+            "typescript",
+            "typescriptreact",
+            "astro",
+        },
+    },
+    nil_ls = {
+        settings = {
+            ["nil"] = {
+                nix = { flake = { autoArchive = false } },
             },
         },
     },
 }
-M.server["tinymist"] = {
-    cmd = { "tinymist", "--mirror", vim.env.HOME .. "/tinymist-input-mirror.json" },
-    root_dir = function()
-        return vim.fn.getcwd()
-    end,
-    settings = {},
-}
-M.server["tailwindcss"] = {
-    filetypes = {
-        "html",
-        "css",
-        "javascript",
-        "javascriptreact",
-        "typescript",
-        "typescriptreact",
-        "astro",
-    },
-}
 
-for _, server in ipairs(M.server) do
-    server["capabilities"] = capabilities
+for _, i in ipairs(lsp) do
+    M.server[i] = config[i] or {}
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities.textDocument.foldingRange = { dynamicRegistration = false, lineFoldingOnly = true }
+    M.server[i]["capabilities"] = capabilities
 end
 
 return M

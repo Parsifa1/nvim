@@ -14,7 +14,7 @@ return {
     config = function()
         require("conform").setup {
             formatters_by_ft = {
-                cpp = { "clangformat" },
+                cpp = { "clang_format" },
                 python = { "ruff_fix", "ruff_format" },
                 lua = { "stylua" },
                 rust = { "rustfmt" },
@@ -33,8 +33,8 @@ return {
                 rustfmt = {
                     prepend_args = { "--edition=2021" },
                 },
-                clangformat = {
-                    command = "/home/parsifa1/.local/share/nvim/mason/bin/clang-format",
+                clang_format = {
+                    command = "clang-format",
                     pretend_args = {
                         "-style=file:/home/parsifa1/.clang-format",
                     },

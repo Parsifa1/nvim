@@ -23,8 +23,8 @@ local config = function()
     end
 
     -- lspconfig
-    for _, lsp in ipairs(vim.tbl_keys(server)) do
-        lspconfig[lsp].setup { server[lsp] }
+    for lsp, config in (vim.iter(server)) do
+        lspconfig[lsp].setup(config)
     end
 
     -- automatically sign up lsp
