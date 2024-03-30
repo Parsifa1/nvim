@@ -33,14 +33,4 @@ return {
             }
         end,
     },
-    {
-        "nvim-treesitter/nvim-treesitter-context",
-        enabled = false,
-        event = { "BufNewFile", "BufReadPre" },
-        config = function()
-            require("treesitter-context").setup {
-                mode = "topline", -- Line used to calculate context. Choices: 'cursor', 'topline'
-            }
-        end,
-    },
 }

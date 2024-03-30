@@ -67,7 +67,7 @@ local config = {
         },
     },
     tinymist = {
-        cmd = { "tinymist", "--mirror", vim.env.HOME .. "/tinymist-input-mirror.json" },
+        cmd = { "tinymist" },
         root_dir = function()
             return vim.fn.getcwd()
         end,
