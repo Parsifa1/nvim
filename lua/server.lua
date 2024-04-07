@@ -11,20 +11,15 @@ local lsp = {
     "taplo",
     "jsonls",
     "ruff_lsp",
-    "rust_analyzer",
     "clangd",
     "pyright",
     "lua_ls",
     "tinymist",
     "tailwindcss",
+    -- "rust_analyzer",
 }
 
 local config = {
-    rust_analyzer = {
-        settings = {
-            ["rust-analyzer"] = { diagnostics = { disabled = { "needless_return" } } },
-        },
-    },
     clangd = {
         filetypes = { "cpp", "c" },
         cmd = {
@@ -91,6 +86,11 @@ local config = {
             },
         },
     },
+    -- rust_analyzer = {
+    --     settings = {
+    --         ["rust-analyzer"] = { diagnostics = { disabled = { "needless_return" } } },
+    --     },
+    -- },
 }
 
 for _, i in ipairs(lsp) do

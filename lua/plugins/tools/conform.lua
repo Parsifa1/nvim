@@ -30,9 +30,6 @@ return {
             },
             formatters = {
                 typstyle = { command = "typstyle" },
-                rustfmt = {
-                    prepend_args = { "--edition=2021" },
-                },
                 clang_format = {
                     command = "clang-format",
                     pretend_args = {

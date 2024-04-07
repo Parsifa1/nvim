@@ -16,6 +16,6 @@ return {
             paths = vim.fn.stdpath "config" .. "/lua/snippets",
         }
         require("luasnip.loaders.from_vscode").lazy_load()
-        -- require("luasnip-snippets").setup()
+        require("luasnip-snippets").setup()
     end,
 }
