@@ -56,8 +56,6 @@ else
     vim.opt.viewoptions = "cursor,folds"
 
     vim.opt.sessionoptions = "blank,buffers,curdir,help,tabpages,winsize,terminal"
-    -- sudawrite
-    vim.g.suda_smart_edit = 1
 
     vim.g["loaded_node_provider"] = 0
     vim.g["loaded_perl_provider"] = 0
