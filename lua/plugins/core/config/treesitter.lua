@@ -3,6 +3,7 @@ return {
     event = { "BufNewFile", "BufReadPre" },
     build = ":TSUpdate",
     config = function()
+        require("nvim-treesitter.install").prefer_git = true
         require("nvim-treesitter.configs").setup {
             ensure_installed = {
                 "cpp",
@@ -15,13 +16,14 @@ return {
                 "bash",
                 "markdown_inline",
                 "comment",
-                "org",
                 "yaml",
                 "fish",
                 "html",
                 "javascript",
                 "typescript",
                 "latex",
+                "nix",
+                "typst",
             },
             sync_install = true,
             auto_install = true,
