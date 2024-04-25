@@ -33,7 +33,7 @@ return {
                 clang_format = {
                     command = "clang-format",
                     pretend_args = {
-                        "-style=file:/home/parsifa1/.clang-format",
+                        "-style=file:/home/parsifa1/codefield/cpp/.clang-format",
                     },
                 },
                 prettier = {

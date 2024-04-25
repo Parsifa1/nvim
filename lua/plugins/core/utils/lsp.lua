@@ -31,9 +31,8 @@ local config = function()
     vim.api.nvim_create_autocmd("LspAttach", {
         desc = "General LSP Attach",
         callback = function(args)
-            local bufnr = args.bufnr
             -- buf keymap
-            lsp_keymap(bufnr)
+            lsp_keymap(args.bufnr)
 
             -- for hover
             vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = custom.border })
@@ -41,16 +40,13 @@ local config = function()
             -- inlay hints
             local client = vim.lsp.get_client_by_id(args.data.client_id)
             if client and client.server_capabilities.inlayHintProvider then
-                vim.lsp.inlay_hint.enable(bufnr, true)
+                vim.lsp.inlay_hint.enable(true)
             end
 
             -- diagnostic
             vim.diagnostic.config {
                 virtual_text = { spacing = 4 },
-                float = {
-                    severity_sort = true,
-                    source = "if_many",
-                },
+                float = { severity_sort = true, source = "if_many" },
                 severity_sort = true,
                 signs = {
                     text = {

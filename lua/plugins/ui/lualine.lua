@@ -156,7 +156,7 @@ local opts = {
                 symbols = {
                     status = {
                         enabled = " ",
-                        disabled = " ",
+                        disabled = " ",
                     },
                 },
             },
@@ -227,7 +227,7 @@ return {
     end,
     dependencies = {
         { "parsifa1/nvim-web-devicons" },
-        { "ofseed/lualine-copilot" },
+        { "ofseed/copilot-status.nvim" },
     },
     config = function()
         require("lualine").setup(opts)
