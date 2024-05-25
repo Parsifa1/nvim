@@ -24,8 +24,9 @@ local config = {
         filetypes = { "cpp", "c" },
         cmd = {
             "clangd",
-            -- TODO测试版clangd
-            -- "/home/parsifa1/Public/llvm-project/bin/clangd",
+            "--clang-tidy",
+            "--completion-style=detailed",
+            "--header-insertion=never",
             "--offset-encoding=utf-16",
         },
     },
@@ -86,11 +87,6 @@ local config = {
             },
         },
     },
-    -- rust_analyzer = {
-    --     settings = {
-    --         ["rust-analyzer"] = { diagnostics = { disabled = { "needless_return" } } },
-    --     },
-    -- },
 }
 
 for _, i in ipairs(lsp) do

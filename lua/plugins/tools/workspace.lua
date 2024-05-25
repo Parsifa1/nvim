@@ -4,7 +4,6 @@ return {
         dependencies = { "Shatur/neovim-session-manager" },
         config = function()
             require("workspaces").setup {
-                auto_open = true,
                 sort = true,
                 mru_sort = true,
                 hooks = {
@@ -20,7 +19,7 @@ return {
         lazy = true,
         config = function()
             require("session_manager").setup {
-                autoload_mode = "Disabled",
+                autoload_mode = require("session_manager.config").AutoloadMode.CurrentDir,
                 autosave_only_in_session = true,
                 autosave_ignore_filetypes = {
                     "gitcommit",

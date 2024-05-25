@@ -89,7 +89,11 @@ return {
         "folke/neodev.nvim",
         event = "LspAttach",
         opts = {
-            library = { types = false, plugins = false },
+            library = {
+                types = true,
+                plugins = { "nvim-treesitter", "plenary.nvim" },
+            },
+            lspconfig = true,
         },
     },
     {
@@ -97,7 +101,7 @@ return {
         event = "LspAttach",
         config = function()
             require("actions-preview").setup {
-                backend = { "telescope" },
+                backend = { "telescope", "nui" },
                 diff = {
                     algorithm = "patience",
                     ignore_whitespace = true,
