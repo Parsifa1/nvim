@@ -3,7 +3,7 @@ return {
     cmd = "TroubleToggle",
     -- event = "VeryLazy",
     keys = {
-        { "<leader>q", "<Cmd>TroubleToggle<CR>", desc = "Trouble" },
+        { "<leader>q", "<Cmd>Trouble diagnostics <CR>", desc = "Trouble" },
     },
     opts = {},
 }

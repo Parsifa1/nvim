@@ -10,15 +10,11 @@ local config = function()
         set("gD", vim.lsp.buf.declaration, "declaration")
         set("gd", vim.lsp.buf.definition, "definition")
         set("K", vim.lsp.buf.hover, "hover")
-        -- set("<C-k>", vim.lsp.buf.signature_help, "LSP Signature help")
+        set("<C-k>", vim.lsp.buf.signature_help, "LSP Signature help")
         set("gi", vim.lsp.buf.implementation, "implementation")
-        set("gr", vim.lsp.buf.references, "references")
-        set("[d", vim.diagnostic.goto_prev, "goto prev")
-        set("]d", vim.diagnostic.goto_next, "goto next")
-        set("<leader>q", "<cmd>TroubleToggle<CR>", "quickfix list")
+        set("gr", require("telescope.builtin").lsp_references, "[R]eferences")
         set("<leader>ca", require("actions-preview").code_actions, "[C]ode [A]ction")
         set("<leader>cn", vim.lsp.buf.rename, "[C]ode Item Re[N]ame")
-        set("<leader>cr", require("telescope.builtin").lsp_references, "[C]ode Lsp [R]eferences")
         set("<leader>ct", vim.lsp.buf.type_definition, "[C]ode [T]ype definition")
     end
 
@@ -45,6 +41,7 @@ local config = function()
 
             -- diagnostic
             vim.diagnostic.config {
+                jump = { float = { border = custom.border } },
                 virtual_text = { spacing = 4 },
                 float = { severity_sort = true, source = "if_many" },
                 severity_sort = true,
@@ -66,7 +63,7 @@ return {
         "neovim/nvim-lspconfig",
         dependencies = {
             "williamboman/mason.nvim",
-            "folke/neodev.nvim",
+            "folke/lazydev.nvim",
             "ray-x/lsp_signature.nvim",
         },
         event = { "BufReadPost", "BufNewFile" },
@@ -86,14 +83,21 @@ return {
         end,
     },
     {
-        "folke/neodev.nvim",
+        "folke/lazydev.nvim",
+        dependencies = { "Bilal2453/luvit-meta" },
+        ft = "lua",
         event = "LspAttach",
         opts = {
             library = {
-                types = true,
-                plugins = { "nvim-treesitter", "plenary.nvim" },
+                {
+                    path = "luvit-meta/library",
+                    words = { "vim%.uv" },
+                },
+                {
+                    path = "lazy.nvim",
+                    words = { "LazyPluginSpec" },
+                },
             },
-            lspconfig = true,
         },
     },
     {

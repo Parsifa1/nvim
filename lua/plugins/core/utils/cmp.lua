@@ -51,6 +51,7 @@ local opts = function()
 
         -- Set source precedence
         sources = {
+            { name = "lazydev" },
             { name = "nvim_lsp" }, -- For nvim-lsp
             { name = "luasnip" }, -- For luasnip user
             {
