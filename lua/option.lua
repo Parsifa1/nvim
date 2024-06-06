@@ -63,7 +63,7 @@ else
 
     -- for neovide
     if vim.g.neovide then
-        vim.o.guifont = "Iosevka_Cloudtide,JetBrainsMono_Nerd_Font,LXGW_WenKai:h13.7"
+        vim.o.guifont = "IosevkaCloudtide_Nerd_Font,LXGW_WenKai:h14.7"
         vim.g.clipboard = {
             name = "win32yank-wsl",
             copy = {
