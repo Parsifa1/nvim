@@ -52,9 +52,14 @@ local endl = s("endd", { t "'\\n';" })
 local cout = s("cout", { t "std::cout" })
 local acm = s("acm", {
     t {
-        "#include <bits/extc++.h>",
+        "#include <bits/stdc++.h>",
         "using i64 = long long;",
         "constexpr i64 INF = 1e18;",
+        "",
+        "inline auto read() {",
+        "    std::cin.tie(nullptr)->sync_with_stdio(false);",
+        "    return [](i64 x) { return std::cin >> x, x; }(0);",
+        "}",
         "",
         "template <typename... Args>",
         "void println(std::format_string<Args...> fmt, Args&&... args) {",
@@ -66,9 +71,7 @@ local acm = s("acm", {
         "}",
         "",
         "signed main() {",
-        "    std::cin.tie(nullptr)->sync_with_stdio(false);",
-        "    int T;",
-        "    std::cin >> T;",
+        "    int T = read();",
         "    while (T--) solve();",
         "}",
     },
