@@ -1,13 +1,4 @@
 ---@diagnostic disable: undefined-global, unused-local
-local show_dotfiles = false
-local filter_show = function(fs_entry)
-    return true
-end
-local toggle_dotfiles = function()
-    show_dotfiles = not show_dotfiles
-    local new_filter = show_dotfiles and filter_show or filter_hide
-    MiniFiles.refresh { content = { filter = new_filter } }
-end
 local filter_hide = function(fs_entry)
     return not vim.startswith(fs_entry.name, ".")
 end
@@ -80,10 +71,19 @@ local init = function()
         end,
     })
 
+    local show_dotfiles = false
     -- show/unsow dotfile and set save keymap
     vim.api.nvim_create_autocmd("User", {
         pattern = "MiniFilesBufferCreate",
         callback = function(args)
+            local filter_show = function(fs_entry)
+                return true
+            end
+            local toggle_dotfiles = function()
+                show_dotfiles = not show_dotfiles
+                local new_filter = show_dotfiles and filter_show or filter_hide
+                MiniFiles.refresh { content = { filter = new_filter } }
+            end
             local buf_id = args.data.buf_id
             vim.keymap.set("n", ".", toggle_dotfiles, { desc = "show dotfiles", buffer = buf_id })
             vim.keymap.set({ "n", "i" }, "<C-s>", MiniFiles.synchronize, { buffer = args.data.buf_id })

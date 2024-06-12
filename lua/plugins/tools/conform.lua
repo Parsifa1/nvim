@@ -32,12 +32,12 @@ return {
                 typstyle = { command = "typstyle" },
                 clang_format = {
                     command = "clang-format",
-                    pretend_args = {
+                    prepend_args = {
                         "-style=file:/home/parsifa1/codefield/cpp/.clang-format",
                     },
                 },
                 prettier = {
-                    pretend_args = {
+                    prepend_args = {
                         "--tab-width 2",
                     },
                 },
