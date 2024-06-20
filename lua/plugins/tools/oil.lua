@@ -1,7 +1,7 @@
 local custom = require "custom"
 return {
     "stevearc/oil.nvim",
-    -- enabled = false,
+    event = "VeryLazy",
     keys = {
         {
             "-",
@@ -19,8 +19,6 @@ return {
     opts = {
         default_file_explorer = true,
         columns = {
-            -- "size",
-            -- "mtime",
             "icon",
         },
         view_options = {

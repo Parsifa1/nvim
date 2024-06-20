@@ -1,3 +1,4 @@
+-- import all files in "user"
 local files = vim.fn.globpath(vim.fn.stdpath "config" .. "/lua/user", "*.lua", true, true)
 
 local function get_pluginname(str)

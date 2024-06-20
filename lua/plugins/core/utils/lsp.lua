@@ -1,7 +1,7 @@
 local config = function()
     local lspconfig = require "lspconfig"
     local custom = require "custom"
-    local server = require("server").server
+    local server = require("user.lsp").server
     local lsp_keymap = function(bufnr)
         -- lsp-builtin
         local set = function(keys, func, indesc)

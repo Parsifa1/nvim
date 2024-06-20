@@ -9,6 +9,9 @@ local opts = function()
             completion = cmp.config.window.bordered(),
             documentation = cmp.config.window.bordered(),
         },
+        completion = {
+          completeopt = vim.o.completeopt,
+        },
 
         view = {
             entries = { name = "custom", selection_order = "near_cursor" },
@@ -107,6 +110,9 @@ local opts = function()
 
     -- for cmp-smdline
     cmp.setup.cmdline(":", {
+        completion = {
+            completeopt = "menu,menuone,noselect",
+        },
         sources = cmp.config.sources({
             { name = "async_path" },
         }, {
@@ -114,14 +120,6 @@ local opts = function()
         }, {
             { name = "cmdline_history" },
         }),
-    })
-
-    -- for cmp-search
-    cmp.setup.cmdline({ "/", "?" }, {
-        sources = {
-            { name = "buffer" },
-            { name = "cmdline_history" },
-        },
     })
 
     -- for cargo specially

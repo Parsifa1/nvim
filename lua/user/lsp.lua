@@ -16,7 +16,6 @@ local lsp = {
     "lua_ls",
     "tinymist",
     "tailwindcss",
-    -- "rust_analyzer",
 }
 
 local config = {

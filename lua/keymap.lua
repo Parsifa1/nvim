@@ -9,11 +9,11 @@ local keymap = {
     { mode = mode_n,      from = "n",                to = "nzzzv" }, -- 搜索保持光标
     { mode = mode_n,      from = "n",                to = "nzzzv" },
     { mode = mode_n,      from = "<C-x>",            to = "<cmd>bd<CR>" }, -- buffer关闭
-    { mode = mode_n,      from = "<Up>",             to = "<cmd>res +5<CR>" }, -- 窗口操作
-    { mode = mode_n,      from = "<Down>",           to = "<cmd>res -5<CR>" },
-    { mode = mode_n,      from = "<Left>",           to = "<cmd>vertical resize-5<CR>" },
-    { mode = mode_n,      from = "<Right>",          to = "<cmd>vertical resize+5<CR>" },
-    { mode = mode_n,      from = "<C-i>",            to = "<C-i>" },
+    { mode = mode_n,      from = "<C-Up>",             to = "<cmd>res +3<CR>" }, -- 窗口操作
+    { mode = mode_n,      from = "<C-Down>",           to = "<cmd>res -3<CR>" },
+    { mode = mode_n,      from = "<C-Left>",           to = "<cmd>vertical resize -3<CR>" },
+    { mode = mode_n,      from = "<C-Right>",          to = "<cmd>vertical resize +3<CR>" },
+    { mode = mode_n,      from = "<C-i>",            to = "<C-i>" }, -- 重设<C-i>
     { mode = mode_v,      from = "K",                to = ":m '<-2<cr>gv=gv" }, -- 行移动
     { mode = mode_v,      from = "J",                to = ":m '>+1<cr>gv=gv" },
     { mode = mode_v,      from = "<C-c>",            to = "y" },
