@@ -1,37 +1,6 @@
 local M = {}
 
-M.border = "rounded"
-
-M.theme = "nordfox"
-
-M.prefer_tabpage = false
-
--- Width of side windows
-M.width = function()
-    local columns = vim.go.columns
-    return math.floor(columns * 0.15) > 28 and math.floor(columns * 0.15) or 28
-end
-
-local append_space = function(icons)
-    local result = {}
-    for k, v in pairs(icons) do
-        result[k] = v .. " "
-    end
-    return result
-end
-
-M.set = function(mode, keys, func, ...)
-    local options = { noremap = true, silent = true }
-    local arg = { ... }
-    if #arg > 0 then
-        local desc = arg[1]
-        options.desc = desc
-    end
-
-    vim.keymap.set(mode, keys, func, options)
-end
-
-local backup = {
+local icon_backup = {
     vsc_kind = {
         Array = "",
         Boolean = "",
@@ -68,7 +37,6 @@ local backup = {
         Value = "",
         Variable = "",
     },
-
     kind = {
         Class = "󰠱",
         Color = "󰏘",
@@ -272,15 +240,45 @@ local backup = {
         Terminate = "󰝤",
     },
 }
+M.border = "rounded"
+
+M.theme = "nordfox"
+
+M.prefer_tabpage = false
+
+-- Width of side windows
+M.width = function()
+    local columns = vim.go.columns
+    return math.floor(columns * 0.15) > 28 and math.floor(columns * 0.15) or 28
+end
+
+local append_space = function(icons)
+    local result = {}
+    for k, v in pairs(icons) do
+        result[k] = v .. " "
+    end
+    return result
+end
+
+M.set = function(mode, keys, func, ...)
+    local options = { noremap = true, silent = true }
+    local arg = { ... }
+    if #arg > 0 then
+        local desc = arg[1]
+        options.desc = desc
+    end
+
+    vim.keymap.set(mode, keys, func, options)
+end
 
 M.icons = {
     -- LSP diagnostic
-    diagnostic = backup.diagnostics,
+    diagnostic = icon_backup.diagnostics,
     -- LSP kinds
-    kind = backup.kind,
-    vsckind = backup.vsc_kind,
-    ui = backup.ui,
-    kind_with_space = append_space(backup.kind),
+    kind = icon_backup.kind,
+    vsc_kind = icon_backup.vsc_kind,
+    ui = icon_backup.ui,
+    kind_with_space = append_space(icon_backup.kind),
 }
 
 return M

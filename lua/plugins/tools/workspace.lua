@@ -25,6 +25,7 @@ return {
                     "gitcommit",
                     "gitrebase",
                     "toggleterm",
+                    "help",
                 },
                 autosave_ignore_buftypes = {
                     "terminal",

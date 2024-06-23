@@ -1,6 +1,6 @@
 return {
     "mistricky/codesnap.nvim",
-    enabled = vim.loop.os_uname().sysname == "Linux",
+    enabled = vim.uv.os_uname().sysname == "Linux",
     build = "make",
     opts = {
         save_path = "/mnt/e/Aldric/Desktop/",

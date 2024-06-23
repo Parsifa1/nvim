@@ -86,7 +86,6 @@ local init = function()
             end
             local buf_id = args.data.buf_id
             vim.keymap.set("n", ".", toggle_dotfiles, { desc = "show dotfiles", buffer = buf_id })
-            vim.keymap.set({ "n", "i" }, "<C-s>", MiniFiles.synchronize, { buffer = args.data.buf_id })
         end,
     })
 
@@ -103,6 +102,7 @@ local init = function()
         pattern = "MiniFilesBufferCreate",
         callback = function(args)
             vim.keymap.set("n", "`", files_set_cwd, { buffer = args.data.buf_id })
+            vim.keymap.set({ "n", "i" }, "<C-s>", MiniFiles.synchronize, { buffer = args.data.buf_id })
         end,
     })
 end
@@ -121,6 +121,9 @@ return {
         mappings = {
             go_in_plus = "<L>",
             reveal_cwd = "",
+        },
+        options = {
+            use_as_default_explorer = true,
         },
         windows = {
             max_number = math.huge,

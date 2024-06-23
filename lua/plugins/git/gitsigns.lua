@@ -2,6 +2,11 @@ return {
     "lewis6991/gitsigns.nvim",
     event = { "BufNewFile", "BufReadPre" },
     dependencies = "nvim-lua/plenary.nvim",
+    keys = {
+        { "<leader>gb", "<Cmd>Gitsigns blame_line<CR>", desc = "gitsigns blame" },
+        { "<leader>gp", "<Cmd>Gitsigns preview_hunk<CR>", desc = "gitsigns hunk preview" },
+    },
+
     config = function()
         local gitsigns = require "gitsigns"
         -- local custom = require "custom"
