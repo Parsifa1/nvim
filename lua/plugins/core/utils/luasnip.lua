@@ -5,7 +5,6 @@ return {
         build = "make install_jsregexp",
         dependencies = {
             "rafamadriz/friendly-snippets",
-            "TwIStOy/luasnip-snippets",
             "nvim-treesitter/nvim-treesitter",
         },
         event = { "BufNewFile", "BufReadPost" },
@@ -17,12 +16,12 @@ return {
                 paths = vim.fn.stdpath "config" .. "/lua/snippets",
             }
             require("luasnip.loaders.from_vscode").lazy_load()
-            require("luasnip-snippets").setup()
         end,
     },
     {
         "TwIStOy/luasnip-snippets",
-        lazy = true,
+        event = { "BufNewFile", "BufReadPost" },
+        dependencies = { "L3MON4D3/LuaSnip" },
         opts = {
             disable_auto_expansion = {
                 cpp = { "i32", "i64" },

@@ -1,6 +1,7 @@
 ---@diagnostic disable: unused-local
 return {
     "goolord/alpha-nvim",
+    event = "VimEnter",
     config = function()
         local status_ok, alpha = pcall(require, "alpha")
         if not status_ok then
@@ -57,8 +58,17 @@ return {
         require("alpha").setup(dashboard.config)
 
         vim.api.nvim_create_autocmd("User", {
+            pattern = "AlphaReady",
+            callback = function()
+                vim.opt.statusline = " "
+                vim.api.nvim_set_hl(0, "StatusLine", { bg = "NONE" })
+                vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "NONE" })
+            end,
+        })
+        vim.api.nvim_create_autocmd("User", {
             callback = function()
                 local stats = require("lazy").stats()
+                stats.real_cputime = true
                 local ms = math.floor(stats.startuptime * 100) / 100
                 dashboard.section.footer.val = "󱐌 Lazy-loaded "
                     .. stats.loaded

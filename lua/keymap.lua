@@ -32,6 +32,7 @@ local keymap = {
     { mode = mode_ni,     from = "<F6>",             to = "<cmd>AsyncTask build<cr>", },
     { mode = mode_nv,     from = "=",                to = "gq" },
     { mode = mode_nit,    from = "<A-q>",            to = "<cmd>q<CR>" }, -- 窗口关闭
+    { mode = mode_nit,    from = "<A-Q>",            to = "<cmd>qa<CR>" }, -- vim关闭
     { mode = mode_nvo,    from = "H",                to = "^" },
     { mode = mode_nvo,    from = "L",                to = "$" },
     -- desc快捷键

@@ -1,13 +1,12 @@
+---@type LazyPluginSpec
+
 return {
     "folke/edgy.nvim",
     enabled = true,
-    event = "VeryLazy",
+    event = { "BufNewFile", "BufReadPost" },
     opts = {
         bottom = {
-            {
-                ft = "Trouble",
-                size = { height = 15 },
-            },
+            "Trouble",
             { ft = "qf", title = "QuickFix" },
             {
                 ft = "help",

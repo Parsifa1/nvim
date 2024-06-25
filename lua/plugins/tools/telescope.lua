@@ -53,16 +53,19 @@ local opts = {
         mappings = {
             n = {
                 s = flash,
+                ["<c-s>"] = flash,
                 ["q"] = "close",
                 ["<A-q>"] = "close",
                 ["zh"] = "select_horizontal",
                 ["zv"] = "select_vertical",
+                ["<C-f>"] = "to_fuzzy_refine",
             },
             i = {
                 ["<A-q>"] = "close",
                 ["<c-s>"] = flash,
                 ["<C-j>"] = "move_selection_next",
                 ["<C-k>"] = "move_selection_previous",
+                ["<C-f>"] = "to_fuzzy_refine",
             },
         },
         prompt_prefix = "  ",
@@ -146,14 +149,18 @@ return {
         build = "make",
     },
     {
+        "debugloop/telescope-undo.nvim",
+        keys = { { "<leader>u", "<cmd>Telescope undo<CR>", desc = "undo tree" } },
+        config = function()
+            require("telescope").load_extension "undo"
+        end,
+    },
+    "benfowler/telescope-luasnip.nvim",
+    {
         "nvim-telescope/telescope.nvim",
         branch = "0.1.x",
         cmd = "Telescope",
-        dependencies = {
-            "nvim-lua/popup.nvim",
-            "benfowler/telescope-luasnip.nvim",
-            "debugloop/telescope-undo.nvim",
-        },
+        dependencies = { "nvim-lua/popup.nvim" },
         keys = {
             { "<leader>f", project_files, desc = "find files" },
             { "<leader>r", "<cmd>Telescope oldfiles<CR>", desc = "recent files" },
@@ -162,7 +169,6 @@ return {
             { "<Tab><Tab>", "<cmd>Telescope buffers <CR>", desc = "buffers" },
             { "<leader><Tab>", "<cmd>Telescope workspaces theme=dropdown<CR><esc>", desc = "projects folder" },
             { "<leader>i", "<cmd>Telescope workspaces theme=dropdown<CR><esc>", desc = "projects folder" },
-            { "<leader>u", "<cmd>Telescope undo<CR>", desc = "undo tree" },
             { "<leader>tc", "<cmd>Telescope commands<CR>", desc = "telescope commands" },
             { "<leader>tk", "<cmd>Telescope keymaps<CR>", desc = "telescope keymaps" },
         },
@@ -171,7 +177,6 @@ return {
             require("telescope").setup(opts)
             require("telescope").load_extension "workspaces"
             require("telescope").load_extension "fzf"
-            require("telescope").load_extension "undo"
         end,
     },
 }

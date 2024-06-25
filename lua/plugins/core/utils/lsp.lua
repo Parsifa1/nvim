@@ -61,11 +61,7 @@ end
 return {
     {
         "neovim/nvim-lspconfig",
-        dependencies = {
-            "williamboman/mason.nvim",
-            "folke/lazydev.nvim",
-            "ray-x/lsp_signature.nvim",
-        },
+        dependencies = { "williamboman/mason.nvim" },
         event = { "BufReadPost", "BufNewFile" },
         cmd = "LspInfo",
         config = config,

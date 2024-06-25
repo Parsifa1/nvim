@@ -1,5 +1,6 @@
 return {
     "mistricky/codesnap.nvim",
+    lazy = true,
     enabled = vim.uv.os_uname().sysname == "Linux",
     build = "make",
     opts = {

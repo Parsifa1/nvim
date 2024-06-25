@@ -1,7 +1,15 @@
 return {
     "rcarriga/nvim-notify",
     lazy = true,
-    event = "VeryLazy",
+    -- event = "VeryLazy",
+    init = function()
+        vim.notify = function(...)
+            if not require("lazy.core.config").plugins["nvim-notify"]._.loaded then
+                require("lazy").load { plugins = "nvim-notify" }
+            end
+            require "notify"(...)
+        end
+    end,
     config = function()
         require("notify").setup {
             stages = "static",

@@ -1,14 +1,15 @@
 return {
     "folke/noice.nvim",
     event = "VeryLazy",
-    cmd = "Noice",
-    dependencies = {
-        "MunifTanjim/nui.nvim",
-        "rcarriga/nvim-notify",
-    },
+    dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
     opts = {
         cmdline = { view = "cmdline" },
         lsp = {
+            override = {
+                ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+                ["vim.lsp.util.stylize_markdown"] = true,
+                ["cmp.entry.get_documentation"] = true,
+            },
             progress = { enabled = false },
             hover = { enabled = false },
             signature = { enabled = false },

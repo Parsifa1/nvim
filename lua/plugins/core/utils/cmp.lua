@@ -10,7 +10,7 @@ local opts = function()
             documentation = cmp.config.window.bordered(),
         },
         completion = {
-          completeopt = vim.o.completeopt,
+            completeopt = vim.o.completeopt,
         },
 
         view = {
@@ -149,6 +149,6 @@ return {
         "lukas-reineke/cmp-under-comparator",
         "onsails/lspkind.nvim",
     },
-    event = { "BufNewFile", "BufReadPost" },
+    event = { "CursorHold", "CursorHoldI" },
     config = opts,
 }

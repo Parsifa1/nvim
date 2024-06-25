@@ -52,9 +52,9 @@ local bufline = {
     lualine_a = {
         {
             "buffers",
-            cond = function()
-                return vim.bo.filetype ~= "alpha"
-            end,
+            -- cond = function()
+            --     return vim.bo.filetype ~= "alpha"
+            -- end,
             mode = 2,
             section_separators = { left = "", right = "" },
             use_mode_colors = true,
@@ -210,39 +210,12 @@ local opts = {
 }
 return {
     "nvim-lualine/lualine.nvim",
-    event = "BufEnter",
-    keys = {
-        { "<leader>1", "<Cmd>LualineBuffersJump! 1<CR>", desc = "Go to Buffer No.1" },
-        { "<leader>2", "<Cmd>LualineBuffersJump! 2<CR>", desc = "Go to Buffer No.2" },
-        { "<leader>3", "<Cmd>LualineBuffersJump! 3<CR>", desc = "Go to Buffer No.3" },
-        { "<leader>4", "<Cmd>LualineBuffersJump! 4<CR>", desc = "Go to Buffer No.4" },
-        { "<leader>5", "<Cmd>LualineBuffersJump! 5<CR>", desc = "Go to Buffer No.5" },
-        { "<leader>6", "<Cmd>LualineBuffersJump! 6<CR>", desc = "Go to Buffer No.6" },
-        { "<leader>7", "<Cmd>LualineBuffersJump! 7<CR>", desc = "Go to Buffer No.7" },
-        { "<leader>8", "<Cmd>LualineBuffersJump! 8<CR>", desc = "Go to Buffer No.8" },
-        { "<leader>9", "<Cmd>LualineBuffersJump! 9<CR>", desc = "Go to Buffer No.9" },
-    },
-    init = function()
-        vim.opt.laststatus = 0
-    end,
+    event = { "BufNewFile", "BufReadPre" },
     dependencies = {
         { "parsifa1/nvim-web-devicons" },
         { "ofseed/copilot-status.nvim" },
     },
     config = function()
         require("lualine").setup(opts)
-        -- dynamic show lualine
-        vim.api.nvim_create_autocmd("VimEnter", {
-            callback = function()
-                if vim.bo.filetype == "alpha" then
-                    require("lualine").hide { place = { "tabline" }, unhide = false }
-                end
-            end,
-        })
-        vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
-            callback = function()
-                require("lualine").hide { place = { "tabline" }, unhide = true }
-            end,
-        })
     end,
 }

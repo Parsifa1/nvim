@@ -1,6 +1,13 @@
 return {
     {
         "natecraddock/workspaces.nvim",
+        cmd = {
+            "WorkspacesAdd",
+            "WorkspacesList",
+            "WorkspacesOpen",
+            "WorkspacesRemove",
+            "WorkspacesRename",
+        },
         dependencies = { "Shatur/neovim-session-manager" },
         config = function()
             require("workspaces").setup {
@@ -16,7 +23,7 @@ return {
     },
     {
         "Shatur/neovim-session-manager",
-        lazy = true,
+        lazy = false,
         config = function()
             require("session_manager").setup {
                 autoload_mode = require("session_manager.config").AutoloadMode.CurrentDir,
@@ -27,9 +34,7 @@ return {
                     "toggleterm",
                     "help",
                 },
-                autosave_ignore_buftypes = {
-                    "terminal",
-                },
+                autosave_ignore_buftypes = { "terminal" },
             }
         end,
     },
