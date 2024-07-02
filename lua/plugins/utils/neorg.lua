@@ -2,6 +2,7 @@
 
 return {
     "nvim-neorg/neorg",
+    enabled = false,
     ft = "norg",
     opts = {
         load = {

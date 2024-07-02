@@ -49,8 +49,14 @@ else
     -- no fold
     vim.opt.foldlevel = 99
 
+    -- set statusline
+    vim.opt.statusline = " "
+    vim.opt.laststatus = 3
+
     -- set highlight
     vim.api.nvim_set_hl(0, "visual", { reverse = true })
+    vim.api.nvim_set_hl(0, "StatusLine", { bg = "NONE" })
+    vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "NONE" })
 
     -- close curdir
     vim.opt.viewoptions = "cursor,folds"

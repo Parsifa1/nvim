@@ -6,6 +6,7 @@ return {
     keys = {
         { "<leader>a", "<Cmd>Outline<CR>", desc = "Outline" },
     },
+    cmd = "Outline",
     opts = {
         preview_window = {
             border = custom.border,

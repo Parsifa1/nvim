@@ -53,16 +53,16 @@ local opts = {
         mappings = {
             n = {
                 s = flash,
-                ["<c-s>"] = flash,
                 ["q"] = "close",
-                ["<A-q>"] = "close",
                 ["zh"] = "select_horizontal",
                 ["zv"] = "select_vertical",
+                ["<A-q>"] = "close",
+                ["<C-s>"] = flash,
                 ["<C-f>"] = "to_fuzzy_refine",
             },
             i = {
                 ["<A-q>"] = "close",
-                ["<c-s>"] = flash,
+                ["<C-s>"] = flash,
                 ["<C-j>"] = "move_selection_next",
                 ["<C-k>"] = "move_selection_previous",
                 ["<C-f>"] = "to_fuzzy_refine",
@@ -120,10 +120,6 @@ local opts = {
             override_generic_sorter = false,
             override_file_sorter = true,
         },
-        workspaces = {
-            theme = "dropdown",
-            initial_mode = "normal",
-        },
         undo = {
             initial_mode = "normal",
             mappings = {
@@ -140,33 +136,56 @@ local opts = {
                 },
             },
         },
+        smart_open = {
+            match_algorithm = "fzf",
+        },
     },
 }
 return {
     {
-        "nvim-telescope/telescope-fzf-native.nvim",
-        lazy = true,
-        build = "make",
+        "danielfalk/smart-open.nvim",
+        branch = "0.2.x",
+        cmd = "Telescope smart_open",
+        keys = { { "<leader>f", "<cmd>Telescope smart_open theme=ivy<CR>", desc = "open files" } },
+        dependencies = {
+            "kkharji/sqlite.lua",
+            { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+        },
+        config = function()
+            require("telescope").load_extension "smart_open"
+        end,
     },
     {
         "debugloop/telescope-undo.nvim",
+        cmd = "Telescope undo",
         keys = { { "<leader>u", "<cmd>Telescope undo<CR>", desc = "undo tree" } },
         config = function()
             require("telescope").load_extension "undo"
         end,
     },
-    "benfowler/telescope-luasnip.nvim",
+    {
+        "benfowler/telescope-luasnip.nvim",
+        cmd = "Telescope luasnip",
+        keys = { { "<leader>ts", "<cmd>Telescope luasnip theme=ivy<CR>", desc = "telescope luasnip" } },
+        config = function()
+            require("telescope").load_extension "luasnip"
+        end,
+    },
     {
         "nvim-telescope/telescope.nvim",
         branch = "0.1.x",
+        event = { "CursorHold", "CursorHoldI" },
         cmd = "Telescope",
-        dependencies = { "nvim-lua/popup.nvim" },
+        dependencies = {
+            { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+            "nvim-lua/popup.nvim",
+        },
         keys = {
-            { "<leader>f", project_files, desc = "find files" },
+            -- { "<leader>f", project_files, desc = "find files" },
             { "<leader>r", "<cmd>Telescope oldfiles<CR>", desc = "recent files" },
             { "<leader>w", "<cmd>Telescope live_grep<CR>", desc = "find words" },
-            { "<leader>b", "<cmd>Telescope buffers <CR>", desc = "telescope buffers" },
-            { "<Tab><Tab>", "<cmd>Telescope buffers <CR>", desc = "buffers" },
+            { "<leader>b", "<cmd>Telescope buffers<CR>", desc = "telescope buffers" },
+            { "<Tab><Tab>", "<cmd>Telescope buffers<CR>", desc = "buffers" },
             { "<leader><Tab>", "<cmd>Telescope workspaces theme=dropdown<CR><esc>", desc = "projects folder" },
             { "<leader>i", "<cmd>Telescope workspaces theme=dropdown<CR><esc>", desc = "projects folder" },
             { "<leader>tc", "<cmd>Telescope commands<CR>", desc = "telescope commands" },
@@ -175,8 +194,8 @@ return {
         opts = opts,
         config = function()
             require("telescope").setup(opts)
-            require("telescope").load_extension "workspaces"
             require("telescope").load_extension "fzf"
+            require("telescope").load_extension "workspaces"
         end,
     },
 }

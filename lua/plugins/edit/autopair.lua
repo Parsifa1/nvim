@@ -3,7 +3,7 @@ return {
     event = { "InsertEnter", "CmdlineEnter" },
     opts = {
         tabout = {
-            enable = true,
+            enable = false,
             map = "<Tab>",
             cmap = "<Tab>",
             hopout = true,

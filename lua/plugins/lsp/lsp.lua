@@ -1,7 +1,8 @@
 local config = function()
+    require("lspconfig.ui.windows").default_options.border = "rounded"
     local lspconfig = require "lspconfig"
     local custom = require "custom"
-    local server = require("user.lsp").server
+    local server = require("server").server
     local lsp_keymap = function(bufnr)
         -- lsp-builtin
         local set = function(keys, func, indesc)
@@ -10,7 +11,7 @@ local config = function()
         set("gD", vim.lsp.buf.declaration, "declaration")
         set("gd", vim.lsp.buf.definition, "definition")
         set("K", vim.lsp.buf.hover, "hover")
-        set("<C-k>", vim.lsp.buf.signature_help, "LSP Signature help")
+        set("<gk>", vim.lsp.buf.signature_help, "LSP Signature help")
         set("gi", vim.lsp.buf.implementation, "implementation")
         set("gr", require("telescope.builtin").lsp_references, "[R]eferences")
         set("<leader>ca", require("actions-preview").code_actions, "[C]ode [A]ction")

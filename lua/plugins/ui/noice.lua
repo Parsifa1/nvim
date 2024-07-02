@@ -2,6 +2,9 @@ return {
     "folke/noice.nvim",
     event = "VeryLazy",
     dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
+    keys = {
+        { "<leader>n", "<cmd>Noice<CR>", desc = "open Noice" },
+    },
     opts = {
         cmdline = { view = "cmdline" },
         lsp = {

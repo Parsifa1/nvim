@@ -3,8 +3,6 @@ return {
     "EdenEast/nightfox.nvim",
     priority = 100,
     config = function()
-        -- local C = require("nightfox.palette").load "nordfox"
-        -- local CmpText = "#ffffff"
         require("nightfox").setup {
             options = {
                 transparent = not vim.g.neovide,

@@ -1,4 +1,6 @@
+---@type LazyPluginSpec
 ---@diagnostic disable: unused-local
+
 return {
     "chomosuke/typst-preview.nvim",
     ft = "typst",

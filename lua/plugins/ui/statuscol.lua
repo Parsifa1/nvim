@@ -19,9 +19,11 @@ return {
                 {
                     text = { builtin.lnumfunc },
                     condition = { true, builtin.not_empty },
+                    click = "v:lua.ScLa",
                 },
                 {
                     sign = { namespace = { "gitsigns" }, colwidth = 1, wrap = true },
+                    click = "v:lua.ScSa",
                 },
                 { text = { " " } },
                 {
@@ -33,6 +35,7 @@ return {
                             return builtin.foldfunc(args)
                         end,
                     },
+                    click = "v:lua.ScFa",
                 },
                 { text = { " " } },
             },

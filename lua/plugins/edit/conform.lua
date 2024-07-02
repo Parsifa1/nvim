@@ -5,7 +5,7 @@ return {
         {
             "<leader>F",
             function()
-                require("conform").format { lsp_fallback = true }
+                require("conform").format { lsp_format = "fallback" }
             end,
             desc = "Format Document",
             mode = { "n", "v" },
@@ -29,7 +29,6 @@ return {
                 nix = { "alejandra" },
             },
             formatters = {
-                typstyle = { command = "typstyle" },
                 clang_format = {
                     command = "clang-format",
                     prepend_args = {

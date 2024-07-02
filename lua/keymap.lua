@@ -18,6 +18,7 @@ local keymap = {
     { mode = mode_v,      from = "J",                to = ":m '>+1<cr>gv=gv" },
     { mode = mode_v,      from = "<C-c>",            to = "y" },
     { mode = mode_o,      from = "=",                to = "q" },
+    { mode = mode_ni,     from = "<C-j>",            to = "<C-w>j" },
     { mode = mode_ni,     from = "<C-h>",            to = "<C-w>h" },
     { mode = mode_ni,     from = "<C-j>",            to = "<C-w>j" },
     { mode = mode_ni,     from = "<C-k>",            to = "<C-w>k" },
@@ -39,6 +40,8 @@ local keymap = {
     { mode = mode_n,      from = "zz",               to = "za",                                    desc = "toggle current fold" }, -- 折叠/展开当前位置
     { mode = mode_n,      from = "zn",               to = "zR",                                    desc = "open all fold" }, -- 全部打开
     { mode = mode_n,      from = "zm",               to = "zM",                                    desc = "close all fold" }, -- 全部折叠
+    { mode = mode_n,      from = "[b",               to = "<cmd>bpre<CR>",                         desc = "previous buffer" },
+    { mode = mode_n,      from = "]b",               to = "<cmd>bnext<CR>",                        desc = "next buffer"},
     { mode = mode_n,      from = "zc",               to = "<C-w>c",                                desc = "close current window" },
     { mode = mode_n,      from = "zs",               to = "<C-w>s",                                desc = "split current window" },
     { mode = mode_n,      from = "zv",               to = "<C-w>v",                                desc = "vsplit current window" },
