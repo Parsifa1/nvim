@@ -149,6 +149,6 @@ return {
         "lukas-reineke/cmp-under-comparator",
         "onsails/lspkind.nvim",
     },
-    event = { "CursorHold", "CursorHoldI" },
+    event = { "CursorHold", "CursorHoldI", "BufNewFile", "BufReadPre" },
     config = opts,
 }

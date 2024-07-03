@@ -4,7 +4,7 @@
 return {
     "folke/edgy.nvim",
     enabled = true,
-    event = { "BufNewFile", "BufReadPost" },
+    event = { "CursorHold", "CursorHoldI", "BufNewFile", "BufReadPre" },
     opts = {
         animate = { enabled = false },
         bottom = {
