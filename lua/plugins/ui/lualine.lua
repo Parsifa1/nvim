@@ -48,34 +48,6 @@ local function lsp()
     return info
 end
 
-local bufline = {
-    lualine_a = {
-        {
-            "buffers",
-            mode = 2,
-            section_separators = { left = "", right = "" },
-            use_mode_colors = true,
-            filetype_names = {
-                minifiles = "Mini.Files",
-                -- TelescopePrompt = " Telescope",
-                -- alpha = "󰏘 Alpha",
-                -- toggleterm = "ToggleTerm",
-                -- checkhealth = "󰄳 Checkhelth",
-                oil = "Oil",
-                Outline = "󰇽 Outline",
-                lazy = "Lazy",
-                CompetiTest = " CompetiTest",
-                -- lspinfo = " LspInfo",
-            },
-            symbols = {
-                modified = " ●",
-                alternate_file = "",
-                directory = "󰉋",
-            },
-        },
-    },
-    lualine_z = {},
-}
 
 local opts = {
     options = {
@@ -186,7 +158,6 @@ local opts = {
             },
         },
     },
-    -- tabline = bufline,
     extensions = {
         "oil",
         "man",
