@@ -7,6 +7,7 @@ return {
         local errors_fg = get_hex("DiagnosticError", "fg")
         local warnings_fg = get_hex("DiagnosticWarn", "fg")
         vim.api.nvim_set_hl(0, "TabLineNone", { bg = "NONE" })
+        vim.api.nvim_set_hl(0, "TabLineFocus", { fg = "#FCDCDD" })
         local components = {
             icon = {
                 text = function(buffer)
@@ -51,7 +52,11 @@ return {
             close = {
                 text = function(buffer)
                     if buffer.diagnostics.errors == 0 and buffer.diagnostics.warnings == 0 then
-                        return " "
+                        if buffer.is_modified then
+                            return "● "
+                        else
+                            return " "
+                        end
                     else
                         return ""
                     end
@@ -68,7 +73,7 @@ return {
             fill_hl = "TabLineNone",
             default_hl = {
                 fg = function(buffer)
-                    return buffer.is_focused and get_hex("@variable", "fg") or get_hex("Comment", "fg")
+                    return buffer.is_focused and get_hex("TabLineFocus", "fg") or get_hex("Comment", "fg")
                 end,
                 bg = "NONE",
             },
