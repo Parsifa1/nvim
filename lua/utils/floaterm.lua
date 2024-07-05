@@ -1,4 +1,4 @@
--- @author: Kiamon
+-- @author: Parsifa1
 local FloatWin = {}
 
 local function getpos(width, height, pos, ui)

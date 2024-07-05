@@ -53,7 +53,7 @@ local init = function()
 
     -- Add multiple keymap
     vim.api.nvim_create_autocmd("User", {
-        pattern = "MiniFilesWindowOpen",
+        pattern = "MiniFilesBufferCreate",
         callback = function(args)
             local map_buf = function(lhs, rhs)
                 vim.keymap.set("n", lhs, rhs, { buffer = args.data.buf_id })
@@ -119,7 +119,7 @@ return {
             sort = custom_sort,
         },
         mappings = {
-            go_in_plus = "<L>",
+            go_in_plus = "<CR>",
             reveal_cwd = "",
         },
         options = {

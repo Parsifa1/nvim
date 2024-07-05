@@ -1,6 +1,6 @@
 return {
     "folke/noice.nvim",
-    event = "VeryLazy",
+    event = { "BufNewFile", "BufReadPre" },
     dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
     keys = {
         { "<leader>n", "<cmd>Noice<CR>", desc = "open Noice" },

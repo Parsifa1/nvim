@@ -80,24 +80,6 @@ return {
         end,
     },
     {
-        "folke/lazydev.nvim",
-        dependencies = { "Bilal2453/luvit-meta" },
-        ft = "lua",
-        event = "LspAttach",
-        opts = {
-            library = {
-                {
-                    path = "luvit-meta/library",
-                    words = { "vim%.uv" },
-                },
-                {
-                    path = "lazy.nvim",
-                    words = { "LazyPluginSpec" },
-                },
-            },
-        },
-    },
-    {
         "aznhe21/actions-preview.nvim",
         event = "LspAttach",
         config = function()
