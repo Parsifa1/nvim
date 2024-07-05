@@ -1,6 +1,7 @@
+---@type LazyPluginSpec
+
 return {
-    "jhonnyV-V/codesnap.nvim",
-    commit = "3a74e416",
+    "mistricky/codesnap.nvim",
     cmd = "CodeSnap",
     enabled = vim.uv.os_uname().sysname == "Linux",
     build = "make",
