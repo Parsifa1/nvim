@@ -52,25 +52,20 @@ local bufline = {
     lualine_a = {
         {
             "buffers",
-            -- cond = function()
-            --     return vim.bo.filetype ~= "alpha"
-            -- end,
             mode = 2,
             section_separators = { left = "", right = "" },
             use_mode_colors = true,
             filetype_names = {
-                TelescopePrompt = " Telescope",
-                alpha = "󰏘 Alpha",
-                minifiles = " Mini.Files",
-                toggleterm = "ToggleTerm",
-                checkhealth = "󰄳 Checkhelth",
-                oil = " Oil",
+                minifiles = "Mini.Files",
+                -- TelescopePrompt = " Telescope",
+                -- alpha = "󰏘 Alpha",
+                -- toggleterm = "ToggleTerm",
+                -- checkhealth = "󰄳 Checkhelth",
+                oil = "Oil",
                 Outline = "󰇽 Outline",
-                lazy = "󰜢 Lazy",
-                Mundo = " Mundo",
-                MundoDiff = " MundoDiff",
+                lazy = "Lazy",
                 CompetiTest = " CompetiTest",
-                lspinfo = " LspInfo",
+                -- lspinfo = " LspInfo",
             },
             symbols = {
                 modified = " ●",
@@ -191,7 +186,7 @@ local opts = {
             },
         },
     },
-    tabline = bufline,
+    -- tabline = bufline,
     extensions = {
         "oil",
         "man",
@@ -209,7 +204,7 @@ local opts = {
     },
 }
 return {
-    "nvim-lualine/lualine.nvim",
+    "parsifa1/lualine.nvim",
     event = { "BufNewFile", "BufReadPre" },
     dependencies = {
         { "parsifa1/nvim-web-devicons" },

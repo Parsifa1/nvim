@@ -49,9 +49,11 @@ else
     -- no fold
     vim.opt.foldlevel = 99
 
-    -- set statusline
+    -- set statusline && mode
     vim.opt.statusline = " "
     vim.opt.laststatus = 3
+    vim.opt.showcmd = false
+    vim.opt.showmode = false
 
     -- set highlight
     vim.api.nvim_set_hl(0, "visual", { reverse = true })

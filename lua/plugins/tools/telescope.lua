@@ -105,12 +105,11 @@ local opts = {
         },
         buffers = {
             theme = "dropdown",
+            path_display = { "smart" },
             ignore_current_buffer = true,
             previewer = false,
             mappings = {
-                n = {
-                    ["dd"] = "delete_buffer",
-                },
+                n = { ["dd"] = "delete_buffer" },
             },
             initial_mode = "normal",
         },

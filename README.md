@@ -4,7 +4,7 @@
 
 全lua配置，尽量清晰易懂，使用最新的neovim-nightly构建。
 
-![example](https://raw.githubusercontent.com/Parsifa1/graph/master/image.png)
+![example](https://raw.githubusercontent.com/Parsifa1/graph/master/neovim.png)
 
 + LSP
 + Tree-sitter
