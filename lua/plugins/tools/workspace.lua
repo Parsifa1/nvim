@@ -23,7 +23,8 @@ return {
     },
     {
         "Shatur/neovim-session-manager",
-        event = "VeryLazy",
+        lazy = false,
+        -- event = "VeryLazy",
         config = function()
             require("session_manager").setup {
                 autoload_mode = require("session_manager.config").AutoloadMode.CurrentDir,

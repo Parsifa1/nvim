@@ -4,7 +4,66 @@ return {
     dependencies = { "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons" },
     config = function()
         local get_hex = require("cokeline.hlgroups").get_hl_attr
+        local errors_fg = get_hex("DiagnosticError", "fg")
+        local warnings_fg = get_hex("DiagnosticWarn", "fg")
         vim.api.nvim_set_hl(0, "TabLineNone", { bg = "NONE" })
+        local components = {
+            icon = {
+                text = function(buffer)
+                    return " " .. buffer.devicon.icon
+                end,
+                fg = function(buffer)
+                    return buffer.devicon.color
+                end,
+            },
+            unique_prefix = {
+                text = function(buffer)
+                    return buffer.unique_prefix
+                end,
+                fg = get_hex("Comment", "fg"),
+                italic = true,
+            },
+            filename = {
+                text = function(buffer)
+                    return buffer.filename .. " "
+                end,
+                underline = function(buffer)
+                    return buffer.is_hovered and not buffer.is_focused
+                end,
+            },
+            diagnostics = {
+                text = function(buffer)
+                    if buffer.diagnostics.errors ~= 0 then
+                        return " "
+                    elseif buffer.diagnostics.warnings ~= 0 then
+                        return " "
+                    else
+                        return ""
+                    end
+                end,
+                fg = function(buffer)
+                    return (buffer.diagnostics.errors ~= 0 and errors_fg)
+                        or (buffer.diagnostics.warnings ~= 0 and warnings_fg)
+                        or nil
+                end,
+                truncation = { priority = 1 },
+            },
+            close = {
+                text = function(buffer)
+                    if buffer.diagnostics.errors == 0 and buffer.diagnostics.warnings == 0 then
+                        return " "
+                    else
+                        return ""
+                    end
+                end,
+                on_click = function(_, _, _, _, buffer)
+                    buffer:delete()
+                end,
+            },
+            space = {
+                text = " ",
+            },
+        }
         require("cokeline").setup {
             fill_hl = "TabLineNone",
             default_hl = {
@@ -14,38 +73,12 @@ return {
                 bg = "NONE",
             },
             components = {
-                {
-                    text = function(buffer)
-                        return " " .. buffer.devicon.icon
-                    end,
-                    fg = function(buffer)
-                        return buffer.devicon.color
-                    end,
-                },
-                {
-                    text = function(buffer)
-                        return buffer.unique_prefix
-                    end,
-                    fg = get_hex("Comment", "fg"),
-                    italic = true,
-                },
-                {
-                    text = function(buffer)
-                        return buffer.filename .. " "
-                    end,
-                    underline = function(buffer)
-                        return buffer.is_hovered and not buffer.is_focused
-                    end,
-                },
-                {
-                    text = "",
-                    on_click = function(_, _, _, _, buffer)
-                        buffer:delete()
-                    end,
-                },
-                {
-                    text = " ",
-                },
+                components.icon,
+                components.unique_prefix,
+                components.filename,
+                components.diagnostics,
+                components.close,
+                components.space,
             },
         }
     end,
