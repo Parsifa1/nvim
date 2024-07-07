@@ -1,35 +1,6 @@
 local lazy_status = require "lazy.status"
 local custom = require "custom"
 
-local function modified()
-    if vim.bo.modified then
-        return " "
-    else
-        return "󰄳 "
-    end
-end
-
-local function readonly()
-    if vim.bo.readonly then
-        return " "
-    else
-        return ""
-    end
-end
-
-local function recording()
-    local reg = vim.fn.reg_recording()
-    if reg ~= "" then
-        return "recording @" .. reg
-    end
-    reg = vim.fn.reg_recorded()
-    if reg ~= "" then
-        return "recorded @" .. reg
-    end
-
-    return ""
-end
-
 local function lsp()
     local clients = vim.lsp.get_clients()
     local buf = vim.api.nvim_get_current_buf()
@@ -60,7 +31,13 @@ local opts = {
     sections = {
         lualine_a = {
             {
-                modified,
+                function()
+                    if vim.bo.modified then
+                        return " "
+                    else
+                        return "󰄳 "
+                    end
+                end,
                 separator = { left = "", right = "" },
                 padding = { left = 0, right = 0 },
             },
@@ -94,7 +71,13 @@ local opts = {
                     hint = custom.icons.diagnostic.Hint,
                 },
             },
-            readonly,
+            function()
+                if vim.bo.readonly then
+                    return " "
+                else
+                    return ""
+                end
+            end,
         },
         lualine_x = {
             {
@@ -110,7 +93,19 @@ local opts = {
                 cond = lazy_status.has_updates,
                 color = { fg = "#ff9e64" },
             },
-            recording,
+            function()
+                local reg = vim.fn.reg_recording()
+                if reg ~= "" then
+                    return "recording @" .. reg
+                end
+                reg = vim.fn.reg_recorded()
+                if reg ~= "" then
+                    return "recorded @" .. reg
+                end
+
+                return ""
+            end,
+
             {
                 "copilot",
                 show_running = true,
