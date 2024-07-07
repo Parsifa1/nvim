@@ -242,7 +242,7 @@ local icon_backup = {
 }
 M.border = "rounded"
 
-M.theme = "nordfox"
+M.theme = "gruvbox"
 
 M.prefer_tabpage = false
 

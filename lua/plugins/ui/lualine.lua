@@ -48,7 +48,6 @@ local function lsp()
     return info
 end
 
-
 local opts = {
     options = {
         icons_enabled = true,

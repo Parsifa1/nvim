@@ -41,5 +41,5 @@ return {
             ufo = false,
             which_key = true,
         },
-    }
+    },
 }
