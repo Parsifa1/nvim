@@ -5,10 +5,8 @@ return {
     config = function()
         require("everforest").setup {
             italics = true,
-            on_highlights = function(hl, palette)
-                hl.NormalFloat = { fg = "fg", bg = "NONE" }
-                hl.FloatBorder = { fg = "fg", bg = "NONE" }
-                hl.WinBar = { fg = "fg", bg = "NONE" }
+            on_highlights = function(hl, pl)
+                hl.MiniFilesTitleFocused = { fg = "fg", bg = pl.bg0 }
             end,
         }
     end,

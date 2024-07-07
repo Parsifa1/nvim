@@ -18,7 +18,7 @@ require("lazy").setup {
     -- concurrency = vim.uv.available_parallelism(),
     spec = { { import = "plugins" } },
     ui = { border = "rounded", backdrop = 100 },
-    install = { colorscheme = { "nordfox" } },
+    install = { colorscheme = { "everforest" } },
     diff = { cmd = "diffview.nvim" },
     performance = {
         cache = { enabled = true },

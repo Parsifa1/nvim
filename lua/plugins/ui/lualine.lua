@@ -51,12 +51,7 @@ end
 local opts = {
     options = {
         icons_enabled = true,
-        theme = "auto",
-        disabled_filetypes = {
-            "alpha",
-            "TelescopePrompt",
-            "mason",
-        },
+        disabled_filetypes = { "alpha", "TelescopePrompt", "mason" },
         always_divide_middle = true,
         globalstatus = true,
         component_separators = { left = "", right = "" },
@@ -176,11 +171,16 @@ local opts = {
 return {
     "parsifa1/lualine.nvim",
     event = { "BufNewFile", "BufReadPre" },
-    dependencies = {
-        { "parsifa1/nvim-web-devicons" },
-        { "ofseed/copilot-status.nvim" },
-    },
+    dependencies = { "parsifa1/nvim-web-devicons", "ofseed/copilot-status.nvim" },
     config = function()
+        local auto = require "lualine.themes.auto"
+        local lualine_modes = { "insert", "normal", "visual", "command", "replace", "inactive", "terminal" }
+        for _, field in ipairs(lualine_modes) do
+            if auto[field] and auto[field].c then
+                auto[field].c.bg = "NONE"
+            end
+        end
+        opts.options.theme = auto
         require("lualine").setup(opts)
     end,
 }

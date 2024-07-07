@@ -242,8 +242,6 @@ local icon_backup = {
 }
 M.border = "rounded"
 
-M.theme = "gruvbox"
-
 M.prefer_tabpage = false
 
 -- Width of side windows

@@ -17,6 +17,7 @@ return {
         end,
         ---@diagnostic disable-next-line: undefined-field
         shell = vim.uv.os_uname().sysname == "Windows_NT" and "pwsh" or "fish",
+        shade_terminals = false,
         float_opts = {
             border = custom.border,
         },

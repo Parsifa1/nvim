@@ -1,13 +1,6 @@
 -- colorscheme
-vim.cmd("colorscheme " .. require("custom").theme)
-
--- set highlight
-vim.api.nvim_set_hl(0, "visual", { reverse = true })
-
--- set highlight
-vim.api.nvim_set_hl(0, "visual", { reverse = true })
-vim.api.nvim_set_hl(0, "StatusLine", { bg = "NONE" })
-vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "NONE" })
+local theme = "everforest"
+vim.cmd("colorscheme " .. theme)
 
 -- close curdir
 vim.opt.viewoptions = "cursor,folds"
@@ -62,6 +55,7 @@ vim.opt.laststatus = 3
 vim.opt.showcmd = false
 vim.opt.showmode = false
 
+-- close node && perl
 vim.g["loaded_node_provider"] = 0
 vim.g["loaded_perl_provider"] = 0
 vim.g["loaded_ruby_provider"] = 0
