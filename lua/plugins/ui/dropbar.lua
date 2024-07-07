@@ -4,7 +4,7 @@ local custom = require "custom"
 local custom_path = {
     get_symbols = function(buff, win, cursor)
         local symbols = require("dropbar.sources").path.get_symbols(buff, win, cursor)
-        vim.api.nvim_set_hl(0, "DropBarFileName", { fg = "#FFFFFF", italic = true })
+        vim.api.nvim_set_hl(0, "DropBarFileName", { fg = "#FCDCDD", italic = true })
         symbols[#symbols].name_hl = "DropBarFileName"
         if vim.bo[buff].modified then
             symbols[#symbols].name = symbols[#symbols].name .. " [+]"
