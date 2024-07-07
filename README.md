@@ -1,10 +1,14 @@
 # my-neovim
 
-我的个人Noevim配置，使用Lazy.nvim作为包管理器，力求高度可定制。
+My personal Noevim configuration, using Lazy.nvim as the package manager, strives to be highly customizable.   
 
-全lua配置，尽量清晰易懂，使用最新的neovim-nightly构建。
+Full lua configuration, built using the latest neovim-nightly.
 
 ![example](https://raw.githubusercontent.com/Parsifa1/graph/master/neovim.png)
+
+Startup Time:
+![image](https://github.com/Parsifa1/nvim/assets/31800073/0e1dc351-3601-44e6-9c0b-7b9011333d73)
+
 
 + LSP
 + Tree-sitter
