@@ -1,3 +1,4 @@
+---@diagnostic disable: assign-type-mismatch
 return {
     "kevinhwang91/nvim-ufo",
     event = "BufReadPost",

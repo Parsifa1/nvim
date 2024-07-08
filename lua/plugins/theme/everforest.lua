@@ -1,7 +1,7 @@
 ---@diagnostic disable: unused-local
 return {
     "neanias/everforest-nvim",
-    lazy = true,
+    priority = 100,
     config = function()
         require("everforest").setup {
             italics = true,

@@ -1,6 +1,6 @@
 -- colorscheme
-local theme = "everforest"
-vim.cmd("colorscheme " .. theme)
+vim.opt.background = "dark"
+vim.cmd("colorscheme " .. "gruvbox-material")
 
 -- close curdir
 vim.opt.viewoptions = "cursor,folds"
@@ -59,6 +59,7 @@ vim.opt.showmode = false
 vim.g["loaded_node_provider"] = 0
 vim.g["loaded_perl_provider"] = 0
 vim.g["loaded_ruby_provider"] = 0
+
 if vim.g.neovide then
     vim.g.clipboard = {
         name = "win32yank-wsl",

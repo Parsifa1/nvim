@@ -3,8 +3,8 @@ return {
     name = "catppuccin",
     lazy = true,
     opts = {
-        flavour = "mocha",
-        transparent_background = not vim.g.neovide,
+        flavour = "macchiato",
+        -- transparent_background = not vim.g.neovide,
         term_colors = true,
         integrations = {
             aerial = true,
