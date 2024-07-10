@@ -15,10 +15,9 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup {
     defaults = { lazy = true },
-    -- concurrency = vim.uv.available_parallelism(),
     spec = { { import = "plugins" } },
     ui = { border = "rounded", backdrop = 100 },
-    install = { colorscheme = { "everforest" } },
+    install = { colorscheme = { "gruvbox-material" } },
     diff = { cmd = "diffview.nvim" },
     performance = {
         cache = { enabled = true },

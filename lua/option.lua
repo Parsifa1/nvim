@@ -79,3 +79,8 @@ if vim.g.neovide then
     vim.keymap.set("c", "<C-v>", "<C-R>+") -- Paste command mode
     vim.keymap.set("i", "<C-v>", "<ESC>pa") -- Paste insert mode
 end
+
+-- import utils
+require "utils.autocmd"
+require "utils.colorscheme"
+require "utils.floaterm"

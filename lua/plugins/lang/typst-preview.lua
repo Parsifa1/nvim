@@ -2,16 +2,15 @@
 ---@diagnostic disable: unused-local
 
 return {
-    "chomosuke/typst-preview.nvim",
+    "parsifa1/typst-preview.nvim",
     ft = "typst",
-    version = "0.1.*",
     build = function()
         require("typst-preview").update()
     end,
     opts = {
         debug = false,
         dependencies_bin = {
-            ["typst-preview"] = "typst-preview",
+            ["typst-preview"] = "tinymist",
             ["websocat"] = "websocat",
         },
         get_root = function(bufnr_of_typst_buffer)
