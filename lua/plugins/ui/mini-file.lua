@@ -74,6 +74,12 @@ local init = function()
     local show_dotfiles = false
     -- show/unsow dotfile and set save keymap
     vim.api.nvim_create_autocmd("User", {
+        pattern = "MiniFilesExplorerClose",
+        callback = function()
+            show_dotfiles = false
+        end,
+    })
+    vim.api.nvim_create_autocmd("User", {
         pattern = "MiniFilesBufferCreate",
         callback = function(args)
             local filter_show = function(fs_entry)

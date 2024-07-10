@@ -19,7 +19,7 @@ require("lazy").setup {
     ui = { border = "rounded", backdrop = 100 },
     install = { colorscheme = { "gruvbox-material" } },
     diff = { cmd = "diffview.nvim" },
-    -- concurrency = 15,
+    git = { url_format = "git@ssh.github.com:%s.git" },
     performance = {
         cache = { enabled = true },
         reset_packpath = true,

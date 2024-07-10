@@ -2,7 +2,7 @@
 ---@diagnostic disable: unused-local
 
 return {
-    "parsifa1/typst-preview.nvim",
+    "chomosuke/typst-preview.nvim",
     ft = "typst",
     build = function()
         require("typst-preview").update()

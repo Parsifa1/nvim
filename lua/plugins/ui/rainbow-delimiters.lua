@@ -3,8 +3,7 @@ return {
     event = { "BufNewFile", "BufReadPre" },
     config = function()
         local rainbow_delimiters = require "rainbow-delimiters"
-
-        vim.g.rainbow_delimiters = {
+        require("rainbow-delimiters.setup").setup {
             strategy = {
                 [""] = rainbow_delimiters.strategy["global"],
                 vim = rainbow_delimiters.strategy["local"],
@@ -13,21 +12,18 @@ return {
                 [""] = "rainbow-delimiters",
                 lua = "rainbow-blocks",
             },
+            priority = {
+                [""] = 110,
+                lua = 210,
+            },
             highlight = {
-                "TSRainbowRed",
-                "TSRainbowYellow",
-                "TSRainbowOrange",
-                "TSRainbowBlue",
-                "TSRainbowGreen",
-                "TSRainbowViolet",
-                "TSRainbowCyan",
-                -- 'RainbowDelimiterRed',
-                -- 'RainbowDelimiterYellow',
-                -- 'RainbowDelimiterBlue',
-                -- 'RainbowDelimiterOrange',
-                -- 'RainbowDelimiterGreen',
-                -- 'RainbowDelimiterViolet',
-                -- 'RainbowDelimiterCyan',
+                "RainbowDelimiterRed",
+                "RainbowDelimiterYellow",
+                "RainbowDelimiterBlue",
+                "RainbowDelimiterOrange",
+                "RainbowDelimiterGreen",
+                "RainbowDelimiterViolet",
+                "RainbowDelimiterCyan",
             },
         }
     end,
