@@ -16,7 +16,7 @@ local keymap = {
     { mode = mode_n,      from = "<C-i>",            to = "<C-i>" }, -- 重设<C-i>
     { mode = mode_v,      from = "K",                to = ":m '<-2<cr>gv=gv" }, -- 行移动
     { mode = mode_v,      from = "J",                to = ":m '>+1<cr>gv=gv" },
-    { mode = mode_v,      from = "<C-c>",            to = "y" },
+    { mode = mode_v,      from = "<C-c>",            to = '"+y' },
     { mode = mode_o,      from = "=",                to = "q" },
     { mode = mode_ni,     from = "<C-j>",            to = "<C-w>j" },
     { mode = mode_ni,     from = "<C-h>",            to = "<C-w>h" },
