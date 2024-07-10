@@ -29,9 +29,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 -- osc52
-if vim.clipboard and vim.clipboard.osc52 then
+-- if vim.clipboard and vim.clipboard.osc52 then
     vim.api.nvim_create_autocmd("VimEnter", {
-        group = "ssh_clipboard",
         callback = function()
             vim.g.clipboard = {
                 name = "OSC 52",
@@ -46,4 +45,4 @@ if vim.clipboard and vim.clipboard.osc52 then
             }
         end,
     })
-end
+-- end
