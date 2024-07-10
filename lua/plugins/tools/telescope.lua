@@ -151,6 +151,9 @@ return {
             { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
         },
         config = function()
+            if vim.uv.os_uname().sysname == "Windows_NT" then
+                vim.g.sqlite_clib_path = "E:/others/Path/sqlite3.dll"
+            end
             require("telescope").load_extension "smart_open"
         end,
     },

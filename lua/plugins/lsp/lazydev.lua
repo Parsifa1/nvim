@@ -6,7 +6,7 @@ return {
     opts = {
         library = {
             "../utils",
-            { path = "luvit-meta/library", words = { "vim%.uv" } },
+            { path = "luvit-meta/library", words = { "vim%.uv", "vim%.loop" } },
             { path = "lazy.nvim", words = { "LazyPluginSpec" } },
             { path = "wezterm-types", mods = { "wezterm" } },
         },
