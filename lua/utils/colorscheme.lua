@@ -11,7 +11,7 @@ vim.api.nvim_set_hl(0, "WinBar", { bg = "NONE" })
 vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#878787" })
 vim.api.nvim_set_hl(0, "VirtualTextHint", { link = "DiagnosticHint" })
 vim.api.nvim_set_hl(0, "VirtualTextInfo", { link = "DiagnosticInfo" })
-vim.api.nvim_set_hl(0, "VirtualTextWarn", { link = "DiagnosticWarn" })
+vim.api.nvim_set_hl(0, "VirtualTextWarning", { link = "DiagnosticWarn" })
 vim.api.nvim_set_hl(0, "VirtualTextError", { link = "DiagnosticError" })
 
 -- plugin hightlight

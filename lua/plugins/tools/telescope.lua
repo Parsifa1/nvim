@@ -142,8 +142,8 @@ local opts = {
 }
 return {
     {
-        "danielfalk/smart-open.nvim",
-        branch = "0.2.x",
+        "Parsifa1/smart-open.nvim",
+        -- branch = "0.2.x",
         cmd = "Telescope smart_open",
         keys = { { "<leader>f", "<cmd>Telescope smart_open theme=ivy<CR>", desc = "open files" } },
         dependencies = {
