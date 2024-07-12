@@ -55,7 +55,8 @@ return {
                     "pyright",
 
                     -- formater
-                    "clang-format",
+                    "alejandra",
+                    "typstyle",
                     "prettier",
                     "stylua",
                     "ruff",
