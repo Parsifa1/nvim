@@ -2,6 +2,7 @@ M = { server = {} }
 
 local lsp = {
     "tsserver",
+    "volar",
     "yamlls",
     "html",
     "marksman",
@@ -67,6 +68,18 @@ local config = {
             return vim.fn.getcwd()
         end,
         settings = {},
+    },
+    tsserver = {
+        init_options = {
+            plugins = {
+                {
+                    name = "@vue/typescript-plugin",
+                    location = os.getenv "VUE_TS_SERVER",
+                    languages = { "vue" },
+                },
+            },
+        },
+        filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
     },
     tailwindcss = {
         filetypes = {

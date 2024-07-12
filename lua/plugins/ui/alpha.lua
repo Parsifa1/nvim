@@ -36,7 +36,7 @@ return {
         }
 
         dashboard.section.buttons.val = {
-            dashboard.button("f", "  Find file", "<cmd>Telescope find_files <CR>"),
+            dashboard.button("f", "  Find file", "<cmd>Telescope smart_open theme=ivy<CR>"),
             dashboard.button("i", "󰇽  Project", "<cmd>Telescope workspaces theme=dropdown<CR><Esc>"),
             dashboard.button("r", "  Recently used files", "<cmd>Telescope oldfiles <CR>"),
             dashboard.button("p", "󰂖  Plugins", "<cmd>Lazy<CR>"),

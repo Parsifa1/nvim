@@ -24,6 +24,7 @@ return {
                 typescript = { "prettier" },
                 markdown = { "prettier" },
                 javascriptreact = { "prettier" },
+                typescriptreact = { "prettier" },
                 yaml = { "prettier" },
                 typst = { "typstyle" },
                 nix = { "alejandra" },

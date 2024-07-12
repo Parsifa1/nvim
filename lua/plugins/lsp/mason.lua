@@ -11,8 +11,7 @@ return {
         event = { "BufNewFile", "BufReadPre" },
         config = function()
             require("mason").setup {
-                -- NOTE:为了兼容NIXOS
-                PATH = "append",
+                -- PATH = "append", -- NOTE:为了兼容NIXOS
                 ui = {
                     border = "rounded",
                     icons = {
@@ -39,22 +38,24 @@ return {
                 ensure_installed = {
                     -- lsp
                     "lua-language-server",
-                    "clangd",
-                    "rust-analyzer",
                     "marksman",
                     "yaml-language-server",
-                    "typst-lsp",
+                    "tinymist",
                     "html-lsp",
                     "json-lsp",
                     "typescript-language-server",
+                    "vue-language-server",
                     "astro-language-server",
                     "taplo",
-                    "pyright",
-                    "ruff_lsp",
+                    "ruff-lsp",
                     "tailwindcss-language-server",
+                    "gopls",
+                    "nil",
+                    "rust-analyzer",
+                    "pyright",
+
                     -- formater
                     "clang-format",
-                    "autopep8",
                     "prettier",
                     "stylua",
                     "ruff",

@@ -191,7 +191,8 @@ return {
             { "<leader>i", "<cmd>Telescope workspaces theme=dropdown<CR><esc>", desc = "projects folder" },
             { "<leader>tc", "<cmd>Telescope commands<CR>", desc = "telescope commands" },
             { "<leader>tk", "<cmd>Telescope keymaps<CR>", desc = "telescope keymaps" },
-            { "<leader>th", "<cmd>Telescope highlights<CR>", desc = "telescope highlights" },
+            { "<leader>tl", "<cmd>Telescope highlights<CR>", desc = "telescope highlights" },
+            { "<leader>th", "<cmd>Telescope help_tags<CR>", desc = "telescope highlights" },
         },
         opts = opts,
         config = function()

@@ -82,5 +82,5 @@ end
 
 -- import utils
 require "utils.autocmd"
-require "utils.colorscheme"
+require "utils.highlight"
 require "utils.floaterm"
