@@ -57,8 +57,6 @@ return {
                     "pyright",
 
                     -- formater
-                    "alejandra",
-                    "typstyle",
                     "prettier",
                     "stylua",
                     "ruff",
