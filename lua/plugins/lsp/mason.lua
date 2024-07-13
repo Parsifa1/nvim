@@ -1,6 +1,9 @@
 return {
     {
         "williamboman/mason.nvim",
+        keys = {
+        { "<leader>m", "<cmd>Mason<CR>", desc = "open Mason" },
+        },
         cmd = {
             "Mason",
             "MasonInstall",
@@ -8,7 +11,6 @@ return {
             "MasonUninstallAll",
             "MasonUpdate",
         },
-        event = { "BufNewFile", "BufReadPre" },
         config = function()
             require("mason").setup {
                 -- PATH = "append", -- NOTE:为了兼容NIXOS

@@ -14,7 +14,8 @@ local config = function()
         set("<gk>", vim.lsp.buf.signature_help, "LSP Signature help")
         set("gi", vim.lsp.buf.implementation, "implementation")
         set("gr", require("telescope.builtin").lsp_references, "[R]eferences")
-        set("<leader>ca", require("actions-preview").code_actions, "[C]ode [A]ction")
+        -- set("<leader>ca", require("actions-preview").code_actions, "[C]ode [A]ction")
+        set("<leader>ca", require("fastaction").code_action, "[C]ode [A]ction")
         set("<leader>cn", vim.lsp.buf.rename, "[C]ode Item Re[N]ame")
         set("<leader>ct", vim.lsp.buf.type_definition, "[C]ode [T]ype definition")
     end
@@ -80,7 +81,13 @@ return {
         end,
     },
     {
+        "Chaitanyabsprip/fastaction.nvim",
+        event = "LspAttach",
+        opts = {},
+    },
+    {
         "aznhe21/actions-preview.nvim",
+        enabled = false,
         event = "LspAttach",
         config = function()
             require("actions-preview").setup {

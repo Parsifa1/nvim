@@ -25,6 +25,7 @@
   "dropbar.nvim": { "branch": "master", "commit": "cab5e0226bc4f90a28cadcb0dc7341d550f1bdf0" },
   "edgy.nvim": { "branch": "main", "commit": "64009ec349a36f5df9bda25582a537192ec076cf" },
   "everforest-nvim": { "branch": "main", "commit": "8fdccd1e45088be3309aaf82072b1f7fec2f6f2c" },
+  "fastaction.nvim": { "branch": "master", "commit": "89c64a4906df97e766208640f6e80a96d5e4abb4" },
   "fidget.nvim": { "branch": "main", "commit": "bc34563a50c4d05e2d35a0db246e611d0ac95161" },
   "flash.nvim": { "branch": "main", "commit": "ec0bf2842189f65f60fd40bf3557cac1029cc932" },
   "flatten.nvim": { "branch": "main", "commit": "e420e531d2ab24aebcf7b3c9fca28e6c5c34964d" },

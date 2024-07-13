@@ -1,10 +1,7 @@
 local custom = require "custom"
 local opts = {
     delay = function(ctx)
-        if ctx.mode == "x" then
-            return 350
-        end
-        return ctx.plugin and 0 or 200
+        return ctx.plugin and 0 or 350
     end,
     plugins = {
         marks = true,
