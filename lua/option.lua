@@ -60,6 +60,18 @@ vim.g["loaded_node_provider"] = 0
 vim.g["loaded_perl_provider"] = 0
 vim.g["loaded_ruby_provider"] = 0
 
+vim.g.clipboard = {
+    name = "OSC52",
+    copy = {
+        ["+"] = require("vim.ui.clipboard.osc52").copy "+",
+        ["*"] = require("vim.ui.clipboard.osc52").copy "*",
+    },
+    paste = {
+        ["+"] = require("vim.ui.clipboard.osc52").paste "+",
+        ["*"] = require("vim.ui.clipboard.osc52").paste "*",
+    },
+}
+
 if vim.g.neovide then
     vim.g.clipboard = false
     vim.keymap.set("n", "<C-v>", "P") -- Paste normal mode
