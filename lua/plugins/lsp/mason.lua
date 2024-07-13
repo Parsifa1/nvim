@@ -52,7 +52,7 @@ return {
                     "ruff-lsp",
                     "tailwindcss-language-server",
                     "gopls",
-                    "nil",
+                    -- "nil",
                     "rust-analyzer",
                     "pyright",
 
