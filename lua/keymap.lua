@@ -7,7 +7,8 @@ local keymap = {
     { mode = mode_i,      from = "<A-h>",            to = "<Left>" },
     { mode = mode_i,      from = "<C-f>",            to = "<cmd>lua require('luasnip').expand()<CR>"  }, -- luasnip触发键
     { mode = mode_n,      from = "n",                to = "nzzzv" }, -- 搜索保持光标
-    { mode = mode_n,      from = "n",                to = "nzzzv" },
+    { mode = mode_n,      from = "j",                to = "gj" }, -- 软换行
+    { mode = mode_n,      from = "k",                to = "gk" },
     { mode = mode_n,      from = "<C-x>",            to = "<cmd>bd<CR>" }, -- buffer关闭
     { mode = mode_n,      from = "<C-Up>",             to = "<cmd>res +3<CR>" }, -- 窗口操作
     { mode = mode_n,      from = "<C-Down>",           to = "<cmd>res -3<CR>" },
