@@ -2,7 +2,7 @@ return {
     {
         "williamboman/mason.nvim",
         keys = {
-        { "<leader>m", "<cmd>Mason<CR>", desc = "open Mason" },
+            { "<leader>m", "<cmd>Mason<CR>", desc = "open Mason" },
         },
         cmd = {
             "Mason",
@@ -14,6 +14,11 @@ return {
         config = function()
             require("mason").setup {
                 -- PATH = "append", -- NOTE:为了兼容NIXOS
+                registries = {
+                    "github:Parsifa1/mason-registry",
+                    "github:mason-org/mason-registry",
+                },
+
                 ui = {
                     border = "rounded",
                     icons = {

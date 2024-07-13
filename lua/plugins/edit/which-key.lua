@@ -3,6 +3,7 @@ local opts = {
     delay = function(ctx)
         return ctx.plugin and 0 or 350
     end,
+    modes = { x = false },
     plugins = {
         marks = true,
         presets = {

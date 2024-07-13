@@ -8,6 +8,7 @@ local lsp = {
     "marksman",
     "hls",
     "nil_ls",
+    "gopls",
     "astro",
     "taplo",
     "jsonls",
@@ -74,7 +75,8 @@ local config = {
             plugins = {
                 {
                     name = "@vue/typescript-plugin",
-                    location = os.getenv "VUE_TS_SERVER",
+                    location = require("mason-registry").get_package("vue-language-server"):get_install_path()
+                        .. "/node_modules/@vue/language-server",
                     languages = { "vue" },
                 },
             },
