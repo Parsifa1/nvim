@@ -1,7 +1,7 @@
 local custom = require "custom"
 local opts = {
     delay = function(ctx)
-        return ctx.plugin and 0 or 350
+        return ctx.plugin and 0 or 300
     end,
     modes = { x = false },
     plugins = {
@@ -29,9 +29,7 @@ local opts = {
     show_help = true,
     disable = {
         trigger = function(ctx)
-            if ctx.keys == "`" then
-                return true
-            end
+            return ctx.keys == "`"
         end,
     },
 }

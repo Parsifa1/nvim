@@ -61,7 +61,7 @@ vim.g["loaded_perl_provider"] = 0
 vim.g["loaded_ruby_provider"] = 0
 
 vim.g.clipboard = {
-    name = "OSC52",
+    name = "OSC 52",
     copy = {
         ["+"] = require("vim.ui.clipboard.osc52").copy "+",
         ["*"] = require("vim.ui.clipboard.osc52").copy "*",
@@ -74,10 +74,10 @@ vim.g.clipboard = {
 
 if vim.g.neovide then
     vim.g.clipboard = false
-    vim.keymap.set("n", "<C-v>", "P") -- Paste normal mode
-    vim.keymap.set("v", "<C-v>", "P") -- Paste visual mode
+    vim.keymap.set("n", "<C-v>", '"+P') -- Paste normal mode
+    vim.keymap.set("v", "<C-v>", '"+P') -- Paste visual mode
     vim.keymap.set("c", "<C-v>", "<C-R>+") -- Paste command mode
-    vim.keymap.set("i", "<C-v>", "<ESC>pa") -- Paste insert mode
+    vim.keymap.set("i", "<C-v>", '<ESC>"+pa') -- Paste insert mode
 end
 
 -- import utils
