@@ -13,7 +13,7 @@ local config = function()
         set("K", vim.lsp.buf.hover, "hover")
         set("<gk>", vim.lsp.buf.signature_help, "LSP Signature help")
         set("gi", vim.lsp.buf.implementation, "implementation")
-        -- set("gr", require("telescope.builtin").lsp_references, "[R]eferences")
+        set("gr", require("telescope.builtin").lsp_references, "[R]eferences")
         -- set("<leader>ca", require("actions-preview").code_actions, "[C]ode [A]ction")
         set("<leader>ca", require("fastaction").code_action, "[C]ode [A]ction")
         set("<leader>cn", vim.lsp.buf.rename, "[C]ode Item Re[N]ame")
@@ -84,35 +84,5 @@ return {
         "Chaitanyabsprip/fastaction.nvim",
         event = "LspAttach",
         opts = {},
-    },
-    {
-        "aznhe21/actions-preview.nvim",
-        enabled = false,
-        event = "LspAttach",
-        config = function()
-            require("actions-preview").setup {
-                backend = { "telescope", "nui" },
-                diff = {
-                    algorithm = "patience",
-                    ignore_whitespace = true,
-                    ignore_cr_at_eol = true,
-                    ignore_whitespace_change_at_eol = true,
-                },
-                telescope = {
-                    sorting_strategy = "ascending",
-                    layout_strategy = "vertical",
-                    layout_config = {
-                        width = 0.6,
-                        height = 0.65,
-                        prompt_position = "top",
-                        preview_cutoff = 20,
-                        preview_height = function(_, _, max_lines)
-                            return max_lines - 15
-                        end,
-                    },
-                    initial_mode = "normal",
-                },
-            }
-        end,
     },
 }
