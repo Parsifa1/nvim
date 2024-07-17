@@ -12,10 +12,6 @@ local opts = {
             g = true,
         },
     },
-    popup_mappings = {
-        scroll_down = "<c-d>",
-        scroll_up = "<c-u>",
-    },
     win = {
         border = custom.border, -- none, single, double, shadow
     },
@@ -25,7 +21,6 @@ local opts = {
         spacing = 3,
         align = "left",
     },
-    hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ ", "<Plug>", "require" },
     show_help = true,
     disable = {
         trigger = function(ctx)
@@ -36,7 +31,8 @@ local opts = {
 
 return {
     "folke/which-key.nvim",
-    event = { "BufNewFile", "BufReadPre" },
+    -- event = { "BufNewFile", "BufReadPre" },
+    event = "VeryLazy",
     init = function()
         vim.o.timeout = true
         vim.o.timeoutlen = 500
