@@ -16,7 +16,7 @@ return {
             vim.keymap.set("t", "<Esc>", "<C-\\><C-N>", { buffer = bufnr })
         end,
         ---@diagnostic disable-next-line: undefined-field
-        shell = vim.uv.os_uname().sysname == "Windows_NT" and "nu" or "fish",
+        shell = vim.uv.os_uname().sysname == "Windows_NT" and "pwsh -nologo" or "fish",
         shade_terminals = false,
         float_opts = {
             border = custom.border,

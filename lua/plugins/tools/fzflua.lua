@@ -8,6 +8,7 @@
 return {
     "ibhagwan/fzf-lua",
     enabled = true,
+        keys = { { "<leader>f", "<cmd>FzfLua files<CR>", desc = "open files" } },
     cmd = "FzfLua",
     opts = {
         { "default-title" }, -- base profile

@@ -145,7 +145,7 @@ return {
         "Parsifa1/smart-open.nvim",
         branch = "0.2.x",
         cmd = "Telescope smart_open",
-        keys = { { "<leader>f", "<cmd>Telescope smart_open theme=ivy<CR>", desc = "open files" } },
+        -- keys = { { "<leader>f", "<cmd>Telescope smart_open theme=ivy<CR>", desc = "open files" } },
         dependencies = {
             "kkharji/sqlite.lua",
             { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
@@ -157,14 +157,14 @@ return {
             require("telescope").load_extension "smart_open"
         end,
     },
-    {
-        "debugloop/telescope-undo.nvim",
-        cmd = "Telescope undo",
-        keys = { { "<leader>u", "<cmd>Telescope undo<CR>", desc = "undo tree" } },
-        config = function()
-            require("telescope").load_extension "undo"
-        end,
-    },
+    -- {
+    --     "debugloop/telescope-undo.nvim",
+    --     cmd = "Telescope undo",
+    --     keys = { { "<leader>u", "<cmd>Telescope undo<CR>", desc = "undo tree" } },
+    --     config = function()
+    --         require("telescope").load_extension "undo"
+    --     end,
+    -- },
     {
         "benfowler/telescope-luasnip.nvim",
         cmd = "Telescope luasnip",

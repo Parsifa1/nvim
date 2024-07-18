@@ -25,6 +25,10 @@ return {
                 end,
             },
         },
+        left = {
+            { ft = "Mundo", size = { width = 0.25 } },
+            { ft = "MundoDiff", size = { width = 0.25 } },
+        },
         right = {
             {
                 ft = "Outline",
