@@ -64,3 +64,20 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
         end)
     end,
 })
+
+-- fix select mode diagnostic
+vim.api.nvim_create_autocmd("ModeChanged", {
+    group = vim.api.nvim_create_augroup("diag_in_select", { clear = true }),
+    pattern = "*:s",
+    callback = function()
+        vim.diagnostic.enable(false)
+    end,
+})
+
+vim.api.nvim_create_autocmd("ModeChanged", {
+    group = vim.api.nvim_create_augroup("diag_in_select", { clear = false }),
+    pattern = "[is]:n",
+    callback = function()
+        vim.diagnostic.enable()
+    end,
+})

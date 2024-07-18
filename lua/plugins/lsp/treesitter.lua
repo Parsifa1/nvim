@@ -29,6 +29,9 @@ return {
                 "latex",
                 "nix",
                 "typst",
+                "vue",
+                "astro",
+                "vimdoc",
             },
             textobjects = {
                 select = {
