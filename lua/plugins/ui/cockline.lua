@@ -1,5 +1,9 @@
 return {
     "willothy/nvim-cokeline",
+    keys = {
+        { "[b", "<Plug>(cokeline-focus-prev)", desc = "previous buffer" },
+        { "]b", "<Plug>(cokeline-focus-next)", desc = "next buffer" },
+    },
     event = { "BufNewFile", "BufReadPre" },
     dependencies = { "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons" },
     config = function()

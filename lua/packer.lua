@@ -18,9 +18,7 @@ require("lazy").setup {
     spec = { { import = "plugins" } },
     ui = { border = "rounded", backdrop = 100 },
     install = { colorscheme = { "gruvbox-material" } },
-    diff = { cmd = "diffview.nvim" },
-    -- git = { url_format = "git@github.com:%s.git" },
-    -- concurrency = 20,
+    diff = { cmd = "browser" },
     performance = {
         cache = { enabled = true },
         reset_packpath = true,

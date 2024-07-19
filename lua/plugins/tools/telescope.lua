@@ -157,14 +157,6 @@ return {
             require("telescope").load_extension "smart_open"
         end,
     },
-    -- {
-    --     "debugloop/telescope-undo.nvim",
-    --     cmd = "Telescope undo",
-    --     keys = { { "<leader>u", "<cmd>Telescope undo<CR>", desc = "undo tree" } },
-    --     config = function()
-    --         require("telescope").load_extension "undo"
-    --     end,
-    -- },
     {
         "benfowler/telescope-luasnip.nvim",
         cmd = "Telescope luasnip",
@@ -183,7 +175,7 @@ return {
             "nvim-lua/popup.nvim",
         },
         keys = {
-            { "<leader>r", "<cmd>Telescope oldfiles<CR>", desc = "recent files" },
+            -- { "<leader>r", "<cmd>Telescope oldfiles<CR>", desc = "recent files" },
             { "<leader>w", "<cmd>Telescope live_grep<CR>", desc = "find words" },
             { "<leader>b", "<cmd>Telescope buffers<CR>", desc = "telescope buffers" },
             { "<Tab><Tab>", "<cmd>Telescope buffers<CR>", desc = "buffers" },
