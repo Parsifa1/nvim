@@ -6,6 +6,7 @@ local ivy = {
         height = 25,
         width = 1,
         row = 1,
+        backdrop = false,
         preview = {
             scrollbar = false,
             hidden = "nohidden",
@@ -39,7 +40,8 @@ return {
     },
     cmd = "FzfLua",
     opts = {
-        { "default-title" }, -- base profile
+        { "default-title" },
+        winopts = { backdrop = false },
         files = ivy,
         oldfiles = ivy,
     },
