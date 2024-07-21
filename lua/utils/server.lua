@@ -1,23 +1,28 @@
 M = { server = {} }
 
-local lsp = {
-    "tsserver",
+M.lsp = {
     "volar",
-    "yamlls",
     "html",
-    "marksman",
-    "hls",
+    "yamlls",
     "nil_ls",
     "gopls",
     "astro",
     "taplo",
     "jsonls",
-    "ruff_lsp",
-    "clangd",
+    "tsserver",
     "pyright",
     "lua_ls",
     "tinymist",
+    "marksman",
     "tailwindcss",
+    "nginx_language_server",
+}
+
+M.formatter = {
+    "prettier",
+    "stylua",
+    "ruff",
+    "typstyle",
 }
 
 local config = {
@@ -36,8 +41,9 @@ local config = {
         settings = {
             python = {
                 disableOrganizeImports = true,
-                pythonPath = "/usr/bin/python3",
+                pythonPath = vim.fn.exepath "python3",
                 analysis = {
+                    extraPaths = { vim.fn.getcwd() },
                     ignore = { "*" },
                     inlayHints = {
                         callArgumentNames = "partial",
@@ -103,7 +109,10 @@ local config = {
     },
 }
 
-for _, i in ipairs(lsp) do
+-- NOTE: set clangd specially
+M.server["clangd"] = config["clangd"]
+
+for _, i in ipairs(M.lsp) do
     M.server[i] = config[i] or {}
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities.textDocument.foldingRange = { dynamicRegistration = false, lineFoldingOnly = true }

@@ -32,7 +32,10 @@ return {
     },
     {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
-        dependencies = { "williamboman/mason.nvim" },
+        dependencies = {
+            "williamboman/mason.nvim",
+            "williamboman/mason-lspconfig.nvim",
+        },
         cmd = {
             "MasonToolsInstall",
             "MasonToolsInstallSync",
@@ -41,31 +44,14 @@ return {
             "MasonToolsClean",
         },
         config = function()
-            require("mason-tool-installer").setup {
-                ensure_installed = {
-                    -- lsp
-                    "lua-language-server",
-                    "marksman",
-                    "yaml-language-server",
-                    "tinymist",
-                    "html-lsp",
-                    "json-lsp",
-                    "typescript-language-server",
-                    "vue-language-server",
-                    "astro-language-server",
-                    "taplo",
-                    "ruff-lsp",
-                    "tailwindcss-language-server",
-                    "gopls",
-                    -- "nil",
-                    "rust-analyzer",
-                    "pyright",
+            local installed = require("utils.server").formatter
 
-                    -- formater
-                    "prettier",
-                    "stylua",
-                    "ruff",
-                },
+            for _, sv in ipairs(require("utils.server").lsp) do
+                table.insert(installed, sv)
+            end
+
+            require("mason-tool-installer").setup {
+                ensure_installed = installed,
             }
         end,
     },

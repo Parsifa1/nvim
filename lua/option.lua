@@ -10,7 +10,7 @@ vim.opt.sessionoptions = "blank,buffers,curdir,help,tabpages,winsize,terminal"
 
 -- normal setting
 vim.g.copilot_assume_mapped = true
-vim.g.copilot_proxy = "http://127.0.0.1:7891"
+vim.g.copilot_proxy = "http://127.0.0.1:7890"
 vim.opt.shortmess = vim.o.shortmess .. "a"
 -- vim.opt.clipboard = "unnamedplus" -- use system clipboar
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
