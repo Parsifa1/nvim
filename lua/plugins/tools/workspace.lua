@@ -1,5 +1,5 @@
 return {
-    {
+    --[[ {
         "natecraddock/workspaces.nvim",
         cmd = { "WorkspacesAdd", "WorkspacesList", "WorkspacesOpen", "WorkspacesRemove", "WorkspacesRename" },
         dependencies = { "Shatur/neovim-session-manager" },
@@ -26,22 +26,20 @@ return {
                 },
             }
         end,
+    }, ]]
+    "Shatur/neovim-session-manager",
+    dependencies = { "stevearc/dressing.nvim" },
+    keys = {
+        { "<leader><Tab>", "<cmd>SessionManager load_session<CR><esc>", desc = "projects folder" },
+        { "<leader>i", "<cmd>SessionManager load_session<CR><esc>", desc = "projects folder" },
     },
-    {
-        "Shatur/neovim-session-manager",
-        lazy = false,
-        config = function()
-            require("session_manager").setup {
-                autoload_mode = require("session_manager.config").AutoloadMode.CurrentDir,
-                autosave_only_in_session = true,
-                autosave_ignore_filetypes = {
-                    "gitcommit",
-                    "gitrebase",
-                    "toggleterm",
-                    "help",
-                },
-                autosave_ignore_buftypes = { "terminal" },
-            }
-        end,
-    },
+    lazy = false,
+    config = function()
+        require("session_manager").setup {
+            autoload_mode = require("session_manager.config").AutoloadMode.CurrentDir,
+            autosave_ignore_filetypes = { "gitcommit", "gitrebase", "toggleterm", "help" },
+            autosave_ignore_buftypes = { "terminal" },
+            autosave_only_in_session = true,
+        }
+    end,
 }

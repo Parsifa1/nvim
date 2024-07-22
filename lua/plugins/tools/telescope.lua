@@ -17,24 +17,6 @@ local function flash(prompt_bufnr)
     }
 end
 
-local project_files = function()
-    local is_inside_work_tree = {}
-    local builtin = require "telescope.builtin"
-    local option = {} -- define here if you want to define something
-
-    local cwd = vim.fn.getcwd()
-    if is_inside_work_tree[cwd] == nil then
-        vim.fn.system "git rev-parse --is-inside-work-tree"
-        is_inside_work_tree[cwd] = vim.v.shell_error == 0
-    end
-
-    if is_inside_work_tree[cwd] then
-        builtin.git_files(option)
-    else
-        builtin.find_files(option)
-    end
-end
-
 local opts = {
     defaults = {
         layout_config = {
@@ -119,25 +101,6 @@ local opts = {
             override_generic_sorter = false,
             override_file_sorter = true,
         },
-        undo = {
-            initial_mode = "normal",
-            mappings = {
-                n = {
-                    ["y"] = function(b)
-                        return require("telescope-undo.actions").yank_additions(b)
-                    end,
-                    ["Y"] = function(b)
-                        return require("telescope-undo.actions").yank_deletions(b)
-                    end,
-                    ["<CR>"] = function(b)
-                        return require("telescope-undo.actions").restore(b)
-                    end,
-                },
-            },
-        },
-        smart_open = {
-            match_algorithm = "fzf",
-        },
     },
 }
 return {
@@ -163,8 +126,6 @@ return {
             { "<leader>w", "<cmd>Telescope live_grep<CR>", desc = "find words" },
             { "<leader>b", "<cmd>Telescope buffers<CR>", desc = "telescope buffers" },
             { "<Tab><Tab>", "<cmd>Telescope buffers<CR>", desc = "buffers" },
-            { "<leader><Tab>", "<cmd>Telescope workspaces theme=dropdown<CR><esc>", desc = "projects folder" },
-            { "<leader>i", "<cmd>Telescope workspaces theme=dropdown<CR><esc>", desc = "projects folder" },
             { "<leader>tc", "<cmd>Telescope commands<CR>", desc = "telescope commands" },
             { "<leader>tk", "<cmd>Telescope keymaps<CR>", desc = "telescope keymaps" },
             { "<leader>tl", "<cmd>Telescope highlights<CR>", desc = "telescope highlights" },
@@ -174,7 +135,6 @@ return {
         config = function()
             require("telescope").setup(opts)
             require("telescope").load_extension "fzf"
-            require("telescope").load_extension "workspaces"
         end,
     },
 }

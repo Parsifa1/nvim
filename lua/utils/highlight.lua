@@ -1,13 +1,21 @@
 -- builtin highlight
+-- float
 vim.api.nvim_set_hl(0, "visual", { reverse = true })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
 vim.api.nvim_set_hl(0, "FloatBorder", { bg = "NONE" })
+-- StatusLine
 vim.api.nvim_set_hl(0, "StatusLine", { bg = "NONE" })
-vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "StatusLineNC", { link = "StatusLine" })
+vim.api.nvim_set_hl(0, "StatusLineTerm", { link = "StatusLine" })
+vim.api.nvim_set_hl(0, "StatusLineTermNC", { link = "StatusLine" })
+-- left symboline
 vim.api.nvim_set_hl(0, "SignColumn", { bg = "NONE" })
 vim.api.nvim_set_hl(0, "FoldColumn", { bg = "NONE" })
+-- cursorline
+vim.api.nvim_set_hl(0, "CursorLine", { bg = "NONE" })
 vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "NONE" })
 vim.api.nvim_set_hl(0, "WinBar", { bg = "NONE" })
+-- diagnostic
 vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#878787" })
 vim.api.nvim_set_hl(0, "VirtualTextHint", { link = "DiagnosticHint" })
 vim.api.nvim_set_hl(0, "VirtualTextInfo", { link = "DiagnosticInfo" })
