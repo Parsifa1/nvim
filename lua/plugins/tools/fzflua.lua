@@ -37,6 +37,7 @@ return {
     keys = {
         { "<leader>f", "<cmd>FzfLua files<CR>", desc = "open files" },
         { "<leader>r", "<cmd>FzfLua oldfiles<CR>", desc = "recent files" },
+        { "<esc>", "<c-c>", ft = "fzf", mode = "t", nowait = true },
     },
     cmd = "FzfLua",
     opts = {
