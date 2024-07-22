@@ -142,22 +142,6 @@ local opts = {
 }
 return {
     {
-        "Parsifa1/smart-open.nvim",
-        branch = "0.2.x",
-        cmd = "Telescope smart_open",
-        -- keys = { { "<leader>f", "<cmd>Telescope smart_open theme=ivy<CR>", desc = "open files" } },
-        dependencies = {
-            "kkharji/sqlite.lua",
-            { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-        },
-        config = function()
-            if vim.uv.os_uname().sysname == "Windows_NT" then
-                vim.g.sqlite_clib_path = "E:/others/Path/sqlite3.dll"
-            end
-            require("telescope").load_extension "smart_open"
-        end,
-    },
-    {
         "benfowler/telescope-luasnip.nvim",
         cmd = "Telescope luasnip",
         keys = { { "<leader>ts", "<cmd>Telescope luasnip theme=ivy<CR>", desc = "telescope luasnip" } },
