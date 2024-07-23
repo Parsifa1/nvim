@@ -19,7 +19,7 @@ local session_config = {
         row = 0.50,
         col = 0.50,
         title_pos = "center",
-        title = " " .. "Sessions" .. " ",
+        title = " Sessions ",
     },
     hls = { title = "TelescopePromptTitle" },
 }
@@ -31,9 +31,16 @@ return {
             backend = { "fzf_lua", "telescope" },
             get_config = function(opts)
                 if opts.prompt == "Load Session" then
-                    local backend = vim.uv.os_uname().sysname == "Windows_NT" and "telescope" or "fzf_lua"
+                    local backend = "fzf_lua"
+                    local themes = require "telescope.themes"
+                    if vim.uv.os_uname().sysname == "Windows_NT" then
+                        backend = "telescope"
+                    end
                     return {
                         backend = { backend },
+                        telescope = themes.get_dropdown {
+                            initial_mode = "normal",
+                        },
                         fzf_lua = session_config,
                     }
                 end
@@ -41,7 +48,6 @@ return {
                     return {}
                 end
             end,
-            -- telescope = require("telescope.themes").get_dropdown { initial_mode = "normal" },
             fzf_lua = {
                 winopts = {},
             },
