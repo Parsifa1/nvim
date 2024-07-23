@@ -37,12 +37,15 @@ return {
     keys = {
         { "<leader>f", "<cmd>FzfLua files<CR>", desc = "open files" },
         { "<leader>r", "<cmd>FzfLua oldfiles<CR>", desc = "recent files" },
+        { "<leader>w", "<cmd>FzfLua live_grep<CR>", desc = "find words" },
         { "<esc>", "<c-c>", ft = "fzf", mode = "t", nowait = true },
     },
     cmd = "FzfLua",
     opts = {
-        { "default-title" },
-        winopts = { backdrop = false },
+        "default-title",
+        winopts = {
+            backdrop = false,
+        },
         files = ivy,
         oldfiles = ivy,
     },

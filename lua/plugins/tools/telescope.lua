@@ -122,8 +122,6 @@ return {
             "nvim-lua/popup.nvim",
         },
         keys = {
-            -- { "<leader>r", "<cmd>Telescope oldfiles<CR>", desc = "recent files" },
-            { "<leader>w", "<cmd>Telescope live_grep<CR>", desc = "find words" },
             { "<leader>b", "<cmd>Telescope buffers<CR>", desc = "telescope buffers" },
             { "<Tab><Tab>", "<cmd>Telescope buffers<CR>", desc = "buffers" },
             { "<leader>tc", "<cmd>Telescope commands<CR>", desc = "telescope commands" },
