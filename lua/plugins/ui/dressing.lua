@@ -31,8 +31,9 @@ return {
             backend = { "fzf_lua", "telescope" },
             get_config = function(opts)
                 if opts.prompt == "Load Session" then
+                    local backend = vim.uv.os_uname().sysname == "Windows_NT" and "telescope" or "fzf_lua"
                     return {
-                        backend = { "fzf_lua" },
+                        backend = { backend },
                         fzf_lua = session_config,
                     }
                 end
