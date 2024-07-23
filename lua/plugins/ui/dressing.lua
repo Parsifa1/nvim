@@ -14,7 +14,7 @@ end
 local session_config = {
     prompt = false,
     winopts = {
-        height = 0.32,
+        height = 0.35,
         width = 0.47,
         row = 0.50,
         col = 0.50,
