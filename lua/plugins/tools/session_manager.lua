@@ -37,7 +37,7 @@ return {
     config = function()
         require("session_manager").setup {
             autoload_mode = require("session_manager.config").AutoloadMode.CurrentDir,
-            autosave_ignore_filetypes = { "gitcommit", "gitrebase", "toggleterm", "help" },
+            autosave_ignore_filetypes = { "gitcommit", "gitrebase", "toggleterm", "help", "lazy" },
             autosave_ignore_buftypes = { "terminal" },
             autosave_only_in_session = true,
         }
