@@ -31,16 +31,11 @@ return {
             backend = { "fzf_lua", "telescope" },
             get_config = function(opts)
                 if opts.prompt == "Load Session" then
-                    local backend = "fzf_lua"
                     local themes = require "telescope.themes"
-                    if vim.uv.os_uname().sysname == "Windows_NT" then
-                        backend = "telescope"
-                    end
+                    local backend = vim.uv.os_uname().sysname == "Windows_NT" and "telescope" or "fzf_lua"
                     return {
                         backend = { backend },
-                        telescope = themes.get_dropdown {
-                            initial_mode = "normal",
-                        },
+                        telescope = themes.get_dropdown {},
                         fzf_lua = session_config,
                     }
                 end

@@ -43,6 +43,7 @@ local opts = {
                 ["<C-f>"] = "to_fuzzy_refine",
             },
             i = {
+                ["<esc>"] = "close",
                 ["<A-q>"] = "close",
                 ["<C-s>"] = flash,
                 ["<C-j>"] = "move_selection_next",
