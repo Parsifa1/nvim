@@ -1,14 +1,9 @@
 local custom = require "custom"
 local opts = {
+    -- preset = "helix",
     show_help = true,
     win = { border = custom.border },
     plugins = { presets = { z = false } },
-    layout = {
-        height = { min = 20, max = 25 },
-        width = { min = 20, max = 50 },
-        spacing = 3,
-        align = "left",
-    },
     delay = function(ctx)
         return ctx.plugin and 0 or 300
     end,

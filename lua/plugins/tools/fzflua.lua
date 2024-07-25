@@ -31,13 +31,17 @@ local ivy = {
     },
 }
 
+local merge = function(x)
+    return vim.tbl_extend("force", ivy, x)
+end
+
 return {
     "ibhagwan/fzf-lua",
     enabled = true,
     keys = {
         { "<leader>f", "<cmd>FzfLua files<CR>", desc = "open files" },
         { "<leader>r", "<cmd>FzfLua oldfiles<CR>", desc = "recent files" },
-        { "<leader>w", "<cmd>FzfLua live_grep<CR>", desc = "find words" },
+        { "<leader>w", "<cmd>FzfLua live_grep_native<CR>", desc = "find words" },
         { "<esc>", "<c-c>", ft = "fzf", mode = "t", nowait = true },
     },
     cmd = "FzfLua",
@@ -45,8 +49,15 @@ return {
         "default-title",
         winopts = {
             backdrop = false,
+            preview = { delay = 0 },
         },
-        files = ivy,
+        previewers = {
+            bat = { theme = "gruvbox-dark" },
+        },
+        files = merge {
+            fd_opts = "-H -I --exclude={.git,.kube,.idea,.vscode,.sass-cache,node_modules,build,.vscode-server,.virtualenvs} --type f",
+        },
+        grep = { rg_opts = "--smart-case -g '!{.git,node_modules}/*'" },
         oldfiles = ivy,
     },
 }
