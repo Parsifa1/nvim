@@ -57,7 +57,6 @@ return {
         files = merge {
             fd_opts = "-H -I --exclude={.git,.kube,.idea,.vscode,.sass-cache,node_modules,build,.vscode-server,.virtualenvs} --type f",
         },
-        grep = { rg_opts = "--smart-case -g '!{.git,node_modules}/*'" },
         oldfiles = ivy,
     },
 }
