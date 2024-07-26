@@ -54,10 +54,11 @@ return {
         previewers = {
             bat = { theme = "gruvbox-dark" },
         },
+        oldfiles = ivy,
         files = merge {
+            file_icons = "mini",
             fd_opts = "-H -I --exclude={.git,.kube,.idea,.vscode,.sass-cache,node_modules,build,.vscode-server,.virtualenvs} --type f",
         },
-        oldfiles = ivy,
         grep = {
             "--no-heading",
             "--line-number",
