@@ -5,7 +5,7 @@ local opts = {
     win = { border = custom.border },
     plugins = { presets = { z = false } },
     delay = function(ctx)
-        return ctx.plugin and 0 or 300
+        return ctx.plugin and 0 or 200
     end,
     defer = function(ctx)
         return ctx.keys == "`" or ctx.mode == "V" or ctx.mode == "<C-V>" or ctx.mode == "v"
