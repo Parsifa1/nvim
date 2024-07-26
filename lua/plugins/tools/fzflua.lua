@@ -58,5 +58,14 @@ return {
             fd_opts = "-H -I --exclude={.git,.kube,.idea,.vscode,.sass-cache,node_modules,build,.vscode-server,.virtualenvs} --type f",
         },
         oldfiles = ivy,
+        grep = {
+            "--no-heading",
+            "--line-number",
+            "--column",
+            "--smart-case",
+            "--hidden",
+            "--glob", -- this flag allows you to hide exclude these files and folders from your search 👇
+            "!{**/.git/*,**/node_modules/*,**/package-lock.json,**/yarn.lock,.vscode-server,.virtualenvs}",
+        },
     },
 }
