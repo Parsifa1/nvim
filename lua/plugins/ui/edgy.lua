@@ -34,7 +34,7 @@ return {
                 ft = "Outline",
                 pinned = true,
                 open = "Outline",
-                size = { width = 45 },
+                size = { width = 0.3 },
             },
         },
         exit_when_last = true,
