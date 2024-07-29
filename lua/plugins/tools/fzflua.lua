@@ -57,7 +57,7 @@ return {
         grep = {
             rg_opts = "--no-heading --line-number "
                 .. "--column --smart-case --hidden "
-                .. "--glob '!{**/.git/*,**/node_modules/*,**/package-lock.json,**/yarn.lock,.vscode-server,.virtualenvs}'",
+                .. [[ --glob "!{**/.git/*,**/node_modules/*,**/package-lock.json,**/yarn.lock,.vscode-server,.virtualenvs}" ]],
         },
     },
 }
