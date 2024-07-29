@@ -32,13 +32,12 @@ local ivy = {
 }
 
 local keys = function()
-    if not vim.uv.os_uname().sysname == "Windows_NT" then
+    if vim.uv.os_uname().sysname == "Linux" then
         return {
             { "<esc>", "<c-c>", ft = "fzf", mode = "t", nowait = true },
             { "<leader>f", "<cmd>FzfLua files<CR>", desc = "find files" },
             { "<leader>r", "<cmd>FzfLua oldfiles<CR>", desc = "recent files" },
             { "<leader>w", "<cmd>FzfLua live_grep_native<CR>", desc = "live grep" },
-            {},
         }
     end
 end
