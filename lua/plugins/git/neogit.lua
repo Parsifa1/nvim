@@ -15,19 +15,11 @@ return {
         disable_commit_confirmation = true,
         disable_builtin_notifications = true,
         kind = custom.prefer_tabpage and "tab" or "split",
-        integrations = {
-            diffview = true,
-        },
-        commit_editor = {
-            kind = "split",
-        },
+        integrations = { diffview = true },
+        commit_editor = { kind = "split" },
         sections = {
-            stashes = {
-                folded = false,
-            },
-            recent = {
-                folded = false,
-            },
+            stashes = { folded = false },
+            recent = { folded = false },
         },
     },
 }

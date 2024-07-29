@@ -1,16 +1,3 @@
----@diagnostic disable: duplicate-set-field
-
-local init = function()
-    vim.ui.select = function(...)
-        require("lazy").load { plugins = { "dressing.nvim" } }
-        return vim.ui.select(...)
-    end
-    vim.ui.input = function(...)
-        require("lazy").load { plugins = { "dressing.nvim" } }
-        return vim.ui.input(...)
-    end
-end
-
 local session_config = {
     prompt = false,
     winopts = {
@@ -23,9 +10,9 @@ local session_config = {
     },
     hls = { title = "TelescopePromptTitle" },
 }
+
 return {
     "stevearc/dressing.nvim",
-    init = init,
     opts = {
         select = {
             backend = { "fzf_lua", "telescope" },

@@ -14,14 +14,24 @@ return {
                 ["cmp.entry.get_documentation"] = true,
             },
             progress = { enabled = false },
-            hover = { enabled = false },
-            signature = { enabled = false },
+            hover = { enabled = true },
+            signature = { enabled = true },
+        },
+        views = {
+            hover = {
+                scrollbar = false,
+            },
+            confirm = {
+                position = { row = "50%" },
+            },
+        },
+        presets = {
+            lsp_doc_border = true,
+            long_message_to_split = true,
+            bottom_search = true,
+            command_palette = true,
         },
         routes = {
-            {
-                filter = { min_height = 10 },
-                view = "split",
-            },
             {
                 filter = {
                     event = "msg_show",
@@ -69,16 +79,6 @@ return {
                     find = "telescope.builtin.buffers",
                 },
                 opts = { skip = true },
-            },
-        },
-        views = {
-            cmdline_popup = {
-                style = "rounded",
-                position = { row = "38.2%", col = "50%" },
-                size = { min_width = 72 },
-            },
-            mini = {
-                win_options = { winblend = 0 },
             },
         },
     },

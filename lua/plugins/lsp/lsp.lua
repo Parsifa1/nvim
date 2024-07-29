@@ -33,7 +33,7 @@ local config = function()
             lsp_keymap(args.bufnr)
 
             -- for hover
-            vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = custom.border })
+            -- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = custom.border })
 
             -- inlay hints
             local client = vim.lsp.get_client_by_id(args.data.client_id)
@@ -67,18 +67,6 @@ return {
         event = { "BufReadPre", "BufNewFile" },
         cmd = "LspInfo",
         config = config,
-    },
-    {
-        "ray-x/lsp_signature.nvim",
-        event = "LspAttach",
-        config = function()
-            require("lsp_signature").setup {
-                hint_prefix = "🧐 ",
-                handler_opts = {
-                    border = require("custom").border,
-                },
-            }
-        end,
     },
     {
         "Chaitanyabsprip/fastaction.nvim",
