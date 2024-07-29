@@ -51,7 +51,7 @@ local opts = {
                 ["<C-f>"] = "to_fuzzy_refine",
             },
         },
-        prompt_prefix = "❯  ",
+        prompt_prefix = "❯ ",
         selection_caret = "  ",
         color_devicons = true,
     },
