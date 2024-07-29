@@ -84,7 +84,11 @@ local opts = {
                 "--glob", -- this flag allows you to hide exclude these files and folders from your search 👇
                 "!{**/.git/*,**/node_modules/*,**/package-lock.json,**/yarn.lock,.vscode-server,.virtualenvs}",
             },
-            layout_strategy = "vertical",
+            layout_strategy = "horizontal",
+            layout_config = {
+                prompt_position = "top",
+            },
+            sorting_strategy = "ascending",
         },
         buffers = {
             theme = "dropdown",
@@ -104,6 +108,23 @@ local opts = {
         },
     },
 }
+
+local keys = function()
+    if vim.uv.os_uname().sysname == "Windows_NT" then
+        return {
+            { "<leader>b", "<cmd>Telescope buffers<CR>", desc = "telescope buffers" },
+            { "<Tab><Tab>", "<cmd>Telescope buffers<CR>", desc = "buffers" },
+            { "<leader>tc", "<cmd>Telescope commands<CR>", desc = "telescope commands" },
+            { "<leader>tk", "<cmd>Telescope keymaps<CR>", desc = "telescope keymaps" },
+            { "<leader>tl", "<cmd>Telescope highlights<CR>", desc = "telescope highlights" },
+            { "<leader>th", "<cmd>Telescope help_tags<CR>", desc = "telescope highlights" },
+            { "<leader>f", "<cmd>Telescope find_files<CR>", desc = "find files" },
+            { "<leader>w", "<cmd>Telescope live_grep<CR>", desc = "live grep" },
+            { "<leader>r", "<cmd>Telescope oldfiles<CR>", desc = "recent files" },
+        }
+    end
+end
+
 return {
     {
         "benfowler/telescope-luasnip.nvim",
@@ -116,20 +137,13 @@ return {
     {
         "nvim-telescope/telescope.nvim",
         branch = "0.1.x",
-        event = { "CursorHold", "CursorHoldI" },
-        cmd = "Telescope",
         dependencies = {
             { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
             "nvim-lua/popup.nvim",
         },
-        keys = {
-            { "<leader>b", "<cmd>Telescope buffers<CR>", desc = "telescope buffers" },
-            { "<Tab><Tab>", "<cmd>Telescope buffers<CR>", desc = "buffers" },
-            { "<leader>tc", "<cmd>Telescope commands<CR>", desc = "telescope commands" },
-            { "<leader>tk", "<cmd>Telescope keymaps<CR>", desc = "telescope keymaps" },
-            { "<leader>tl", "<cmd>Telescope highlights<CR>", desc = "telescope highlights" },
-            { "<leader>th", "<cmd>Telescope help_tags<CR>", desc = "telescope highlights" },
-        },
+        event = { "CursorHold", "CursorHoldI" },
+        keys = keys(),
+        cmd = "Telescope",
         opts = opts,
         config = function()
             require("telescope").setup(opts)

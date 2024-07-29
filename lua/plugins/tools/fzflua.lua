@@ -31,6 +31,18 @@ local ivy = {
     },
 }
 
+local keys = function()
+    if not vim.uv.os_uname().sysname == "Windows_NT" then
+        return {
+            { "<esc>", "<c-c>", ft = "fzf", mode = "t", nowait = true },
+            { "<leader>f", "<cmd>FzfLua files<CR>", desc = "find files" },
+            { "<leader>r", "<cmd>FzfLua oldfiles<CR>", desc = "recent files" },
+            { "<leader>w", "<cmd>FzfLua live_grep_native<CR>", desc = "live grep" },
+            {},
+        }
+    end
+end
+
 local merge = function(x)
     return vim.tbl_extend("force", ivy, x)
 end
@@ -38,12 +50,7 @@ end
 return {
     "ibhagwan/fzf-lua",
     enabled = true,
-    keys = {
-        { "<leader>f", "<cmd>FzfLua files<CR>", desc = "open files" },
-        { "<leader>r", "<cmd>FzfLua oldfiles<CR>", desc = "recent files" },
-        { "<leader>w", "<cmd>FzfLua live_grep_native<CR>", desc = "find words" },
-        { "<esc>", "<c-c>", ft = "fzf", mode = "t", nowait = true },
-    },
+    keys = keys(),
     cmd = "FzfLua",
     opts = {
         "default-title",
