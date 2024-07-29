@@ -128,16 +128,11 @@ local keys = function()
         { "<leader>th", "<cmd>Telescope help_tags<CR>", desc = "telescope highlights" },
     }
     if vim.uv.os_uname().sysname == "Windows_NT" then
-        return {
-            { "<Tab><Tab>", "<cmd>Telescope buffers<CR>", desc = "buffers" },
-            { "<leader>tc", "<cmd>Telescope commands<CR>", desc = "telescope commands" },
-            { "<leader>tk", "<cmd>Telescope keymaps<CR>", desc = "telescope keymaps" },
-            { "<leader>tl", "<cmd>Telescope highlights<CR>", desc = "telescope highlights" },
-            { "<leader>th", "<cmd>Telescope help_tags<CR>", desc = "telescope highlights" },
+        return vim.tbl_extend("force", k, {
             { "<leader>f", "<cmd>Telescope find_files<CR>", desc = "find files" },
             { "<leader>w", "<cmd>Telescope live_grep<CR>", desc = "live grep" },
             { "<leader>r", "<cmd>Telescope oldfiles<CR>", desc = "recent files" },
-        }
+        })
     else
         return k
     end
