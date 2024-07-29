@@ -39,6 +39,8 @@ local keys = function()
             { "<leader>r", "<cmd>FzfLua oldfiles<CR>", desc = "recent files" },
             { "<leader>w", "<cmd>FzfLua live_grep_native<CR>", desc = "live grep" },
         }
+    else
+        return { { "<esc>", "<c-c>", ft = "fzf", mode = "t", nowait = true } }
     end
 end
 
@@ -58,7 +60,7 @@ return {
         files = merge {
             file_icons = "mini",
             fd_opts = "-H -I "
-                .. "--exclude={.git,.kube,.idea,.vscode,.sass-cache,node_modules,build,.vscode-server,.virtualenvs} --type f --strip-cwd-prefix",
+                .. "--exclude={.git,.kube,.idea,.vscode,.sass-cache,node_modules,build,.vscode-server,.virtualenvs,target} --type f --strip-cwd-prefix",
         },
         grep = {
             rg_opts = "--no-heading --line-number "
