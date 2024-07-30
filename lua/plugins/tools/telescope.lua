@@ -61,6 +61,8 @@ local opts = {
                 "fd",
                 "-H",
                 "-I",
+                "--type",
+                "f",
                 "--exclude={.git,.idea,.vscode,.sass-cache,node_modules,build,.vscode-server,.virtualenvs,.cache,.ghcup,.conda,.rustup,.cargo,.local,target}",
                 "--strip-cwd-prefix",
             },
