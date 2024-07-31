@@ -1,5 +1,5 @@
-local mode_n, mode_v, mode_i, mode_o, mode_nv, mode_ni, mode_nit, mode_nvo =
-    { "n" }, { "v" }, { "i" }, { "o" }, { "n", "v" }, { "n", "i" }, { "n", "i", "v" }, { "n", "v", "o" }
+local mode_n, mode_v, mode_i, mode_o, mode_s, mode_nv, mode_ni, mode_nit, mode_nvo =
+    { "n" }, { "v" }, { "i" }, { "o" }, { "s" }, { "n", "v" }, { "n", "i" }, { "n", "i", "v" }, { "n", "v", "o" }
 
 local keymap = {
     -- stylua: ignore start
@@ -15,6 +15,7 @@ local keymap = {
     { mode = mode_n,      from = "<C-Left>",           to = "<cmd>vertical resize -3<CR>" },
     { mode = mode_n,      from = "<C-Right>",          to = "<cmd>vertical resize +3<CR>" },
     { mode = mode_n,      from = "<C-i>",            to = "<C-i>" }, -- 重设<C-i>
+    { mode = mode_s,      from = "<BS>",             to = "<BS>:startinsert<CR>"},
     { mode = mode_v,      from = "K",                to = ":m '<-2<cr>gv=gv" }, -- 行移动
     { mode = mode_v,      from = "J",                to = ":m '>+1<cr>gv=gv" },
     { mode = mode_v,      from = "<C-c>",            to = '"+y' },
@@ -38,7 +39,7 @@ local keymap = {
     { mode = mode_nvo,    from = "H",                to = "^" },
     { mode = mode_nvo,    from = "L",                to = "$" },
     -- desc快捷键
-    { mode = mode_n,      from = "zz",               to = "za",                                    desc = "toggle current fold" }, -- 折叠/展开当前位置
+    -- { mode = mode_n,      from = "zz",               to = "za",                                    desc = "toggle current fold" }, -- 折叠/展开当前位置
     { mode = mode_n,      from = "zn",               to = "zR",                                    desc = "open all fold" }, -- 全部打开
     { mode = mode_n,      from = "zm",               to = "zM",                                    desc = "close all fold" }, -- 全部折叠
     { mode = mode_n,      from = "zc",               to = "<C-w>c",                                desc = "close current window" },

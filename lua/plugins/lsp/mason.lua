@@ -15,8 +15,8 @@ return {
             require("mason").setup {
                 -- PATH = "append", -- NOTE:为了兼容NIXOS
                 registries = {
-                    "github:Parsifa1/mason-registry",
                     "github:mason-org/mason-registry",
+                    "github:Parsifa1/mason-registry",
                 },
 
                 ui = {

@@ -48,8 +48,16 @@ for (6iter_type9 6iter9 = 6container9.begin(); 6copy_iter9 != 6copy_container9.e
         }
     )
 )
-local endl = s("endd", { t "'\\n';" })
+local endl = s("endd", { t "'\\n'" })
 local cout = s("cout", { t "std::cout" })
+local fread = s("fread", {
+    t {
+        "inline auto read() {",
+        "    std::cin.tie(nullptr)->sync_with_stdio(false); ",
+        "    return [](i64 x) { return std::cin >> x, x; }(0); ",
+        "}",
+    },
+})
 local acm = s("acm", {
     t {
         "#include <bits/stdc++.h>",
@@ -75,7 +83,9 @@ local acm = s("acm", {
         "}",
     },
 })
-return {}, {
+return {
+    fread,
+}, {
     -- iter,
     -- itit,
     endl,

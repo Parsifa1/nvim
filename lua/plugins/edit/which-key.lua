@@ -3,7 +3,7 @@ local opts = {
     -- preset = "helix",
     show_help = true,
     win = { border = custom.border },
-    plugins = { presets = { z = false } },
+    plugins = { presets = { z = true } },
     delay = function(ctx)
         return ctx.plugin and 0 or 200
     end,
