@@ -6,15 +6,16 @@ vim.fn.sign_define("DapBreakpointRejected", { text = "" })
 return {
     "mfussenegger/nvim-dap",
     event = "VeryLazy",
+    specs = { "nvim-neotest/nvim-nio" },
     config = function()
         local dap = require "dap"
         dap.adapters.codelldb = {
-            type = 'server',
+            type = "server",
             port = "${port}",
             executable = {
-                command = 'codelldb',
+                command = "codelldb",
                 args = { "--port", "${port}" },
-            }
+            },
         }
         dap.configurations.cpp = {
             {
@@ -22,13 +23,13 @@ return {
                 type = "codelldb",
                 request = "launch",
                 program = function()
-                    vim.cmd 'cd %:h'
-                    vim.cmd 'silent w !g++ %:t -g -std=c++20 -o bin/%:t:r'
+                    vim.cmd "cd %:h"
+                    vim.cmd "silent w !g++ %:t -g -std=c++20 -o bin/%:t:r"
                     local file_name = vim.fn.bufname(vim.api.nvim_get_current_buf())
-                    local file_name_without_path = vim.fn.fnamemodify(file_name, ':t')
-                    local file_directory = vim.fn.expand('%:p:h')
+                    local file_name_without_path = vim.fn.fnamemodify(file_name, ":t")
+                    local file_directory = vim.fn.expand "%:p:h"
                     if file_name_without_path ~= 0 then
-                        return file_directory .. '/bin/' .. file_name_without_path:gsub("%.cpp$", "")
+                        return file_directory .. "/bin/" .. file_name_without_path:gsub("%.cpp$", "")
                     end
                 end,
                 cwd = "${fileDirname}",
@@ -43,20 +44,19 @@ return {
                 -- },
             },
         }
-        local dapui = require("dapui")
-        dapui.setup({})
+        local dapui = require "dapui"
+        dapui.setup {}
 
         dap.listeners.after.event_initialized["dapui_config"] = function()
-            dapui.open({})
+            dapui.open {}
         end
 
         dap.listeners.before.event_terminated["dapui_config"] = function()
-            dapui.close({})
+            dapui.close {}
         end
 
-
         dap.listeners.before.event_exited["dapui_config"] = function()
-            dapui.close({})
+            dapui.close {}
         end
     end,
     keys = {

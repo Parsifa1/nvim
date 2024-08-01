@@ -1,5 +1,5 @@
-local mode_n, mode_v, mode_i, mode_o, mode_s, mode_nv, mode_ni, mode_nit, mode_nvo =
-    { "n" }, { "v" }, { "i" }, { "o" }, { "s" }, { "n", "v" }, { "n", "i" }, { "n", "i", "v" }, { "n", "v", "o" }
+local mode_n, mode_v, mode_i, mode_o, mode_s, mode_t = { "n" }, { "v" }, { "i" }, { "o" }, { "s" }, { "t" }
+local mode_nv, mode_ni, mode_nit, mode_nvo = { "n", "v" }, { "n", "i" }, { "n", "i", "v" }, { "n", "v", "o" }
 
 local keymap = {
     -- stylua: ignore start
@@ -20,11 +20,7 @@ local keymap = {
     { mode = mode_v,      from = "J",                to = ":m '>+1<cr>gv=gv" },
     { mode = mode_v,      from = "<C-c>",            to = '"+y' },
     { mode = mode_o,      from = "=",                to = "q" },
-    { mode = mode_ni,     from = "<C-j>",            to = "<C-w>j" },
-    { mode = mode_ni,     from = "<C-h>",            to = "<C-w>h" },
-    { mode = mode_ni,     from = "<C-j>",            to = "<C-w>j" },
-    { mode = mode_ni,     from = "<C-k>",            to = "<C-w>k" },
-    { mode = mode_ni,     from = "<C-l>",            to = "<C-w>l" },
+    { mode = mode_t,      from = "<Esc>",            to = "<C-\\><C-N>" },
     { mode = mode_ni,     from = "<C-s>",            to = "<cmd>write<CR>" },
     { mode = mode_ni,     from = "<C-a>",            to = "<cmd>normal gg0vG$<CR>" },
     { mode = mode_ni,     from = "<F1>",             to = "<cmd>CompetiTest run<CR>" },
@@ -34,6 +30,10 @@ local keymap = {
     { mode = mode_ni,     from = "<F5>",             to = "<cmd>AsyncTask run<cr>", },
     { mode = mode_ni,     from = "<F6>",             to = "<cmd>AsyncTask build<cr>", },
     { mode = mode_nv,     from = "=",                to = "gq" },
+    { mode = mode_nit,    from = "<C-h>",            to = "<C-w>h" },
+    { mode = mode_nit,    from = "<C-j>",            to = "<C-w>j" },
+    { mode = mode_nit,    from = "<C-k>",            to = "<C-w>k" },
+    { mode = mode_nit,    from = "<C-l>",            to = "<C-w>l" },
     { mode = mode_nit,    from = "<A-q>",            to = "<cmd>q<CR>" }, -- 窗口关闭
     { mode = mode_nit,    from = "<A-Q>",            to = "<cmd>qa<CR>" }, -- vim关闭
     { mode = mode_nvo,    from = "H",                to = "^" },

@@ -22,10 +22,12 @@ vim.opt.tabstop = 4 -- number of visual spaces per tab
 vim.opt.shiftwidth = 4 -- insert 4 spaces on a tab
 vim.opt.expandtab = true -- tabs are spaces, mainly because of python
 
+vim.opt.undofile = true
+
 -- ui config
 vim.opt.number = true -- add numbers to each line on the left side
 vim.opt.relativenumber = true --show relative number
-vim.opt.cursorline = true -- highlight cursor line underneath the cursor horizontally
+vim.opt.cursorline = false -- highlight cursor line underneath the cursor horizontally
 vim.opt.splitbelow = true -- open new vertical split bottom
 vim.opt.splitright = true -- open new horizontal splits right
 vim.opt.termguicolors = true -- enabl 24-bit rgb color in the tui

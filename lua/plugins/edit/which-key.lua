@@ -20,8 +20,9 @@ return {
         require("which-key").add {
             { "<leader>c", group = "Code Operations" },
             { "<leader>g", group = "Git" },
-            { "<leader>s", group = "chore" },
+            { "<leader>s", group = "Chore" },
             { "<leader>t", group = "Telescope" },
+            { "<leader>d", group = "Dap"},
         }
     end,
 }

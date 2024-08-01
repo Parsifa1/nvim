@@ -5,7 +5,9 @@ return {
         { "<leader>q", "<Cmd>Trouble diagnostics <CR>", desc = "Trouble" },
     },
     opts = {
+        auto_close = true,
         focus = true,
-        win = { size = { width = 0.3, height = 0.3 } },
+        keys = { ["<cr>"] = "jump_close" },
+        win = { size = { width = 0.3, height = 0.4 } },
     },
 }

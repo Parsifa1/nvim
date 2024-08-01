@@ -31,7 +31,12 @@ return {
                 end
             end,
             fzf_lua = {
-                winopts = {},
+                winopts = {
+                    height = 0.25,
+                    width = 0.37,
+                    row = 0.50,
+                    col = 0.50,
+                },
             },
         },
     },

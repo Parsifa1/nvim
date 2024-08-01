@@ -1,7 +1,8 @@
 return {
     { import = "plugins.edit" },
     { import = "plugins.lsp" },
-    {import = "plugins.lang"},
+    { import = "plugins.dap" },
+    { import = "plugins.lang" },
     { import = "plugins.git" },
     { import = "plugins.theme" },
     { import = "plugins.tools" },

@@ -6,7 +6,7 @@ local opts = {
     highlight_new_as_changed = false,
     show_stop_reason = true,
     commented = false,
-    only_first_definition = true,
+
     all_references = false,
     clear_on_continue = false,
     display_callback = function(variable, buf, stackframe, node, options)
