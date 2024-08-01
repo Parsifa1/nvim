@@ -2,11 +2,16 @@
 return {
     {
         "L3MON4D3/LuaSnip",
-        build = "make install_jsregexp",
-        dependencies = {
-            "rafamadriz/friendly-snippets",
-            "nvim-treesitter/nvim-treesitter",
-        },
+        dependencies = { "rafamadriz/friendly-snippets", "nvim-treesitter/nvim-treesitter" },
+        build = (function()
+            -- Build Step is needed for regex support in snippets
+            -- This step is not supported in many windows environments
+            -- Remove the below condition to re-enable on windows
+            if vim.fn.has "win32" == 1 then
+                return
+            end
+            return "make install_jsregexp"
+        end)(),
         event = { "BufNewFile", "BufReadPost" },
         config = function()
             require("luasnip").config.setup { enable_autosnippets = true }
