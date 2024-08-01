@@ -164,7 +164,7 @@ local opts = {
     },
 }
 return {
-    "parsifa1/lualine.nvim",
+    "nvim-lualine/lualine.nvim",
     event = { "BufNewFile", "BufReadPre" },
     dependencies = { "parsifa1/nvim-web-devicons", "ofseed/copilot-status.nvim" },
     config = function()
