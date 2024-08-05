@@ -86,7 +86,7 @@ return {
     dependencies = {
         "mfussenegger/nvim-dap",
     },
-    event = "VeryLazy",
+    event = { "BufNewFile", "BufReadPre" },
     opts = opts,
     keys = {
         {

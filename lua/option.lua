@@ -1,3 +1,5 @@
+require "utils.autocmd"
+
 -- colorschemevim.g.bigfile_size
 vim.opt.background = "dark"
 vim.cmd("colorscheme " .. "gruvbox-material")
@@ -86,6 +88,5 @@ if vim.g.neovide then
 end
 
 -- import utils
-require "utils.autocmd"
 require "utils.highlight"
 require "utils.floaterm"

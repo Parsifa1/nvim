@@ -5,7 +5,7 @@ vim.fn.sign_define("DapBreakpointRejected", { text = "" })
 
 return {
     "mfussenegger/nvim-dap",
-    event = "VeryLazy",
+    event = { "BufNewFile", "BufReadPre" },
     specs = { "nvim-neotest/nvim-nio" },
     config = function()
         local dap = require "dap"

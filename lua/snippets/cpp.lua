@@ -50,6 +50,8 @@ for (6iter_type9 6iter9 = 6container9.begin(); 6copy_iter9 != 6copy_container9.e
 )
 local endl = s("endd", { t "'\\n'" })
 local cout = s("cout", { t "std::cout" })
+local chmax = s("chmax", { t "inline bool chmax(auto &a, auto b) { return (a < b) ? a = b, true : false; }" })
+local chmin = s("chmin", { t "inline bool chmin(auto &a, auto b) { return (a > b) ? a = b, true : false; }" })
 local fread = s("fread", {
     t {
         "inline auto read() {",
@@ -63,10 +65,6 @@ local acm = s("acm", {
         "#include <bits/stdc++.h>",
         "using i64 = long long;",
         "constexpr i64 INF = 1e18;",
-        "",
-        "inline bool chmax(auto &a, auto b) { return (a < b) ? a = b, true : false; }",
-        "",
-        "inline bool chmin(auto &a, auto b) { return (a > b) ? a = b, true : false; }",
         "",
         "inline auto read() {",
         "    std::cin.tie(nullptr)->sync_with_stdio(false);",
@@ -85,9 +83,9 @@ local acm = s("acm", {
 })
 return {
     fread,
+    chmax,
+    chmin,
 }, {
-    -- iter,
-    -- itit,
     endl,
     cout,
     acm,
