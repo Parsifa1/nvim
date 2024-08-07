@@ -3,7 +3,7 @@ return {
     event = { "BufNewFile", "BufReadPre" },
     dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
     keys = {
-        { "<leader>n", "<cmd>Noice<CR>", desc = "open Noice" },
+        { "<leader>n", "<cmd>NoiceAll<CR>", desc = "open Noice" },
     },
     opts = {
         cmdline = { view = "cmdline" },

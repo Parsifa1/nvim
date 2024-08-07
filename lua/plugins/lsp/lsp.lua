@@ -19,6 +19,21 @@ local config = function()
         set("<leader>ct", vim.lsp.buf.type_definition, "[C]ode [T]ype definition")
     end
 
+    vim.diagnostic.config {
+        jump = { float = { border = custom.border } },
+        virtual_text = { spacing = 4 },
+        float = { severity_sort = true, source = "if_many" },
+        severity_sort = true,
+        signs = {
+            text = {
+                [vim.diagnostic.severity.ERROR] = custom.icons.diagnostic.Error,
+                [vim.diagnostic.severity.WARN] = custom.icons.diagnostic.Warning,
+                [vim.diagnostic.severity.HINT] = custom.icons.diagnostic.Hint,
+                [vim.diagnostic.severity.INFO] = custom.icons.diagnostic.Information,
+            },
+        },
+    }
+
     -- lspconfig
     for lsp, config in (vim.iter(server)) do
         lspconfig[lsp].setup(config)
@@ -39,22 +54,6 @@ local config = function()
             if client and client.server_capabilities.inlayHintProvider then
                 vim.lsp.inlay_hint.enable(true)
             end
-
-            -- diagnostic
-            vim.diagnostic.config {
-                jump = { float = { border = custom.border } },
-                virtual_text = { spacing = 4 },
-                float = { severity_sort = true, source = "if_many" },
-                severity_sort = true,
-                signs = {
-                    text = {
-                        ["ERROR"] = custom.icons.diagnostic.Error,
-                        ["WARN"] = custom.icons.diagnostic.Warning,
-                        ["HINT"] = custom.icons.diagnostic.Hint,
-                        ["INFO"] = custom.icons.diagnostic.Information,
-                    },
-                },
-            }
         end,
     })
 end

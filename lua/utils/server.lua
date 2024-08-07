@@ -18,11 +18,14 @@ M.lsp = {
     "nginx_language_server",
 }
 
-M.formatter = {
+M.tools = {
+    -- formatter
     "prettier",
     "stylua",
     "ruff",
     "typstyle",
+    -- dap
+    "codelldb",
 }
 
 local config = {
