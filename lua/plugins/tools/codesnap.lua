@@ -1,8 +1,9 @@
 ---@type LazyPluginSpec
 
 return {
-    "mistricky/codesnap.nvim",
-    cmd = "CodeSnap",
+    "jhonnyV-V/codesnap.nvim",
+    branch = "feature/wsl-copy-to-clipboard",
+    cmd = { "CodeSnap", "CodeSnapSave" },
     enabled = vim.uv.os_uname().sysname == "Linux",
     build = "make",
     opts = {

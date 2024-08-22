@@ -22,7 +22,6 @@ return {
             border = custom.border,
         },
     },
-
     keys = function()
         local float_opts = {
             border = custom.border,
@@ -33,12 +32,20 @@ return {
             hidden = true,
             direction = "float",
             float_opts = float_opts,
+            on_create = function(t)
+                local bufnr = t.bufnr
+                vim.keymap.set("t", "<Esc>", "<Esc>", { buffer = bufnr })
+            end,
         }
         local yazi = require("toggleterm.terminal").Terminal:new {
             cmd = "yazi",
             hidden = true,
             direction = "float",
             float_opts = float_opts,
+            on_create = function(t)
+                local bufnr = t.bufnr
+                vim.keymap.set("t", "<Esc>", "<Esc>", { buffer = bufnr })
+            end,
         }
 
         return {

@@ -1,6 +1,7 @@
 -- buitin highlight
--- float
+-- visual select
 vim.api.nvim_set_hl(0, "visual", { reverse = true })
+-- float
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
 vim.api.nvim_set_hl(0, "FloatBorder", { bg = "NONE" })
 -- StatusLine

@@ -58,7 +58,6 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     group = vim.api.nvim_create_augroup("bigfile", { clear = true }),
     pattern = "bigfile",
     callback = function(ev)
-        vim.b.minianimate_disable = true
         vim.schedule(function()
             vim.bo[ev.buf].syntax = vim.filetype.match { buf = ev.buf } or ""
         end)

@@ -5,7 +5,7 @@ return {
     config = function()
         require("nightfox").setup {
             options = {
-                transparent = not vim.g.neovide,
+                -- transparent = not vim.g.neovide,
                 modules = { cmp = { enable = true } },
                 styles = {
                     comments = "italic",

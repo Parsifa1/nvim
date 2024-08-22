@@ -9,7 +9,6 @@ local keymap = {
     { mode = mode_n,      from = "n",                to = "nzzzv" }, -- 搜索保持光标
     { mode = mode_n,      from = "j",                to = "gj" }, -- 软换行
     { mode = mode_n,      from = "k",                to = "gk" },
-    { mode = mode_n,      from = "<C-x>",            to = "<cmd>bd<CR>" }, -- buffer关闭
     { mode = mode_n,      from = "<C-Up>",             to = "<cmd>res +3<CR>" }, -- 窗口操作
     { mode = mode_n,      from = "<C-Down>",           to = "<cmd>res -3<CR>" },
     { mode = mode_n,      from = "<C-Left>",           to = "<cmd>vertical resize -3<CR>" },
@@ -35,11 +34,11 @@ local keymap = {
     { mode = mode_nit,    from = "<C-k>",            to = "<C-w>k" },
     { mode = mode_nit,    from = "<C-l>",            to = "<C-w>l" },
     { mode = mode_nit,    from = "<A-q>",            to = "<cmd>q<CR>" }, -- 窗口关闭
+    { mode = mode_n,      from = "<C-x>",       to = "<cmd>bd<CR>" },
     { mode = mode_nit,    from = "<A-Q>",            to = "<cmd>qa<CR>" }, -- vim关闭
     { mode = mode_nvo,    from = "H",                to = "^" },
     { mode = mode_nvo,    from = "L",                to = "$" },
     -- desc快捷键
-    -- { mode = mode_n,      from = "zz",               to = "za",                                    desc = "toggle current fold" }, -- 折叠/展开当前位置
     { mode = mode_n,      from = "zn",               to = "zR",                                    desc = "open all fold" }, -- 全部打开
     { mode = mode_n,      from = "zm",               to = "zM",                                    desc = "close all fold" }, -- 全部折叠
     { mode = mode_n,      from = "zc",               to = "<C-w>c",                                desc = "close current window" },
@@ -48,6 +47,7 @@ local keymap = {
     { mode = mode_n,      from = "zo",               to = "<C-w>o" ,                               desc = "only current window" },
     { mode = mode_n,      from = "<leader>p",        to = "<cmd>Lazy<CR>",                         desc = "lazy" },
     { mode = mode_n,      from = "<leader>cd",       to = "<cmd>cd %:p:h<CR>",                     desc = "[C][D] current file" },
+    { mode = mode_n,      from = "<leader>bd",       to = "<cmd>bd<CR>",                           desc = "[B]uffer [D]elete" },
     { mode = mode_n,      from = "<leader>sw",       to = "<cmd>set wrap!<CR>",                    desc = "toggle warp" },
     { mode = mode_n,      from = "<leader><leader>", to = "<cmd>noh<CR>",                          desc = "clear highlight" },
     { mode = mode_n,      from = "<leader>ss",       to = ":%s/\\<<C-r><C-w>\\>//g<left><left>",   desc = "global replacement", noise = true },

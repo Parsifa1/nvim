@@ -1,6 +1,6 @@
 require "utils.autocmd"
 
--- colorschemevim.g.bigfile_size
+-- colorscheme
 vim.opt.background = "dark"
 vim.cmd("colorscheme " .. "gruvbox-material")
 
@@ -24,7 +24,7 @@ vim.opt.tabstop = 4 -- number of visual spaces per tab
 vim.opt.shiftwidth = 4 -- insert 4 spaces on a tab
 vim.opt.expandtab = true -- tabs are spaces, mainly because of python
 
-vim.opt.undofile = true
+vim.opt.undofile = true --save undo file
 
 -- ui config
 vim.opt.number = true -- add numbers to each line on the left side
@@ -51,7 +51,7 @@ vim.opt.timeoutlen = 500 -- time to wait for a mapped sequence to complete (in m
 vim.g.asyncrun_open = 6
 
 -- Set filetype to `bigfile` for files larger than 1.5 MB
-vim.g.bigfile_size = 1024 * 1024 * 1.2
+vim.g.bigfile_size = 1024 * 1024 * 0.39
 
 -- no fold
 vim.opt.foldlevel = 99
@@ -61,6 +61,10 @@ vim.opt.statusline = " "
 vim.opt.laststatus = 3
 vim.opt.showcmd = false
 vim.opt.showmode = false
+
+-- add filetype
+vim.filetype.add { extension = { mdx = "markdown.mdx" } }
+vim.opt.runtimepath:append "~/.config/nvim/lua/queries"
 
 -- close node && perl
 vim.g["loaded_node_provider"] = 0

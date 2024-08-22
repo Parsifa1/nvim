@@ -16,6 +16,7 @@ M.lsp = {
     "marksman",
     "tailwindcss",
     "nginx_language_server",
+    "mdx_analyzer",
 }
 
 M.tools = {
@@ -29,6 +30,13 @@ M.tools = {
 }
 
 local config = {
+    astro = {
+        settings = {
+            astro = {
+                ["content-intellisense"] = true,
+            },
+        },
+    },
     clangd = {
         filetypes = { "cpp", "c" },
         cmd = {
@@ -88,9 +96,22 @@ local config = {
                         .. "/node_modules/@vue/language-server",
                     languages = { "vue" },
                 },
+                {
+                    name = "@astrojs/ts-plugin",
+                    location = require("mason-registry").get_package("astro-language-server"):get_install_path()
+                        .. "/node_modules/@astro/ts-plugin",
+                    enableForWorkspaceTypeScriptVersions = true,
+                    languages = { "astro" },
+                },
+                {
+                    name = "@mdxjs/typescript-plugin",
+                    location = require("mason-registry").get_package("mdx-analyzer"):get_install_path()
+                        .. "/node_modules/@mdx/language-server",
+                    languages = { "mdx" },
+                },
             },
         },
-        filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+        filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "astro" },
     },
     tailwindcss = {
         filetypes = {
@@ -108,6 +129,11 @@ local config = {
             ["nil"] = {
                 nix = { flake = { autoArchive = false } },
             },
+        },
+    },
+    mdx_analyzer = {
+        init_options = {
+            typescript = {},
         },
     },
 }

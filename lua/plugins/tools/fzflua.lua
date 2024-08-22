@@ -37,7 +37,7 @@ local keys = function()
             { "<esc>", "<c-c>", ft = "fzf", mode = "t", nowait = true },
             { "<leader>f", "<cmd>FzfLua files<CR>", desc = "find files" },
             { "<leader>r", "<cmd>FzfLua oldfiles<CR>", desc = "recent files" },
-            { "<leader>w", "<cmd>FzfLua live_grep_native<CR>", desc = "live grep" },
+            { "<leader>w", "<cmd>FzfLua grep_project<CR>", desc = "live grep" },
         }
     else
         return { { "<esc>", "<c-c>", ft = "fzf", mode = "t", nowait = true } }
@@ -56,16 +56,18 @@ return {
     opts = {
         "default-title",
         winopts = { backdrop = false },
-        oldfiles = ivy,
+        oldfiles = merge { file_icons = "mini" },
         files = merge {
             file_icons = "mini",
+            git_icons = false,
             fd_opts = "-H -I "
-                .. "--exclude={.git,.kube,.idea,.vscode,.sass-cache,node_modules,build,.vscode-server,.virtualenvs,target} --type f --strip-cwd-prefix",
+                .. "-E '{.astro,.git,.kube,.idea,.vscode,.sass-cache,node_modules,build,.vscode-server,.virtualenvs,target}' "
+                .. "--type f --strip-cwd-prefix",
         },
         grep = {
             rg_opts = "--no-heading --line-number "
                 .. "--column --smart-case --hidden "
-                .. [[ --glob "!{**/.git/*,**/node_modules/*,**/package-lock.json,**/yarn.lock,.vscode-server,.virtualenvs}" ]],
+                .. [[ --glob "!{**/.git/*,**/node_modules/*,**/package-lock.json,pnpm-lock.yaml,**/yarn.lock,.vscode-server,.virtualenvs}" ]],
         },
     },
 }
