@@ -37,7 +37,7 @@ return {
 
         dashboard.section.buttons.val = {
             dashboard.button("f", "  Find file", "<cmd>FzfLua files<CR>"),
-            dashboard.button("i", "󰇽  Sessions", "<cmd>SessionManager load_session<CR>"),
+            dashboard.button("s", "󰇽  Sessions", "<cmd>SessionManager load_session<CR>"),
             dashboard.button("r", "  Recently used files", "<cmd>FzfLua oldfiles<CR>"),
             dashboard.button("p", "󰂖  Plugins", "<cmd>Lazy<CR>"),
             dashboard.button("q", "󰅚  Quit Neovim", "<cmd>qa<CR>"),

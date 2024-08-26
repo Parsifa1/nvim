@@ -17,6 +17,7 @@ M.lsp = {
     "tailwindcss",
     "nginx_language_server",
     "mdx_analyzer",
+    "hdl-checker",
 }
 
 M.tools = {
@@ -129,11 +130,6 @@ local config = {
             ["nil"] = {
                 nix = { flake = { autoArchive = false } },
             },
-        },
-    },
-    mdx_analyzer = {
-        init_options = {
-            typescript = {},
         },
     },
 }
