@@ -17,7 +17,6 @@ M.lsp = {
     "tailwindcss",
     "nginx_language_server",
     "mdx_analyzer",
-    "hdl-checker",
 }
 
 M.tools = {
@@ -134,8 +133,12 @@ local config = {
     },
 }
 
+if vim.uv.os_uname().sysname == "Windows_NT" then
+    table.insert(M.lsp, "hdl_checker")
+end
+
 -- NOTE: set clangd specially
-M.server["clangd"] = config["clangd"]
+table.insert(M.lsp, "clangd")
 
 for _, i in ipairs(M.lsp) do
     M.server[i] = config[i] or {}
