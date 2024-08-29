@@ -83,11 +83,6 @@ local opts = {
 
 return {
     "rcarriga/nvim-dap-ui",
-    dependencies = {
-        "mfussenegger/nvim-dap",
-    },
-    event = { "BufNewFile", "BufReadPre" },
-    opts = opts,
     keys = {
         {
             "<leader>du",
@@ -97,4 +92,5 @@ return {
             desc = "Toggle UI",
         },
     },
+    opts = opts,
 }

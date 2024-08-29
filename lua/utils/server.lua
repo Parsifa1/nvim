@@ -96,13 +96,13 @@ local config = {
                         .. "/node_modules/@vue/language-server",
                     languages = { "vue" },
                 },
-                {
-                    name = "@astrojs/ts-plugin",
-                    location = require("mason-registry").get_package("astro-language-server"):get_install_path()
-                        .. "/node_modules/@astro/ts-plugin",
-                    enableForWorkspaceTypeScriptVersions = true,
-                    languages = { "astro" },
-                },
+                -- {
+                --     name = "@astrojs/ts-plugin",
+                --     location = require("mason-registry").get_package("astro-language-server"):get_install_path()
+                --         .. "/node_modules/@astro/ts-plugin",
+                --     -- enableForWorkspaceTypeScriptVersions = true,
+                --     languages = { "astro" },
+                -- },
                 {
                     name = "@mdxjs/typescript-plugin",
                     location = require("mason-registry").get_package("mdx-analyzer"):get_install_path()
@@ -111,7 +111,7 @@ local config = {
                 },
             },
         },
-        filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "astro" },
+        filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
     },
     tailwindcss = {
         filetypes = {

@@ -27,6 +27,5 @@ return {
     dependencies = {
         "mfussenegger/nvim-dap",
     },
-    lazy = true,
     opts = opts,
 }

@@ -5,8 +5,9 @@ vim.fn.sign_define("DapBreakpointRejected", { text = "" })
 
 return {
     "mfussenegger/nvim-dap",
-    event = { "BufNewFile", "BufReadPre" },
+    ft = { "cpp" },
     specs = { "nvim-neotest/nvim-nio" },
+    dependencies = { "rcarriga/nvim-dap-ui", "theHamsta/nvim-dap-virtual-text" },
     config = function()
         local dap = require "dap"
         dap.adapters.codelldb = {
