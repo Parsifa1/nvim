@@ -1,6 +1,5 @@
 local custom = require "custom"
 local opts = {
-    -- preset = "helix",
     show_help = true,
     win = { border = custom.border },
     plugins = { presets = { z = true } },
@@ -10,6 +9,18 @@ local opts = {
     defer = function(ctx)
         return ctx.keys == "`" or ctx.mode == "V" or ctx.mode == "<C-V>" or ctx.mode == "v"
     end,
+    replace = {
+        desc = {
+            { "<Plug>%((.*)%)", "%1" },
+            { "^%+", "" },
+            { "<[cC]md>", "" },
+            { "<[cC][rR]>", "" },
+            { "<[sS]ilent>", "" },
+            { "^lua%s+", "" },
+            { "^call%s+", "" },
+            { "^:%s*", "" },
+        },
+    },
 }
 
 return {
@@ -22,7 +33,8 @@ return {
             { "<leader>g", group = "Git" },
             { "<leader>s", group = "Chore" },
             { "<leader>t", group = "Telescope" },
-            { "<leader>d", group = "Dap"},
+            { "<leader>d", group = "Dap" },
+            { "<leader>l", group = "Latex" },
         }
     end,
 }

@@ -4,7 +4,7 @@ return {
     "hedyhli/outline.nvim",
     -- event = "VeryLazy",
     keys = {
-        { "<leader>a", "<Cmd>Outline<CR>", desc = "Outline" },
+        { "<leader>o", "<Cmd>Outline<CR>", desc = "Outline" },
     },
     cmd = "Outline",
     opts = {

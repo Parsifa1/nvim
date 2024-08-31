@@ -8,7 +8,7 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("BufEnter", {
     pattern = "*",
     callback = function()
-        local ft = { "markdown", "typst" }
+        local ft = { "markdown", "typst", "Avante" }
         for _, v in ipairs(ft) do
             if vim.bo.filetype == v then
                 vim.wo.wrap = true
@@ -97,4 +97,3 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
         end)
     end,
 })
-
