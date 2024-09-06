@@ -1,14 +1,13 @@
 ---@type LazyPluginSpec
 
 return {
-    "jhonnyV-V/codesnap.nvim",
-    branch = "feature/wsl-copy-to-clipboard",
+    "mistricky/codesnap.nvim",
     cmd = { "CodeSnap", "CodeSnapSave" },
     enabled = vim.uv.os_uname().sysname == "Linux",
     build = "make",
     opts = {
         save_path = "/mnt/e/Aldric/Desktop/",
-        code_font_family = "Iosevka Cloudtide",
+        code_font_family = "IosevkaCloudtide Nerd Font",
         bg_theme = "summer",
     },
 }

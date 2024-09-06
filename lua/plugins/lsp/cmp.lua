@@ -142,7 +142,7 @@ return {
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-nvim-lsp-signature-help",
-        "FelipeLema/cmp-async-path",
+        { "FelipeLema/cmp-async-path", url = "https://codeberg.org/FelipeLema/cmp-async-path" },
         "hrsh7th/cmp-cmdline",
         "dmitmel/cmp-cmdline-history",
         "saadparwaiz1/cmp_luasnip",

@@ -27,7 +27,7 @@ return {
                 typescriptreact = { "prettier" },
                 yaml = { "prettier" },
                 typst = { "typstyle" },
-                nix = { "alejandra" },
+                nix = { "nixfmt" },
             },
             formatters = {
                 clang_format = {

@@ -9,7 +9,7 @@ M.lsp = {
     "astro",
     "taplo",
     "jsonls",
-    "tsserver",
+    "ts_ls",
     "pyright",
     "lua_ls",
     "tinymist",
