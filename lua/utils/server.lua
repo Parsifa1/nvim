@@ -3,21 +3,19 @@ local config = require "utils.lspconfig"
 M = { server = {} }
 
 M.lsp = {
-    "volar",
-    "html",
-    "yamlls",
-    "gopls",
     "astro",
-    "taplo",
-    "jsonls",
+    "html",
     "ts_ls",
-    "pyright",
+    "gopls",
     "lua_ls",
-    "tinymist",
+    "jsonls",
+    "yamlls",
+    "taplo",
     "marksman",
     "tailwindcss",
-    "nginx_language_server",
     "mdx_analyzer",
+    "tinymist",
+    "nginx_language_server",
 }
 
 M.tools = {
@@ -36,9 +34,11 @@ local windows_nt = {
     "omnisharp",
 }
 
-local locally = {
+local system = {
     "clangd",
+    "pyright",
     "nil_ls",
+    "hls",
 }
 
 if vim.uv.os_uname().sysname == "Windows_NT" then
@@ -48,6 +48,6 @@ if vim.uv.os_uname().sysname == "Windows_NT" then
 end
 
 custom.register(M.server, M.lsp, config)
-custom.register(M.server, locally, config)
+custom.register(M.server, system, config)
 
 return M
