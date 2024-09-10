@@ -258,7 +258,7 @@ local append_space = function(icons)
     return result
 end
 
-M.set = function(mode, keys, func, ...)
+function M.set(mode, keys, func, ...)
     local options = { noremap = true, silent = true }
     local arg = { ... }
     if #arg > 0 then
@@ -267,6 +267,16 @@ M.set = function(mode, keys, func, ...)
     end
 
     vim.keymap.set(mode, keys, func, options)
+end
+
+function M.register(server, lsp, config)
+    for _, i in ipairs(lsp) do
+        server[i] = config[i] or {}
+        local capabilities = vim.lsp.protocol.make_client_capabilities()
+        capabilities.textDocument.foldingRange = { dynamicRegistration = false, lineFoldingOnly = true }
+        server[i]["capabilities"] = capabilities
+    end
+    return server
 end
 
 M.icons = {
