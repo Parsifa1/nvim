@@ -26,13 +26,20 @@ M.tools = {
     "stylua",
     "ruff",
     "typstyle",
+    "clang-format",
     -- dap
     "codelldb",
 }
 
-local windows_nt = { "hdl_checker", "omnisharp" }
+local windows_nt = {
+    "hdl_checker",
+    "omnisharp",
+}
 
-local locally = { "clangd", "nil_ls" }
+local locally = {
+    "clangd",
+    "nil_ls",
+}
 
 if vim.uv.os_uname().sysname == "Windows_NT" then
     for _, i in ipairs(windows_nt) do
