@@ -28,6 +28,7 @@ return {
                 yaml = { "prettier" },
                 typst = { "typstyle" },
                 nix = { "nixfmt" },
+                haskell = { "fourmolu" },
             },
             formatters = {
                 clang_format = {

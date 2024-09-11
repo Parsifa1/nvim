@@ -3,8 +3,9 @@ local config = require "utils.lspconfig"
 M = { server = {} }
 
 M.lsp = {
-    "astro",
     "html",
+    "volar",
+    "astro",
     "ts_ls",
     "gopls",
     "lua_ls",
@@ -12,9 +13,9 @@ M.lsp = {
     "yamlls",
     "taplo",
     "marksman",
+    "tinymist",
     "tailwindcss",
     "mdx_analyzer",
-    "tinymist",
     "nginx_language_server",
 }
 
@@ -23,26 +24,27 @@ M.tools = {
     "prettier",
     "stylua",
     "ruff",
+    "fourmolu",
     "typstyle",
     "clang-format",
     -- dap
     "codelldb",
 }
 
-local windows_nt = {
+local system = {
+    "hls",
+    "nixd",
+    "clangd",
+    "pyright",
+}
+
+local windows = {
     "hdl_checker",
     "omnisharp",
 }
 
-local system = {
-    "clangd",
-    "pyright",
-    "nil_ls",
-    "hls",
-}
-
 if vim.uv.os_uname().sysname == "Windows_NT" then
-    for _, i in ipairs(windows_nt) do
+    for _, i in ipairs(windows) do
         table.insert(M.lsp, i)
     end
 end
