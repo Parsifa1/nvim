@@ -63,7 +63,7 @@ local opts = {
                 "-I",
                 "--type",
                 "f",
-                "--exclude={.git,.idea,.vscode,.sass-cache,node_modules,build,.vscode-server,.virtualenvs,.cache,.ghcup,.conda,.rustup,.cargo,.local,target}",
+                "--exclude={.astro,.git,.kube,.idea,.vscode,.sass-cache,node_modules,build,.vscode-server,.virtualenvs,target}",
                 "--strip-cwd-prefix",
             },
             theme = "ivy",
@@ -84,7 +84,7 @@ local opts = {
                 "--smart-case",
                 "--hidden",
                 "--glob", -- this flag allows you to hide exclude these files and folders from your search 👇
-                "!{**/.git/*,**/node_modules/*,**/package-lock.json,**/yarn.lock,.vscode-server,.virtualenvs}",
+                "!{**/.git/*,**/node_modules/*,**/package-lock.json,pnpm-lock.yaml,**/yarn.lock,.vscode-server,.virtualenvs}",
             },
             layout_strategy = "horizontal",
             layout_config = {
