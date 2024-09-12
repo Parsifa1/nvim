@@ -106,7 +106,7 @@ vim.api.nvim_create_autocmd("User", {
         end
 
         if vim.bo.filetype == "alpha" then
-            vim.api.nvim_create_autocmd("BufEnter", {
+            vim.api.nvim_create_autocmd("BufRead", {
                 once = true,
                 callback = _trigger,
             })
