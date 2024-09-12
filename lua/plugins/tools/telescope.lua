@@ -161,7 +161,7 @@ return {
             { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
             "nvim-lua/popup.nvim",
         },
-        event = { "CursorHold", "CursorHoldI" },
+        event = {"User AfterLoad", "CursorHold", "CursorHoldI" },
         keys = keys(),
         cmd = "Telescope",
         opts = opts,
