@@ -118,6 +118,11 @@ M.config = {
         organize_imports_on_format = true,
         enable_import_completion = true,
     },
+    hls = {
+        root_dir = function()
+            return vim.fn.getcwd()
+        end,
+    }
 }
 
 return M

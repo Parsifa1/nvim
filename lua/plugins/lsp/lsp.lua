@@ -56,12 +56,15 @@ local config = function()
             end
         end,
     })
+
+    vim.api.nvim_command "LspStart"
 end
 
 return {
     {
         "neovim/nvim-lspconfig",
-        event = { "BufReadPre", "BufNewFile" },
+        -- event = { "BufReadPre", "BufNewFile" },
+        event = "User AfterLoad",
         cmd = "LspInfo",
         config = config,
     },

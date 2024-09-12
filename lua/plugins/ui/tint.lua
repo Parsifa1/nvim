@@ -1,5 +1,5 @@
 return {
     "levouh/tint.nvim",
-    event = { "BufNewFile", "BufReadPre" },
+    event = "User AfterLoad",
     opts = {},
 }

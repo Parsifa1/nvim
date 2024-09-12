@@ -1,7 +1,7 @@
 return {
     "chentoast/marks.nvim",
     enabled = false,
-    event = { "BufNewFile", "BufReadPre" },
+    event = "User AfterLoad",
     config = function()
         require("marks").setup {}
     end,

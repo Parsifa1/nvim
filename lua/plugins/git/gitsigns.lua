@@ -1,6 +1,6 @@
 return {
     "lewis6991/gitsigns.nvim",
-    event = { "BufNewFile", "BufReadPre" },
+    event = "User AfterLoad",
     dependencies = "nvim-lua/plenary.nvim",
     keys = {
         { "<leader>gb", "<Cmd>Gitsigns blame_line<CR>", desc = "gitsigns blame" },

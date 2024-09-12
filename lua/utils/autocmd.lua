@@ -97,3 +97,21 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
         end)
     end,
 })
+
+vim.api.nvim_create_autocmd("User", {
+    pattern = "VeryLazy",
+    callback = function()
+        local function _trigger()
+            vim.api.nvim_exec_autocmds("User", { pattern = "AfterLoad" })
+        end
+
+        if vim.bo.filetype == "alpha" then
+            vim.api.nvim_create_autocmd("BufEnter", {
+                once = true,
+                callback = _trigger,
+            })
+        else
+            _trigger()
+        end
+    end,
+})

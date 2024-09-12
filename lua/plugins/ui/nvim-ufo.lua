@@ -1,7 +1,7 @@
 ---@diagnostic disable: assign-type-mismatch
 return {
     "kevinhwang91/nvim-ufo",
-    event = "BufReadPost",
+    event = "User AfterLoad",
     dependencies = "kevinhwang91/promise-async",
     init = function()
         local set_foldcolumn_for_file = vim.api.nvim_create_augroup("set_foldcolumn_for_file", {
@@ -70,6 +70,7 @@ return {
                 vim.opt_local.foldenable = false
             end,
         })
+        ---@diagnostic disable-next-line: missing-fields
         require("ufo").setup {
             close_fold_kinds_for_ft = {
                 default = { "imports", "comment" },

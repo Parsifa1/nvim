@@ -12,7 +12,7 @@ return {
             end
             return "make install_jsregexp"
         end)(),
-        event = { "BufNewFile", "BufReadPost" },
+        event = "User AfterLoad",
         config = function()
             require("luasnip").config.setup { enable_autosnippets = true }
             require("luasnip.loaders.from_lua").lazy_load { paths = vim.fn.stdpath "config" .. "/lua/snippets" }
@@ -21,7 +21,7 @@ return {
     },
     {
         "TwIStOy/luasnip-snippets",
-        event = { "BufNewFile", "BufReadPost" },
+        -- event = "User AfterLoad",
         dependencies = { "L3MON4D3/LuaSnip" },
         opts = {
             disable_auto_expansion = {

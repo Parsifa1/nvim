@@ -6,7 +6,7 @@ end
 
 return {
     "folke/flash.nvim",
-    event = { "BufNewFile", "BufReadPre" },
+    event = "User AfterLoad",
     opts = {
         labels = "asdfghjklqwertyuiopzxcvbnm",
         remote = {

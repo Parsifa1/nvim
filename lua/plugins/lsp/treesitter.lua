@@ -1,8 +1,8 @@
 return {
     "nvim-treesitter/nvim-treesitter",
     -- dependencies = { "RRethy/nvim-treesitter-textsubjects", "nvim-treesitter/nvim-treesitter-textobjects" },
-    event = { "BufNewFile", "BufReadPre" },
-    cmd = { "TSUpdate", "TSInstall", "TSInstallInfo " },
+    event = { "BufNewFile", "BufRead" },
+    cmd = { "TSUpdate", "TSInstall", "TSInstallInfo" },
     build = ":TSUpdate",
     config = function()
         require("nvim-treesitter.install").prefer_git = true

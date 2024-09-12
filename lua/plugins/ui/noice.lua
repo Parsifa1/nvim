@@ -1,7 +1,7 @@
 return {
     "folke/noice.nvim",
     version = "v4.4.7",
-    event = { "BufNewFile", "BufReadPre" },
+    event = "User AfterLoad",
     dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
     keys = {
         { "<leader>n", "<cmd>NoiceAll<CR>", desc = "open Noice" },

@@ -165,7 +165,7 @@ local opts = {
 }
 return {
     "nvim-lualine/lualine.nvim",
-    event = { "BufNewFile", "BufReadPre" },
+    event = "User AfterLoad",
     dependencies = { "parsifa1/nvim-web-devicons", "ofseed/copilot-status.nvim" },
     config = function()
         local auto = require "lualine.themes.auto"
