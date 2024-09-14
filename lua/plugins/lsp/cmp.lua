@@ -137,7 +137,9 @@ local opts = function()
 end
 
 return {
-    "hrsh7th/nvim-cmp",
+    -- "hrsh7th/nvim-cmp",
+    "yioneko/nvim-cmp",
+    branch = "perf",
     dependencies = {
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-nvim-lsp",

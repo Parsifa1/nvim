@@ -1,5 +1,5 @@
 local custom = require "custom"
-local config = require "utils.lspconfig"
+local config = require("utils.lspconfig").config
 M = { server = {} }
 
 M.lsp = {
@@ -24,7 +24,6 @@ M.tools = {
     "prettier",
     "stylua",
     "ruff",
-    "fourmolu",
     "typstyle",
     "clang-format",
     -- dap
@@ -32,10 +31,12 @@ M.tools = {
 }
 
 local system = {
+    -- lsp
     "hls",
     "nixd",
     "clangd",
     "pyright",
+    -- formatter
 }
 
 local windows = {

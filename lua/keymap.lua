@@ -46,7 +46,6 @@ local keymap = {
     { mode = mode_n,      from = "zv",               to = "<C-w>v",                                desc = "vsplit current window" },
     { mode = mode_n,      from = "zo",               to = "<C-w>o" ,                               desc = "only current window" },
     { mode = mode_n,      from = "<leader>p",        to = "<cmd>Lazy<CR>",                         desc = "lazy" },
-    { mode = mode_n,      from = "<leader>cd",       to = "<cmd>cd %:p:h<CR>",                     desc = "[C][D] current file" },
     { mode = mode_n,      from = "<leader>bd",       to = "<cmd>bd<CR>",                           desc = "[B]uffer [D]elete" },
     { mode = mode_n,      from = "<leader>sw",       to = "<cmd>set wrap!<CR>",                    desc = "toggle warp" },
     { mode = mode_n,      from = "<leader><leader>", to = "<cmd>noh<CR>",                          desc = "clear highlight" },

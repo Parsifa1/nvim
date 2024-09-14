@@ -104,7 +104,7 @@ end
 
 local function split()
     FloatWin:Create({
-        width = 0.40,
+        width = 0.45,
         height = 0.87,
         title = " Code Runner ",
     }, {

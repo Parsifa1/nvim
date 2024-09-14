@@ -276,6 +276,7 @@ function M.register(server, lsp, config)
         capabilities.textDocument.foldingRange = { dynamicRegistration = false, lineFoldingOnly = true }
         server[i]["capabilities"] = capabilities
     end
+    return server
 end
 
 M.icons = {

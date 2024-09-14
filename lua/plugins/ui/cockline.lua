@@ -4,7 +4,8 @@ return {
         { "[b", "<Plug>(cokeline-focus-prev)", desc = "previous buffer" },
         { "]b", "<Plug>(cokeline-focus-next)", desc = "next buffer" },
     },
-    event = "User AfterLoad",
+    -- event = "User AfterLoad",
+    event = { "BufRead", "BufNewFile" },
     dependencies = { "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons" },
     config = function()
         local get_hex = require("cokeline.hlgroups").get_hl_attr

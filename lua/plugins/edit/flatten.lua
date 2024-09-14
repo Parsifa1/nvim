@@ -1,6 +1,6 @@
 return {
     "willothy/flatten.nvim",
-    event = "User AfterLoad",
+    event = { "BufNewFile", "BufReadPost" },
     opts = {
         nest_if_no_args = true,
         window = {

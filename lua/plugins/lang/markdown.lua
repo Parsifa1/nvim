@@ -16,10 +16,10 @@ return {
         end,
     },
     {
-        "OXY2DEV/markview.nvim",
-        enabled = true,
-        dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
-        ft = "markdown",
-        opts = {},
+        "MeanderingProgrammer/render-markdown.nvim",
+        opts = {
+            file_types = { "markdown", "Avante" },
+        },
+        ft = { "markdown", "Avante" },
     },
 }

@@ -56,7 +56,7 @@ local fread = s("fread", {
     t {
         "inline auto read() {",
         "    std::cin.tie(nullptr)->sync_with_stdio(false); ",
-        "    return [](i64 x) { return std::cin >> x, x; }(0); ",
+        "    return [](auto x) { return std::cin >> x, x; }(0ll); ",
         "}",
     },
 })
@@ -68,7 +68,7 @@ local acm = s("acm", {
         "",
         "inline auto read() {",
         "    std::cin.tie(nullptr)->sync_with_stdio(false);",
-        "    return [](i64 x) { return std::cin >> x, x; }(0);",
+        "    return [](auto x) { return std::cin >> x, x; }(0ll);",
         "}",
         "",
         "void solve() {",

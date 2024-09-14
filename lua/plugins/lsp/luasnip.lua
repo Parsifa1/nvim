@@ -2,7 +2,11 @@
 return {
     {
         "L3MON4D3/LuaSnip",
-        dependencies = { "rafamadriz/friendly-snippets", "nvim-treesitter/nvim-treesitter" },
+        dependencies = {
+            "rafamadriz/friendly-snippets",
+            "nvim-treesitter/nvim-treesitter",
+            "TwIStOy/luasnip-snippets",
+        },
         build = (function()
             -- Build Step is needed for regex support in snippets
             -- This step is not supported in many windows environments
@@ -21,7 +25,6 @@ return {
     },
     {
         "TwIStOy/luasnip-snippets",
-        -- event = "User AfterLoad",
         dependencies = { "L3MON4D3/LuaSnip" },
         opts = {
             disable_auto_expansion = {

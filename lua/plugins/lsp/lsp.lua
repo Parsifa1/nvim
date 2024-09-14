@@ -8,21 +8,27 @@ local config = function()
         local set = function(keys, func, indesc)
             vim.keymap.set("n", keys, func, { buffer = bufnr, desc = indesc })
         end
+        set("K", vim.lsp.buf.hover, "hover")
         set("gD", vim.lsp.buf.declaration, "declaration")
         set("gd", vim.lsp.buf.definition, "definition")
-        set("K", vim.lsp.buf.hover, "hover")
-        set("<gk>", vim.lsp.buf.signature_help, "LSP Signature help")
+        set("gk", vim.lsp.buf.signature_help, "LSP Signature help")
         set("gi", vim.lsp.buf.implementation, "implementation")
         set("gr", require("telescope.builtin").lsp_references, "[R]eferences")
+        set("[d", vim.diagnostic.goto_prev, "Previous Diagnostic")
+        set("]d", vim.diagnostic.goto_next, "Next Diagnostic")
         set("<leader>ca", require("fastaction").code_action, "[C]ode [A]ction")
         set("<leader>cn", vim.lsp.buf.rename, "[C]ode Item Re[N]ame")
         set("<leader>ct", vim.lsp.buf.type_definition, "[C]ode [T]ype definition")
+        set("<leader>cd", vim.diagnostic.open_float, "[C]ode [D]iagnostic")
     end
 
     vim.diagnostic.config {
-        jump = { float = { border = custom.border } },
         virtual_text = { spacing = 4 },
-        float = { severity_sort = true, source = "if_many" },
+        float = {
+            border = custom.border,
+            severity_sort = true,
+            source = "if_many",
+        },
         severity_sort = true,
         signs = {
             text = {
