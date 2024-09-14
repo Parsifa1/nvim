@@ -1,5 +1,5 @@
 local custom = require "custom"
-local config = require("utils.lspconfig").config
+local config = require "utils.lspconfig".config
 M = { server = {} }
 
 M.lsp = {
