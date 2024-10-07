@@ -4,7 +4,7 @@ vim.api.nvim_create_autocmd("FileType", {
     command = "set formatoptions-=ro",
 })
 
--- set wrap only for markdown
+-- set wrap only for markdown and typst
 vim.api.nvim_create_autocmd("BufEnter", {
     pattern = "*",
     callback = function()
@@ -25,6 +25,25 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
     callback = function()
         vim.highlight.on_yank()
+    end,
+})
+
+-- customize VeryLazy load
+vim.api.nvim_create_autocmd("User", {
+    pattern = "VeryLazy",
+    callback = function()
+        local function _trigger()
+            vim.api.nvim_exec_autocmds("User", { pattern = "AfterLoad" })
+        end
+
+        if vim.bo.filetype == "alpha" then
+            vim.api.nvim_create_autocmd("BufRead", {
+                once = true,
+                callback = _trigger,
+            })
+        else
+            _trigger()
+        end
     end,
 })
 
@@ -95,23 +114,5 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
         vim.schedule(function()
             vim.bo[ev.buf].syntax = vim.filetype.match { buf = ev.buf } or ""
         end)
-    end,
-})
-
-vim.api.nvim_create_autocmd("User", {
-    pattern = "VeryLazy",
-    callback = function()
-        local function _trigger()
-            vim.api.nvim_exec_autocmds("User", { pattern = "AfterLoad" })
-        end
-
-        if vim.bo.filetype == "alpha" then
-            vim.api.nvim_create_autocmd("BufRead", {
-                once = true,
-                callback = _trigger,
-            })
-        else
-            _trigger()
-        end
     end,
 })

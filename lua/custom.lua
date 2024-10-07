@@ -273,7 +273,7 @@ function M.register(server, lsp, config)
     for _, i in ipairs(lsp) do
         server[i] = config[i] or {}
         local capabilities = vim.lsp.protocol.make_client_capabilities()
-        capabilities.textDocument.foldingRange = { dynamicRegistration = false, lineFoldingOnly = true }
+        capabilities.textDocument.foldingRange = { dynamicRegistration = false }
         server[i]["capabilities"] = capabilities
     end
     return server

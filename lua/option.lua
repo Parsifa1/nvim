@@ -28,7 +28,7 @@ vim.opt.undofile = true --save undo file
 
 -- ui config
 vim.opt.number = true -- add numbers to each line on the left side
-vim.opt.relativenumber = true --show relative number
+-- vim.opt.relativenumber = true --show relative number
 vim.opt.cursorline = false -- highlight cursor line underneath the cursor horizontally
 vim.opt.splitbelow = true -- open new vertical split bottom
 vim.opt.splitright = true -- open new horizontal splits right
