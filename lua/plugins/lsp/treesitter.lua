@@ -7,21 +7,25 @@ return {
     config = function()
         require("nvim-treesitter.install").prefer_git = true
         require("nvim-treesitter.configs").setup {
-            highlight = { enable = true, additional_vim_regex_highlighting = false },
             auto_install = true,
-            ignore_install = { "latex" },
+            highlight = {
+                enable = true,
+                disable = { "latex" },
+                additional_vim_regex_highlighting = false,
+            },
             ensure_installed = {
                 "cpp",
                 "lua",
                 "rust",
                 "python",
-                "markdown",
                 "vim",
                 "regex",
                 "bash",
                 "markdown_inline",
                 "comment",
                 "yaml",
+                "latex",
+                "markdown",
                 "fish",
                 "html",
                 "css",

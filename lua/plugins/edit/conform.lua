@@ -23,6 +23,7 @@ return {
                 javascript = { "prettier" },
                 typescript = { "prettier" },
                 markdown = { "prettier" },
+                css = { "prettier" },
                 javascriptreact = { "prettier" },
                 typescriptreact = { "prettier" },
                 yaml = { "prettier" },

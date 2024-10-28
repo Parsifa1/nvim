@@ -36,7 +36,6 @@ local system = {
     "nixd",
     "clangd",
     "pyright",
-    -- formatter
 }
 
 local windows = {

@@ -1,8 +1,17 @@
 ---@diagnostic disable: undefined-global, unused-local
+-- dotfiles show/unsow
+local show_dotfiles = false
+local filter_show = function(fs_entry)
+    return true
+end
 local filter_hide = function(fs_entry)
     return not vim.startswith(fs_entry.name, ".")
 end
-
+local filter_dot = function(fs_entry)
+    -- print(show_dotfiles)
+    return show_dotfiles and filter_show(fs_entry) or filter_hide(fs_entry)
+end
+-- custom sort
 local custom_sort = function(fs_entries)
     local res = vim.tbl_map(function(x)
         local ext = x.name:match ".+%.(%w+)$" or ""
@@ -71,24 +80,13 @@ local init = function()
         end,
     })
 
-    local show_dotfiles = false
     -- show/unsow dotfile and set save keymap
-    vim.api.nvim_create_autocmd("User", {
-        pattern = "MiniFilesExplorerClose",
-        callback = function()
-            show_dotfiles = false
-        end,
-    })
     vim.api.nvim_create_autocmd("User", {
         pattern = "MiniFilesBufferCreate",
         callback = function(args)
-            local filter_show = function(fs_entry)
-                return true
-            end
             local toggle_dotfiles = function()
                 show_dotfiles = not show_dotfiles
-                local new_filter = show_dotfiles and filter_show or filter_hide
-                MiniFiles.refresh { content = { filter = new_filter } }
+                MiniFiles.refresh { content = { filter = filter_dot } }
             end
             local buf_id = args.data.buf_id
             vim.keymap.set("n", ".", toggle_dotfiles, { desc = "show dotfiles", buffer = buf_id })
@@ -121,7 +119,7 @@ return {
     init = init,
     opts = {
         content = {
-            filter = filter_hide,
+            filter = filter_dot,
             sort = custom_sort,
         },
         mappings = {

@@ -138,8 +138,8 @@ end
 
 return {
     -- "hrsh7th/nvim-cmp",
-    "yioneko/nvim-cmp",
-    branch = "perf",
+    "iguanacucumber/magazine.nvim",
+    name = "nvim-cmp",
     dependencies = {
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-nvim-lsp",
