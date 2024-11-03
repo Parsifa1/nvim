@@ -64,6 +64,7 @@ vim.opt.showmode = false
 
 -- add filetype
 vim.filetype.add { extension = { mdx = "markdown.mdx" } }
+-- add queries path
 vim.opt.runtimepath:append "~/.config/nvim/lua/queries"
 
 -- close node && perl
