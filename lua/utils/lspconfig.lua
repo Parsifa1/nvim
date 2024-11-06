@@ -17,6 +17,11 @@ M.config = {
             "--header-insertion=never",
             "--offset-encoding=utf-16",
         },
+        init_options = {
+            fallbackFlags = {
+                "-std=c++2b",
+            },
+        },
     },
     pyright = {
         cmd = { "delance-langserver", "--stdio" },
