@@ -34,9 +34,6 @@ return {
             formatters = {
                 clang_format = {
                     command = "clang-format",
-                    prepend_args = {
-                        "-style=file:/home/parsifa1/.clang-format",
-                    },
                 },
                 prettier = {
                     prepend_args = {

@@ -19,7 +19,13 @@ M.config = {
         },
         init_options = {
             fallbackFlags = {
-                "-std=c++2b",
+                "-Wall",
+                "-Wno-unused-variable",
+                "-Wno-unknown-attributes  ",
+                "-Wno-unused-but-set-variable ",
+                "-fsyntax-only",
+                "-static-libgcc",
+                "l stdc++",
             },
         },
     },
