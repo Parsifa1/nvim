@@ -20,6 +20,7 @@ require("lazy").setup {
     ui = { border = "rounded", backdrop = 100 },
     install = { colorscheme = { "gruvbox-material" } },
     diff = { cmd = "browser" },
+    -- git = { url_format = "git@github.com:%s.git" },
     performance = {
         cache = { enabled = true },
         reset_packpath = true,
