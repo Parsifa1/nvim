@@ -19,6 +19,7 @@ M.config = {
         },
         init_options = {
             fallbackFlags = {
+                "-std=c++2b",
                 "-Wall",
                 "-Wno-unused-variable",
                 "-Wno-unknown-attributes  ",
@@ -141,9 +142,9 @@ M.config = {
                     ["semanticTokens"] = {
                         globalOn = true,
                     },
-                }
-            }
-        }
+                },
+            },
+        },
     },
 }
 
