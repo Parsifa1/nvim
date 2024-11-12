@@ -39,7 +39,7 @@ local system = {
 }
 
 local windows = {
-    "hdl_checker",
+    "verible",
     "omnisharp",
 }
 

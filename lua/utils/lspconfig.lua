@@ -146,6 +146,12 @@ M.config = {
             },
         },
     },
+    verible = {
+        cmd = { "verible-verilog-ls", "--rules=-explicit-parameter-storage-type" },
+        root_dir = function()
+            return vim.fn.getcwd()
+        end,
+    },
 }
 
 return M
