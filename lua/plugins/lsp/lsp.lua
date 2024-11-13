@@ -42,6 +42,7 @@ local config = function()
 
     -- lspconfig
     for lsp, config in (vim.iter(server)) do
+        config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
         lspconfig[lsp].setup(config)
     end
 
