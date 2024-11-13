@@ -5,7 +5,6 @@ return {
     event = { "CursorHold", "CursorHoldI", "User AfterLoad" },
     build = "cargo build --release",
 
-    ---@type blink.cmp.Config
     opts = {
         sources = {
             completion = {
