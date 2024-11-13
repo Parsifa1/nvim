@@ -1,11 +1,35 @@
+local custom = require "custom"
+
 return {
     "saghen/blink.cmp",
     event = { "CursorHold", "CursorHoldI", "User AfterLoad" },
-    dependencies = "rafamadriz/friendly-snippets",
-    version = "v0.*",
+    build = "cargo build --release",
 
-    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
     opts = {
+        sources = {
+            completion = {
+                enabled_providers = {
+                    "lsp",
+                    "path",
+                    "snippets",
+                    "buffer",
+                    "lazydev",
+                },
+            },
+            providers = {
+                lsp = {
+                    name = "LSP",
+                    fallback_for = {
+                        "lazydev",
+                    },
+                },
+                lazydev = {
+                    name = "Development",
+                    module = "lazydev.integrations.blink",
+                },
+            },
+        },
         keymap = {
             ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
             ["<C-e>"] = { "hide", "fallback" },
@@ -26,20 +50,30 @@ return {
             autocomplete = {
                 border = "rounded",
                 winhighlight = "Normal:None,FloatBorder:None,CursorLine:BlinkCmpMenuSelection,Search:None",
+                draw = {
+                    columns = { { "kind_icon" }, { "label", "label_description", gap = 1 }, { "provider" } },
+                    components = {
+                        provider = {
+                            text = function(ctx)
+                                return "[" .. ctx.item.source_name:sub(1, 3):upper() .. "]"
+                            end,
+                        },
+                    },
+                },
             },
         },
-
+        documentation = {
+            auto_show = true,
+            auto_show_delay_ms = 0,
+            update_delay_ms = 0,
+            border = "rounded",
+            scrollbar = false,
+        },
         highlight = {
             use_nvim_cmp_as_default = true,
         },
-        -- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
-        -- adjusts spacing to ensure icons are aligned
         nerd_font_variant = "mono",
-
-        -- experimental auto-brackets support
-        -- accept = { auto_brackets = { enabled = true } }
-
-        -- experimental signature help support
+        kind_icons = custom.icons.kind,
     },
     opts_extend = { "sources.completion.enabled_providers" },
 }

@@ -1,6 +1,6 @@
 return {
     "folke/noice.nvim",
-    version = "v4.4.7",
+    -- version = "v4.4.7",
     event = "User AfterLoad",
     dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
     keys = {
@@ -33,7 +33,7 @@ return {
             lsp_doc_border = true,
             long_message_to_split = true,
             bottom_search = true,
-            command_palette = true,
+            command_palette = false,
         },
         routes = {
             {
