@@ -3,9 +3,8 @@ return {
     build = "make",
     opts = {
         provider = "copilot",
-        -- claude = {
-        --     endpoint = "https://apic.ohmygpt.com/",
-        --     model = "claude-3-5-sonnet-20240620",
+        -- copilot = {
+        --     model = "claude-3.5-sonnet",
         -- },
         hints = { enabled = false },
     },
