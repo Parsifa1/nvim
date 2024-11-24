@@ -6,10 +6,10 @@ return {
 
     init = function()
         if vim.fn.argc() == 1 then
-            local stat = vim.loop.fs_stat(vim.fn.argv(0))
-            if stat and stat.type == "directory" then
-                require("lazy").load { plugins = { "oil.nvim" } }
-            end
+            -- local stat = vim.loop.fs_stat(vim.fn.argv(0))
+            -- if stat then
+            require("lazy").load { plugins = { "oil.nvim" } }
+            -- end
         end
         if not require("lazy.core.config").plugins["oil.nvim"]._.loaded then
             vim.api.nvim_create_autocmd("BufNew", {
