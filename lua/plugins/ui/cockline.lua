@@ -11,8 +11,6 @@ return {
         local get_hex = require("cokeline.hlgroups").get_hl_attr
         local errors_fg = get_hex("DiagnosticError", "fg")
         local warnings_fg = get_hex("DiagnosticWarn", "fg")
-        vim.api.nvim_set_hl(0, "TabLineNone", { bg = "NONE" })
-        vim.api.nvim_set_hl(0, "TabLineFocus", { fg = "#FCDCDD" })
         local components = {
             icon = {
                 text = function(buffer)
