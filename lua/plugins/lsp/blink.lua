@@ -25,7 +25,6 @@ return {
                 auto_show = true,
                 window = {
                     border = "rounded",
-                    max_height = 15,
                     scrollbar = false,
                 },
             },
@@ -37,29 +36,30 @@ return {
             },
         },
         snippets = {
-            expand = function(snippet) require('luasnip').lsp_expand(snippet) end,
+            expand = function(snippet)
+                require("luasnip").lsp_expand(snippet)
+            end,
             active = function(filter)
                 if filter and filter.direction then
-                    return require('luasnip').jumpable(filter.direction)
+                    return require("luasnip").jumpable(filter.direction)
                 end
-                return require('luasnip').in_snippet()
+                return require("luasnip").in_snippet()
             end,
-            jump = function(direction) require('luasnip').jump(direction) end,
+            jump = function(direction)
+                require("luasnip").jump(direction)
+            end,
         },
         sources = {
             completion = {
                 enabled_providers = { "lsp", "path", "snippets", "buffer", "lazydev" },
             },
             providers = {
-                lsp = {
-                    name = "LSP",
-                    fallback_for = {
-                        "lazydev",
-                    },
-                },
                 lazydev = {
                     name = "Development",
                     module = "lazydev.integrations.blink",
+                },
+                snippets = {
+                    opts = { ignored_filetypes = { "zig" } },
                 },
             },
         },
@@ -67,8 +67,8 @@ return {
             ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
             ["<C-e>"] = { "hide", "fallback" },
             ["<CR>"] = { "accept", "fallback" },
-            ['<Tab>'] = { 'select_next', 'snippet_forward', 'fallback' },
-            ["<S-Tab>"] = { "select_prev", 'snippet_backward', "fallback" },
+            ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
+            ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
 
             ["<Up>"] = { "select_prev", "fallback" },
             ["<Down>"] = { "select_next", "fallback" },

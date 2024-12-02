@@ -3,6 +3,7 @@ local config = require "utils.lspconfig".config
 M = { server = {} }
 
 M.lsp = {
+    "zls",
     "html",
     "volar",
     "astro",
