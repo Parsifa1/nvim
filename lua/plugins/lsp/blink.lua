@@ -51,15 +51,12 @@ return {
                 enabled_providers = { "lsp", "path", "snippets", "buffer", "lazydev" },
             },
             providers = {
-                lsp = {
-                    name = "LSP",
-                    fallback_for = {
-                        "lazydev",
-                    },
-                },
                 lazydev = {
                     name = "Development",
                     module = "lazydev.integrations.blink",
+                },
+                snippets = {
+                    opts = { ignored_filetypes = { "zig" }, }
                 },
             },
         },
