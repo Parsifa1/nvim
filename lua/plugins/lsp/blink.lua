@@ -31,9 +31,7 @@ return {
         },
         signature = {
             enabled = true,
-            window = {
-                border = "rounded",
-            },
+            window = { border = "rounded" },
         },
         snippets = {
             expand = function(snippet)
