@@ -11,6 +11,7 @@ return {
                 border = "rounded",
                 winhighlight = "Normal:None,FloatBorder:None,CursorLine:BlinkCmpMenuSelection,Search:None",
                 draw = {
+                    treesitter = true,
                     columns = { { "kind_icon" }, { "label", "label_description", gap = 1 }, { "provider" } },
                     components = {
                         provider = {
@@ -19,6 +20,13 @@ return {
                             end,
                         },
                     },
+                },
+            },
+            documentation = {
+                auto_show = true,
+                window = {
+                    border = "rounded",
+                    scrollbar = false,
                 },
             },
             accept = {
