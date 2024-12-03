@@ -3,9 +3,9 @@ return {
     build = "make",
     opts = {
         provider = "copilot",
-        -- copilot = {
-        --     model = "claude-3.5-sonnet",
-        -- },
+        copilot = {
+            model = "claude-3.5-sonnet",
+        },
         hints = { enabled = false },
     },
     keys = {
@@ -38,6 +38,6 @@ return {
         "nvim-lua/plenary.nvim",
         "MunifTanjim/nui.nvim",
         "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-        "zbirenbaum/copilot.lua",      -- for providers='copilot'
+        "zbirenbaum/copilot.lua", -- for providers='copilot'
     },
 }
