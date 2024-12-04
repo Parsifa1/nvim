@@ -7,6 +7,7 @@ return {
 
     opts = {
         completion = {
+            trigger = { show_in_snippet = false },
             menu = {
                 border = "rounded",
                 winhighlight = "Normal:None,FloatBorder:None,CursorLine:BlinkCmpMenuSelection,Search:None",
@@ -39,24 +40,6 @@ return {
                 },
             },
         },
-        signature = {
-            enabled = true,
-            window = { border = "rounded" },
-        },
-        snippets = {
-            expand = function(snippet)
-                require("luasnip").lsp_expand(snippet)
-            end,
-            active = function(filter)
-                if filter and filter.direction then
-                    return require("luasnip").jumpable(filter.direction)
-                end
-                return require("luasnip").in_snippet()
-            end,
-            jump = function(direction)
-                require("luasnip").jump(direction)
-            end,
-        },
         sources = {
             completion = {
                 enabled_providers = { "lsp", "path", "snippets", "buffer", "lazydev" },
@@ -72,9 +55,10 @@ return {
             },
         },
         keymap = {
-            ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+            ["<C-w>"] = { "show", "show_documentation", "hide_documentation" },
             ["<C-e>"] = { "hide", "fallback" },
             ["<CR>"] = { "accept", "fallback" },
+
             ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
             ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
 
@@ -83,8 +67,8 @@ return {
             ["<C-j>"] = { "select_next", "fallback" },
             ["<C-k>"] = { "select_prev", "fallback" },
 
-            ["<C-b>"] = { "scroll_documentation_up", "fallback" },
-            ["<C-f>"] = { "scroll_documentation_down", "fallback" },
+            ["<C-u>"] = { "scroll_documentation_up", "fallback" },
+            ["<C-d>"] = { "scroll_documentation_down", "fallback" },
         },
         appearance = {
             use_nvim_cmp_as_default = true,
