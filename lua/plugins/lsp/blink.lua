@@ -7,8 +7,12 @@ return {
 
     opts = {
         completion = {
-            trigger = { show_in_snippet = false },
+            trigger = {
+                show_in_snippet = false,
+                show_on_x_blocked_trigger_characters = { "'", '"', "(", "{" },
+            },
             menu = {
+                show_in_snippet = false,
                 border = "rounded",
                 winhighlight = "Normal:None,FloatBorder:None,CursorLine:BlinkCmpMenuSelection,Search:None",
                 draw = {

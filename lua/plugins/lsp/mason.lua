@@ -13,7 +13,7 @@ return {
         },
         config = function()
             require("mason").setup {
-                -- PATH = "append", -- NOTE:为了兼容NIXOS
+                PATH = "append", -- NOTE:为了兼容NIXOS
                 registries = {
                     "github:mason-org/mason-registry",
                     "github:Parsifa1/mason-registry",
