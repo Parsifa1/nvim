@@ -1,11 +1,12 @@
 return {
     "folke/snacks.nvim",
-    event = { "User AfterLoad", "LspAttach" },
+    event = { "BufRead", "LspAttach" },
     opts = {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-        bigfile = { enabled = false },
+        bigfile = {
+            enabled = true,
+            notify = true, -- show notification when big file detected
+            size = 1024 * 1024 * 0.39, -- 1.5MB
+        },
         notifier = { enabled = false },
         quickfile = { enabled = false },
         statuscolumn = { enabled = false },

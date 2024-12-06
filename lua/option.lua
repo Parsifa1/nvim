@@ -50,9 +50,6 @@ vim.opt.timeoutlen = 500 -- time to wait for a mapped sequence to complete (in m
 -- asyncrun setting
 vim.g.asyncrun_open = 6
 
--- Set filetype to `bigfile` for files larger than 1.5 MB
-vim.g.bigfile_size = 1024 * 1024 * 0.39
-
 -- no fold
 vim.opt.foldlevel = 99
 
