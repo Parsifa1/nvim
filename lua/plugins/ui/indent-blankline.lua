@@ -14,6 +14,9 @@ return {
         require("ibl").setup(opts)
 
         local hooks = require "ibl.hooks"
-        hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
+        hooks.register(hooks.type.ACTIVE, function(_)
+            local unuse = { "oil" } -- filetype that should not use indent-blankline
+            return not vim.tbl_contains(unuse, vim.bo.filetype)
+        end)
     end,
 }
