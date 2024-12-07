@@ -1,5 +1,6 @@
 return {
     "3rd/image.nvim",
+    enabled = vim.fn.hostname() ~= "debian",
     -- enabled = false,
     ft = "markdown",
     config = function()
