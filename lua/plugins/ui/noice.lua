@@ -80,6 +80,13 @@ return {
             {
                 filter = {
                     event = "notify",
+                    find = "position_encoding",
+                },
+                opts = { skip = true },
+            },
+            {
+                filter = {
+                    event = "notify",
                     find = "telescope.builtin.buffers",
                 },
                 opts = { skip = true },

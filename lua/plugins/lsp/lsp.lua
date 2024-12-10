@@ -1,21 +1,20 @@
 local config = function()
-    require("lspconfig.ui.windows").default_options.border = "rounded"
-    local lspconfig = require "lspconfig"
     local custom = require "custom"
+    local lspconfig = require "lspconfig"
     local server = require("utils.server").server
+
+    require("lspconfig.ui.windows").default_options.border = "rounded"
     local lsp_keymap = function(bufnr)
         -- lsp-builtin
         local set = function(keys, func, indesc)
             vim.keymap.set("n", keys, func, { buffer = bufnr, desc = indesc })
         end
         set("K", vim.lsp.buf.hover, "hover")
-        set("gD", vim.lsp.buf.declaration, "declaration")
-        set("gd", vim.lsp.buf.definition, "definition")
+        set("gr", "<cmd>FzfLua lsp_references<CR>", "[R]eferences")
+        set("gi", "<cmd>FzfLua lsp_implementations<CR>", "[I]mplementations")
+        set("gD", "<cmd>FzfLua lsp_document_symbols<CR>", "[D]oc symbols")
+        set("gd", require("goto-preview").goto_preview_definition, "definition")
         set("gk", vim.lsp.buf.signature_help, "LSP Signature help")
-        set("gi", vim.lsp.buf.implementation, "implementation")
-        set("gr", require("telescope.builtin").lsp_references, "[R]eferences")
-        set("[d", vim.diagnostic.goto_prev, "Previous Diagnostic")
-        set("]d", vim.diagnostic.goto_next, "Next Diagnostic")
         set("<leader>ca", require("fastaction").code_action, "[C]ode [A]ction")
         set("<leader>cn", vim.lsp.buf.rename, "[C]ode Item Re[N]ame")
         set("<leader>ct", vim.lsp.buf.type_definition, "[C]ode [T]ype definition")
@@ -24,6 +23,7 @@ local config = function()
 
     vim.diagnostic.config {
         virtual_text = { spacing = 4 },
+        jump = { float = true },
         float = {
             border = custom.border,
             severity_sort = true,
@@ -51,10 +51,7 @@ local config = function()
         desc = "General LSP Attach",
         callback = function(args)
             -- buf keymap
-            lsp_keymap(args.bufnr)
-
-            -- for hover
-            -- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = custom.border })
+            lsp_keymap(args.buf)
 
             -- inlay hints
             local client = vim.lsp.get_client_by_id(args.data.client_id)
@@ -64,6 +61,10 @@ local config = function()
         end,
     })
 
+    vim.keymap.del("n", "gri")
+    vim.keymap.del("n", "gra")
+    vim.keymap.del("n", "grn")
+    vim.keymap.del("n", "grr")
     vim.api.nvim_command "LspStart"
 end
 
@@ -76,8 +77,23 @@ return {
         config = config,
     },
     {
-        "Chaitanyabsprip/fastaction.nvim",
+        "parsifa1/fastaction.nvim",
         event = "LspAttach",
         opts = {},
+    },
+    {
+        "rmagatti/goto-preview",
+        event = "BufEnter",
+        opts = {
+            border = { "↖", "─", "╮", "│", "╯", "─", "╰", "│" },
+            post_open_hook = function(buf)
+                --如果当前buf不等于bufnr,则不设置keymap
+                vim.keymap.set("n", "q", require("goto-preview").close_all_win, { buffer = buf })
+            end,
+            post_close_hook = function(buf)
+                vim.keymap.del("n", "q", { buffer = buf })
+            end,
+            same_file_float_preview = false,
+        },
     },
 }
