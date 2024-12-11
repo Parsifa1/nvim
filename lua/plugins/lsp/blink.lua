@@ -45,9 +45,7 @@ return {
             },
         },
         sources = {
-            completion = {
-                enabled_providers = { "lsp", "path", "snippets", "buffer", "lazydev" },
-            },
+            default = { "lsp", "path", "snippets", "buffer", "lazydev" },
             providers = {
                 lazydev = {
                     name = "Development",

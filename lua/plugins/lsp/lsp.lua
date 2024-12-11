@@ -61,11 +61,13 @@ local config = function()
         end,
     })
 
-    vim.keymap.del("n", "gri")
-    vim.keymap.del("n", "gra")
-    vim.keymap.del("n", "grn")
-    vim.keymap.del("n", "grr")
-    vim.api.nvim_command "LspStart"
+    if vim.version().prerelease == "dev" then
+        vim.keymap.del("n", "gri")
+        vim.keymap.del("n", "gra")
+        vim.keymap.del("n", "grn")
+        vim.keymap.del("n", "grr")
+        vim.api.nvim_command "LspStart"
+    end
 end
 
 return {
