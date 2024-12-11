@@ -1,19 +1,19 @@
+---@diagnostic disable: duplicate-set-field
 return {
     "rcarriga/nvim-notify",
     lazy = true,
-    -- event = "VeryLazy",
     init = function()
         vim.notify = function(...)
             if not require("lazy.core.config").plugins["nvim-notify"]._.loaded then
-                require("lazy").load { plugins = "nvim-notify" }
+                require("lazy").load { "nvim-notify" }
             end
             require "notify"(...)
         end
     end,
     config = function()
         require("notify").setup {
-            stages = "static",
-            render = "minimal",
+            stages = "fade",
+            render = "wrapped-compact",
             background_colour = "Normal",
             on_open = function(win)
                 vim.api.nvim_win_set_config(win, { focusable = false })

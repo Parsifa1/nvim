@@ -1,7 +1,9 @@
 return {
     "vuki656/package-info.nvim",
+    ft = "json",
+    commit = "268f466",
     event = { "BufRead package.json" },
-    config = function()
-        require("package-info").setup {}
-    end,
+    opts = {
+        package_manager = "pnpm",
+    },
 }
