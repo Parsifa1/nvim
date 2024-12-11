@@ -1,21 +1,21 @@
 return {
     "vuki656/package-info.nvim",
+    commit = "268f466",
     event = { "BufRead package.json" },
-    ft = "json",
     config = function()
         require("package-info").setup {
             autostart = false,
             package_manager = "pnpm",
         }
-        vim.api.nvim_create_autocmd("FileType", {
-            pattern = "json",
+        vim.api.nvim_create_autocmd("BufEnter", {
+            pattern = "package.json",
             callback = function()
-                -- 等待0.5秒
-                if vim.fn.expand "%:t" == "package.json" then
-                    vim.defer_fn(function()
+                -- wait for 0.05s
+                vim.defer_fn(function()
+                    pcall(function()
                         require("package-info").show()
-                    end, 500)
-                end
+                    end)
+                end, 500)
             end,
         })
     end,

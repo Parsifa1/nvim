@@ -66,9 +66,10 @@ return {
                 filter = {
                     event = "notify",
                     any = {
+                        { find = "position_encoding" },
                         { find = "Delete existing terminal" },
                         { find = "telescope.builtin.buffers" },
-                        { find = "position_encoding" },
+                        { find = "No matching notification found to replace" },
                     },
                 },
                 opts = { skip = true },
