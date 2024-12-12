@@ -6,13 +6,22 @@ return {
     build = "cargo build --release",
 
     opts = {
+        snippets = {
+            expand = function(snippet) require('luasnip').lsp_expand(snippet) end,
+            active = function(filter)
+                if filter and filter.direction then
+                    return require('luasnip').jumpable(filter.direction)
+                end
+                return require('luasnip').in_snippet()
+            end,
+            jump = function(direction) require('luasnip').jump(direction) end,
+        },
         completion = {
             trigger = {
-                show_in_snippet = false,
+                -- show_in_snippet = false,
                 show_on_x_blocked_trigger_characters = { "'", '"', "(", "{" },
             },
             menu = {
-                show_in_snippet = false,
                 border = "rounded",
                 winhighlight = "Normal:None,FloatBorder:None,CursorLine:BlinkCmpMenuSelection,Search:None",
                 draw = {
@@ -21,7 +30,11 @@ return {
                     components = {
                         provider = {
                             text = function(ctx)
-                                return "[" .. ctx.item.source_name:sub(1, 3):upper() .. "]"
+                                if ctx.item.source_name == "Luasnip" then
+                                    return "[SNI]"
+                                else
+                                    return "[" .. ctx.item.source_name:sub(1, 3):upper() .. "]"
+                                end
                             end,
                         },
                     },
@@ -44,8 +57,14 @@ return {
                 },
             },
         },
+        signature = {
+            enabled = true,
+            window = {
+                border = "rounded",
+            },
+        },
         sources = {
-            default = { "lsp", "path", "snippets", "buffer", "lazydev" },
+            default = { "lsp", "path", "luasnip", "buffer", "lazydev" },
             providers = {
                 lazydev = {
                     name = "Development",
@@ -61,8 +80,8 @@ return {
             ["<C-e>"] = { "hide", "fallback" },
             ["<CR>"] = { "accept", "fallback" },
 
-            ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
-            ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
+            ["<Tab>"] = { "snippet_forward", "fallback" },
+            ["<S-Tab>"] = { "snippet_backward", "fallback" },
 
             ["<Up>"] = { "select_prev", "fallback" },
             ["<Down>"] = { "select_next", "fallback" },

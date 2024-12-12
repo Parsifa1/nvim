@@ -16,6 +16,7 @@ M.config = {
             "--completion-style=detailed",
             "--header-insertion=never",
             "--offset-encoding=utf-16",
+            "--function-arg-placeholders=0",
         },
         init_options = {
             fallbackFlags = {

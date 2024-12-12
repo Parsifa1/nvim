@@ -274,7 +274,7 @@ function M.register(server, lsp, config)
         server[i] = config[i] or {}
         local capabilities = vim.lsp.protocol.make_client_capabilities()
         capabilities.textDocument.foldingRange = { dynamicRegistration = false }
-        capabilities.textDocument.completion.completionItem.snippetSupport = false
+        -- capabilities.textDocument.completion.completionItem.snippetSupport = false
         server[i]["capabilities"] = capabilities
     end
     return server
