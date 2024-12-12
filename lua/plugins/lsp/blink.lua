@@ -7,18 +7,21 @@ return {
 
     opts = {
         snippets = {
-            expand = function(snippet) require('luasnip').lsp_expand(snippet) end,
+            expand = function(snippet)
+                require("luasnip").lsp_expand(snippet)
+            end,
             active = function(filter)
                 if filter and filter.direction then
-                    return require('luasnip').jumpable(filter.direction)
+                    return require("luasnip").expand_or_locally_jumpable()
                 end
-                return require('luasnip').in_snippet()
+                return require("luasnip").in_snippet()
             end,
-            jump = function(direction) require('luasnip').jump(direction) end,
+            jump = function(direction)
+                require("luasnip").jump(direction)
+            end,
         },
         completion = {
             trigger = {
-                -- show_in_snippet = false,
                 show_on_x_blocked_trigger_characters = { "'", '"', "(", "{" },
             },
             menu = {
@@ -70,19 +73,39 @@ return {
                     name = "Development",
                     module = "lazydev.integrations.blink",
                 },
-                snippets = {
-                    opts = { ignored_filetypes = { "zig" } },
+                luasnip = {
+                    name = "Luasnip",
+                    module = "blink.cmp.sources.luasnip",
+                    score_offset = 0,
                 },
             },
         },
         keymap = {
-            ["<C-w>"] = { "show", "show_documentation", "hide_documentation" },
-            ["<C-e>"] = { "hide", "fallback" },
+            ["<C-w>"] = { "show", "hide", "show_documentation", "hide_documentation" },
             ["<CR>"] = { "accept", "fallback" },
 
-            ["<Tab>"] = { "snippet_forward", "fallback" },
-            ["<S-Tab>"] = { "snippet_backward", "fallback" },
-
+            ["<Tab>"] = {
+                function(cmp)
+                    if cmp.snippet_active() then
+                        cmp.hide()
+                        return cmp.snippet_forward()
+                    else
+                        return cmp.select_next()
+                    end
+                end,
+                "fallback",
+            },
+            ["<S-Tab>"] = {
+                function(cmp)
+                    if cmp.snippet_active() then
+                        cmp.hide()
+                        return cmp.snippet_backward()
+                    else
+                        return cmp.select_prev()
+                    end
+                end,
+                "fallback",
+            },
             ["<Up>"] = { "select_prev", "fallback" },
             ["<Down>"] = { "select_next", "fallback" },
             ["<C-j>"] = { "select_next", "fallback" },
