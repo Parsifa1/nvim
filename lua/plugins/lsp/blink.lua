@@ -12,7 +12,7 @@ return {
             end,
             active = function(filter)
                 if filter and filter.direction then
-                    return require("luasnip").expand_or_locally_jumpable()
+                    return require("luasnip").locally_jumpable()
                 end
                 return require("luasnip").in_snippet()
             end,
@@ -83,29 +83,8 @@ return {
         keymap = {
             ["<C-w>"] = { "show", "hide", "show_documentation", "hide_documentation" },
             ["<CR>"] = { "accept", "fallback" },
-
-            ["<Tab>"] = {
-                function(cmp)
-                    if cmp.snippet_active() then
-                        cmp.hide()
-                        return cmp.snippet_forward()
-                    else
-                        return cmp.select_next()
-                    end
-                end,
-                "fallback",
-            },
-            ["<S-Tab>"] = {
-                function(cmp)
-                    if cmp.snippet_active() then
-                        cmp.hide()
-                        return cmp.snippet_backward()
-                    else
-                        return cmp.select_prev()
-                    end
-                end,
-                "fallback",
-            },
+            ["<Tab>"] = { "snippet_forward", "select_next", "fallback" },
+            ["<S-Tab>"] = { "snippet_backward", "select_prev", "fallback" },
             ["<Up>"] = { "select_prev", "fallback" },
             ["<Down>"] = { "select_next", "fallback" },
             ["<C-j>"] = { "select_next", "fallback" },
