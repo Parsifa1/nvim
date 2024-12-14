@@ -1,5 +1,42 @@
 local custom = require "custom"
 
+---@param direction "backward"|"forward"
+local super_tab = function(direction)
+    local ret = {
+        function(cmp)
+            local ls = require "luasnip"
+            local current_node = ls.session.current_nodes[vim.api.nvim_get_current_buf()]
+            if not ls.session or not current_node or ls.session.jump_active then
+                return false
+            end
+            local current_start, current_end = current_node:get_buf_position()
+            current_start[1] = current_start[1] + 1 -- (1, 0) indexed
+            current_end[1] = current_end[1] + 1 -- (1, 0) indexed
+            local cursor = vim.api.nvim_win_get_cursor(0)
+            if
+                cursor[1] < current_start[1]
+                or cursor[1] > current_end[1]
+                or cursor[2] < current_start[2]
+                or cursor[2] > current_end[2]
+            then
+                ls.unlink_current()
+            end
+            cmp.hide()
+            if direction == "backward" then
+                return cmp.snippet_backward()
+            elseif direction == "forward" then
+                return cmp.snippet_forward()
+            end
+        end,
+        "select_next",
+        "fallback",
+    }
+    if direction == "backward" then
+        ret[2] = "select_prev"
+    end
+    return ret
+end
+
 return {
     "saghen/blink.cmp",
     event = { "CursorHold", "CursorHoldI", "User AfterLoad" },
@@ -28,7 +65,7 @@ return {
                 border = "rounded",
                 winhighlight = "Normal:None,FloatBorder:None,CursorLine:BlinkCmpMenuSelection,Search:None",
                 draw = {
-                    treesitter = true,
+                    treesitter = { "lsp" },
                     columns = { { "kind_icon" }, { "label", "label_description", gap = 1 }, { "provider" } },
                     components = {
                         provider = {
@@ -83,8 +120,8 @@ return {
         keymap = {
             ["<C-w>"] = { "show", "hide", "show_documentation", "hide_documentation" },
             ["<CR>"] = { "accept", "fallback" },
-            ["<Tab>"] = { "snippet_forward", "select_next", "fallback" },
-            ["<S-Tab>"] = { "snippet_backward", "select_prev", "fallback" },
+            ["<Tab>"] = super_tab "forward",
+            ["<S-Tab>"] = super_tab "backward",
             ["<Up>"] = { "select_prev", "fallback" },
             ["<Down>"] = { "select_next", "fallback" },
             ["<C-j>"] = { "select_next", "fallback" },
@@ -92,6 +129,20 @@ return {
 
             ["<C-u>"] = { "scroll_documentation_up", "fallback" },
             ["<C-d>"] = { "scroll_documentation_down", "fallback" },
+            cmdline = {
+                ["<Tab>"] = {
+                    function(cmp)
+                        return cmp.select_next()
+                    end,
+                    "fallback",
+                },
+                ["<S-Tab>"] = {
+                    function(cmp)
+                        return cmp.select_prev()
+                    end,
+                    "fallback",
+                },
+            },
         },
         appearance = {
             use_nvim_cmp_as_default = true,

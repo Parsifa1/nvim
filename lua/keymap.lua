@@ -34,7 +34,7 @@ local keymap = {
     { mode = mode_nit,    from = "<C-k>",            to = "<C-w>k" },
     { mode = mode_nit,    from = "<C-l>",            to = "<C-w>l" },
     { mode = mode_nit,    from = "<A-q>",            to = "<cmd>q<CR>" }, -- 窗口关闭
-    { mode = mode_n,      from = "<C-x>",       to = "<cmd>bd<CR>" },
+    { mode = mode_n,      from = "<C-x>",            to = "<cmd>lua require('snacks.bufdelete').delete()<CR>" },
     { mode = mode_nit,    from = "<A-Q>",            to = "<cmd>qa<CR>" }, -- vim关闭
     { mode = mode_nvo,    from = "H",                to = "^" },
     { mode = mode_nvo,    from = "L",                to = "$" },
