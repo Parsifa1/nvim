@@ -116,6 +116,7 @@ return {
                     score_offset = 0,
                 },
             },
+            cmdline = {},
         },
         keymap = {
             ["<C-w>"] = { "show", "hide", "show_documentation", "hide_documentation" },
