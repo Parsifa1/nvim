@@ -41,7 +41,25 @@ return {
     "saghen/blink.cmp",
     event = { "CursorHold", "CursorHoldI", "User AfterLoad" },
     build = "cargo build --release",
-
+    init = function()
+        -- FIX:临时修复无法为cmdline设置auto_insert的问题
+        local orig_list_selection = nil
+        vim.api.nvim_create_autocmd("CmdlineEnter", {
+            callback = function()
+                local list = require "blink.cmp.completion.list"
+                orig_list_selection = list.config.selection
+                list.config.selection = "auto_insert"
+            end,
+        })
+        vim.api.nvim_create_autocmd("CmdlineLeave", {
+            callback = function()
+                if orig_list_selection then
+                    local list = require "blink.cmp.completion.list"
+                    list.config.selection = orig_list_selection
+                end
+            end,
+        })
+    end,
     opts = {
         snippets = {
             expand = function(snippet)
@@ -116,7 +134,6 @@ return {
                     score_offset = 0,
                 },
             },
-            cmdline = {},
         },
         keymap = {
             ["<C-w>"] = { "show", "hide", "show_documentation", "hide_documentation" },
