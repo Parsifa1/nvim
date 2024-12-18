@@ -148,18 +148,10 @@ return {
             ["<C-u>"] = { "scroll_documentation_up", "fallback" },
             ["<C-d>"] = { "scroll_documentation_down", "fallback" },
             cmdline = {
-                ["<Tab>"] = {
-                    function(cmp)
-                        return cmp.select_next()
-                    end,
-                    "fallback",
-                },
-                ["<S-Tab>"] = {
-                    function(cmp)
-                        return cmp.select_prev()
-                    end,
-                    "fallback",
-                },
+                ["<Tab>"] = { "select_next", "fallback" },
+                ["<S-Tab>"] = { "select_prev", "fallback" },
+                ["<C-j>"] = { "select_next", "fallback" },
+                ["<C-k>"] = { "select_prev", "fallback" },
             },
         },
         appearance = {

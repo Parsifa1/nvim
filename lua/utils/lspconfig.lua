@@ -23,6 +23,7 @@ M.config = {
                 "-std=c++2b",
                 "-Wall",
                 "-Wno-unused-variable",
+                "-Wno-vla-cxx-extension",
                 "-Wno-unknown-attributes  ",
                 "-Wno-unused-but-set-variable ",
                 "-fsyntax-only",
