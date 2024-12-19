@@ -62,7 +62,7 @@ return {
             ["zv"] = "actions.select_vsplit",
             ["L"] = "actions.select",
             ["H"] = "actions.parent",
-            ["-"] = "actions.parent",
+            ["-"] = "actions.close",
             ["_"] = "actions.open_cwd",
             ["`"] = "actions.cd",
             ["."] = "actions.toggle_hidden",
