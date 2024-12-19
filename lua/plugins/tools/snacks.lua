@@ -1,11 +1,12 @@
 return {
     "folke/snacks.nvim",
-    event = { "BufRead", "LspAttach" },
+    event = { "User AfterLoad", "BufRead", "LspAttach" },
+    ---@type snacks.Config
     opts = {
         bigfile = {
             enabled = true,
             notify = true, -- show notification when big file detected
-            size = 1024 * 1024 * 0.39, -- 1.5MB
+            size = 1024 * 1024 * 1.5, -- 1.5MB
             setup = function(ctx)
                 vim.cmd [[NoMatchParen]]
                 require("snacks").util.wo(0, { foldmethod = "manual", conceallevel = 0 })
@@ -15,9 +16,18 @@ return {
                 end)
             end,
         },
-        notifier = { enabled = false },
-        quickfile = { enabled = false },
-        statuscolumn = { enabled = false },
-        words = { enabled = false },
+        indent = {
+            indent = {
+                enabled = true,
+                char = "│",
+            },
+            filter = function(buf)
+                return vim.g.snacks_indent ~= false
+                    and vim.b[buf].snacks_indent ~= false
+                    and vim.bo[buf].buftype == ""
+                    and vim.bo[buf].filetype ~= "oil"
+                    and vim.bo[buf].filetype ~= ""
+            end,
+        },
     },
 }

@@ -60,6 +60,7 @@ return {
             end,
         })
     end,
+    ---@type blink.cmp.Config
     opts = {
         snippets = {
             expand = function(snippet)

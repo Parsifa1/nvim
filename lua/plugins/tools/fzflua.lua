@@ -37,7 +37,7 @@ local keys = function()
             { "<esc>", "<c-c>", ft = "fzf", mode = "t", nowait = true },
             { "<leader>f", "<cmd>FzfLua files<CR>", desc = "find files" },
             { "<leader>r", "<cmd>FzfLua oldfiles<CR>", desc = "recent files" },
-            { "<leader>w", "<cmd>FzfLua grep_project<CR>", desc = "live grep" },
+            { "<leader>w", "<cmd>FzfLua live_grep<CR>", desc = "live grep" },
         }
     else
         return { { "<esc>", "<c-c>", ft = "fzf", mode = "t", nowait = true } }
