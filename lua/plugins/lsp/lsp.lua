@@ -82,19 +82,4 @@ return {
         event = "LspAttach",
         opts = {},
     },
-    {
-        "rmagatti/goto-preview",
-        event = "BufEnter",
-        opts = {
-            border = { "↖", "─", "╮", "│", "╯", "─", "╰", "│" },
-            post_open_hook = function(buf)
-                --如果当前buf不等于bufnr,则不设置keymap
-                vim.keymap.set("n", "q", require("goto-preview").close_all_win, { buffer = buf })
-            end,
-            post_close_hook = function(buf)
-                vim.keymap.del("n", "q", { buffer = buf })
-            end,
-            same_file_float_preview = false,
-        },
-    },
 }
