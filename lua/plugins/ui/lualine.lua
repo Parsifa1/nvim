@@ -166,7 +166,7 @@ local opts = {
 return {
     "nvim-lualine/lualine.nvim",
     event = { "BufRead", "BufNewFile" },
-    dependencies = { "parsifa1/nvim-web-devicons", "ofseed/copilot-status.nvim" },
+    dependencies = "ofseed/copilot-status.nvim",
     config = function()
         local auto = require "lualine.themes.auto"
         local lualine_modes = { "insert", "normal", "visual", "command", "replace", "inactive", "terminal" }

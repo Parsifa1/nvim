@@ -28,7 +28,10 @@ return {
         end,
     }, ]]
     "Shatur/neovim-session-manager",
-    dependencies = { "stevearc/dressing.nvim" },
+    dependencies = {
+        "stevearc/dressing.nvim",
+        "nvim-lua/plenary.nvim",
+    },
     keys = {
         { "<leader><Tab>", "<cmd>SessionManager load_session<CR><esc>", desc = "projects folder" },
         { "<leader>i", "<cmd>SessionManager load_session<CR><esc>", desc = "projects folder" },
