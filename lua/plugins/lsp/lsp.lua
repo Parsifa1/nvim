@@ -78,7 +78,7 @@ return {
         config = config,
     },
     {
-        "parsifa1/fastaction.nvim",
+        "Chaitanyabsprip/fastaction.nvim",
         event = "LspAttach",
         opts = {},
     },
