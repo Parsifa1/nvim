@@ -2,6 +2,9 @@
 return {
     {
         "L3MON4D3/LuaSnip",
+        keys = {
+            { "<C-f>", "<cmd>lua require('luasnip').expand()<CR>", desc = "snippets trigger" },
+        },
         dependencies = {
             "rafamadriz/friendly-snippets",
             "nvim-treesitter/nvim-treesitter",

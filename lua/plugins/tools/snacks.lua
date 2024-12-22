@@ -5,7 +5,7 @@ return {
     opts = {
         bigfile = {
             enabled = true,
-            notify = true, -- show notification when big file detected
+            notify = true,            -- show notification when big file detected
             size = 1024 * 1024 * 1.5, -- 1.5MB
             setup = function(ctx)
                 vim.cmd [[NoMatchParen]]
@@ -20,6 +20,9 @@ return {
             indent = {
                 enabled = true,
                 char = "│",
+            },
+            scope = {
+                hl = "SnackScope",
             },
             filter = function(buf)
                 return vim.g.snacks_indent ~= false

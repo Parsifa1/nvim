@@ -34,3 +34,5 @@ vim.api.nvim_set_hl(0, "TabLineFocus", { fg = "#FCDCDD" })
 vim.api.nvim_set_hl(0, "TelescopePreviewTitle", { fg = "#cccccc", bg = "#668aab" })
 vim.api.nvim_set_hl(0, "TelescopePromptTitle", { fg = "#cccccc", bg = "#a96ca5" })
 vim.api.nvim_set_hl(0, "TelescopeResultsTitle", { fg = "#cccccc", bg = "#c9826b" })
+-- Snack
+vim.api.nvim_set_hl(0, "SnackScope", { fg = "#D3869B" })

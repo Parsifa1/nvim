@@ -130,10 +130,16 @@ local init = function()
     })
 end
 
+local command = function()
+    local this = vim.api.nvim_buf_get_name(0)
+    MiniFiles.open(this)
+    MiniFiles.reveal_cwd()
+end
+
 return {
     "echasnovski/mini.files",
     keys = {
-        { "<leader>e", "<cmd>lua MiniFiles.open()<CR>", desc = "file explorer" },
+        { "<leader>e", command, desc = "file explorer" },
     },
     init = init,
     opts = {

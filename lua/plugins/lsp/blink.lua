@@ -11,7 +11,7 @@ local super_tab = function(direction)
             end
             local current_start, current_end = current_node:get_buf_position()
             current_start[1] = current_start[1] + 1 -- (1, 0) indexed
-            current_end[1] = current_end[1] + 1 -- (1, 0) indexed
+            current_end[1] = current_end[1] + 1     -- (1, 0) indexed
             local cursor = vim.api.nvim_win_get_cursor(0)
             if
                 cursor[1] < current_start[1]
@@ -20,6 +20,7 @@ local super_tab = function(direction)
                 or cursor[2] > current_end[2]
             then
                 ls.unlink_current()
+                return false
             end
             cmp.hide()
             if direction == "backward" then
@@ -128,11 +129,6 @@ return {
                 lazydev = {
                     name = "Development",
                     module = "lazydev.integrations.blink",
-                },
-                luasnip = {
-                    name = "Luasnip",
-                    module = "blink.cmp.sources.luasnip",
-                    score_offset = 0,
                 },
             },
         },

@@ -66,7 +66,7 @@ M.config = {
         },
     },
     tinymist = {
-        offset_encoding = "utf-8",
+        -- offset_encoding = "utf-8",
         cmd = { "tinymist" },
         single_file_support = true,
         root_dir = function()
