@@ -22,7 +22,7 @@ end
 local opts = {
     options = {
         icons_enabled = true,
-        disabled_filetypes = { "alpha", "TelescopePrompt", "mason" },
+        disabled_filetypes = { "snacks_dashboard", "TelescopePrompt", "mason" },
         always_divide_middle = true,
         globalstatus = true,
         component_separators = { left = "", right = "" },

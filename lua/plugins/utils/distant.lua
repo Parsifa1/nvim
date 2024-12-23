@@ -1,7 +1,7 @@
 ---@diagnostic disable: missing-parameter
 return {
     "chipsenkbeil/distant.nvim",
-    enebled = false,
+    enabled = false,
     event = "User AfterLoad",
     config = function()
         require("distant"):setup {

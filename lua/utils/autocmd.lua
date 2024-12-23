@@ -36,7 +36,7 @@ vim.api.nvim_create_autocmd("User", {
             vim.api.nvim_exec_autocmds("User", { pattern = "AfterLoad" })
         end
 
-        if vim.bo.filetype == "alpha" then
+        if vim.bo.filetype == "snacks_dashboard" then
             vim.api.nvim_create_autocmd("BufRead", {
                 once = true,
                 callback = _trigger,

@@ -1,4 +1,4 @@
----@diagnostic disable: undefined-global, unused-local
+---@diagnostic disable: undefined-global, unused-local, duplicate-set-field
 -- dotfiles show/unsow
 local show_dotfiles = false
 -- filter dotfiles
@@ -79,6 +79,13 @@ local files_set_cwd = function(path)
     MiniFiles.reset()
 end
 
+local command = function()
+    local this = vim.api.nvim_buf_get_name(0)
+    local cmd = vim.fn.filereadable(this) == 1 and MiniFiles.open or MiniFiles.open
+    cmd()
+    MiniFiles.reveal_cwd()
+end
+
 local init = function()
     local go_in_plus = function()
         MiniFiles.go_in { close_on_file = true }
@@ -130,36 +137,45 @@ local init = function()
     })
 end
 
-local command = function()
-    local this = vim.api.nvim_buf_get_name(0)
-    MiniFiles.open(this)
-    MiniFiles.reveal_cwd()
-end
-
 return {
-    "echasnovski/mini.files",
-    keys = {
-        { "<leader>e", command, desc = "file explorer" },
+    {
+        "echasnovski/mini.files",
+        keys = {
+            { "<leader>e", command, desc = "file explorer" },
+        },
+        init = init,
+        opts = {
+            content = {
+                filter = filter_dot,
+                sort = custom_sort,
+            },
+            mappings = {
+                go_in_plus = "<CR>",
+                reveal_cwd = "",
+            },
+            options = {
+                use_as_default_explorer = true,
+            },
+            windows = {
+                max_number = math.huge,
+                -- preview = true,
+                width_focus = 50,
+                width_nofocus = 15,
+                width_preview = 50,
+            },
+        },
     },
-    init = init,
-    opts = {
-        content = {
-            filter = filter_dot,
-            sort = custom_sort,
+    {
+        "echasnovski/mini.icons",
+        specs = { { "nvim-tree/nvim-web-devicons", enabled = false, optional = true } },
+        opts = {
+            extension = { ["mdx"] = { glyph = "󰍔", hl = "MiniIconsGrey" } },
         },
-        mappings = {
-            go_in_plus = "<CR>",
-            reveal_cwd = "",
-        },
-        options = {
-            use_as_default_explorer = true,
-        },
-        windows = {
-            max_number = math.huge,
-            -- preview = true,
-            width_focus = 50,
-            width_nofocus = 15,
-            width_preview = 50,
-        },
+        init = function()
+            package.preload["nvim-web-devicons"] = function()
+                require("mini.icons").mock_nvim_web_devicons()
+                return package.loaded["nvim-web-devicons"]
+            end
+        end,
     },
 }
