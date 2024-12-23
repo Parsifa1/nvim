@@ -74,7 +74,7 @@ M.config = {
         end,
         settings = {},
     },
-    tsserver = {
+    ts_ls = {
         init_options = {
             plugins = {
                 {
