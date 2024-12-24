@@ -11,7 +11,7 @@ local super_tab = function(direction)
             end
             local current_start, current_end = current_node:get_buf_position()
             current_start[1] = current_start[1] + 1 -- (1, 0) indexed
-            current_end[1] = current_end[1] + 1     -- (1, 0) indexed
+            current_end[1] = current_end[1] + 1 -- (1, 0) indexed
             local cursor = vim.api.nvim_win_get_cursor(0)
             if
                 cursor[1] < current_start[1]
@@ -42,25 +42,6 @@ return {
     "saghen/blink.cmp",
     event = { "CursorHold", "CursorHoldI", "User AfterLoad" },
     build = "cargo build --release",
-    init = function()
-        -- FIX:临时修复无法为cmdline设置auto_insert的问题
-        local orig_list_selection = nil
-        vim.api.nvim_create_autocmd("CmdlineEnter", {
-            callback = function()
-                local list = require "blink.cmp.completion.list"
-                orig_list_selection = list.config.selection
-                list.config.selection = "auto_insert"
-            end,
-        })
-        vim.api.nvim_create_autocmd("CmdlineLeave", {
-            callback = function()
-                if orig_list_selection then
-                    local list = require "blink.cmp.completion.list"
-                    list.config.selection = orig_list_selection
-                end
-            end,
-        })
-    end,
     ---@type blink.cmp.Config
     opts = {
         snippets = {
@@ -78,6 +59,11 @@ return {
             end,
         },
         completion = {
+            list = {
+                selection = function(ctx)
+                    return ctx.mode == "cmdline" and "auto_insert" or "preselect"
+                end,
+            },
             trigger = {
                 show_on_x_blocked_trigger_characters = { "'", '"', "(", "{" },
             },
