@@ -82,4 +82,11 @@ return {
         event = "LspAttach",
         opts = {},
     },
+    {
+        "kosayoda/nvim-lightbulb",
+        event = "LspAttach",
+        opts = {
+            autocmd = { enabled = true },
+        },
+    },
 }
