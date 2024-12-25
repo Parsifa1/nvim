@@ -9,10 +9,10 @@ local keymap = {
     { mode = mode_n,      from = "n",                to = "nzzzv" }, -- 搜索保持光标
     { mode = mode_n,      from = "j",                to = "gj" }, -- 软换行
     { mode = mode_n,      from = "k",                to = "gk" },
-    { mode = mode_n,      from = "<C-Up>",             to = "<cmd>res +3<CR>" }, -- 窗口操作
-    { mode = mode_n,      from = "<C-Down>",           to = "<cmd>res -3<CR>" },
-    { mode = mode_n,      from = "<C-Left>",           to = "<cmd>vertical resize -3<CR>" },
-    { mode = mode_n,      from = "<C-Right>",          to = "<cmd>vertical resize +3<CR>" },
+    { mode = mode_n,      from = "<C-Up>",           to = "<cmd>res +3<CR>" }, -- 窗口操作
+    { mode = mode_n,      from = "<C-Down>",         to = "<cmd>res -3<CR>" },
+    { mode = mode_n,      from = "<C-Left>",         to = "<cmd>vertical resize -3<CR>" },
+    { mode = mode_n,      from = "<C-Right>",        to = "<cmd>vertical resize +3<CR>" },
     { mode = mode_n,      from = "<C-i>",            to = "<C-i>" }, -- 重设<C-i>
     { mode = mode_s,      from = "<BS>",             to = "<BS>:startinsert<CR>"},
     { mode = mode_v,      from = "K",                to = ":m '<-2<cr>gv=gv" }, -- 行移动
@@ -29,16 +29,16 @@ local keymap = {
     { mode = mode_ni,     from = "<F5>",             to = "<cmd>AsyncTask run<cr>", },
     { mode = mode_ni,     from = "<F6>",             to = "<cmd>AsyncTask build<cr>", },
     { mode = mode_nv,     from = "=",                to = "gq" },
-    { mode = mode_nit,    from = "<C-h>",            to = "<C-w>h" },
-    { mode = mode_nit,    from = "<C-j>",            to = "<C-w>j" },
-    { mode = mode_nit,    from = "<C-k>",            to = "<C-w>k" },
-    { mode = mode_nit,    from = "<C-l>",            to = "<C-w>l" },
     { mode = mode_nit,    from = "<A-q>",            to = "<cmd>q<CR>" }, -- 窗口关闭
     { mode = mode_n,      from = "<C-x>",            to = "<cmd>lua require('snacks.bufdelete').delete()<CR>" },
     { mode = mode_nit,    from = "<A-Q>",            to = "<cmd>qa<CR>" }, -- vim关闭
     { mode = mode_nvo,    from = "H",                to = "^" },
     { mode = mode_nvo,    from = "L",                to = "$" },
     -- desc快捷键
+    { mode = mode_nit,    from = "zh",               to = "<C-w>h",                                desc = "Go to the left window"},
+    { mode = mode_nit,    from = "zj",               to = "<C-w>j",                                desc = "Go to the down window" },
+    { mode = mode_nit,    from = "zk",               to = "<C-w>k",                                desc =  "Go to the up window"},
+    { mode = mode_nit,    from = "zl",               to = "<C-w>l",                                desc = "Go to the right window" },
     { mode = mode_n,      from = "zn",               to = "zR",                                    desc = "open all fold" }, -- 全部打开
     { mode = mode_n,      from = "zm",               to = "zM",                                    desc = "close all fold" }, -- 全部折叠
     { mode = mode_n,      from = "zc",               to = "<C-w>c",                                desc = "close current window" },
