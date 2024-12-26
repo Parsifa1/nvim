@@ -34,9 +34,7 @@ local function dirs()
     end
 
     ---@type string[]
-    local normalized_files = vim.tbl_map(function(f)
-        return (vim.fs.normalize(f):gsub("\\", "/"))
-    end, vim.v.oldfiles)
+    local normalized_files = vim.tbl_map(vim.fs.normalize, vim.v.oldfiles)
 
     ---@type string[]
     local paths = vim.tbl_filter(filt_seen, vim.tbl_map(map_file, normalized_files))
