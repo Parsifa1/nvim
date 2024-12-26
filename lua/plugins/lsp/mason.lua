@@ -17,6 +17,7 @@ return {
                 registries = {
                     "github:mason-org/mason-registry",
                     "github:Parsifa1/mason-registry",
+                    "github:Crashdummyy/mason-registry",
                 },
 
                 ui = {
