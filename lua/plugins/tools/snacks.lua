@@ -1,3 +1,52 @@
+local function dirs()
+    ---@type table<string, boolean>
+    local seen = {}
+    ---@type table<string, boolean>
+    local session_dirs = {}
+    for _, item in ipairs(require("session_manager.utils").get_sessions()) do
+        session_dirs[item.dir.filename:gsub("\\", "/")] = true
+    end
+    local filt_seen = function(dir)
+        if seen[dir] then
+            return false
+        end
+        seen[dir] = true
+        return true
+    end
+
+    local map_file = function(file)
+        if not vim.uv.fs_stat(file) then
+            return nil
+        end
+        for session_dir in pairs(session_dirs) do
+            if vim.startswith(file, session_dir) then
+                return session_dir
+            end
+        end
+        return (vim.fn.fnamemodify(file, ":h"))
+    end
+
+    local map_winpath = function(path)
+        if path:match "^[A-Z]:/" then
+            return path:gsub("/", "\\")
+        end
+        return path
+    end
+
+    ---@type string[]
+    local normalized_files = vim.tbl_map(function(f)
+        return (vim.fs.normalize(f):gsub("\\", "/"))
+    end, vim.v.oldfiles)
+
+    ---@type string[]
+    local paths = vim.tbl_filter(filt_seen, vim.tbl_map(map_file, normalized_files))
+
+    ---@type string[]
+    local ret = (vim.tbl_map(map_winpath, paths))
+
+    return ret
+end
+
 local header = [[
     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⡤⠤⢤⡤⠴⢤⣤⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⡴⣞⣋⡁⣠⡤⢴⣋⡠⢄⣀⠀⠈⠛⠷⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -22,6 +71,7 @@ local header = [[
     ⠀⠀⠀⠀⣴⠟⣿⢋⣤⣾⠃⠀⠀⣹⢟⣿⠉⣹⣿⣍⡁⠀⠀⣀⡥⠞⠁⠈⠀⢧⠀⠻⠂⠙⠀⠀⢹⡗⠃⠈⠉⠈⠁⠀
     ⠀⠀⠀⠀⠀⣸⣿⣿⣫⠇⠀⣠⠞⣱⠛⣿⣿⢿⠹⡇⠀⣯⠉⠁⠀⠀⠀⠀⠀⢺⠀⠀⠀⠀⠀⠀⠈⣿⠀⠀⠀⠀⠀⠀
     ]]
+
 return {
     "folke/snacks.nvim",
     lazy = false,
@@ -39,22 +89,15 @@ return {
             },
             sections = {
                 { text = { { header, hl = "Include" } }, align = "center" },
-                { icon = " ", title = "Keymaps", section = "keys", indent = 2, padding = 1, },
+                { icon = " ", title = "Keymaps", section = "keys", indent = 2, padding = 1 },
                 {
                     icon = " ",
                     title = "Projects",
                     section = "projects",
+                    dirs = dirs,
                     limit = 4,
-                    dirs = function()
-                        local result = {}
-                        local data = require("session_manager.utils").get_sessions()
-                        for _, item in ipairs(data) do
-                            table.insert(result, item.dir.filename)
-                        end
-                        return result
-                    end,
                     indent = 2,
-                    padding = 1
+                    padding = 1,
                 },
                 { section = "startup", hl = "Keyword" },
             },
@@ -64,7 +107,7 @@ return {
         },
         bigfile = {
             enabled = true,
-            notify = true,            -- show notification when big file detected
+            notify = true, -- show notification when big file detected
             size = 1024 * 1024 * 1.5, -- 1.5MB
             setup = function(ctx)
                 vim.cmd [[NoMatchParen]]
