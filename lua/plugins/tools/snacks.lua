@@ -39,8 +39,23 @@ return {
             },
             sections = {
                 { text = { { header, hl = "Include" } }, align = "center" },
-                { icon = " ", title = "Keymaps", section = "keys", indent = 2, padding = 1 },
-                { icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
+                { icon = " ", title = "Keymaps", section = "keys", indent = 2, padding = 1, },
+                {
+                    icon = " ",
+                    title = "Projects",
+                    section = "projects",
+                    limit = 4,
+                    dirs = function()
+                        local result = {}
+                        local data = require("session_manager.utils").get_sessions()
+                        for _, item in ipairs(data) do
+                            table.insert(result, item.dir.filename)
+                        end
+                        return result
+                    end,
+                    indent = 2,
+                    padding = 1
+                },
                 { section = "startup", hl = "Keyword" },
             },
         },
@@ -49,7 +64,7 @@ return {
         },
         bigfile = {
             enabled = true,
-            notify = true, -- show notification when big file detected
+            notify = true,            -- show notification when big file detected
             size = 1024 * 1024 * 1.5, -- 1.5MB
             setup = function(ctx)
                 vim.cmd [[NoMatchParen]]
