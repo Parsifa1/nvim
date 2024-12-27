@@ -14,16 +14,19 @@ local function dirs()
         return true
     end
 
-    local map_file = function(file)
+    ---@param file string
+    ---@return string|nil
+    local function map_file(file)
         if not vim.uv.fs_stat(file) then
             return nil
         end
         for session_dir in pairs(session_dirs) do
-            if vim.startswith(file, session_dir) then
+            local session_simbol = file:sub(session_dir:len() + 1, session_dir:len() + 1)
+            if vim.startswith(file, session_dir) and session_simbol == "/" then
                 return session_dir
             end
         end
-        return (vim.fn.fnamemodify(file, ":h"))
+        return vim.fs.dirname(file)
     end
 
     local map_winpath = function(path)
