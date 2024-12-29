@@ -169,7 +169,12 @@ return {
         "echasnovski/mini.icons",
         specs = { { "nvim-tree/nvim-web-devicons", enabled = false, optional = true } },
         opts = {
-            extension = { ["mdx"] = { glyph = "󰍔", hl = "MiniIconsGrey" } },
+            extension = {
+                ["mdx"] = { glyph = "󰍔", hl = "MiniIconsGrey" },
+            },
+            filetype = {
+                ["moonbit"] = { glyph = "󱩡", hl = "MiniIconsPurple" },
+            },
         },
         init = function()
             package.preload["nvim-web-devicons"] = function()
