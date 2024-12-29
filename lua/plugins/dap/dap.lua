@@ -10,13 +10,15 @@ return {
     dependencies = { "rcarriga/nvim-dap-ui", "theHamsta/nvim-dap-virtual-text" },
     config = function()
         local dap = require "dap"
+        -- dap.adapters.cppdbg = {
+        --     id = "cppdbg",
+        --     type = "executable",
+        --     command = require("mason-registry").get_package("cpptools"):get_install_path()
+        --         .. "/extension/debugAdapters/bin/OpenDebugAD7",
+        -- }
         dap.adapters.codelldb = {
-            type = "server",
-            port = "${port}",
-            executable = {
-                command = "codelldb",
-                args = { "--port", "${port}" },
-            },
+            type = "executable",
+            command = "codelldb",
         }
         dap.configurations.cpp = {
             {
@@ -33,16 +35,9 @@ return {
                         return file_directory .. "/bin/" .. file_name_without_path:gsub("%.cpp$", "")
                     end
                 end,
+                breakpointMode = "file",
                 cwd = "${fileDirname}",
                 stopAtEntry = true,
-                -- miDebuggerPath = '/usr/bin/gdb',
-                -- setupCommands = {
-                --     {
-                --         text = '-enable-pretty-printing',
-                --         description = 'enable pretty printing',
-                --         ignoreFailures = false
-                --     },
-                -- },
             },
         }
         local dapui = require "dapui"

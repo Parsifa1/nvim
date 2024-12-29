@@ -1,3 +1,4 @@
+local get_root = require("utils.gitutils").get_root
 local function dirs()
     ---@type table<string, boolean>
     local seen = {}
@@ -22,8 +23,12 @@ local function dirs()
         end
         for session_dir in pairs(session_dirs) do
             local session_simbol = file:sub(session_dir:len() + 1, session_dir:len() + 1)
+            local git_root = get_root(file)
             if vim.startswith(file, session_dir) and session_simbol == "/" then
                 return session_dir
+            end
+            if git_root and vim.startswith(file, git_root) then
+                return git_root
             end
         end
         return vim.fs.dirname(file)
@@ -37,13 +42,10 @@ local function dirs()
     end
 
     ---@type string[]
-    local normalized_files = vim.tbl_map(vim.fs.normalize, vim.v.oldfiles)
-
-    ---@type string[]
-    local paths = vim.tbl_filter(filt_seen, vim.tbl_map(map_file, normalized_files))
-
-    ---@type string[]
-    local ret = (vim.tbl_map(map_winpath, paths))
+    local ret = vim.tbl_map(
+        map_winpath,
+        vim.tbl_filter(filt_seen, vim.tbl_map(map_file, vim.tbl_map(vim.fs.normalize, vim.v.oldfiles)))
+    )
 
     return ret
 end
