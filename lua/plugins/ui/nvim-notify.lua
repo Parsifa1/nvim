@@ -1,6 +1,8 @@
 ---@diagnostic disable: duplicate-set-field
+---@type LazyPluginSpec
 return {
-    "rcarriga/nvim-notify",
+    -- FIX: temp fix wrapped-compact error
+    "parsifa1/nvim-notify",
     lazy = true,
     init = function()
         vim.notify = function(...)
@@ -14,7 +16,6 @@ return {
         require("notify").setup {
             stages = "fade",
             render = "wrapped-compact",
-            background_colour = "Normal",
             on_open = function(win)
                 vim.api.nvim_win_set_config(win, { focusable = false })
             end,
