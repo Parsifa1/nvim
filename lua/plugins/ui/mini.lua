@@ -171,6 +171,7 @@ return {
         opts = {
             extension = {
                 ["mdx"] = { glyph = "󰍔", hl = "MiniIconsGrey" },
+                ["mbt"] = { glyph = "󱩡", hl = "MiniIconsPurple" },
             },
             filetype = {
                 ["moonbit"] = { glyph = "󱩡", hl = "MiniIconsPurple" },

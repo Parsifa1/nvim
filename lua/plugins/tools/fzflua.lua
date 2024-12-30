@@ -50,6 +50,7 @@ end
 
 return {
     "ibhagwan/fzf-lua",
+    dependencies = { "echasnovski/mini.icons" },
     enabled = true,
     keys = keys(),
     cmd = "FzfLua",

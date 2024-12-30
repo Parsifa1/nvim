@@ -37,7 +37,7 @@ return {
         "stevearc/dressing.nvim",
         "nvim-lua/plenary.nvim",
         "MunifTanjim/nui.nvim",
-        "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+        "echasnovski/mini.icons",
         "zbirenbaum/copilot.lua", -- for providers='copilot'
     },
 }
