@@ -64,7 +64,7 @@ return {
 
         -- 忽略特定文件类型
         vim.api.nvim_create_autocmd("FileType", {
-            pattern = { "leetcode.nvim", "lazy" },
+            pattern = { "leetcode.nvim", "lazy", "snacks_dashboard" },
             callback = function()
                 require("ufo").detach()
                 vim.opt_local.foldenable = false

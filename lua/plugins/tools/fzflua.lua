@@ -38,6 +38,10 @@ local keys = function()
             { "<leader>f", "<cmd>FzfLua files<CR>", desc = "find files" },
             { "<leader>r", "<cmd>FzfLua oldfiles<CR>", desc = "recent files" },
             { "<leader>w", "<cmd>FzfLua live_grep<CR>", desc = "live grep" },
+            { "<leader>tc", "<cmd>FzfLua commands<CR>", desc = "Fzflua Commands" },
+            { "<leader>tk", "<cmd>FzfLua keymaps<CR>", desc = "Fzflua Keymaps" },
+            { "<leader>tl", "<cmd>FzfLua highlights<CR>", desc = "Fzflua Highlights" },
+            { "<leader>th", "<cmd>FzfLua helptags<CR>", desc = "Fzflua Help" },
         }
     else
         return { { "<esc>", "<c-c>", ft = "fzf", mode = "t", nowait = true } }
@@ -50,13 +54,19 @@ end
 
 return {
     "ibhagwan/fzf-lua",
-    dependencies = { "echasnovski/mini.icons" },
+    dependencies = {
+        "echasnovski/mini.icons",
+        "moonbit-community/moonbit.nvim",
+    },
     enabled = true,
     keys = keys(),
     cmd = "FzfLua",
     opts = {
         "default-title",
-        winopts = { backdrop = false },
+        winopts = {
+            backdrop = false,
+            preview = { delay = 50 },
+        },
         oldfiles = merge { file_icons = "mini" },
         files = merge {
             file_icons = "mini",

@@ -1,5 +1,5 @@
 return {
-    "parsifa1/moonbit.nvim",
+    "moonbit-community/moonbit.nvim",
     ft = { "moonbit" },
     opts = {
         -- optionally disable the treesitter integration
