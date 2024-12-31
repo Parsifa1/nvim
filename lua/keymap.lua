@@ -43,8 +43,6 @@ local keymap = {
     { mode = mode_nit, from = "zj",               to = "<C-w>j",                                           desc = "Go to the down window" },
     { mode = mode_nit, from = "zk",               to = "<C-w>k",                                           desc = "Go to the up window" },
     { mode = mode_nit, from = "zl",               to = "<C-w>l",                                           desc = "Go to the right window" },
-    { mode = mode_n,   from = "zn",               to = "zR",                                               desc = "open all fold" },  -- 全部打开
-    { mode = mode_n,   from = "zm",               to = "zM",                                               desc = "close all fold" }, -- 全部折叠
     { mode = mode_n,   from = "zc",               to = "<C-w>c",                                           desc = "close current window" },
     { mode = mode_n,   from = "zs",               to = "<C-w>s",                                           desc = "split current window" },
     { mode = mode_n,   from = "zv",               to = "<C-w>v",                                           desc = "vsplit current window" },

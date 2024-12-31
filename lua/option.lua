@@ -53,6 +53,8 @@ vim.g.asyncrun_open = 6
 
 -- no fold
 vim.opt.foldlevel = 99
+vim.opt.foldcolumn = "0"
+vim.opt.foldenable = false
 
 -- set statusline && mode
 vim.opt.statusline = " "
