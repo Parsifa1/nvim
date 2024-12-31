@@ -1,8 +1,7 @@
 ---@diagnostic disable: duplicate-set-field
 ---@type LazyPluginSpec
 return {
-    -- FIX: temp fix wrapped-compact error
-    "parsifa1/nvim-notify",
+    "rcarriga/nvim-notify",
     lazy = true,
     init = function()
         vim.notify = function(...)
