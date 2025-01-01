@@ -170,11 +170,15 @@ return {
         specs = { { "nvim-tree/nvim-web-devicons", enabled = false, optional = true } },
         opts = {
             extension = {
+                ["db"] = { glyph = "󰆼", hl = "MiniIconsGrey" },
                 ["mdx"] = { glyph = "󰍔", hl = "MiniIconsGrey" },
                 ["mbt"] = { glyph = "󱩡", hl = "MiniIconsPurple" },
             },
             filetype = {
                 ["moonbit"] = { glyph = "󱩡", hl = "MiniIconsPurple" },
+            },
+            file = {
+                ["devenv.lock"] = { glyph = "", hl = "MiniIconsGrey" },
             },
         },
         init = function()
