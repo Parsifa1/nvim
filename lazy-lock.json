@@ -3,7 +3,7 @@
   "LuaSnip": { "branch": "master", "commit": "33b06d72d220aa56a7ce80a0dd6f06c70cd82b9d" },
   "asyncrun.vim": { "branch": "master", "commit": "78dc9277f2b989553861ee7c35b640112d95e1b5" },
   "asynctasks.vim": { "branch": "master", "commit": "9020fdb8a59d4cc7887f7e0ae724741bbc46e08f" },
-  "avante.nvim": { "branch": "main", "commit": "9abbec4c5b580b514184990490dea74d0cdc27cc" },
+  "avante.nvim": { "branch": "main", "commit": "be92be6124f743c30ba4b52ded908d02cfb80a1b" },
   "blink.cmp": { "branch": "main", "commit": "0350feedfa8adb07b6750f6d9150c26e13eae0d2" },
   "catppuccin": { "branch": "main", "commit": "f67b886d65a029f12ffa298701fb8f1efd89295d" },
   "codesnap.nvim": { "branch": "main", "commit": "6400480aa6cc366cbd931146c429aaa64680dab9" },

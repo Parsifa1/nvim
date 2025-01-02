@@ -157,7 +157,6 @@ return {
             "rcarriga/nvim-notify",
             { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
         },
-        event = { "CursorHold", "CursorHoldI" },
         keys = keys(),
         cmd = "Telescope",
         opts = opts,
