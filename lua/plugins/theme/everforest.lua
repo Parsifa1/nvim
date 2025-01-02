@@ -1,13 +1,9 @@
 ---@diagnostic disable: unused-local
 return {
-    "neanias/everforest-nvim",
+    "sainnhe/everforest",
     priority = 100,
     config = function()
-        require("everforest").setup {
-            italics = true,
-            on_highlights = function(hl, pl)
-                hl.MiniFilesTitleFocused = { fg = "fg", bg = pl.bg0 }
-            end,
-        }
+        vim.g.everforest_background = 'hard'
+        vim.g.everforest_enable_italic = true
     end,
 }
