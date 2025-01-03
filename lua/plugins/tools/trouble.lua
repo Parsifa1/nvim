@@ -1,5 +1,6 @@
 return {
     "folke/trouble.nvim",
+    dependencies = { "rcarriga/nvim-notify" },
     cmd = "Trouble",
     keys = {
         { "<leader>q", "<Cmd>Trouble diagnostics <CR>", desc = "Trouble" },

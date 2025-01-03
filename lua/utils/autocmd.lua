@@ -4,7 +4,7 @@ vim.api.nvim_create_autocmd("FileType", {
     command = "set formatoptions-=ro",
 })
 
--- set wrap only for markdown and typst
+-- set wrap only for markdown, typst and Avante
 vim.api.nvim_create_autocmd("BufEnter", {
     pattern = "*",
     callback = function()
