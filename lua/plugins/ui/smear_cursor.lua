@@ -1,5 +1,7 @@
+---@type LazyPluginSpec
 return {
     "sphamba/smear-cursor.nvim",
+    enabled = false,
     event = "User AfterLoad",
     opts = {
         legacy_computing_symbols_support = true,
