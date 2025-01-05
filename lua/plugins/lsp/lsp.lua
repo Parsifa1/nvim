@@ -72,8 +72,8 @@ end
 return {
     {
         "neovim/nvim-lspconfig",
-        -- event = { "BufReadPre", "BufNewFile" },
-        event = "User AfterLoad",
+        event = { "BufReadPre", "BufNewFile" },
+        -- event = "User AfterLoad",
         cmd = "LspInfo",
         config = config,
     },
