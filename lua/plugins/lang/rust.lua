@@ -11,6 +11,7 @@ return {
                     float_win_config = {
                         border = "rounded",
                     },
+                    test_executor = "background",
                 },
             }
         end,
