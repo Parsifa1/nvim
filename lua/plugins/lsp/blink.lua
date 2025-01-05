@@ -70,8 +70,10 @@ return {
                 show_on_x_blocked_trigger_characters = { "'", '"', "(", "{" },
             },
             menu = {
-                border = "rounded",
+                -- border = "rounded",
+                border = "single",
                 winhighlight = "Normal:None,FloatBorder:None,CursorLine:BlinkCmpMenuSelection,Search:None",
+                scrollbar = false,
                 draw = {
                     treesitter = { "lsp" },
                     columns = { { "kind_icon" }, { "label", "label_description", gap = 1 }, { "provider" } },
@@ -91,7 +93,8 @@ return {
             documentation = {
                 auto_show = true,
                 window = {
-                    border = "rounded",
+                    -- border = "rounded",
+                    border = "single",
                     scrollbar = false,
                 },
             },
@@ -108,7 +111,8 @@ return {
         signature = {
             enabled = true,
             window = {
-                border = "rounded",
+                border = "single",
+                -- border = "rounded",
             },
         },
         sources = {

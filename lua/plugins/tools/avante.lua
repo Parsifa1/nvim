@@ -1,5 +1,5 @@
 return {
-    "parsifa1/avante.nvim",
+    "yetone/avante.nvim",
     build = "make",
     opts = {
         provider = "copilot",
