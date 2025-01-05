@@ -2,7 +2,7 @@
 ---@type LazyPluginSpec
 return {
     "rcarriga/nvim-notify",
-    lazy = true,
+    event = "User AfterLoad",
     init = function()
         vim.notify = function(...)
             if not require("lazy.core.config").plugins["nvim-notify"]._.loaded then

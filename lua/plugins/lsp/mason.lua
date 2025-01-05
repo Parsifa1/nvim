@@ -1,6 +1,7 @@
 return {
     {
         "williamboman/mason.nvim",
+        dependencies = "rcarriga/nvim-notify",
         keys = {
             { "<leader>m", "<cmd>Mason<CR>", desc = "open Mason" },
         },
@@ -16,8 +17,8 @@ return {
                 PATH = "append", -- NOTE:为了兼容NIXOS
                 registries = {
                     "github:mason-org/mason-registry",
-                    "github:Parsifa1/mason-registry",
                     "github:Crashdummyy/mason-registry",
+                    "github:Parsifa1/typstyle-mason-registry",
                 },
 
                 ui = {
