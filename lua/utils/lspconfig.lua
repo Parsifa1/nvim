@@ -21,6 +21,7 @@ M.config = {
         init_options = {
             fallbackFlags = {
                 "-std=c++2b",
+                "-xc++",
                 "-Wall",
                 "-Wno-unused-variable",
                 "-Wno-vla-cxx-extension",
@@ -28,7 +29,7 @@ M.config = {
                 "-Wno-unused-but-set-variable ",
                 "-fsyntax-only",
                 "-static-libgcc",
-                "l stdc++",
+                "-l stdc++",
             },
         },
     },
