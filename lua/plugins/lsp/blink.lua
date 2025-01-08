@@ -11,7 +11,7 @@ local super_tab = function(direction)
             end
             local current_start, current_end = current_node:get_buf_position()
             current_start[1] = current_start[1] + 1 -- (1, 0) indexed
-            current_end[1] = current_end[1] + 1 -- (1, 0) indexed
+            current_end[1] = current_end[1] + 1     -- (1, 0) indexed
             local cursor = vim.api.nvim_win_get_cursor(0)
             if
                 cursor[1] < current_start[1]
@@ -42,7 +42,7 @@ return {
     "saghen/blink.cmp",
     event = { "CursorHold", "CursorHoldI", "User AfterLoad" },
     version = "*",
-    -- build = "cargo build --release",
+
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
@@ -62,15 +62,16 @@ return {
         },
         completion = {
             list = {
-                selection = function(ctx)
-                    return ctx.mode == "cmdline" and "auto_insert" or "preselect"
-                end,
+                selection = {
+                    preselect = function(ctx) return ctx.mode ~= "cmdline" end,
+                    auto_insert = function(ctx) return ctx.mode == 'cmdline' end
+                }
+
             },
             trigger = {
                 show_on_x_blocked_trigger_characters = { "'", '"', "(", "{" },
             },
             menu = {
-                -- border = "rounded",
                 border = "single",
                 winhighlight = "Normal:None,FloatBorder:None,CursorLine:BlinkCmpMenuSelection,Search:None",
                 scrollbar = false,
@@ -93,7 +94,6 @@ return {
             documentation = {
                 auto_show = true,
                 window = {
-                    -- border = "rounded",
                     border = "single",
                     scrollbar = false,
                 },
@@ -110,13 +110,19 @@ return {
         },
         signature = {
             enabled = true,
-            window = {
-                border = "single",
-                -- border = "rounded",
-            },
+            window = { border = "single", },
         },
         sources = {
-            default = { "lsp", "path", "luasnip", "buffer", "lazydev" },
+            default = function()
+                local success, node = pcall(vim.treesitter.get_node)
+                if vim.bo.filetype == 'lua' then
+                    return { 'lsp', 'path' }
+                elseif success and node and vim.tbl_contains({ 'comment', 'line_comment', 'block_comment' }, node:type()) then
+                    return { 'buffer' }
+                else
+                    return { 'lsp', 'path', 'snippets', 'buffer' }
+                end
+            end,
             providers = {
                 lazydev = {
                     name = "Development",
@@ -137,6 +143,13 @@ return {
             ["<C-u>"] = { "scroll_documentation_up", "fallback" },
             ["<C-d>"] = { "scroll_documentation_down", "fallback" },
             cmdline = {
+                ["<CR>"] = { function(cmp)
+                    return cmp.select_and_accept({
+                        callback = function()
+                            vim.api.nvim_feedkeys('\n', 'n', true)
+                        end
+                    })
+                end, "fallback" },
                 ["<Tab>"] = { "select_next", "fallback" },
                 ["<S-Tab>"] = { "select_prev", "fallback" },
                 ["<C-j>"] = { "select_next", "fallback" },
