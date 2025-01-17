@@ -19,6 +19,6 @@ return {
             return args.line1
         end,
         wslclipboard = "auto",
-        font = "Iosevka Cloudtide",
+        font = "Iosevka Cloudtide; LXGW WenKai",
     },
 }

@@ -133,6 +133,7 @@ return {
         keymap = {
             ["<C-w>"] = { "show", "hide", "show_documentation", "hide_documentation" },
             ["<CR>"] = { "accept", "fallback" },
+            ["<C-CR>"] = { "fallback" },
             ["<Tab>"] = super_tab "forward",
             ["<S-Tab>"] = super_tab "backward",
             ["<Up>"] = { "select_prev", "fallback" },
@@ -144,7 +145,7 @@ return {
             ["<C-d>"] = { "scroll_documentation_down", "fallback" },
             cmdline = {
                 ["<CR>"] = { function(cmp)
-                    return cmp.select_and_accept({
+                    return cmp.accept({
                         callback = function()
                             vim.api.nvim_feedkeys('\n', 'n', true)
                         end

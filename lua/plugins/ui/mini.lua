@@ -173,12 +173,14 @@ return {
                 ["db"] = { glyph = "󰆼", hl = "MiniIconsGrey" },
                 ["mdx"] = { glyph = "󰍔", hl = "MiniIconsGrey" },
                 ["mbt"] = { glyph = "󱩡", hl = "MiniIconsPurple" },
+                ["log"] = { glyph = "󰕲", hl = "MiniIconsGrey" },
             },
             filetype = {
                 ["moonbit"] = { glyph = "󱩡", hl = "MiniIconsPurple" },
             },
             file = {
                 ["devenv.lock"] = { glyph = "", hl = "MiniIconsGrey" },
+                [".tasks"] = { glyph = "", hl = "MiniIconsGrey" },
             },
         },
         init = function()
