@@ -174,6 +174,7 @@ return {
                 ["mdx"] = { glyph = "󰍔", hl = "MiniIconsGrey" },
                 ["mbt"] = { glyph = "󱩡", hl = "MiniIconsPurple" },
                 ["log"] = { glyph = "󰕲", hl = "MiniIconsGrey" },
+                ["age"] = { glyph = "󰦝", hl = "MiniIconsGreen" },
             },
             filetype = {
                 ["moonbit"] = { glyph = "󱩡", hl = "MiniIconsPurple" },
