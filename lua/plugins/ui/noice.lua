@@ -43,21 +43,14 @@ return {
                 filter = {
                     event = "msg_show",
                     any = {
+                        { find = "W10" },
+                        { find = "E21" },
                         { find = "%d+L, %d+B" },
                         { find = "; after #%d+" },
                         { find = "; before #%d+" },
                         { find = "%d fewer lines" },
                         { find = "%d more lines" },
-                    },
-                },
-                opts = { skip = true },
-            },
-            {
-                filter = {
-                    event = "msg_show",
-                    any = {
-                        { find = "W10" },
-                        { find = "E21" },
+                        { find = "Index out of bounds" },
                     },
                 },
                 opts = { skip = true },
