@@ -4,7 +4,7 @@
   "asyncrun.vim": { "branch": "master", "commit": "78dc9277f2b989553861ee7c35b640112d95e1b5" },
   "asynctasks.vim": { "branch": "master", "commit": "9020fdb8a59d4cc7887f7e0ae724741bbc46e08f" },
   "avante.nvim": { "branch": "main", "commit": "122bc3287b973154d64e23ec7187e659fc91c8c8" },
-  "blink.cmp": { "branch": "main", "commit": "1cc3b1a908fbcfd15451c4772759549724f38524" },
+  "blink.cmp": { "branch": "main", "commit": "ef9f85c6ff87747655e8ef37c997ab808a2957c0" },
   "catppuccin": { "branch": "main", "commit": "f67b886d65a029f12ffa298701fb8f1efd89295d" },
   "competitest.nvim": { "branch": "master", "commit": "e397635d212605a3fa0e2d06f3e6209085189e3f" },
   "conform.nvim": { "branch": "master", "commit": "6dc21d4ce050c2e592d9635b7983d67baf216e3d" },

@@ -41,8 +41,8 @@ end
 return {
     "saghen/blink.cmp",
     event = { "CursorHold", "CursorHoldI", "User AfterLoad" },
-    version = "*",
-
+    -- version = "*",
+    build = "cargo build --release",
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
