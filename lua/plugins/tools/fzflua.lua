@@ -67,9 +67,8 @@ return {
             backdrop = false,
             preview = { delay = 50 },
         },
-        oldfiles = merge { file_icons = "mini" },
+        oldfiles = ivy,
         files = merge {
-            file_icons = "mini",
             git_icons = false,
             fd_opts = "-H -I "
                 .. "-E '{.astro,.git,.kube,.idea,.vscode,.sass-cache,node_modules,build,.vscode-server,.virtualenvs,target,.orbstack,.cache}' "

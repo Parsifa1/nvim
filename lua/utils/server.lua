@@ -7,7 +7,7 @@ M.lsp = {
     "html",
     "volar",
     "astro",
-    "ts_ls",
+    -- "ts_ls",
     "gopls",
     "cssls",
     "taplo",

@@ -11,7 +11,7 @@ local super_tab = function(direction)
             end
             local current_start, current_end = current_node:get_buf_position()
             current_start[1] = current_start[1] + 1 -- (1, 0) indexed
-            current_end[1] = current_end[1] + 1     -- (1, 0) indexed
+            current_end[1] = current_end[1] + 1 -- (1, 0) indexed
             local cursor = vim.api.nvim_win_get_cursor(0)
             if
                 cursor[1] < current_start[1]
@@ -38,138 +38,155 @@ local super_tab = function(direction)
     return ret
 end
 
+local opts = {
+    completion = {
+        list = {
+            selection = {
+                preselect = function(ctx)
+                    return ctx.mode ~= "cmdline"
+                end,
+                auto_insert = function(ctx)
+                    return ctx.mode == "cmdline"
+                end,
+            },
+        },
+        menu = {
+            border = "single",
+            winhighlight = "Normal:None,FloatBorder:None,CursorLine:BlinkCmpMenuSelection,Search:None",
+            scrollbar = false,
+            draw = {
+                treesitter = { "lsp" },
+                columns = function(ctx)
+                    return ctx.mode == "cmdline" and { { "kind_icon" }, { "label" } }
+                        or { { "kind_icon" }, { "label", "label_description", gap = 1 }, { "provider" } }
+                end,
+                components = {
+                    label = {
+                        width = {
+                            max = function(ctx)
+                                return ctx.mode == "cmdline" and 22 or 60
+                            end,
+                        },
+                    },
+                    provider = {
+                        text = function(ctx)
+                            return "[" .. ctx.item.source_name:sub(1, 3):upper() .. "]"
+                        end,
+                    },
+                },
+            },
+        },
+        trigger = {
+            show_on_x_blocked_trigger_characters = { "'", '"', "(", "{" },
+        },
+        documentation = {
+            auto_show = true,
+            window = {
+                border = "single",
+                scrollbar = false,
+            },
+        },
+        accept = {
+            auto_brackets = {
+                enabled = true,
+                kind_resolution = {
+                    enabled = true,
+                    blocked_filetypes = { "typescriptreact", "javascriptreact", "vue", "rust" },
+                },
+            },
+        },
+    },
+    sources = {
+        default = function()
+            local success, node = pcall(vim.treesitter.get_node)
+            if vim.bo.filetype == "lua" then
+                return { "lsp", "path" }
+            elseif
+                success
+                and node
+                and vim.tbl_contains({ "comment", "line_comment", "block_comment" }, node:type())
+            then
+                return { "buffer" }
+            else
+                return { "lsp", "path", "snippets", "buffer" }
+            end
+        end,
+        providers = {
+            lazydev = {
+                name = "Development",
+                module = "lazydev.integrations.blink",
+            },
+        },
+    },
+    keymap = {
+        ["<C-w>"] = { "show", "hide", "show_documentation", "hide_documentation" },
+        ["<CR>"] = { "accept", "fallback" },
+        ["<C-CR>"] = { "fallback" },
+        ["<Tab>"] = super_tab "forward",
+        ["<S-Tab>"] = super_tab "backward",
+        ["<Up>"] = { "select_prev", "fallback" },
+        ["<Down>"] = { "select_next", "fallback" },
+        ["<C-j>"] = { "select_next", "fallback" },
+        ["<C-k>"] = { "select_prev", "fallback" },
+
+        ["<C-u>"] = { "scroll_documentation_up", "fallback" },
+        ["<C-d>"] = { "scroll_documentation_down", "fallback" },
+        cmdline = {
+            ["<CR>"] = {
+                function(cmp)
+                    return cmp.accept {
+                        callback = function()
+                            vim.api.nvim_feedkeys("\n", "n", true)
+                        end,
+                    }
+                end,
+                "fallback",
+            },
+            ["<Tab>"] = { "select_next", "fallback" },
+            ["<S-Tab>"] = { "select_prev", "fallback" },
+            ["<C-j>"] = { "select_next", "fallback" },
+            ["<C-k>"] = { "select_prev", "fallback" },
+        },
+    },
+    appearance = {
+        use_nvim_cmp_as_default = true,
+        nerd_font_variant = "mono",
+        kind_icons = custom.icons.kind,
+    },
+    signature = {
+        enabled = true,
+        window = { border = "single" },
+    },
+    snippets = {
+        expand = function(snippet)
+            require("luasnip").lsp_expand(snippet)
+        end,
+        active = function(filter)
+            if filter and filter.direction then
+                return require("luasnip").locally_jumpable()
+            end
+            return require("luasnip").in_snippet()
+        end,
+        jump = function(direction)
+            require("luasnip").jump(direction)
+        end,
+    },
+    fuzzy = {
+        prebuilt_binaries = {
+            ignore_version_mismatch = true,
+        },
+    },
+}
+
 return {
-    "saghen/blink.cmp",
-    event = { "CursorHold", "CursorHoldI", "User AfterLoad" },
+    -- TODO: waiting pr to merge
+    "parsifa1/blink.cmp",
+    -- dir = "~/Project/blink.cmp",
+    event = { "CursorHold", "CursorHoldI", "CmdlineEnter", "User AfterLoad" },
     -- version = "*",
     build = "cargo build --release",
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
-    opts = {
-        snippets = {
-            expand = function(snippet)
-                require("luasnip").lsp_expand(snippet)
-            end,
-            active = function(filter)
-                if filter and filter.direction then
-                    return require("luasnip").locally_jumpable()
-                end
-                return require("luasnip").in_snippet()
-            end,
-            jump = function(direction)
-                require("luasnip").jump(direction)
-            end,
-        },
-        completion = {
-            list = {
-                selection = {
-                    preselect = function(ctx) return ctx.mode ~= "cmdline" end,
-                    auto_insert = function(ctx) return ctx.mode == 'cmdline' end
-                }
-
-            },
-            trigger = {
-                show_on_x_blocked_trigger_characters = { "'", '"', "(", "{" },
-            },
-            menu = {
-                border = "single",
-                winhighlight = "Normal:None,FloatBorder:None,CursorLine:BlinkCmpMenuSelection,Search:None",
-                scrollbar = false,
-                draw = {
-                    treesitter = { "lsp" },
-                    columns = { { "kind_icon" }, { "label", "label_description", gap = 1 }, { "provider" } },
-                    components = {
-                        provider = {
-                            text = function(ctx)
-                                if ctx.item.source_name == "Luasnip" then
-                                    return "[SNI]"
-                                else
-                                    return "[" .. ctx.item.source_name:sub(1, 3):upper() .. "]"
-                                end
-                            end,
-                        },
-                    },
-                },
-            },
-            documentation = {
-                auto_show = true,
-                window = {
-                    border = "single",
-                    scrollbar = false,
-                },
-            },
-            accept = {
-                auto_brackets = {
-                    enabled = true,
-                    kind_resolution = {
-                        enabled = true,
-                        blocked_filetypes = { "typescriptreact", "javascriptreact", "vue", "rust" },
-                    },
-                },
-            },
-        },
-        signature = {
-            enabled = true,
-            window = { border = "single", },
-        },
-        sources = {
-            default = function()
-                local success, node = pcall(vim.treesitter.get_node)
-                if vim.bo.filetype == 'lua' then
-                    return { 'lsp', 'path' }
-                elseif success and node and vim.tbl_contains({ 'comment', 'line_comment', 'block_comment' }, node:type()) then
-                    return { 'buffer' }
-                else
-                    return { 'lsp', 'path', 'snippets', 'buffer' }
-                end
-            end,
-            cmdline = function()
-                local type = vim.fn.getcmdtype()
-                -- Search forward and backward
-                if type == '/' or type == '?' then return { 'buffer' } end
-                -- TODO: Temp turn off cmdline
-                -- if type == ':' or type == '@' then return { 'cmdline' } end
-                return {}
-            end,
-            providers = {
-                lazydev = {
-                    name = "Development",
-                    module = "lazydev.integrations.blink",
-                },
-            },
-        },
-        keymap = {
-            ["<C-w>"] = { "show", "hide", "show_documentation", "hide_documentation" },
-            ["<CR>"] = { "accept", "fallback" },
-            ["<C-CR>"] = { "fallback" },
-            ["<Tab>"] = super_tab "forward",
-            ["<S-Tab>"] = super_tab "backward",
-            ["<Up>"] = { "select_prev", "fallback" },
-            ["<Down>"] = { "select_next", "fallback" },
-            ["<C-j>"] = { "select_next", "fallback" },
-            ["<C-k>"] = { "select_prev", "fallback" },
-
-            ["<C-u>"] = { "scroll_documentation_up", "fallback" },
-            ["<C-d>"] = { "scroll_documentation_down", "fallback" },
-            cmdline = {
-                ["<CR>"] = { function(cmp)
-                    return cmp.accept({
-                        callback = function()
-                            vim.api.nvim_feedkeys('\n', 'n', true)
-                        end
-                    })
-                end, "fallback" },
-                ["<Tab>"] = { "select_next", "fallback" },
-                ["<S-Tab>"] = { "select_prev", "fallback" },
-                ["<C-j>"] = { "select_next", "fallback" },
-                ["<C-k>"] = { "select_prev", "fallback" },
-            },
-        },
-        appearance = {
-            use_nvim_cmp_as_default = true,
-            nerd_font_variant = "mono",
-            kind_icons = custom.icons.kind,
-        },
-    },
+    opts = opts,
     opts_extend = { "sources.completion.enabled_providers" },
 }
