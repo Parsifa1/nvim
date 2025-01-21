@@ -45,6 +45,8 @@ return {
                     any = {
                         { find = "W10" },
                         { find = "E21" },
+                        { find = "E492" },
+                        { find = "E486" },
                         { find = "%d+L, %d+B" },
                         { find = "; after #%d+" },
                         { find = "; before #%d+" },

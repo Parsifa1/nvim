@@ -123,6 +123,14 @@ return {
                     return { 'lsp', 'path', 'snippets', 'buffer' }
                 end
             end,
+            cmdline = function()
+                local type = vim.fn.getcmdtype()
+                -- Search forward and backward
+                if type == '/' or type == '?' then return { 'buffer' } end
+                -- TODO: Temp turn off cmdline
+                -- if type == ':' or type == '@' then return { 'cmdline' } end
+                return {}
+            end,
             providers = {
                 lazydev = {
                     name = "Development",
