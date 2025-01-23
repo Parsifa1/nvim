@@ -58,20 +58,28 @@ local opts = {
                 treesitter = { "lsp" },
                 columns = function(ctx)
                     return ctx.mode == "cmdline" and { { "kind_icon" }, { "label" } }
-                        or { { "kind_icon" }, { "label", "label_description", gap = 1 }, { "provider" } }
+                        or { { "kind_icon" }, { "label", gap = 1 }, { "provider" } }
                 end,
                 components = {
                     label = {
+                        -- intergrate with colorful-menu
+                        text = function(ctx)
+                            return require("colorful-menu").blink_components_text(ctx)
+                        end,
                         width = {
                             max = function(ctx)
                                 return ctx.mode == "cmdline" and 22 or 60
                             end,
                         },
+                        highlight = function(ctx)
+                            return require("colorful-menu").blink_components_highlight(ctx)
+                        end,
                     },
                     provider = {
                         text = function(ctx)
                             return "[" .. ctx.item.source_name:sub(1, 3):upper() .. "]"
                         end,
+                        highlight = "Fg",
                     },
                 },
             },
@@ -150,7 +158,7 @@ local opts = {
     },
     appearance = {
         use_nvim_cmp_as_default = true,
-        nerd_font_variant = "mono",
+        -- nerd_font_variant = "mono",
         kind_icons = custom.icons.kind,
     },
     signature = {
@@ -180,6 +188,7 @@ local opts = {
 
 return {
     "Saghen/blink.cmp",
+    dependencies = { "xzbdmw/colorful-menu.nvim" },
     -- dir = "~/Project/blink.cmp",
     event = { "CursorHold", "CursorHoldI", "CmdlineEnter", "User AfterLoad" },
     -- version = "*",
