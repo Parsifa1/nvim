@@ -1,4 +1,4 @@
-return { {
+return {
     "3rd/image.nvim",
     enabled = vim.fn.hostname() ~= "debian",
     -- enabled = false,
@@ -8,13 +8,12 @@ return { {
             backend = "kitty",
             integrations = {
                 markdown = {
-                    only_render_image_at_cursor = true
+                    only_render_image_at_cursor = true,
                 },
                 typst = {
-                    only_render_image_at_cursor = true
-                }
-            }
+                    only_render_image_at_cursor = true,
+                },
+            },
         }
     end,
-}
 }

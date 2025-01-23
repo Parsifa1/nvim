@@ -179,8 +179,7 @@ local opts = {
 }
 
 return {
-    -- TODO: waiting pr to merge
-    "parsifa1/blink.cmp",
+    "Saghen/blink.cmp",
     -- dir = "~/Project/blink.cmp",
     event = { "CursorHold", "CursorHoldI", "CmdlineEnter", "User AfterLoad" },
     -- version = "*",
