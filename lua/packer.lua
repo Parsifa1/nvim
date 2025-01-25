@@ -27,7 +27,7 @@ require("lazy").setup {
     defaults = { lazy = true },
     spec = { { import = "plugins" } },
     ui = { border = "rounded", backdrop = 100 },
-    install = { colorscheme = { "gruvbox-material" } },
+    install = { colorscheme = { "everforest" } },
     diff = { cmd = "browser" },
     -- git = { url_format = "git@github.com:%s.git" },
     performance = {
