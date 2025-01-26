@@ -3,6 +3,6 @@ return {
     event = "User AfterLoad",
     opts = {
         hOnlyOpensOnFirstColumn = true,
-        keepFoldsAcrossSessions = false,
+        keepFoldsAcrossSessions = true,
     }, -- needed even when using default config
 }
