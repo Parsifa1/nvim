@@ -47,6 +47,7 @@
   "moonbit.nvim": { "branch": "main", "commit": "1325ce81218d661397624c6c9626dcd4327c4081" },
   "neogit": { "branch": "master", "commit": "63124cf520ff24d09deb3b850e053908ab0fc66a" },
   "neovim-session-manager": { "branch": "master", "commit": "270e235b014f0c37bf362eb1e8913d66bba33a2e" },
+  "nfnl": { "branch": "main", "commit": "b65c4cf17d4e5c9b80d8c8ab33a6774a6c64e1c2" },
   "nightfox.nvim": { "branch": "main", "commit": "595ffb8f291fc4a9bef3201a28b7c0379a41cdee" },
   "noice.nvim": { "branch": "main", "commit": "eaed6cc9c06aa2013b5255349e4f26a6b17ab70f" },
   "nui.nvim": { "branch": "main", "commit": "53e907ffe5eedebdca1cd503b00aa8692068ca46" },
