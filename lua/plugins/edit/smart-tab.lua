@@ -1,5 +1,6 @@
 return {
-    "boltlessengineer/smart-tab.nvim",
+    "parsifa1/smart-tab.nvim",
+    dir = vim.fn.stdpath "config" .. "/lua/users/smart-tab",
     event = "InsertEnter",
     config = function()
         require("smart-tab").setup {

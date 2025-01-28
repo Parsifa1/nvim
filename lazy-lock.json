@@ -78,7 +78,6 @@
   "render-markdown.nvim": { "branch": "main", "commit": "ad055861d17afe058bd835e82292e14a64b51b1d" },
   "restore_view.vim": { "branch": "master", "commit": "8b933436e3ab8dec120841027183f0d72a4e2096" },
   "rustaceanvim": { "branch": "master", "commit": "047f9c9d8cd2861745eb9de6c1570ee0875aa795" },
-  "smart-tab.nvim": { "branch": "main", "commit": "25b6686ddabd8503be1c24b578d7831e9ac8fb6c" },
   "snacks.nvim": { "branch": "main", "commit": "b96bd540f785c725289f9f15f0147b1b2dac5a35" },
   "statuscol.nvim": { "branch": "main", "commit": "a2a0e3ed55ba0f636ce0b2ccf61bca4050edd288" },
   "suda.vim": { "branch": "master", "commit": "9adda7d195222d4e2854efb2a88005a120296c47" },
