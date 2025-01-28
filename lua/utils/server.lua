@@ -1,6 +1,6 @@
 local custom = require "custom"
-local config = require "utils.lspconfig".config
-M = { server = {} }
+local config = require("utils.lspconfig").config
+local M = { server = {} }
 
 M.lsp = {
     "zls",
