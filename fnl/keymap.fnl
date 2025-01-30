@@ -41,7 +41,7 @@
                {:from :<A-q> :mode mode-nit :to :<cmd>q<CR>}
                {:from :<C-x> :mode mode-n :to "<cmd>lua require('snacks.bufdelete').delete()<CR>"}
                {:from :<A-Q> :mode mode-nit :to :<cmd>qa<CR>}
-               {:from :zh :mode mode-n :to :<C-w>h :desc "Go to the left window" }
+               {:from :zh :mode mode-n :to :<C-w>h :desc "Go to the left window"}
                {:from :zj :mode mode-n :to :<C-w>j :desc "Go to the down window"}
                {:from :zk :mode mode-n :to :<C-w>k :desc "Go to the up window"}
                {:from :zl :mode mode-n :to :<C-w>l :desc "Go to the right window"}
@@ -52,7 +52,7 @@
                {:from :<leader>sw :mode mode-n :to "<cmd>set wrap!<CR>" :desc "toggle warp"}
                {:from :<leader><leader> :mode mode-n :to :<cmd>noh<CR> :desc "clear highlight"}
                {:from :zo :mode mode-n :to :<C-w>o} {:desc :lazy :from :<leader>p :mode mode-n :to :<cmd>Lazy<CR> :desc "only current window"}
-               {:from :<leader>ss :mode mode-n :noise true :to ":%s/\\<<C-r><C-w>\\>//g<left><left>" :desc "global replacement" }])
+               {:from :<leader>ss :mode mode-n :noise true :to ":%s/\\<<C-r><C-w>\\>//g<left><left>" :desc "global replacement"}])
 
 (each [_ mapping (ipairs keymap)]
   (let [to mapping.to

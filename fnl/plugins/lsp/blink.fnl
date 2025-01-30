@@ -1,4 +1,27 @@
+(macro set-keymap [keymap ky actions]
+  `(tset ,keymap ,ky ,actions))
+
+(macro init [tbl ...]
+  (let [args [...]
+        n (length args)
+        keys (fcollect [i 1 (- n 1)] (. args i))
+        value (. args n)]
+    (fn build-path [path depth]
+      (if (= depth (length keys))
+          `(if (= nil (. ,path ,(. keys depth)))
+               (tset ,path ,(. keys depth) ,value))
+          `(do
+             (if (= nil (. ,path ,(. keys depth)))
+                 (tset ,path ,(. keys depth) {}))
+             ,(build-path `(. ,path ,(. keys depth)) (+ depth 1)))))
+
+    `(do
+       ,(build-path tbl 1)
+       (. ,tbl ,(unpack keys)))))
+
 (local custom (require :custom))
+(local opts {})
+
 (fn super-tab [direction]
   (let [ret [(fn [cmp]
                (let [ls (require :luasnip)
@@ -26,105 +49,110 @@
     (when (= direction :backward) (tset ret 2 :select_prev))
     ret))
 
-(local opts {:appearance {:kind_icons custom.icons.kind
-                          :use_nvim_cmp_as_default true}
-             :completion {:accept {:auto_brackets {:enabled true
-                                                   :kind_resolution {:blocked_filetypes [:typescriptreact
-                                                                                         :javascriptreact
-                                                                                         :vue
-                                                                                         :rust]
-                                                                     :enabled true}}}
-                          :documentation {:auto_show true
-                                          :window {:border :single
-                                                   :scrollbar false}}
-                          :list {:selection {:auto_insert (fn [ctx]
-                                                            (= ctx.mode
-                                                               :cmdline))
-                                             :preselect (fn [ctx]
-                                                          (not= ctx.mode
-                                                                :cmdline))}}
-                          :menu {:border :single
-                                 :draw {:columns (fn [ctx]
-                                                   (or (and (= ctx.mode
-                                                               :cmdline)
-                                                            [[:kind_icon]
-                                                             [:label]])
-                                                       [[:kind_icon]
-                                                        {1 :label :gap 1}
-                                                        [:provider]]))
-                                        :components {:label {:highlight (fn [ctx]
-                                                                          ((. (require :colorful-menu)
-                                                                              :blink_components_highlight) ctx))
-                                                             :text (fn [ctx]
-                                                                     ((. (require :colorful-menu)
-                                                                         :blink_components_text) ctx))
-                                                             :width {:max (fn [ctx]
-                                                                            (or (and (= ctx.mode
-                                                                                        :cmdline)
-                                                                                     24)
-                                                                                60))}}
-                                                     :provider {:highlight :Fg
-                                                                :text (fn [ctx]
-                                                                        (.. "["
-                                                                            (: (ctx.item.source_name:sub 1
-                                                                                                         3)
-                                                                               :upper)
-                                                                            "]"))}}
-                                        :treesitter [:lsp]}
-                                 :scrollbar false
-                                 :winhighlight "Normal:None,FloatBorder:None,CursorLine:BlinkCmpMenuSelection,Search:None"}
-                          :trigger {:show_on_x_blocked_trigger_characters ["'"
-                                                                           "\""
-                                                                           "("
-                                                                           "{"]}}
-             :fuzzy {:prebuilt_binaries {:ignore_version_mismatch true}}
-             :keymap {:<C-CR> [:fallback]
-                      :<C-d> [:scroll_documentation_down :fallback]
-                      :<C-j> [:select_next :fallback]
-                      :<C-k> [:select_prev :fallback]
-                      :<C-u> [:scroll_documentation_up :fallback]
-                      :<C-w> [:show
-                              :hide
-                              :show_documentation
-                              :hide_documentation]
-                      :<CR> [:accept :fallback]
-                      :<Down> [:select_next :fallback]
-                      :<S-Tab> (super-tab :backward)
-                      :<Tab> (super-tab :forward)
-                      :<Up> [:select_prev :fallback]
-                      :cmdline {:<C-j> [:select_next :fallback]
-                                :<C-k> [:select_prev :fallback]
-                                :<CR> [(fn [cmp]
-                                         (cmp.accept {:callback (fn []
-                                                                  (vim.api.nvim_feedkeys "\n"
-                                                                                         :n
-                                                                                         true))}))
-                                       :fallback]
-                                :<S-Tab> [:select_prev :fallback]
-                                :<Tab> [:select_next :fallback]}}
-             :signature {:enabled true :window {:border :single}}
-             :snippets {:active (fn [filter]
-                                  (when (and filter filter.direction)
-                                    (let [___antifnl_rtns_1___ [((. (require :luasnip)
-                                                                    :locally_jumpable))]]
-                                      (lua "return (table.unpack or _G.unpack)(___antifnl_rtns_1___)")))
-                                  ((. (require :luasnip) :in_snippet)))
-                        :expand (fn [snippet]
-                                  ((. (require :luasnip) :lsp_expand) snippet))
-                        :jump (fn [direction]
-                                ((. (require :luasnip) :jump) direction))}
-             :sources {:default (fn []
-                                  (local (success node)
-                                         (pcall vim.treesitter.get_node))
-                                  (if (= vim.bo.filetype :lua) [:lsp :path]
-                                      (and (and success node)
-                                           (vim.tbl_contains [:comment
-                                                              :line_comment
-                                                              :block_comment]
-                                                             (node:type)))
-                                      [:buffer] [:lsp :path :snippets :buffer]))
-                       :providers {:lazydev {:module :lazydev.integrations.blink
-                                             :name :Development}}}})
+;; opts
+(let [o opts]
+  (let [appear (init o :appearance {})]
+    (init appear :kind_icons custom.icons.kind)
+    (init appear :use_nvim_cmp_as_default true))
+  (let [signature (init o :signature {})]
+    (init signature :enabled true)
+    (init signature :window :border :single))
+  (let [completion (init o :completion {})]
+    (let [auto_brackets (init completion :accept :auto_brackets {})]
+      (init auto_brackets :enabled true)
+      (init auto_brackets :kind_resolution :enabled true)
+      (init auto_brackets :kind_resolution :blocked_filetypes
+            [:typescriptreact :javascriptreact :vue :rust]))
+    (let [document (init completion :documentation {})]
+      (init document :auto_show true)
+      (init document :window :border :single)
+      (init document :window :scrollbar false))
+    (let [selection (init completion :list :selection {})]
+      (init selection :auto_insert
+            (fn [ctx]
+              (= ctx.mode :cmdline)))
+      (init selection :preselect
+            (fn [ctx]
+              (not= ctx.mode :cmdline))))
+    (let [menu (init completion :menu {})]
+      (init menu :border :single)
+      (init menu :scrollbar false)
+      (init menu :winhighlight
+            "Normal:None,FloatBorder:None,CursorLine:BlinkCmpMenuSelection,Search:None")
+      (let [draw (init menu :draw {})]
+        (init draw :treesitter [:lsp])
+        (init draw :columns
+              (fn [ctx]
+                (or (and (= ctx.mode :cmdline) [[:kind_icon] [:label]])
+                    [[:kind_icon] {1 :label :gap 1} [:provider]])))
+        (let [label (init menu :draw :components :label {})]
+          (init label :highlight
+                (fn [ctx]
+                  ((. (require :colorful-menu) :blink_components_highlight) ctx)))
+          (init label :text
+                (fn [ctx]
+                  ((. (require :colorful-menu) :blink_components_text) ctx)))
+          (init label :width :max
+                (fn [ctx]
+                  (or (and (= ctx.mode :cmdline) 22) 60))))
+        (let [provider (init menu :draw :components :provider {})]
+          (init provider :highlight :Fg)
+          (init provider :text (fn [ctx]
+                                 (.. "["
+                                     (: (ctx.item.source_name:sub 1 3) :upper)
+                                     "]"))))))
+    (init completion :trigger :show_on_x_blocked_trigger_characters
+          ["'" "\"" "(" "{"]))
+  (let [sources (init o :sources {})]
+    (init sources :default
+          (fn []
+            (local (success node) (pcall vim.treesitter.get_node))
+            (if (= vim.bo.filetype :lua) [:lsp :path]
+                (and (and success node)
+                     (vim.tbl_contains [:comment :line_comment :block_comment]
+                                       (node:type))) [:buffer]
+                [:lsp :path :snippets :buffer])))
+    (let [providers (init sources :providers {})]
+      (init providers :lazydev {:module :lazydev.integrations.blink})
+      (init providers :lazydev :name :Development)))
+  (let [keymap (init o :keymap {})]
+    (set-keymap keymap :<C-CR> [:fallback])
+    (set-keymap keymap :<C-d> [:scroll_documentation_down :fallback])
+    (set-keymap keymap :<C-j> [:select_next :fallback])
+    (set-keymap keymap :<C-k> [:select_prev :fallback])
+    (set-keymap keymap :<C-u> [:scroll_documentation_up :fallback])
+    (set-keymap keymap :<C-w>
+                [:show :hide :show_documentation :hide_documentation])
+    (set-keymap keymap :<CR> [:accept :fallback])
+    (set-keymap keymap :<Down> [:select_next :fallback])
+    (set-keymap keymap :<S-Tab> (super-tab :backward))
+    (set-keymap keymap :<Tab> (super-tab :forward))
+    (set-keymap keymap :<Up> [:select_prev :fallback])
+    (let [cmdline (init keymap :cmdline {})
+          feedkeys vim.api.nvim_feedkeys]
+      (set-keymap cmdline :<C-j> [:select_next :fallback])
+      (set-keymap cmdline :<C-k> [:select_prev :fallback])
+      (set-keymap cmdline :<CR> [(fn [cmp]
+                                   (cmp.accept {:callback (fn []
+                                                            (feedkeys "\n" :n
+                                                                      true))}))
+                                 :fallback])
+      (set-keymap cmdline :<S-Tab> [:select_prev :fallback])
+      (set-keymap cmdline :<Tab> [:select_next :fallback])))
+  (let [snippets (init o :snippets {})]
+    (init snippets :active
+          (fn [filter]
+            (when (and filter filter.direction)
+              (. (require :luasnip) :locally_jumpable))
+            ((. (require :luasnip) :in_snippet))))
+    (init snippets :expand
+          (fn [snippet]
+            ((. (require :luasnip) :lsp_expand) snippet)))
+    (init snippets :jump
+          (fn [direction]
+            ((. (require :luasnip) :jump) direction))))
+  (let [fuzzy (init o :fuzzy {})]
+    (init fuzzy :prebuilt_binaries {:ignore_version_mismatch true})))
 
 {1 :Saghen/blink.cmp
  :build "cargo build --release"

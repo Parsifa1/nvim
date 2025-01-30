@@ -5,5 +5,5 @@
   :init (fn [] (set vim.g.exp_enable_insert_mode_mappings false))}
  {1 :Olical/conjure
   :ft :fennel
-  :init (fn [] (set vim.g.conjure#mapping#prefix :g)
+  :init (fn [] (set vim.g.conjure#mapping#prefix :gh)
           (set vim.g.conjure#client#fennel#aniseed#deprecation_warning false))}]
