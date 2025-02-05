@@ -24,5 +24,5 @@
                                            {1 :<leader>s :group :Chore}
                                            {1 :<leader>t :group :Telescope}
                                            {1 :<leader>d :group :Dap}
-                                           {1 :<leader>l :group :Latex}]))
+                                           {1 :<leader>l :group :Lisp}]))
  :event :VeryLazy}  

@@ -29,7 +29,7 @@
                    :init_options {:fallbackFlags flag}}))
   ;; fennel_language_server
   (conf :fennel_language_server
-        {:settings {:fennel {:diagnostics {:globals [:vim]}
+        {:settings {:fennel {:diagnostics {:globals [:vim :MiniFiles :Snacks]}
                              :workspace {:checkThirdParty false
                                          :library (vim.api.nvim_list_runtime_paths)}}}})
   ;; hls

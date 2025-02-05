@@ -62,7 +62,7 @@
   (set config (vim.tbl_extend :force config (or opts {})))
   (when config.mapping
     ;; Setup autocommand for new buffers
-    (let [acmd api.nvim.nvim_create_autocmd
+    (let [acmd vim.api.nvim_create_autocmd
           cb :callback]
       (acmd :FileType
             {cb (fn [event]

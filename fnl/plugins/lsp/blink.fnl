@@ -1,3 +1,6 @@
+(local custom (require :custom))
+(local opts {})
+
 (macro set-keymap [keymap ky actions]
   `(tset ,keymap ,ky ,actions))
 
@@ -18,9 +21,6 @@
     `(do
        ,(build-path tbl 1)
        (. ,tbl ,(unpack keys)))))
-
-(local custom (require :custom))
-(local opts {})
 
 (fn super-tab [direction]
   (let [ret [(fn [cmp]
@@ -107,14 +107,16 @@
     (init sources :default
           (fn []
             (local (success node) (pcall vim.treesitter.get_node))
-            (if (= vim.bo.filetype :lua) [:lsp :path]
+            (if (= vim.bo.filetype :lua) [:lsp :path :lazydev]
                 (and (and success node)
                      (vim.tbl_contains [:comment :line_comment :block_comment]
                                        (node:type))) [:buffer]
                 [:lsp :path :snippets :buffer])))
     (let [providers (init sources :providers {})]
-      (init providers :lazydev {:module :lazydev.integrations.blink})
-      (init providers :lazydev :name :Development)))
+      (init providers :lazydev
+            {:name :Development :module :lazydev.integrations.blink})
+      (init providers :conjure
+            {:name :conjure :module :blink.compat.source :score_offset -3})))
   (let [keymap (init o :keymap {})]
     (set-keymap keymap :<C-CR> [:fallback])
     (set-keymap keymap :<C-d> [:scroll_documentation_down :fallback])
@@ -139,6 +141,8 @@
                                  :fallback])
       (set-keymap cmdline :<S-Tab> [:select_prev :fallback])
       (set-keymap cmdline :<Tab> [:select_next :fallback])))
+  (let [fuzzy (init o :fuzzy {})]
+    (init fuzzy :prebuilt_binaries {:ignore_version_mismatch true}))
   (let [snippets (init o :snippets {})]
     (init snippets :active
           (fn [filter]
@@ -150,13 +154,15 @@
             ((. (require :luasnip) :lsp_expand) snippet)))
     (init snippets :jump
           (fn [direction]
-            ((. (require :luasnip) :jump) direction))))
-  (let [fuzzy (init o :fuzzy {})]
-    (init fuzzy :prebuilt_binaries {:ignore_version_mismatch true})))
+            ((. (require :luasnip) :jump) direction)))))
 
 {1 :Saghen/blink.cmp
  :build "cargo build --release"
- :dependencies [:xzbdmw/colorful-menu.nvim]
+ :dependencies [:PaterJason/cmp-conjure
+                :zbdmw/colorful-menu.nvim
+                {1 :saghen/blink.compat
+                 :version "*"
+                 :opts {:impersonate_nvim_cmp true}}]
  :event [:CursorHold :CursorHoldI :CmdlineEnter "User AfterLoad"]
  : opts
  :opts_extend [:sources.completion.enabled_providers]}
