@@ -12,7 +12,7 @@
  :opts {:filetypes ft
         :settings {:separate_diagnostic_server true
                    :publish_diagnostic_on :change
-                   :tsserver_file_preferences {:includeInlayParameterNameHints :all
+                   :tsserver_file_preferences {:includeInlayParameterNameHints :literals
                                                :includeInlayEnumMemberValueHints true
                                                :includeInlayFunctionLikeReturnTypeHints true
                                                :includeInlayFunctionParameterTypeHints true

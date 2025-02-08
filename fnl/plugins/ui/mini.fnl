@@ -112,12 +112,24 @@
           (fn package.preload.nvim-web-devicons []
             ((. (require :mini.icons) :mock_nvim_web_devicons))
             (. package.loaded :nvim-web-devicons)))
-  :opts {:extension {:age {:glyph "󰦝" :hl :MiniIconsGreen}
-                     :db {:glyph "󰆼" :hl :MiniIconsGrey}
-                     :log {:glyph "󰕲" :hl :MiniIconsGrey}
-                     :mbt {:glyph "󱩡" :hl :MiniIconsPurple}
-                     :mdx {:glyph "󰍔" :hl :MiniIconsGrey}}
-         :file {:.tasks {:glyph "" :hl :MiniIconsGrey}
+  :opts {:file {:.tasks {:glyph "" :hl :MiniIconsGrey}
+                :config {:glyph "󰒓" :hl :MiniIconsGreen}
                 :devenv.lock {:glyph "" :hl :MiniIconsGrey}}
-         :filetype {:moonbit {:glyph "󱩡" :hl :MiniIconsPurple}}}
+         :filetype {:moonbit {:glyph "󱩡" :hl :MiniIconsPurple}}
+         :extension {:c {:glyph "󰙱" :hl :MiniIconsBlue}
+                     :db {:glyph "󰆼" :hl :MiniIconsGrey}
+                     :md {:glyph "󰍔" :hl :MiniIconsGrey}
+                     :ts {:glyph "󰛦" :hl :MiniIconsAzure}
+                     :js {:glyph "󰌞" :hl :MiniIconsYellow}
+                     :rs {:glyph "󱘗" :hl :MiniIconsOrange}
+                     :log {:glyph "󰕲" :hl :MiniIconsGrey}
+                     :mdx {:glyph "󰍔" :hl :MiniIconsGrey}
+                     :age {:glyph "󰦝" :hl :MiniIconsGreen}
+                     :nix {:glyph "󱄅" :hl :MiniIconsAzure}
+                     :typ {:glyph "󰬛" :hl :MiniIconsAzure}
+                     :lua {:glyph "󰢱" :hl :MiniIconsAzure}
+                     :cpp {:glyph "󰙲" :hl :MiniIconsAzure}
+                     :mbt {:glyph "󱩡" :hl :MiniIconsPurple}
+                     :fnl {:glyph "" :hl :MiniIconsYellow}
+                     :astro {:glyph "" :hl :MiniIconsOrange}}}
   :specs [{1 :nvim-tree/nvim-web-devicons :enabled false :optional true}]}]

@@ -72,19 +72,14 @@
                                                        "!{**/.git/*,**/node_modules/*,**/package-lock.json,pnpm-lock.yaml,**/yarn.lock,.vscode-server,.virtualenvs}"]}
                        :oldfiles {:theme :ivy}}})
 
+;; fnlfmt: skip
 (fn keys []
   (if (= (. (vim.uv.os_uname) :sysname) :Windows_NT)
       [{1 :<Tab><Tab> 2 "<cmd>Telescope buffers<CR>" :desc :buffers}
-       {1 :<leader>tc
-        2 "<cmd>Telescope commands<CR>"
-        :desc "telescope commands"}
+       {1 :<leader>tc 2 "<cmd>Telescope commands<CR>" :desc "telescope commands"}
        {1 :<leader>tk 2 "<cmd>Telescope keymaps<CR>" :desc "telescope keymaps"}
-       {1 :<leader>tl
-        2 "<cmd>Telescope highlights<CR>"
-        :desc "telescope highlights"}
-       {1 :<leader>th
-        2 "<cmd>Telescope help_tags<CR>"
-        :desc "telescope highlights"}
+       {1 :<leader>tl 2 "<cmd>Telescope highlights<CR>" :desc "telescope highlights"}
+       {1 :<leader>th 2 "<cmd>Telescope help_tags<CR>" :desc "telescope highlights"}
        {1 :<leader>f 2 "<cmd>Telescope find_files<CR>" :desc "find files"}
        {1 :<leader>w 2 "<cmd>Telescope live_grep<CR>" :desc "live grep"}
        {1 :<leader>r 2 "<cmd>Telescope oldfiles<CR>" :desc "recent files"}]

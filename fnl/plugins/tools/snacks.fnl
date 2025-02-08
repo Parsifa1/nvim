@@ -73,15 +73,34 @@
       ⠀⠀⠀⠀⣴⠟⣿⢋⣤⣾⠃⠀⠀⣹⢟⣿⠉⣹⣿⣍⡁⠀⠀⣀⡥⠞⠁⠈⠀⢧⠀⠻⠂⠙⠀⠀⢹⡗⠃⠈⠉⠈⠁⠀
       ⠀⠀⠀⠀⠀⣸⣿⣿⣫⠇⠀⣠⠞⣱⠛⣿⣿⢿⠹⡇⠀⣯⠉⠁⠀⠀⠀⠀⠀⢺⠀⠀⠀⠀⠀⠀⠈⣿⠀⠀⠀⠀⠀⠀")
 
-(local keys
-       (let [snack "<cmd>lua Snacks.picker"]
-         [{1 :<leader>r 2 (.. snack ".recent()<CR>") :desc "recent file"}
-          {1 :<leader>f 2 (.. snack ".smart()<CR>") :desc "find files"}]))
+; (local keys
+;        (let [snack "<cmd>lua Snacks.picker"]
+;          [{1 :<leader>r 2 (.. snack ".recent()<CR>") :desc "recent file"}
+;           {1 :<leader>f 2 (.. snack ".smart()<CR>") :desc "find files"}]))
+
+(local ivy {:layout {:backdrop false
+                     :box :horizontal
+                     :row -1
+                     :height 26
+                     1 {:box :vertical
+                        :border :none
+                        :title "{title} {live} {flags}"
+                        1 {:win :input :height 1 :border :rounded}
+                        2 {:win :list :border :rounded}}
+                     2 {:win :preview
+                        :title "{preview}"
+                        :border :rounded
+                        :width 0.5}}
+            :preset #(if (> vim.o.columns 120) :default :vertical)})
 
 {1 :folke/snacks.nvim
- : keys
+ ; : keys
  :lazy false
- :opts {:bigfile {:enabled true
+ :priority 1000
+ :dependencies [:nvim-treesitter/nvim-treesitter]
+ :opts {:quickfile {}
+        :words {:debounce 100}
+        :bigfile {:enabled true
                   :notify true
                   :setup (fn [ctx]
                            (vim.cmd :NoMatchParen)
@@ -93,28 +112,12 @@
                                            (tset (. vim.bo ctx.buf) :syntax
                                                  ctx.ft))))
                   :size (* 1024 1024 1.5)}
-        :quickfile {}
-        :words {:debounce 100}
         :picker {:layout {:preset #(if (> vim.o.columns 120) :default
                                        :vertical)
-                          :layout {:backdrop false
-                                   ; :position :bottom
-                                   :row -1
-                                   :height 26
-                                   :box :horizontal
-                                   1 {:box :vertical
-                                      :border :none
-                                      :title "{title} {live} {flags}"
-                                      1 {:win :input
-                                         :height 1
-                                         :border :rounded}
-                                      2 {:win :list :border :rounded}}
-                                   2 {:win :preview
-                                      :title "{preview}"
-                                      :border :rounded
-                                      :width 0.5}}}
+                          :layout {:backdrop false}}
                  :win {:input {:keys {:<Esc> {1 :close :mode [:n :i]}}}}
-                 :ui_select false}
+                 :ui_select false
+                 :sources {:smart {:layout ivy} :recent {:layout ivy}}}
         :dashboard {:preset {:keys [{:action "<cmd>FzfLua files<CR>"
                                      :desc "Find file"
                                      :icon " "
@@ -130,7 +133,9 @@
                                     {:action :<cmd>qa<CR>
                                      :desc "Quit Neovim"
                                      :icon "󰅚 "
-                                     :key :q}]}
+                                     :key :q}]
+                             :pick (fn [cmd opts]
+                                     ((. (require :fzf-lua) cmd) opts))}
                     :sections [{:align :center :text [{1 header :hl :Include}]}
                                {:icon " "
                                 :indent 2
