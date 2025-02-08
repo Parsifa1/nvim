@@ -1,5 +1,6 @@
 (local get-root (. (require :utils.gitutils) :get_root))
 
+;; dashboard func
 (fn get-session-dirs []
   (let [sessions (require :session_manager.utils)
         dirs {}]
@@ -46,6 +47,7 @@
         windows-paths (vim.tbl_map map-windows-path filtered-files)]
     windows-paths))
 
+;; ascii anime header
 (local header
        "
       ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⡤⠤⢤⡤⠴⢤⣤⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -71,7 +73,13 @@
       ⠀⠀⠀⠀⣴⠟⣿⢋⣤⣾⠃⠀⠀⣹⢟⣿⠉⣹⣿⣍⡁⠀⠀⣀⡥⠞⠁⠈⠀⢧⠀⠻⠂⠙⠀⠀⢹⡗⠃⠈⠉⠈⠁⠀
       ⠀⠀⠀⠀⠀⣸⣿⣿⣫⠇⠀⣠⠞⣱⠛⣿⣿⢿⠹⡇⠀⣯⠉⠁⠀⠀⠀⠀⠀⢺⠀⠀⠀⠀⠀⠀⠈⣿⠀⠀⠀⠀⠀⠀")
 
+(local keys
+       (let [snack "<cmd>lua Snacks.picker"]
+         [{1 :<leader>r 2 (.. snack ".recent()<CR>") :desc "recent file"}
+          {1 :<leader>f 2 (.. snack ".smart()<CR>") :desc "find files"}]))
+
 {1 :folke/snacks.nvim
+ : keys
  :lazy false
  :opts {:bigfile {:enabled true
                   :notify true
@@ -85,6 +93,28 @@
                                            (tset (. vim.bo ctx.buf) :syntax
                                                  ctx.ft))))
                   :size (* 1024 1024 1.5)}
+        :quickfile {}
+        :words {:debounce 100}
+        :picker {:layout {:preset #(if (> vim.o.columns 120) :default
+                                       :vertical)
+                          :layout {:backdrop false
+                                   ; :position :bottom
+                                   :row -1
+                                   :height 26
+                                   :box :horizontal
+                                   1 {:box :vertical
+                                      :border :none
+                                      :title "{title} {live} {flags}"
+                                      1 {:win :input
+                                         :height 1
+                                         :border :rounded}
+                                      2 {:win :list :border :rounded}}
+                                   2 {:win :preview
+                                      :title "{preview}"
+                                      :border :rounded
+                                      :width 0.5}}}
+                 :win {:input {:keys {:<Esc> {1 :close :mode [:n :i]}}}}
+                 :ui_select false}
         :dashboard {:preset {:keys [{:action "<cmd>FzfLua files<CR>"
                                      :desc "Find file"
                                      :icon " "
@@ -114,6 +144,4 @@
                                 :padding 1
                                 :section :projects
                                 :title :Projects}
-                               {:hl :Keyword :section :startup}]}
-        :quickfile {}
-        :words {:debounce 100}}}
+                               {:hl :Keyword :section :startup}]}}}

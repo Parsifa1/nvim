@@ -91,7 +91,6 @@
       [{1 :<Tab><Tab> 2 "<cmd>Telescope buffers<CR>" :desc :buffers}]))
 
 (local tele-luasnip {1 :benfowler/telescope-luasnip.nvim
-                     :cmd :Telescope
                      :config (fn []
                                ((. (require :telescope) :load_extension) :luasnip))
                      :keys [{1 :<leader>ts

@@ -26,8 +26,8 @@
 (fn keys []
   (if (not= (. (vim.uv.os_uname) :sysname) :Windows_NT)
       [{1 :<esc> 2 :<c-c> :ft :fzf :mode :t :nowait true}
-       {1 :<leader>f 2 "<cmd>FzfLua files<CR>" :desc "find files"}
-       {1 :<leader>r 2 "<cmd>FzfLua oldfiles<CR>" :desc "recent files"}
+       ; {1 :<leader>f 2 "<cmd>FzfLua files<CR>" :desc "find files"}
+       ; {1 :<leader>r 2 "<cmd>FzfLua oldfiles<CR>" :desc "recent files"}
        {1 :<leader>w 2 "<cmd>FzfLua live_grep<CR>" :desc "live grep"}
        {1 :<leader>tc 2 "<cmd>FzfLua commands<CR>" :desc "Fzflua Commands"}
        {1 :<leader>tk 2 "<cmd>FzfLua keymaps<CR>" :desc "Fzflua Keymaps"}
