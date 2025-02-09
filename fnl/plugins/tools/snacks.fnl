@@ -90,8 +90,7 @@
                      2 {:win :preview
                         :title "{preview}"
                         :border :rounded
-                        :width 0.5}}
-            :preset #(if (> vim.o.columns 120) :default :vertical)})
+                        :width 0.5}}})
 
 {1 :folke/snacks.nvim
  ; : keys
@@ -104,20 +103,25 @@
                   :notify true
                   :setup (fn [ctx]
                            (vim.cmd :NoMatchParen)
-                           ((. (require :snacks) :util :wo) 0
-                                                            {:conceallevel 0
-                                                             :foldmethod :manual})
                            (set vim.b.minianimate_disable true)
-                           (vim.schedule (fn []
-                                           (tset (. vim.bo ctx.buf) :syntax
-                                                 ctx.ft))))
+                           (let [wo (. (require :snacks) :util :wo)]
+                             (wo 0 {:conceallevel 0 :foldmethod :manual}))
+                           (vim.schedule #(tset (. vim.bo ctx.buf) :syntax
+                                                ctx.ft)))
                   :size (* 1024 1024 1.5)}
-        :picker {:layout {:preset #(if (> vim.o.columns 120) :default
-                                       :vertical)
+        :picker {:layout {:preset (fn [opt]
+                                    (let [ok (fn [x]
+                                               (match x
+                                                 :smart true
+                                                 :files true
+                                                 :recent true
+                                                 _ false))]
+                                      (if (< vim.o.columns 90) :vertical
+                                          (if (ok opt) :ivy :default))))
                           :layout {:backdrop false}}
                  :win {:input {:keys {:<Esc> {1 :close :mode [:n :i]}}}}
                  :ui_select false
-                 :sources {:smart {:layout ivy} :recent {:layout ivy}}}
+                 :layouts {: ivy}}
         :dashboard {:preset {:keys [{:action "<cmd>FzfLua files<CR>"
                                      :desc "Find file"
                                      :icon " "
