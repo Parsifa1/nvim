@@ -62,7 +62,7 @@
       (init auto_brackets :enabled true)
       (init auto_brackets :kind_resolution :enabled true)
       (init auto_brackets :kind_resolution :blocked_filetypes
-            [:typescriptreact :javascriptreact :vue :rust]))
+            [:typescriptreact :javascriptreact :vue :rust :fennel]))
     (let [document (init completion :documentation {})]
       (init document :auto_show true)
       (init document :window :border :single)
@@ -97,10 +97,10 @@
                   (or (and (= ctx.mode :cmdline) 22) 60))))
         (let [provider (init menu :draw :components :provider {})]
           (init provider :highlight :Fg)
-          (init provider :text (fn [ctx]
-                                 (.. "["
-                                     (: (ctx.item.source_name:sub 1 3) :upper)
-                                     "]"))))))
+          (init provider :text
+                (fn [ctx]
+                  (let [sub (: (ctx.item.source_name:sub 1 3) :upper)]
+                    (.. "[" sub "]")))))))
     (init completion :trigger :show_on_x_blocked_trigger_characters
           ["'" "\"" "(" "{"]))
   (let [sources (init o :sources {})]
@@ -111,7 +111,7 @@
                 (and (and success node)
                      (vim.tbl_contains [:comment :line_comment :block_comment]
                                        (node:type))) [:buffer]
-                [:lsp :path :snippets :buffer])))
+                [:lsp :path :snippets :buffer :conjure])))
     (let [providers (init sources :providers {})]
       (init providers :lazydev
             {:name :Development :module :lazydev.integrations.blink})
@@ -160,9 +160,7 @@
  :build "cargo build --release"
  :dependencies [:PaterJason/cmp-conjure
                 :zbdmw/colorful-menu.nvim
-                {1 :saghen/blink.compat
-                 :version "*"
-                 :opts {:impersonate_nvim_cmp true}}]
+                {1 :saghen/blink.compat}]
  :event [:CursorHold :CursorHoldI :CmdlineEnter "User AfterLoad"]
  : opts
  :opts_extend [:sources.completion.enabled_providers]}

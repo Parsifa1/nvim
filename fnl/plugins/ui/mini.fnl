@@ -131,5 +131,7 @@
                      :cpp {:glyph "󰙲" :hl :MiniIconsAzure}
                      :mbt {:glyph "󱩡" :hl :MiniIconsPurple}
                      :fnl {:glyph "" :hl :MiniIconsYellow}
+                     :txt {:glyph "󰦪" :hl :MiniIconsYellow}
+                     :toml {:glyph "" :hl :MiniIconsOrange}
                      :astro {:glyph "" :hl :MiniIconsOrange}}}
   :specs [{1 :nvim-tree/nvim-web-devicons :enabled false :optional true}]}]

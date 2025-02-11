@@ -28,7 +28,7 @@
       [{1 :<esc> 2 :<c-c> :ft :fzf :mode :t :nowait true}
        {1 :<leader>f 2 "<cmd>FzfLua files<CR>" :desc "find files"}
        {1 :<leader>r 2 "<cmd>FzfLua oldfiles<CR>" :desc "recent files"}
-       {1 :<leader>w 2 "<cmd>FzfLua live_grep<CR>" :desc "live grep"}
+       {1 :<leader>w 2 "<cmd>FzfLua grep_project<CR>" :desc "live grep"}
        {1 :<leader>tc 2 "<cmd>FzfLua commands<CR>" :desc "Fzflua Commands"}
        {1 :<leader>tk 2 "<cmd>FzfLua keymaps<CR>" :desc "Fzflua Keymaps"}
        {1 :<leader>tl 2 "<cmd>FzfLua highlights<CR>" :desc "Fzflua Highlights"}
@@ -52,7 +52,7 @@
  :keys (keys)
  :opts {1 :default-title
         :oldfiles ivy
-        :grep {: rg_opts}
+        :grep {: rg_opts :exec_empty_query true}
         :files (merge {: fd_opts :git_icons false})
         :winopts {:backdrop false :preview {:delay 50}}
         :keymap {:fzf {:ctrl-d :half-page-down :ctrl-u :half-page-up}}}}

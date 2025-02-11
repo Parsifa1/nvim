@@ -73,11 +73,6 @@
       ⠀⠀⠀⠀⣴⠟⣿⢋⣤⣾⠃⠀⠀⣹⢟⣿⠉⣹⣿⣍⡁⠀⠀⣀⡥⠞⠁⠈⠀⢧⠀⠻⠂⠙⠀⠀⢹⡗⠃⠈⠉⠈⠁⠀
       ⠀⠀⠀⠀⠀⣸⣿⣿⣫⠇⠀⣠⠞⣱⠛⣿⣿⢿⠹⡇⠀⣯⠉⠁⠀⠀⠀⠀⠀⢺⠀⠀⠀⠀⠀⠀⠈⣿⠀⠀⠀⠀⠀⠀")
 
-; (local keys
-;        (let [snack "<cmd>lua Snacks.picker"]
-;          [{1 :<leader>r 2 (.. snack ".recent()<CR>") :desc "recent file"}
-;           {1 :<leader>f 2 (.. snack ".smart()<CR>") :desc "find files"}]))
-
 (local ivy {:layout {:backdrop false
                      :box :horizontal
                      :row -1
@@ -92,11 +87,23 @@
                         :border :rounded
                         :width 0.5}}})
 
+(fn keys []
+  (let [snack #(.. "<cmd>lua Snacks.picker." $1 "()<CR>")]
+    (if (= (. (vim.uv.os_uname) :sysname) :Windows_NT)
+        [{1 :<leader>tc 2 (snack :commands) :desc "commands picker"}
+         {1 :<leader>tk 2 (snack :keymaps) :desc "keymaps picker"}
+         {1 :<leader>tl 2 (snack :highlights) :desc "highlights picker"}
+         {1 :<leader>th 2 (snack :help) :desc "help picker"}
+         {1 :<leader>f 2 (snack :smart) :desc "find files"}
+         {1 :<leader>r 2 (snack :recent) :desc "recent files"}
+         {1 :<leader>w 2 (snack :grep) :desc "live grep"}
+         {1 :<tab><tab> 2 (snack :buffers) :desc :buffers}]
+        [{1 :<tab><tab> 2 (snack :buffers) :desc :buffers}])))
+
 {1 :folke/snacks.nvim
- ; : keys
  :lazy false
+ :keys (keys)
  :priority 1000
- :dependencies [:nvim-treesitter/nvim-treesitter]
  :opts {:quickfile {}
         :words {:debounce 100}
         :bigfile {:enabled true
@@ -112,16 +119,18 @@
         :picker {:layout {:preset (fn [opt]
                                     (let [ok (fn [x]
                                                (match x
-                                                 :smart true
-                                                 :files true
-                                                 :recent true
-                                                 _ false))]
+                                                 :smart :ivy
+                                                 :files :ivy
+                                                 :recent :ivy
+                                                 :buffers :dropdown
+                                                 _ :default))]
                                       (if (< vim.o.columns 90) :vertical
-                                          (if (ok opt) :ivy :default))))
+                                          (ok opt))))
                           :layout {:backdrop false}}
                  :win {:input {:keys {:<Esc> {1 :close :mode [:n :i]}}}}
                  :ui_select false
-                 :layouts {: ivy}}
+                 :layouts {: ivy}
+                 :sources {:buffers {:on_show #(vim.cmd :stopinsert)}}}
         :dashboard {:preset {:keys [{:action "<cmd>FzfLua files<CR>"
                                      :desc "Find file"
                                      :icon " "

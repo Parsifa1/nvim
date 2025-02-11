@@ -18,6 +18,7 @@
                                    symbols)})
 
 {1 :Bekaboo/dropbar.nvim
+ :event [:BufRead :BufNewFile]
  :opts {:bar {:sources (fn [buf _]
                          (local sources (require :dropbar.sources))
                          (local utils (require :dropbar.utils))
