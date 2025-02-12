@@ -8,19 +8,17 @@
       (fn kset [keys func indesc]
         (vim.keymap.set :n keys func {:buffer bufnr :desc indesc}))
 
+      ;; fnlfmt: skip
       (kset :K vim.lsp.buf.hover "LSP Hover")
       (kset :gr "<cmd>FzfLua lsp_references<CR>" "[R]eferences")
-      (kset :gi "<cmd>FzfLua lsp_implementations<CR>" "[I]mplementations")
       (kset :gk vim.lsp.buf.signature_help "LSP Signature help")
-      (kset :gD "<cmd>FzfLua lsp_document_symbols<CR>" "[D]oc symbols")
-      (kset :gd
-            "<cmd>lua require('fzf-lua').lsp_definitions{ jump_to_single_result = true }<CR>"
-            :definition)
-      (kset :<leader>ca (. (require :fastaction) :code_action)
-            "[C]ode [A]ction")
       (kset :<leader>cn vim.lsp.buf.rename "[C]ode Item Re[N]ame")
-      (kset :<leader>ct vim.lsp.buf.type_definition "[C]ode [T]ype definition")
-      (kset :<leader>cd vim.diagnostic.open_float "[C]ode [D]iagnostic"))
+      (kset :gD "<cmd>FzfLua lsp_document_symbols<CR>" "[D]oc symbols")
+      (kset :gd (. (require :fzf-lua) :lsp_definitions) "[D]efinition")
+      (kset :<leader>cd vim.diagnostic.open_float "[C]ode [D]iagnostic")
+      (kset :gi "<cmd>FzfLua lsp_implementations<CR>" "[I]mplementations")
+      (kset :<leader>ca (. (require :fastaction) :code_action) "[C]ode[A]ction")
+      (kset :<leader>ct vim.lsp.buf.type_definition "[C]ode [T]ype definition"))
 
     (let [config vim.diagnostic.config
           ERROR vim.diagnostic.severity.ERROR
