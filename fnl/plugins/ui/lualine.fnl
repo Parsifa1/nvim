@@ -69,16 +69,13 @@
                                      :cond lazy-status.has_updates}
                                     (fn []
                                       (var reg (vim.fn.reg_recording))
-                                      (when (not= reg "")
-                                        (let [___antifnl_rtn_1___ (.. "recording @"
-                                                                      reg)]
-                                          (lua "return ___antifnl_rtn_1___")))
-                                      (set reg (vim.fn.reg_recorded))
-                                      (when (not= reg "")
-                                        (let [___antifnl_rtn_1___ (.. "recorded @"
-                                                                      reg)]
-                                          (lua "return ___antifnl_rtn_1___")))
-                                      "")
+                                      (if (not= reg "")
+                                          (.. "recording @" reg)
+                                          (do
+                                            (set reg (vim.fn.reg_recorded))
+                                            (if (not= reg "")
+                                                (.. "recorded @" reg)
+                                                ""))))
                                     {1 :copilot
                                      :show_running true
                                      :symbols {:status {:disabled " "
