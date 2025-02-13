@@ -4,8 +4,7 @@
 (config.default {:rtp-patterns [".*"]})
 {:compiler-options {:compilerEnv _G}
  :fnl-path->lua-path (fn [path]
-                       (let [modify vim.fn.fnamemodify
-                             config (vim.fn.stdpath :config)
-                             rel-fnl-path (modify path (.. ":s?^" config "/??"))]
+                       (let [config (vim.fn.stdpath :config)
+                             rel-fnl-path (string.gsub path (.. "^" config) "")]
                          (default.fnl-path->lua-path (.. (vim.fn.stdpath :data)
-                                                         :/nfnl/ rel-fnl-path))))}
+                                                         :/nfnl rel-fnl-path))))}
