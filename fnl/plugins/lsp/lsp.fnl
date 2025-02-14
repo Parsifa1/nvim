@@ -1,6 +1,7 @@
 (fn config []
   (let [custom (require :custom)
         lspconfig (require :lspconfig)
+        autocmd vim.api.nvim_create_autocmd
         server (. (require :utils.server) :server)]
     (tset (. (require :lspconfig.ui.windows) :default_options) :border :rounded)
 
@@ -24,29 +25,29 @@
           ERROR vim.diagnostic.severity.ERROR
           HINT vim.diagnostic.severity.HINT
           INFO vim.diagnostic.severity.INFO
-          WARN vim.diagnostic.severity.WARN]
-      (config {:float {:border custom.border
+          WARN vim.diagnostic.severity.WARN
+          error custom.icons.diagnostic.Error
+          hint custom.icons.diagnostic.Hint
+          info custom.icons.diagnostic.Information
+          warn custom.icons.diagnostic.Warning]
+      (config {:severity_sort true
+               :jump {:float true}
+               :virtual_text {:spacing 4}
+               :float {:border custom.border
                        :severity_sort true
                        :source :if_many}
-               :jump {:float true}
-               :severity_sort true
-               :signs {:text {ERROR custom.icons.diagnostic.Error
-                              HINT custom.icons.diagnostic.Hint
-                              INFO custom.icons.diagnostic.Information
-                              WARN custom.icons.diagnostic.Warning}}
-               :virtual_text {:spacing 4}}))
+               :signs {:text {ERROR error HINT hint INFO info WARN warn}}}))
     (each [lsp config (vim.iter server)]
       (set config.capabilities
            ((. (require :blink.cmp) :get_lsp_capabilities) config.capabilities))
       ((. lspconfig lsp :setup) config))
-    (vim.api.nvim_create_autocmd :LspAttach
-                                 {:callback (fn [args] (lsp-keymap args.buf)
-                                              (local client
-                                                     (vim.lsp.get_client_by_id args.data.client_id))
-                                              (when (and client
-                                                         client.server_capabilities.inlayHintProvider)
-                                                (vim.lsp.inlay_hint.enable true)))
-                                  :desc "General LSP Attach"})
+    (autocmd :LspAttach {:callback (fn [args] (lsp-keymap args.buf)
+                                     (local client
+                                            (vim.lsp.get_client_by_id args.data.client_id))
+                                     (when (and client
+                                                client.server_capabilities.inlayHintProvider)
+                                       (vim.lsp.inlay_hint.enable true)))
+                         :desc "General LSP Attach"})
     (when (= (. (vim.version) :prerelease) :dev)
       (vim.keymap.del :n :gri)
       (vim.keymap.del :n :gra)

@@ -11,16 +11,16 @@
  : ft
  :opts {:filetypes ft
         :settings {:separate_diagnostic_server true
-                   :publish_diagnostic_on :change
                    :tsserver_file_preferences {:includeInlayParameterNameHints :literals
                                                :includeInlayEnumMemberValueHints true
                                                :includeInlayFunctionLikeReturnTypeHints true
                                                :includeInlayFunctionParameterTypeHints true
                                                :includeInlayPropertyDeclarationTypeHints true
-                                               :includeInlayVariableTypeHints true}}
-        :tsserver_plugins [{:name "@vue/typescript-plugin"
-                            :Fath (.. mason-path :vue-language-server
-                                      "/node_modules/@vue/language-server")}
-                           {:name "@mdxjs/typescript-plugin"
-                            :path (.. mason-path :mdx-analyzer
-                                      "/node_modules/@mdx/language-server")}]}}
+                                               :includeInlayVariableTypeHints true}
+                   :tsserver_plugins [{:name "@vue/typescript-plugin"
+                                       :path (.. mason-path
+                                                 :vue-language-server
+                                                 "/node_modules/@vue/language-server")}
+                                      {:name "@mdxjs/typescript-plugin"
+                                       :path (.. mason-path :mdx-analyzer
+                                                 "/node_modules/@mdx-js/language-server")}]}}}

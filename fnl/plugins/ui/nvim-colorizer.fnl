@@ -5,6 +5,7 @@
            :javascriptreact
            :typescriptreact
            :lua
+           :fnl
            :yaml
            :fish])
 
@@ -12,6 +13,6 @@
  :config (fn []
            ((. (require :colorizer) :setup) {:filetypes ft
                                              :user_default_options {:mode :virtualtext
-                                                                    :virtualtext "󱓻"
+                                                                    :virtualtext "󱓻 "
                                                                     :virtualtext_inline true}}))
  : ft}

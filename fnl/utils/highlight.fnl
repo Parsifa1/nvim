@@ -1,5 +1,4 @@
-(macro set-hl [...]
-  `(vim.api.nvim_set_hl 0 ,...))
+(import-macros {: set-hl} :macros)
 
 (set-hl :NormalFloat {:bg :NONE})
 (set-hl :FloatBorder {:bg :NONE})

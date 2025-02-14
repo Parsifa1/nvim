@@ -21,6 +21,22 @@
             :astro
             :vimdoc])
 
+(local keymaps
+       {:aa {:desc "a argument"
+             :query "@parameter.outer"
+             :ac "@class.outer"
+             :af "@function.outer"
+             :ai "@conditional.outer"
+             :al {:desc "a loop" :query "@loop.outer"}
+             :ar {:desc "a return" :query "@return.outer"}
+             :ia {:desc "inner part of a argument" :query "@parameter.inner"}
+             :ic {:desc "Select inner part of a class region"
+                  :query "@class.inner"}
+             :if "@function.inner"
+             :ii "@conditional.inner"
+             :il {:desc "inner part of a loop" :query "@loop.inner"}
+             :ir {:desc "inner return" :query "@return.outer"}}})
+
 {1 :nvim-treesitter/nvim-treesitter
  :build ":TSUpdate"
  :cmd [:TSUpdate :TSInstall :TSInstallInfo]
@@ -32,28 +48,10 @@
                   :highlight {:additional_vim_regex_highlighting false
                               :disable [:latex]
                               :enable true}
-                  :textobjects {:select {:enable true
-                                         :include_surrounding_whitespace false
-                                         :keymaps {:aa {:desc "a argument"
-                                                        :query "@parameter.outer"}
-                                                   :ac "@class.outer"
-                                                   :af "@function.outer"
-                                                   :ai "@conditional.outer"
-                                                   :al {:desc "a loop"
-                                                        :query "@loop.outer"}
-                                                   :ar {:desc "a return"
-                                                        :query "@return.outer"}
-                                                   :ia {:desc "inner part of a argument"
-                                                        :query "@parameter.inner"}
-                                                   :ic {:desc "Select inner part of a class region"
-                                                        :query "@class.inner"}
-                                                   :if "@function.inner"
-                                                   :ii "@conditional.inner"
-                                                   :il {:desc "inner part of a loop"
-                                                        :query "@loop.inner"}
-                                                   :ir {:desc "inner return"
-                                                        :query "@return.outer"}}
+                  :textobjects {:select {: keymaps
+                                         :enable true
                                          :lookahead true
+                                         :include_surrounding_whitespace false
                                          :selection_modes {"@class.outer" :<c-v>
                                                            "@function.outer" :V
                                                            "@parameter.outer" :v}}}
@@ -61,7 +59,7 @@
                                  :keymaps {:. :textsubjects-smart
                                            ";" :textsubjects-container-outer
                                            "i;" {1 :textsubjects-container-inner
-                                                 :desc "Select inside containers (classes, functions, etc.)"}}
+                                                 :desc "Select inside containers"}}
                                  :prev_selection ","}})))
  :dependencies [:RRethy/nvim-treesitter-textsubjects
                 :nvim-treesitter/nvim-treesitter-textobjects]

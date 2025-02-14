@@ -1,26 +1,9 @@
 (local custom (require :custom))
 (local opts {})
+(import-macros {: init} :macros)
 
-(macro set-keymap [keymap ky actions]
+(macro kset [keymap ky actions]
   `(tset ,keymap ,ky ,actions))
-
-(macro init [tbl ...]
-  (let [args [...]
-        n (length args)
-        keys (fcollect [i 1 (- n 1)] (. args i))
-        value (. args n)]
-    (fn build-path [path depth]
-      (if (= depth (length keys))
-          `(if (= nil (. ,path ,(. keys depth)))
-               (tset ,path ,(. keys depth) ,value))
-          `(do
-             (if (= nil (. ,path ,(. keys depth)))
-                 (tset ,path ,(. keys depth) {}))
-             ,(build-path `(. ,path ,(. keys depth)) (+ depth 1)))))
-
-    `(do
-       ,(build-path tbl 1)
-       (. ,tbl ,(unpack keys)))))
 
 (fn super-tab [direction]
   (let [ret [(fn [cmp]
@@ -50,14 +33,14 @@
     ret))
 
 ;; opts
-(let [o opts]
-  (let [appear (init o :appearance {})]
+(let [cfg opts]
+  (let [appear (init cfg :appearance {})]
     (init appear :kind_icons custom.icons.kind)
     (init appear :use_nvim_cmp_as_default true))
-  (let [signature (init o :signature {})]
+  (let [signature (init cfg :signature {})]
     (init signature :enabled true)
     (init signature :window :border :single))
-  (let [completion (init o :completion {})]
+  (let [completion (init cfg :completion {})]
     (let [auto_brackets (init completion :accept :auto_brackets {})]
       (init auto_brackets :enabled true)
       (init auto_brackets :kind_resolution :enabled true)
@@ -103,7 +86,7 @@
                     (.. "[" sub "]")))))))
     (init completion :trigger :show_on_x_blocked_trigger_characters
           ["'" "\"" "(" "{"]))
-  (let [sources (init o :sources {})]
+  (let [sources (init cfg :sources {})]
     (init sources :default
           (fn []
             (local (success node) (pcall vim.treesitter.get_node))
@@ -117,33 +100,29 @@
             {:name :Development :module :lazydev.integrations.blink})
       (init providers :conjure
             {:name :conjure :module :blink.compat.source :score_offset -3})))
-  (let [keymap (init o :keymap {})]
-    (set-keymap keymap :<C-CR> [:fallback])
-    (set-keymap keymap :<C-d> [:scroll_documentation_down :fallback])
-    (set-keymap keymap :<C-j> [:select_next :fallback])
-    (set-keymap keymap :<C-k> [:select_prev :fallback])
-    (set-keymap keymap :<C-u> [:scroll_documentation_up :fallback])
-    (set-keymap keymap :<C-w>
-                [:show :hide :show_documentation :hide_documentation])
-    (set-keymap keymap :<CR> [:accept :fallback])
-    (set-keymap keymap :<Down> [:select_next :fallback])
-    (set-keymap keymap :<S-Tab> (super-tab :backward))
-    (set-keymap keymap :<Tab> (super-tab :forward))
-    (set-keymap keymap :<Up> [:select_prev :fallback])
+  (let [keymap (init cfg :keymap {})]
+    (kset keymap :<C-CR> [:fallback])
+    (kset keymap :<C-d> [:scroll_documentation_down :fallback])
+    (kset keymap :<C-j> [:select_next :fallback])
+    (kset keymap :<C-k> [:select_prev :fallback])
+    (kset keymap :<C-u> [:scroll_documentation_up :fallback])
+    (kset keymap :<C-w> [:show :hide :show_documentation :hide_documentation])
+    (kset keymap :<CR> [:accept :fallback])
+    (kset keymap :<Down> [:select_next :fallback])
+    (kset keymap :<S-Tab> (super-tab :backward))
+    (kset keymap :<Tab> (super-tab :forward))
+    (kset keymap :<Up> [:select_prev :fallback])
     (let [cmdline (init keymap :cmdline {})
           feedkeys vim.api.nvim_feedkeys]
-      (set-keymap cmdline :<C-j> [:select_next :fallback])
-      (set-keymap cmdline :<C-k> [:select_prev :fallback])
-      (set-keymap cmdline :<CR> [(fn [cmp]
-                                   (cmp.accept {:callback (fn []
-                                                            (feedkeys "\n" :n
-                                                                      true))}))
-                                 :fallback])
-      (set-keymap cmdline :<S-Tab> [:select_prev :fallback])
-      (set-keymap cmdline :<Tab> [:select_next :fallback])))
-  (let [fuzzy (init o :fuzzy {})]
+      (kset cmdline :<C-j> [:select_next :fallback])
+      (kset cmdline :<C-k> [:select_prev :fallback])
+      (kset cmdline :<S-Tab> [:select_prev :fallback])
+      (kset cmdline :<Tab> [:select_next :fallback])
+      (kset cmdline :<CR> [#($1.accept {:callback #(feedkeys "\n" :n true)})
+                           :fallback])))
+  (let [fuzzy (init cfg :fuzzy {})]
     (init fuzzy :prebuilt_binaries {:ignore_version_mismatch true}))
-  (let [snippets (init o :snippets {})]
+  (let [snippets (init cfg :snippets {})]
     (init snippets :active
           (fn [filter]
             (when (and filter filter.direction)
@@ -157,10 +136,10 @@
             ((. (require :luasnip) :jump) direction)))))
 
 {1 :Saghen/blink.cmp
+ : opts
  :build "cargo build --release"
  :dependencies [:PaterJason/cmp-conjure
                 :zbdmw/colorful-menu.nvim
                 {1 :saghen/blink.compat}]
  :event [:CursorHold :CursorHoldI :CmdlineEnter "User AfterLoad"]
- : opts
  :opts_extend [:sources.completion.enabled_providers]}
