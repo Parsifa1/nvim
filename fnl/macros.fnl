@@ -1,4 +1,6 @@
 ;; [nfnl-macro]
+;; def f(a,*, b, c,  ...)
+;; def f(1)
 (fn init [tbl ...]
   (let [args [...]
         n (length args)

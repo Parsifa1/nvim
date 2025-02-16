@@ -1,9 +1,11 @@
 (local custom (require :custom))
-(local opts {:defer (fn [ctx]
-                      (or (or (or (= ctx.keys "`") (= ctx.mode :V))
-                              (= ctx.mode :<C-V>))
-                          (= ctx.mode :v)))
-             :delay (fn [ctx] (or (and ctx.plugin 0) 200))
+(local opts {:defer #(match [$1.keys $1.mode]
+                       ["`" _] true
+                       [_ :V] true
+                       [_ :<C-V>] true
+                       [_ :v] true
+                       _ false)
+             :delay #(or (and $1.plugin 0) 200)
              :plugins {:presets {:z true}}
              :replace {:desc [["<Plug>%((.*)%)" "%1"]
                               ["^%+" ""]

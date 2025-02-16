@@ -1,6 +1,7 @@
+(import-macros {: init} :macros)
+
 (local custom (require :custom))
 (local opts {})
-(import-macros {: init} :macros)
 
 (macro kset [keymap ky actions]
   `(tset ,keymap ,ky ,actions))
@@ -37,53 +38,43 @@
   (let [appear (init cfg :appearance {})]
     (init appear :kind_icons custom.icons.kind)
     (init appear :use_nvim_cmp_as_default true))
+  (let [fuzzy (init cfg :fuzzy {})]
+    (init fuzzy :prebuilt_binaries {:ignore_version_mismatch true}))
   (let [signature (init cfg :signature {})]
     (init signature :enabled true)
     (init signature :window :border :single))
   (let [completion (init cfg :completion {})]
-    (let [auto_brackets (init completion :accept :auto_brackets {})]
-      (init auto_brackets :enabled true)
-      (init auto_brackets :kind_resolution :enabled true)
-      (init auto_brackets :kind_resolution :blocked_filetypes
-            [:typescriptreact :javascriptreact :vue :rust :fennel]))
+    (let [accept (init completion :accept {})]
+      (let [auto_brackets (init accept :auto_brackets {})]
+        (init auto_brackets :enabled true)
+        (init auto_brackets :kind_resolution :enabled true)
+        (init auto_brackets :kind_resolution :blocked_filetypes
+              [:typescriptreact :javascriptreact :vue :rust :fennel])))
     (let [document (init completion :documentation {})]
       (init document :auto_show true)
       (init document :window :border :single)
       (init document :window :scrollbar false))
     (let [selection (init completion :list :selection {})]
-      (init selection :auto_insert
-            (fn [ctx]
-              (= ctx.mode :cmdline)))
-      (init selection :preselect
-            (fn [ctx]
-              (not= ctx.mode :cmdline))))
+      (init selection :auto_insert #(= $1.mode :cmdline))
+      (init selection :preselect #(not= $1.mode :cmdline)))
     (let [menu (init completion :menu {})]
       (init menu :border :single)
       (init menu :scrollbar false)
       (init menu :winhighlight
             "Normal:None,FloatBorder:None,CursorLine:BlinkCmpMenuSelection,Search:None")
-      (let [draw (init menu :draw {})]
-        (init draw :treesitter [:lsp])
-        (init draw :columns
-              (fn [ctx]
-                (or (and (= ctx.mode :cmdline) [[:kind_icon] [:label]])
-                    [[:kind_icon] {1 :label :gap 1} [:provider]])))
-        (let [label (init menu :draw :components :label {})]
-          (init label :highlight
-                (fn [ctx]
-                  ((. (require :colorful-menu) :blink_components_highlight) ctx)))
-          (init label :text
-                (fn [ctx]
-                  ((. (require :colorful-menu) :blink_components_text) ctx)))
-          (init label :width :max
-                (fn [ctx]
-                  (or (and (= ctx.mode :cmdline) 22) 60))))
-        (let [provider (init menu :draw :components :provider {})]
-          (init provider :highlight :Fg)
-          (init provider :text
-                (fn [ctx]
-                  (let [sub (: (ctx.item.source_name:sub 1 3) :upper)]
-                    (.. "[" sub "]")))))))
+      (init menu :draw
+            {:treesitter [:lsp]
+             :columns [[:kind_icon] {1 :label :gap 1} [:provider]]})
+      (let [label (init menu :draw :components :label {})]
+        (init label :highlight
+              #((. (require :colorful-menu) :blink_components_highlight) $1))
+        (init label :text
+              #((. (require :colorful-menu) :blink_components_text) $1))
+        (init label :width :max #(or (and (= $1.mode :cmdline) 22) 60)))
+      (let [provider (init menu :draw :components :provider {})]
+        (init provider :highlight :Fg)
+        (init provider :text #(let [sub (: ($1.item.source_name:sub 1 3) :upper)]
+                                (.. "[" sub "]")))))
     (init completion :trigger :show_on_x_blocked_trigger_characters
           ["'" "\"" "(" "{"]))
   (let [sources (init cfg :sources {})]
@@ -111,35 +102,31 @@
     (kset keymap :<Down> [:select_next :fallback])
     (kset keymap :<S-Tab> (super-tab :backward))
     (kset keymap :<Tab> (super-tab :forward))
-    (kset keymap :<Up> [:select_prev :fallback])
-    (let [cmdline (init keymap :cmdline {})
-          feedkeys vim.api.nvim_feedkeys]
-      (kset cmdline :<C-j> [:select_next :fallback])
-      (kset cmdline :<C-k> [:select_prev :fallback])
-      (kset cmdline :<S-Tab> [:select_prev :fallback])
-      (kset cmdline :<Tab> [:select_next :fallback])
-      (kset cmdline :<CR> [#($1.accept {:callback #(feedkeys "\n" :n true)})
-                           :fallback])))
-  (let [fuzzy (init cfg :fuzzy {})]
-    (init fuzzy :prebuilt_binaries {:ignore_version_mismatch true}))
+    (kset keymap :<Up> [:select_prev :fallback]))
   (let [snippets (init cfg :snippets {})]
     (init snippets :active
           (fn [filter]
             (when (and filter filter.direction)
               (. (require :luasnip) :locally_jumpable))
             ((. (require :luasnip) :in_snippet))))
-    (init snippets :expand
-          (fn [snippet]
-            ((. (require :luasnip) :lsp_expand) snippet)))
-    (init snippets :jump
-          (fn [direction]
-            ((. (require :luasnip) :jump) direction)))))
+    (init snippets :expand #((. (require :luasnip) :lsp_expand) $1))
+    (init snippets :jump #((. (require :luasnip) :jump) $1)))
+  (let [cmdline (init cfg :cmdline {})]
+    (init cmdline :completion :menu :draw :columns [[:kind_icon] [:label]])
+    (let [keymap (init cmdline :keymap {})
+          feedkeys vim.api.nvim_feedkeys]
+      (kset keymap :<C-j> [:select_next :fallback])
+      (kset keymap :<C-k> [:select_prev :fallback])
+      (kset keymap :<S-Tab> [:select_prev :fallback])
+      (kset keymap :<Tab> [:select_next :fallback])
+      (kset keymap :<CR> [#($1.accept {:callback #(feedkeys "\n" :n true)})
+                          :fallback]))))
 
 {1 :Saghen/blink.cmp
- : opts
  :build "cargo build --release"
  :dependencies [:PaterJason/cmp-conjure
                 :zbdmw/colorful-menu.nvim
                 {1 :saghen/blink.compat}]
  :event [:CursorHold :CursorHoldI :CmdlineEnter "User AfterLoad"]
- :opts_extend [:sources.completion.enabled_providers]}
+ :opts_extend [:sources.completion.enabled_providers]
+ : opts}
