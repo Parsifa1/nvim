@@ -32,7 +32,8 @@
           warn custom.icons.diagnostic.Warning]
       (config {:severity_sort true
                :jump {:float true}
-               :virtual_text {:spacing 4}
+               ; :virtual_text {:spacing 4}
+               :virtual_lines true
                :float {:border custom.border
                        :severity_sort true
                        :source :if_many}

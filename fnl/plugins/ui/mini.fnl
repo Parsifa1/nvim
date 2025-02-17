@@ -120,15 +120,19 @@
                      :db {:glyph "󰆼" :hl :MiniIconsGrey}
                      :md {:glyph "󰍔" :hl :MiniIconsGrey}
                      :ts {:glyph "󰛦" :hl :MiniIconsAzure}
+                     :py {:glyph "󰌠" :hl :MiniIconsYellow}
                      :js {:glyph "󰌞" :hl :MiniIconsYellow}
                      :rs {:glyph "󱘗" :hl :MiniIconsOrange}
                      :log {:glyph "󰕲" :hl :MiniIconsGrey}
                      :mdx {:glyph "󰍔" :hl :MiniIconsGrey}
+                     :css {:glyph "󰌜" :hl :MiniIconsAzure}
+                     :vue {:glyph "󰡄" :hl :MiniIconsGreen}
                      :age {:glyph "󰦝" :hl :MiniIconsGreen}
                      :nix {:glyph "󱄅" :hl :MiniIconsAzure}
                      :typ {:glyph "󰬛" :hl :MiniIconsAzure}
                      :lua {:glyph "󰢱" :hl :MiniIconsAzure}
                      :cpp {:glyph "󰙲" :hl :MiniIconsAzure}
+                     :ini {:glyph "󰯂" :hl :MiniIconsAzure}
                      :mbt {:glyph "󱩡" :hl :MiniIconsPurple}
                      :fnl {:glyph "" :hl :MiniIconsYellow}
                      :txt {:glyph "󰦪" :hl :MiniIconsYellow}

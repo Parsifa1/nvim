@@ -7,7 +7,7 @@
                                 (match (vim.tbl_contains ft current-ft)
                                   true (set vim.wo.wrap true)
                                   false (set vim.wo.wrap false)))
-                   :pattern :*u})
+                   :pattern :*})
   (auto :TextYankPost
         {:callback #(vim.highlight.on_yank)
          :desc "Highlight when yanking (copying) text"

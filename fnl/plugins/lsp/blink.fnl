@@ -1,8 +1,5 @@
 (import-macros {: init} :macros)
 
-(local custom (require :custom))
-(local opts {})
-
 (macro kset [keymap ky actions]
   `(tset ,keymap ,ky ,actions))
 
@@ -33,33 +30,31 @@
     (when (= direction :backward) (tset ret 2 :select_prev))
     ret))
 
+(local custom (require :custom))
+(local opts {})
+
 ;; opts
 (let [cfg opts]
-  (let [appear (init cfg :appearance {})]
-    (init appear :kind_icons custom.icons.kind)
-    (init appear :use_nvim_cmp_as_default true))
-  (let [fuzzy (init cfg :fuzzy {})]
-    (init fuzzy :prebuilt_binaries {:ignore_version_mismatch true}))
+  (init cfg :fuzzy :prebuilt_binaries {:ignore_version_mismatch true})
+  (init cfg :appearance {:kind_icons custom.icons.kind
+                         :use_nvim_cmp_as_default true})
   (let [signature (init cfg :signature {})]
     (init signature :enabled true)
     (init signature :window :border :single))
   (let [completion (init cfg :completion {})]
     (let [accept (init completion :accept {})]
       (let [auto_brackets (init accept :auto_brackets {})]
-        (init auto_brackets :enabled true)
-        (init auto_brackets :kind_resolution :enabled true)
+        (init auto_brackets {:enabled true :kind_resolution {:enabled true}})
         (init auto_brackets :kind_resolution :blocked_filetypes
               [:typescriptreact :javascriptreact :vue :rust :fennel])))
     (let [document (init completion :documentation {})]
       (init document :auto_show true)
-      (init document :window :border :single)
-      (init document :window :scrollbar false))
+      (init document {:window {:border :single :scrollbar false}}))
     (let [selection (init completion :list :selection {})]
       (init selection :auto_insert #(= $1.mode :cmdline))
       (init selection :preselect #(not= $1.mode :cmdline)))
     (let [menu (init completion :menu {})]
-      (init menu :border :single)
-      (init menu :scrollbar false)
+      (init menu {:border :single :scrollbar false})
       (init menu :winhighlight
             "Normal:None,FloatBorder:None,CursorLine:BlinkCmpMenuSelection,Search:None")
       (init menu :draw
@@ -72,20 +67,20 @@
               #((. (require :colorful-menu) :blink_components_text) $1))
         (init label :width :max #(or (and (= $1.mode :cmdline) 22) 60)))
       (let [provider (init menu :draw :components :provider {})]
-        (init provider :highlight :Fg)
-        (init provider :text #(let [sub (: ($1.item.source_name:sub 1 3) :upper)]
-                                (.. "[" sub "]")))))
+        (init provider {:highlight :Fg
+                        :text #(let [sub (: ($1.item.source_name:sub 1 3)
+                                            :upper)]
+                                 (.. "[" sub "]"))})))
     (init completion :trigger :show_on_x_blocked_trigger_characters
           ["'" "\"" "(" "{"]))
   (let [sources (init cfg :sources {})]
     (init sources :default
-          (fn []
-            (local (success node) (pcall vim.treesitter.get_node))
-            (if (= vim.bo.filetype :lua) [:lsp :path :lazydev]
-                (and (and success node)
-                     (vim.tbl_contains [:comment :line_comment :block_comment]
-                                       (node:type))) [:buffer]
-                [:lsp :path :snippets :buffer :conjure])))
+          #(let [(success node) (pcall vim.treesitter.get_node)]
+             (if (= vim.bo.filetype :lua) [:lsp :path :lazydev]
+                 (and success node
+                      (vim.tbl_contains [:comment :line_comment :block_comment]
+                                        (node:type))) [:buffer]
+                 [:lsp :path :snippets :buffer :conjure])))
     (let [providers (init sources :providers {})]
       (init providers :lazydev
             {:name :Development :module :lazydev.integrations.blink})
@@ -120,10 +115,12 @@
       (kset keymap :<S-Tab> [:select_prev :fallback])
       (kset keymap :<Tab> [:select_next :fallback])
       (kset keymap :<CR> [#($1.accept {:callback #(feedkeys "\n" :n true)})
-                          :fallback]))))
+                          :fallback])))
+  (let [term (init cfg :term {})]
+    (init term :enabled false)))
 
 {1 :Saghen/blink.cmp
- :build "cargo build --release"
+ :version "*"
  :dependencies [:PaterJason/cmp-conjure
                 :zbdmw/colorful-menu.nvim
                 {1 :saghen/blink.compat}]

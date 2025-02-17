@@ -7,6 +7,7 @@
                                  "github:Crashdummyy/mason-registry"
                                  "github:Parsifa1/typstyle-mason-registry"]
                     :ui {:border :rounded
+                         :backdrop 100
                          :icons {:package_installed "✓"
                                  :package_pending "➜"
                                  :package_uninstalled "✗"}}}))
