@@ -147,8 +147,6 @@
                           :layout {:backdrop false}}
                  :win {:input {:keys {:<Esc> {1 :close :mode [:n :i]}}}}
                  :sources {:buffers {:on_show #(vim.cmd :stopinsert)}}}
-        ; :select {:layout {:preset :select
-        ;                   :layout {:width 0.25 :height 0.25}}}}}
         :dashboard {:preset {:keys [{:action "<cmd>FzfLua files<CR>"
                                      :desc "Find file"
                                      :icon " "
@@ -180,4 +178,5 @@
                                 :padding 1
                                 :section :projects
                                 :title :Projects}
-                               {:hl :Keyword :section :startup}]}}}
+                               {:hl :Keyword :section :startup}]}
+        :image {:docs {:inline true :float true :max_width 20 :max_height 10}}}}

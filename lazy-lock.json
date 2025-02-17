@@ -84,7 +84,7 @@
   "render-markdown.nvim": { "branch": "main", "commit": "e05a9f22f31c088ece3fa5928daf546a015b66ee" },
   "restore_view.vim": { "branch": "master", "commit": "8b933436e3ab8dec120841027183f0d72a4e2096" },
   "rustaceanvim": { "branch": "master", "commit": "047f9c9d8cd2861745eb9de6c1570ee0875aa795" },
-  "snacks.nvim": { "branch": "main", "commit": "1cbe84ea53a517b96d7a1a9e7c135175ab25812f" },
+  "snacks.nvim": { "branch": "main", "commit": "4898d904dbd7eb6911eac4473e245dfd61cedc95" },
   "statuscol.nvim": { "branch": "main", "commit": "a2a0e3ed55ba0f636ce0b2ccf61bca4050edd288" },
   "suda.vim": { "branch": "master", "commit": "9adda7d195222d4e2854efb2a88005a120296c47" },
   "telescope-luasnip.nvim": { "branch": "master", "commit": "07a2a2936a7557404c782dba021ac0a03165b343" },
