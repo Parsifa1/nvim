@@ -179,4 +179,4 @@
                                 :section :projects
                                 :title :Projects}
                                {:hl :Keyword :section :startup}]}
-        :image {:docs {:inline true :float true :max_width 20 :max_height 10}}}}
+        :image {:doc {:inline false :float (= (vim.fn.hostname) :Mac.lan)}}}}

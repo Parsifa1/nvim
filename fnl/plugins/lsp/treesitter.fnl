@@ -46,7 +46,7 @@
              (ts {:auto_install true
                   :ensure_installed ins
                   :highlight {:additional_vim_regex_highlighting false
-                              :disable [:latex]
+                              ; :disable [:latex]
                               :enable true}
                   :textobjects {:select {: keymaps
                                          :enable true
