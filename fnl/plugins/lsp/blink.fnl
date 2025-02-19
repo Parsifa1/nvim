@@ -80,7 +80,7 @@
                  (and success node
                       (vim.tbl_contains [:comment :line_comment :block_comment]
                                         (node:type))) [:buffer]
-                 [:lsp :path :snippets :buffer :conjure])))
+                 [:lsp :path :snippets :buffer])))
     (let [providers (init sources :providers {})]
       (init providers :lazydev
             {:name :Development :module :lazydev.integrations.blink})

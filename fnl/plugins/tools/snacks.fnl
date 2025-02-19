@@ -143,4 +143,4 @@
                                      :win {:input {:keys {:dd {1 :bufdelete
                                                                :mode [:n]}}}}}}}
         :image {:doc {:inline false :float (not= (vim.fn.hostname) :debian)}
-                :convert {:magick {:math [:-density 200 "{src}[0]" :-trim]}}}}}
+                :convert {:math {:font_size :large}}}}}
