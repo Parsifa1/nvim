@@ -7,4 +7,5 @@
   :ft :fennel
   :init (fn [] (set vim.g.conjure#mapping#prefix :<leader>l)
           (set vim.g.conjure#client#fennel#aniseed#deprecation_warning false)
-          (set vim.g.conjure#extract#tree_sitter#enabled true))}]
+          (set vim.g.conjure#extract#tree_sitter#enabled true)
+          (set vim.g.conjure#filetypes [:fennel]))}]

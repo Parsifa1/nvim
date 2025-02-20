@@ -43,10 +43,15 @@
     (init signature :window :border :single))
   (let [completion (init cfg :completion {})]
     (let [accept (init completion :accept {})]
-      (let [auto_brackets (init accept :auto_brackets {})]
+      (let [auto_brackets (init accept :auto_brackets {})
+            blocked [:typescriptreact
+                     :javascriptreact
+                     :javascript
+                     :vue
+                     :rust
+                     :fennel]]
         (init auto_brackets {:enabled true :kind_resolution {:enabled true}})
-        (init auto_brackets :kind_resolution :blocked_filetypes
-              [:typescriptreact :javascriptreact :vue :rust :fennel])))
+        (init auto_brackets :kind_resolution :blocked_filetypes blocked)))
     (let [document (init completion :documentation {})]
       (init document :auto_show true)
       (init document {:window {:border :single :scrollbar false}}))
