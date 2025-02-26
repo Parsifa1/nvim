@@ -2,7 +2,7 @@
  :config (fn []
            (let [trail (require :trailblazer)
                  motions {:new_trail_mark :m :track_back "'"}
-                 nv {:actions {} : motions}
-                 config {:force_mappings {: nv}}]
+                 n {:actions {} : motions}
+                 config {:force_mappings {: n}}]
              (trail.setup config)))
  :event "User AfterLoad"}

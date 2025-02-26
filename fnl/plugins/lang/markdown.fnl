@@ -5,8 +5,7 @@
   :ft [:markdown]}
  ;; markdown-typmath
  {1 :parsifa1/markdown-typmath.nvim
-  :config (fn []
-            ((. (require :typmath) :setup)))
+  :config #((. (require :typmath) :setup))
   :enabled false
   :ft :markdown}
  ;; render-markdown

@@ -19,6 +19,7 @@
             :typst
             :vue
             :astro
+            :fennel
             :vimdoc])
 
 (local keymaps

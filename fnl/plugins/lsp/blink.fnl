@@ -113,16 +113,13 @@
     (init snippets :jump #((. (require :luasnip) :jump) $1)))
   (let [cmdline (init cfg :cmdline {})]
     (init cmdline :completion :menu :draw :columns [[:kind_icon] [:label]])
+    (init cmdline :completion :menu :auto_show #(= ":" (vim.fn.getcmdtype)))
     (let [keymap (init cmdline :keymap {})
           feedkeys vim.api.nvim_feedkeys]
       (kset keymap :<C-j> [:select_next :fallback])
       (kset keymap :<C-k> [:select_prev :fallback])
-      (kset keymap :<S-Tab> [:select_prev :fallback])
-      (kset keymap :<Tab> [:select_next :fallback])
       (kset keymap :<CR> [#($1.accept {:callback #(feedkeys "\n" :n true)})
-                          :fallback])))
-  (let [term (init cfg :term {})]
-    (init term :enabled false)))
+                          :fallback]))))
 
 {1 :Saghen/blink.cmp
  :version "*"

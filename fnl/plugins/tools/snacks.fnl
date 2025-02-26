@@ -142,5 +142,6 @@
                  :sources {:buffers {:on_show #(vim.cmd :stopinsert)
                                      :win {:input {:keys {:dd {1 :bufdelete
                                                                :mode [:n]}}}}}}}
-        :image {:doc {:inline false :float (not= (vim.fn.hostname) :debian)}
+        :image {:doc {:inline false
+                      :float (not= (vim.fn.hostname) (or :nixos :debian))}
                 :convert {:math {:font_size :large}}}}}
