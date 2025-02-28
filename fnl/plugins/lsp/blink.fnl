@@ -1,8 +1,5 @@
 (import-macros {: init} :macros)
 
-(macro kset [keymap ky actions]
-  `(tset ,keymap ,ky ,actions))
-
 (fn super-tab [direction]
   (let [ret [(fn [cmp]
                (let [ls (require :luasnip)
@@ -92,17 +89,17 @@
       (init providers :conjure
             {:name :conjure :module :blink.compat.source :score_offset -3})))
   (let [keymap (init cfg :keymap {})]
-    (kset keymap :<C-CR> [:fallback])
-    (kset keymap :<C-d> [:scroll_documentation_down :fallback])
-    (kset keymap :<C-j> [:select_next :fallback])
-    (kset keymap :<C-k> [:select_prev :fallback])
-    (kset keymap :<C-u> [:scroll_documentation_up :fallback])
-    (kset keymap :<C-w> [:show :hide :show_documentation :hide_documentation])
-    (kset keymap :<CR> [:accept :fallback])
-    (kset keymap :<Down> [:select_next :fallback])
-    (kset keymap :<S-Tab> (super-tab :backward))
-    (kset keymap :<Tab> (super-tab :forward))
-    (kset keymap :<Up> [:select_prev :fallback]))
+    (tset keymap :<C-CR> [:fallback])
+    (tset keymap :<C-d> [:scroll_documentation_down :fallback])
+    (tset keymap :<C-j> [:select_next :fallback])
+    (tset keymap :<C-k> [:select_prev :fallback])
+    (tset keymap :<C-u> [:scroll_documentation_up :fallback])
+    (tset keymap :<C-w> [:show :hide :show_documentation :hide_documentation])
+    (tset keymap :<CR> [:accept :fallback])
+    (tset keymap :<Down> [:select_next :fallback])
+    (tset keymap :<S-Tab> (super-tab :backward))
+    (tset keymap :<Tab> (super-tab :forward))
+    (tset keymap :<Up> [:select_prev :fallback]))
   (let [snippets (init cfg :snippets {})]
     (init snippets :active
           (fn [filter]
@@ -116,9 +113,9 @@
     (init cmdline :completion :menu :auto_show #(= ":" (vim.fn.getcmdtype)))
     (let [keymap (init cmdline :keymap {})
           feedkeys vim.api.nvim_feedkeys]
-      (kset keymap :<C-j> [:select_next :fallback])
-      (kset keymap :<C-k> [:select_prev :fallback])
-      (kset keymap :<CR> [#($1.accept {:callback #(feedkeys "\n" :n true)})
+      (tset keymap :<C-j> [:select_next :fallback])
+      (tset keymap :<C-k> [:select_prev :fallback])
+      (tset keymap :<CR> [#($1.accept {:callback #(feedkeys "\n" :n true)})
                           :fallback]))))
 
 {1 :Saghen/blink.cmp

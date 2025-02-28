@@ -19,6 +19,6 @@
              ((. (require :avante.api) :edit)))
          :desc "avante: edit"
          :mode :v}]
- :opts {:copilot {:model :claude-3.5-sonnet}
+ :opts {:copilot {:model :claude-3.7-sonnet}
         :hints {:enabled false}
         :provider :copilot}}
