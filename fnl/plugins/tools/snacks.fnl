@@ -107,7 +107,8 @@
          {1 :<leader>r 2 (snack :recent) :desc "recent files"}
          {1 :<leader>w 2 (snack :grep) :desc "live grep"}
          {1 :<tab><tab> 2 (snack :buffers) :desc :buffers}]
-        [{1 :<tab><tab> 2 (snack :buffers) :desc :buffers}])))
+        [{1 :<tab><tab> 2 (snack :buffers) :desc :buffers}
+         {1 :<leader>tp 2 (snack :lazy) :desc "lazy packers"}])))
 
 {1 :folke/snacks.nvim
  :lazy false

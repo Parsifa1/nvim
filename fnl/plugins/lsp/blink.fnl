@@ -113,6 +113,7 @@
     (init cmdline :completion :menu :auto_show #(= ":" (vim.fn.getcmdtype)))
     (let [keymap (init cmdline :keymap {})
           feedkeys vim.api.nvim_feedkeys]
+      (tset keymap :<C-f> [:accept :fallback])
       (tset keymap :<C-j> [:select_next :fallback])
       (tset keymap :<C-k> [:select_prev :fallback])
       (tset keymap :<CR> [#($1.accept {:callback #(feedkeys "\n" :n true)})

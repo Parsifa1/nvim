@@ -11,9 +11,9 @@
               :signature {:enabled false}}
         :presets {:bottom_search true
                   :command_palette false
-                  :long_message_to_split true
+                  ; :long_message_to_split true
                   :lsp_doc_border true}
-        :routes [{:filter {:event :msg_show :min_height 20} :view :split}
+        :routes [; {:filter {:event :msg_show :min_height 20} :view :split}
                  {:filter {:any [{:find :W10}
                                  {:find :E21}
                                  {:find :E492}
