@@ -4,4 +4,5 @@
  :config (fn []
            ((. (require :smart-tab) :setup) {:skips [:string_content]
                                              :mapping :<tab>
+                                             :backward-mapping :<S-Tab>
                                              :exclude_filetypes []}))}
