@@ -5,14 +5,14 @@
            :javascriptreact
            :typescriptreact
            :lua
-           :fnl
            :yaml
+           :fennel
            :fish])
 
 {1 :NvChad/nvim-colorizer.lua
- :config (fn []
-           ((. (require :colorizer) :setup) {:filetypes ft
-                                             :user_default_options {:mode :virtualtext
-                                                                    :virtualtext "󱓻 "
-                                                                    :virtualtext_inline true}}))
- : ft}
+ : ft
+ :config #(let [colorizer (. (require :colorizer) :setup)]
+            (colorizer {:filetypes ft
+                        :user_default_options {:mode :virtualtext
+                                               :virtualtext "󱓻 "
+                                               :virtualtext_inline true}}))}

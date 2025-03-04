@@ -111,6 +111,7 @@
   (let [cmdline (init cfg :cmdline {})]
     (init cmdline :completion :menu :draw :columns [[:kind_icon] [:label]])
     (init cmdline :completion :menu :auto_show #(= ":" (vim.fn.getcmdtype)))
+    (init cmdline :completion :list :selection :preselect false)
     (let [keymap (init cmdline :keymap {})
           feedkeys vim.api.nvim_feedkeys]
       (tset keymap :<C-f> [:accept :fallback])
