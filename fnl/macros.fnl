@@ -26,4 +26,13 @@
 (fn set-hl [...]
   `(vim.api.nvim_set_hl 0 ,...))
 
-{: init : set-hl}
+(fn or! [...]
+  (let [args [...]]
+    (assert (>= (length args) 2) "or! macro requires at least 2 arguments")
+    (do
+      (var result (. args 1))
+      (for [i 2 (length args)]
+        (set result `(or ,result ,(. args i))))
+      result)))
+
+{: init : set-hl : or!}

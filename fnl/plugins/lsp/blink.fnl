@@ -1,31 +1,25 @@
-(import-macros {: init} :macros)
+(import-macros {: init : or!} :macros)
 
 (fn super-tab [direction]
-  (let [ret [(fn [cmp]
-               (let [ls (require :luasnip)
-                     current-node (. ls.session.current_nodes
-                                     (vim.api.nvim_get_current_buf))]
-                 (when (or (or (not ls.session) (not current-node))
-                           ls.session.jump_active)
-                   (lua "return false"))
-                 (local (current-start current-end)
-                        (current-node:get_buf_position))
-                 (tset current-start 1 (+ (. current-start 1) 1))
-                 (tset current-end 1 (+ (. current-end 1) 1))
-                 (local cursor (vim.api.nvim_win_get_cursor 0))
-                 (when (or (or (or (< (. cursor 1) (. current-start 1))
-                                   (> (. cursor 1) (. current-end 1)))
-                               (< (. cursor 2) (. current-start 2)))
-                           (> (. cursor 2) (. current-end 2)))
-                   (ls.unlink_current)
-                   (lua "return false"))
-                 (cmp.hide)
-                 (if (= direction :backward) (cmp.snippet_backward)
-                     (= direction :forward) (cmp.snippet_forward))))
-             :select_next
-             :fallback]]
-    (when (= direction :backward) (tset ret 2 :select_prev))
-    ret))
+  (fn callback [cmp]
+    (let [ls (require :luasnip)
+          get-current-buf vim.api.nvim_get_current_buf
+          node (. ls.session.current_nodes (get-current-buf))
+          return? (or! (not ls.session) (not node) ls.session.jump_active)]
+      (if return?
+          false
+          (let [[cur-row cur-col] (vim.api.nvim_win_get_cursor 0)
+                ([start-row start-col] [end-row end-col]) (node:get_buf_position)]
+            (or! (< cur-col start-col) (> cur-col end-col)
+                 (< cur-row (+ start-row 1)) (> cur-row (+ end-row 1))))
+          (do
+            (ls.unlink_current) false)
+          (do
+            (if (= direction :backward) (cmp.snippet_backward)
+                (= direction :forward) (cmp.snippet_forward))))))
+
+  (let [select #(if (= direction :backward) :select_prev :select_next)]
+    [callback (select) :fallback]))
 
 (local custom (require :custom))
 (local opts {})
