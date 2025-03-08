@@ -139,7 +139,9 @@ local opts = {
 
         ["<C-u>"] = { "scroll_documentation_up", "fallback" },
         ["<C-d>"] = { "scroll_documentation_down", "fallback" },
-        cmdline = {
+    },
+    cmdline = {
+        keymap = {
             ["<CR>"] = {
                 function(cmp)
                     return cmp.accept {
@@ -150,8 +152,7 @@ local opts = {
                 end,
                 "fallback",
             },
-            ["<Tab>"] = { "select_next", "fallback" },
-            ["<S-Tab>"] = { "select_prev", "fallback" },
+            ["C-f"] = { "accept", "fallback" },
             ["<C-j>"] = { "select_next", "fallback" },
             ["<C-k>"] = { "select_prev", "fallback" },
         },

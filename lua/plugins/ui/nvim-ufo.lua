@@ -1,7 +1,7 @@
 ---@diagnostic disable: assign-type-mismatch
 return {
     "kevinhwang91/nvim-ufo",
-    event = "User AfterLoad",
+    event = "BufReadPost",
     dependencies = "kevinhwang91/promise-async",
     init = function()
         local set_foldcolumn_for_file = vim.api.nvim_create_augroup("set_foldcolumn_for_file", {
@@ -60,12 +60,12 @@ return {
             callback = function()
                 require("ufo").detach()
                 vim.opt_local.foldenable = false
-                vim.opt_local.foldcolumn = '0'
+                vim.opt_local.foldcolumn = "0"
             end,
         })
 
-        vim.keymap.set('n', 'zn', require('ufo').openAllFolds)
-        vim.keymap.set('n', 'zm', require('ufo').closeAllFolds)
+        vim.keymap.set("n", "zn", require("ufo").openAllFolds)
+        vim.keymap.set("n", "zm", require("ufo").closeAllFolds)
 
         ---@diagnostic disable-next-line: missing-fields
         require("ufo").setup {
