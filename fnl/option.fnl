@@ -30,6 +30,7 @@
 (set vim.opt.timeoutlen 500)
 (set vim.g.asyncrun_open 6)
 (set vim.opt.foldlevel 99)
+(set vim.o.foldlevelstart 99)
 (set vim.opt.foldcolumn :0)
 (set vim.opt.foldenable false)
 (set vim.opt.statusline " ")
