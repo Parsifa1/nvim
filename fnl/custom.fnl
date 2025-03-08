@@ -219,8 +219,7 @@
 (set M.prefer_tabpage false)
 (fn M.width []
   (let [columns vim.go.columns]
-    (or (and (> (math.floor (* columns 0.15)) 28) (math.floor (* columns 0.15)))
-        28)))
+    (if (> (math.floor (* columns 0.15)) 28) (math.floor (* columns 0.15)) 28)))
 
 (fn append-space [icons]
   (let [result {}]

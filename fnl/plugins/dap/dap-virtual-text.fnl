@@ -12,8 +12,7 @@
              :highlight_new_as_changed false
              :show_stop_reason true
              :virt_lines false
-             :virt_text_pos (or (and (= (vim.fn.has :nvim-0.10) 1) :inline)
-                                :eol)
+             :virt_text_pos (if (= (vim.fn.has :nvim-0.10) 1) :inline :eol)
              :virt_text_win_col nil})
 
 {1 :theHamsta/nvim-dap-virtual-text

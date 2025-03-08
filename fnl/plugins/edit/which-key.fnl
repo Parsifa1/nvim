@@ -5,7 +5,7 @@
                        [_ :<C-V>] true
                        [_ :v] true
                        _ false)
-             :delay #(or (and $1.plugin 0) 200)
+             :delay #(if $1.plugin 0 200)
              :plugins {:presets {:z true}}
              :replace {:desc [["<Plug>%((.*)%)" "%1"]
                               ["^%+" ""]

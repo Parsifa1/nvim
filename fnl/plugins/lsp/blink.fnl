@@ -35,12 +35,7 @@
   (let [completion (init cfg :completion {})]
     (let [accept (init completion :accept {})]
       (let [auto_brackets (init accept :auto_brackets {})
-            blocked [:typescriptreact
-                     :javascriptreact
-                     :javascript
-                     :vue
-                     :rust
-                     :fennel]]
+            blocked [:typescriptreact :javascript :vue :rust :fennel]]
         (init auto_brackets {:enabled true :kind_resolution {:enabled true}})
         (init auto_brackets :kind_resolution :blocked_filetypes blocked)))
     (let [document (init completion :documentation {})]
@@ -61,7 +56,7 @@
               #((. (require :colorful-menu) :blink_components_highlight) $1))
         (init label :text
               #((. (require :colorful-menu) :blink_components_text) $1))
-        (init label :width :max #(or (and (= $1.mode :cmdline) 22) 60)))
+        (init label :width :max #(if (= $1.mode :cmdline) 22 60)))
       (let [provider (init menu :draw :components :provider {})]
         (init provider {:highlight :Fg
                         :text #(let [sub (: ($1.item.source_name:sub 1 3)

@@ -5,7 +5,7 @@
 
   (fn filter-hide [] (not (vim.startswith fs-entry.name ".")))
 
-  (or (and show-dotfiles (filter-show)) (filter-hide)))
+  (if show-dotfiles (filter-show) (filter-hide)))
 
 (fn custom-sort [fs-entries]
   (let [res (vim.tbl_map (fn [x]
@@ -52,8 +52,7 @@
 
 (fn command []
   (let [this (vim.api.nvim_buf_get_name 0)
-        cmd (or (and (= (vim.fn.filereadable this) 1) MiniFiles.open)
-                MiniFiles.open)]
+        cmd (if (= (vim.fn.filereadable this) 1) MiniFiles.open MiniFiles.open)]
     (cmd)
     (MiniFiles.reveal_cwd)))
 

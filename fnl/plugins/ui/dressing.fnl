@@ -1,11 +1,11 @@
 (local fzf_lua {:hls {:title :TelescopePromptTitle}
                 :prompt false
                 :winopts {:col 0.5
-                          :height 0.35
                           :row 0.5
+                          :width 0.45
+                          :height 0.35
                           :title " Sessions "
-                          :title_pos :center
-                          :width 0.47}})
+                          :title_pos :center}})
 
 (fn get_config [opts]
   (if (= opts.prompt "Load Session")

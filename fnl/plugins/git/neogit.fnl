@@ -10,5 +10,5 @@
         :disable_commit_confirmation true
         :disable_insert_on_commit false
         :integrations {:diffview true}
-        :kind (or (and custom.prefer_tabpage :tab) :split)
+        :kind (if custom.prefer_tabpage :tab :split)
         :sections {:recent {:folded false} :stashes {:folded false}}}}

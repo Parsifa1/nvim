@@ -39,8 +39,9 @@
                      (vim.keymap.set :t :<Esc> "<C-\\><C-N>" {:buffer bufnr}))
         :open_mapping "<c-\\>"
         :shade_terminals false
-        :shell (or (and (= (. (vim.uv.os_uname) :sysname) :Windows_NT)
-                        "pwsh -nologo") :fish)
+        :shell (if (= (. (vim.uv.os_uname) :sysname) :Windows_NT)
+                   "pwsh -nologo"
+                   :fish)
         :size (fn [term]
                 (if (= term.direction :horizontal) 16
                     (= term.direction :vertical) (* vim.o.columns 0.4)))}}
