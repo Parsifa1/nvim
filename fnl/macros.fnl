@@ -35,4 +35,13 @@
         (set result `(or ,result ,(. args i))))
       result)))
 
-{: init : set-hl : or!}
+(fn and! [...]
+  (let [args [...]]
+    (assert (>= (length args) 2) "or! macro requires at least 2 arguments")
+    (do
+      (var result (. args 1))
+      (for [i 2 (length args)]
+        (set result `(and ,result ,(. args i))))
+      result)))
+
+{: init : set-hl : or! : and!}

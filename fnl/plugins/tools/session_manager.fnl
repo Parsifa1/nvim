@@ -12,7 +12,7 @@
                                                  :Avante
                                                  :AvanteInput]
                      :autosave_only_in_session true}))
- :dependencies [:stevearc/dressing.nvim :nvim-lua/plenary.nvim]
+ :dependencies [:stevearc/dressing.nvim]
  :keys [{1 :<leader><Tab>
          2 "<cmd>SessionManager load_session<CR><esc>"
          :desc "projects folder"}
