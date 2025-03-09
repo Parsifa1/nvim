@@ -51,6 +51,7 @@
                {:from :<leader>bd :mode mode-n :to :<cmd>bd<CR> :desc "[B]uffer [D]elete"}
                {:from :<leader>sw :mode mode-n :to "<cmd>set wrap!<CR>" :desc "toggle warp"}
                {:from :<leader><leader> :mode mode-n :to :<cmd>noh<CR> :desc "clear highlight"}
+               {:from :<leader>sn :mode mode-n :to "<cmd>NfnlCompileAllFiles<CR>" :desc "nfnl compiled"}
                {:from :<leader>ss :mode mode-n :noise true :to ":%s/\\<<C-r><C-w>\\>//g<left><left>" :desc "global replacement"}
                {:from :zo :mode mode-n :to :<C-w>o} {:desc :lazy :from :<leader>p :mode mode-n :to :<cmd>Lazy<CR> :desc "only current window"}])
 
