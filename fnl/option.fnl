@@ -2,6 +2,7 @@
 (set vim.opt.background :dark)
 (vim.cmd (.. "colorscheme " :everforest))
 (set vim.opt.viewoptions "cursor,folds")
+(set vim.opt.jumpoptions :stack)
 (set vim.opt.sessionoptions
      "blank,buffers,curdir,help,tabpages,winsize,terminal")
 
