@@ -51,11 +51,9 @@
                             filetype (get_option_value :filetype {:buf $1.buf})
                             buftype (get_option_value :buftype {:buf $1.buf})
                             ignore-filetypes [:gitcommit :gitrebase :hgcommit]]
-                        (when (and! (= buftype "") filetype (= filetype "")
-                                    (vim.tbl_contains ignore-filetypes filetype))
+                        (when (and! (= buftype "") filetype (not= filetype "")
+                                    (not (vim.tbl_contains ignore-filetypes
+                                                           filetype)))
                           (tset (. vim.b $1.buf) :view_activated true)
                           (vim.cmd.loadview {:mods {:emsg_silent true}}))))
-         :group (augruop :auto_view {:clear true})})
-  (auto :SessionLoadPost
-        {:callback #(vim.cmd.loadview {:mods {:emsg_silent true}})
          :group (augruop :auto_view {:clear true})}))
