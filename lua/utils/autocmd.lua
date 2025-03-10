@@ -117,9 +117,3 @@ autocmd("BufWinEnter", {
         end
     end,
 })
--- autocmd("SessionLoadPost", {
---     group = augroup("auto_view", { clear = true }),
---     callback = function()
---         vim.cmd.loadview { mods = { emsg_silent = true } }
---     end,
--- })
