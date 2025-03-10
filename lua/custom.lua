@@ -272,10 +272,7 @@ end
 function M.register(server, lsp, config)
     for _, i in ipairs(lsp) do
         server[i] = config[i] or {}
-        local capabilities = vim.lsp.protocol.make_client_capabilities()
-        capabilities.textDocument.foldingRange = { dynamicRegistration = false }
-        -- capabilities.textDocument.completion.completionItem.snippetSupport = false
-        server[i]["capabilities"] = capabilities
+        server[i]["capabilities"] = require("blink.cmp").get_lsp_capabilities()
     end
     return server
 end

@@ -77,7 +77,6 @@ local header = [[
 
 local ivy = {
     layout = {
-        { win = "preview", title = "{preview}", border = "rounded", width = 0.5 },
         box = "horizontal",
         row = -1,
         height = 26,
@@ -89,6 +88,7 @@ local ivy = {
             border = "none",
             title = "{title} {live} {flags}",
         },
+        { win = "preview", title = "{preview}", border = "rounded", width = 0.5 },
     },
 }
 

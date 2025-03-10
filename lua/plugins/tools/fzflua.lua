@@ -54,10 +54,7 @@ end
 
 return {
     "ibhagwan/fzf-lua",
-    dependencies = {
-        "echasnovski/mini.icons",
-        "moonbit-community/moonbit.nvim",
-    },
+    dependencies = { "echasnovski/mini.icons" },
     enabled = true,
     keys = keys(),
     cmd = "FzfLua",
@@ -78,6 +75,12 @@ return {
             rg_opts = "--no-heading --line-number "
                 .. "--column --smart-case --hidden "
                 .. "--glob '!{.git,node_modules,package-lock.json,pnpm-lock.yaml,yarn.lock,.vscode-server,.virtualenvs,target,.orbstack,.cache,.vscode,.rustup.wakatime}' ",
+        },
+        keymap = {
+            fzf = {
+                ["ctrl-u"] = "half-page-up",
+                ["ctrl-d"] = "half-page-down",
+            },
         },
     },
 }

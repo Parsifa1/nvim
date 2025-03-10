@@ -17,7 +17,7 @@ local custom_path = {
 ---@type LazyPluginSpec
 return {
     "Bekaboo/dropbar.nvim",
-    -- event = "User AfterLoad",
+    event = { "BufRead", "BufNewFile" },
     opts = {
         icons = { kinds = { symbols = custom.icons.kind_with_space } },
         bar = {
