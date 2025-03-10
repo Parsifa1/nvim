@@ -6,6 +6,7 @@ vim.cmd("colorscheme " .. "everforest")
 
 -- close curdir
 vim.opt.viewoptions = "cursor,folds"
+vim.opt.jumpoptions = "stack"
 
 -- sessionoptions
 vim.opt.sessionoptions = "blank,buffers,curdir,help,tabpages,winsize,terminal"
