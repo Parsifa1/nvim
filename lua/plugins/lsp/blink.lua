@@ -141,6 +141,18 @@ local opts = {
         ["<C-d>"] = { "scroll_documentation_down", "fallback" },
     },
     cmdline = {
+        completion = {
+            menu = {
+                auto_show = function()
+                    return vim.fn.getcmdtype() == ":"
+                end,
+            },
+            list = {
+                selection = {
+                    preselect = false,
+                },
+            },
+        },
         keymap = {
             ["<CR>"] = {
                 function(cmp)
@@ -190,10 +202,8 @@ local opts = {
 return {
     "Saghen/blink.cmp",
     dependencies = { "xzbdmw/colorful-menu.nvim" },
-    -- dir = "~/Project/blink.cmp",
     event = { "CursorHold", "CursorHoldI", "CmdlineEnter", "User AfterLoad" },
-    -- version = "*",
-    build = "cargo build --release",
+    version = "*",
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = opts,

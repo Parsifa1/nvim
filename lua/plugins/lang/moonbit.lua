@@ -1,5 +1,6 @@
 return {
     "moonbit-community/moonbit.nvim",
+    enabled = false,
     ft = { "moonbit" },
     opts = {
         -- optionally disable the treesitter integration

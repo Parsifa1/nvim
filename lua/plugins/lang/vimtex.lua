@@ -1,5 +1,6 @@
 return {
     "lervag/vimtex",
+    enabled = false,
     ft = { "tex" },
     -- tag = "v2.15", -- uncomment to pin to a specific release
     init = function()

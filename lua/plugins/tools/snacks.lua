@@ -73,11 +73,71 @@ local header = [[
     ⠀⠀⠘⠛⠙⣽⣿⣿⠟⢻⡾⠛⢯⡀⣼⣿⣾⣯⣶⣾⣿⠿⣶⣽⡦⠀⡜⢠⡟⠹⢿⣿⠈⣇⠀⢸⣧⣸⣿⠁⣸⣴⡿⠁
     ⠀⠀⠀⠀⣴⠟⣿⢋⣤⣾⠃⠀⠀⣹⢟⣿⠉⣹⣿⣍⡁⠀⠀⣀⡥⠞⠁⠈⠀⢧⠀⠻⠂⠙⠀⠀⢹⡗⠃⠈⠉⠈⠁⠀
     ⠀⠀⠀⠀⠀⣸⣿⣿⣫⠇⠀⣠⠞⣱⠛⣿⣿⢿⠹⡇⠀⣯⠉⠁⠀⠀⠀⠀⠀⢺⠀⠀⠀⠀⠀⠀⠈⣿⠀⠀⠀⠀⠀⠀
-    ]]
+]]
+
+local ivy = {
+    layout = {
+        { win = "preview", title = "{preview}", border = "rounded", width = 0.5 },
+        box = "horizontal",
+        row = -1,
+        height = 26,
+        backdrop = false,
+        {
+            { win = "input", height = 1, border = "rounded" },
+            { win = "list", border = "rounded" },
+            box = "vertical",
+            border = "none",
+            title = "{title} {live} {flags}",
+        },
+    },
+}
+
+local select = {
+    layout = {
+        { border = "bottom", height = 1, win = "input" },
+        { border = "none", win = "list" },
+        { border = "top", height = 0.4, title = "{preview}", win = "preview" },
+        border = "rounded",
+        box = "vertical",
+        height = 0.35,
+        min_height = 12,
+        min_width = 65,
+        title = "{title}",
+        title_pos = "center",
+        width = 0.47,
+        backdrop = false,
+    },
+    preview = false,
+}
+
+local function keys()
+    local function snack(name)
+        return ("<cmd>lua Snacks.picker." .. name .. "()<CR>")
+    end
+    if vim.uv.os_uname().sysname == "Windows_NT" then
+        return {
+            { "<leader>tc", snack "commands", desc = "commands picker" },
+            { "<leader>tk", snack "keymaps", desc = "keymaps picker" },
+            { "<leader>tl", snack "highlights", desc = "highlights picker" },
+            { "<leader>th", snack "help", desc = "help picker" },
+            { "<leader>f", snack "smart", desc = "find files" },
+            { "<leader>r", snack "recent", desc = "recent files" },
+            { "<leader>w", snack "grep", desc = "live grep" },
+            { "<tab><tab>", snack "buffers", desc = "buffers" },
+        }
+    else
+        return {
+            { "<tab><tab>", snack "buffers", desc = "buffers" },
+            { "<leader>tp", snack "lazy", desc = "lazy packers" },
+        }
+    end
+end
 
 return {
     "folke/snacks.nvim",
     lazy = false,
+    keys = keys(),
+    priority = 100,
     ---@type snacks.Config
     opts = {
         quickfile = {},
@@ -121,21 +181,51 @@ return {
                 end)
             end,
         },
-        indent = {
-            indent = {
-                enabled = true,
-                char = "│",
+        picker = {
+            ui_select = false,
+            layouts = { ivy = ivy, select = select },
+            win = {
+                input = { keys = { ["<Esc>"] = { "close", mode = { "n", "i" } } } },
             },
-            scope = {
-                hl = "SnackScope",
+            layout = {
+                preset = function(type)
+                    if type == "smart" or type == "files" or type == "recent" then
+                        return "ivy"
+                    elseif type == "buffers" then
+                        return "dropdown"
+                    else
+                        return "default"
+                    end
+                end,
+                layout = {
+                    backdrop = false,
+                },
             },
-            filter = function(buf)
-                return vim.g.snacks_indent ~= false
-                    and vim.b[buf].snacks_indent ~= false
-                    and vim.bo[buf].buftype == ""
-                    and vim.bo[buf].filetype ~= "oil"
-                    and vim.bo[buf].filetype ~= ""
-            end,
+            sources = {
+                buffers = {
+                    on_show = function()
+                        vim.cmd.stopinsert()
+                    end,
+                    win = {
+                        input = {
+                            keys = {
+                                ["dd"] = { "bufdelete", mode = { "n" } },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+        image = {
+            doc = {
+                inline = false,
+                float = vim.fn.hostname() ~= ("nixos" or "debian"),
+            },
+            convert = {
+                math = {
+                    font_size = "large",
+                },
+            },
         },
     },
 }

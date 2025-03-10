@@ -7,6 +7,7 @@ local M = {}
 local configs = {
     skips = { "string_content" },
     mapping = "<tab>",
+    backward_mapping = "<S-tab>",
     exclude_filetype = {},
 }
 
