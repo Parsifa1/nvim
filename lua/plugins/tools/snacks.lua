@@ -1,3 +1,4 @@
+---@diagnostic disable: inject-field
 local get_root = require("utils.gitutils").get_root
 local function dirs()
     ---@type table<string, boolean>
@@ -141,6 +142,7 @@ return {
     ---@type snacks.Config
     opts = {
         quickfile = {},
+        words = { debounce = 100 },
         dashboard = {
             preset = {
                 keys = {
@@ -149,6 +151,9 @@ return {
                     { icon = "󰂖 ", key = "p", desc = "Plugins", action = "<cmd>Lazy<CR>" },
                     { icon = "󰅚 ", key = "q", desc = "Quit Neovim", action = "<cmd>qa<CR>" },
                 },
+                picker = function(item, arg)
+                    require("fzf-lua")[item](arg)
+                end,
             },
             sections = {
                 { text = { { header, hl = "Include" } }, align = "center" },
@@ -164,9 +169,6 @@ return {
                 },
                 { section = "startup", hl = "Keyword" },
             },
-        },
-        words = {
-            debounce = 100,
         },
         bigfile = {
             enabled = true,

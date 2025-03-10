@@ -20,6 +20,14 @@ return {
                 vim.wo.foldcolumn = vim.bo.buftype == "" and "1" or "0"
             end,
         })
+        vim.api.nvim_create_autocmd("FileType", {
+            pattern = { "leetcode.nvim", "lazy", "snacks_dashboard" },
+            callback = function()
+                require("ufo").detach()
+                vim.opt_local.foldenable = false
+                vim.opt_local.foldcolumn = "0"
+            end,
+        })
         vim.o.foldlevel = 99
         vim.o.foldlevelstart = 99
         vim.o.foldenable = true
@@ -53,20 +61,14 @@ return {
             table.insert(newVirtText, { suffix, "MoreMsg" })
             return newVirtText
         end
-
-        -- 忽略特定文件类型
-        vim.api.nvim_create_autocmd("FileType", {
-            pattern = { "leetcode.nvim", "lazy", "snacks_dashboard" },
-            callback = function()
-                require("ufo").detach()
-                vim.opt_local.foldenable = false
-                vim.opt_local.foldcolumn = "0"
-            end,
-        })
-
         vim.keymap.set("n", "zn", require("ufo").openAllFolds)
         vim.keymap.set("n", "zm", require("ufo").closeAllFolds)
 
+        local ftMap = {
+            git = "",
+            vim = "indent",
+            snacks_dashboard = "",
+        }
         ---@diagnostic disable-next-line: missing-fields
         require("ufo").setup {
             close_fold_kinds_for_ft = {
@@ -75,6 +77,9 @@ return {
                 c = { "comment", "region" },
             },
             fold_virt_text_handler = handler,
+            provider_selector = function(_, filetype, _)
+                return ftMap[filetype]
+            end,
         }
     end,
 }
