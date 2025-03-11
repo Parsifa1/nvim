@@ -188,10 +188,10 @@ return {
                 ["cpp"] = { glyph = "󰙲", hl = "MiniIconsAzure" },
                 ["ini"] = { glyph = "󰯂", hl = "MiniIconsAzure" },
                 ["mbt"] = { glyph = "󱩡", hl = "MiniIconsPurple" },
-                ["fnl"] = { glyph = "", hl = "MiniIconsYellow" },
+                ["fnl"] = { glyph = "", hl = "MiniIconsYellow" },
                 ["txt"] = { glyph = "󰦪", hl = "MiniIconsYellow" },
-                ["toml"] = { glyph = "", hl = "MiniIconsOrange" },
-                ["astro"] = { glyph = "", hl = "MiniIconsOrange" },
+                ["toml"] = { glyph = "", hl = "MiniIconsOrange" },
+                ["astro"] = { glyph = "", hl = "MiniIconsOrange" },
             },
             filetype = {
                 ["moonbit"] = { glyph = "󱩡", hl = "MiniIconsPurple" },
