@@ -14,7 +14,7 @@ local config = function()
         set("gi", "<cmd>FzfLua lsp_implementations<CR>", "[I]mplementations")
         set("gk", vim.lsp.buf.signature_help, "LSP Signature help")
         set("gD", "<cmd>FzfLua lsp_document_symbols<CR>", "[D]oc symbols")
-        set("gd", "<cmd>lua require('fzf-lua').lsp_definitions{ jump_to_single_result = true }<CR>", "definition")
+        set("gd", "<cmd>lua require('fzf-lua').lsp_definitions{ jump1 = true }<CR>", "definition")
         set("<leader>ca", require("fastaction").code_action, "[C]ode [A]ction")
         set("<leader>cn", vim.lsp.buf.rename, "[C]ode Item Re[N]ame")
         set("<leader>ct", vim.lsp.buf.type_definition, "[C]ode [T]ype definition")
@@ -22,7 +22,8 @@ local config = function()
     end
 
     vim.diagnostic.config {
-        virtual_text = { spacing = 4 },
+        -- virtual_text = { spacing = 4 },
+        virtual_lines = { current_line = true },
         jump = { float = true },
         float = {
             border = custom.border,
