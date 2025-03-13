@@ -1,3 +1,4 @@
+---@diagnostic disable: assign-type-mismatch
 local custom = require "custom"
 
 ---@param direction "backward"|"forward"
@@ -38,28 +39,17 @@ local super_tab = function(direction)
     return ret
 end
 
+---@module 'blink.cmp'
+---@type blink.cmp.Config
 local opts = {
     completion = {
-        list = {
-            selection = {
-                preselect = function(ctx)
-                    return ctx.mode ~= "cmdline"
-                end,
-                auto_insert = function(ctx)
-                    return ctx.mode == "cmdline"
-                end,
-            },
-        },
         menu = {
             border = "single",
             winhighlight = "Normal:None,FloatBorder:None,CursorLine:BlinkCmpMenuSelection,Search:None",
             scrollbar = false,
             draw = {
                 treesitter = { "lsp" },
-                columns = function(ctx)
-                    return ctx.mode == "cmdline" and { { "kind_icon" }, { "label" } }
-                        or { { "kind_icon" }, { "label", gap = 1 }, { "provider" } }
-                end,
+                columns = { { "kind_icon" }, { "label", gap = 1 }, { "provider" } },
                 components = {
                     label = {
                         -- intergrate with colorful-menu
@@ -83,6 +73,9 @@ local opts = {
                     },
                 },
             },
+        },
+        list = {
+            selection = { preselect = true, auto_insert = false },
         },
         trigger = {
             show_on_x_blocked_trigger_characters = { "'", '"', "(", "{" },
@@ -140,9 +133,40 @@ local opts = {
         ["<C-u>"] = { "scroll_documentation_up", "fallback" },
         ["<C-d>"] = { "scroll_documentation_down", "fallback" },
     },
+    appearance = {
+        use_nvim_cmp_as_default = true,
+        -- nerd_font_variant = "mono",
+        kind_icons = custom.icons.kind,
+    },
+    snippets = {
+        expand = function(snippet)
+            require("luasnip").lsp_expand(snippet)
+        end,
+        active = function(filter)
+            if filter and filter.direction then
+                return require("luasnip").locally_jumpable()
+            end
+            return require("luasnip").in_snippet()
+        end,
+        jump = function(direction)
+            require("luasnip").jump(direction)
+        end,
+    },
+    signature = {
+        enabled = true,
+        window = { border = "single" },
+    },
+    fuzzy = {
+        prebuilt_binaries = {
+            ignore_version_mismatch = true,
+        },
+    },
     cmdline = {
         completion = {
             menu = {
+                draw = {
+                    columns = { { "kind_icon" }, { "label" } },
+                },
                 auto_show = function()
                     return vim.fn.getcmdtype() == ":"
                 end,
@@ -169,34 +193,6 @@ local opts = {
             ["<C-k>"] = { "select_prev", "fallback" },
         },
     },
-    appearance = {
-        use_nvim_cmp_as_default = true,
-        -- nerd_font_variant = "mono",
-        kind_icons = custom.icons.kind,
-    },
-    signature = {
-        enabled = true,
-        window = { border = "single" },
-    },
-    snippets = {
-        expand = function(snippet)
-            require("luasnip").lsp_expand(snippet)
-        end,
-        active = function(filter)
-            if filter and filter.direction then
-                return require("luasnip").locally_jumpable()
-            end
-            return require("luasnip").in_snippet()
-        end,
-        jump = function(direction)
-            require("luasnip").jump(direction)
-        end,
-    },
-    fuzzy = {
-        prebuilt_binaries = {
-            ignore_version_mismatch = true,
-        },
-    },
 }
 
 return {
@@ -204,8 +200,6 @@ return {
     dependencies = { "xzbdmw/colorful-menu.nvim" },
     event = { "CursorHold", "CursorHoldI", "CmdlineEnter", "User AfterLoad" },
     version = "*",
-    ---@module 'blink.cmp'
-    ---@type blink.cmp.Config
     opts = opts,
     opts_extend = { "sources.completion.enabled_providers" },
 }

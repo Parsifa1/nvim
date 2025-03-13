@@ -190,6 +190,7 @@ return {
                 ["mbt"] = { glyph = "󱩡", hl = "MiniIconsPurple" },
                 ["fnl"] = { glyph = "", hl = "MiniIconsYellow" },
                 ["txt"] = { glyph = "󰦪", hl = "MiniIconsYellow" },
+                ["lock"] = { glyph = "", hl = "MiniIconsGrey" },
                 ["toml"] = { glyph = "", hl = "MiniIconsOrange" },
                 ["astro"] = { glyph = "", hl = "MiniIconsOrange" },
             },
@@ -197,7 +198,6 @@ return {
                 ["moonbit"] = { glyph = "󱩡", hl = "MiniIconsPurple" },
             },
             file = {
-                ["devenv.lock"] = { glyph = "", hl = "MiniIconsGrey" },
                 [".tasks"] = { glyph = "", hl = "MiniIconsGrey" },
             },
         },
