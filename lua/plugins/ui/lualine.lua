@@ -1,24 +1,6 @@
 local lazy_status = require "lazy.status"
 local custom = require "custom"
 
-local function lsp()
-    local clients = vim.lsp.get_clients()
-    local buf = vim.api.nvim_get_current_buf()
-    clients = vim.iter(clients)
-        :filter(function(client)
-            return client.attached_buffers[buf]
-        end)
-        :filter(function(client)
-            return client.name ~= "GitHub Copilot"
-        end)
-        :map(function(client)
-            return client.name
-        end)
-        :totable()
-    local info = table.concat(clients, ", ")
-    return info
-end
-
 local opts = {
     options = {
         icons_enabled = true,
@@ -61,7 +43,16 @@ local opts = {
                 icon = { align = "left" },
                 padding = { left = 1, right = 0 },
             },
-            lsp,
+            {
+                "lsp_status",
+                icon = "",
+                padding = 0,
+                symbols = {
+                    done = "",
+                    separator = ", ",
+                },
+                ignore_lsp = { "GitHub Copilot" },
+            },
             {
                 "diagnostics",
                 symbols = {

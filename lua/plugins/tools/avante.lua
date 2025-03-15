@@ -1,6 +1,13 @@
+local build = function()
+    if vim.uv.os_uname().sysname == "Windows_NT" then
+        return "powershell -File Build.ps1"
+    else
+        return "make"
+    end
+end
 return {
-    "yetone/avante.nvim",
-    build = "make",
+    "parsifa1/avante.nvim",
+    build = build(),
     opts = {
         provider = "copilot",
         copilot = {

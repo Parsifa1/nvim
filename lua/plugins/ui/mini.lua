@@ -180,6 +180,7 @@ return {
                 ["log"] = { glyph = "󰕲", hl = "MiniIconsGrey" },
                 ["mdx"] = { glyph = "󰍔", hl = "MiniIconsGrey" },
                 ["css"] = { glyph = "󰌜", hl = "MiniIconsAzure" },
+                ["ico"] = { glyph = "󰫶", hl = "MiniIconsGreen" },
                 ["vue"] = { glyph = "󰡄", hl = "MiniIconsGreen" },
                 ["age"] = { glyph = "󰦝", hl = "MiniIconsGreen" },
                 ["nix"] = { glyph = "󱄅", hl = "MiniIconsAzure" },
