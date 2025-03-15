@@ -9,7 +9,6 @@ local config = function()
         local set = function(keys, func, indesc)
             vim.keymap.set("n", keys, func, { buffer = bufnr, desc = indesc })
         end
-        set("K", vim.lsp.buf.hover, "LSP Hover")
         set("gr", "<cmd>FzfLua lsp_references<CR>", "[R]eferences")
         set("gi", "<cmd>FzfLua lsp_implementations<CR>", "[I]mplementations")
         set("gk", vim.lsp.buf.signature_help, "LSP Signature help")
