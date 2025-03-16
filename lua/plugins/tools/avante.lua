@@ -6,7 +6,7 @@ local build = function()
     end
 end
 return {
-    "parsifa1/avante.nvim",
+    "yetone/avante.nvim",
     build = build(),
     opts = {
         provider = "copilot",

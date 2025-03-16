@@ -139,18 +139,7 @@ local opts = {
         kind_icons = custom.icons.kind,
     },
     snippets = {
-        expand = function(snippet)
-            require("luasnip").lsp_expand(snippet)
-        end,
-        active = function(filter)
-            if filter and filter.direction then
-                return require("luasnip").locally_jumpable()
-            end
-            return require("luasnip").in_snippet()
-        end,
-        jump = function(direction)
-            require("luasnip").jump(direction)
-        end,
+        preset = "luasnip",
     },
     signature = {
         enabled = true,
