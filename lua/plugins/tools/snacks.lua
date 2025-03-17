@@ -1,4 +1,4 @@
----@diagnostic disable: inject-field
+---@diagnostic disable: inject-field, assign-type-mismatch
 local get_root = require("utils.gitutils").get_root
 local function dirs()
     ---@type table<string, boolean>
@@ -76,6 +76,7 @@ local header = [[
     ⠀⠀⠀⠀⠀⣸⣿⣿⣫⠇⠀⣠⠞⣱⠛⣿⣿⢿⠹⡇⠀⣯⠉⠁⠀⠀⠀⠀⠀⢺⠀⠀⠀⠀⠀⠀⠈⣿⠀⠀⠀⠀⠀⠀
 ]]
 
+---@type snacks.picker.layout.Config
 local ivy = {
     layout = {
         box = "horizontal",
@@ -93,19 +94,19 @@ local ivy = {
     },
 }
 
+---@type snacks.picker.layout.Config
 local select = {
     layout = {
         { border = "bottom", height = 1, win = "input" },
         { border = "none", win = "list" },
         { border = "top", height = 0.4, title = "{preview}", win = "preview" },
+        height = 0.4,
+        width = 0.5,
+        min_height = 12,
         border = "rounded",
         box = "vertical",
-        height = 0.35,
-        min_height = 12,
-        min_width = 65,
         title = "{title}",
         title_pos = "center",
-        width = 0.47,
         backdrop = false,
     },
     preview = false,
@@ -184,7 +185,7 @@ return {
             end,
         },
         picker = {
-            ui_select = false,
+            ui_select = true,
             layouts = { ivy = ivy, select = select },
             win = {
                 input = { keys = { ["<Esc>"] = { "close", mode = { "n", "i" } } } },
