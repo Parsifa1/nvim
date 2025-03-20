@@ -1,4 +1,3 @@
----@type LazyPluginSpec
 local ft = {
     "html",
     "css",
@@ -10,6 +9,8 @@ local ft = {
     "yaml",
     "fish",
 }
+
+---@type LazyPluginSpec
 return {
     "NvChad/nvim-colorizer.lua",
     ft = ft,
@@ -17,7 +18,7 @@ return {
         require("colorizer").setup {
             filetypes = ft,
             user_default_options = {
-                virtualtext = "󱓻",
+                virtualtext = "󱓻 ",
                 virtualtext_inline = true,
                 mode = "virtualtext",
             },

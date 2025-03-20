@@ -5,6 +5,7 @@ local build = function()
         return "make"
     end
 end
+
 return {
     "yetone/avante.nvim",
     build = build(),

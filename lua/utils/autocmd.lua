@@ -93,6 +93,7 @@ autocmd("UILeave", {
     end,
 })
 
+-- auto trigger fold
 autocmd({ "BufWinLeave", "BufWritePost", "WinLeave" }, {
     desc = "Save view with mkview for real files",
     group = augroup("auto_view", { clear = true }),

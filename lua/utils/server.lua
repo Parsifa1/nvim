@@ -9,7 +9,7 @@ M.lsp = {
     "astro",
     -- "ts_ls",
     "gopls",
-    "cssls",
+    -- "cssls",
     "taplo",
     "lua_ls",
     "jsonls",

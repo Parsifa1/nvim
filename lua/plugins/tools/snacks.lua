@@ -185,7 +185,7 @@ return {
             end,
         },
         picker = {
-            ui_select = true,
+            ui_select = false,
             layouts = { ivy = ivy, select = select },
             win = {
                 input = { keys = { ["<Esc>"] = { "close", mode = { "n", "i" } } } },

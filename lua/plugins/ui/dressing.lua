@@ -1,3 +1,4 @@
+---@type LazyPluginSpec
 return {
     "stevearc/dressing.nvim",
     opts = {
@@ -11,7 +12,7 @@ return {
             fzf_lua = {
                 winopts = {
                     height = 0.25,
-                    width = 0.37,
+                    width = 0.4,
                     row = 0.50,
                     col = 0.50,
                 },
