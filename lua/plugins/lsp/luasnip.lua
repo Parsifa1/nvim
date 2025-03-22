@@ -3,7 +3,7 @@ return {
     {
         "L3MON4D3/LuaSnip",
         keys = {
-            { "<C-f>", "<cmd>lua require('luasnip').expand()<CR>", desc = "snippets trigger" },
+            { "<C-f>", mode = "i", "<cmd>lua require('luasnip').expand()<CR>", desc = "snippets trigger" },
         },
         dependencies = {
             "rafamadriz/friendly-snippets",
