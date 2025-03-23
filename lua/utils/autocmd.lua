@@ -60,16 +60,16 @@ autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
 })
 
 -- fix select mode diagnostic
+local diag_in_select = augroup("diag_in_select", { clear = true })
 autocmd("ModeChanged", {
-    group = augroup("diag_in_select", { clear = true }),
+    group = diag_in_select,
     pattern = "*:s",
     callback = function()
         vim.diagnostic.enable(false)
     end,
 })
-
 autocmd("ModeChanged", {
-    group = augroup("diag_in_select", { clear = false }),
+    group = diag_in_select,
     pattern = "[is]:n",
     callback = function()
         vim.diagnostic.enable()
@@ -94,18 +94,20 @@ autocmd("UILeave", {
 })
 
 -- auto trigger fold
+local auto_view = augroup("auto_view", { clear = true })
 autocmd({ "BufWinLeave", "BufWritePost", "WinLeave" }, {
     desc = "Save view with mkview for real files",
-    group = augroup("auto_view", { clear = true }),
+    group = auto_view,
     callback = function(args)
         if vim.b[args.buf].view_activated then
+            augroup("auto_view", { clear = true })
             vim.cmd.mkview { mods = { emsg_silent = true } }
         end
     end,
 })
 autocmd("BufWinEnter", {
     desc = "Try to load file view if available and enable view saving for real files",
-    group = augroup("auto_view", { clear = true }),
+    group = auto_view,
     callback = function(args)
         if not vim.b[args.buf].view_activated then
             local filetype = vim.api.nvim_get_option_value("filetype", { buf = args.buf })
