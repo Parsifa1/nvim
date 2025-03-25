@@ -34,7 +34,7 @@ local keymap = {
     { mode = mode_ni,  from = "<F5>",             to = "<cmd>AsyncTask run<cr>", },
     { mode = mode_ni,  from = "<F6>",             to = "<cmd>AsyncTask build<cr>", },
     { mode = mode_nv,  from = "=",                to = "gq" },
-    { mode = mode_nit, from = "<A-q>",            to = "<cmd>q<CR>" }, -- 窗口关闭
+    { mode = mode_nit, from = "<A-q>",            to = "<cmd>qa<CR>" }, -- 窗口关闭
     { mode = mode_n,   from = "<C-x>",            to = "<cmd>lua require('snacks.bufdelete').delete()<CR>" },
     { mode = mode_nit, from = "<A-Q>",            to = "<cmd>qa<CR>" }, -- vim关闭
     { mode = mode_nvo, from = "H",                to = "^" },

@@ -10,8 +10,5 @@ return {
             ["tinymist"] = "tinymist",
             ["websocat"] = "websocat",
         },
-        -- get_root = function(bufnr_of_typst_buffer)
-        --     return vim.fn.fnamemodify(vim.fn.expand "%:p", ":h")
-        -- end,
     },
 }

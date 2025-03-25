@@ -8,13 +8,17 @@ end
 
 return {
     "yetone/avante.nvim",
+    -- commit = "a60a8d4",
     build = build(),
     opts = {
         provider = "copilot",
         copilot = {
-            model = "claude-3.5-sonnet",
+            model = "claude-3.7-sonnet",
         },
         hints = { enabled = false },
+        windows = {
+            input = { prefix = "❯ " },
+        },
     },
     keys = {
         {
