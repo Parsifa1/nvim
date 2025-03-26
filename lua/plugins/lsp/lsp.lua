@@ -1,7 +1,7 @@
 local config = function()
     local custom = require "custom"
     local lspconfig = require "lspconfig"
-    local server = require("utils.server").server
+    local server = require("utils.lsp.server").server
 
     require("lspconfig.ui.windows").default_options.border = "rounded"
     local lsp_keymap = function(bufnr)

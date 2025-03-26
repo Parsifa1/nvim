@@ -47,9 +47,9 @@ return {
             "MasonToolsClean",
         },
         config = function()
-            local installed = require("utils.server").tools
+            local installed = require("utils.lsp.server").tools
 
-            for _, sv in ipairs(require("utils.server").lsp) do
+            for _, sv in ipairs(require("utils.lsp.server").lsp) do
                 table.insert(installed, sv)
             end
 
