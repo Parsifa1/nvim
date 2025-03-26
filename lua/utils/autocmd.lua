@@ -100,7 +100,6 @@ autocmd({ "BufWinLeave", "BufWritePost", "WinLeave" }, {
     group = auto_view,
     callback = function(args)
         if vim.b[args.buf].view_activated then
-            augroup("auto_view", { clear = true })
             vim.cmd.mkview { mods = { emsg_silent = true } }
         end
     end,
