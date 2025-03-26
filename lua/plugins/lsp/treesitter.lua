@@ -1,6 +1,10 @@
 return {
     "nvim-treesitter/nvim-treesitter",
-    dependencies = { "RRethy/nvim-treesitter-textsubjects", "nvim-treesitter/nvim-treesitter-textobjects" },
+    dependencies = {
+        "rcarriga/nvim-notify",
+        "RRethy/nvim-treesitter-textsubjects",
+        "nvim-treesitter/nvim-treesitter-textobjects",
+    },
     event = { "BufNewFile", "BufRead" },
     cmd = { "TSUpdate", "TSInstall", "TSInstallInfo" },
     build = ":TSUpdate",
