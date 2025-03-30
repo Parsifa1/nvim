@@ -60,7 +60,7 @@ local config = function()
         end,
     })
 
-    if vim.version().prerelease == "dev" then
+    if vim.fn.has("nvim-0.11") == 1 then
         vim.keymap.del("n", "gri")
         vim.keymap.del("n", "gra")
         vim.keymap.del("n", "grn")
