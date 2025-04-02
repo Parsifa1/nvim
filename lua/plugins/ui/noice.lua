@@ -53,6 +53,7 @@ return {
                         { find = "%d fewer lines" },
                         { find = "%d more lines" },
                         { find = "Index out of bounds" },
+                        { find = "deprecated" },
                     },
                 },
                 opts = { skip = true },
@@ -63,7 +64,6 @@ return {
                     any = {
                         { find = "position_encoding" },
                         { find = "Delete existing terminal" },
-                        { find = "telescope.builtin.buffers" },
                         { find = "No matching notification found to replace" },
                     },
                 },

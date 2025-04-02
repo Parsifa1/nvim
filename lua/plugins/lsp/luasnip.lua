@@ -33,6 +33,7 @@ return {
             disable_auto_expansion = {
                 cpp = { "i32", "i64" },
             },
+            disable_langs = { "nix" },
         },
     },
 }
