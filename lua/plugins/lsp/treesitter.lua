@@ -1,4 +1,34 @@
-return {
+local ensure_installed = {
+    "cpp",
+    "lua",
+    "rust",
+    "python",
+    "vim",
+    "regex",
+    "bash",
+    "markdown_inline",
+    "comment",
+    "yaml",
+    "latex",
+    "markdown",
+    "fish",
+    "html",
+    "css",
+    "javascript",
+    "typescript",
+    "nix",
+    "typst",
+    "vue",
+    "astro",
+    "vimdoc",
+}
+local auto_tag = {
+    "windwp/nvim-ts-autotag",
+    ft = { "astro", "html", "javascriptreact", "typescriptreact", "vue" },
+    opts = true
+}
+
+local treesitter = {
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
         "rcarriga/nvim-notify",
@@ -17,30 +47,7 @@ return {
                 disable = { "latex" },
                 additional_vim_regex_highlighting = false,
             },
-            ensure_installed = {
-                "cpp",
-                "lua",
-                "rust",
-                "python",
-                "vim",
-                "regex",
-                "bash",
-                "markdown_inline",
-                "comment",
-                "yaml",
-                "latex",
-                "markdown",
-                "fish",
-                "html",
-                "css",
-                "javascript",
-                "typescript",
-                "nix",
-                "typst",
-                "vue",
-                "astro",
-                "vimdoc",
-            },
+            ensure_installed = ensure_installed,
             textobjects = {
                 select = {
                     enable = true,
@@ -61,7 +68,7 @@ return {
                     },
                     selection_modes = {
                         ["@parameter.outer"] = "v", -- charwise
-                        ["@function.outer"] = "V", -- linewise
+                        ["@function.outer"] = "V",  -- linewise
                         ["@class.outer"] = "<c-v>", -- blockwise
                     },
                     include_surrounding_whitespace = false,
@@ -82,3 +89,5 @@ return {
         }
     end,
 }
+
+return { treesitter, auto_tag }
