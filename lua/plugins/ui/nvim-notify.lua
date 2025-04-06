@@ -1,4 +1,4 @@
----@diagnostic disable: duplicate-set-field
+---@diagnostic disable: duplicate-set-field, assign-type-mismatch
 ---@type LazyPluginSpec
 return {
     "rcarriga/nvim-notify",
@@ -6,7 +6,7 @@ return {
     init = function()
         vim.notify = function(...)
             if not require("lazy.core.config").plugins["nvim-notify"]._.loaded then
-                require("lazy").load { "nvim-notify" }
+                require("lazy").load { plugins = "nvim-notify" }
             end
             require "notify"(...)
         end

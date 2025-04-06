@@ -1,7 +1,6 @@
 return {
     {
         "williamboman/mason.nvim",
-        dependencies = "rcarriga/nvim-notify",
         keys = {
             { "<leader>m", "<cmd>Mason<CR>", desc = "open Mason" },
         },

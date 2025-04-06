@@ -31,7 +31,6 @@ local auto_tag = {
 local treesitter = {
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
-        "rcarriga/nvim-notify",
         "RRethy/nvim-treesitter-textsubjects",
         "nvim-treesitter/nvim-treesitter-textobjects",
     },

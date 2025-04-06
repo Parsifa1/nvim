@@ -206,6 +206,7 @@ return {
             },
             sources = {
                 buffers = {
+                    current = false,
                     on_show = function()
                         vim.cmd.stopinsert()
                     end,

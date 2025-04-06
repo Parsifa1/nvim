@@ -5,7 +5,6 @@ return {
     dependencies = {
         "nvim-lua/plenary.nvim",
         "sindrets/diffview.nvim",
-        "rcarriga/nvim-notify",
     },
     cmd = "Neogit",
     keys = {
