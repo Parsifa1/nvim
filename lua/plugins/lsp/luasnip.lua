@@ -28,6 +28,7 @@ return {
     },
     {
         "TwIStOy/luasnip-snippets",
+        enabled = false,
         dependencies = { "L3MON4D3/LuaSnip" },
         opts = {
             disable_auto_expansion = {
