@@ -173,14 +173,19 @@ return {
         },
         bigfile = {
             enabled = true,
-            notify = true, -- show notification when big file detected
+            notify = false, -- show notification when big file detected
+            line_length = 1000,
             size = 1024 * 1024 * 1.5, -- 1.5MB
             setup = function(ctx)
-                vim.cmd [[NoMatchParen]]
+                if vim.fn.exists ":NoMatchParen" ~= 0 then
+                    vim.cmd [[NoMatchParen]]
+                end
                 require("snacks").util.wo(0, { foldmethod = "manual", conceallevel = 0 })
                 vim.b.minianimate_disable = true
                 vim.schedule(function()
-                    vim.bo[ctx.buf].syntax = ctx.ft
+                    if vim.api.nvim_buf_is_valid(ctx.buf) then
+                        vim.bo[ctx.buf].syntax = ctx.ft
+                    end
                 end)
             end,
         },

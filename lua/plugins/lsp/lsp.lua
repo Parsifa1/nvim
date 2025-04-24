@@ -1,9 +1,8 @@
 local config = function()
     local custom = require "custom"
-    local lspconfig = require "lspconfig"
-    local server = require("utils.lsp.server").server
+    local system = require("utils.lsp.server").system
+    local conf = require("utils.lsp.config").conf
 
-    require("lspconfig.ui.windows").default_options.border = "rounded"
     local lsp_keymap = function(bufnr)
         -- lsp-builtin
         local set = function(keys, func, indesc)
@@ -40,9 +39,19 @@ local config = function()
         },
     }
 
-    -- lspconfig
-    for lsp, config in (vim.iter(server)) do
-        lspconfig[lsp].setup(config)
+    -- lsp installed by mason
+    require("mason-lspconfig").setup_handlers {
+        function(lsp) -- default handler (optional)
+            vim.lsp.config[lsp] = conf(lsp)
+            vim.lsp.enable(lsp)
+        end,
+        ["rust_analyzer"] = function() end,
+    }
+
+    -- lsp installed by system
+    for _, lsp in ipairs(system) do
+        vim.lsp.config[lsp] = conf(lsp)
+        vim.lsp.enable(lsp)
     end
 
     -- automatically sign up lsp
@@ -60,7 +69,7 @@ local config = function()
         end,
     })
 
-    if vim.fn.has("nvim-0.11") == 1 then
+    if vim.fn.has "nvim-0.11" == 1 then
         vim.keymap.del("n", "gri")
         vim.keymap.del("n", "gra")
         vim.keymap.del("n", "grn")
@@ -72,8 +81,8 @@ end
 return {
     {
         "neovim/nvim-lspconfig",
+        dependencies = { "williamboman/mason-lspconfig.nvim" },
         event = { "BufReadPre", "BufNewFile" },
-        -- event = "User AfterLoad",
         cmd = "LspInfo",
         config = config,
     },

@@ -269,14 +269,6 @@ function M.set(mode, keys, func, ...)
     vim.keymap.set(mode, keys, func, options)
 end
 
-function M.register(server, lsp, config)
-    for _, i in ipairs(lsp) do
-        server[i] = config[i] or {}
-        server[i]["capabilities"] = require("blink.cmp").get_lsp_capabilities()
-    end
-    return server
-end
-
 M.icons = {
     -- LSP diagnostic
     diagnostic = icon_backup.diagnostics,

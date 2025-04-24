@@ -71,7 +71,6 @@ return {
         vim.api.nvim_create_autocmd("FileType", {
             pattern = { "leetcode.nvim", "lazy", "snacks_dashboard" },
             callback = function()
-                require("ufo").detach()
                 vim.opt_local.foldenable = false
                 vim.opt_local.foldcolumn = "0"
             end,

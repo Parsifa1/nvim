@@ -9,6 +9,7 @@ end
 return {
     "yetone/avante.nvim",
     -- commit = "a60a8d4",
+    cmd = { "AvanteAsk", "AvanteEdit", "AvanteRefresh" },
     build = build(),
     opts = {
         provider = "copilot",
@@ -18,32 +19,18 @@ return {
         hints = { enabled = false },
         windows = {
             input = { prefix = "❯ " },
+            edit = { border = "rounded" },
+        },
+        mappings = {
+            sidebar = {
+                close_from_input = { normal = "<Esc>", insert = "<C-d>" },
+            },
         },
     },
     keys = {
-        {
-            "<leader>aa",
-            function()
-                require("avante.api").ask()
-            end,
-            desc = "avante: ask",
-            mode = { "n", "v" },
-        },
-        {
-            "<leader>ar",
-            function()
-                require("avante.api").refresh()
-            end,
-            desc = "avante: refresh",
-        },
-        {
-            "<leader>ae",
-            function()
-                require("avante.api").edit()
-            end,
-            desc = "avante: edit",
-            mode = "v",
-        },
+        { "<leader>aa", "<Plug>(AvanteAsk)", desc = "avante: ask", mode = { "n", "v" } },
+        { "<leader>ar", "<Plug>(AvanteRefresh)", desc = "avante: refresh" },
+        { "<leader>ae", "<Plug>(AvanteEdit)", desc = "avante: edit", mode = "v" },
     },
     dependencies = {
         "stevearc/dressing.nvim",

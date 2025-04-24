@@ -105,6 +105,15 @@ M.config = {
             "astro",
         },
     },
+    cssls = {
+        settings = {
+            css = {
+                lint = {
+                    unknownAtRules = "ignore",
+                },
+            },
+        },
+    },
     nil_ls = {
         settings = {
             ["nil"] = {
@@ -156,5 +165,10 @@ M.config = {
         end,
     },
 }
+
+---@param server string
+M.conf = function(server)
+    return M.config[server] or {}
+end
 
 return M
