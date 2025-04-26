@@ -67,12 +67,7 @@ M.config = {
         },
     },
     tinymist = {
-        -- offset_encoding = "utf-8",
         cmd = { "tinymist" },
-        single_file_support = true,
-        root_dir = function()
-            return vim.fn.getcwd()
-        end,
         settings = {},
     },
     ts_ls = {
@@ -145,9 +140,6 @@ M.config = {
         enable_import_completion = true,
     },
     hls = {
-        root_dir = function()
-            return vim.fn.getcwd()
-        end,
         settings = {
             haskell = {
                 plugin = {
@@ -160,9 +152,6 @@ M.config = {
     },
     verible = {
         cmd = { "verible-verilog-ls", "--rules=-explicit-parameter-storage-type" },
-        root_dir = function()
-            return vim.fn.getcwd()
-        end,
     },
 }
 
