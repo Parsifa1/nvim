@@ -1,14 +1,9 @@
 local build = function()
-    if vim.uv.os_uname().sysname == "Windows_NT" then
-        return "powershell -File Build.ps1"
-    else
-        return "make"
-    end
+    return vim.uv.os_uname().sysname == "Windows_NT" and "powershell -File Build.ps1" or "make"
 end
 
 return {
     "yetone/avante.nvim",
-    -- commit = "a60a8d4",
     cmd = { "AvanteAsk", "AvanteEdit", "AvanteRefresh" },
     build = build(),
     opts = {
@@ -20,6 +15,9 @@ return {
         windows = {
             input = { prefix = "❯ " },
             edit = { border = "rounded" },
+        },
+        behaviour = {
+            enable_claude_text_editor_tool_mode = true,
         },
         mappings = {
             sidebar = {
