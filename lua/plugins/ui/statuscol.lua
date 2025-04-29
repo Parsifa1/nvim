@@ -1,12 +1,14 @@
 return {
     "luukvbaal/statuscol.nvim",
-    event = { "BufReadPre", "User LazyLoad" },
+    event = "User AfterLoad",
+    init = function()
+        vim.opt.statuscolumn = "%{%v:lua.require('statuscol').get_statuscol_string()%}"
+    end,
     opts = function()
         local builtin = require "statuscol.builtin"
-
         return {
             bt_ignore = { "nofile", "terminal" },
-            ft_ignore = { "leetcode.nvim" },
+            ft_ignore = { "leetcode.nvim", "help" },
             segments = {
                 { -- TODO:调整colwidth
                     sign = {
