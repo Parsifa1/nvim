@@ -11,14 +11,12 @@ M.tools = {
     "codelldb",
 }
 
-if vim.fn.hostname() == "nixos" then
-    M.system = {
-        -- lsp
-        "hls",
-        "nixd",
-        "clangd",
-        "pyright",
-    }
-end
+M.system = {
+    -- lsp
+    "hls",
+    "nixd",
+    "clangd",
+    "pyright",
+}
 
 return M
