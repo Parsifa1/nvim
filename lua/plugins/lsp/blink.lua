@@ -38,9 +38,9 @@ local super_tab = function(direction)
     end
     return ret
 end
-
 ---@module 'blink.cmp'
 ---@type blink.cmp.Config
+
 local opts = {
     completion = {
         menu = {
@@ -101,7 +101,7 @@ local opts = {
         default = function()
             local success, node = pcall(vim.treesitter.get_node)
             if vim.bo.filetype == "lua" then
-                return { "lsp", "path" }
+                return { "lsp", "path", "lazydev" }
             elseif
                 success
                 and node
@@ -114,8 +114,9 @@ local opts = {
         end,
         providers = {
             lazydev = {
-                name = "Development",
+                name = "Dev",
                 module = "lazydev.integrations.blink",
+                score_offset = 100,
             },
         },
     },

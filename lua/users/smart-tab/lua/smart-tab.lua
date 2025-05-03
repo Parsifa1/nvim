@@ -22,6 +22,15 @@ local function is_blank_line()
     return left_of_cursor:match "^%s*$" ~= nil
 end
 
+local function not_empty_history()
+    if #position_history == 0 then
+        vim.notify("No previous position to jump to", vim.log.levels.INFO)
+        return false
+    else
+        return true
+    end
+end
+
 ---@param node_type string
 local function should_skip(node_type)
     for _, skip in ipairs(configs.skips) do
@@ -69,11 +78,6 @@ end
 ---Jump back to the previous cursor position
 ---@return boolean
 function M.smart_tab_backward()
-    if #position_history == 0 then
-        vim.notify("No previous position to jump to", vim.log.levels.INFO)
-        return false
-    end
-
     local prev_pos = table.remove(position_history)
     local ok = pcall(vim.api.nvim_win_set_cursor, 0, prev_pos)
     return ok
@@ -105,7 +109,7 @@ local function setup_keymap(filetype, buffer)
     -- Setup backward tab mapping
     if backward_mapping then
         vim.keymap.set("i", backward_mapping, function()
-            if not M.smart_tab_backward() then
+            if not_empty_history() and not M.smart_tab_backward() then
                 vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(backward_mapping, true, true, true), "n", true)
             end
         end, {

@@ -16,9 +16,6 @@ return {
             input = { prefix = "❯ " },
             edit = { border = "rounded" },
         },
-        behaviour = {
-            enable_claude_text_editor_tool_mode = true,
-        },
         mappings = {
             sidebar = {
                 close_from_input = { normal = "<Esc>", insert = "<C-d>" },

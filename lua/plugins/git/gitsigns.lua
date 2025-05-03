@@ -8,10 +8,7 @@ return {
     },
 
     config = function()
-        local gitsigns = require "gitsigns"
-        -- local custom = require "custom"
-
-        gitsigns.setup {
+        require("gitsigns").setup {
             signs = {
                 add = { text = "┃" },
                 change = { text = "┃" },
