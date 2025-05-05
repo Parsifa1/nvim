@@ -83,6 +83,7 @@ local opts = {
 
 return {
     "rcarriga/nvim-dap-ui",
+    enabled = false,
     keys = {
         {
             "<leader>du",
