@@ -2,7 +2,7 @@
 
 return {
     {
-        "iamcco/markdown-preview.nvim",
+        "parsifa1/markdown-preview.nvim",
         cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
         build = ":cal mkdp#util#install()",
         ft = { "markdown" },
