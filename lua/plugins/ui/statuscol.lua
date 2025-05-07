@@ -1,6 +1,6 @@
 return {
     "luukvbaal/statuscol.nvim",
-    event = "BufRead",
+    event = { "BufNewFile", "BufRead" },
     opts = function()
         local builtin = require "statuscol.builtin"
         return {

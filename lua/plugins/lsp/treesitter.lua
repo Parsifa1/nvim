@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-fields
 local ensure_installed = {
     "cpp",
     "lua",
@@ -41,12 +42,12 @@ local treesitter = {
         require("nvim-treesitter.install").prefer_git = true
         require("nvim-treesitter.configs").setup {
             auto_install = true,
+            ensure_installed = ensure_installed,
             highlight = {
                 enable = true,
                 disable = { "latex" },
                 additional_vim_regex_highlighting = false,
             },
-            ensure_installed = ensure_installed,
             textobjects = {
                 select = {
                     enable = true,

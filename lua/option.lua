@@ -53,9 +53,8 @@ vim.g.asyncrun_open = 6
 
 -- no fold
 vim.o.foldmethod = "manual"
--- vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-vim.o.foldcolumn = "1"
 vim.o.foldenable = true
+vim.o.foldcolumn = "1"
 vim.opt.foldlevel = 99
 vim.o.foldlevelstart = -1
 

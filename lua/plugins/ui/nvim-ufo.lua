@@ -35,7 +35,6 @@ local function customizeSelector(bufnr)
             return require("promise").reject(err)
         end
     end
-
     return require("ufo")
         .getFolds(bufnr, "lsp")
         :catch(function(err)
@@ -49,47 +48,13 @@ end
 ---@diagnostic disable: assign-type-mismatch
 return {
     "kevinhwang91/nvim-ufo",
+    event = { "BufNewFile", "BufRead" },
     dependencies = "kevinhwang91/promise-async",
-    -- dir = "~/desktop/project/nvim-ufo",
-    commit = "6e810df",
-    event = "BufRead",
-    init = function()
-        local set_foldcolumn_for_file = vim.api.nvim_create_augroup("set_foldcolumn_for_file", {
-            clear = true,
-        })
-        vim.api.nvim_create_autocmd("BufWinEnter", {
-            group = set_foldcolumn_for_file,
-            callback = function()
-                vim.wo.foldcolumn = vim.bo.buftype == "" and "1" or "0"
-            end,
-        })
-        vim.api.nvim_create_autocmd("OptionSet", {
-            group = set_foldcolumn_for_file,
-            pattern = "buftype",
-            callback = function()
-                vim.wo.foldcolumn = vim.bo.buftype == "" and "1" or "0"
-            end,
-        })
-        vim.api.nvim_create_autocmd("FileType", {
-            pattern = { "leetcode.nvim", "lazy", "snacks_dashboard" },
-            callback = function()
-                vim.opt_local.foldenable = false
-                vim.opt_local.foldcolumn = "0"
-            end,
-        })
-        vim.o.foldlevel = 99
-        vim.o.foldlevelstart = 99
-        vim.o.foldenable = true
-    end,
     config = function()
         vim.keymap.set("n", "zn", require("ufo").openAllFolds)
         vim.keymap.set("n", "zm", require("ufo").closeAllFolds)
 
-        local ftMap = {
-            vim = "indent",
-            snacks_dashboard = "",
-        }
-        ---@diagnostic disable-next-line: missing-fields
+        local ftMap = { vim = "indent", snacks_dashboard = "" }
         require("ufo").setup {
             close_fold_kinds_for_ft = {
                 default = { "imports", "comment" },
@@ -98,7 +63,7 @@ return {
             },
             fold_virt_text_handler = handler,
             provider_selector = function(_, filetype, _)
-                return ftMap[filetype] or { "lsp", "indent" } or customizeSelector
+                return ftMap[filetype] or customizeSelector
             end,
         }
     end,
