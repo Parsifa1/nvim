@@ -1,4 +1,4 @@
 return {
     "tpope/vim-sleuth",
-    event = "User AfterLoad",
+    event = { "BufNewFile", "BufRead" },
 }

@@ -49,7 +49,7 @@ end
 ---@diagnostic disable: assign-type-mismatch
 return {
     "kevinhwang91/nvim-ufo",
-    event = "BufReadPost",
+    event = "BufRead",
     dependencies = "kevinhwang91/promise-async",
     init = function()
         local set_foldcolumn_for_file = vim.api.nvim_create_augroup("set_foldcolumn_for_file", {

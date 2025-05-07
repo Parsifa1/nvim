@@ -82,7 +82,7 @@ return {
     {
         "neovim/nvim-lspconfig",
         dependencies = { "williamboman/mason-lspconfig.nvim" },
-        event = { "BufReadPre", "BufNewFile" },
+        event = { "BufRead", "BufNewFile" },
         cmd = "LspInfo",
         config = config,
     },
