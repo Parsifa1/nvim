@@ -6,7 +6,6 @@ return {
         { "<leader>gb", "<Cmd>Gitsigns blame_line<CR>", desc = "gitsigns blame" },
         { "<leader>gp", "<Cmd>Gitsigns preview_hunk<CR>", desc = "gitsigns hunk preview" },
     },
-
     config = function()
         require("gitsigns").setup {
             signs = {

@@ -3,6 +3,20 @@ local config = function()
     local system = require("utils.lsp.server").system
     local conf = require("utils.lsp.config").conf
 
+    -- lsp installed by mason
+    require("mason-lspconfig").setup {
+        ensure_installed = {},
+        automatic_enable = {
+            exclude = { "rust_analyzer" },
+        },
+    }
+
+    -- lsp installed by system
+    for _, lsp in ipairs(system) do
+        vim.lsp.config[lsp] = conf(lsp)
+        vim.lsp.enable(lsp)
+    end
+
     local lsp_keymap = function(bufnr)
         -- lsp-builtin
         local set = function(keys, func, indesc)
@@ -39,20 +53,6 @@ local config = function()
         },
     }
 
-    -- lsp installed by mason
-    require("mason-lspconfig").setup {
-        ensure_installed = {},
-        automatic_enable = {
-            exclude = { "rust_analyzer" },
-        },
-    }
-
-    -- lsp installed by system
-    for _, lsp in ipairs(system) do
-        vim.lsp.config[lsp] = conf(lsp)
-        vim.lsp.enable(lsp)
-    end
-
     -- automatically sign up lsp
     vim.api.nvim_create_autocmd("LspAttach", {
         desc = "General LSP Attach",
@@ -61,8 +61,14 @@ local config = function()
             lsp_keymap(args.buf)
             -- inlay hints
             local client = vim.lsp.get_client_by_id(args.data.client_id)
-            if client and client.server_capabilities.inlayHintProvider then
-                vim.lsp.inlay_hint.enable(true)
+            if client then
+                if client.server_capabilities.inlayHintProvider then
+                    vim.lsp.inlay_hint.enable(true)
+                end
+                if client:supports_method "textDocument/foldingRange" then
+                    local win = vim.api.nvim_get_current_win()
+                    vim.wo[win][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
+                end
             end
         end,
     })
@@ -77,8 +83,8 @@ end
 
 return {
     {
-        "mason-org/mason-lspconfig.nvim",
-        dependencies = "neovim/nvim-lspconfig",
+        "neovim/nvim-lspconfig",
+        dependencies = "mason-org/mason-lspconfig.nvim",
         event = { "BufRead", "BufNewFile" },
         cmd = "LspInfo",
         config = config,

@@ -1,7 +1,11 @@
 return {
     "chrisgrieser/nvim-origami",
-    event = "User AfterLoad",
+    event = { "BufRead", "BufNewFile" },
     opts = {
+        foldtextWithLineCount = {
+            template = " %s ",
+            hlgroupForCount = "MoreMsg",
+        },
         foldKeymaps = {
             hOnlyOpensOnFirstColumn = true,
         },

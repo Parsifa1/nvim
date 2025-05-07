@@ -52,9 +52,12 @@ vim.opt.timeoutlen = 500 -- time to wait for a mapped sequence to complete (in m
 vim.g.asyncrun_open = 6
 
 -- no fold
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldlevel = 99
-vim.opt.foldcolumn = "0"
-vim.opt.foldenable = false
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
+vim.o.foldcolumn = "1"
 
 -- set statusline && mode
 vim.opt.statusline = " "
