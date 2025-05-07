@@ -75,14 +75,12 @@ M.config = {
             plugins = {
                 {
                     name = "@vue/typescript-plugin",
-                    location = require("mason-registry").get_package("vue-language-server"):get_install_path()
-                        .. "/node_modules/@vue/language-server",
+                    location = vim.fn.exepath "vue-language-server" .. "/node_modules/@vue/language-server",
                     languages = { "vue" },
                 },
                 {
                     name = "@mdxjs/typescript-plugin",
-                    location = require("mason-registry").get_package("mdx-analyzer"):get_install_path()
-                        .. "/node_modules/@mdx/language-server",
+                    location = vim.fn.exepath "mdx-analyzer" .. "/node_modules/@mdx/language-server",
                     languages = { "mdx" },
                 },
             },
@@ -119,7 +117,7 @@ M.config = {
     omnisharp = {
         cmd = {
             "dotnet",
-            require("mason-registry").get_package("omnisharp"):get_install_path() .. "/libexec/Omnisharp.dll",
+            vim.fn.exepath "omnisharp" .. "/libexec/Omnisharp.dll",
         },
         handlers = {
             ["textDocument/definition"] = function(...)

@@ -40,12 +40,11 @@ local config = function()
     }
 
     -- lsp installed by mason
-    require("mason-lspconfig").setup_handlers {
-        function(lsp) -- default handler (optional)
-            vim.lsp.config[lsp] = conf(lsp)
-            vim.lsp.enable(lsp)
-        end,
-        ["rust_analyzer"] = function() end,
+    require("mason-lspconfig").setup {
+        ensure_installed = {},
+        automatic_enable = {
+            exclude = { "rust_analyzer" },
+        },
     }
 
     -- lsp installed by system
@@ -60,7 +59,6 @@ local config = function()
         callback = function(args)
             -- buf keymap
             lsp_keymap(args.buf)
-
             -- inlay hints
             local client = vim.lsp.get_client_by_id(args.data.client_id)
             if client and client.server_capabilities.inlayHintProvider then
@@ -74,14 +72,13 @@ local config = function()
         vim.keymap.del("n", "gra")
         vim.keymap.del("n", "grn")
         vim.keymap.del("n", "grr")
-        vim.api.nvim_command "LspStart"
     end
 end
 
 return {
     {
-        "neovim/nvim-lspconfig",
-        dependencies = { "williamboman/mason-lspconfig.nvim" },
+        "mason-org/mason-lspconfig.nvim",
+        dependencies = "neovim/nvim-lspconfig",
         event = { "BufRead", "BufNewFile" },
         cmd = "LspInfo",
         config = config,

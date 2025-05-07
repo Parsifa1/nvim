@@ -1,6 +1,6 @@
 return {
     {
-        "williamboman/mason.nvim",
+        "mason-org/mason.nvim",
         keys = {
             { "<leader>m", "<cmd>Mason<CR>", desc = "open Mason" },
         },
@@ -15,7 +15,6 @@ return {
             require("mason").setup {
                 PATH = "append", -- NOTE:为了兼容NIXOS
                 registries = { "github:mason-org/mason-registry" },
-
                 ui = {
                     backdrop = 100,
                     border = "rounded",
