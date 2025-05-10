@@ -1,7 +1,8 @@
+local custom = require "custom"
+
 local config = function()
-    local custom = require "custom"
-    local system = require("utils.lsp.server").system
-    local conf = require("utils.lsp.config").conf
+    -- init lsp config && system lsp
+    require("utils.lspconfig").init()
 
     -- lsp installed by mason
     require("mason-lspconfig").setup {
@@ -10,12 +11,6 @@ local config = function()
             exclude = { "rust_analyzer" },
         },
     }
-
-    -- lsp installed by system
-    for _, lsp in ipairs(system) do
-        vim.lsp.config[lsp] = conf(lsp)
-        vim.lsp.enable(lsp)
-    end
 
     local lsp_keymap = function(bufnr)
         -- lsp-builtin

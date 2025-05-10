@@ -1,5 +1,24 @@
 local M = {}
 
+M.system = {
+    -- lsp
+    "hls",
+    "nixd",
+    "clangd",
+    "pyright",
+}
+
+M.tools = {
+    -- formatter
+    "prettier",
+    "stylua",
+    "ruff",
+    "typstyle",
+    "clang-format",
+    -- dap
+    "codelldb",
+}
+
 M.config = {
     astro = {
         settings = {
@@ -107,13 +126,6 @@ M.config = {
             },
         },
     },
-    nil_ls = {
-        settings = {
-            ["nil"] = {
-                nix = { flake = { autoArchive = true } },
-            },
-        },
-    },
     omnisharp = {
         cmd = {
             "dotnet",
@@ -153,9 +165,16 @@ M.config = {
     },
 }
 
----@param server string
-M.conf = function(server)
-    return M.config[server] or {}
+M.init = function()
+    -- init lsp config
+    for lsp, config in pairs(M.config) do
+        vim.lsp.config[lsp] = config
+    end
+
+    -- lsp installed by system
+    for _, lsp in ipairs(M.system) do
+        vim.lsp.enable(lsp)
+    end
 end
 
 return M
