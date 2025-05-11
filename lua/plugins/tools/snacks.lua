@@ -139,7 +139,7 @@ return {
     "folke/snacks.nvim",
     lazy = false,
     keys = keys(),
-    priority = 100,
+    priority = 1000,
     ---@type snacks.Config
     opts = {
         quickfile = {},
