@@ -1,4 +1,3 @@
----@diagnostic disable: inject-field, assign-type-mismatch
 local get_root = require("utils.gitutils").get_root
 local function dirs()
     ---@type table<string, boolean>
@@ -109,7 +108,7 @@ local select = {
         title_pos = "center",
         backdrop = false,
     },
-    preview = false,
+    preview = nil,
 }
 
 local function keys()
@@ -118,19 +117,21 @@ local function keys()
     end
     if vim.uv.os_uname().sysname == "Windows_NT" then
         return {
-            { "<leader>tc", snack "commands", desc = "commands picker" },
-            { "<leader>tk", snack "keymaps", desc = "keymaps picker" },
-            { "<leader>tl", snack "highlights", desc = "highlights picker" },
-            { "<leader>th", snack "help", desc = "help picker" },
-            { "<leader>f", snack "smart", desc = "find files" },
-            { "<leader>r", snack "recent", desc = "recent files" },
             { "<leader>w", snack "grep", desc = "live grep" },
+            { "<leader>f", snack "smart", desc = "find files" },
             { "<tab><tab>", snack "buffers", desc = "buffers" },
+            { "<leader>th", snack "help", desc = "help picker" },
+            { "<leader>r", snack "recent", desc = "recent files" },
+            { "<leader>tk", snack "keymaps", desc = "keymaps picker" },
+            { "<leader>tc", snack "commands", desc = "commands picker" },
+            { "<leader>tl", snack "highlights", desc = "highlights picker" },
+            { "<leader>N", "<cmd>lua Snacks.notifier.show_history()<CR>", desc = "buffers" },
         }
     else
         return {
             { "<tab><tab>", snack "buffers", desc = "buffers" },
             { "<leader>tp", snack "lazy", desc = "lazy packers" },
+            { "<leader>N", "<cmd>lua Snacks.notifier.show_history()<CR>", desc = "buffers" },
         }
     end
 end
@@ -142,8 +143,10 @@ return {
     priority = 1000,
     ---@type snacks.Config
     opts = {
+        notifier = {},
         quickfile = {},
         words = { debounce = 100 },
+        styles = { notification_history = { backdrop = false } },
         dashboard = {
             preset = {
                 keys = {
@@ -152,7 +155,7 @@ return {
                     { icon = "󰂖 ", key = "p", desc = "Plugins", action = "<cmd>Lazy<CR>" },
                     { icon = "󰅚 ", key = "q", desc = "Quit Neovim", action = "<cmd>qa<CR>" },
                 },
-                picker = function(item, arg)
+                pick = function(item, arg)
                     require("fzf-lua")[item](arg)
                 end,
             },

@@ -2,6 +2,7 @@
 ---@type LazyPluginSpec
 return {
     "rcarriga/nvim-notify",
+    enabled = false,
     event = "User AfterLoad",
     init = function()
         vim.notify = function(...)

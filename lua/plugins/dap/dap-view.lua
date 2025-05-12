@@ -1,5 +1,6 @@
 return {
-    "miroshQa/debugmaster.nvim",
+    "parsifa1/debugmaster.nvim",
+    branch = "feat-toggle-pannel",
     keys = {
         {
             "<leader>dd",
