@@ -18,6 +18,12 @@ return {
             },
             current_line_blame = true,
             signcolumn = true,
+            preview_config = {
+                style = "minimal",
+                relative = "cursor",
+                row = 0,
+                col = 1,
+            },
         }
 
         --test
