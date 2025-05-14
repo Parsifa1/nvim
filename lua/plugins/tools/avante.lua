@@ -11,7 +11,7 @@ return {
         copilot = { model = "claude-3.7-sonnet" },
         hints = { enabled = false },
         windows = {
-            input = { prefix = "❯ " },
+            input = { prefix = "❯" },
             edit = { border = "rounded" },
         },
         mappings = {

@@ -21,6 +21,7 @@ set_hl(0, "CursorLineNr", { bg = "NONE" })
 set_hl(0, "WinBar", { bg = "NONE" })
 set_hl(0, "WinBarNC", { bg = "NONE" })
 -- diagnostic
+vim.cmd.highlight "ErrorMsg cterm=bold gui=bold"
 set_hl(0, "WinSeparator", { fg = "#878787" })
 set_hl(0, "VirtualTextHint", { link = "DiagnosticHint" })
 set_hl(0, "VirtualTextInfo", { link = "DiagnosticInfo" })

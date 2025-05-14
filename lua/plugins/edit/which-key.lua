@@ -1,6 +1,6 @@
 local custom = require "custom"
 local opts = {
-    show_help = true,
+    show_help = false,
     win = { border = custom.border },
     plugins = { presets = { z = true } },
     delay = function(ctx)
