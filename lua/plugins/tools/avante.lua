@@ -8,9 +8,10 @@ return {
     build = build(),
     opts = {
         provider = "copilot",
-        copilot = { model = "claude-3.7-sonnet" },
         hints = { enabled = false },
+        copilot = { model = "claude-3.7-sonnet" },
         windows = {
+            width = 35,
             input = { prefix = "❯" },
             edit = { border = "rounded" },
         },
