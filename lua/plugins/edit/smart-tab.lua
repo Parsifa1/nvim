@@ -1,6 +1,6 @@
 return {
-    "parsifa1/smart-tab.nvim",
-    dir = vim.fn.stdpath "config" .. "/lua/users/smart-tab",
+    "parsifa1/smart-tab",
+    dev = true,
     event = "InsertEnter",
     config = function()
         require("smart-tab").setup {

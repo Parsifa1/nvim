@@ -29,6 +29,9 @@ require("lazy").setup {
     ui = { border = "rounded", backdrop = 100 },
     install = { colorscheme = { "everforest" } },
     diff = { cmd = "browser" },
+    dev = {
+        path = vim.fn.stdpath "config" .. "/lua/users",
+    },
     -- git = { url_format = "git@github.com:%s.git" },
     performance = {
         cache = { enabled = true },

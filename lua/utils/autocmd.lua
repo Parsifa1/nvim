@@ -6,11 +6,11 @@ autocmd("FileType", {
     command = "set formatoptions-=ro",
 })
 
--- set wrap only for markdown, typst and Avante
+-- set wrap only for markdown, typst and codecompanion
 autocmd("BufEnter", {
     pattern = "*",
     callback = function()
-        local ft = { "markdown", "typst", "Avante" }
+        local ft = { "markdown", "typst", "codecompanion" }
         for _, v in ipairs(ft) do
             if vim.bo.filetype == v then
                 vim.wo.wrap = true

@@ -100,28 +100,21 @@ local opts = {
     sources = {
         default = function()
             local success, node = pcall(vim.treesitter.get_node)
-            if vim.bo.filetype == "lua" then
-                return { "lsp", "path", "lazydev", "avante" }
-            elseif
-                success
-                and node
-                and vim.tbl_contains({ "comment", "line_comment", "block_comment" }, node:type())
-            then
+            if success and node and vim.tbl_contains({ "comment", "line_comment", "block_comment" }, node:type()) then
                 return { "buffer" }
             else
-                return { "lsp", "path", "snippets", "buffer", "avante" }
+                return { "lsp", "path", "snippets", "buffer" }
             end
         end,
+        per_filetype = {
+            lua = { "lsp", "path", "lazydev" },
+            codecompanion = { "codecompanion" },
+        },
         providers = {
             lazydev = {
                 name = "Dev",
                 module = "lazydev.integrations.blink",
                 score_offset = 100,
-            },
-            avante = {
-                module = "blink-cmp-avante",
-                name = "AiC",
-                opts = {},
             },
         },
     },
@@ -192,10 +185,7 @@ local opts = {
 
 return {
     "Saghen/blink.cmp",
-    dependencies = {
-        "xzbdmw/colorful-menu.nvim",
-        "Kaiser-Yang/blink-cmp-avante",
-    },
+    dependencies = "xzbdmw/colorful-menu.nvim",
     event = { "CursorHold", "CursorHoldI", "CmdlineEnter", "User AfterLoad" },
     version = "*",
     opts = opts,

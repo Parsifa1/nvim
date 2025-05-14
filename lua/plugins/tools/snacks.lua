@@ -196,7 +196,12 @@ return {
             ui_select = false,
             layouts = { ivy = ivy, select = select },
             win = {
-                input = { keys = { ["<Esc>"] = { "close", mode = { "n", "i" } } } },
+                input = {
+                    keys = {
+                        ["<Esc>"] = { "close", mode = { "n", "i" } },
+                        ["<C-/>"] = { "toggle_help_input", mode = { "i" } },
+                    },
+                },
             },
             layout = {
                 preset = function(type)

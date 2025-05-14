@@ -5,7 +5,7 @@ return {
         local builtin = require "statuscol.builtin"
         return {
             bt_ignore = { "quickfix", "prompt", "terminal" },
-            ft_ignore = { "snacks_picker_input", "leetcode.nvim", "help" },
+            ft_ignore = { "snacks_picker_input", "leetcode.nvim", "help", "codecompanion" },
             segments = {
                 { -- TODO:调整colwidth
                     sign = {

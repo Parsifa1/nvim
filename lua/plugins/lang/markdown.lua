@@ -8,18 +8,10 @@ return {
         ft = { "markdown" },
     },
     {
-        "parsifa1/markdown-typmath.nvim",
-        enabled = false,
-        ft = "markdown",
-        config = function()
-            require("typmath").setup()
-        end,
-    },
-    {
         "MeanderingProgrammer/render-markdown.nvim",
         opts = {
-            file_types = { "markdown", "Avante" },
+            file_types = { "markdown", "codecompanion" },
         },
-        ft = { "markdown", "Avante" },
+        ft = { "markdown", "codecompanion" },
     },
 }
