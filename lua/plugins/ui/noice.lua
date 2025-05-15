@@ -7,26 +7,22 @@ return {
     },
     opts = {
         cmdline = { view = "cmdline" },
+        views = {
+            confirm = {
+                position = { row = "50%" },
+            },
+            hover = { scrollbar = false },
+            split = { scrollbar = false },
+        },
         lsp = {
             override = {
                 ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
                 ["vim.lsp.util.stylize_markdown"] = true,
                 ["cmp.entry.get_documentation"] = false,
             },
+            hover = { enabled = true, silent = true },
             progress = { enabled = false },
             signature = { enabled = false },
-            hover = {
-                enabled = true,
-                silent = true,
-            },
-        },
-        views = {
-            hover = {
-                scrollbar = false,
-            },
-            confirm = {
-                position = { row = "50%" },
-            },
         },
         presets = {
             lsp_doc_border = true,

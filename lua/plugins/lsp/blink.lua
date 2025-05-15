@@ -119,11 +119,11 @@ local opts = {
         },
     },
     keymap = {
-        ["<C-w>"] = { "show", "hide", "show_documentation", "hide_documentation" },
-        ["<CR>"] = { "accept", "fallback" },
         ["<C-CR>"] = { "fallback" },
+        ["<CR>"] = { "accept", "fallback" },
         ["<Tab>"] = super_tab "forward",
         ["<S-Tab>"] = super_tab "backward",
+        ["<C-w>"] = { "show", "hide", "show_documentation", "hide_documentation" },
         ["<Up>"] = { "select_prev", "fallback" },
         ["<Down>"] = { "select_next", "fallback" },
         ["<C-j>"] = { "select_next", "fallback" },
@@ -137,17 +137,13 @@ local opts = {
         -- nerd_font_variant = "mono",
         kind_icons = custom.icons.kind,
     },
-    snippets = {
-        preset = "luasnip",
-    },
+    snippets = { preset = "luasnip" },
     signature = {
         enabled = true,
         window = { border = "single" },
     },
     fuzzy = {
-        prebuilt_binaries = {
-            ignore_version_mismatch = true,
-        },
+        prebuilt_binaries = { ignore_version_mismatch = true },
     },
     cmdline = {
         completion = {
@@ -160,25 +156,15 @@ local opts = {
                 end,
             },
             list = {
-                selection = {
-                    preselect = false,
-                },
+                selection = { preselect = false },
             },
         },
         keymap = {
-            ["<CR>"] = {
-                function(cmp)
-                    return cmp.accept {
-                        callback = function()
-                            vim.api.nvim_feedkeys("\n", "n", true)
-                        end,
-                    }
-                end,
-                "fallback",
-            },
+            preset = "none",
+            ["<Tab>"] = { "show_and_insert", "select_next" },
+            ["<S-Tab>"] = { "show_and_insert", "select_prev" },
+            ["<CR>"] = { "accept_and_enter", "fallback" },
             ["C-f"] = { "accept", "fallback" },
-            ["<C-j>"] = { "select_next", "fallback" },
-            ["<C-k>"] = { "select_prev", "fallback" },
         },
     },
 }

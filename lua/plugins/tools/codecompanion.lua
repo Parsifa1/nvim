@@ -7,13 +7,14 @@ local opts = {
             roles = { user = "Parsifa1" },
             keymaps = {
                 send = {
+                    index = 1,
+                    description = "Send",
                     callback = function(chat)
                         vim.cmd "stopinsert"
                         chat:submit()
                     end,
-                    index = 1,
-                    description = "Send",
                 },
+                debug = { modes = { n = "gd" } },
             },
         },
     },
@@ -25,11 +26,22 @@ local opts = {
             },
             intro_message = "Welcome to CodeCompanion ✨!",
         },
+        diff = {
+            layout = "buffer",
+        },
     },
     adapters = {
         copilot = function()
             return require("codecompanion.adapters").extend("copilot", {
-                schema = { model = { default = "gemini-2.5-pro" } },
+                schema = { model = { default = "claude-3.7-sonnet" } },
+            })
+        end,
+        gemini = function()
+            return require("codecompanion.adapters").extend("gemini", {
+                env = {
+                    api_key = "cmd:cat ~/.gemini.key",
+                },
+                schema = { model = { default = "gemini-2.5-flash-preview-04-17" } },
             })
         end,
     },

@@ -5,7 +5,7 @@
   "asynctasks.vim": { "branch": "master", "commit": "9020fdb8a59d4cc7887f7e0ae724741bbc46e08f" },
   "blink.cmp": { "branch": "main", "commit": "54cbaac2064fe6198ec55b636b53cc8c9791ead3" },
   "catppuccin": { "branch": "main", "commit": "1bf070129c0b6f77cc23f6a2212dcdc868308c52" },
-  "codecompanion-history.nvim": { "branch": "main", "commit": "3e0a41b410d7e9a412ae8feb4561d2f626db2715" },
+  "codecompanion-history.nvim": { "branch": "main", "commit": "07c9e6980c10166d822a7051b5417c85338ab7a3" },
   "codecompanion.nvim": { "branch": "main", "commit": "d19670a44c35e9ba0674cc7a25ff3b8f22bbf062" },
   "colorful-menu.nvim": { "branch": "master", "commit": "bc3e82609f2fcf7dad7ca87c20e65e51d5d9d87c" },
   "competitest.nvim": { "branch": "master", "commit": "b42c06ca308906f07912ba9aff015ac2c0831f85" },

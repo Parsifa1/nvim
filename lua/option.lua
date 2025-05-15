@@ -14,7 +14,7 @@ vim.opt.sessionoptions = "blank,buffers,curdir,help,tabpages,winsize,terminal"
 -- normal setting
 vim.g.copilot_assume_mapped = true
 vim.opt.shortmess = vim.o.shortmess .. "a"
-vim.opt.winborder = "rounded" -- set window border
+-- vim.opt.winborder = "rounded" -- set window border
 -- vim.opt.clipboard = "unnamedplus" -- use system clipboar
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.opt.mouse = "a" -- allow the mouse to be used in nvim

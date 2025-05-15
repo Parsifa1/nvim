@@ -20,6 +20,7 @@ return {
             signcolumn = true,
             preview_config = {
                 style = "minimal",
+                border = "rounded",
                 relative = "cursor",
                 row = 0,
                 col = 1,
