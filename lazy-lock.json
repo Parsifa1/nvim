@@ -46,6 +46,7 @@
   "mini.icons": { "branch": "main", "commit": "397ed3807e96b59709ef3292f0a3e253d5c1dc0a" },
   "minty": { "branch": "main", "commit": "aafc9e8e0afe6bf57580858a2849578d8d8db9e0" },
   "moonbit.nvim": { "branch": "main", "commit": "624e5a2a825d1a4c690e96aeda32a6ac6db743f6" },
+  "multicursor.nvim": { "branch": "1.0", "commit": "c731e52cee7b69fa05915affb09ba65e7cd31fa9" },
   "neogit": { "branch": "master", "commit": "6de4b9f9a92917f9aea3a0dbdc3dbbedc11d26be" },
   "neovim-session-manager": { "branch": "master", "commit": "3409dc920d40bec4c901c0a122a80bee03d6d1e1" },
   "nightfox.nvim": { "branch": "main", "commit": "ba47d4b4c5ec308718641ba7402c143836f35aa9" },
