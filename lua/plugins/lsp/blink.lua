@@ -164,12 +164,12 @@ local opts = {
             ["<Tab>"] = { "show_and_insert", "select_next" },
             ["<S-Tab>"] = { "show_and_insert", "select_prev" },
             ["<CR>"] = { "accept_and_enter", "fallback" },
-            ["C-f"] = { "accept", "fallback" },
         },
     },
 }
 
 return {
+    -- enabled = false,
     "Saghen/blink.cmp",
     dependencies = "xzbdmw/colorful-menu.nvim",
     event = { "CursorHold", "CursorHoldI", "CmdlineEnter", "User AfterLoad" },
