@@ -5,7 +5,7 @@ return {
         {
             "<leader>F",
             function()
-                require("conform").format { lsp_format = "fallback" }
+                require("conform").format()
             end,
             desc = "Format Document",
             mode = { "n", "v" },
@@ -13,33 +13,32 @@ return {
     },
     config = function()
         require("conform").setup {
+            default_format_opts = {
+                stop_after_first = true,
+                lsp_format = "fallback",
+            },
             formatters_by_ft = {
-                cpp = { "clang_format" },
-                python = { "ruff_fix", "ruff_format" },
+                nix = { "nixfmt" },
                 lua = { "stylua" },
                 rust = { "rustfmt" },
-                html = { "prettier" },
-                astro = { "prettier" },
-                javascript = { "prettier" },
-                typescript = { "prettier" },
-                markdown = { "prettier" },
-                css = { "prettier" },
-                javascriptreact = { "prettier" },
-                typescriptreact = { "prettier" },
-                yaml = { "prettier" },
                 typst = { "typstyle" },
-                nix = { "nixfmt" },
+                python = { "ruff_format" },
+                cpp = { "clang_format" },
+                css = { "dprint" },
+                astro = { "dprint" },
+                javascriptreact = { "dprint" },
+                typescriptreact = { "dprint" },
+                markdown = { "dprint", "prettier" },
+                javascript = { "dprint", "prettier" },
+                typescript = { "dprint", "prettier" },
+                html = { "dprint", "prettier" },
+                yaml = { "dprint", "prettier" },
+                json = { "dprint", "prettier" },
+                jsonc = { "dprint", "prettier" },
                 haskell = { "fourmolu" },
             },
             formatters = {
-                clang_format = {
-                    command = "clang-format",
-                },
-                prettier = {
-                    prepend_args = {
-                        "--tab-width 2",
-                    },
-                },
+                clang_format = { command = "clang-format" },
             },
         }
         vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
