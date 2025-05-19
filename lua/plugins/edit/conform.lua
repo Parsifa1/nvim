@@ -39,6 +39,14 @@ return {
             },
             formatters = {
                 clang_format = { command = "clang-format" },
+                prettier = {
+                    append_args = {
+                        "--config-precedence prefer-file",
+                        "--vue-indent-script-and-style",
+                        -- "--experimental-ternaries",
+                        "--bracket-same-line",
+                    },
+                },
             },
         }
         vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
