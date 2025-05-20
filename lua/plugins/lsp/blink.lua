@@ -87,15 +87,6 @@ local opts = {
                 scrollbar = false,
             },
         },
-        accept = {
-            auto_brackets = {
-                enabled = true,
-                kind_resolution = {
-                    enabled = true,
-                    blocked_filetypes = { "typescriptreact", "javascriptreact", "vue", "rust" },
-                },
-            },
-        },
     },
     sources = {
         default = function()

@@ -5,7 +5,7 @@ vim.opt.background = "dark"
 vim.cmd("colorscheme " .. "everforest")
 
 -- close curdir
-vim.opt.viewoptions = "folds"
+vim.opt.viewoptions = "folds,cursor"
 vim.opt.jumpoptions = "stack"
 
 -- sessionoptions

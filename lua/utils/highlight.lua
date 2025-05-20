@@ -33,8 +33,6 @@ set_hl(0, "VirtualTextError", { link = "DiagnosticError" })
 set_hl(0, "TabLineFill", { bg = "NONE" })
 set_hl(0, "TabLineNone", { bg = "NONE" })
 set_hl(0, "TabLineFocus", { fg = "#FCDCDD" })
--- Snack
-set_hl(0, "SnackScope", { fg = "#D3869B" })
 -- Telescope
 set_hl(0, "TelescopePreviewTitle", { fg = "#cccccc", bg = "#668aab" })
 set_hl(0, "TelescopePromptTitle", { fg = "#cccccc", bg = "#a96ca5" })

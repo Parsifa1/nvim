@@ -26,9 +26,6 @@ local opts = {
             },
             intro_message = "Welcome to CodeCompanion ✨!",
         },
-        diff = {
-            layout = "buffer",
-        },
     },
     adapters = {
         copilot = function()
