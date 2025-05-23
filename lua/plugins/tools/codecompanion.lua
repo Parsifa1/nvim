@@ -30,7 +30,7 @@ local opts = {
     adapters = {
         copilot = function()
             return require("codecompanion.adapters").extend("copilot", {
-                schema = { model = { default = "claude-3.7-sonnet" } },
+                schema = { model = { default = "claude-sonnet-4" } },
             })
         end,
         gemini = function()
