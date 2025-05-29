@@ -36,7 +36,7 @@ local opts = {
         gemini = function()
             return require("codecompanion.adapters").extend("gemini", {
                 env = {
-                    api_key = "cmd:cat ~/.gemini.key",
+                    api_key = "cmd:cat ~/.config/secret/.gemini.key",
                 },
                 schema = { model = { default = "gemini-2.5-flash-preview-04-17" } },
             })

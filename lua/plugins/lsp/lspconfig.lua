@@ -8,7 +8,7 @@ local config = function()
     require("mason-lspconfig").setup {
         ensure_installed = {},
         automatic_enable = {
-            exclude = { "rust_analyzer" },
+            exclude = { "rust_analyzer", "dprint" },
         },
     }
 

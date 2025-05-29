@@ -26,8 +26,8 @@ return {
                 cpp = { "clang_format" },
                 css = { "dprint" },
                 astro = { "dprint" },
-                javascriptreact = { "dprint" },
-                typescriptreact = { "dprint" },
+                javascriptreact = { "dprint", "prettier" },
+                typescriptreact = { "dprint", "prettier" },
                 markdown = { "dprint", "prettier" },
                 javascript = { "dprint", "prettier" },
                 typescript = { "dprint", "prettier" },
@@ -43,8 +43,13 @@ return {
                     append_args = {
                         "--config-precedence prefer-file",
                         "--vue-indent-script-and-style",
-                        -- "--experimental-ternaries",
+                        "--experimental-ternaries",
                         "--bracket-same-line",
+                    },
+                },
+                dprint = {
+                    append_args = {
+                        "--config", "/home/parsifa1/desktop/blog/.dprint.json",
                     },
                 },
             },
