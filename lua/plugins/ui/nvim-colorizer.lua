@@ -7,6 +7,7 @@ local ft = {
     "typescriptreact",
     "lua",
     "yaml",
+    "toml",
     "fish",
 }
 

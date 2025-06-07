@@ -60,6 +60,11 @@ function M.smart_tab()
         vim.notify "No valid parent node"
         return false
     end
+    local luasnip_ok, luasnip = pcall(require, "luasnip")
+    if luasnip_ok and luasnip.expand_or_locally_jumpable() then
+        luasnip.expand {}
+        return false
+    end
 
     local current_pos = vim.api.nvim_win_get_cursor(0)
     local row, col = node:end_()
@@ -99,7 +104,7 @@ local function setup_keymap(filetype, buffer)
     -- Setup forward tab mapping
     vim.keymap.set("i", mapping, function()
         if is_blank_line() or not M.smart_tab() then
-            vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(mapping, true, true, true), "n", true)
+            vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(mapping, true, true, true), "n", false)
         end
     end, {
         buffer = buffer,
@@ -110,7 +115,7 @@ local function setup_keymap(filetype, buffer)
     if backward_mapping then
         vim.keymap.set("i", backward_mapping, function()
             if not_empty_history() and not M.smart_tab_backward() then
-                vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(backward_mapping, true, true, true), "n", true)
+                vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(backward_mapping, true, true, true), "n", false)
             end
         end, {
             buffer = buffer,

@@ -3,15 +3,37 @@
 return {
     {
         "parsifa1/markdown-preview.nvim",
-        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-        build = ":cal mkdp#util#install()",
         ft = { "markdown" },
+        build = ":cal mkdp#util#install()",
+        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     },
     {
         "MeanderingProgrammer/render-markdown.nvim",
+        ft = { "markdown", "codecompanion" },
         opts = {
             file_types = { "markdown", "codecompanion" },
         },
-        ft = { "markdown", "codecompanion" },
+    },
+    {
+        "iurimateus/luasnip-latex-snippets.nvim",
+        ft = { "markdown" },
+        config = function()
+            require("luasnip-latex-snippets").setup {
+                allow_on_markdown = true,
+                use_treesitter = true,
+            }
+            local ls = require "luasnip"
+            local t = ls.text_node
+            local i = ls.insert_node
+            local utils = require "luasnip-latex-snippets.util.utils"
+            local not_math = utils.with_opts(utils.not_math, true) -- true to use treesitter
+
+            -- set a higher priority (defaults to 0 for most snippets)
+            local snip = ls.snippet(
+                { trig = "dm", name = "Math", condition = utils.pipe { not_math }, priority = 10 },
+                { t { "$$", "" }, i(0), t { " ", "" }, t { "$$", "" } }
+            )
+            ls.add_snippets("markdown", { snip }, { type = "autosnippets" })
+        end,
     },
 }
