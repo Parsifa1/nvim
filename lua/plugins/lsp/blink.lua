@@ -60,8 +60,8 @@ local opts = {
             end
         end,
         per_filetype = {
+            markdown = { "lsp", "path" },
             lua = { "lsp", "path", "lazydev" },
-            markdown = { "lsp", "path", "buffer" },
             codecompanion = { "codecompanion" },
         },
         providers = {
@@ -77,7 +77,7 @@ local opts = {
         ["<CR>"] = { "accept", "fallback" },
         ["<Tab>"] = { "snippet_forward", "select_next", "fallback" },
         ["<S-Tab>"] = { "snippet_backward", "select_prev", "fallback" },
-        ["<C-w>"] = { "show", "hide", "show_documentation", "hide_documentation" },
+        ["<C-f>"] = { "show", "hide", "show_documentation", "hide_documentation" },
         ["<Up>"] = { "select_prev", "fallback" },
         ["<Down>"] = { "select_next", "fallback" },
         ["<C-j>"] = { "select_next", "fallback" },

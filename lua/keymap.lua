@@ -5,7 +5,6 @@ local keymap = {
     -- stylua: ignore start
     { mode = mode_i,   from = "<A-l>",            to = "<Right>" }, -- insert模式下的方向键
     { mode = mode_i,   from = "<A-h>",            to = "<Left>" },
-    { mode = mode_i,   from = "<Tab>",            to = "<cmd>lua require('luasnip').expand()<CR>" }, -- luasnip触发键
     { mode = mode_n,   from = "n",                to = "nzzzv" }, -- 搜索保持光标
     { mode = mode_n,   from = "j",                to = "gj" }, -- 软换行
     { mode = mode_n,   from = "k",                to = "gk" },
