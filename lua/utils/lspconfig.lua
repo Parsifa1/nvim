@@ -33,7 +33,7 @@ M.config = {
             "clangd",
             "--clang-tidy",
             "--completion-style=detailed",
-            "--header-insertion=never",
+            "--header-insertion=iwyu",
             "--offset-encoding=utf-16",
             "--function-arg-placeholders=0",
         },
