@@ -1,8 +1,6 @@
 return {
-    "chrisgrieser/nvim-origami",
+    "parsifal/nvim-origami",
     event = { "BufRead", "BufNewFile" },
-    opts = {
-        keepFoldsAcrossSessions = false,
-        foldKeymaps = { hOnlyOpensOnFirstColumn = true, },
-    },
+    dev = true,
+    opts = {},
 }
