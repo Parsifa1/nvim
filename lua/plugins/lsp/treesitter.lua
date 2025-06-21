@@ -1,4 +1,9 @@
----@diagnostic disable: missing-fields
+local function add_textobject(lhs, obj)
+    vim.keymap.set({ "x", "o" }, lhs, function()
+        require("nvim-treesitter-textobjects.select").select_textobject(obj, "textobjects")
+    end)
+end
+
 local ensure_installed = {
     "cpp",
     "lua",
@@ -22,72 +27,66 @@ local ensure_installed = {
     "vue",
     "astro",
     "vimdoc",
-}
-local auto_tag = {
-    "windwp/nvim-ts-autotag",
-    ft = { "astro", "html", "javascriptreact", "typescriptreact", "vue" },
-    opts = true,
+    "koka",
 }
 
-local treesitter = {
-    "nvim-treesitter/nvim-treesitter",
-    dependencies = {
-        "RRethy/nvim-treesitter-textsubjects",
-        "nvim-treesitter/nvim-treesitter-textobjects",
+return {
+    {
+        "nvim-treesitter/nvim-treesitter",
+        branch = "main",
+        dependencies = "nvim-treesitter/nvim-treesitter-textobjects",
+        event = { "BufNewFile", "BufRead" },
+        cmd = { "TSUpdate", "TSInstall", "TSInstallInfo" },
+        build = ":TSUpdate",
+        config = function()
+            require("nvim-treesitter").setup {}
+            require("nvim-treesitter").install(ensure_installed)
+            -- spawn all treesitter
+            vim.api.nvim_create_autocmd({ "FileType" }, {
+                pattern = "*",
+                callback = function()
+                    pcall(vim.treesitter.start)
+                end,
+            })
+            -- add additional ts-lib
+            vim.api.nvim_create_autocmd("User", {
+                pattern = "TSUpdate",
+                callback = function()
+                    require("nvim-treesitter.parsers").koka = {
+                        install_info = {
+                            url = "https://github.com/mtoohey31/tree-sitter-koka",
+                            queries = "queries", -- also install queries from given directory
+                        },
+                    }
+                end,
+            })
+        end,
     },
-    event = { "BufNewFile", "BufRead" },
-    cmd = { "TSUpdate", "TSInstall", "TSInstallInfo" },
-    build = ":TSUpdate",
-    config = function()
-        require("nvim-treesitter.install").prefer_git = true
-        require("nvim-treesitter.configs").setup {
-            auto_install = true,
-            ensure_installed = ensure_installed,
-            highlight = {
-                enable = true,
-                disable = { "latex" },
-                additional_vim_regex_highlighting = false,
-            },
-            textobjects = {
-                select = {
-                    enable = true,
-                    lookahead = true,
-                    keymaps = {
-                        ["aa"] = { query = "@parameter.outer", desc = "a argument" },
-                        ["ia"] = { query = "@parameter.inner", desc = "inner part of a argument" },
-                        ["af"] = "@function.outer",
-                        ["if"] = "@function.inner",
-                        ["ac"] = "@class.outer",
-                        ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
-                        ["ii"] = "@conditional.inner", -- as for 'if'
-                        ["ai"] = "@conditional.outer",
-                        ["ar"] = { query = "@return.outer", desc = "a return" },
-                        ["ir"] = { query = "@return.outer", desc = "inner return" },
-                        ["al"] = { query = "@loop.outer", desc = "a loop" },
-                        ["il"] = { query = "@loop.inner", desc = "inner part of a loop" },
-                    },
-                    selection_modes = {
-                        ["@parameter.outer"] = "v", -- charwise
-                        ["@function.outer"] = "V", -- linewise
-                        ["@class.outer"] = "<c-v>", -- blockwise
-                    },
-                    include_surrounding_whitespace = false,
-                },
-            },
-            textsubjects = {
-                enable = true,
-                prev_selection = ",",
-                keymaps = {
-                    ["."] = "textsubjects-smart",
-                    [";"] = "textsubjects-container-outer",
-                    ["i;"] = {
-                        "textsubjects-container-inner",
-                        desc = "Select inside containers (classes, functions, etc.)",
-                    },
-                },
-            },
-        }
-    end,
+    {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        branch = "main",
+        config = function()
+            require("nvim-treesitter-textobjects").setup {
+                select = { lookahead = true, include_surrounding_whitespace = false },
+            }
+            -- Define text objects
+            add_textobject("aa", "@parameter.outer")
+            add_textobject("ia", "@parameter.inner")
+            add_textobject("af", "@function.outer")
+            add_textobject("if", "@function.inner")
+            add_textobject("ac", "@class.outer")
+            add_textobject("ic", "@class.inner")
+            add_textobject("ii", "@conditional.inner")
+            add_textobject("ai", "@conditional.outer")
+            add_textobject("ar", "@return.outer")
+            add_textobject("ir", "@return.inner")
+            add_textobject("al", "@loop.outer")
+            add_textobject("il", "@loop.inner")
+        end,
+    },
+    {
+        "windwp/nvim-ts-autotag",
+        ft = { "astro", "html", "javascriptreact", "typescriptreact", "vue" },
+        opts = true,
+    },
 }
-
-return { treesitter, auto_tag }
