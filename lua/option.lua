@@ -66,7 +66,7 @@ vim.opt.showcmd = false
 vim.opt.showmode = false
 
 -- add filetype
-vim.filetype.add { extension = { mdx = "markdown.mdx" } }
+vim.filetype.add { extension = { mdx = "markdown.mdx", kk = "koka" } }
 -- add queries path
 vim.opt.runtimepath:append "~/.config/nvim/lua/queries"
 

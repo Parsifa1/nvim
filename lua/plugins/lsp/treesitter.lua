@@ -4,32 +4,6 @@ local function add_textobject(lhs, obj)
     end)
 end
 
-local ensure_installed = {
-    "cpp",
-    "lua",
-    "rust",
-    "python",
-    "vim",
-    "regex",
-    "bash",
-    "markdown_inline",
-    "comment",
-    "yaml",
-    "latex",
-    "markdown",
-    "fish",
-    "html",
-    "css",
-    "javascript",
-    "typescript",
-    "nix",
-    "typst",
-    "vue",
-    "astro",
-    "vimdoc",
-    "koka",
-}
-
 return {
     {
         "nvim-treesitter/nvim-treesitter",
@@ -38,9 +12,37 @@ return {
         event = { "BufNewFile", "BufRead" },
         cmd = { "TSUpdate", "TSInstall", "TSInstallInfo" },
         build = ":TSUpdate",
-        config = function()
+        opts = {
+            ensure_installed = {
+                "cpp",
+                "lua",
+                "rust",
+                "python",
+                "vim",
+                "regex",
+                "bash",
+                "markdown_inline",
+                "comment",
+                "yaml",
+                "json",
+                "jsonc",
+                "latex",
+                "markdown",
+                "fish",
+                "html",
+                "css",
+                "javascript",
+                "typescript",
+                "nix",
+                "typst",
+                "vue",
+                "astro",
+                "vimdoc",
+                "koka",
+            },
+        },
+        config = function(opts, _)
             require("nvim-treesitter").setup {}
-            require("nvim-treesitter").install(ensure_installed)
             -- spawn all treesitter
             vim.api.nvim_create_autocmd({ "FileType" }, {
                 pattern = "*",
@@ -60,6 +62,7 @@ return {
                     }
                 end,
             })
+            require("nvim-treesitter").install(opts.ensure_installed)
         end,
     },
     {

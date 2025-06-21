@@ -174,6 +174,7 @@ return {
                 ["db"] = { glyph = "󰆼", hl = "MiniIconsGrey" },
                 ["md"] = { glyph = "󰍔", hl = "MiniIconsGrey" },
                 ["ts"] = { glyph = "󰛦", hl = "MiniIconsAzure" },
+                ["kk"] = { glyph = "󰰋", hl = "MiniIconsAzure" },
                 ["py"] = { glyph = "󰌠", hl = "MiniIconsYellow" },
                 ["js"] = { glyph = "󰌞", hl = "MiniIconsYellow" },
                 ["rs"] = { glyph = "󱘗", hl = "MiniIconsOrange" },

@@ -4,6 +4,7 @@ M.system = {
     -- lsp
     "hls",
     "nixd",
+    "koka",
     "clangd",
     "pyright",
 }
