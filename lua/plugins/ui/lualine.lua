@@ -51,7 +51,7 @@ local opts = {
                     done = "",
                     separator = ", ",
                 },
-                ignore_lsp = { "GitHub Copilot" },
+                ignore_lsp = { "copilot" },
             },
             {
                 "diagnostics",
@@ -99,11 +99,9 @@ local opts = {
 
             {
                 "copilot",
-                show_running = true,
                 symbols = {
                     status = {
-                        enabled = " ",
-                        disabled = " ",
+                        icons = { unknown = " " },
                     },
                 },
             },
@@ -157,7 +155,7 @@ local opts = {
 return {
     "nvim-lualine/lualine.nvim",
     event = { "BufRead", "BufNewFile" },
-    dependencies = "ofseed/copilot-status.nvim",
+    dependencies = "AndreM222/copilot-lualine",
     config = function()
         local auto = require "lualine.themes.auto"
         local lualine_modes = { "insert", "normal", "visual", "command", "replace", "inactive", "terminal" }
