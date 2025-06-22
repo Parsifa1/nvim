@@ -31,6 +31,7 @@ return {
                 "fish",
                 "html",
                 "css",
+                "tsx",
                 "javascript",
                 "typescript",
                 "nix",
@@ -41,7 +42,7 @@ return {
                 "koka",
             },
         },
-        config = function(opts, _)
+        config = function(_, opts)
             require("nvim-treesitter").setup {}
             -- spawn all treesitter
             vim.api.nvim_create_autocmd({ "FileType" }, {
