@@ -1,7 +1,9 @@
-local function add_textobject(lhs, obj)
-    vim.keymap.set({ "x", "o" }, lhs, function()
-        require("nvim-treesitter-textobjects.select").select_textobject(obj, "textobjects")
-    end)
+local function add_textobject(mp)
+    for lhs, obj in pairs(mp) do
+        vim.keymap.set({ "x", "o" }, lhs, function()
+            require("nvim-treesitter-textobjects.select").select_textobject(obj, "textobjects")
+        end)
+    end
 end
 
 return {
@@ -74,18 +76,20 @@ return {
                 select = { lookahead = true, include_surrounding_whitespace = false },
             }
             -- Define text objects
-            add_textobject("aa", "@parameter.outer")
-            add_textobject("ia", "@parameter.inner")
-            add_textobject("af", "@function.outer")
-            add_textobject("if", "@function.inner")
-            add_textobject("ac", "@class.outer")
-            add_textobject("ic", "@class.inner")
-            add_textobject("ii", "@conditional.inner")
-            add_textobject("ai", "@conditional.outer")
-            add_textobject("ar", "@return.outer")
-            add_textobject("ir", "@return.inner")
-            add_textobject("al", "@loop.outer")
-            add_textobject("il", "@loop.inner")
+            add_textobject {
+                ["aa"] = "@parameter.outer",
+                ["ia"] = "@parameter.inner",
+                ["af"] = "@function.outer",
+                ["if"] = "@function.inner",
+                ["ac"] = "@class.outer",
+                ["ic"] = "@class.inner",
+                ["ii"] = "@conditional.inner",
+                ["ai"] = "@conditional.outer",
+                ["ar"] = "@return.outer",
+                ["ir"] = "@return.inner",
+                ["al"] = "@loop.outer",
+                ["il"] = "@loop.inner",
+            }
         end,
     },
     {

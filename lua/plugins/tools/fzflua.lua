@@ -68,13 +68,13 @@ return {
         files = merge {
             git_icons = false,
             fd_opts = "-H -I "
-                .. "-E '{.astro,.git,.kube,.idea,.vscode,.sass-cache,node_modules,build,.vscode-server,.virtualenvs,target,.orbstack,.cache,.rustup,.wakatime}' "
+                .. "-E '{.astro,.git,.kube,.idea,.vscode,.sass-cache,node_modules,build,.vscode-server,.virtualenvs,target,.orbstack,.cache,.rustup,.wakatime,.DS_Store}' "
                 .. "--type f --strip-cwd-prefix",
         },
         grep = {
             rg_opts = "--no-heading --line-number "
                 .. "--column --smart-case --hidden "
-                .. "--glob '!{.git,node_modules,package-lock.json,pnpm-lock.yaml,yarn.lock,.vscode-server,.virtualenvs,target,.orbstack,.cache,.vscode,.rustup.wakatime}' ",
+                .. "--glob '!{.git,node_modules,package-lock.json,pnpm-lock.yaml,yarn.lock,.vscode-server,.virtualenvs,target,.orbstack,.cache,.vscode,.rustup.wakatime,.DS_Store}' ",
         },
         keymap = {
             fzf = {
