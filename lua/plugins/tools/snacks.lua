@@ -171,7 +171,7 @@ return {
                     indent = 2,
                     padding = 1,
                 },
-                { section = "startup", hl = "Keyword" },
+                { icon = "⚡️ ", section = "startup", hl = "Keyword" },
             },
         },
         bigfile = {
