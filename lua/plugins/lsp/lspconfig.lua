@@ -20,6 +20,7 @@ local config = function()
         set("gr", "<cmd>FzfLua lsp_references<CR>", "[R]eferences")
         set("gi", "<cmd>FzfLua lsp_implementations<CR>", "[I]mplementations")
         set("gk", vim.lsp.buf.signature_help, "LSP Signature help")
+        set("gt", "<cmd>FzfLua lsp_typedefs<CR>", "LSP [T]ype definition")
         set("gD", "<cmd>FzfLua lsp_document_symbols<CR>", "[D]oc symbols")
         set("gd", "<cmd>lua require('fzf-lua').lsp_definitions{ jump1 = true }<CR>", "definition")
         set("<leader>ca", require("fastaction").code_action, "[C]ode [A]ction")
@@ -60,10 +61,7 @@ local config = function()
                 if client.server_capabilities.inlayHintProvider then
                     vim.lsp.inlay_hint.enable(true)
                 end
-                if client:supports_method "textDocument/foldingRange" then
-                    local win = vim.api.nvim_get_current_win()
-                    vim.wo[win][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
-                end
+                vim.lsp.document_color.enable(true, args.buf, { style = "virtual" })
             end
         end,
     })
@@ -73,6 +71,7 @@ local config = function()
         vim.keymap.del("n", "gra")
         vim.keymap.del("n", "grn")
         vim.keymap.del("n", "grr")
+        vim.keymap.del("n", "grt")
     end
 end
 

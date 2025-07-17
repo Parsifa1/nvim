@@ -13,6 +13,15 @@ return {
                     },
                     test_executor = "background",
                 },
+                server = {
+                    default_settings = {
+                        ["rust-analyzer"] = {
+                            files = {
+                                excludeDirs = { ".direnv", ".git", "target" },
+                            },
+                        },
+                    },
+                },
             }
         end,
     },

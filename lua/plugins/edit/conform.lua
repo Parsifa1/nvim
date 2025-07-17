@@ -24,7 +24,7 @@ return {
                 typst = { "typstyle" },
                 python = { "ruff_format" },
                 cpp = { "clang_format" },
-                css = { "dprint" },
+                css = { "dprint", "prettier" },
                 astro = { "dprint" },
                 javascriptreact = { "dprint", "prettier" },
                 typescriptreact = { "dprint", "prettier" },
