@@ -57,7 +57,7 @@ return {
         local ftMap = { vim = "indent", snacks_dashboard = "" }
         require("ufo").setup {
             close_fold_kinds_for_ft = {
-                default = { "imports", "comment" },
+                default = { "imports" },
                 json = { "array" },
                 c = { "comment", "region" },
             },
