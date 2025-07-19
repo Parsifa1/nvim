@@ -17,6 +17,7 @@ return {
             char = { enabled = false },
             treesitter = { highlight = { backdrop = true } },
         },
+        prompt = { win_config = { border = "none" } },
     },
 
     keys = {
