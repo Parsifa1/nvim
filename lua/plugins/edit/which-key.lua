@@ -35,6 +35,13 @@ return {
             { "<leader>t", group = "Telescope" },
             { "<leader>d", group = "Dap" },
             { "<leader>l", group = "Latex" },
+            {
+                "<leader><space>",
+                function()
+                    require("which-key").show { keys = "<leader>", loop = true }
+                end,
+                desc = "Leader Hydra",
+            },
         }
     end,
 }

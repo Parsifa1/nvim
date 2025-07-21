@@ -12,15 +12,13 @@ return {
         -- stylua: ignore start
         set({ "n", "x" }, "<up>", function() mc.lineAddCursor(-1) end)
         set({ "n", "x" }, "<down>", function() mc.lineAddCursor(1) end)
-        set({ "n", "x" }, "<leader><up>", function() mc.lineSkipCursor(-1) end)
-        set({ "n", "x" }, "<leader><down>", function() mc.lineSkipCursor(1) end)
         -- Add or skip adding a new cursor by matching word/selection
         set({ "n", "x" }, "<C-n>", function() mc.matchAddCursor(1)
         end, { desc = "Add multicursor for match" })
         -- Add and remove cursors with control + left click.
-        set("n", "<c-leftmouse>", mc.handleMouse)
-        set("n", "<c-leftdrag>", mc.handleMouseDrag)
-        set("n", "<c-leftrelease>", mc.handleMouseRelease)
+        set("n", "<A-leftmouse>", mc.handleMouse)
+        set("n", "<A-leftdrag>", mc.handleMouseDrag)
+        set("n", "<A-leftrelease>", mc.handleMouseRelease)
         -- stylua: ignore end
 
         -- Mappings defined in a keymap layer only apply when there are
@@ -31,6 +29,12 @@ return {
             layerSet({ "n", "x" }, "<right>", mc.nextCursor)
             -- Delete the main cursor.
             layerSet({ "n", "x" }, "<C-x>", mc.deleteCursor)
+            layerSet({ "n", "x" }, "<C-k>", function()
+                mc.lineSkipCursor(-1)
+            end)
+            layerSet({ "n", "x" }, "<C-j>", function()
+                mc.lineSkipCursor(1)
+            end)
 
             -- Enable and clear cursors using escape.
             layerSet("n", "<esc>", function()
