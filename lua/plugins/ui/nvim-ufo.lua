@@ -27,6 +27,8 @@ local handler = function(virtText, lnum, endLnum, width, truncate)
     return newVirtText
 end
 
+---@param bufnr number
+---@return Promise
 local function customizeSelector(bufnr)
     local function handleFallbackException(err, providerName)
         if type(err) == "string" and err:match "UfoFallbackException" then
@@ -45,7 +47,6 @@ local function customizeSelector(bufnr)
         end)
 end
 
----@diagnostic disable: assign-type-mismatch
 return {
     "kevinhwang91/nvim-ufo",
     event = { "BufNewFile", "BufRead" },
@@ -53,13 +54,19 @@ return {
     config = function()
         vim.keymap.set("n", "zn", require("ufo").openAllFolds)
         vim.keymap.set("n", "zm", require("ufo").closeAllFolds)
+        vim.keymap.set("n", "K", function()
+            local winid = require("ufo").peekFoldedLinesUnderCursor()
+            if not winid then
+                vim.lsp.buf.hover()
+            end
+        end)
 
         local ftMap = { vim = "indent", snacks_dashboard = "" }
         require("ufo").setup {
             close_fold_kinds_for_ft = {
                 default = { "imports" },
+                lua = {},
                 json = { "array" },
-                c = { "comment", "region" },
             },
             fold_virt_text_handler = handler,
             provider_selector = function(_, filetype, _)
