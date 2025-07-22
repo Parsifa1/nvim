@@ -58,10 +58,12 @@ local config = function()
             -- inlay hints
             local client = vim.lsp.get_client_by_id(args.data.client_id)
             if client then
-                if client.server_capabilities.inlayHintProvider then
+                if client:supports_method("textDocument/inlayHint") then
                     vim.lsp.inlay_hint.enable(true)
                 end
-                vim.lsp.document_color.enable(true, args.buf, { style = "virtual" })
+                if client:supports_method "textDocument/documentColor" then
+                    vim.lsp.document_color.enable(true, args.buf)
+                end
             end
         end,
     })
