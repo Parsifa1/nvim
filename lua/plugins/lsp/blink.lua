@@ -61,7 +61,7 @@ local opts = {
         end,
         per_filetype = {
             markdown = { "lsp", "path" },
-            lua = { "lsp", "path", "lazydev" },
+            lua = { "lsp", "path", "lazydev", "snippets" },
             codecompanion = { "codecompanion" },
         },
         providers = {

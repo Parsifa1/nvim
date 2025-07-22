@@ -56,7 +56,6 @@
   "nvim-autopairs": { "branch": "master", "commit": "23320e75953ac82e559c610bec5a90d9c6dfa743" },
   "nvim-bqf": { "branch": "main", "commit": "9cbec7cf8ad2a902a0a41241ad16c3489620321b" },
   "nvim-cokeline": { "branch": "main", "commit": "9fbed130683b7b6f73198c09e35ba4b33f547c08" },
-  "nvim-colorizer.lua": { "branch": "master", "commit": "8a9b722257b5e6733c340c36f4bd8693e5f47de3" },
   "nvim-dap": { "branch": "master", "commit": "5dd4d50f2e6a2eaf9e57fad023d294ef371bda35" },
   "nvim-dap-ui": { "branch": "master", "commit": "73a26abf4941aa27da59820fd6b028ebcdbcf932" },
   "nvim-dap-virtual-text": { "branch": "master", "commit": "fbdb48c2ed45f4a8293d0d483f7730d24467ccb6" },
