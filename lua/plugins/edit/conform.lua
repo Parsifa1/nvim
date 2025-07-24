@@ -47,6 +47,14 @@ return {
                         "--bracket-same-line",
                     },
                 },
+                -- dprint = {
+                --     command = "/Users/parsifa1/Project/dprint/target/release/dprint",
+                --     append_args = {
+                --         "--config-precedence=prefer-file",
+                --         "--config",
+                --         "/Users/parsifa1/Project/blog/.dprint.json",
+                --     },
+                -- },
             },
         }
         vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"

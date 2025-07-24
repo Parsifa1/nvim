@@ -1,5 +1,4 @@
 local set_hl = vim.api.nvim_set_hl
-local get_hl = vim.api.nvim_get_hl
 -- buitin highlight
 -- visual select
 -- set_hl(0, "Visual", { reverse = true })
