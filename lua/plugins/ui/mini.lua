@@ -80,10 +80,10 @@ local files_set_cwd = function(path)
 end
 
 local command = function()
-    local this = vim.api.nvim_buf_get_name(0)
-    local cmd = vim.fn.filereadable(this) == 1 and MiniFiles.open or MiniFiles.open
-    cmd()
-    MiniFiles.reveal_cwd()
+    if not MiniFiles.close() then
+        MiniFiles.open(vim.api.nvim_buf_get_name(0))
+        MiniFiles.reveal_cwd()
+    end
 end
 
 local init = function()

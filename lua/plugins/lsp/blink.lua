@@ -52,11 +52,18 @@ local opts = {
     },
     sources = {
         default = function()
+            local default = { "lsp", "path", "snippets", "buffer" }
             local success, node = pcall(vim.treesitter.get_node)
-            if success and node and vim.tbl_contains({ "comment", "line_comment", "block_comment" }, node:type()) then
-                return { "buffer" }
+            if success and node then
+                if vim.tbl_contains({ "comment", "line_comment", "block_comment" }, node:type()) then
+                    return { "buffer" }
+                elseif string.match(node:type(), "^string") then
+                    return { "lsp", "path", "snippets" }
+                else
+                    return default
+                end
             else
-                return { "lsp", "path", "snippets", "buffer" }
+                return default
             end
         end,
         per_filetype = {

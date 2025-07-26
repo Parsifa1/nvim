@@ -65,7 +65,6 @@ return {
         require("ufo").setup {
             close_fold_kinds_for_ft = {
                 default = { "imports" },
-                lua = {},
                 json = { "array" },
             },
             fold_virt_text_handler = handler,
