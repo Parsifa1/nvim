@@ -166,7 +166,7 @@ M.config = {
     },
 }
 
-M.init = function()
+function M.init()
     -- init lsp config
     for lsp, config in pairs(M.config) do
         vim.lsp.config[lsp] = config

@@ -245,7 +245,7 @@ M.border = "rounded"
 M.prefer_tabpage = false
 
 -- Width of side windows
-M.width = function()
+function M.width()
     local columns = vim.go.columns
     return math.floor(columns * 0.15) > 28 and math.floor(columns * 0.15) or 28
 end

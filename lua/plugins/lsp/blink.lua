@@ -58,7 +58,7 @@ local opts = {
                 if vim.tbl_contains({ "comment", "line_comment", "block_comment" }, node:type()) then
                     return { "buffer" }
                 elseif string.match(node:type(), "^string") then
-                    return { "lsp", "path", "snippets" }
+                    return { "lsp", "path" }
                 else
                     return default
                 end
