@@ -1,9 +1,10 @@
 {
-    "completion.autoRequire": false,
-    "diagnostics.disable": [
-        "missing-fields",
-        "incomplete-signature-doc",
-        "param-type-mismatch",
-        "assign-type-mismatch"
-    ]
+  "completion.autoRequire": false,
+  "diagnostics.disable": [
+    "missing-fields",
+    "incomplete-signature-doc",
+    "param-type-mismatch",
+    "assign-type-mismatch"
+  ]
 }
+

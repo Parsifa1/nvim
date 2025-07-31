@@ -63,10 +63,7 @@ return {
 
         local ftMap = { vim = "indent", snacks_dashboard = "" }
         require("ufo").setup {
-            close_fold_kinds_for_ft = {
-                default = { "imports" },
-                json = { "array" },
-            },
+            close_fold_kinds_for_ft = { default = { "imports" } },
             fold_virt_text_handler = handler,
             provider_selector = function(_, filetype, _)
                 return ftMap[filetype] or customizeSelector
