@@ -33,7 +33,6 @@ local keymap = {
     { "<C-k>",          "<C-w>k",                                    mode = mode_nit },
     { "<C-l>",          "<C-w>l",                                    mode = mode_nit },
     { "<A-q>",          "<cmd>qa<CR>",                               mode = mode_nit }, -- 窗口关闭
-    { "<D-q>",          "<cmd>qa<CR>",                               mode = mode_nit }, -- 窗口关闭
     { "<A-Q>",          "<cmd>qa<CR>",                               mode = mode_nit }, -- vim关闭
     { "<leader>p",      "<cmd>Lazy<CR>",                             mode = mode_n,   desc = "lazy" }, -- desc快捷键 ↓
     { "<leader>sw",     "<cmd>set wrap!<CR>",                        mode = mode_n,   desc = "toggle warp" },

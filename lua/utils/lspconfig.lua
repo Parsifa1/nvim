@@ -2,7 +2,7 @@ local M = {}
 
 M.system = {
     -- lsp
-    "hls",
+    -- "hls",
     "nixd",
     "koka",
     "clangd",
