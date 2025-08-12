@@ -89,8 +89,8 @@ return {
     {
         "elanmed/fzf-lua-frecency.nvim",
         opts = {
-            cwd_only = false,
-            all_files = true,
+            cwd_only = true,
+            display_score = false,
         },
     },
 }
