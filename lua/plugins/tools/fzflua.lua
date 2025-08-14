@@ -53,7 +53,7 @@ local merge = function(x)
 end
 
 local filter =
-    ".astro,.git,.npm,.idea,.direnv,.vscode,.cargo,node_modules,build,.vscode-server,target,.orbstack,.cache,.rustup,.wakatime,.DS_Store"
+    ".astro,.git,.npm,.idea,.direnv,.vscode,.cargo,node_modules,build,.vscode-server,target,.orbstack,.cache,.rustup,.wakatime,.DS_Store,*.age"
 
 return {
     {
