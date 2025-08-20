@@ -6,16 +6,9 @@ vim.fn.sign_define("DapBreakpointRejected", { text = "" })
 return {
     "mfussenegger/nvim-dap",
     ft = { "cpp" },
-    specs = { "nvim-neotest/nvim-nio" },
     dependencies = "theHamsta/nvim-dap-virtual-text",
     config = function()
         local dap = require "dap"
-        -- dap.adapters.cppdbg = {
-        --     id = "cppdbg",
-        --     type = "executable",
-        --     command = require("mason-registry").get_package("cpptools"):get_install_path()
-        --         .. "/extension/debugAdapters/bin/OpenDebugAD7",
-        -- }
         dap.adapters.codelldb = {
             type = "executable",
             command = "codelldb",
@@ -27,7 +20,7 @@ return {
                 request = "launch",
                 program = function()
                     vim.cmd "cd %:h"
-                    vim.cmd "silent w !g++ %:t -g -std=c++20 -o bin/%:t:r"
+                    vim.cmd "silent w !g++ %:p:. -g -std=c++23 -o %:p:.:h/bin/%:t:r"
                     local file_name = vim.fn.bufname(vim.api.nvim_get_current_buf())
                     local file_name_without_path = vim.fn.fnamemodify(file_name, ":t")
                     local file_directory = vim.fn.expand "%:p:h"
@@ -40,20 +33,6 @@ return {
                 stopAtEntry = true,
             },
         }
-        -- local dapui = require "dapui"
-        -- dapui.setup {}
-        --
-        -- dap.listeners.after.event_initialized["dapui_config"] = function()
-        --     dapui.open {}
-        -- end
-        --
-        -- dap.listeners.before.event_terminated["dapui_config"] = function()
-        --     dapui.close {}
-        -- end
-        --
-        -- dap.listeners.before.event_exited["dapui_config"] = function()
-        --     dapui.close {}
-        -- end
     end,
     keys = {
         {
