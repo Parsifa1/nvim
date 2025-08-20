@@ -4,18 +4,19 @@ My personal Noevim configuration, using Lazy.nvim as the package manager, strive
 
 Full lua configuration, built using the latest neovim-nightly.
 
-![example](https://raw.githubusercontent.com/Parsifa1/graph/master/neovim.png)
+![example](https://raw.githubusercontent.com/Parsifa1/graph/master/nvim.png)
 
 Startup Time:
-![image](https://github.com/Parsifa1/nvim/assets/31800073/0e1dc351-3601-44e6-9c0b-7b9011333d73)
+![image](https://raw.githubusercontent.com/Parsifa1/graph/master/nvim-bench.png)
 
 - LSP
 - Tree-sitter
-- CMP
+- Blink.cmp
 
 # Data Structure
 
 ```
+
 .
 ├── init.lua
 ├── lazy-lock.json
@@ -27,7 +28,6 @@ Startup Time:
 │   ├── packer.lua
 │   ├── plugins
 │   │   ├── dap
-│   │   │   ├── dap-ui.lua
 │   │   │   ├── dap-view.lua
 │   │   │   ├── dap-virtual-text.lua
 │   │   │   ├── dap.lua
@@ -41,7 +41,7 @@ Startup Time:
 │   │   │   ├── flatten.lua
 │   │   │   ├── nvim-surround.lua
 │   │   │   ├── sleuth.lua
-│   │   │   ├── smart-tab.lua
+│   │   │   ├── smartab.lua
 │   │   │   ├── todo-comments.lua
 │   │   │   └── which-key.lua
 │   │   ├── git
@@ -59,8 +59,8 @@ Startup Time:
 │   │   │   └── typst-preview.lua
 │   │   ├── lsp
 │   │   │   ├── blink.lua
+│   │   │   ├── config.lua
 │   │   │   ├── lazydev.lua
-│   │   │   ├── lspconfig.lua
 │   │   │   ├── luasnip.lua
 │   │   │   ├── mason.lua
 │   │   │   └── treesitter.lua
@@ -68,7 +68,6 @@ Startup Time:
 │   │   │   ├── catppuccin.lua
 │   │   │   ├── everforest.lua
 │   │   │   ├── gruvbox-md.lua
-│   │   │   ├── gruvbox.lua
 │   │   │   └── nightfox.lua
 │   │   ├── tools
 │   │   │   ├── asynctasks.lua
@@ -97,13 +96,11 @@ Startup Time:
 │   │   │   ├── lualine.lua
 │   │   │   ├── mini.lua
 │   │   │   ├── noice.lua
-│   │   │   ├── nvim-colorizer.lua
 │   │   │   ├── nvim-ufo.lua
 │   │   │   ├── nvzone.lua
 │   │   │   ├── oil.lua
 │   │   │   ├── outline.lua
 │   │   │   ├── quickfix.lua
-│   │   │   ├── rainbow-delimiters.lua
 │   │   │   ├── statuscol.lua
 │   │   │   └── whitespace.lua
 │   │   └── utils
@@ -117,9 +114,9 @@ Startup Time:
 │   │   ├── llm-spinner
 │   │   │   └── lua
 │   │   │       └── llm-spinner.lua
-│   │   └── smart-tab
+│   │   └── nvim-origami
 │   │       └── lua
-│   │           └── smart-tab.lua
+│   │           └── nvim-origami.lua
 │   └── utils
 │       ├── autocmd.lua
 │       ├── floaterm.lua
@@ -135,3 +132,4 @@ Startup Time:
 ├── stylua.toml
 └── tasks.ini
 ```
+
