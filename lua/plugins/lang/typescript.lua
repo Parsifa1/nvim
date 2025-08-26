@@ -1,5 +1,5 @@
 local mason_path = vim.fn.stdpath "data" .. "/mason/packages/"
-local ft = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "markdown.mdx", "html" }
+local ft = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "markdown.mdx", "html", "astro" }
 
 return {
     -- TODO: waiting pr to merge
