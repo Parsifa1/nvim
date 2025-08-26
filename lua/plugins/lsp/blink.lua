@@ -68,8 +68,8 @@ local opts = {
         end,
         per_filetype = {
             markdown = { "lsp", "path" },
-            lua = { "lsp", "path", "lazydev", "snippets" },
-            codecompanion = { "codecompanion" },
+            lua = { inherit_defaults = true, "lazydev" },
+            ["grug-far"] = {},
         },
         providers = {
             lazydev = {

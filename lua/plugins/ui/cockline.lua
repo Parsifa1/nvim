@@ -80,6 +80,11 @@ return {
                 end,
                 bg = "NONE",
             },
+            buffers = {
+                filter_valid = function(buffer)
+                    return buffer.type ~= "terminal" and buffer.type ~= "nofile"
+                end,
+            },
             components = {
                 components.icon,
                 components.unique_prefix,
