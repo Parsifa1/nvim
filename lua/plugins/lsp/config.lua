@@ -81,7 +81,7 @@ return {
     {
         "neovim/nvim-lspconfig",
         dependencies = "mason-org/mason-lspconfig.nvim",
-        event = { "Filetype", "BufNewFile" },
+        event = { "CursorHold", "CursorHoldI" },
         cmd = "LspInfo",
         config = config,
     },

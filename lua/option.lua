@@ -69,6 +69,7 @@ vim.opt.showmode = false
 vim.filetype.add { extension = { mdx = "markdown.mdx", kk = "koka" } }
 -- add queries path
 vim.opt.runtimepath:append "~/.config/nvim/lua/queries"
+vim.opt.updatetime = 200
 
 -- close node && perl
 vim.g["loaded_node_provider"] = 0
