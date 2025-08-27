@@ -80,9 +80,7 @@ end
 return {
     {
         "neovim/nvim-lspconfig",
-        dependencies = {
-            { "parsifa1/mason-lspconfig.nvim", branch = "fix-block" },
-        },
+        dependencies = { "mason-org/mason-lspconfig.nvim" },
         event = { "CursorHold", "CursorHoldI" },
         cmd = "LspInfo",
         config = config,

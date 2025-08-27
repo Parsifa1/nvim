@@ -56,7 +56,7 @@ local opts = {
             opts = {
                 keymap = "gh",
                 auto_save = true,
-                picker = vim.fn.has "win32" == 1 and "snacks" or "fzf-lua",
+                picker = vim.uv.os_uname().sysname == "Windows_NT" and "snacks" or "fzf-lua",
                 picker_keymaps = { delete = { n = "d", i = "<C-x>" } },
                 save_chat_keymap = "gs",
                 continue_last_chat = false,

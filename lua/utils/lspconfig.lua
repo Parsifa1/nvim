@@ -167,6 +167,10 @@ M.config = {
 }
 
 function M.init()
+    -- NOTE: windows have IO blocking issue with vim.lsp.enable
+    if vim.uv.os_uname().sysname == "Windows_NT" then
+        vim.lsp.enable = vim.schedule_wrap(vim.lsp.enable)
+    end
     -- init lsp config
     for lsp, config in pairs(M.config) do
         vim.lsp.config[lsp] = config
