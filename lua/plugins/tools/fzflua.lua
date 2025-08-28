@@ -37,7 +37,7 @@ local keys = function()
             { "<esc>", "<c-c>", ft = "fzf", mode = "t", nowait = true },
             { "<leader>f", "<cmd>FzfLua global<CR>", desc = "find files" },
             { "<leader>w", "<cmd>FzfLua live_grep<CR>", desc = "live grep" },
-            { "<leader>r", "<cmd>FzfLua frecency<CR>", desc = "recent files" },
+            { "<leader>r", "<cmd>FzfLua frecency cwd_only=false<CR>", desc = "recent files" },
             { "<leader>tc", "<cmd>FzfLua commands<CR>", desc = "Fzflua Commands" },
             { "<leader>tk", "<cmd>FzfLua keymaps<CR>", desc = "Fzflua Keymaps" },
             { "<leader>tl", "<cmd>FzfLua highlights<CR>", desc = "Fzflua Highlights" },
@@ -48,18 +48,20 @@ local keys = function()
     end
 end
 
-local merge = function(x)
+local ivy_config = function(x)
     return vim.tbl_extend("force", ivy, x)
 end
 
 local filter =
-    ".astro,.git,.npm,.idea,.direnv,.vscode,.cargo,node_modules,build,.vscode-server,target,.orbstack,.cache,.rustup,.wakatime,.DS_Store,*.age"
+    ".astro,.git,.npm,.idea,.direnv,.vscode,.cargo,node_modules,build,.vscode-server,target,.orbstack,.cache,.rustup,.wakatime,.gnupg,.DS_Store,*.age"
 
 return {
     {
         "ibhagwan/fzf-lua",
-        dependencies = { "echasnovski/mini.icons", "elanmed/fzf-lua-frecency.nvim" },
-        enabled = true,
+        dependencies = {
+            "echasnovski/mini.icons",
+            "elanmed/fzf-lua-frecency.nvim",
+        },
         keys = keys(),
         cmd = "FzfLua",
         opts = {
@@ -68,9 +70,17 @@ return {
                 backdrop = false,
                 preview = { delay = 50 },
             },
-            frecency = ivy,
-            global = merge {
+            frecency = ivy_config {
+                fzf_opts = { ["--no-sort"] = false },
+            },
+            global = ivy_config {
                 git_icons = false,
+                pickers = {
+                    { "frecency", desc = "Files" },
+                    { "buffers", desc = "Bufs", prefix = "$" },
+                    { "lsp_document_symbols", desc = "Symbols (buf)", prefix = "@" },
+                    { "lsp_workspace_symbols", desc = "Symbols (project)", prefix = "#" },
+                },
                 fd_opts = "-H -I " .. "-E '{" .. filter .. "}' " .. "--type f --strip-cwd-prefix",
             },
             grep = {
@@ -88,9 +98,7 @@ return {
     },
     {
         "elanmed/fzf-lua-frecency.nvim",
-        opts = {
-            cwd_only = false,
-            display_score = false,
-        },
+        event = { "BufReadPost", "BufNewFile" },
+        opts = { cwd_only = true },
     },
 }

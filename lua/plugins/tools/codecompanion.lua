@@ -64,6 +64,7 @@ local opts = {
                 delete_on_clearing_chat = true,
             },
         },
+         spinner = {},
     },
 }
 
@@ -74,15 +75,14 @@ return {
         "ravitemer/codecompanion-history.nvim",
         { "parsifa1/llm-spinner", dev = true },
     },
+    init = function()
+        vim.cmd [[cab cc CodeCompanion]]
+    end,
     cmd = { "CodeCompanionChat" },
     keys = {
         { "<leader>ah", "<cmd>CodeCompanionHistory<CR>", desc = "CodeCompanion Chat" },
         { "<leader>ac", "<cmd>CodeCompanionActions<CR>", desc = "CodeCompanion Chat" },
         { "<leader>aa", "<cmd>CodeCompanionChat Toggle<CR>", desc = "CodeCompanion Chat" },
     },
-    opts = function()
-        vim.cmd [[cab cc CodeCompanion]]
-        require("llm-spinner"):init()
-        return opts
-    end,
+    opts = opts,
 }
