@@ -2,8 +2,6 @@
 local custom = require "custom"
 return {
     "stevearc/oil.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-
     init = function()
         if vim.fn.argc() == 1 then
             -- local stat = vim.loop.fs_stat(vim.fn.argv(0))
@@ -22,7 +20,6 @@ return {
             })
         end
     end,
-
     keys = {
         {
             "-",
@@ -35,15 +32,12 @@ return {
         },
     },
     opts = {
-        default_file_explorer = true,
-        columns = {
-            "icon",
-        },
-        view_options = {
-            show_hidden = true,
-        },
-        skip_confirm_for_simple_edits = true,
+        columns = { "icon" },
         cleanup_delay_ms = false,
+        silence_scp_warning = true,
+        default_file_explorer = true,
+        view_options = { show_hidden = true },
+        skip_confirm_for_simple_edits = true,
         float = {
             border = custom.border,
         },
@@ -52,6 +46,9 @@ return {
         },
         progress = {
             border = custom.border,
+        },
+        adapter_aliases = {
+            ["scp://"] = "oil-ssh://",
         },
         keymaps = {
             ["<C-s>"] = false,
