@@ -52,8 +52,8 @@ local ivy_config = function(x)
     return vim.tbl_extend("force", ivy, x)
 end
 
-local filter =
-    ".astro,.git,.npm,.idea,.direnv,.vscode,.cargo,node_modules,build,.vscode-server,target,.orbstack,.cache,.rustup,.wakatime,.gnupg,.DS_Store,*.age"
+local filter = ".astro,.git,.npm,.idea,.direnv,.venv,.vscode,.cargo,.vscode-server,.orbstack,.cache,.rustup,.wakatime,.gnupg"
+    .. "node_modules,build,target,.DS_Store,*.age"
 
 return {
     {

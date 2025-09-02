@@ -23,9 +23,7 @@ M.tools = {
 M.config = {
     astro = {
         settings = {
-            astro = {
-                ["content-intellisense"] = true,
-            },
+            astro = { ["content-intellisense"] = true },
         },
     },
     clangd = {
@@ -86,22 +84,28 @@ M.config = {
             },
         },
     },
-    tinymist = {
-        cmd = { "tinymist" },
-        settings = {},
-    },
-    ts_ls = {
-        init_options = {
-            plugins = {
-                {
-                    name = "@vue/typescript-plugin",
-                    location = vim.fn.exepath "vue-language-server" .. "/node_modules/@vue/language-server",
-                    languages = { "vue" },
+    vtsls = {
+        settings = {
+            vtsls = {
+                tsserver = {
+                    globalPlugins = {
+                        {
+                            name = "@vue/typescript-plugin",
+                            location = vim.fn.stdpath "data"
+                                .. "/mason/packages/vue-language-server/node_modules/@vue/language-server",
+                            configNamespace = "typescript",
+                            languages = { "vue" },
+                        },
+                    },
                 },
-                {
-                    name = "@mdxjs/typescript-plugin",
-                    location = vim.fn.exepath "mdx-analyzer" .. "/node_modules/@mdx/language-server",
-                    languages = { "mdx" },
+            },
+            typescript = {
+                inlayHints = {
+                    variableTypes = { enabled = true },
+                    parameterTypes = { enabled = true },
+                    enumMemberValues = { enabled = true },
+                    functionLikeReturnTypes = { enabled = true },
+                    propertyDeclarationTypes = { enabled = true },
                 },
             },
         },
@@ -111,61 +115,37 @@ M.config = {
         filetypes = {
             "html",
             "css",
-            "javascript",
+            "vue",
             "javascriptreact",
-            "typescript",
             "typescriptreact",
             "astro",
         },
     },
     cssls = {
+        filetypes = {
+            "html",
+            "css",
+            "vue",
+            "javascriptreact",
+            "typescriptreact",
+            "astro",
+        },
         settings = {
             css = {
-                lint = {
-                    unknownAtRules = "ignore",
-                },
+                lint = { unknownAtRules = "ignore" },
             },
         },
-    },
-    omnisharp = {
-        cmd = {
-            "dotnet",
-            vim.fn.exepath "omnisharp" .. "/libexec/Omnisharp.dll",
-        },
-        handlers = {
-            ["textDocument/definition"] = function(...)
-                return require("omnisharp_extended").handler(...)
-            end,
-        },
-        keys = {
-            {
-                "gd",
-                function()
-                    require("omnisharp_extended").telescope_lsp_definitions()
-                end,
-                desc = "Goto Definition",
-            },
-        },
-        enable_roslyn_analyzers = true,
-        organize_imports_on_format = true,
-        enable_import_completion = true,
     },
     hls = {
         settings = {
             haskell = {
                 plugin = {
-                    ["semanticTokens"] = {
-                        globalOn = true,
-                    },
+                    ["semanticTokens"] = { globalOn = true },
                 },
             },
         },
     },
-    verible = {
-        cmd = { "verible-verilog-ls", "--rules=-explicit-parameter-storage-type" },
-    },
 }
-
 function M.init()
     -- NOTE: windows have IO blocking issue with vim.lsp.enable
     if vim.uv.os_uname().sysname == "Windows_NT" then

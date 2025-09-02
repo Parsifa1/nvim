@@ -11,6 +11,11 @@ return {
     opts = {
         filetypes = ft,
         settings = {
+            tsserver_file_preferences = {
+                includeInlayEnumMemberValueHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayPropertyDeclarationTypeHints = true,
+            },
             tsserver_plugins = {
                 {
                     name = "@vue/typescript-plugin",
