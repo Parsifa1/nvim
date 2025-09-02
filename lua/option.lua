@@ -9,7 +9,7 @@ vim.opt.viewoptions = "folds,cursor"
 vim.opt.jumpoptions = "stack"
 
 -- sessionoptions
-vim.opt.sessionoptions = "blank,buffers,curdir,help,tabpages,winsize,terminal"
+vim.opt.sessionoptions = "blank,buffers,curdir,help,tabpages,winsize,terminal,globals"
 
 -- normal setting
 vim.g.copilot_assume_mapped = true
@@ -18,6 +18,7 @@ vim.opt.winborder = "rounded" -- set window border
 -- vim.opt.clipboard = "unnamedplus" -- use system clipboar
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.opt.mouse = "a" -- allow the mouse to be used in nvim
+vim.opt.mousemoveevent = true
 
 -- tab
 vim.opt.tabstop = 4 -- number of visual spaces per tab
@@ -68,7 +69,7 @@ vim.opt.showmode = false
 -- add filetype
 vim.filetype.add { extension = { mdx = "markdown.mdx", kk = "koka" } }
 -- add queries path
-vim.opt.runtimepath:append "~/.config/nvim/lua/queries"
+vim.opt.runtimepath:append "~/.config/nvim/lua/utils/"
 vim.opt.updatetime = 200
 
 -- close node && perl
@@ -91,4 +92,3 @@ end
 
 -- import utils
 require "utils.highlight"
-require "utils.floaterm"

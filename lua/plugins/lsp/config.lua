@@ -2,15 +2,7 @@ local custom = require "custom"
 
 local config = function()
     -- init lsp config && system lsp
-    require("utils.lspconfig").init()
-
-    -- lsp installed by mason
-    require("mason-lspconfig").setup {
-        ensure_installed = {},
-        automatic_enable = {
-            exclude = { "rust_analyzer", "dprint" },
-        },
-    }
+    require("utils.lspstart").init()
 
     local lsp_keymap = function(bufnr)
         -- lsp-builtin

@@ -132,7 +132,7 @@ local opts = {
 return {
     "Saghen/blink.cmp",
     dependencies = "xzbdmw/colorful-menu.nvim",
-    event = { "CursorHold", "CursorHoldI", "CmdlineEnter", "User AfterLoad" },
+    event = { "InsertEnter", "CmdlineEnter", "User AfterLoad" },
     version = "*",
     opts = opts,
     opts_extend = { "sources.completion.enabled_providers" },

@@ -1,4 +1,4 @@
-local get_root = require("utils.gitutils").get_root
+local get_root = require("custom").get_root
 local function dirs()
     ---@type table<string, boolean>
     local seen = {}
@@ -139,7 +139,7 @@ end
 return {
     "folke/snacks.nvim",
     lazy = false,
-    keys = keys(),
+    keys = keys,
     priority = 1000,
     ---@type snacks.Config
     opts = {
@@ -150,8 +150,8 @@ return {
         dashboard = {
             preset = {
                 keys = {
-                    { icon = " ", key = "f", desc = "Find file", action = "<cmd>FzfLua files<CR>" },
-                    { icon = " ", key = "r", desc = "Recently used files", action = "<cmd>FzfLua oldfiles<CR>" },
+                    { icon = " ", key = "f", desc = "Find file", action = "<cmd>FzfLua global<CR>" },
+                    { icon = " ", key = "r", desc = "Recently used files", action = "<cmd>FzfLua frecency<CR>" },
                     { icon = "󰂖 ", key = "p", desc = "Plugins", action = "<cmd>Lazy<CR>" },
                     { icon = "󰅚 ", key = "q", desc = "Quit Neovim", action = "<cmd>qa<CR>" },
                 },
@@ -219,7 +219,6 @@ return {
             },
             sources = {
                 buffers = {
-                    current = false,
                     on_show = function()
                         vim.cmd.stopinsert()
                     end,

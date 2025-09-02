@@ -4,7 +4,7 @@
 return {
     "folke/edgy.nvim",
     enabled = true,
-    event = { "CursorHold", "CursorHoldI", "User AfterLoad" },
+    event = "User AfterLoad",
     opts = {
         animate = { enabled = false },
         bottom = {
@@ -26,7 +26,7 @@ return {
             },
         },
         left = {
-            { ft = "Mundo", size = { width = 0.25 } },
+            { ft = "Mundo", size = { width = 0.3 } },
             { ft = "MundoDiff", size = { width = 0.25 } },
         },
         right = {

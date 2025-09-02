@@ -1,6 +1,6 @@
 local M = {}
 
-local icon_backup = {
+local icons = {
     vsc_kind = {
         Array = "",
         Boolean = "",
@@ -250,9 +250,9 @@ function M.width()
     return math.floor(columns * 0.15) > 28 and math.floor(columns * 0.15) or 28
 end
 
-local append_space = function(icons)
+local append_space = function(icon)
     local result = {}
-    for k, v in pairs(icons) do
+    for k, v in pairs(icon) do
         result[k] = v .. " "
     end
     return result
@@ -269,14 +269,44 @@ function M.set(mode, keys, func, ...)
     vim.keymap.set(mode, keys, func, options)
 end
 
+--- Git Utils
+local git_cache = {} ---@type table<string, boolean>
+local function is_git_root(dir)
+    if git_cache[dir] == nil then
+        git_cache[dir] = (vim.uv or vim.loop).fs_stat(dir .. "/.git") ~= nil
+    end
+    return git_cache[dir]
+end
+
+--- Gets the git root for a buffer or path.
+--- Defaults to the current buffer.
+---@param path? number|string buffer or path
+function M.get_root(path)
+    path = path or 0
+    path = type(path) == "number" and vim.api.nvim_buf_get_name(path) or path --[[@as string]]
+    path = vim.fs.normalize(path)
+    path = path == "" and (vim.uv or vim.loop).cwd() .. "/foo" or path
+    -- check cache first
+    for dir in vim.fs.parents(path) do
+        if git_cache[dir] then
+            return vim.fs.normalize(dir) or nil
+        end
+    end
+    for dir in vim.fs.parents(path) do
+        if is_git_root(dir) then
+            return vim.fs.normalize(dir) or nil
+        end
+    end
+end
+
 M.icons = {
     -- LSP diagnostic
-    diagnostic = icon_backup.diagnostics,
+    diagnostic = icons.diagnostics,
     -- LSP kinds
-    kind = icon_backup.kind,
-    vsc_kind = icon_backup.vsc_kind,
-    ui = icon_backup.ui,
-    kind_with_space = append_space(icon_backup.kind),
+    kind = icons.kind,
+    vsc_kind = icons.vsc_kind,
+    ui = icons.ui,
+    kind_with_space = append_space(icons.kind),
 }
 
 return M

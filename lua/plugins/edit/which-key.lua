@@ -25,7 +25,7 @@ local opts = {
 
 return {
     "folke/which-key.nvim",
-    event = "VeryLazy",
+    event = "User AfterLoad",
     config = function()
         require("which-key").setup(opts)
         require("which-key").add {
@@ -38,7 +38,7 @@ return {
             {
                 "<leader><space>",
                 function()
-                    require("which-key").show { keys = "<leader>", loop = true }
+                    require("which-key").show { keys = "<leader>", loop = true, delay = "65535" }
                 end,
                 desc = "Leader Hydra",
             },
