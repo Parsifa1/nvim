@@ -4,7 +4,7 @@ local function dirs()
     local seen = {}
     ---@type table<string, boolean>
     local session_dirs = {}
-    for _, item in ipairs(require("session_manager.utils").get_sessions()) do
+    for _, item in ipairs(require("session_manager.utils").get_sessions { silent = true }) do
         session_dirs[item.dir.filename:gsub("\\", "/")] = true
     end
     local filt_seen = function(dir)

@@ -122,18 +122,11 @@ return {
             { "[t", "<cmd>tabp<CR>", desc = "previous tab" },
             { "]t", "<cmd>tabn<CR>", desc = "next tab" },
         },
-        -- event = "User AfterLoad",
-        event = { "BufRead", "BufNewFile" },
+        init = function()
+            vim.opt.tabline = "%!v:lua.cokeline.tabline()"
+        end,
+        event = { "BufReadPre", "BufNewFile" },
         dependencies = { "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons" },
         config = config,
     },
-    -- {
-    --     "tiagovla/scope.nvim",
-    --     keys = {
-    --         {"]t", "<cmd>tabn<CR>", desc = "next tab" },
-    --         {"[t", "<cmd>tabp<CR>", desc = "previous tab" },
-    --     },
-    --     event = { "BufRead", "BufNewFile" },
-    --     opts = {},
-    -- },
 }
