@@ -1,4 +1,4 @@
-local get_root = require("custom").get_root
+local get_root = require("config.custom").get_root
 local function dirs()
     ---@type table<string, boolean>
     local seen = {}
@@ -8,9 +8,7 @@ local function dirs()
         session_dirs[item.dir.filename:gsub("\\", "/")] = true
     end
     local filt_seen = function(dir)
-        if seen[dir] then
-            return false
-        end
+        if seen[dir] then return false end
         seen[dir] = true
         return true
     end
@@ -18,34 +16,23 @@ local function dirs()
     ---@param file string
     ---@return string|nil
     local function map_file(file)
-        if not vim.uv.fs_stat(file) then
-            return nil
-        end
+        if not vim.uv.fs_stat(file) then return nil end
         for session_dir in pairs(session_dirs) do
             local session_simbol = file:sub(session_dir:len() + 1, session_dir:len() + 1)
             local git_root = get_root(file)
-            if vim.startswith(file, session_dir) and session_simbol == "/" then
-                return session_dir
-            end
-            if git_root and vim.startswith(file, git_root) then
-                return git_root
-            end
+            if vim.startswith(file, session_dir) and session_simbol == "/" then return session_dir end
+            if git_root and vim.startswith(file, git_root) then return git_root end
         end
         return vim.fs.dirname(file)
     end
 
     local map_winpath = function(path)
-        if path:match "^[A-Z]:/" then
-            return path:gsub("/", "\\")
-        end
+        if path:match "^[A-Z]:/" then return path:gsub("/", "\\") end
         return path
     end
 
     ---@type string[]
-    local ret = vim.tbl_map(
-        map_winpath,
-        vim.tbl_filter(filt_seen, vim.tbl_map(map_file, vim.tbl_map(vim.fs.normalize, vim.v.oldfiles)))
-    )
+    local ret = vim.tbl_map(map_winpath, vim.tbl_filter(filt_seen, vim.tbl_map(map_file, vim.tbl_map(vim.fs.normalize, vim.v.oldfiles))))
 
     return ret
 end
@@ -112,9 +99,7 @@ local select = {
 }
 
 local function keys()
-    local function snack(name)
-        return ("<cmd>lua Snacks.picker." .. name .. "()<CR>")
-    end
+    local function snack(name) return ("<cmd>lua Snacks.picker." .. name .. "()<CR>") end
     if vim.uv.os_uname().sysname == "Windows_NT" then
         return {
             { "<leader>w", snack "grep", desc = "live grep" },
@@ -155,9 +140,7 @@ return {
                     { icon = "󰂖 ", key = "p", desc = "Plugins", action = "<cmd>Lazy<CR>" },
                     { icon = "󰅚 ", key = "q", desc = "Quit Neovim", action = "<cmd>qa<CR>" },
                 },
-                pick = function(item, arg)
-                    require("fzf-lua")[item](arg)
-                end,
+                pick = function(item, arg) require("fzf-lua")[item](arg) end,
             },
             sections = {
                 { text = { { header, hl = "Include" } }, align = "center" },
@@ -180,15 +163,11 @@ return {
             line_length = 1000,
             size = 1024 * 1024 * 1.5, -- 1.5MB
             setup = function(ctx)
-                if vim.fn.exists ":NoMatchParen" ~= 0 then
-                    vim.cmd [[NoMatchParen]]
-                end
+                if vim.fn.exists ":NoMatchParen" ~= 0 then vim.cmd [[NoMatchParen]] end
                 require("snacks").util.wo(0, { foldmethod = "manual", conceallevel = 0 })
                 vim.b.minianimate_disable = true
                 vim.schedule(function()
-                    if vim.api.nvim_buf_is_valid(ctx.buf) then
-                        vim.bo[ctx.buf].syntax = ctx.ft
-                    end
+                    if vim.api.nvim_buf_is_valid(ctx.buf) then vim.bo[ctx.buf].syntax = ctx.ft end
                 end)
             end,
         },
@@ -219,9 +198,7 @@ return {
             },
             sources = {
                 buffers = {
-                    on_show = function()
-                        vim.cmd.stopinsert()
-                    end,
+                    on_show = function() vim.cmd.stopinsert() end,
                     win = {
                         input = {
                             keys = {

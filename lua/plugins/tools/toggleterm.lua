@@ -1,4 +1,4 @@
-local custom = require "custom"
+local custom = require "config.custom"
 
 return {
     "akinsho/toggleterm.nvim",
@@ -34,9 +34,7 @@ return {
                 "`",
                 function()
                     vim.cmd "ToggleTerm"
-                    if vim.fn.mode() == "n" then
-                        vim.cmd "startinsert"
-                    end
+                    if vim.fn.mode() == "n" then vim.cmd "startinsert" end
                 end,
                 mode = "t",
                 desc = "Terminal",

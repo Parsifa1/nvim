@@ -16,9 +16,7 @@ local handler = function(virtText, lnum, endLnum, width, truncate)
             table.insert(newVirtText, { chunkText, hlGroup })
             chunkWidth = vim.fn.strdisplaywidth(chunkText)
             -- str width returned from truncate() may less than 2nd argument, need padding
-            if curWidth + chunkWidth < targetWidth then
-                suffix = suffix .. (" "):rep(targetWidth - curWidth - chunkWidth)
-            end
+            if curWidth + chunkWidth < targetWidth then suffix = suffix .. (" "):rep(targetWidth - curWidth - chunkWidth) end
             break
         end
         curWidth = curWidth + chunkWidth
@@ -39,12 +37,8 @@ local function customizeSelector(bufnr)
     end
     return require("ufo")
         .getFolds(bufnr, "lsp")
-        :catch(function(err)
-            return handleFallbackException(err, "treesitter")
-        end)
-        :catch(function(err)
-            return handleFallbackException(err, "indent")
-        end)
+        :catch(function(err) return handleFallbackException(err, "treesitter") end)
+        :catch(function(err) return handleFallbackException(err, "indent") end)
 end
 
 return {
@@ -56,18 +50,14 @@ return {
         vim.keymap.set("n", "zm", require("ufo").closeAllFolds, { desc = "Close all folds" })
         vim.keymap.set("n", "K", function()
             local winid = require("ufo").peekFoldedLinesUnderCursor()
-            if not winid then
-                vim.lsp.buf.hover()
-            end
+            if not winid then vim.lsp.buf.hover() end
         end)
 
         local ftMap = { vim = "indent", snacks_dashboard = "" }
         require("ufo").setup {
             close_fold_kinds_for_ft = { default = { "imports" } },
             fold_virt_text_handler = handler,
-            provider_selector = function(_, filetype, _)
-                return ftMap[filetype] or customizeSelector
-            end,
+            provider_selector = function(_, filetype, _) return ftMap[filetype] or customizeSelector end,
         }
     end,
 }

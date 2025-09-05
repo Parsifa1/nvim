@@ -1,4 +1,4 @@
-local custom = require "custom"
+local custom = require "config.custom"
 
 return {
     "hedyhli/outline.nvim",

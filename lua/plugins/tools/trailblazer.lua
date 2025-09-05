@@ -1,6 +1,6 @@
 return {
     "LeonHeidelbach/trailblazer.nvim",
-    event = "User AfterLoad",
+    event = "User AfterFile",
     config = function()
         require("trailblazer").setup {
             -- your custom config goes here

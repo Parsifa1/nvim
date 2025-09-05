@@ -1,5 +1,5 @@
 local lazy_status = require "lazy.status"
-local custom = require "custom"
+local custom = require "config.custom"
 
 local opts = {
     options = {
@@ -86,13 +86,9 @@ local opts = {
             },
             function()
                 local reg = vim.fn.reg_recording()
-                if reg ~= "" then
-                    return "recording @" .. reg
-                end
+                if reg ~= "" then return "recording @" .. reg end
                 reg = vim.fn.reg_recorded()
-                if reg ~= "" then
-                    return "recorded @" .. reg
-                end
+                if reg ~= "" then return "recorded @" .. reg end
 
                 return ""
             end,
@@ -160,9 +156,7 @@ return {
         local auto = require "lualine.themes.auto"
         local lualine_modes = { "insert", "normal", "visual", "command", "replace", "inactive", "terminal" }
         for _, field in ipairs(lualine_modes) do
-            if auto[field] and auto[field].c then
-                auto[field].c.bg = "NONE"
-            end
+            if auto[field] and auto[field].c then auto[field].c.bg = "NONE" end
         end
         opts.options.theme = auto
         require("lualine").setup(opts)

@@ -1,5 +1,5 @@
 ---@diagnostic disable: assign-type-mismatch
-local custom = require "custom"
+local custom = require "config.custom"
 
 ---@module 'blink.cmp'
 ---@type blink.cmp.Config
@@ -15,22 +15,14 @@ local opts = {
                 components = {
                     label = {
                         -- intergrate with colorful-menu
-                        text = function(ctx)
-                            return require("colorful-menu").blink_components_text(ctx)
-                        end,
+                        text = function(ctx) return require("colorful-menu").blink_components_text(ctx) end,
                         width = {
-                            max = function(ctx)
-                                return ctx.mode == "cmdline" and 22 or 60
-                            end,
+                            max = function(ctx) return ctx.mode == "cmdline" and 22 or 60 end,
                         },
-                        highlight = function(ctx)
-                            return require("colorful-menu").blink_components_highlight(ctx)
-                        end,
+                        highlight = function(ctx) return require("colorful-menu").blink_components_highlight(ctx) end,
                     },
                     provider = {
-                        text = function(ctx)
-                            return "[" .. ctx.item.source_name:sub(1, 3):upper() .. "]"
-                        end,
+                        text = function(ctx) return "[" .. ctx.item.source_name:sub(1, 3):upper() .. "]" end,
                         highlight = "Fg",
                     },
                 },
@@ -112,9 +104,7 @@ local opts = {
                 draw = {
                     columns = { { "kind_icon" }, { "label" } },
                 },
-                auto_show = function()
-                    return vim.fn.getcmdtype() == ":"
-                end,
+                auto_show = function() return vim.fn.getcmdtype() == ":" end,
             },
             list = {
                 selection = { preselect = false },
@@ -132,7 +122,7 @@ local opts = {
 return {
     "Saghen/blink.cmp",
     dependencies = "xzbdmw/colorful-menu.nvim",
-    event = { "InsertEnter", "CmdlineEnter", "User AfterLoad" },
+    event = { "InsertEnter", "CmdlineEnter", "User AfterFile" },
     version = "*",
     opts = opts,
     opts_extend = { "sources.completion.enabled_providers" },

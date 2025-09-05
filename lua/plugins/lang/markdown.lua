@@ -37,10 +37,8 @@ return {
                 { trig = "mk", name = "Math inline", condition = utils.pipe { not_math }, priority = 10 },
                 { t { "$" }, i(0), t { "$" } }
             )
-            local rd = ls.parser.parse_snippet(
-                { trig = "rd", name = "to the ... power ^{}", utils.pipe { not_math }, priority = 10 },
-                "^{$1}$0 "
-            )
+            local rd =
+                ls.parser.parse_snippet({ trig = "rd", name = "to the ... power ^{}", utils.pipe { not_math }, priority = 10 }, "^{$1}$0 ")
             ls.add_snippets("markdown", { dm, mk, rd }, { type = "autosnippets" })
         end,
     },

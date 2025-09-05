@@ -1,7 +1,7 @@
 return {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
-    event = "User AfterLoad",
+    event = "User AfterFile",
     opts = {
         indent = { char = "│" },
         debounce = 50,

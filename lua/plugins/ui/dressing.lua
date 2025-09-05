@@ -5,9 +5,7 @@ return {
         select = {
             backend = { "snacks_picker", "fzf_lua" },
             get_config = function(opts)
-                if opts.kind == "codeaction" then
-                    return {}
-                end
+                if opts.kind == "codeaction" then return {} end
             end,
             fzf_lua = {
                 winopts = {

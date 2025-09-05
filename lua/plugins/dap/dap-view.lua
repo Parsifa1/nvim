@@ -3,9 +3,7 @@ return {
     keys = {
         {
             "<leader>dd",
-            function()
-                require("debugmaster").mode.toggle()
-            end,
+            function() require("debugmaster").mode.toggle() end,
             desc = "Toggle DebugMaster",
         },
     },

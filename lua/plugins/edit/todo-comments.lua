@@ -1,6 +1,6 @@
 return {
     "folke/todo-comments.nvim",
-    event = "User AfterLoad",
+    event = "User AfterFile",
     config = function()
         require("todo-comments").setup {
             signs = true,

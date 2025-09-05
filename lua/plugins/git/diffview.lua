@@ -27,9 +27,7 @@ return {
                 },
             },
             hooks = {
-                diff_buf_win_enter = function(_, winid)
-                    vim.wo[winid].wrap = false
-                end,
+                diff_buf_win_enter = function(_, winid) vim.wo[winid].wrap = false end,
             },
             keymaps = {
                 view = {

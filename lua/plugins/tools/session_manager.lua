@@ -3,6 +3,7 @@ return {
     {
         "parsifa1/neovim-session-manager",
         branch = "resession-backend",
+        -- dir = "~/desktop/project/neovim-session-manager",
         dependencies = { "stevearc/dressing.nvim" },
         keys = {
             { "<leader><Tab>", "<cmd>SessionManager load_session<CR><esc>", desc = "Session Picker" },
@@ -27,11 +28,7 @@ return {
         opts = {
             buf_filter = function(bufnr)
                 local buftype = vim.bo[bufnr].buftype
-                if
-                    not buftype == "help"
-                    or (buftype ~= "" and buftype ~= "acwrite")
-                    or vim.api.nvim_buf_get_name(bufnr) == ""
-                then
+                if not buftype == "help" or (buftype ~= "" and buftype ~= "acwrite") or vim.api.nvim_buf_get_name(bufnr) == "" then
                     return false
                 end
                 return true

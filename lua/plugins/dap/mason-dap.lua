@@ -5,5 +5,5 @@ return {
     dependencies = {
         "mason.nvim",
     },
-    opts = {}
+    opts = {},
 }

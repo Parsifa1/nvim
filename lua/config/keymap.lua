@@ -54,8 +54,6 @@ local keymap = {
 
 for _, mapping in ipairs(keymap) do
     local opts = { noremap = true, silent = mapping.silent ~= false }
-    if mapping.desc then
-        opts.desc = mapping.desc
-    end
+    if mapping.desc then opts.desc = mapping.desc end
     vim.keymap.set(mapping.mode, mapping[1], mapping[2], opts)
 end

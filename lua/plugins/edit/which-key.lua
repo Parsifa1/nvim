@@ -1,14 +1,10 @@
-local custom = require "custom"
+local custom = require "config.custom"
 local opts = {
     show_help = false,
     win = { border = custom.border },
     plugins = { presets = { z = true } },
-    delay = function(ctx)
-        return ctx.plugin and 0 or 200
-    end,
-    defer = function(ctx)
-        return ctx.keys == "`" or ctx.mode == "V" or ctx.mode == "<C-V>" or ctx.mode == "v"
-    end,
+    delay = function(ctx) return ctx.plugin and 0 or 200 end,
+    defer = function(ctx) return ctx.keys == "`" or ctx.mode == "V" or ctx.mode == "<C-V>" or ctx.mode == "v" end,
     replace = {
         desc = {
             { "<Plug>%((.*)%)", "%1" },
@@ -25,7 +21,7 @@ local opts = {
 
 return {
     "folke/which-key.nvim",
-    event = "User AfterLoad",
+    event = "User AfterFile",
     config = function()
         require("which-key").setup(opts)
         require("which-key").add {
@@ -37,9 +33,7 @@ return {
             { "<leader>l", group = "Latex" },
             {
                 "<leader><space>",
-                function()
-                    require("which-key").show { keys = "<leader>", loop = true, delay = "65535" }
-                end,
+                function() require("which-key").show { keys = "<leader>", loop = true, delay = "65535" } end,
                 desc = "Leader Hydra",
             },
         }

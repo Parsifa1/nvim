@@ -1,8 +1,10 @@
 local function add_textobject(mp)
     for lhs, obj in pairs(mp) do
-        vim.keymap.set({ "x", "o" }, lhs, function()
-            require("nvim-treesitter-textobjects.select").select_textobject(obj, "textobjects")
-        end)
+        vim.keymap.set(
+            { "x", "o" },
+            lhs,
+            function() require("nvim-treesitter-textobjects.select").select_textobject(obj, "textobjects") end
+        )
     end
 end
 
@@ -49,9 +51,7 @@ return {
             -- spawn all treesitter
             vim.api.nvim_create_autocmd({ "FileType" }, {
                 pattern = "*",
-                callback = function()
-                    pcall(vim.treesitter.start)
-                end,
+                callback = function() pcall(vim.treesitter.start) end,
             })
             -- add additional ts-lib
             vim.api.nvim_create_autocmd("User", {

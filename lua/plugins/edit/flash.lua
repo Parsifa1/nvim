@@ -1,12 +1,10 @@
 local function flash_set(need)
-    return function()
-        require("flash")[need]()
-    end
+    return function() require("flash")[need]() end
 end
 
 return {
     "folke/flash.nvim",
-    event = "User AfterLoad",
+    event = "User AfterFile",
     opts = {
         labels = "asdfghjklqwertyuiopzxcvbnm",
         remote = {

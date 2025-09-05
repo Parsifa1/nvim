@@ -4,9 +4,7 @@ return {
     keys = {
         {
             "<leader>F",
-            function()
-                require("conform").format()
-            end,
+            function() require("conform").format() end,
             desc = "Format Document",
             mode = { "n", "v" },
         },

@@ -51,9 +51,7 @@ local opts = function(_, opts)
         },
     }
 
-    local ivy_config = function(x)
-        return vim.tbl_extend("force", ivy, x)
-    end
+    local ivy_config = function(x) return vim.tbl_extend("force", ivy, x) end
 
     local filter = ".astro,.git,.npm,.idea,.direnv,.venv,.vscode,.cargo,.vscode-server,.husky,.orbstack,.cache,.rustup,.wakatime,.gnupg,"
         .. "node_modules,build,target,.DS_Store,*.age"

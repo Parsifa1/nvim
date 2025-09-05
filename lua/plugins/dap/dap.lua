@@ -24,9 +24,7 @@ return {
                     local file_name = vim.fn.bufname(vim.api.nvim_get_current_buf())
                     local file_name_without_path = vim.fn.fnamemodify(file_name, ":t")
                     local file_directory = vim.fn.expand "%:p:h"
-                    if file_name_without_path ~= 0 then
-                        return file_directory .. "/bin/" .. file_name_without_path:gsub("%.cpp$", "")
-                    end
+                    if file_name_without_path ~= 0 then return file_directory .. "/bin/" .. file_name_without_path:gsub("%.cpp$", "") end
                 end,
                 breakpointMode = "file",
                 cwd = "${fileDirname}",
@@ -37,66 +35,48 @@ return {
     keys = {
         {
             "<F8>",
-            function()
-                require("dap").toggle_breakpoint()
-            end,
+            function() require("dap").toggle_breakpoint() end,
             desc = "Debug: Toggle breakpoint",
         },
         {
             "<F9>",
-            function()
-                require("dap").continue()
-            end,
+            function() require("dap").continue() end,
             desc = "Debug: Continue",
         },
         {
             "<F10>",
-            function()
-                require("dap").step_into()
-            end,
+            function() require("dap").step_into() end,
             desc = "Debug: Step into",
         },
         {
             "<F11>",
-            function()
-                require("dap").step_over()
-            end,
+            function() require("dap").step_over() end,
             desc = "Debug: Step over",
         },
         {
             "<F12>",
-            function()
-                require("dap").step_out()
-            end,
+            function() require("dap").step_out() end,
             desc = "Debug: Step out",
         },
 
         {
             "<leader>db",
-            function()
-                require("dap").set_breakpoint(vim.fn.input "Breakpoint condition: ")
-            end,
+            function() require("dap").set_breakpoint(vim.fn.input "Breakpoint condition: ") end,
             desc = "Set breakpoint",
         },
         {
             "<leader>dp",
-            function()
-                require("dap").set_breakpoint(nil, nil, vim.fn.input "Log point message: ")
-            end,
+            function() require("dap").set_breakpoint(nil, nil, vim.fn.input "Log point message: ") end,
             desc = "Set log point",
         },
         {
             "<leader>dr",
-            function()
-                require("dap").repl.toggle()
-            end,
+            function() require("dap").repl.toggle() end,
             desc = "Toggle REPL",
         },
         {
             "<leader>dl",
-            function()
-                require("dap").run_last()
-            end,
+            function() require("dap").run_last() end,
             desc = "Run last",
         },
     },

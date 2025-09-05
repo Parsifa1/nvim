@@ -6,7 +6,7 @@ return {
     },
     {
         "saghen/blink.pairs",
-        event = "User AfterLoad",
+        event = "User AfterFile",
         dependencies = "saghen/blink.download",
         version = "*",
         opts = {

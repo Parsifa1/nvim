@@ -1,5 +1,5 @@
 ---@diagnostic disable: param-type-mismatch
-local custom = require "custom"
+local custom = require "config.custom"
 return {
     "stevearc/oil.nvim",
     init = function()
@@ -24,9 +24,7 @@ return {
         {
             "-",
             function()
-                if vim.bo.filetype ~= "minifiles" then
-                    require("oil").open()
-                end
+                if vim.bo.filetype ~= "minifiles" then require("oil").open() end
             end,
             desc = "Open parent directory",
         },

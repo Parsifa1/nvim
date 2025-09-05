@@ -7,16 +7,12 @@ return {
     keys = {
         {
             "<leader>gy",
-            function()
-                require("gitlinker").get_buf_range_url "n"
-            end,
+            function() require("gitlinker").get_buf_range_url "n" end,
             desc = "Create link",
         },
         {
             "<leader>gy",
-            function()
-                require("gitlinker").get_buf_range_url "v"
-            end,
+            function() require("gitlinker").get_buf_range_url "v" end,
             mode = "v",
             desc = "Create link",
         },

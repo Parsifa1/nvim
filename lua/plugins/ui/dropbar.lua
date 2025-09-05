@@ -1,5 +1,5 @@
 ---@diagnostic disable: undefined-global
-local custom = require "custom"
+local custom = require "config.custom"
 
 local custom_path = {
     get_symbols = function(buff, win, cursor)
@@ -43,12 +43,8 @@ return {
             sources = function(buf, _)
                 local sources = require "dropbar.sources"
                 local utils = require "dropbar.utils"
-                if vim.bo[buf].ft == "markdown" then
-                    return { custom_path, sources.markdown }
-                end
-                if vim.bo[buf].buftype == "terminal" then
-                    return { sources.terminal }
-                end
+                if vim.bo[buf].ft == "markdown" then return { custom_path, sources.markdown } end
+                if vim.bo[buf].buftype == "terminal" then return { sources.terminal } end
                 return {
                     custom_path,
                     utils.source.fallback {

@@ -22,9 +22,7 @@ M.tools = {
 
 function M.init()
     -- NOTE: windows have IO blocking issue with vim.lsp.enable
-    if vim.uv.os_uname().sysname == "Windows_NT" then
-        vim.lsp.enable = vim.schedule_wrap(vim.lsp.enable)
-    end
+    if vim.uv.os_uname().sysname == "Windows_NT" then vim.lsp.enable = vim.schedule_wrap(vim.lsp.enable) end
 
     -- lsp installed by system
     for _, lsp in ipairs(M.system) do

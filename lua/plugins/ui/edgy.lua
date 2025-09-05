@@ -4,7 +4,7 @@
 return {
     "folke/edgy.nvim",
     enabled = true,
-    event = "User AfterLoad",
+    event = "User AfterFile",
     opts = {
         animate = { enabled = false },
         bottom = {
@@ -13,16 +13,12 @@ return {
             {
                 ft = "help",
                 size = { height = 20 },
-                filter = function(buf)
-                    return vim.bo[buf].buftype == "help"
-                end,
+                filter = function(buf) return vim.bo[buf].buftype == "help" end,
             },
             {
                 ft = "noice",
                 size = { height = 0.4 },
-                filter = function(buf, win)
-                    return vim.api.nvim_win_get_config(win).relative == ""
-                end,
+                filter = function(buf, win) return vim.api.nvim_win_get_config(win).relative == "" end,
             },
         },
         left = {

@@ -79,9 +79,7 @@ return {
         "ravitemer/codecompanion-history.nvim",
         { "parsifa1/llm-spinner", dev = true },
     },
-    init = function()
-        vim.cmd [[cab cc CodeCompanion]]
-    end,
+    init = function() vim.cmd [[cab cc CodeCompanion]] end,
     cmd = { "CodeCompanionChat" },
     keys = {
         { "<leader>ah", "<cmd>CodeCompanionHistory<CR>", desc = "CodeCompanion Chat" },

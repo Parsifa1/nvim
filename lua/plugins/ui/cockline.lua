@@ -7,35 +7,24 @@ local config = function()
     local components = {
         icon = {
             text = function(buffer)
-                return (cm.is_picking_focus() or cm.is_picking_close()) and buffer.pick_letter .. " "
-                    or " " .. buffer.devicon.icon
+                return (cm.is_picking_focus() or cm.is_picking_close()) and buffer.pick_letter .. " " or " " .. buffer.devicon.icon
             end,
             fg = function(buffer)
                 return (cm.is_picking_focus() and get_hex("Yellow", "fg"))
                     or (cm.is_picking_close() and get_hex("Red", "fg"))
                     or buffer.devicon.color
             end,
-            italic = function()
-                return (cm.is_picking_focus() or cm.is_picking_close())
-            end,
-            bold = function()
-                return (cm.is_picking_focus() or cm.is_picking_close())
-            end,
+            italic = function() return (cm.is_picking_focus() or cm.is_picking_close()) end,
+            bold = function() return (cm.is_picking_focus() or cm.is_picking_close()) end,
         },
         unique_prefix = {
-            text = function(buffer)
-                return buffer.unique_prefix
-            end,
+            text = function(buffer) return buffer.unique_prefix end,
             fg = get_hex("Comment", "fg"),
             italic = true,
         },
         filename = {
-            text = function(buffer)
-                return buffer.filename .. " "
-            end,
-            underline = function(buffer)
-                return buffer.is_hovered and not buffer.is_focused
-            end,
+            text = function(buffer) return buffer.filename .. " " end,
+            underline = function(buffer) return buffer.is_hovered and not buffer.is_focused end,
         },
         diagnostics = {
             text = function(buffer)
@@ -48,9 +37,7 @@ local config = function()
                 end
             end,
             fg = function(buffer)
-                return (buffer.diagnostics.errors ~= 0 and errors_fg)
-                    or (buffer.diagnostics.warnings ~= 0 and warnings_fg)
-                    or nil
+                return (buffer.diagnostics.errors ~= 0 and errors_fg) or (buffer.diagnostics.warnings ~= 0 and warnings_fg) or nil
             end,
             truncation = { priority = 1 },
         },
@@ -62,9 +49,7 @@ local config = function()
                     return ""
                 end
             end,
-            on_click = function(_, _, _, _, buffer)
-                buffer:delete()
-            end,
+            on_click = function(_, _, _, _, buffer) buffer:delete() end,
         },
         space = {
             text = " ",
@@ -73,29 +58,19 @@ local config = function()
     require("cokeline").setup {
         fill_hl = "TabLineNone",
         default_hl = {
-            fg = function(buffer)
-                return buffer.is_focused and get_hex("TabLineFocus", "fg") or get_hex("Comment", "fg")
-            end,
+            fg = function(buffer) return buffer.is_focused and get_hex("TabLineFocus", "fg") or get_hex("Comment", "fg") end,
             bg = "NONE",
         },
         buffers = {
-            filter_valid = function(buffer)
-                return buffer.type ~= "terminal" and buffer.type ~= "nofile"
-            end,
+            filter_valid = function(buffer) return buffer.type ~= "terminal" and buffer.type ~= "nofile" end,
         },
         tabs = {
             placement = "right",
             components = {
                 {
-                    text = function(tab)
-                        return " " .. tab.number .. " "
-                    end,
-                    fg = function(tab)
-                        return tab.is_active and get_hex("TabLineFocus", "fg") or get_hex("Comment", "fg")
-                    end,
-                    bg = function(tab)
-                        return tab.is_active and get_hex("Todo", "bg") or get_hex("Comment", "fg")
-                    end,
+                    text = function(tab) return " " .. tab.number .. " " end,
+                    fg = function(tab) return tab.is_active and get_hex("TabLineFocus", "fg") or get_hex("Comment", "fg") end,
+                    bg = function(tab) return tab.is_active and get_hex("Todo", "bg") or get_hex("Comment", "fg") end,
                 },
             },
         },
@@ -122,9 +97,7 @@ return {
             { "[t", "<cmd>tabp<CR>", desc = "previous tab" },
             { "]t", "<cmd>tabn<CR>", desc = "next tab" },
         },
-        init = function()
-            vim.opt.tabline = "%!v:lua.cokeline.tabline()"
-        end,
+        init = function() vim.opt.tabline = "%!v:lua.cokeline.tabline()" end,
         event = { "BufReadPre", "BufNewFile" },
         dependencies = { "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons" },
         config = config,

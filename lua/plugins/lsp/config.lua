@@ -1,4 +1,4 @@
-local custom = require "custom"
+local custom = require "config.custom"
 
 local config = function()
     -- init lsp config && system lsp
@@ -6,9 +6,7 @@ local config = function()
 
     local lsp_keymap = function(bufnr)
         -- lsp-builtin
-        local set = function(keys, func, indesc)
-            vim.keymap.set("n", keys, func, { buffer = bufnr, desc = indesc })
-        end
+        local set = function(keys, func, indesc) vim.keymap.set("n", keys, func, { buffer = bufnr, desc = indesc }) end
         set("gr", "<cmd>FzfLua lsp_references<CR>", "[R]eferences")
         set("gi", "<cmd>FzfLua lsp_implementations<CR>", "[I]mplementations")
         set("gk", vim.lsp.buf.signature_help, "LSP Signature help")
@@ -50,9 +48,7 @@ local config = function()
             -- inlay hints
             local client = vim.lsp.get_client_by_id(args.data.client_id)
             if client then
-                if client:supports_method "textDocument/inlayHint" then
-                    vim.lsp.inlay_hint.enable(true)
-                end
+                if client:supports_method "textDocument/inlayHint" then vim.lsp.inlay_hint.enable(true) end
                 if vim.fn.has "nvim-0.12" == 1 and client:supports_method "textDocument/documentColor" then
                     vim.lsp.document_color.enable(true, args.buf, { style = "virtual" })
                 end
@@ -73,7 +69,9 @@ return {
     {
         "neovim/nvim-lspconfig",
         dependencies = { "mason-org/mason-lspconfig.nvim" },
-        event = { "CursorHold", "CursorHoldI" },
+        -- event = { "CursorHold", "CursorHoldI" },
+        -- event = "User AstroFile",
+        event = "User AfterFile",
         cmd = "LspInfo",
         config = config,
     },

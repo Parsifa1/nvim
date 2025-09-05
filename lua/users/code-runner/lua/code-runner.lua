@@ -31,12 +31,8 @@ local function getpos(width, height, pos, ui)
 end
 
 local function update(win, val, ui)
-    if 0 < win.width and win.width < 1 then
-        win.width = math.ceil(ui.width * win.width)
-    end
-    if 0 < win.height and win.height < 1 then
-        win.height = math.ceil(ui.height * win.height)
-    end
+    if 0 < win.width and win.width < 1 then win.width = math.ceil(ui.width * win.width) end
+    if 0 < win.height and win.height < 1 then win.height = math.ceil(ui.height * win.height) end
     if val.lines then
         for _, v in ipairs(val.lines) do
             win.width = math.max(win.width, vim.fn.strchars(v))
@@ -87,9 +83,7 @@ function FloatWin:Create(opt, val)
 end
 
 function FloatWin:Print(lines, pos)
-    if type(lines) == "string" then
-        lines = { lines }
-    end
+    if type(lines) == "string" then lines = { lines } end
     FloatWin:Create({
         width = 0,
         height = 0,

@@ -12,9 +12,7 @@ return {
             callback = function()
                 -- wait for 0.05s
                 vim.defer_fn(function()
-                    pcall(function()
-                        require("package-info").show()
-                    end)
+                    pcall(function() require("package-info").show() end)
                 end, 500)
             end,
         })

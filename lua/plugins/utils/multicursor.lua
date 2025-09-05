@@ -1,6 +1,6 @@
 return {
     "jake-stewart/multicursor.nvim",
-    event = "User AfterLoad",
+    event = "User AfterFile",
     branch = "1.0",
     config = function()
         local mc = require "multicursor-nvim"
@@ -29,12 +29,8 @@ return {
             layerSet({ "n", "x" }, "<right>", mc.nextCursor)
             -- Delete the main cursor.
             layerSet({ "n", "x" }, "<C-x>", mc.deleteCursor)
-            layerSet({ "n", "x" }, "<C-k>", function()
-                mc.lineSkipCursor(-1)
-            end)
-            layerSet({ "n", "x" }, "<C-j>", function()
-                mc.lineSkipCursor(1)
-            end)
+            layerSet({ "n", "x" }, "<C-k>", function() mc.lineSkipCursor(-1) end)
+            layerSet({ "n", "x" }, "<C-j>", function() mc.lineSkipCursor(1) end)
 
             -- Enable and clear cursors using escape.
             layerSet("n", "<esc>", function()

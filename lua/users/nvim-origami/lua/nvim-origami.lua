@@ -1,9 +1,7 @@
 local M = {}
 --------------------------------------------------------------------------------
 
-local function normal(cmdStr)
-    vim.cmd.normal { cmdStr, bang = true }
-end
+local function normal(cmdStr) vim.cmd.normal { cmdStr, bang = true } end
 
 -- `h` closes folds when at the beginning of a line.
 function M.h()
@@ -15,9 +13,7 @@ function M.h()
         local firstChar = col == 0 and true
         if onIndentOrFirstNonBlank or firstChar then
             local wasFolded = pcall(normal, "zc")
-            if not wasFolded then
-                normal "h"
-            end
+            if not wasFolded then normal "h" end
         else
             normal "h"
         end
