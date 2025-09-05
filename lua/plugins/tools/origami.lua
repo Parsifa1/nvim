@@ -1,6 +1,6 @@
 return {
   "parsifal/nvim-origami",
-  event = { "BufRead", "BufNewFile" },
+  event = "User AfterFile",
   dev = true,
   opts = {},
 }

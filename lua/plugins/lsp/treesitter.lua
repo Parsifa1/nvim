@@ -13,7 +13,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     branch = "main",
     dependencies = "nvim-treesitter/nvim-treesitter-textobjects",
-    event = { "BufNewFile", "BufRead" },
+    event = "User AfterFile",
     cmd = { "TSUpdate", "TSInstall", "TSInstallInfo" },
     build = ":TSUpdate",
     opts = {

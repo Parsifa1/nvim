@@ -24,7 +24,7 @@ return {
   {
     "parsifa1/resession.nvim",
     branch = "fix-separator",
-    event = { "BufRead", "BufNewFile" },
+    event = "User AfterFile",
     opts = {
       buf_filter = function(bufnr)
         local buftype = vim.bo[bufnr].buftype
@@ -42,7 +42,7 @@ return {
   },
   {
     "tiagovla/scope.nvim",
-    event = { "BufRead", "BufNewFile" },
+    event = "User AfterFile",
     opts = {},
   },
 }

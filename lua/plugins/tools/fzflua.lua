@@ -104,7 +104,7 @@ return {
   },
   {
     "elanmed/fzf-lua-frecency.nvim",
-    event = { "BufReadPost", "BufNewFile" },
+    event = "User AfterFile",
     opts = { cwd_only = true },
   },
 }

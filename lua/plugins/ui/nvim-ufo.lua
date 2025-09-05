@@ -43,7 +43,7 @@ end
 
 return {
   "kevinhwang91/nvim-ufo",
-  event = { "BufNewFile", "BufRead" },
+  event = "User AfterFile",
   dependencies = "kevinhwang91/promise-async",
   config = function()
     vim.keymap.set("n", "zn", require("ufo").openAllFolds, { desc = "Open all folds" })

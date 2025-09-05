@@ -142,8 +142,8 @@ local opts = {
     event = { "BufReadPost", "BufNewFile", "BufWritePost" },
     desc = "custom lazyload",
     callback = function(args)
-      if vim.b[args.buf].astrofile_checked then return end
-      vim.b[args.buf].astrofile_checked = true
+      if vim.b[args.buf].afterfile_checked then return end
+      vim.b[args.buf].afterfile_checked = true
       vim.schedule(function()
         if not vim.api.nvim_buf_is_valid(args.buf) then return end
         local current_file = vim.api.nvim_buf_get_name(args.buf)
@@ -154,16 +154,7 @@ local opts = {
           end
           skip_augroups["filetypedetect"] = false -- don't skip filetypedetect events
           utils.mkEvent "AfterFile"
-          local folder = vim.fn.fnamemodify(current_file, ":p:h")
-          if vim.fn.has "win32" == 1 then folder = ('"%s"'):format(folder) end
-          if vim.fn.executable "git" == 1 then
-            if utils.cmd({ "git", "-C", folder, "rev-parse" }, false) or utils.file_worktree() then
-              utils.mkEvent "AfterGit"
-              pcall(vim.api.nvim_del_augroup_by_name, "lazyload_forfile")
-            end
-          else
-            pcall(vim.api.nvim_del_augroup_by_name, "lazyload_forfile")
-          end
+          pcall(vim.api.nvim_del_augroup_by_name, "lazyload_forfile")
           vim.schedule(function()
             if utils.is_valid(args.buf) then
               for _, _autocmd in ipairs(vim.api.nvim_get_autocmds { event = args.event }) do
