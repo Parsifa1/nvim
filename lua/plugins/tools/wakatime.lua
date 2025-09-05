@@ -1,5 +1,5 @@
 return {
-    "wakatime/vim-wakatime",
-    enabled = true,
-    event = "User AfterFile",
+  "wakatime/vim-wakatime",
+  enabled = true,
+  event = "User AfterFile",
 }
