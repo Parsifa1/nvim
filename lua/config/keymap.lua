@@ -48,14 +48,14 @@ local keymap = {
     { "zc",               "<C-w>c",                                    mode = mode_n,   desc = "close current window" },
     { "zv",               "<C-w>v",                                    mode = mode_n,   desc = "vsplit current window" },
     { "zT",               "<C-w>T",                                    mode = mode_n,   desc = "break out into new tab" },
+    { "zH",               "<C-w>H",                                    mode = mode_n,   desc = "move window to far left" },
+    { "zL",               "<C-w>L",                                    mode = mode_n,   desc = "move window to far right" },
     { "<leader>ss",       ":%s/\\<<C-r><C-w>\\>//g<left><left>",       mode = mode_n,   desc = "global replacement", silent = false },
-    -- stylua: ignore end
+  -- stylua: ignore end
 }
 
 for _, mapping in ipairs(keymap) do
-    local opts = { noremap = true, silent = mapping.silent ~= false }
-    if mapping.desc then
-        opts.desc = mapping.desc
-    end
-    vim.keymap.set(mapping.mode, mapping[1], mapping[2], opts)
+  local opts = { noremap = true, silent = mapping.silent ~= false }
+  if mapping.desc then opts.desc = mapping.desc end
+  vim.keymap.set(mapping.mode, mapping[1], mapping[2], opts)
 end

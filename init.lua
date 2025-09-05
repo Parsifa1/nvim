@@ -1,4 +1,4 @@
 -- start up file
-require "packer"
-require "keymap"
-require "option"
+require "config.packer"
+require "config.keymap"
+require "config.option"
