@@ -7,7 +7,8 @@ local config = function()
   local components = {
     icon = {
       text = function(buffer)
-        return (cm.is_picking_focus() or cm.is_picking_close()) and buffer.pick_letter .. " " or " " .. buffer.devicon.icon
+        return (cm.is_picking_focus() or cm.is_picking_close()) and buffer.pick_letter .. " "
+          or " " .. buffer.devicon.icon
       end,
       fg = function(buffer)
         return (cm.is_picking_focus() and get_hex("Yellow", "fg"))
@@ -37,7 +38,9 @@ local config = function()
         end
       end,
       fg = function(buffer)
-        return (buffer.diagnostics.errors ~= 0 and errors_fg) or (buffer.diagnostics.warnings ~= 0 and warnings_fg) or nil
+        return (buffer.diagnostics.errors ~= 0 and errors_fg)
+          or (buffer.diagnostics.warnings ~= 0 and warnings_fg)
+          or nil
       end,
       truncation = { priority = 1 },
     },

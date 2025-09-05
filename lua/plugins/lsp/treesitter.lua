@@ -1,6 +1,10 @@
 local function add_textobject(mp)
   for lhs, obj in pairs(mp) do
-    vim.keymap.set({ "x", "o" }, lhs, function() require("nvim-treesitter-textobjects.select").select_textobject(obj, "textobjects") end)
+    vim.keymap.set(
+      { "x", "o" },
+      lhs,
+      function() require("nvim-treesitter-textobjects.select").select_textobject(obj, "textobjects") end
+    )
   end
 end
 

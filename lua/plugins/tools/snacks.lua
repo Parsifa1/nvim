@@ -32,7 +32,10 @@ local function dirs()
   end
 
   ---@type string[]
-  local ret = vim.tbl_map(map_winpath, vim.tbl_filter(filt_seen, vim.tbl_map(map_file, vim.tbl_map(vim.fs.normalize, vim.v.oldfiles))))
+  local ret = vim.tbl_map(
+    map_winpath,
+    vim.tbl_filter(filt_seen, vim.tbl_map(map_file, vim.tbl_map(vim.fs.normalize, vim.v.oldfiles)))
+  )
 
   return ret
 end

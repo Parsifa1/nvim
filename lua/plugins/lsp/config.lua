@@ -70,7 +70,6 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = { "mason-org/mason-lspconfig.nvim" },
     -- event = { "CursorHold", "CursorHoldI" },
-    -- event = "User AstroFile",
     event = "User AfterFile",
     cmd = "LspInfo",
     config = config,

@@ -24,7 +24,9 @@ return {
           local file_name = vim.fn.bufname(vim.api.nvim_get_current_buf())
           local file_name_without_path = vim.fn.fnamemodify(file_name, ":t")
           local file_directory = vim.fn.expand "%:p:h"
-          if file_name_without_path ~= 0 then return file_directory .. "/bin/" .. file_name_without_path:gsub("%.cpp$", "") end
+          if file_name_without_path ~= 0 then
+            return file_directory .. "/bin/" .. file_name_without_path:gsub("%.cpp$", "")
+          end
         end,
         breakpointMode = "file",
         cwd = "${fileDirname}",

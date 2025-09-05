@@ -128,7 +128,12 @@ local opts = {
       current_start[1] = current_start[1] + 1 -- (1, 0) indexed
       current_end[1] = current_end[1] + 1 -- (1, 0) indexed
       local cursor = vim.api.nvim_win_get_cursor(0)
-      if cursor[1] < current_start[1] or cursor[1] > current_end[1] or cursor[2] < current_start[2] or cursor[2] > current_end[2] then
+      if
+        cursor[1] < current_start[1]
+        or cursor[1] > current_end[1]
+        or cursor[2] < current_start[2]
+        or cursor[2] > current_end[2]
+      then
         ls.unlink_current()
       end
     end,
@@ -163,7 +168,10 @@ local opts = {
             if utils.is_valid(args.buf) then
               for _, _autocmd in ipairs(vim.api.nvim_get_autocmds { event = args.event }) do
                 if _autocmd.group_name and not skip_augroups[_autocmd.group_name] then
-                  vim.api.nvim_exec_autocmds(args.event, { group = _autocmd.group_name, buffer = args.buf, data = args.data })
+                  vim.api.nvim_exec_autocmds(
+                    args.event,
+                    { group = _autocmd.group_name, buffer = args.buf, data = args.data }
+                  )
                   skip_augroups[_autocmd.group_name] = true
                 end
               end
