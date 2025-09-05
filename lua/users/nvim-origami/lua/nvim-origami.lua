@@ -32,6 +32,7 @@ end
 
 --------------------------------------------------------------------------------
 function M.setup()
+  require "users.nvim-origami.lua.hlsearch"
     -- stylua: ignore
     vim.keymap.set("n", "h", function() M.h() end, { desc = "Origami h" })
     -- stylua: ignore
