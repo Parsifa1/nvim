@@ -5,6 +5,6 @@
     "incomplete-signature-doc",
     "param-type-mismatch",
     "assign-type-mismatch"
-  ]
+  ],
+  "diagnostics.globals": ["Snacks"]
 }
-
