@@ -43,6 +43,17 @@ return {
   {
     "tiagovla/scope.nvim",
     event = "User AfterFile",
-    opts = {},
+    opts = {
+      hooks = {
+        pre_tab_enter = function()
+          --INFO: delete buffer path == "health://"
+          for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
+            if vim.api.nvim_buf_get_name(bufnr):match "^health://" then
+              vim.api.nvim_buf_delete(bufnr, { force = true })
+            end
+          end
+        end,
+      },
+    },
   },
 }
