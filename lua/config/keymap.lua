@@ -10,7 +10,7 @@ local keymap = {
     { "k",                "gk",                                        mode = mode_n },
     { "<C-i>",            "<C-i>",                                     mode = mode_n }, -- 重设<C-i>
     { "<Esc>",            "<cmd>noh<CR>",                              mode = mode_n }, -- set noh
-    { "<C-x>",            require('snacks.bufdelete').delete, mode = mode_n },
+    { "<C-x>",            "<cmd>bd<CR>",                               mode = mode_n },
     { "<C-c>",            '"+y',                                       mode = mode_v },
     { "K",                ":m '<-2<cr>gv=gv",                          mode = mode_v }, -- 行移动
     { "J",                ":m '>+1<cr>gv=gv",                          mode = mode_v },
