@@ -25,24 +25,6 @@ return {
     "parsifa1/resession.nvim",
     branch = "fix-separator",
     event = "User AfterFile",
-    opts = {
-      buf_filter = function(bufnr)
-        local buftype = vim.bo[bufnr].buftype
-        if
-          not buftype == "help"
-          or (buftype ~= "" and buftype ~= "acwrite")
-          or vim.api.nvim_buf_get_name(bufnr) == ""
-        then
-          return false
-        end
-        return true
-      end,
-      extensions = { scope = {} },
-    },
-  },
-  {
-    "tiagovla/scope.nvim",
-    event = "User AfterFile",
     opts = {},
   },
 }
