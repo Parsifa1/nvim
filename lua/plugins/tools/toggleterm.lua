@@ -2,6 +2,7 @@ local custom = require "config.custom"
 
 return {
   "akinsho/toggleterm.nvim",
+  cmd = { "ToggleTerm", "TermExec" },
   opts = {
     size = function(term)
       if term.direction == "horizontal" then
@@ -30,6 +31,7 @@ return {
     return {
       { "<C-\\>" },
       { "`", "<cmd>ToggleTerm<CR>", mode = { "n", "t" }, desc = "Terminal" },
+      { "<C-`>", "<cmd>ToggleTerm direction=vertical<CR>", mode = { "n", "t" }, desc = "Terminal" },
       {
         "`",
         function()
