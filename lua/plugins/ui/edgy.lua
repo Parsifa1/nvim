@@ -22,8 +22,8 @@ return {
       },
     },
     left = {
-      { ft = "Mundo", size = { width = 0.3 } },
-      { ft = "MundoDiff", size = { width = 0.25 } },
+      { ft = "Mundo", size = { width = 0.27 } },
+      { ft = "MundoDiff", size = { width = 0.27 } },
     },
     right = {
       {

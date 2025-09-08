@@ -92,7 +92,6 @@ local opts = {
 
         return ""
       end,
-
       {
         "copilot",
         symbols = {
@@ -136,11 +135,6 @@ local opts = {
     "oil",
     "man",
     "quickfix",
-    "neo-tree",
-    "symbols-outline",
-    "aerial",
-    "fugitive",
-    "nvim-dap-ui",
     "mason",
     "mundo",
     "lazy",
@@ -150,7 +144,7 @@ local opts = {
 }
 return {
   "nvim-lualine/lualine.nvim",
-  event = { "BufRead", "BufNewFile" },
+  event = { "BufReadPre", "BufNewFile" },
   dependencies = "AndreM222/copilot-lualine",
   config = function()
     local auto = require "lualine.themes.auto"

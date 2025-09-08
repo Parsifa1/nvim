@@ -2,7 +2,6 @@
 return {
   {
     "Shatur/neovim-session-manager",
-    dependencies = { "stevearc/dressing.nvim" },
     keys = {
       { "<leader><Tab>", "<cmd>SessionManager load_session<CR><esc>", desc = "Session Picker" },
       { "<leader>i", "<cmd>SessionManager load_session<CR><esc>", desc = "Session Picker" },

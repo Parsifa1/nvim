@@ -9,7 +9,7 @@ vim.opt.viewoptions = "folds,cursor"
 vim.opt.jumpoptions = "stack"
 
 -- sessionoptions
-vim.opt.sessionoptions = "blank,buffers,curdir,help,tabpages,winsize,terminal,globals"
+vim.opt.sessionoptions = "blank,buffers,curdir,help,tabpages,winsize,terminal"
 
 -- normal setting
 vim.g.copilot_assume_mapped = true
@@ -62,6 +62,7 @@ vim.o.foldlevelstart = -1
 
 -- set statusline && mode
 vim.opt.statusline = " "
+vim.opt.cmdheight = 0
 vim.opt.laststatus = 3
 vim.opt.showcmd = false
 vim.opt.showmode = false

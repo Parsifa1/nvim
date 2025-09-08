@@ -1,6 +1,6 @@
 return {
   "folke/noice.nvim",
-  event = "User AfterFile",
+  event = { "BufReadPre", "BufNewFile" },
   dependencies = { "MunifTanjim/nui.nvim" },
   keys = {
     { "<leader>n", "<cmd>NoiceAll<CR>", desc = "open Noice" },
