@@ -141,35 +141,13 @@ local opts = {
   lazyload_forfile = {
     event = { "BufReadPost", "BufNewFile", "BufWritePost" },
     desc = "custom lazyload",
-    callback = function(args)
-      if vim.b[args.buf].afterfile_checked then return end
-      vim.b[args.buf].afterfile_checked = true
-      vim.schedule(function()
-        if not vim.api.nvim_buf_is_valid(args.buf) then return end
-        local current_file = vim.api.nvim_buf_get_name(args.buf)
-        if vim.g.vscode or not (current_file == "" or vim.bo[args.buf].buftype == "nofile") then
-          local skip_augroups = {}
-          for _, _autocmd in ipairs(vim.api.nvim_get_autocmds { event = args.event }) do
-            if _autocmd.group_name then skip_augroups[_autocmd.group_name] = true end
-          end
-          skip_augroups["filetypedetect"] = false -- don't skip filetypedetect events
-          utils.mkEvent "AfterFile"
-          pcall(vim.api.nvim_del_augroup_by_name, "lazyload_forfile")
-          vim.schedule(function()
-            if utils.is_valid(args.buf) then
-              for _, _autocmd in ipairs(vim.api.nvim_get_autocmds { event = args.event }) do
-                if _autocmd.group_name and not skip_augroups[_autocmd.group_name] then
-                  vim.api.nvim_exec_autocmds(
-                    args.event,
-                    { group = _autocmd.group_name, buffer = args.buf, data = args.data }
-                  )
-                  skip_augroups[_autocmd.group_name] = true
-                end
-              end
-            end
-          end)
-        end
-      end)
+    callback = function()
+      local function _trigger() vim.api.nvim_exec_autocmds("User", { pattern = "AfterFile" }) end
+      if vim.bo.filetype == "snacks_dashboard" then
+        vim.api.nvim_create_autocmd("BufReadPost", { once = true, callback = _trigger })
+      else
+        _trigger()
+      end
     end,
   },
   create_dir = {
