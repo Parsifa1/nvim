@@ -12,6 +12,12 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     branch = "main",
+    init = function()
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "*",
+        callback = function() pcall(vim.treesitter.start) end,
+      })
+    end,
     dependencies = "nvim-treesitter/nvim-treesitter-textobjects",
     event = "User AfterFile",
     cmd = { "TSUpdate", "TSInstall", "TSInstallInfo" },
@@ -47,12 +53,6 @@ return {
       },
     },
     config = function(_, opts)
-      require("nvim-treesitter").setup {}
-      -- spawn all treesitter
-      vim.api.nvim_create_autocmd({ "FileType" }, {
-        pattern = "*",
-        callback = function() pcall(vim.treesitter.start) end,
-      })
       -- add additional ts-lib
       vim.api.nvim_create_autocmd("User", {
         pattern = "TSUpdate",

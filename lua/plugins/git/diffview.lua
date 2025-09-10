@@ -15,10 +15,10 @@ return {
       desc = "Current History",
     },
   },
-  opts = function()
+  ---@param opts DiffviewConfig
+  opts = function(_, opts)
     local actions = require "diffview.actions"
-
-    return {
+    opts = {
       enhanced_diff_hl = true,
       show_help_hints = false,
       file_panel = {
@@ -27,7 +27,10 @@ return {
         },
       },
       hooks = {
-        diff_buf_win_enter = function(_, winid) vim.wo[winid].wrap = false end,
+        diff_buf_win_enter = function(_, winid)
+          vim.wo[winid].foldlevel = 99
+          vim.wo[winid].wrap = false
+        end,
       },
       keymaps = {
         view = {
@@ -44,5 +47,6 @@ return {
         },
       },
     }
+    return opts
   end,
 }

@@ -3,7 +3,8 @@
 local show_dotfiles = false
 -- filter dotfiles
 local filter_dot = function(fs_entry)
-  local filter_show = function() return true end
+  local always_hidden = function() return fs_entry.name == ".DS_Store" end
+  local filter_show = function() return not always_hidden() end
   local filter_hide = function() return not vim.startswith(fs_entry.name, ".") end
   -- print(show_dotfiles)
   return show_dotfiles and filter_show() or filter_hide()
@@ -180,7 +181,7 @@ return {
         ["mbt"] = { glyph = "󱩡", hl = "MiniIconsPurple" },
         ["fnl"] = { glyph = "", hl = "MiniIconsYellow" },
         ["txt"] = { glyph = "󰦪", hl = "MiniIconsYellow" },
-        ["lock"] = { glyph = "", hl = "MiniIconsGrey" },
+        -- ["lock"] = { glyph = "", hl = "MiniIconsGrey" },
         ["toml"] = { glyph = "", hl = "MiniIconsOrange" },
         ["astro"] = { glyph = "", hl = "MiniIconsOrange" },
       },
