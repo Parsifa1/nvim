@@ -54,7 +54,7 @@ local opts = function(_, opts)
   local ivy_config = function(x) return vim.tbl_extend("force", ivy, x) end
 
   local filter = ".astro,.git,.npm,.idea,.direnv,.venv,.vscode,.cargo,.vscode-server,.husky,.orbstack,.cache,.rustup,.wakatime,.gnupg,"
-    .. "node_modules,build,target,.DS_Store,*.age"
+    .. "bin,node_modules,build,target,.DS_Store,*.age"
 
   opts = {
     "default-title",
@@ -76,9 +76,9 @@ local opts = function(_, opts)
       fd_opts = "-H -I " .. "-E '{" .. filter .. "}' " .. "--type f --strip-cwd-prefix",
     },
     grep = {
-                -- stylua: ignore
-                rg_opts = "-. -n -S --no-heading --column "
-                    .. "--glob '!{" .. filter .. ",package-lock.json,pnpm-lock.yaml,yarn.lock}' ",
+      -- stylua: ignore
+      rg_opts = "-. -n -S --no-heading --column "
+          .. "--glob '!{" .. filter .. ",package-lock.json,pnpm-lock.yaml,yarn.lock}' ",
     },
     keymap = {
       fzf = {

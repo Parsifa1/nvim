@@ -1,6 +1,7 @@
 ---@type LazyPluginSpec
 return {
   "stevearc/dressing.nvim",
+  event = "User AfterFile",
   keys = {
     { "<leader><Tab>", "<cmd>SessionManager load_session<CR><esc>", desc = "Session Picker" },
     { "<leader>i", "<cmd>SessionManager load_session<CR><esc>", desc = "Session Picker" },

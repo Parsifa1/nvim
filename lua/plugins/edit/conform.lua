@@ -37,7 +37,12 @@ return {
         haskell = { "fourmolu" },
       },
       formatters = {
-        clang_format = { command = "clang-format" },
+        clang_format = {
+          command = "clang-format",
+          prepend_args = {
+            "-style=file:" .. vim.uv.os_getenv "XDG_CONFIG_HOME" .. "/.clang-format",
+          },
+        },
         prettier = {
           append_args = {
             "--config-precedence prefer-file",

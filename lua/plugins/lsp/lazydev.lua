@@ -6,7 +6,7 @@ return {
   event = "LspAttach",
   opts = {
     library = {
-      "../utils",
+      "../../utils",
       { path = "luvit-meta/library", words = { "vim%.uv", "vim%.loop" } },
       { path = "lazy.nvim", words = { "LazyPluginSpec" } },
     },

@@ -18,11 +18,10 @@ local function dirs()
   local function map_file(file)
     if not vim.uv.fs_stat(file) then return nil end
     for session_dir in pairs(session_dirs) do
-      local session_simbol = file:sub(session_dir:len() + 1, session_dir:len() + 1)
-      local git_root = get_root(file)
-      if vim.startswith(file, session_dir) and session_simbol == "/" then return session_dir end
-      if git_root and vim.startswith(file, git_root) then return git_root end
+      if vim.startswith(file, session_dir .. "/") then return session_dir end
     end
+    local git_root = get_root(file)
+    if git_root and vim.startswith(file, git_root) then return git_root end
     return vim.fs.dirname(file)
   end
 

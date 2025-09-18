@@ -20,8 +20,7 @@ local config = function()
   end
 
   vim.diagnostic.config {
-    -- virtual_text = { spacing = 4 },
-    virtual_lines = { current_line = true },
+    virtual_text = false,
     jump = { float = true },
     float = {
       border = custom.border,
@@ -84,6 +83,19 @@ return {
     event = "LspAttach",
     opts = {
       autocmd = { enabled = true },
+    },
+  },
+  {
+    "rachartier/tiny-inline-diagnostic.nvim",
+    event = "LspAttach",
+    opts = {
+      options = {
+        use_icons_from_diagnostic = true,
+        multilines = {
+          enabled = true,
+          always_show = true,
+        },
+      },
     },
   },
 }
