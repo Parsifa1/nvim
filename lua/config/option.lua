@@ -2,7 +2,7 @@ require "utils.autocmd"
 
 -- colorscheme
 vim.opt.background = "dark"
-vim.cmd("colorscheme " .. "everforest")
+vim.cmd("colorscheme " .. "evergarden")
 
 -- close curdir
 vim.opt.viewoptions = "folds,cursor"

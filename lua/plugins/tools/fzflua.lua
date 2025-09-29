@@ -23,16 +23,14 @@ local opts = function(_, opts)
     fzf_opts = { ["--layout"] = "reverse", ["--marker"] = "+" },
     header = false,
     winopts = {
-      height = 25,
+      height = 0.625,
       width = 1,
       row = 1,
       backdrop = false,
       preview = {
         scrollbar = false,
         hidden = "nohidden",
-        layout = "flex",
         horizontal = "right:50%",
-        flip_columns = 120,
       },
     },
     hls = {
@@ -60,7 +58,8 @@ local opts = function(_, opts)
     "default-title",
     winopts = {
       backdrop = false,
-      preview = { delay = 50 },
+      border = "single",
+      preview = { delay = 50, border = "single" },
     },
     frecency = ivy_config {
       fzf_opts = { ["--no-sort"] = false },

@@ -59,9 +59,8 @@ local config = function()
     },
   }
   require("cokeline").setup {
-    fill_hl = "TabLineNone",
     default_hl = {
-      fg = function(buffer) return buffer.is_focused and get_hex("TabLineFocus", "fg") or get_hex("Comment", "fg") end,
+      fg = function(buffer) return buffer.is_focused and "#FCDCDD" or "#859289" end,
       bg = "NONE",
     },
     buffers = {
@@ -72,8 +71,8 @@ local config = function()
       components = {
         {
           text = function(tab) return " " .. tab.number .. " " end,
-          fg = function(tab) return tab.is_active and get_hex("TabLineFocus", "fg") or get_hex("Comment", "fg") end,
-          bg = function(tab) return tab.is_active and get_hex("Todo", "bg") or get_hex("Comment", "fg") end,
+          fg = function(tab) return tab.is_active and "#FCDCDD" or "#859289" end,
+          bg = function(tab) return tab.is_active and "#7FBBB3" or "#859289" end,
         },
       },
     },
