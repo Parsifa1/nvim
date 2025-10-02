@@ -113,12 +113,16 @@ local function keys()
       { "<leader>tc", snack "commands", desc = "commands picker" },
       { "<leader>tl", snack "highlights", desc = "highlights picker" },
       { "<leader>N", "<cmd>lua Snacks.notifier.show_history()<CR>", desc = "buffers" },
+      { "<leader>.", function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
+      { "<leader>S", function() Snacks.scratch.select() end, desc = "Select Scratch Buffer" },
     }
   else
     return {
       { "<tab><tab>", snack "buffers", desc = "buffers" },
       { "<leader>tp", snack "lazy", desc = "lazy packers" },
       { "<leader>N", "<cmd>lua Snacks.notifier.show_history()<CR>", desc = "buffers" },
+      { "<leader>.", function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
+      { "<leader>S", function() Snacks.scratch.select() end, desc = "Select Scratch Buffer" },
     }
   end
 end
@@ -133,7 +137,7 @@ return {
     notifier = {},
     quickfile = {},
     words = { debounce = 100 },
-    styles = { notification_history = { backdrop = false } },
+    styles = { notification_history = { backdrop = false }, scratch = { backdrop = false } },
     dashboard = {
       preset = {
         keys = {

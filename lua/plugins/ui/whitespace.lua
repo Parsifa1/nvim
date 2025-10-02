@@ -5,7 +5,7 @@ return {
   event = "ModeChanged *:[vV\22]",
   opts = function()
     local v_bg = vim.api.nvim_get_hl(0, { name = "Visual" }).bg
-    local g_fg = vim.api.nvim_get_hl(0, { name = "Grey" }).fg
+    local g_fg = vim.api.nvim_get_hl(0, { name = "Comment", link = false }).fg
     local bg = string.format("#%06x", v_bg)
     local fg = string.format("#%06x", g_fg)
     return { highlight = { fg = fg, bg = bg } }
