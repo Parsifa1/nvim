@@ -1,53 +1,42 @@
----@diagnostic disable: undefined-global, unused-local
-local iter = s(
+local s = require("luasnip").snippet
+local t = require("luasnip").text_node
+local f = require("luasnip").function_node
+local fmt = require("luasnip.extras.fmt").fmt
+local treesitter_postfix = require("luasnip.extras.treesitter_postfix").treesitter_postfix
+local expr_query = [[
+            [
+              (if_statement)
+              (call_expression)
+              (identifier)
+              (declaration)
+              (type_identifier)
+              (template_function)
+              (subscript_expression)
+              (field_expression)
+              (user_defined_literal)
+            ] @prefix
+]]
+local cout = treesitter_postfix(
   {
-    trig = "iter",
-    dsrc = "Iterate range (C++11)",
-  },
-  fmta(
-    [[
-for (6auto_type9 6var9 : 6container9) {
-    6ends9
-}
-]],
-    {
-      -- TODO: Query var type
-      auto_type = i(1, "auto"),
-      container = i(3, "range"),
-      var = i(2, "item"),
-      ends = i(0),
+    trig = ".cout",
+    matchTSNode = {
+      query = expr_query,
+      query_lang = "cpp",
+      select = "longest",
     },
+    reparseBuffer = "live",
+    snippetType = "autosnippet",
+  },
+  fmt(
+    [[
+          std::cout << {expr} << std::endl;
+      ]],
     {
-      delimiters = "69",
+      expr = f(function(_, parent) return parent.snippet.env.LS_TSMATCH end, {}),
     }
   )
 )
 
-local itit = s(
-  {
-    trig = "itit",
-    dsrc = "Iterate using begin/end member functions",
-  },
-  fmta(
-    [[
-for (6iter_type9 6iter9 = 6container9.begin(); 6copy_iter9 != 6copy_container9.end(); ++6copy_iter9) {
-6ends9
-    }
-    ]],
-    {
-      -- TODO: Query var type
-      iter_type = i(2, "auto"),
-      iter = i(3, "begin"),
-      container = i(1, "container"),
-      copy_iter = f(text_same_with, 3),
-      copy_container = f(text_same_with, 1),
-      ends = i(0),
-    },
-    {
-      delimiters = "69",
-    }
-  )
-)
 local endl = s("endd", { t "'\\n'" })
 local chmax = s("chmax", { t "inline bool chmax(auto &a, auto b) { return (a < b) ? a = b, true : false; }" })
 local chmin = s("chmin", { t "inline bool chmin(auto &a, auto b) { return (a > b) ? a = b, true : false; }" })
@@ -86,5 +75,6 @@ return {
   chmin,
 }, {
   endl,
+  cout,
   acm,
 }

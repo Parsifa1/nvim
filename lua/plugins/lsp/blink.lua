@@ -60,6 +60,7 @@ local opts = {
     end,
     per_filetype = {
       lua = { inherit_defaults = true, "lazydev" },
+      markdown = { "lsp", "path", "buffer" },
       ["grug-far"] = {},
     },
     providers = {
