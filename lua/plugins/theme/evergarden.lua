@@ -7,5 +7,10 @@ return {
       variant = "fall", -- 'winter'|'fall'|'spring'|'summer'
       accent = "green",
     },
+    overrides = {
+      DiffAdd = { bg = "#3c4841" },
+      DiffChange = { bg = "#384b55" },
+      DiffDelete = { bg = "#493b40" },
+    },
   },
 }
