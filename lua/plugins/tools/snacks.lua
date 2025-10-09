@@ -106,7 +106,6 @@ local function keys()
     return {
       { "<leader>w", snack "grep", desc = "live grep" },
       { "<leader>f", snack "smart", desc = "find files" },
-      { "<tab><tab>", snack "buffers", desc = "buffers" },
       { "<leader>th", snack "help", desc = "help picker" },
       { "<leader>r", snack "recent", desc = "recent files" },
       { "<leader>tk", snack "keymaps", desc = "keymaps picker" },
@@ -118,7 +117,6 @@ local function keys()
     }
   else
     return {
-      { "<tab><tab>", snack "buffers", desc = "buffers" },
       { "<leader>tp", snack "lazy", desc = "lazy packers" },
       { "<leader>N", "<cmd>lua Snacks.notifier.show_history()<CR>", desc = "buffers" },
       { "<leader>.", function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
@@ -192,26 +190,12 @@ return {
         preset = function(type)
           if type == "smart" or type == "files" or type == "recent" then
             return "ivy"
-          elseif type == "buffers" then
-            return "dropdown"
           else
             return "default"
           end
         end,
         layout = {
           backdrop = false,
-        },
-      },
-      sources = {
-        buffers = {
-          on_show = function() vim.cmd.stopinsert() end,
-          win = {
-            input = {
-              keys = {
-                ["dd"] = { "bufdelete", mode = { "n" } },
-              },
-            },
-          },
         },
       },
     },

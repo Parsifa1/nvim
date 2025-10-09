@@ -3,7 +3,7 @@ return {
   "zbirenbaum/copilot.lua",
   cmd = "Copilot",
   build = ":Copilot auth",
-  event = "InsertEnter",
+  event = { "InsertEnter", "User AfterFile" },
   opts = {
     suggestion = {
       enabled = true,

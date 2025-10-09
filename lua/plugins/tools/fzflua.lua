@@ -64,6 +64,16 @@ local opts = function(_, opts)
     frecency = ivy_config {
       fzf_opts = { ["--no-sort"] = false },
     },
+    buffers = {
+      winopts = {
+        width = 0.6,
+        height = 0.8,
+        preview = {
+          layout = "vertical",
+          vertical = "up:40%",
+        },
+      },
+    },
     global = ivy_config {
       git_icons = false,
       pickers = {
