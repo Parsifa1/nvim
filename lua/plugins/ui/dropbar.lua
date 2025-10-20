@@ -29,6 +29,7 @@ return {
           or vim.wo[win].winbar ~= ""
           or vim.bo[buf].ft == "codecompanion"
           or vim.bo[buf].ft == "help"
+          or vim.bo[buf].ft == ""
         then
           return false
         end

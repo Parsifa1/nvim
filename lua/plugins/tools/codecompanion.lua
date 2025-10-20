@@ -44,10 +44,10 @@ local opts = function(_, opts)
                 "get_changed_files",
                 "insert_edit_into_file",
                 -- from McpHub
-                "neovim__move_item",
-                "neovim__execute_lua",
-                "neovim__delete_items",
-                "neovim__list_directory",
+                -- "neovim__move_item",
+                -- "neovim__execute_lua",
+                -- "neovim__delete_items",
+                -- "neovim__list_directory",
               },
             },
           },
@@ -118,6 +118,7 @@ end
 return {
   "olimorris/codecompanion.nvim",
   dependencies = {
+    "ravitemer/mcphub.nvim",
     "ravitemer/codecompanion-history.nvim",
     { "parsifa1/llm-spinner", dev = true },
   },

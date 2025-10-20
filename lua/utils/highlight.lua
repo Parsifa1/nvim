@@ -19,6 +19,9 @@ set_hl(0, "CursorLineNr", { bg = "NONE" })
 -- winbar
 set_hl(0, "WinBar", { bg = "NONE" })
 set_hl(0, "WinBarNC", { bg = "NONE" })
+-- diff
+set_hl(0, "diffAdded", { link = "DiffAdd" })
+set_hl(0, "diffRemoved", { link = "DiffDelete" })
 -- diagnostic
 vim.cmd.highlight "ErrorMsg cterm=bold gui=bold"
 set_hl(0, "WinSeparator", { fg = "#878787" })
