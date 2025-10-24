@@ -80,8 +80,8 @@ local opts = function(_, opts)
         end,
         gemini = function()
           return extend("gemini", {
-            env = { api_key = "cmd:cat ~/.config/secret/.gemini.key" },
-            schema = { model = { default = "gemini-2.5-flash-preview-04-17" } },
+            env = { api_key = "cmd:cat ~/.config/sops-nix/secrets/gemini-key" },
+            schema = { model = { default = "gemini-2.5-flash" } },
           })
         end,
       },
