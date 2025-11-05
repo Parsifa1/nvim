@@ -1,8 +1,9 @@
 local config = function()
   local cm = require "cokeline.mappings"
   local get_hex = require("cokeline.hlgroups").get_hl_attr
-  local errors_fg = get_hex("DiagnosticError", "fg")
-  local warnings_fg = get_hex("DiagnosticWarn", "fg")
+  local get_hl_group = require("config.custom").get_hl_group
+  local errors_fg = get_hex(get_hl_group "DiagnosticError", "fg")
+  local warnings_fg = get_hex(get_hl_group "DiagnosticWarn", "fg")
   ---@type Component[]
   local components = {
     icon = {

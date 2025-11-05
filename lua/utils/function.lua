@@ -74,4 +74,10 @@ function M.extend_tbl(default, opts)
   return default and vim.tbl_deep_extend("force", default, opts) or opts
 end
 
+function M.get_hl_group(name)
+  local hl = vim.api.nvim_get_hl(0, { name = name })
+  if hl.link then return M.get_hl_group(hl.link) end
+  return name
+end
+
 return M
