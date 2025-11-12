@@ -38,7 +38,7 @@ vim.opt.splitright = true -- open new horizontal splits right
 vim.opt.termguicolors = true -- enabl 24-bit rgb color in the tui
 vim.opt.list = false
 vim.opt.signcolumn = "yes"
--- vim.wo.wrap = true
+vim.opt.wrap = false
 vim.opt.fillchars = { eob = " " } -- close eob fillchars
 
 -- searching

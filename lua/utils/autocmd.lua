@@ -11,19 +11,10 @@ local opts = {
     command = "set formatoptions-=ro",
   },
   auto_wrap = {
-    event = "BufEnter",
-    pattern = "*",
+    event = "FileType",
     desc = "set wrap only for markdown, typst and codecompanion",
-    callback = function()
-      local ft = { "markdown", "typst", "codecompanion" }
-      for _, v in ipairs(ft) do
-        if vim.bo.filetype == v then
-          vim.wo.wrap = true
-        else
-          vim.wo.wrap = false
-        end
-      end
-    end,
+    pattern = { "markdown", "typst", "codecompanion" },
+    command = "setlocal wrap",
   },
   highlight_yank = {
     event = "TextYankPost",
