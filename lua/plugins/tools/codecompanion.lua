@@ -75,13 +75,13 @@ local opts = function(_, opts)
       http = {
         copilot = function()
           return extend("copilot", {
-            schema = { model = { default = "claude-sonnet-4" } },
+            schema = { model = { default = "gemini-3-pro-preview" } },
           })
         end,
         gemini = function()
           return extend("gemini", {
             env = { api_key = "cmd:cat ~/.config/sops-nix/secrets/gemini-key" },
-            schema = { model = { default = "gemini-2.5-flash" } },
+            schema = { model = { default = "gemini-2.5-pro" } },
           })
         end,
       },
