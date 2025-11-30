@@ -1,5 +1,6 @@
 return {
   "xeluxee/competitest.nvim",
+  enabled = false,
   dependencies = "MunifTanjim/nui.nvim",
   ft = { "cpp", "c", "rust", "python" },
   opts = {

@@ -7,5 +7,5 @@ return {
   { import = "plugins.theme" },
   { import = "plugins.tools" },
   { import = "plugins.ui" },
-  { import = "plugins.utils" },
+  -- { import = "plugins.utils" },
 }

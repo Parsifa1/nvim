@@ -1,6 +1,7 @@
 ---@diagnostic disable: undefined-global
 return {
   "EdenEast/nightfox.nvim",
+  enabled = false,
   priority = 100,
   config = function()
     require("nightfox").setup {

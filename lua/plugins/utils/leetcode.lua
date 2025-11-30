@@ -1,7 +1,7 @@
 return {
   "kawre/leetcode.nvim",
+  enabled = false,
   dependencies = { "nvim-treesitter/nvim-treesitter" },
-  -- enabled = false,
   build = ":TSUpdate html",
   cmd = "Leet",
   opts = {

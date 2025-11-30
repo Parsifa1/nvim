@@ -6,7 +6,7 @@ return {
   "parsifa1/typescript-tools.nvim",
   -- dir = "~/Project/typescript-tools.nvim",
   ft = ft,
-  -- enabled = false,
+  enabled = false,
   dependencies = "nvim-lua/plenary.nvim",
   opts = {
     filetypes = ft,

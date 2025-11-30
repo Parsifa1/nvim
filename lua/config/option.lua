@@ -59,6 +59,8 @@ vim.o.foldenable = true
 vim.o.foldcolumn = "1"
 vim.opt.foldlevel = 99
 vim.o.foldlevelstart = -1
+-- treat '-' as part of a word
+vim.o.iskeyword = "@,48-57,_,192-255,-"
 
 -- set statusline && mode
 vim.opt.statusline = " "

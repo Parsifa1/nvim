@@ -36,7 +36,7 @@ return {
     default_file_explorer = true,
     view_options = {
       show_hidden = true,
-      is_always_hidden = function(name, _) return name == ".DS_Store" end,
+      is_always_hidden = function(name, _) return name == ".DS_Store" or name == ".localized" end,
     },
     skip_confirm_for_simple_edits = true,
     float = {
