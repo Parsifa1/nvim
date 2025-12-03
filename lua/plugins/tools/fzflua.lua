@@ -28,6 +28,7 @@ local opts = function(_, opts)
       row = 1,
       backdrop = false,
       preview = {
+        layout = "flex",
         scrollbar = false,
         hidden = "nohidden",
         horizontal = "right:50%",
@@ -52,10 +53,11 @@ local opts = function(_, opts)
   local ivy_config = function(x) return vim.tbl_extend("force", ivy, x) end
 
   local filter = ".astro,.git,.npm,.idea,.direnv,.venv,.vscode,.cargo,.vscode-server,.husky,.orbstack,.cache,.rustup,.wakatime,.gnupg,"
-    .. "bin,node_modules,build,target,.DS_Store,*.age"
+    .. "bin,node_modules,build,target,.env,.DS_Store,*.age"
 
   opts = {
     "default-title",
+    fzf_opts = { ["--gutter"] = " " },
     winopts = {
       backdrop = false,
       border = "single",
@@ -82,6 +84,9 @@ local opts = function(_, opts)
         { "lsp_document_symbols", desc = "Symbols (buf)", prefix = "@" },
         { "lsp_workspace_symbols", desc = "Symbols (project)", prefix = "#" },
       },
+      fd_opts = "-H -I " .. "-E '{" .. filter .. "}' " .. "--type f --strip-cwd-prefix",
+    },
+    files = ivy_config {
       fd_opts = "-H -I " .. "-E '{" .. filter .. "}' " .. "--type f --strip-cwd-prefix",
     },
     grep = {
@@ -114,6 +119,9 @@ return {
   {
     "elanmed/fzf-lua-frecency.nvim",
     event = "User AfterFile",
-    opts = { cwd_only = true },
+    opts = {
+      cwd_only = true,
+      display_score = false,
+    },
   },
 }
