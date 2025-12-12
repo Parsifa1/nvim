@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-parameter
 return {
   "stevearc/conform.nvim",
   cmd = "ConformInfo",
@@ -52,12 +53,7 @@ return {
           },
         },
         -- dprint = {
-        --     command = "/Users/parsifa1/Project/dprint/target/release/dprint",
-        --     append_args = {
-        --         "--config-precedence=prefer-file",
-        --         "--config",
-        --         "/Users/parsifa1/Project/blog/.dprint.json",
-        --     },
+        --   command = "/Users/parsifa1/Project/dprint/target/debug/dprint",
         -- },
       },
     }
