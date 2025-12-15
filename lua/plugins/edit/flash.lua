@@ -1,5 +1,6 @@
-local function flash_set(need)
-  return function() require("flash")[need]() end
+local function flash_set(need, ...)
+  local args = { ... }
+  return function() require("flash")[need](unpack(args)) end
 end
 
 return {
@@ -20,7 +21,7 @@ return {
 
   keys = {
     { "s", mode = { "n", "x", "o" }, flash_set "jump", desc = "Flash" },
-    { "S", mode = { "n", "x", "o" }, flash_set "treesitter", desc = "Flash Treesitter" },
+    { "S", mode = { "n", "x", "o" }, flash_set("treesitter", { actions = { ["<space>"] = "next" } }) },
     { "r", mode = "o", flash_set "remote", desc = "Remote Flash" },
     { "R", mode = { "o", "x" }, flash_set "treesitter_search", desc = "Treesitter Search" },
   },
