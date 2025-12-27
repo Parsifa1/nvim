@@ -169,6 +169,7 @@ return {
       setup = function(ctx)
         if vim.fn.exists ":NoMatchParen" ~= 0 then vim.cmd [[NoMatchParen]] end
         require("snacks").util.wo(0, { foldmethod = "manual", conceallevel = 0 })
+        require("lazy.core.handler").disable(require("lazy.core.config").plugins["blink.pairs"])
         vim.b.minianimate_disable = true
         vim.schedule(function()
           if vim.api.nvim_buf_is_valid(ctx.buf) then vim.bo[ctx.buf].syntax = ctx.ft end
