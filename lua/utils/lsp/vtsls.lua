@@ -28,5 +28,5 @@ return {
       },
     },
   },
-  filetypes = { "vue" },
+  filetypes = { "vue", "javascriptreact", "typescriptreact", "javascript", "typescript" },
 }
