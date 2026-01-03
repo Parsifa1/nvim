@@ -50,7 +50,7 @@ local opts = {
         if vim.tbl_contains({ "comment", "line_comment", "block_comment" }, node:type()) then
           return { "buffer" }
         elseif string.match(node:type(), "^string") then
-          return { "lsp", "path" }
+          return { "lsp", "path", "snippets" }
         else
           return default
         end
@@ -60,7 +60,6 @@ local opts = {
     end,
     per_filetype = {
       lua = { inherit_defaults = true, "lazydev" },
-      markdown = { "lsp", "path", "buffer" },
       ["grug-far"] = {},
     },
     providers = {

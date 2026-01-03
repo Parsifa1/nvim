@@ -13,7 +13,7 @@ local opts = {
   auto_wrap = {
     event = "FileType",
     desc = "set wrap only for markdown, typst and codecompanion",
-    pattern = { "markdown", "typst", "codecompanion" },
+    pattern = { "markdown", "markdown.mdx", "typst", "codecompanion" },
     command = "setlocal wrap",
   },
   highlight_yank = {

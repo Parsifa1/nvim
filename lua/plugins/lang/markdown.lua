@@ -9,9 +9,9 @@ return {
   },
   {
     "MeanderingProgrammer/render-markdown.nvim",
-    ft = { "markdown", "codecompanion" },
+    ft = { "markdown", "markdown.mdx", "codecompanion" },
     opts = {
-      file_types = { "markdown", "codecompanion" },
+      file_types = { "markdown", "codecompanion", "markdown.mdx" },
     },
   },
   {

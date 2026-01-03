@@ -161,6 +161,7 @@ return {
       extension = {
         ["kk"] = { glyph = "󰰋", hl = "MiniIconsAzure" },
         ["age"] = { glyph = "󰦝", hl = "MiniIconsCyan" },
+        ["mdx"] = { glyph = "󰍔", hl = "MiniIconsGrey" },
       },
       filetype = {
         ["moonbit"] = { glyph = "󱩡", hl = "MiniIconsPurple" },

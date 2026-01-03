@@ -34,7 +34,6 @@ return {
         "comment",
         "yaml",
         "json",
-        "jsonc",
         "latex",
         "markdown",
         "fish",
@@ -93,7 +92,11 @@ return {
   },
   {
     "windwp/nvim-ts-autotag",
-    ft = { "astro", "html", "javascriptreact", "typescriptreact", "vue" },
-    opts = true,
+    ft = { "astro", "html", "javascriptreact", "typescriptreact", "vue", "markdown.mdx" },
+    opts = {
+      aliases = {
+        ["markdown.mdx"] = "html",
+      },
+    },
   },
 }

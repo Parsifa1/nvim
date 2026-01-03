@@ -4,6 +4,7 @@ local mason_path = vim.fn.stdpath "data" .. "/mason/packages/"
 return {
   settings = {
     vtsls = {
+      autoUseWorkspaceTsdk = true,
       tsserver = {
         globalPlugins = {
           {
@@ -13,9 +14,9 @@ return {
             languages = { "vue" },
           },
           {
-            name = "@mdxjs/typescript-plugin",
-            location = mason_path .. "mdx-analyzer" .. "/node_modules/@mdx/language-server",
-            languages = { "markdown.mdx" },
+            name = "@mdx-js/typescript-plugin",
+            location = mason_path .. "mdx-analyzer" .. "/node_modules/@mdx-js/language-server",
+            languages = { "mdx" },
           },
         },
       },
