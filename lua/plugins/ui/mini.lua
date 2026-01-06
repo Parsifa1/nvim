@@ -76,7 +76,12 @@ end
 
 local command = function()
   if not MiniFiles.close() then
-    MiniFiles.open(vim.api.nvim_buf_get_name(0))
+    local path = vim.api.nvim_buf_get_name(0)
+    if vim.uv.fs_stat(path) then
+      MiniFiles.open(path)
+    else
+      MiniFiles.open()
+    end
     MiniFiles.reveal_cwd()
   end
 end

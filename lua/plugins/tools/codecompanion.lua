@@ -71,6 +71,14 @@ local opts = function(_, opts)
         intro_message = "Welcome to CodeCompanion ✨!",
       },
     },
+    ruls = {
+      opts = {
+        chat = {
+          enabled = true,
+          default_rules = "default",
+        },
+      },
+    },
     adapters = {
       http = {
         copilot = function()
