@@ -53,11 +53,11 @@ return {
       if not winid then vim.lsp.buf.hover() end
     end)
 
-    local ftMap = { vim = "indent", snacks_dashboard = "" }
+    local ftMap = { vim = "indent", javascriptreact = "treesitter", typescriptreact = "treesitter" }
     require("ufo").setup {
       close_fold_kinds_for_ft = { default = { "imports" } },
       fold_virt_text_handler = handler,
-      provider_selector = function(_, filetype, _) return ftMap[filetype] or customizeSelector end,
+      provider_selector = function(_, ft, _) return ftMap[ft] or customizeSelector end,
     }
   end,
 }
