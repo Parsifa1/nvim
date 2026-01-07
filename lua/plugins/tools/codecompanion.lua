@@ -66,7 +66,7 @@ local opts = function(_, opts)
       chat = {
         window = {
           width = 0.35,
-          opts = { number = false, numberwidth = 1, foldcolumn = "0" },
+          opts = { number = false, numberwidth = 1, foldcolumn = "0", signcolumn = "no" },
         },
         intro_message = "Welcome to CodeCompanion ✨!",
       },
