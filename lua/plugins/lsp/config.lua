@@ -86,6 +86,15 @@ return {
     },
   },
   {
+    "jmbuhr/otter.nvim",
+    event = "User AfterFile",
+    keys = {
+      { "<leader>co", "<cmd>lua require('otter').activate()<CR>", desc = "[Code] for [O]tter" },
+    },
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    opts = {},
+  },
+  {
     "rachartier/tiny-inline-diagnostic.nvim",
     event = "LspAttach",
     opts = {

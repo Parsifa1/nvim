@@ -39,7 +39,7 @@ vim.opt.termguicolors = true -- enabl 24-bit rgb color in the tui
 vim.opt.list = false
 vim.opt.signcolumn = "yes"
 vim.opt.wrap = false
-vim.opt.fillchars = { eob = " " } -- close eob fillchars
+vim.opt.fillchars = { eob = " ", diff = "░" } -- close eob fillchars
 
 -- searching
 vim.opt.incsearch = true -- search as characters are entered
@@ -83,6 +83,7 @@ vim.g["loaded_ruby_provider"] = 0
 vim.g.clipboard = "osc52"
 if vim.g.neovide then
   vim.g.clipboard = false
+  vim.opt.fillchars:append { diff = "╱" }
   vim.g.neovide_title_background_color =
     string.format("%x", vim.api.nvim_get_hl(0, { id = vim.api.nvim_get_hl_id_by_name "Normal" }).bg)
   vim.g.neovide_floating_shadow = false
