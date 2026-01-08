@@ -71,7 +71,7 @@ local opts = function(_, opts)
         intro_message = "Welcome to CodeCompanion ✨!",
       },
     },
-    ruls = {
+    rules = {
       opts = {
         chat = {
           enabled = true,
@@ -83,7 +83,7 @@ local opts = function(_, opts)
       http = {
         copilot = function()
           return extend("copilot", {
-            schema = { model = { default = "gemini-3-pro-preview" } },
+            schema = { model = { default = "claude-sonnet-4.5" } },
           })
         end,
         gemini = function()
