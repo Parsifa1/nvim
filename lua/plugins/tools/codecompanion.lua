@@ -131,7 +131,7 @@ return {
     { "parsifa1/llm-spinner", dev = true },
   },
   init = function() vim.cmd [[cab cc CodeCompanion]] end,
-  cmd = { "CodeCompanionChat" },
+  cmd = { "CodeCompanionChat", "CodeCompanionActions" },
   keys = {
     { "<leader>ah", "<cmd>CodeCompanionHistory<CR>", desc = "CodeCompanion Chat" },
     { "<leader>ac", "<cmd>CodeCompanionActions<CR>", desc = "CodeCompanion Chat" },
