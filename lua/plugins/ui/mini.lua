@@ -165,6 +165,7 @@ return {
     opts = {
       extension = {
         ["kk"] = { glyph = "󰰋", hl = "MiniIconsAzure" },
+        ["db"] = { glyph = "󰆼", hl = "MiniIconsYellow" },
         ["age"] = { glyph = "󰦝", hl = "MiniIconsCyan" },
         ["mdx"] = { glyph = "󰍔", hl = "MiniIconsGrey" },
       },

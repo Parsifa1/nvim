@@ -51,6 +51,7 @@ return {
         file_panel = {
           { "n", "q", actions.close, { desc = "Close diffview" } },
           { "n", "<Esc>", actions.close, { desc = "Close diffview" } },
+          { "n", "<cr>", actions.select_entry, { desc = "Open the diff" } },
         },
         file_history_panel = {
           { "n", "q", actions.close, { desc = "Close diffview" } },
