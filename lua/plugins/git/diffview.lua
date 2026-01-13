@@ -26,6 +26,9 @@ return {
           width = math.floor(vim.go.columns * 0.2) > 25 and math.floor(vim.go.columns * 0.2) or 25,
         },
       },
+      view = {
+        merge_tool = { layout = "diff3_mixed" },
+      },
       hooks = {
         diff_buf_win_enter = function(_, winid)
           vim.wo[winid].foldlevel = 99
@@ -33,9 +36,17 @@ return {
         end,
       },
       keymaps = {
+        disable_defaults = true,
         view = {
           { "n", "q", actions.close, { desc = "Close diffview" } },
           { "n", "<Esc>", actions.close, { desc = "Close diffview" } },
+          { "n", "[c", actions.prev_conflict, { desc = "Prev Conflict" } },
+          { "n", "]c", actions.next_conflict, { desc = "Next Conflict" } },
+          { "n", "ca", actions.conflict_choose "all", { desc = "Choose ALL" } },
+          { "n", "co", actions.conflict_choose "ours", { desc = "Choose OURS" } },
+          { "n", "cb", actions.conflict_choose "base", { desc = "Choose BASE" } },
+          { "n", "ct", actions.conflict_choose "theirs", { desc = "Choose THEIRS" } },
+          { "n", "c0", actions.conflict_choose "none", { desc = "Choose NONE" } },
         },
         file_panel = {
           { "n", "q", actions.close, { desc = "Close diffview" } },
