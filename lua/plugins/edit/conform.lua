@@ -52,9 +52,6 @@ return {
             "--bracket-same-line",
           },
         },
-        -- dprint = {
-        --   command = "/Users/parsifa1/Project/dprint/target/debug/dprint",
-        -- },
       },
     }
     vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"

@@ -8,6 +8,7 @@ local keymap = {
     { "n",                "nzzzv",                                     mode = mode_n }, -- 搜索保持光标
     { "j",                "gj",                                        mode = mode_n }, -- 软换行
     { "k",                "gk",                                        mode = mode_n },
+    { "gT",               "<cmd>tabnew<CR>",                           mode = mode_n },
     { "<C-i>",            "<C-i>",                                     mode = mode_n }, -- 重设<C-i>
     { "<Esc>",            "<cmd>noh<CR>",                              mode = mode_n }, -- set noh
     { "<C-x>",            "<cmd>lua Snacks.bufdelete()<CR>",           mode = mode_n },
