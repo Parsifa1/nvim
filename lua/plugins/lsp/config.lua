@@ -3,16 +3,15 @@ local custom = require "config.custom"
 local config = function()
   -- init lsp config && system lsp
   require("utils.lspstart").init()
-
   local lsp_keymap = function(bufnr)
     -- lsp-builtin
     local set = function(keys, func, indesc) vim.keymap.set("n", keys, func, { buffer = bufnr, desc = indesc }) end
-    set("gr", "<cmd>FzfLua lsp_references<CR>", "[R]eferences")
+    set("gr", "<cmd>FzfLua lsp_references unique_line_items=true<CR>", "[R]eferences")
     set("gi", "<cmd>FzfLua lsp_implementations<CR>", "[I]mplementations")
     set("gk", vim.lsp.buf.signature_help, "LSP Signature help")
     set("gt", "<cmd>FzfLua lsp_typedefs<CR>", "LSP [T]ype definition")
     set("gD", "<cmd>FzfLua lsp_document_symbols<CR>", "[D]oc symbols")
-    set("gd", "<cmd>lua require('fzf-lua').lsp_definitions{ jump1 = true }<CR>", "definition")
+    set("gd", "<cmd>FzfLua lsp_definitions unique_line_items=true<CR>", "[D]efinition")
     set("<leader>ca", require("fastaction").code_action, "[C]ode [A]ction")
     set("<leader>cn", vim.lsp.buf.rename, "[C]ode Item Re[N]ame")
     set("<leader>ct", vim.lsp.buf.type_definition, "[C]ode [T]ype definition")
