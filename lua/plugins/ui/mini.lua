@@ -174,6 +174,7 @@ return {
       },
       file = {
         [".tasks"] = { glyph = "", hl = "MiniIconsGrey" },
+        [".envrc"] = { glyph = "", hl = "MiniIconsGreen" },
       },
     },
     init = function()
