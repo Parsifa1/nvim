@@ -168,6 +168,7 @@ return {
         ["db"] = { glyph = "󰆼", hl = "MiniIconsYellow" },
         ["age"] = { glyph = "󰦝", hl = "MiniIconsCyan" },
         ["mdx"] = { glyph = "󰍔", hl = "MiniIconsGrey" },
+        ["ico"] = { glyph = "󰈟", hl = "MiniIconsYellow" },
       },
       filetype = {
         ["moonbit"] = { glyph = "󱩡", hl = "MiniIconsPurple" },
@@ -175,6 +176,7 @@ return {
       file = {
         [".tasks"] = { glyph = "", hl = "MiniIconsGrey" },
         [".envrc"] = { glyph = "", hl = "MiniIconsGreen" },
+        ["_headers"] = { glyph = "󰌷", hl = "MiniIconsOrange" },
       },
     },
     init = function()

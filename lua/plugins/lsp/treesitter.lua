@@ -13,15 +13,21 @@ return {
     "nvim-treesitter/nvim-treesitter",
     init = function()
       vim.api.nvim_create_autocmd("FileType", {
-        pattern = "*",
-        callback = function()
-          pcall(vim.treesitter.start)
-          vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        desc = "Enable treesitter-based features for supported filetypes",
+        callback = function(args)
+          local bufnr = args.buf
+          local filetype = args.match
+          local lang = vim.treesitter.language.get_lang(filetype)
+          if lang and vim.treesitter.language.add(lang) then
+            -- Highlighting
+            vim.treesitter.start(bufnr, lang)
+          end
         end,
       })
     end,
     dependencies = "nvim-treesitter/nvim-treesitter-textobjects",
-    event = "User AfterFile",
+    event = { "BufReadPost", "BufNewFile" },
+    -- event = "User AfterFile",
     cmd = { "TSUpdate", "TSInstall", "TSInstallInfo" },
     build = ":TSUpdate",
     opts = {
