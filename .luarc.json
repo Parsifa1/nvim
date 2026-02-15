@@ -4,7 +4,8 @@
     "missing-fields",
     "incomplete-signature-doc",
     "param-type-mismatch",
-    "assign-type-mismatch"
+    "assign-type-mismatch",
+    "undefined-doc-name"
   ],
-  "diagnostics.globals": ["Snacks"]
+  "diagnostics.globals": ["vim", "Snacks", "MiniFiles"]
 }

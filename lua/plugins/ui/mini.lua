@@ -1,4 +1,4 @@
----@diagnostic disable: undefined-global, unused-local, duplicate-set-field
+---@diagnostic disable: duplicate-set-field
 -- dotfiles show/unsow
 local show_dotfiles = false
 -- filter dotfiles
@@ -65,7 +65,7 @@ local map_split = function(buf_id, lhs, direction)
   vim.keymap.set("n", lhs, rhs, { buffer = buf_id, desc = desc })
 end
 -- Create mapping to set current working directory
-local files_set_cwd = function(path)
+local files_set_cwd = function(_)
   local cur_entry_path = MiniFiles.get_fs_entry().path
   local cur_directory = vim.fs.dirname(cur_entry_path)
   ---@diagnostic disable-next-line: param-type-mismatch
