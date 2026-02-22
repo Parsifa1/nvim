@@ -6,6 +6,7 @@ return {
     theme = {
       variant = "fall", -- 'winter'|'fall'|'spring'|'summer'
       accent = "green",
+      ansi = false,
     },
     overrides = {
       MsgArea = { bg = "NONE" },
