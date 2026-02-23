@@ -8,7 +8,6 @@ local keymap = {
     { "n",                "nzzzv",                                     mode = mode_n }, -- 搜索保持光标
     { "j",                "gj",                                        mode = mode_n }, -- 软换行
     { "k",                "gk",                                        mode = mode_n },
-    { "gT",               "<cmd>tabnew<CR>",                           mode = mode_n },
     { "<C-i>",            "<C-i>",                                     mode = mode_n }, -- 重设<C-i>
     { "<Esc>",            "<cmd>noh<CR>",                              mode = mode_n }, -- set noh
     { "<C-x>",            "<cmd>lua Snacks.bufdelete()<CR>",           mode = mode_n },
@@ -35,15 +34,16 @@ local keymap = {
     { "<C-l>",            "<C-w>l",                                    mode = mode_nit },
     { "<A-q>",            "<cmd>qa<CR>",                               mode = mode_nit }, -- 窗口关闭
     { "<A-Q>",            "<cmd>qa<CR>",                               mode = mode_nit }, -- vim关闭
+    { "<leader><Up>",     "<cmd>res +5<CR>",                           mode = mode_n,   hidden = true }, -- 窗口操作
+    { "<leader><Down>",   "<cmd>res -5<CR>",                           mode = mode_n,   hidden = true },
+    { "<leader><Left>",   "<cmd>vertical resize -5<CR>",               mode = mode_n,   hidden = true },
+    { "<leader><Right>",  "<cmd>vertical resize +5<CR>",               mode = mode_n,   hidden = true },
+    { "<leader><S-Left>", "<cmd>vertical resize -15<CR>",              mode = mode_n,   hidden = true },
+    { "<leader><S-Right>","<cmd>vertical resize +15<CR>",              mode = mode_n,   hidden = true },
     { "<leader>p",        "<cmd>Lazy<CR>",                             mode = mode_n,   desc = "lazy" }, -- desc快捷键 ↓
+    { "gT",               "<cmd>tabnew<CR>",                           mode = mode_n,   desc = "new tab" },
     { "<leader>sw",       "<cmd>set wrap!<CR>",                        mode = mode_n,   desc = "toggle warp" },
-    { "<leader><Up>",     "<cmd>res +5<CR>",                           mode = mode_n,   desc = "resize window up" }, -- 窗口操作
     { "<leader>bd",       "<cmd>bd<CR>",                               mode = mode_n,   desc = "[B]uffer [D]elete" },
-    { "<leader><Down>",   "<cmd>res -5<CR>",                           mode = mode_n,   desc = "resize window down" },
-    { "<leader><Left>",   "<cmd>vertical resize -5<CR>",               mode = mode_n,   desc = "resize window left" },
-    { "<leader><Right>",  "<cmd>vertical resize +5<CR>",               mode = mode_n,   desc = "resize window right" },
-    { "<leader><S-Left>", "<cmd>vertical resize -15<CR>",              mode = mode_n,   desc = "resize window left" },
-    { "<leader><S-Right>","<cmd>vertical resize +15<CR>",              mode = mode_n,   desc = "resize window right" },
     { "zo",               "<C-w>o",                                    mode = mode_n,   desc = "only current window" },
     { "zs",               "<C-w>s",                                    mode = mode_n,   desc = "split current window" },
     { "zc",               "<C-w>c",                                    mode = mode_n,   desc = "close current window" },
@@ -55,8 +55,4 @@ local keymap = {
   -- stylua: ignore end
 }
 
-for _, mapping in ipairs(keymap) do
-  local opts = { noremap = true, silent = mapping.silent ~= false }
-  if mapping.desc then opts.desc = mapping.desc end
-  vim.keymap.set(mapping.mode, mapping[1], mapping[2], opts)
-end
+return keymap
