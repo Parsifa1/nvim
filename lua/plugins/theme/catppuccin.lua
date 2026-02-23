@@ -1,12 +1,15 @@
 return {
   "catppuccin/nvim",
-  enabled = false,
+  -- enabled = false,
   name = "catppuccin",
-  lazy = true,
   opts = {
     flavour = "macchiato",
     -- transparent_background = not vim.g.neovide,
-    term_colors = true,
+    custom_highlights = function(colors)
+      return {
+        WinSeparator = { fg = colors.surface0 },
+      }
+    end,
     integrations = {
       aerial = true,
       fidget = true,

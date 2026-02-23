@@ -150,6 +150,14 @@ local opts = {
       vim.fn.mkdir(vim.fn.fnamemodify(vim.uv.fs_realpath(file) or file, ":p:h"), "p")
     end,
   },
+  patch_colorcheme = {
+    event = "ColorScheme",
+    desc = "Patch colorscheme to fix some issues",
+    callback = function()
+      package.loaded["utils.highlight"] = nil
+      require "utils.highlight"
+    end,
+  },
 }
 
 -- fix hlsearch when using n, N, *, #, ?, / in normal mode

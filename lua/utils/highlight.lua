@@ -1,39 +1,36 @@
-local set_hl = vim.api.nvim_set_hl
+local set_hl = function(...) vim.api.nvim_set_hl(0, ...) end
 -- buitin highlight
--- visual select
--- set_hl(0, "Visual", { reverse = true })
 -- float
-set_hl(0, "NormalFloat", { bg = "NONE" })
-set_hl(0, "FloatBorder", { bg = "NONE" })
+vim.cmd.hi "NormalFloat guibg=NONE"
+vim.cmd.hi "FLoatBorder guibg=NONE"
 -- StatusLine
-set_hl(0, "StatusLine", { bg = "NONE" })
-set_hl(0, "StatusLineNC", { link = "StatusLine" })
-set_hl(0, "StatusLineTerm", { link = "StatusLine" })
-set_hl(0, "StatusLineTermNC", { link = "StatusLine" })
+vim.cmd.hi "StatusLine guibg=NONE"
+set_hl("StatusLineTerm", { link = "StatusLine" })
+set_hl("StatusLineTermNC", { link = "StatusLine" })
 -- left symboline
-set_hl(0, "SignColumn", { bg = "NONE" })
-set_hl(0, "FoldColumn", { bg = "NONE" })
+vim.cmd.hi "SignColumn guibg=NONE"
+vim.cmd.hi "FoldColumn guibg=NONE"
 -- cursorline
-set_hl(0, "CursorLine", { bg = "NONE" })
-set_hl(0, "CursorLineNr", { bg = "NONE" })
+vim.cmd.hi "CursorLine guibg=NONE"
+vim.cmd.hi "CursorLineNr guibg=NONE"
 -- winbar
-set_hl(0, "WinBar", { bg = "NONE" })
-set_hl(0, "WinBarNC", { bg = "NONE" })
+vim.cmd.hi "WinBar guibg=NONE"
+vim.cmd.hi "WinBarNC guibg=NONE"
 -- diff
-set_hl(0, "diffAdded", { link = "DiffAdd" })
-set_hl(0, "diffRemoved", { link = "DiffDelete" })
+set_hl("diffAdded", { link = "DiffAdd" })
+set_hl("diffRemoved", { link = "DiffDelete" })
 -- diagnostic
-vim.cmd.highlight "ErrorMsg cterm=bold gui=bold"
-set_hl(0, "WinSeparator", { fg = "#878787" })
-set_hl(0, "VirtualTextHint", { link = "DiagnosticHint" })
-set_hl(0, "VirtualTextInfo", { link = "DiagnosticInfo" })
-set_hl(0, "VirtualTextWarning", { link = "DiagnosticWarn" })
-set_hl(0, "VirtualTextError", { link = "DiagnosticError" })
+vim.cmd.hi "ErrorMsg cterm=bold gui=bold"
+-- set_hl("WinSeparator", { fg = "#878787" })
+set_hl("VirtualTextHint", { link = "DiagnosticHint" })
+set_hl("VirtualTextInfo", { link = "DiagnosticInfo" })
+set_hl("VirtualTextWarning", { link = "DiagnosticWarn" })
+set_hl("VirtualTextError", { link = "DiagnosticError" })
 
 -- plugin hightlight
 -- Tabline
-set_hl(0, "TabLineFill", { bg = "NONE" })
+vim.cmd.hi "TabLineFill guibg=NONE"
 -- Telescope
-set_hl(0, "TelescopePreviewTitle", { fg = "#cccccc", bg = "#668aab" })
-set_hl(0, "TelescopePromptTitle", { fg = "#cccccc", bg = "#a96ca5" })
-set_hl(0, "TelescopeResultsTitle", { fg = "#cccccc", bg = "#c9826b" })
+vim.cmd.hi "TelescopePreviewTitle guifg=#cccccc guibg=#668aab"
+vim.cmd.hi "TelescopePromptTitle guifg=#cccccc guibg=#a96ca5"
+vim.cmd.hi "TelescopeResultsTitle guifg=#cccccc guibg=#c9826b"
