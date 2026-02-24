@@ -11,8 +11,7 @@ return {
   },
   init_options = {
     fallbackFlags = {
-      "-std=c++2b",
-      "-xc++",
+      -- "-std=c++2b",
       "-Wall",
       "-Wno-unused-variable",
       "-Wno-vla-cxx-extension",

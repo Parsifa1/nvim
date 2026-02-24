@@ -1,3 +1,4 @@
+---@diagnostic disable: redundant-parameter, duplicate-set-field
 local custom = require "config.custom"
 
 local config = function()
@@ -36,6 +37,9 @@ local config = function()
       },
     },
   }
+
+  local hover = vim.lsp.buf.hover
+  vim.lsp.buf.hover = function() return hover { max_width = 100, max_height = 20 } end
 
   -- automatically sign up lsp
   vim.api.nvim_create_autocmd("LspAttach", {

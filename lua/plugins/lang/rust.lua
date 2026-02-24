@@ -30,8 +30,15 @@ return {
     event = { "BufRead Cargo.toml" },
     tag = "stable",
     config = function()
-      ---@diagnostic disable-next-line: missing-parameter
-      require("crates").setup()
+      require("crates").setup {
+        lsp = {
+          enabled = true,
+          actions = true,
+          completion = true,
+          hover = true,
+        },
+        popup = { border = "rounded" },
+      }
     end,
   },
 }

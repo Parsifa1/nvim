@@ -20,7 +20,7 @@ return {
         ["vim.lsp.util.stylize_markdown"] = true,
         ["cmp.entry.get_documentation"] = false,
       },
-      hover = { enabled = true, silent = true },
+      hover = { enabled = false },
       progress = { enabled = false },
       signature = { enabled = false },
     },

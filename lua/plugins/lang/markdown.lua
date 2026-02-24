@@ -12,6 +12,14 @@ return {
     ft = { "markdown", "markdown.mdx", "codecompanion" },
     opts = {
       file_types = { "markdown", "codecompanion", "markdown.mdx" },
+      overrides = {
+        buftype = {
+          nofile = {
+            heading = { backgrounds = false, position = "inline" },
+            code = { border = "hide", language = false, disable_background = true },
+          },
+        },
+      },
     },
   },
   {
