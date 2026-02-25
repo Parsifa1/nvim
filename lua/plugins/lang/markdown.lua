@@ -16,7 +16,12 @@ return {
         buftype = {
           nofile = {
             heading = { backgrounds = false, position = "inline" },
-            code = { border = "hide", language = false, disable_background = true },
+            code = {
+              inline = false,
+              border = "hide",
+              language = false,
+              disable_background = true,
+            },
           },
         },
       },

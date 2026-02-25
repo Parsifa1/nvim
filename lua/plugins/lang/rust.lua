@@ -19,6 +19,9 @@ return {
               files = {
                 excludeDirs = { ".direnv", ".git", "target" },
               },
+              semanticHighlighting = {
+                strings = { enable = false },
+              },
             },
           },
         },

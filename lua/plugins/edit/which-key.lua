@@ -43,7 +43,7 @@ return {
       { "<leader>R", group = "Kurara" },
       { "<leader>s", group = "Chore" },
       { "<leader>t", group = "Telescope" },
-      { "gx", "Open Link or File", icon = "󰖟 " },
+      { "gx", desc = "Open Link or File", icon = "󰖟 " },
       {
         "<leader><space>",
         function() require("which-key").show { keys = "<leader>", loop = true, delay = "65535" } end,
