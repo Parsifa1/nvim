@@ -13,6 +13,11 @@ return {
   },
   opts = {
     nes = { enabled = false },
-    cli = { mux = { backend = "tmux", enabled = true } },
+    cli = {
+      mux = { backend = "tmux", enabled = true },
+      tools = {
+        codex = { cmd = { "codex" } },
+      },
+    },
   },
 }
