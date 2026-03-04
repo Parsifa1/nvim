@@ -16,7 +16,6 @@ Startup Time:
 # Data Structure
 
 ```
-
 .
 ├── init.lua
 ├── lazy-lock.json

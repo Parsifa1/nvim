@@ -5,6 +5,7 @@ vim.cmd.hi "NormalFloat guibg=NONE"
 vim.cmd.hi "FLoatBorder guibg=NONE"
 -- StatusLine
 vim.cmd.hi "StatusLine guibg=NONE"
+set_hl("MsgArea", { link = "StatusLine" })
 set_hl("StatusLineTerm", { link = "StatusLine" })
 set_hl("StatusLineTermNC", { link = "StatusLine" })
 -- left symboline

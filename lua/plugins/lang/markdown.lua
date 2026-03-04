@@ -9,22 +9,16 @@ return {
   },
   {
     "MeanderingProgrammer/render-markdown.nvim",
+    -- enabled = false,
     ft = { "markdown", "markdown.mdx", "codecompanion" },
     opts = {
       file_types = { "markdown", "codecompanion", "markdown.mdx" },
+      patterns = { markdown = { disable = false } },
       overrides = {
-        buftype = {
-          nofile = {
-            heading = { backgrounds = false, position = "inline" },
-            code = {
-              inline = false,
-              border = "hide",
-              language = false,
-              disable_background = true,
-            },
-          },
-        },
+        buftype = { nofile = { enabled = false } },
+        filetype = { codecompanion = { enabled = true } },
       },
+      win_options = { conceallevel = { rendered = 1 } },
     },
   },
   {
