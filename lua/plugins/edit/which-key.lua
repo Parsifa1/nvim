@@ -5,7 +5,9 @@ local opts = {
   show_help = false,
   win = { border = custom.border, no_overlap = false },
   plugins = { presets = { z = true } },
-  defer = function(ctx) return ctx.keys == "`" or ctx.mode == "V" or ctx.mode == "<C-V>" or ctx.mode == "v" end,
+  defer = function(ctx)
+    return ctx.keys == "`" or ctx.mode == "V" or ctx.mode == "<C-V>" or ctx.mode == "v"
+  end,
   icons = {
     rules = {
       { pattern = "go", icon = "󰇐 ", color = "blue" },

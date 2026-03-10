@@ -1,5 +1,7 @@
-local mode_n, mode_v, mode_i, mode_o, mode_s, mode_t = { "n" }, { "v" }, { "i" }, { "o" }, { "s" }, { "t" }
-local mode_nv, mode_ni, mode_nit, mode_nvo = { "n", "v" }, { "n", "i" }, { "n", "i", "v" }, { "n", "v", "o" }
+local mode_n, mode_v, mode_i, mode_o, mode_s, mode_t =
+  { "n" }, { "v" }, { "i" }, { "o" }, { "s" }, { "t" }
+local mode_nv, mode_ni, mode_nit, mode_nvo =
+  { "n", "v" }, { "n", "i" }, { "n", "i", "v" }, { "n", "v", "o" }
 
 local keymap = {
     -- stylua: ignore start

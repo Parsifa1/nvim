@@ -19,7 +19,9 @@ local opts = {
             width = {
               max = function(ctx) return ctx.mode == "cmdline" and 22 or 60 end,
             },
-            highlight = function(ctx) return require("colorful-menu").blink_components_highlight(ctx) end,
+            highlight = function(ctx)
+              return require("colorful-menu").blink_components_highlight(ctx)
+            end,
           },
           provider = {
             text = function(ctx) return "[" .. ctx.item.source_name:sub(1, 3):upper() .. "]" end,

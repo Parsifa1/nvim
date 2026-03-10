@@ -99,7 +99,12 @@ local opts = {
           local filetype = vim.api.nvim_get_option_value("filetype", { buf = args.buf })
           local buftype = vim.api.nvim_get_option_value("buftype", { buf = args.buf })
           local ignore_filetypes = { "gitcommit", "gitrebase" }
-          if buftype == "" and filetype and filetype ~= "" and not vim.tbl_contains(ignore_filetypes, filetype) then
+          if
+            buftype == ""
+            and filetype
+            and filetype ~= ""
+            and not vim.tbl_contains(ignore_filetypes, filetype)
+          then
             vim.b[args.buf].view_activated = true
             vim.cmd.loadview { mods = { emsg_silent = true } }
           end
@@ -113,7 +118,9 @@ local opts = {
     desc = "Forget the current snippet when leaving the insert mode",
     callback = function(ev)
       local ls = require "luasnip"
-      if not ls.session or not ls.session.current_nodes[ev.buf] or ls.session.jump_active then return end
+      if not ls.session or not ls.session.current_nodes[ev.buf] or ls.session.jump_active then
+        return
+      end
       local current_node = ls.session.current_nodes[ev.buf]
       local current_start, current_end = current_node:get_buf_position()
       current_start[1] = current_start[1] + 1 -- (1, 0) indexed
@@ -163,7 +170,8 @@ local opts = {
 -- fix hlsearch when using n, N, *, #, ?, / in normal mode
 vim.on_key(function(char)
   if vim.fn.mode() == "n" and not mid_mapping then
-    local new_hlsearch = vim.tbl_contains({ "<CR>", "n", "N", "*", "#", "?", "/" }, vim.fn.keytrans(char))
+    local new_hlsearch =
+      vim.tbl_contains({ "<CR>", "n", "N", "*", "#", "?", "/" }, vim.fn.keytrans(char))
     if vim.o.hlsearch ~= new_hlsearch then vim.opt.hlsearch = new_hlsearch end
     mid_mapping = true
     vim.schedule(function() mid_mapping = false end)

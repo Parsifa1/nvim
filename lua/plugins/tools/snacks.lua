@@ -140,7 +140,7 @@ return {
       preset = {
         keys = {
           { icon = " ", key = "f", desc = "Find file", action = "<cmd>FzfLua global<CR>" },
-          { icon = " ", key = "r", desc = "Recently used files", action = "<cmd>FzfLua frecency<CR>" },
+          { icon = " ", key = "r", desc = "Recent files", action = "<cmd>FzfLua frecency<CR>" },
           { icon = "󰂖 ", key = "p", desc = "Plugins", action = "<cmd>Lazy<CR>" },
           { icon = "󰅚 ", key = "q", desc = "Quit Neovim", action = "<cmd>qa<CR>" },
         },

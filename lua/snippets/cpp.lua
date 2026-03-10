@@ -38,8 +38,10 @@ local cout = treesitter_postfix(
 )
 
 local endl = s("endd", { t "'\\n'" })
-local chmax = s("chmax", { t "inline bool chmax(auto &a, auto b) { return (a < b) ? a = b, true : false; }" })
-local chmin = s("chmin", { t "inline bool chmin(auto &a, auto b) { return (a > b) ? a = b, true : false; }" })
+local chmax =
+  s("chmax", { t "inline bool chmax(auto &a, auto b) { return (a < b) ? a = b, true : false; }" })
+local chmin =
+  s("chmin", { t "inline bool chmin(auto &a, auto b) { return (a > b) ? a = b, true : false; }" })
 local fread = s("fread", {
   t {
     "inline auto read() {",

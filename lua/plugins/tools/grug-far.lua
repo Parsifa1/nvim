@@ -10,7 +10,12 @@ return {
       group = vim.api.nvim_create_augroup("grug-far-keybindings", { clear = true }),
       pattern = { "grug-far" },
       callback = function()
-        vim.keymap.set("n", "<C-c>", function() require("grug-far").get_instance(0):close() end, { buffer = true })
+        vim.keymap.set(
+          "n",
+          "<C-c>",
+          function() require("grug-far").get_instance(0):close() end,
+          { buffer = true }
+        )
       end,
     })
   end,

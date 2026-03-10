@@ -13,7 +13,7 @@ return {
     },
     config = function()
       require("mason").setup {
-        PATH = "append", -- NOTE:为了兼容NIXOS
+        PATH = "skip", -- NOTE:为了兼容NIXOS
         registries = { "github:mason-org/mason-registry" },
         ui = {
           backdrop = 100,
@@ -25,6 +25,9 @@ return {
           },
         },
       }
+      if not vim.env.PATH:find "mason" then
+        vim.env.PATH = vim.env.PATH .. ":" .. vim.env.MASON .. "/bin"
+      end
     end,
   },
 }

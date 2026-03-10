@@ -6,7 +6,9 @@ local config = function()
   require("utils.lspstart").init()
   local lsp_keymap = function(bufnr)
     -- lsp-builtin
-    local set = function(keys, func, indesc) vim.keymap.set("n", keys, func, { buffer = bufnr, desc = indesc }) end
+    local set = function(keys, func, indesc)
+      vim.keymap.set("n", keys, func, { buffer = bufnr, desc = indesc })
+    end
     set("gr", "<cmd>FzfLua lsp_references unique_line_items=true<CR>", "[R]eferences")
     set("gi", "<cmd>FzfLua lsp_implementations<CR>", "[I]mplementations")
     set("gk", vim.lsp.buf.signature_help, "LSP Signature help")

@@ -49,7 +49,9 @@ end
 --- Git Utils
 local git_cache = {} ---@type table<string, boolean>
 local function is_git_root(dir)
-  if git_cache[dir] == nil then git_cache[dir] = (vim.uv or vim.loop).fs_stat(dir .. "/.git") ~= nil end
+  if git_cache[dir] == nil then
+    git_cache[dir] = (vim.uv or vim.loop).fs_stat(dir .. "/.git") ~= nil
+  end
   return git_cache[dir]
 end
 --- Gets the git root for a buffer or path.

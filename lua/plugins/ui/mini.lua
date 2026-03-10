@@ -40,7 +40,10 @@ local custom_sort = function(fs_entries)
   end
 
   table.sort(res, compare_custom)
-  return vim.tbl_map(function(x) return { name = x.name, fs_type = x.fs_type, path = x.path } end, res)
+  return vim.tbl_map(
+    function(x) return { name = x.name, fs_type = x.fs_type, path = x.path } end,
+    res
+  )
 end
 -- map split
 local map_split = function(buf_id, lhs, direction)
@@ -101,7 +104,9 @@ local init = function()
   vim.api.nvim_create_autocmd("User", {
     pattern = "MiniFilesBufferCreate",
     callback = function(args)
-      local map_buf = function(lhs, rhs) vim.keymap.set("n", lhs, rhs, { buffer = args.data.buf_id }) end
+      local map_buf = function(lhs, rhs)
+        vim.keymap.set("n", lhs, rhs, { buffer = args.data.buf_id })
+      end
       local toggle_dotfiles = function()
         show_dotfiles = not show_dotfiles
         MiniFiles.refresh { content = { filter = filter_dot } }
