@@ -5,7 +5,8 @@ return {
   opts = {
     library = {
       { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-      { path = "lazy.nvim", words = { "LazyPluginSpec" } },
+      { path = "nvim-lspconfig", words = { "lspconfig" } },
+      { path = "lazy.nvim", words = { "Lazy.*Spec" } },
       { path = vim.env.VIMRUNTIME },
     },
   },

@@ -18,7 +18,7 @@ local keymap = {
     { "J",                ":m '>+1<cr>gv=gv",                          mode = mode_v },
     { "<BS>",             "<BS>:startinsert<CR>",                      mode = mode_s },
     { "=",                "q",                                         mode = mode_o },
-    { "<Esc>",            "<C-\\><C-N>",                               mode = mode_t },
+    { "<C-q>",            "<C-\\><C-N>",                               mode = mode_t },
     { "=",                "gq",                                        mode = mode_nv },
     { "<C-s>",            "<cmd>write<CR>",                            mode = mode_ni },
     { "<C-a>",            "<cmd>normal gg0vG$<CR>",                    mode = mode_ni },
