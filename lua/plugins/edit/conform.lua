@@ -24,6 +24,7 @@ return {
         python = { "ruff_format" },
         astro = { "dprint" },
         cpp = { "clang_format" },
+        c = { "clang_format" },
         css = { "dprint", "prettier" },
         vue = { "dprint", "prettier" },
         javascriptreact = { "dprint", "prettier" },
