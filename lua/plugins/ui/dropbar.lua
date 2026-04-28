@@ -1,4 +1,3 @@
----@diagnostic disable: undefined-global
 local custom = require "config.custom"
 
 local custom_path = {
@@ -27,8 +26,8 @@ return {
           or not vim.api.nvim_win_is_valid(win)
           or vim.fn.win_gettype(win) ~= ""
           or vim.wo[win].winbar ~= ""
-          or vim.bo[buf].ft == "codecompanion"
-          or vim.bo[buf].ft == "help"
+          or vim.bo[buf].ft == "toggleterm"
+          or vim.bo[buf].bt == "nofile"
           or vim.bo[buf].ft == ""
         then
           return false
@@ -45,7 +44,6 @@ return {
         local sources = require "dropbar.sources"
         local utils = require "dropbar.utils"
         if vim.bo[buf].ft == "markdown" then return { custom_path, sources.markdown } end
-        if vim.bo[buf].buftype == "terminal" then return { sources.terminal } end
         return {
           custom_path,
           utils.source.fallback {
