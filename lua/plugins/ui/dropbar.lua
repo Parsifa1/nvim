@@ -28,6 +28,7 @@ return {
           or vim.wo[win].winbar ~= ""
           or vim.bo[buf].ft == "toggleterm"
           or vim.bo[buf].bt == "nofile"
+          or vim.bo[buf].ft == "oil"
           or vim.bo[buf].ft == ""
         then
           return false
