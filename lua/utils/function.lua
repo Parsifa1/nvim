@@ -82,4 +82,18 @@ function M.get_hl_group(name)
   return name
 end
 
+function M.path_relative_to_root(buf, win)
+  local bufname = vim.api.nvim_buf_get_name(buf)
+  if vim.startswith(bufname, "oil://") then
+    local root = bufname:gsub("^%S+://", "", 1)
+    while root ~= vim.fs.dirname(root) do
+      root = vim.fs.dirname(root)
+    end
+    return root
+  end
+
+  local ok, cwd = pcall(vim.fn.getcwd, win)
+  return ok and cwd or vim.fn.getcwd()
+end
+
 return M

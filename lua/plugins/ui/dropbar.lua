@@ -3,6 +3,7 @@ local custom = require "config.custom"
 local custom_path = {
   get_symbols = function(buff, win, cursor)
     local symbols = require("dropbar.sources").path.get_symbols(buff, win, cursor)
+    if vim.tbl_isempty(symbols) then return symbols end
     vim.api.nvim_set_hl(0, "DropBarFileName", { fg = "#FCDCDD", italic = true })
     symbols[#symbols].name_hl = "DropBarFileName"
     if vim.bo[buff].modified then
@@ -19,6 +20,9 @@ return {
   event = { "BufRead", "BufNewFile" },
   opts = {
     icons = { kinds = { symbols = custom.icons.kind_with_space } },
+    sources = {
+      path = { relative_to = custom.path_relative_to_root },
+    },
     bar = {
       enable = function(buf, win, _)
         if
@@ -28,7 +32,6 @@ return {
           or vim.wo[win].winbar ~= ""
           or vim.bo[buf].ft == "toggleterm"
           or vim.bo[buf].bt == "nofile"
-          or vim.bo[buf].ft == "oil"
           or vim.bo[buf].ft == ""
         then
           return false

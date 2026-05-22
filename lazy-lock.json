@@ -81,7 +81,7 @@
   "rustaceanvim": { "branch": "master", "commit": "7b8dd7abb9a7f442b356aa03714aefce09610339" },
   "showkeys": { "branch": "main", "commit": "cb0a50296f11f1e585acffba8c253b9e8afc1f84" },
   "sidekick.nvim": { "branch": "main", "commit": "17447a05f9385e5f8372b61530f6f9329cb82421" },
-  "smartab.nvim": { "branch": "master", "commit": "fdca29cf8f2a30aa74d1f995eba349c30f0987ee" },
+  "smartab.nvim": { "branch": "master", "commit": "2fcfe382bf0c288944db31c4fd8d4f106ef50752" },
   "snacks.nvim": { "branch": "main", "commit": "ad9ede6a9cddf16cedbd31b8932d6dcdee9b716e" },
   "statuscol.nvim": { "branch": "main", "commit": "c46172d0911aa5d49ba5f39f4351d1bb7aa289cc" },
   "suda.vim": { "branch": "master", "commit": "c492741b4679b3cdd4d9e34138209784e061d916" },
