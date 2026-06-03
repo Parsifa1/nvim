@@ -31,6 +31,7 @@ return {
           or vim.fn.win_gettype(win) ~= ""
           or vim.wo[win].winbar ~= ""
           or vim.bo[buf].ft == "toggleterm"
+          or vim.bo[buf].bt == "terminal"
           or vim.bo[buf].bt == "nofile"
           or vim.bo[buf].ft == ""
         then
