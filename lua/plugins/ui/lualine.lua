@@ -1,4 +1,3 @@
-local lazy_status = require "lazy.status"
 local custom = require "config.custom"
 
 local opts = {
@@ -78,11 +77,6 @@ local opts = {
           modified = " ",
           removed = " ",
         },
-      },
-      {
-        lazy_status.updates,
-        cond = lazy_status.has_updates,
-        color = { fg = "#ff9e64" },
       },
       function()
         local reg = vim.fn.reg_recording()

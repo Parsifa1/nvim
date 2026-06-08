@@ -96,4 +96,8 @@ function M.path_relative_to_root(buf, win)
   return ok and cwd or vim.fn.getcwd()
 end
 
+function M.is_wsl()
+  return vim.uv.os_uname().sysname == "Linux" and vim.uv.os_uname().release:lower():find "microsoft"
+end
+
 return M
