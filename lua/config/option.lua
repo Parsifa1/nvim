@@ -91,6 +91,7 @@ vim.g.clipboard = {
     ["*"] = require("vim.ui.clipboard.osc52").paste "*",
   },
 }
+
 if vim.g.neovide then
   vim.g.clipboard = false
   vim.opt.fillchars:append { diff = "╱" }

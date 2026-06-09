@@ -7,7 +7,6 @@ return {
   ft = "typst",
   opts = {
     debug = false,
-    open_cmd = is_wsl() and "explorer %s" or nil,
     dependencies_bin = {
       ["tinymist"] = "tinymist",
       ["websocat"] = "websocat",
