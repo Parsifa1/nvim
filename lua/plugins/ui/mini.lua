@@ -179,6 +179,7 @@ return {
         ["moonbit"] = { glyph = "󱩡", hl = "MiniIconsPurple" },
       },
       file = {
+        [".env"] = { glyph = " ", hl = "MiniIconsGreen" },
         [".tasks"] = { glyph = "", hl = "MiniIconsGrey" },
         [".envrc"] = { glyph = "", hl = "MiniIconsGreen" },
         ["_headers"] = { glyph = "󰌷", hl = "MiniIconsOrange" },
