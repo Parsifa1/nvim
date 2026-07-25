@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-field
 return {
   {
     "windwp/nvim-autopairs",
@@ -7,7 +8,8 @@ return {
   {
     "saghen/blink.pairs",
     event = "User AfterFile",
-    dependencies = "saghen/blink.download",
+    dependencies = "saghen/blink.lib",
+    build = function() require("blink.pairs").download():pwait(1000) end,
     version = "*",
     opts = {
       mappings = { enabled = false },
