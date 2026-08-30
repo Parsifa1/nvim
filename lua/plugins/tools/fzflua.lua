@@ -1,5 +1,6 @@
+local fn = require "utils.function"
 local keys = function()
-  if vim.uv.os_uname().sysname ~= "Windows_NT" then
+  if not fn.is_windows() then
     return {
       { "<esc>", "<c-c>", ft = "fzf", mode = "t", nowait = true },
       { "<leader>f", "<cmd>FzfLua global<CR>", desc = "find files" },

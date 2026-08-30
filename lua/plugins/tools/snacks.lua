@@ -1,4 +1,5 @@
 local get_root = require("config.custom").get_root
+local fn = require "utils.function"
 local function dirs()
   ---@type table<string, boolean>
   local seen = {}
@@ -102,7 +103,7 @@ local select = {
 
 local function keys()
   local function snack(name) return ("<cmd>lua Snacks.picker." .. name .. "()<CR>") end
-  if vim.uv.os_uname().sysname == "Windows_NT" then
+  if fn.is_windows() then
     return {
       { "<leader>w", snack "grep", desc = "live grep" },
       { "<leader>f", snack "smart", desc = "find files" },
@@ -203,7 +204,7 @@ return {
     image = {
       doc = {
         inline = false,
-        float = vim.fn.hostname() ~= ("nixos" or "debian"),
+        float = not fn.is_server(),
       },
       convert = {
         math = {

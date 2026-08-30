@@ -32,5 +32,8 @@ return {
       return sn(nil, nodes)
     end),
   }),
-  s({ trig = "now" }, { f(function() return os.date("!%Y-%m-%dT%H:%M:%SZ", os.time() + 8 * 60 * 60) end, {}) }),
+  s(
+    { trig = "now" },
+    { f(function() return os.date("!%Y-%m-%dT%H:%M:%SZ", os.time() + 8 * 60 * 60) end, {}) }
+  ),
 }

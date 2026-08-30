@@ -1,5 +1,5 @@
 return {
   "direnv/direnv.vim",
-  enabled = vim.uv.os_uname().sysname ~= "Windows_NT",
+  enabled = vim.fn.executable "direnv" == 1,
   event = "User AfterFile",
 }

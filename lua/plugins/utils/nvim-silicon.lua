@@ -1,6 +1,5 @@
 return {
   "michaelrommel/nvim-silicon",
-  -- enabled = vim.fn.hostname() ~= "debian",
   enabled = false,
   cmd = "Silicon",
   main = "nvim-silicon",

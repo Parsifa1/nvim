@@ -1,3 +1,4 @@
+local fn = require "utils.function"
 ---@diagnostic disable: assign-type-mismatch
 return {
   {
@@ -11,7 +12,7 @@ return {
       -- Build Step is needed for regex support in snippets
       -- This step is not supported in many windows environments
       -- Remove the below condition to re-enable on windows
-      if vim.uv.os_uname().sysname == "Windows_NT" then return end
+      if fn.is_windows() then return end
       return "make install_jsregexp"
     end)(),
     event = "User AfterFile",
