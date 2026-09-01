@@ -204,7 +204,7 @@ return {
     image = {
       doc = {
         inline = false,
-        float = not fn.is_server(),
+        float = not (fn.is_server() or fn.is_wsl()),
       },
       convert = {
         math = {

@@ -1,7 +1,10 @@
+local fn = require "config.custom"
+
 ---@type LazyPluginSpec
 return {
   "zbirenbaum/copilot.lua",
   cmd = "Copilot",
+  enabled = not fn.is_server(),
   build = ":Copilot auth",
   event = { "InsertEnter", "User AfterFile" },
   opts = {

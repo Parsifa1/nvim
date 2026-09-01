@@ -102,6 +102,6 @@ end
 
 function M.is_windows() return vim.uv.os_uname().sysname == "Windows_NT" end
 
-function M.is_server() return vim.tbl_contains({ "nixos", "debian" }, vim.fn.hostname()) end
+function M.is_server() return vim.tbl_contains({ "debian" }, vim.fn.hostname()) end
 
 return M

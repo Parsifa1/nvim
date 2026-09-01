@@ -1,6 +1,9 @@
+local fn = require "config.custom"
+
+--- @type LazyPluginSpec
 return {
   "mistweaverco/kulala.nvim",
-  -- enabled = false,
+  enabled = not fn.is_server(),
   keys = {
     { "<leader>Rs", desc = "Send request" },
     { "<leader>Ra", desc = "Send all requests" },
