@@ -1,5 +1,5 @@
 return {
-  "akinsho/git-conflict.nvim",
+  "niekdomi/conflict.nvim",
   event = "User AfterFile",
   version = "*",
   opts = {
