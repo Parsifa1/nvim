@@ -1,5 +1,4 @@
 local utils = require "config.custom"
-
 local mkNamespace = vim.api.nvim_create_namespace
 local mid_mapping = false
 
@@ -58,13 +57,23 @@ local opts = {
       event = "ModeChanged",
       pattern = "*:s",
       desc = "Disable diagnostics in select mode",
-      callback = function() vim.diagnostic.enable(false) end,
+      callback = function(ev)
+        if vim.diagnostic.is_enabled { bufnr = ev.buf } then
+          vim.diagnostic.enable(false, { bufnr = ev.buf })
+          vim.b[ev.buf].diag_off_by_snippet = true
+        end
+      end,
     },
     {
       event = "ModeChanged",
-      pattern = "[is]:n",
-      desc = "Enable diagnostics when leaving select mode",
-      callback = function() vim.diagnostic.enable() end,
+      pattern = "s:*",
+      desc = "Re-enable diagnostics when leaving select mode",
+      callback = function(ev)
+        if vim.b[ev.buf].diag_off_by_snippet then
+          vim.diagnostic.enable(true, { bufnr = ev.buf })
+          vim.b[ev.buf].diag_off_by_snippet = nil
+        end
+      end,
     },
   },
   fix_terminal_padding = {

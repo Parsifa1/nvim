@@ -54,6 +54,10 @@ local opts = {
       },
       {
         "diagnostics",
+        cond = function()
+          local bufnr = vim.api.nvim_get_current_buf()
+          return vim.diagnostic.is_enabled { bufnr = bufnr }
+        end,
         symbols = {
           error = custom.icons.diagnostic.Error,
           warn = custom.icons.diagnostic.Warning,

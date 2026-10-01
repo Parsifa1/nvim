@@ -30,6 +30,7 @@ local config = function()
     },
     diagnostics = {
       text = function(buffer)
+        if not vim.diagnostic.is_enabled { bufnr = buffer.number } then return "" end
         if buffer.diagnostics.errors ~= 0 then
           return " "
         elseif buffer.diagnostics.warnings ~= 0 then
