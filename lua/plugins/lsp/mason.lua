@@ -26,7 +26,8 @@ return {
         },
       }
       if not vim.env.PATH:find "mason" then
-        vim.env.PATH = vim.env.PATH .. ":" .. vim.env.MASON .. "/bin"
+        local sep = (require "utils.function").is_windows() and ";" or ":"
+        vim.env.PATH = vim.env.PATH .. sep .. vim.env.MASON .. "/bin"
       end
     end,
   },
