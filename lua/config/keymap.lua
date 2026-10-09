@@ -35,6 +35,7 @@ local keymap = {
     { "<C-k>",            "<C-w>k",                                    mode = mode_nit },
     { "<C-l>",            "<C-w>l",                                    mode = mode_nit },
     { "<A-q>",            "<cmd>qa<CR>",                               mode = mode_nit }, -- 窗口关闭
+    { "<A-t>",           "<cmd>qa<CR>",                               mode = mode_nit }, -- for macos
     { "<A-Q>",            "<cmd>qa<CR>",                               mode = mode_nit }, -- vim关闭
     { "<leader><Up>",     "<cmd>res +5<CR>",                           mode = mode_n,   hidden = true }, -- 窗口操作
     { "<leader><Down>",   "<cmd>res -5<CR>",                           mode = mode_n,   hidden = true },
