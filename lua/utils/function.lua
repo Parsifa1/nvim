@@ -97,7 +97,7 @@ function M.path_relative_to_root(buf, win)
 end
 
 function M.is_wsl()
-  return vim.uv.os_uname().sysname == "Linux" and vim.uv.os_uname().release:lower():find "microsoft"
+  return vim.uv.os_uname().sysname == "Linux" and vim.uv.os_uname().release:lower():find "microsoft" ~= nil
 end
 
 function M.is_windows() return vim.uv.os_uname().sysname == "Windows_NT" end

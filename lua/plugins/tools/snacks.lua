@@ -202,15 +202,8 @@ return {
       },
     },
     image = {
-      doc = {
-        inline = false,
-        float = not (fn.is_server() or fn.is_wsl()),
-      },
-      convert = {
-        math = {
-          font_size = "large",
-        },
-      },
+      doc = { inline = false },
+      math = { enabled = false },
     },
   },
 }
