@@ -4,6 +4,9 @@ local keymap = require "config.keymap"
 local opts = {
   show_help = false,
   win = { border = custom.border, no_overlap = false },
+  filter = function(m)
+    return not (type(m.rhs) == "string" and m.rhs:match "^<Plug>%(sexp_")
+  end,
   plugins = { presets = { z = true } },
   defer = function(ctx)
     return ctx.keys == "`" or ctx.mode == "V" or ctx.mode == "<C-V>" or ctx.mode == "v"
