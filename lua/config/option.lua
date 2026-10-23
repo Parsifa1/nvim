@@ -12,7 +12,6 @@ vim.opt.jumpoptions = "stack"
 vim.opt.sessionoptions = "blank,buffers,curdir,help,tabpages,winsize,terminal"
 
 -- normal setting
-vim.g.copilot_assume_mapped = true
 vim.opt.shortmess = vim.o.shortmess .. "a"
 vim.opt.winborder = "rounded" -- set window border
 -- vim.opt.clipboard = "unnamedplus" -- use system clipboar

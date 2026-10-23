@@ -21,21 +21,21 @@ Startup Time:
 ├── lazy-lock.json
 ├── LICENSE
 ├── lua
-│   ├── custom.lua
-│   ├── keymap.lua
-│   ├── option.lua
-│   ├── packer.lua
+│   ├── config
+│   │   ├── custom.lua
+│   │   ├── keymap.lua
+│   │   ├── option.lua
+│   │   └── packer.lua
 │   ├── plugins
 │   │   ├── dap
+│   │   │   ├── dap.lua
 │   │   │   ├── dap-view.lua
 │   │   │   ├── dap-virtual-text.lua
-│   │   │   ├── dap.lua
 │   │   │   └── mason-dap.lua
 │   │   ├── edit
 │   │   │   ├── autopair.lua
 │   │   │   ├── comment.lua
 │   │   │   ├── conform.lua
-│   │   │   ├── copilot.lua
 │   │   │   ├── flash.lua
 │   │   │   ├── flatten.lua
 │   │   │   ├── nvim-surround.lua
@@ -45,11 +45,13 @@ Startup Time:
 │   │   │   └── which-key.lua
 │   │   ├── git
 │   │   │   ├── diffview.lua
+│   │   │   ├── git-conflict.lua
 │   │   │   ├── gitlinker.lua
 │   │   │   ├── gitsigns.lua
 │   │   │   └── neogit.lua
 │   │   ├── init.lua
 │   │   ├── lang
+│   │   │   ├── lisp.lua
 │   │   │   ├── markdown.lua
 │   │   │   ├── moonbit.lua
 │   │   │   ├── package-info.lua
@@ -66,22 +68,23 @@ Startup Time:
 │   │   ├── theme
 │   │   │   ├── catppuccin.lua
 │   │   │   ├── everforest.lua
+│   │   │   ├── evergarden.lua
 │   │   │   ├── gruvbox-md.lua
 │   │   │   └── nightfox.lua
 │   │   ├── tools
 │   │   │   ├── asynctasks.lua
-│   │   │   ├── codecompanion.lua
-│   │   │   ├── compatitest.lua
+│   │   │   ├── direnv.lua
 │   │   │   ├── fzflua.lua
-│   │   │   ├── mcphub.lua
+│   │   │   ├── grug-far.lua
+│   │   │   ├── marks.lua
+│   │   │   ├── multicursor.lua
 │   │   │   ├── mundo.lua
-│   │   │   ├── nvim-silicon.lua
 │   │   │   ├── origami.lua
 │   │   │   ├── session_manager.lua
+│   │   │   ├── sidekick.lua
 │   │   │   ├── snacks.lua
 │   │   │   ├── suda.lua
 │   │   │   ├── toggleterm.lua
-│   │   │   ├── trailblazer.lua
 │   │   │   ├── trouble.lua
 │   │   │   └── wakatime.lua
 │   │   ├── ui
@@ -90,7 +93,6 @@ Startup Time:
 │   │   │   ├── dressing.lua
 │   │   │   ├── dropbar.lua
 │   │   │   ├── edgy.lua
-│   │   │   ├── fidget.lua
 │   │   │   ├── indent-blankline.lua
 │   │   │   ├── lualine.lua
 │   │   │   ├── mini.lua
@@ -103,32 +105,46 @@ Startup Time:
 │   │   │   ├── statuscol.lua
 │   │   │   └── whitespace.lua
 │   │   └── utils
-│   │       ├── direnv.lua
+│   │       ├── compatitest.lua
 │   │       ├── leetcode.lua
-│   │       └── multicursor.lua
+│   │       └── nvim-silicon.lua
 │   ├── snippets
 │   │   ├── cpp.lua
+│   │   ├── markdown.lua
+│   │   ├── python.lua
 │   │   └── typst.lua
 │   ├── users
-│   │   ├── llm-spinner
+│   │   ├── code-runner
 │   │   │   └── lua
-│   │   │       └── llm-spinner.lua
+│   │   │       └── code-runner.lua
 │   │   └── nvim-origami
 │   │       └── lua
+│   │           ├── hlsearch.lua
 │   │           └── nvim-origami.lua
 │   └── utils
 │       ├── autocmd.lua
-│       ├── floaterm.lua
-│       ├── gitutils.lua
+│       ├── function.lua
 │       ├── highlight.lua
-│       └── lspconfig.lua
+│       ├── lsp
+│       │   ├── astro.lua
+│       │   ├── clangd.lua
+│       │   ├── cssls.lua
+│       │   ├── hls.lua
+│       │   ├── lua_ls.lua
+│       │   ├── mdx_analyzer.lua
+│       │   ├── tailwindcss.lua
+│       │   └── vtsls.lua
+│       └── lspstart.lua
 ├── queries
 │   ├── html
 │   │   └── injections.scm
-│   └── markdown
+│   ├── markdown
+│   │   └── injections.scm
+│   └── rust
 │       └── injections.scm
 ├── README.md
 ├── stylua.toml
-└── tasks.ini
+├── tasks.ini
+└── tests
 ```
 

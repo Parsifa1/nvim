@@ -50,7 +50,6 @@ local opts = {
           done = "",
           separator = ", ",
         },
-        ignore_lsp = { "copilot" },
       },
       {
         "diagnostics",
@@ -90,14 +89,6 @@ local opts = {
 
         return ""
       end,
-      {
-        "copilot",
-        symbols = {
-          status = {
-            icons = { unknown = " " },
-          },
-        },
-      },
     },
     lualine_y = {
       {
@@ -143,7 +134,6 @@ local opts = {
 return {
   "nvim-lualine/lualine.nvim",
   event = { "BufReadPre", "BufNewFile" },
-  dependencies = "AndreM222/copilot-lualine",
   config = function()
     local auto = require "lualine.themes.auto"
     local modes = { "insert", "normal", "visual", "command", "replace", "inactive", "terminal" }
