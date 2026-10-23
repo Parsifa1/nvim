@@ -1,12 +1,16 @@
+local is_server = require("config.custom").is_server()
+
+---@type LazyPluginSpec
 return {
   {
     "eraserhd/parinfer-rust",
+    enabled = not is_server,
     build = "cargo build --release",
     ft = { "lisp", "clojure" },
   },
   {
     "tpope/vim-sexp-mappings-for-regular-people",
-    -- enabled = false,
+    enabled = not is_server,
     ft = { "lisp", "clojure" },
     dependencies = { "guns/vim-sexp" },
     init = function()
@@ -15,7 +19,7 @@ return {
   },
   {
     "Olical/conjure",
-    -- enabled = false,
+    enabled = not is_server,
     ft = { "lisp", "clojure" },
     init = function()
       vim.g["conjure#mapping#prefix"] = "<leader>l"
