@@ -18,6 +18,21 @@ local keys = function()
   end
 end
 
+local function grep_to_grug(selected, opts)
+  if #selected <= 1 then return require("fzf-lua.actions").file_edit(selected, opts) end
+  local files = {}
+  for _, sel in ipairs(selected) do
+    local file = require("fzf-lua.path").entry_to_file(sel, opts)
+    files[file.path or file.bufname] = true
+  end
+  require("grug-far").open {
+    prefills = {
+      search = opts.last_query or opts.search or "",
+      paths = table.concat(vim.tbl_keys(files), " "),
+    },
+  }
+end
+
 local opts = function(_, opts)
   local ivy = {
     previewers = { builtin = { toggle_behavior = "extend" } },
@@ -94,6 +109,9 @@ local opts = function(_, opts)
       -- stylua: ignore
       rg_opts = "-. -n -S --no-heading --column "
           .. "--glob '!{" .. filter .. ",package-lock.json,pnpm-lock.yaml,yarn.lock}' ",
+      actions = {
+        ["enter"] = grep_to_grug,
+      },
     },
     keymap = {
       fzf = {
