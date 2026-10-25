@@ -8,7 +8,6 @@ M.system = {
   "nixd",
   "koka",
   "clangd",
-  "pyright",
 }
 
 M.tools = {

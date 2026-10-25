@@ -3,7 +3,7 @@ local custom = require "config.custom"
 
 local config = function()
   -- init lsp config && system lsp
-  require("utils.lspstart").init()
+  require("utils.server").init()
   local lsp_keymap = function(bufnr)
     -- lsp-builtin
     local set = function(keys, func, indesc)
