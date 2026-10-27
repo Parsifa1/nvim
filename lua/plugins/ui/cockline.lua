@@ -66,7 +66,11 @@ local config = function()
       bg = "NONE",
     },
     buffers = {
-      filter_valid = function(buffer) return buffer.type ~= "terminal" and buffer.type ~= "nofile" end,
+      filter_valid = function(buffer)
+        return buffer.type ~= "terminal"
+          and buffer.type ~= "nofile"
+          and (buffer.filename ~= "[No Name]" or buffer.is_modified)
+      end,
     },
     tabs = {
       placement = "right",
