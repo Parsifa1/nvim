@@ -3,7 +3,7 @@
 return {
   {
     "mrcjkb/rustaceanvim",
-    version = "*", -- Recommended
+    dependencies = "neovim/nvim-lspconfig", -- ensure LspAttach autocmds exist before rust-analyzer attaches
     ft = { "rust" },
     config = function()
       vim.g.rustaceanvim = {
