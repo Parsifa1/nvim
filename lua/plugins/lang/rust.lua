@@ -19,6 +19,7 @@ return {
               files = {
                 excludeDirs = { ".direnv", ".git", "target" },
               },
+              diagnostics = { disabled = { "inactive-code" } },
               semanticHighlighting = {
                 strings = { enable = false },
               },
