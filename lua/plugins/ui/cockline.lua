@@ -105,7 +105,11 @@ return {
       { "[t", "<cmd>tabp<CR>", desc = "previous tab" },
       { "]t", "<cmd>tabn<CR>", desc = "next tab" },
     },
-    init = function() vim.opt.tabline = "%!v:lua.cokeline.tabline()" end,
+    -- _G.cokeline doesn't exist until the module loads; stub it for empty-startup tabline redraws
+    init = function()
+      _G.cokeline = { tabline = function() return "" end }
+      vim.opt.tabline = "%!v:lua.cokeline.tabline()"
+    end,
     event = { "BufReadPre", "BufNewFile" },
     dependencies = { "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons" },
     config = config,

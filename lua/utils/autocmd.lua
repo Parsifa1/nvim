@@ -146,11 +146,15 @@ local opts = {
     end,
   },
   lazyload_forfile = {
-    event = { "BufReadPost", "BufNewFile", "BufWritePost" },
+    event = { "BufReadPost", "BufNewFile", "BufWritePost", "FileType" },
     desc = "custom lazyload",
-    callback = function()
+    callback = function(args)
       local function _trigger() vim.api.nvim_exec_autocmds("User", { pattern = "AfterFile" }) end
-      if vim.bo.filetype == "snacks_dashboard" then
+      local filetype = vim.api.nvim_get_option_value("filetype", { buf = args.buf })
+      local buftype = vim.api.nvim_get_option_value("buftype", { buf = args.buf })
+      -- nofile plugin UI buffers never fire read events; a set filetype still counts as an editing context
+      if buftype ~= "" and filetype == "" then return end
+      if filetype == "snacks_dashboard" then
         vim.api.nvim_create_autocmd("BufReadPost", { once = true, callback = _trigger })
       else
         _trigger()
