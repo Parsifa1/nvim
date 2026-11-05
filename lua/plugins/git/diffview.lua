@@ -1,65 +1,61 @@
----@type LazyPluginSpec
+---@diagnostic disable: duplicate-set-field
 return {
-  "sindrets/diffview.nvim",
-  cmd = {
-    "DiffviewOpen",
-    "DiffviewFileHistory",
-  },
+  "esmuellert/codediff.nvim",
+  cmd = "CodeDiff",
   keys = {
-    { "<leader>gdo", "<Cmd>DiffviewOpen<CR>", desc = "Open" },
-    { "<leader>gdc", "<Cmd>DiffviewClose<CR>", desc = "Close" },
-    { "<leader>gdh", "<Cmd>DiffviewFileHistory<CR>", desc = "Open History" },
-    {
-      "<leader>gdf",
-      "<Cmd>DiffviewFileHistory %<CR>",
-      desc = "Current History",
-    },
+    { "<leader>gdo", "<Cmd>CodeDiff<CR>", desc = "Open Diff" },
+    { "<leader>gdh", "<Cmd>CodeDiff history<CR>", desc = "Open History" },
+    { "<leader>gdf", "<Cmd>CodeDiff history %<CR>", desc = "Current History" },
   },
-  ---@param opts DiffviewConfig
-  opts = function(_, opts)
-    local actions = require "diffview.actions"
-    opts = {
-      enhanced_diff_hl = true,
-      show_help_hints = false,
-      file_panel = {
-        win_config = {
-          width = math.floor(vim.go.columns * 0.2) > 25 and math.floor(vim.go.columns * 0.2) or 25,
-        },
+  opts = function()
+    local explorer_width = math.floor(vim.go.columns * 0.2) > 25
+        and math.floor(vim.go.columns * 0.2)
+      or 25
+    return {
+      diff = { layout = "inline", filler_text = "╱" },
+      highlights = {
+        line_insert = "#344139",
+        line_delete = "#403135",
+        char_insert = "#445847",
+        char_delete = "#5b3d43",
       },
-      view = {
-        merge_tool = { layout = "diff3_mixed" },
-      },
-      hooks = {
-        diff_buf_win_enter = function(_, winid)
-          vim.wo[winid].foldlevel = 99
-          vim.wo[winid].wrap = false
-        end,
-      },
+      explorer = { position = "left", width = explorer_width, view_mode = "tree" },
       keymaps = {
-        disable_defaults = true,
-        view = {
-          { "n", "q", actions.close, { desc = "Close diffview" } },
-          { "n", "<Esc>", actions.close, { desc = "Close diffview" } },
-          { "n", "[c", actions.prev_conflict, { desc = "Prev Conflict" } },
-          { "n", "]c", actions.next_conflict, { desc = "Next Conflict" } },
-          { "n", "ca", actions.conflict_choose "all", { desc = "Choose ALL" } },
-          { "n", "co", actions.conflict_choose "ours", { desc = "Choose OURS" } },
-          { "n", "cb", actions.conflict_choose "base", { desc = "Choose BASE" } },
-          { "n", "ct", actions.conflict_choose "theirs", { desc = "Choose THEIRS" } },
-          { "n", "c0", actions.conflict_choose "none", { desc = "Choose NONE" } },
-        },
-        file_panel = {
-          { "n", "q", actions.close, { desc = "Close diffview" } },
-          { "n", "<Esc>", actions.close, { desc = "Close diffview" } },
-          { "n", "<CR>", actions.select_entry, { desc = "Open the diff" } },
-        },
-        file_history_panel = {
-          { "n", "q", actions.close, { desc = "Close diffview" } },
-          { "n", "<Esc>", actions.close, { desc = "Close diffview" } },
-          { "n", "<CR>", actions.select_entry, { desc = "Open the diff" } },
+        view = { quit = { "q", "<Esc>" } },
+        conflict = {
+          accept_current = "co",
+          accept_incoming = "ct",
+          accept_both = "ca",
+          discard = "c0",
+          next_conflict = "]c",
+          prev_conflict = "[c",
         },
       },
     }
-    return opts
+  end,
+  config = function(_, opts)
+    local diff = require "codediff.core.diff"
+    local raw_compute = diff.compute_diff
+    diff.compute_diff = function(...)
+      local res = raw_compute(...)
+      for _, c in ipairs(res and res.changes or {}) do
+        local o, m = c.original, c.modified
+        if o.end_line <= o.start_line or m.end_line <= m.start_line then c.inner_changes = nil end
+      end
+      return res
+    end
+
+    local inline = require "codediff.ui.inline"
+    local raw_inline = inline.render_inline_diff
+    inline.render_inline_diff = function(buf, res, a, b, o)
+      local lifecycle = require "codediff.ui.lifecycle"
+      local s = lifecycle.get_session(vim.api.nvim_get_current_tabpage())
+      local path = s and tostring(s.modified or s.original)
+      local ft = path and vim.filetype.match { filename = path } or vim.bo[buf].filetype
+      local extra = { filetype = ft ~= "" and ft or "lua" }
+      return raw_inline(buf, res, a, b, vim.tbl_extend("force", o or {}, extra))
+    end
+
+    require("codediff").setup(opts)
   end,
 }

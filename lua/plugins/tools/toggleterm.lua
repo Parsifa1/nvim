@@ -62,24 +62,6 @@ return {
         end,
         desc = "LazyGit",
       },
-      {
-        "<leader>gf",
-        function()
-          require("toggleterm.terminal").Terminal
-            :new({
-              cmd = "yazi",
-              hidden = true,
-              direction = "float",
-              float_opts = float_opts,
-              on_create = function(t)
-                local bufnr = t.bufnr
-                vim.keymap.set("t", "<Esc>", "<Esc>", { buffer = bufnr })
-              end,
-            })
-            :toggle()
-        end,
-        desc = "Yazi",
-      },
     }
   end,
 }

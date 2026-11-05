@@ -10,9 +10,9 @@ return {
     },
     overrides = {
       MsgArea = { bg = "NONE" },
-      DiffAdd = { bg = "#3c4841" },
-      DiffChange = { bg = "#384b55" },
-      DiffDelete = { bg = "#493b40" },
+      DiffAdd = { bg = "#344139" },
+      DiffChange = { bg = "#344139" },
+      DiffDelete = { bg = "#403135" },
       Underlined = { style = { "underline" } },
       Normal = { fg = "#f8f9e8", bg = "#272e32" },
     },
