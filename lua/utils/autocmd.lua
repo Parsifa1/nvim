@@ -2,6 +2,12 @@ local utils = require "config.custom"
 local mkNamespace = vim.api.nvim_create_namespace
 local mid_mapping = false
 
+local function sync_codediff_tabline()
+  local lifecycle = package.loaded["codediff.ui.lifecycle"]
+  local hide = lifecycle ~= nil and lifecycle.get_session(vim.api.nvim_get_current_tabpage()) ~= nil
+  vim.opt.showtabline = hide and 0 or 2
+end
+
 local opts = {
   no_comment = {
     event = "FileType",
@@ -177,6 +183,19 @@ local opts = {
       package.loaded["utils.highlight"] = nil
       require "utils.highlight"
     end,
+  },
+  hide_tabline_in_codediff = {
+    {
+      event = "TabEnter",
+      desc = "Hide tabline inside CodeDiff tabs",
+      callback = function() vim.schedule(sync_codediff_tabline) end,
+    },
+    {
+      event = "User",
+      pattern = { "CodeDiffOpen", "CodeDiffClose" },
+      desc = "Hide tabline inside CodeDiff tabs",
+      callback = function() vim.schedule(sync_codediff_tabline) end,
+    },
   },
 }
 

@@ -13,12 +13,7 @@ return {
       or 25
     return {
       diff = { layout = "inline", filler_text = "╱" },
-      highlights = {
-        line_insert = "#344139",
-        line_delete = "#403135",
-        char_insert = "#445847",
-        char_delete = "#5b3d43",
-      },
+      highlights = { char_insert = "#425649", char_delete = "#5a3e44" },
       explorer = { position = "left", width = explorer_width, view_mode = "tree" },
       keymaps = {
         view = { quit = { "q", "<Esc>" } },
