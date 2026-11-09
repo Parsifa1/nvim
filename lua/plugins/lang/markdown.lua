@@ -2,10 +2,10 @@
 
 return {
   {
-    "parsifa1/markdown-preview.nvim",
+    "selimacerbas/mdkite.nvim",
+    dependencies = { "selimacerbas/kitehost.nvim" },
     ft = { "markdown" },
-    build = ":cal mkdp#util#install()",
-    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    cmd = "MdKite",
   },
   {
     "MeanderingProgrammer/render-markdown.nvim",
